@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    \def\height{5cm} % Height of the pillar/rod
+    \def\width{0.1cm} % Width of the pillar/rod
+    \def\lineWidth{2pt} % Initial line width
+
+    \foreach \y in {0,\height/4,...,\height}{
+        \draw[line width=\lineWidth] (0,\y) -- (\width,\y);
+        \pgfmathsetmacro{\lineWidth}{\lineWidth == 2pt ? 1pt : 2pt};
+    }
+\end{tikzpicture}
+\end{document}

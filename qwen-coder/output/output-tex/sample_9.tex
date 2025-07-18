@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+
+% Non-gravitational case
+\node[draw, rectangle, fill=blue!20] (non_grav) at (0,0) {Non-gravitational};
+\node[below left of=non_grav, draw, circle, fill=red!20] (point) {Point};
+
+% Wick-rotated case
+\node[draw, rectangle, fill=green!20, right=4cm of non_grav] (wick_rotated) {Wick-rotated};
+\node[below right of=wick_rotated, draw, circle, fill=blue!20] (loop) {Loop};
+
+% Arrows and labels
+\draw[-stealth] (non_grav.south west) -- node[below] {Topology} ++(-3,-1);
+\draw[-stealth] (wick_rotated.south east) -- node[below] {Topology} ++(3,-1);
+
+\draw[-stealth] (point.west) -- node[left] {Contribution} ++(-1,-1);
+\draw[-stealth] (loop.east) -- node[right] {Contribution} ++(1,-1);
+
+\end{tikzpicture}
+
+\end{document}

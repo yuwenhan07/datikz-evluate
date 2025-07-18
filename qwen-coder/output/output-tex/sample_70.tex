@@ -1,0 +1,36 @@
+Certainly! Below is a TikZ LaTeX code that represents the relaxation system in the 1-to-1 coupling case on the discretized real line. This code includes various lines and mathematical symbols, similar to what you might see on a whiteboard.
+
+```latex
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{arrows.meta,calc}
+
+\tikzset{
+    mynode/.style={draw, rectangle, minimum width=3em, minimum height=2em, align=center},
+    myarrow/.style={->, thick, >=Stealth[length=5pt]},
+    eqnode/.style={mynode, fill=yellow!30}
+}
+
+\begin{document}
+\begin{tikzpicture}[x=2cm,y=1cm]
+
+% Nodes
+\node[eqnode] (eq1) at (0,0) {$m_1 \ddot{x}_1 = -k(x_1 - x_2)$};
+\node[eqnode] (eq2) at (0,-2) {$m_2 \ddot{x}_2 = k(x_1 - x_2)$};
+
+% Equations
+\node[mynode, right=of eq1] (eq3) {Equation 1: $m_1 \ddot{x}_1 = -k(x_1 - x_2)$};
+\node[mynode, right=of eq2] (eq4) {Equation 2: $m_2 \ddot{x}_2 = k(x_1 - x_2)$};
+
+% Arrows between nodes
+\draw[myarrow] (eq1.east) -- node[above] {$+$} (eq3.west);
+\draw[myarrow] (eq2.east) -- node[below] {$-$} (eq4.west);
+
+% Lines connecting nodes
+\draw[dashed, thick] ($(eq1.south) + (-1,0)$) -- ($(eq2.north) + (-1,0)$);
+\draw[dashed, thick] ($(eq1.south) + (1,0)$) -- ($(eq2.north) + (1,0)$);
+
+% Labels
+\node[left=of eq1] (label1) {Object 1};
+\node[left=of eq2] (label2) {Object 2};
+
+\end{tikzpicture

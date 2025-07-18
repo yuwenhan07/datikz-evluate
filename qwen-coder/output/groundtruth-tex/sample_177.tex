@@ -1,0 +1,26 @@
+\documentclass[border=3.141592]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.arrows}
+
+\begin{document}
+ \tikzset{
+    rect/.style={
+    font=\small,
+    rectangle,
+    rounded corners,
+    minimum width=1em,
+    text width=2em,
+    %draw=blue!75,                                           
+    very thick,
+    align=center,
+    }%                                           
+    }%
+                                                              
+\begin{tikzpicture}
+  % \draw [draw=black] (0.0, 0.0) rectangle (4.0, 4.0);
+  \draw[rect] (0.0, 0.0) rectangle (4.0, 4.0);
+  \node[single arrow, draw=blue,
+    minimum width  = 1.0cm, single arrow head extend=1cm,
+    minimum height = 2cm] at (2.0, 2.0)[anchor = center] {};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,36 @@
+To create a visually appealing and informative TikZ LaTeX diagram for the described geometric progression, you can use the following code. This code will generate a diagram with triangles and squares labeled appropriately, along with the steps of the geometric progression formula.
+
+```latex
+\documentclass[tikz,border=2cm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw, fill=blue!20, 
+                    text width=6em, text centered, rounded corners, minimum height=3em},
+    line/.style = {draw, thick, ->, >=stealth'}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes for the shapes
+    \node (triangle) [block] {Triangle};
+    \node (square1) [block, below left of=triangle] {Square 2};
+    \node (square2) [block, below right of=triangle] {Square 3};
+    \node (square3) [block, below left of=square1] {Square 4};
+    \node (square4) [block, below right of=square2] {Square 5};
+
+    % Connect nodes with lines
+    \draw [line] (triangle) -- node[above] {$a_1$} (square1);
+    \draw [line] (triangle) -- node[above] {$a_2$} (square2);
+    \draw [line] (square1) -- node[below] {$a_3$} (square3);
+    \draw [line] (square2) -- node[below] {$a_4$} (square4);
+
+    % Add labels for the values
+    \node (value1) [right of=triangle] {$a_1 = 1^2$};
+    \node (value2) [right of=square1] {$a_2 = 2^2$};
+    \node (value3) [right of=square2] {$a_3 = 3^2$};
+    \node (value4) [right of=square3] {$a_4 = 4^2$};
+
+    % Geometric progression formula
+    \node (formula) [block, above of=triangle, yshift=-3cm] {
+        $a_n = a_1 \times r

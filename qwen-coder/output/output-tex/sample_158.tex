@@ -1,0 +1,46 @@
+To generate the basis functions for the space \( S^3_0 \) with the given knot vector \(\{0, 0, h, h, 7h, 7h, 1, 1\}\), we can use B-spline basis functions. The B-spline basis functions are defined recursively using the Cox-de Boor recursion formula.
+
+Here is the TikZ LaTeX code to visualize these basis functions:
+
+```latex
+\documentclass[tikz]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines*=left,
+        xlabel=$u$,
+        ylabel=$N_{i,p}(u)$,
+        ymin=-0.2, ymax=1.2,
+        xmin=-0.1, xmax=1.1,
+        domain=0:1,
+        samples=400,
+        no markers,
+        legend style={at={(0.5,-0.1)}, anchor=north},
+        ytick=\empty
+    ]
+        
+        % Define the knot vector
+        \def\knotvector{{0, 0, 1/8, 1/8, 7/8, 7/8, 1, 1}}
+        \def\degree{3}
+        
+        % Define the B-spline basis function N_i,p(u)
+        \newcommand{\basisfunction}[2]{
+            \pgfmathdeclarefunction{N}{2}{%
+                \pgfmathparse{%
+                    ( (#1 < #2 + \degree ) && ( #1 >= #2 ) ? 
+                        ((#1 - #2) / (\degree - 1)) * N(#1, #2 + 1) + 
+                        ((#2 + \degree - #1) / (\degree - 1)) * N(#1, #2) :
+                        ( (#1 == #2 ) || (#1 == #2 + \degree) ? 1 : 0 )
+                    ) : 0
+                }%
+            }
+        }
+        
+        % Plot the basis functions
+        \foreach \i in {0,...,5} {
+            \addplot[domain=0:1,samples=400,name path=N\i]
+                plot function {\basisfunction{u}{\i}};
+            \node at (

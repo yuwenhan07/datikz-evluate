@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define the size of the lattice
+    \def\Lx{6} % Number of columns
+    \def\Ly{2} % Number of rows
+
+    % Draw the lattice lines
+    \foreach \x in {0,...,\Lx} {
+        \draw (\x,0) -- (\x,\Ly);
+    }
+    \foreach \y in {0,...,\Ly} {
+        \draw (0,\y) -- (\Lx,\y);
+    }
+
+    % Place particles in a zigzag pattern
+    \node[fill,circle,inner sep=3pt] at (1.5,1) {};
+    \node[fill,circle,inner sep=3pt] at (3.5,0) {};
+    \node[fill,circle,inner sep=3pt] at (5.5,1) {};
+    \node[fill,circle,inner sep=3pt] at (2.5,0) {};
+
+    % Label the columns
+    \foreach \x in {1,...,\Lx} {
+        \node at (\x,-0.5) {$n_{\x}(t)$};
+    }
+
+    % Add vertical lines to separate columns
+    \foreach \x in {2,...,\Lx-1} {
+        \draw[dashed] (\x,-0.5) -- (\x,\Ly+0.5);
+    }
+
+\end{tikzpicture}
+
+\end{document}

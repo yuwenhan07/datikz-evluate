@@ -1,0 +1,35 @@
+Certainly! Below is a TikZ LaTeX code that creates a diagram illustrating the theoretical approximations for \(E^N_2\) on the left, the speed of selection \(\nu_N\) on the right, along with simulated values (black circles). The parameters include \(N = 10^6\), \(c = \frac{1}{2}\), and different regimes of selection strength.
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+
+% Left Panel: E^N_2 vs Parameter
+\draw[thick,->] (-3,0) -- (4,0) node[right] {$\text{Parameter}$};
+\draw[thick,->] (-3,0) -- (-3,4) node[above] {$E^N_2$};
+
+% Right Panel: Speed of Selection vs Parameter
+\draw[thick,->] (4,0) -- (10,0) node[right] {$\text{Parameter}$};
+\draw[thick,->] (4,0) -- (4,4) node[above] {$\nu_N$};
+
+% Simulated Values (Black Circles)
+\foreach \x/\y in {0/2, 1/3, 2/4, 3/5, 4/6} {
+    \fill (\x-3, \y) circle[radius=2pt];
+}
+\foreach \x/\y in {5/1, 6/2, 7/3, 8/4, 9/5} {
+    \fill (\x-3, \y) circle[radius=2pt];
+}
+
+% Labels
+\node at (-3,-0.5) [below] {\textbf{Left Panel}};
+\node at (4,-0.5) [below] {\textbf{Right Panel}};
+
+% Legends
+\node at (-3,4.5) [left] {\textcolor{black}{$E^N_2$}};
+\node at (4,4.5) [right] {\textcolor{black}{$\nu_N$}};
+\node at (-3,4.2) [left] {\textcolor{black}{Simulated Values}};
+
+\end{t

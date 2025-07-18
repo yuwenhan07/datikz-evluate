@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+
+\begin{document}
+
+\begin{tikzpicture}
+            \draw[dotted] (-7,6) -- (7,6) node[anchor=west]{$A_{1}$}; 
+            \draw[dotted] (-7,4) -- (7,4) node[anchor=west]{$A_{2}$}; 
+            \draw[dotted] (-7,2) -- (7,2) node[anchor=west]{$A_{2} - \varsigma$};
+            \filldraw[black] (-2,4) circle (2pt) node[above left]{(1)};
+            \draw[dashed, very thick] (-2,4) .. controls (-1,5) .. (0,0);
+            \filldraw[black] (0,0) circle (2pt) node[below right]{(2)};
+            \draw (0,0) -- (-2,-3); 
+            \filldraw[black] (-2,-3) circle (2pt) node[below]{(3)};
+            \draw (-2, - 3) .. controls (-3, 2) .. (-4,1);
+            \filldraw[black] (-4,1) circle (2pt) node[below]{(4)};
+            \draw (-4, 1) -- (-5, 1); 
+            \filldraw[black] (-5,1) circle (2pt) node[above left]{(5)};
+            \draw (-5,1) -- (-7, -5);
+            \node[left] at (-7,-5) {$- 1$};
+            \draw (0,0) -- (2,1); 
+            \filldraw[black] (2,1) circle (2pt) node[above]{(6)};
+            \draw (2,1) -- (7, -5);
+            \node[right] at (7, -5) {$+ 1$};
+            \draw[dotted, ultra thick] (-5,1) -- (-2, 4); 
+            \draw[dotted, ultra thick] (-2,4) -- (2,1);
+        \end{tikzpicture}
+
+\end{document}

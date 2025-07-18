@@ -1,0 +1,34 @@
+Certainly! Below is a TikZ LaTeX code that generates an image resembling the description you provided. The image features a white background with blue and red squares of varying sizes placed in a semi-random yet organized manner.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, positioning}
+
+\begin{document}
+\begin{tikzpicture}[square/.style={rectangle, draw=black, fill=#1, minimum size=2cm},
+                    level distance=2cm,
+                    sibling distance=2cm]
+
+    % Define levels and nodes
+    \node[square=blue] (root) {B};
+    \node[square=red] [below left=of root] (left1) {R};
+    \node[square=blue] [below right=of root] (right1) {B};
+
+    % Level 2
+    \node[square=red] [below left=of left1] (left2a) {R};
+    \node[square=blue] [below right=of left1] (left2b) {B};
+    \node[square=red] [below left=of right1] (right2a) {R};
+    \node[square=blue] [below right=of right1] (right2b) {B};
+
+    % Level 3
+    \node[square=blue] [below left=of left2a] (left3a) {B};
+    \node[square=red] [below right=of left2a] (left3b) {R};
+    \node[square=blue] [below left=of left2b] (left3c) {B};
+    \node[square=red] [below right=of left2b] (left3d) {R};
+    \node[square=blue] [below left=of right2a] (right3a) {B};
+    \node[square=red] [below right=of right2a] (right3b) {R};
+    \node[square=blue] [below left=of right2b] (right3c) {B};
+    \node[square=red] [below right=of right2b] (right3d) {R};
+
+    % Level 4
+    \node[square=red] [below left=of

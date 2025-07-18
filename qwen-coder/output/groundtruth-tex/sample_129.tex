@@ -1,0 +1,23 @@
+\documentclass[tikz, border=1cm]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\begin{tikzpicture}
+\newcommand{\xinterval}{10}
+\begin{axis}[
+name=axis1,
+axis y line*=left,
+xmax=5, xmin=\pgfkeysvalueof{/pgfplots/xmax}-\xinterval,
+]
+\addplot[smooth, mark=*] coordinates {(-4, 1) (-3, 2) (-2, 3) (-1, 4)};
+\end{axis}
+\begin{axis}[
+at={(axis1.south east)},
+axis y line*=right,
+yticklabels=\empty,
+xmin=499, xmax=\pgfkeysvalueof{/pgfplots/xmin}+\xinterval,
+]
+\addplot[smooth, mark=*] coordinates {(500, 4) (501, 3) (502, 2) (501, 1)};
+\end{axis}
+\end{tikzpicture}
+\end{document}

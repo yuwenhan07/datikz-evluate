@@ -1,0 +1,45 @@
+Certainly! Below is a TikZ LaTeX code that visually compares the MGN baseline with its version using one-hot encoded edge types. This comparison includes a brief caption explaining the differences and noting the lack of significant advantages in using explicit edge type partitioning.
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        node distance=3cm,
+        box/.style={rectangle, draw=black, fill=white, minimum width=4cm, minimum height=2cm},
+        arrow/.style={->, thick, >=stealth}
+    ]
+
+        % Nodes for MGN Baseline
+        \node (mgn) at (0,0) [box] {MGN Baseline};
+        \node (explicit_edges) at (0,-3) [box] {Explicit Edge Type Partitioning};
+
+        % Nodes for One-Hot Encoded Version
+        \node (one_hot) at (6,0) [box] {MGN (1H)};
+        \node (one_hot_explicit) at (6,-3) [box] {One-Hot Encoding};
+
+        % Arrows for MGN Baseline
+        \draw[arrow] (mgn.north) -- ++(0,1) |- (explicit_edges.south);
+        \draw[arrow] (explicit_edges.north) -- ++(0,1) |- (mgn.south);
+
+        % Arrows for One-Hot Encoded Version
+        \draw[arrow] (one_hot.north) -- ++(0,1) |- (one_hot_explicit.south);
+        \draw[arrow] (one_hot_explicit.north) -- ++(0,1) |- (one_hot.south);
+
+        % Caption
+        \node[below=5cm of mgn] {\textbf{Comparison:}}
+            child {
+                node[left=2cm] {Conceptual Simplicity}
+                child {node[left=1cm] {One-Hot Encoding}}
+            }
+            child {
+                node[right=2cm] {Computational Power}
+                child {node[right=1cm] {One-Hot Encoding}}
+            };
+
+    \end{tikzpicture}
+    \caption{Comparison of MGN Baseline with One-Hot Encoded Version. No significant advantage was found in using explicit edge type partition

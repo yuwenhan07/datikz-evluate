@@ -1,0 +1,20 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{patterns}
+
+% Define a new pattern named "green_dots"
+\tikzset{
+  green_dots/.style={
+    pattern=north east lines,
+    pattern color=green!50!black
+  }
+}
+
+\begin{document}
+\begin{tikzpicture}
+  % Draw a black rectangle as the background
+  \fill[black] (0,0) rectangle (4,4);
+  
+  % Fill the rectangle with the custom "green_dots" pattern
+  \fill[green_dots] (0,0) rectangle (4,4);
+\end{tikzpicture}
+\end{document}

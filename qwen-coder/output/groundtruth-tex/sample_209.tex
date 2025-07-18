@@ -1,0 +1,94 @@
+\documentclass[10pt, regno]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning,matrix,arrows,decorations.pathmorphing, patterns, math, intersections, calc}
+
+\begin{document}
+
+\begin{tikzpicture}
+            \draw[-latex] (-.5,0) -- (7,0);
+            \draw (7,0) node[right] {$t$};
+            \draw [-latex] (0,-.5) -- (0,5);
+            
+            
+            \draw [domain=0:7, red ,line width=0.4mm] plot(\x,{.09*(\x)^2});
+            
+            \draw [domain=0:6.1, green] plot(\x,{sqrt(2.7^2-\x)-.03*\x^2});
+            
+            \draw [domain=0:6.1] plot(\x,{1.2*(sqrt(2.7^2-\x)-.03*\x^2)+.75});
+            
+            % path 1 the red one
+            \path[name path=line1, domain=0:7, variable = \x] plot(\x,{.09*(\x)^2});
+            % path 2 the green one
+          \path[name path=line2, domain=0:6.1, variable = \x] plot(\x,{sqrt(2.7^2-\x)-.03*\x^2});
+          % intersection red green 
+        \path[name intersections={of = line1 and line2, by = P1}];
+        \filldraw[black] (P1) circle(1.5pt);
+        
+        % path 3 the black one
+          \path[name path=line3, domain=0:6.1, variable = \x] plot(\x,{1.2*(sqrt(2.7^2-\x)-.03*\x^2)+.75});
+          % intersection black red
+        \path[name intersections={of = line1 and line3, by = P2}];
+        \filldraw[black] (P2) circle(1.5pt);
+        
+            % path 4 sarebber una linea verticale per l'intersezione tra rosso e verde
+            \path[name path = line4] (P1) --++ (-90:3);
+            % path 5 sarebbe l'asse delle ascisse
+            \path[name path = line5] (0,0) --++ (0:11);
+            % proiezione di P1 sull'asse delle ascisse
+            \path[name intersections={of = line4 and line5, by = P3}];
+          \draw[black, dashed] (P1) -- (P3);
+          
+          \draw (P1 |- 0,0) --++ (-90:0.1);
+          \draw[black] (P1 |- 0,0) node[below] {$\frac{1}{h(\Omega)}$};
+
+            % path 5 sarebbe la linea verticale per P2
+            \path[name path = line6] (P2) --++ (-90:5);
+            % proiezione di P4 sull'asse delle ascisse
+            \path[name intersections={of = line5 and line6, by = P4}];
+          \draw[black, dashed] (P2) -- (P4);
+          
+          \draw[black] (P4 |- 0,0) --++ (-90:0.1);
+          \draw[black] (P4 |- 0,0) node[below] {$t_{g^\Omega}$};
+          
+          % path 7 sarebbe l'asse delle ordinate
+          \path[name path = line7] (0,0) --++ (90:7);
+          % intersezione tra asse verticale e linea verde
+          \path[name intersections={of = line2 and line7, by = P5}];
+          \draw[black] (P5) --++ (0:0.1);
+          \draw[black] (P5) --++ (180:0.1);
+          \draw (P5) node[left] {$|\Omega|$};
+            
+            % intersezione tra asse verticale e linea nera
+          \path[name intersections={of = line3 and line7, by = P6}];
+          \draw[black] (P6) --++ (0:0.1);
+          \draw[black] (P6) --++ (180:0.1);
+          \draw (P6) node[left] {$g^{\Omega}(0)$};
+          
+          % intersezione tra linea verde e asse orizzontale
+          \path[name intersections={of = line2 and line5, by = P7}];
+          \draw[black] (P7) --++ (90:0.1);
+          \draw[black] (P7) --++ (-90:0.1);
+          \draw (P7) node[below] {$r$};
+          
+            % Legend
+            
+            \draw[red] (8.5,3.5)--  (9,3.5);
+            \draw(9,3.5) node[right] {Graph of the function $t\longmapsto \pi t^2$.};
+            
+            \draw (8.5,3) --  (9,3);
+           \draw(9,3) node[right] {Graph of the function $t\longmapsto g^\Omega(t)$.};
+            
+            \draw [green] (8.5,2.5) --  (9,2.5);
+            \draw(9,2.5)  node[right] {Graph of the function $t\longmapsto |\Omega_{-t}|$.};
+            
+            \draw (8.2,2.2) --  (8.2,3.8);
+            \draw (8.2,2.2) --  (15,2.2);
+            \draw (15,2.2) --  (15,3.8);
+            \draw (8.2,3.8) --  (15,3.8);
+        \end{tikzpicture}
+
+\end{document}

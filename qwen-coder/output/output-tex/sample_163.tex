@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{musixtex}
+
+\begin{document}
+
+% Initialize MusiXTeX
+\begin{music}
+\setstaffs2 % Set number of staves
+\noalign{\vspace{-30pt}} % Adjust vertical spacing
+\startextract
+\Notes
+\Tuplet44{
+  \qnote c'4 d' e' f' g' a' b' c'' | % Example notes for the first measure
+  \qnote d'4 e' f' g' a' b' c'' d'' | % Continue with more measures
+  \qnote e'4 f' g' a' b' c'' d'' e''
+}
+\endnotes
+\endextract
+\end{music}
+
+% Create the table
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Note} & \textbf{MIDI Note Number} \\
+\hline
+C' & 60 \\
+D' & 62 \\
+E' & 64 \\
+F' & 65 \\
+G' & 67 \\
+A' & 69 \\
+B' & 71 \\
+C'' & 72 \\
+D'' & 74 \\
+E'' & 76 \\
+\hline
+\end{tabular}
+
+\end{document}

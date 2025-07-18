@@ -1,0 +1,17 @@
+To achieve improved vertical alignment of TikZ pictures for better visual representation, you can use the `align` option to align the nodes vertically. Here's an example code that creates three spheres with vibrant colors and places them side by side:
+```
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{center}
+\begin{tikzpicture}[align=center]
+\node[sphere, label=left:Equation 1] (sphere1) {};
+\node[sphere, label=midway:Equation 2] (sphere2) [right=of sphere1] {};
+\node[sphere, label=right:Equation 3] (sphere3) [right=of sphere2] {};
+\end{tikzpicture}
+\end{center}
+\end{document}
+```
+In this code, we define a new node shape called `sphere` using the `\node` command and the `[shape=circle, draw=blue!50!red, fill=white]` options. We then create three nodes using this shape, placing them side by side using the `[right=of <previous node>]` option.
+To add labels to each sphere, we use the `label` option and specify the position of the label relative to the node using the `left`, `midway`, or `right` keywords.
+Finally, we use the `align=center` option in the `tikzpicture` environment to center the nodes vertically. You can adjust the spacing between the nodes by changing the value of the `right` option in the `\node` commands.

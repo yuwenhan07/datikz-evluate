@@ -1,0 +1,24 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{calc,fadings}
+
+% Define a fading for the gradient
+\tikzfading[gradient fade start color=blue, gradient fade end color=red]
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Define the positions of the terms in the sum
+    \coordinate (start) at (0,0);
+    \foreach \n [count=\i from 1] {
+        \node[anchor=east, text width=2cm, align=center] (term-\i) at ($(start) + (0,-\i*1.5)$) {$\frac{1}{2^{\i-1}}$};
+    }
+
+    % Draw the gradient effect
+    \fill[path fading=gradient fade, fit=(term-1.north west)(term-4.south east)] rectangle (current page.west|-current page.east);
+
+    % Connect the terms with arrows
+    \draw[-stealth] (term-1.west) -- ++(-1,0);
+    \foreach \n [count=\i from 2] {
+        \draw[-stealth] (term-\i.west) -- ++(-1,0);
+    }
+\end{tikzpicture}
+\end{document}

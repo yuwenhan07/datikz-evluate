@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{ext.misc}
+
+\begin{document}
+
+% First Drawing: Individual Paths with Properties
+\begin{tikzpicture}[declare constant/.style={/tikz/#1}]
+  \newcommand{\radius}{1cm}
+  \newcommand{\increment}{0.5cm}
+  \newcommand{\angle}{360}
+
+  \foreach \r [count=\i from 1] in {1cm, 1.5cm, 2cm} {
+    \draw[fill=blue!\i*10!]
+      (0,0) circle (\r)
+      node[midway, above] {\r};
+  }
+\end{tikzpicture}
+
+% Second Drawing: Single Path without Radial Dividers
+\begin{tikzpicture}
+  \newcommand{\radius}{1cm}
+  \newcommand{\increment}{0.5cm}
+  \newcommand{\angle}{360}
+
+  \path[fill=red]
+    (0,0) circle (\radius)
+    foreach \r in {1.5cm, 2cm, 2.5cm} {
+      -- (0,0) circle (\r)
+    };
+\end{tikzpicture}
+
+\end{document}

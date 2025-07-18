@@ -1,0 +1,54 @@
+\documentclass{article}
+
+\usepackage{mathtools}
+\usepackage{tikz,environ}
+
+\NewEnviron{mosaic}[2][]{\begin{tikzpicture}[baseline]\def\tilesize{#2}\matrix[mosai,ampersand replacement=\&, #1]{\BODY};\end{tikzpicture}}
+
+\newcommand{\cspace}{.1} % spacing for crossings
+\newcommand{\tileedge}{.05pt} % thickness of tile edge. Does not scale.
+\newcommand{\knotthickness}{1.5pt} % thickness of knot for 1cm tile. Scales with tile size.
+
+\newcommand{\tileo}{\tikz \draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize);}
+\newcommand{\tilei}[1][{}]{\tikz {\draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (0,.5*\tilesize) to[out=0, in=90] (.5*\tilesize,0);}}
+\newcommand{\tileii}[1][{}]{\tikz {\draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (\tilesize,.5*\tilesize) to[out=180, in=90] (.5*\tilesize,0);}}
+\newcommand{\tileiii}[1][{}]{\tikz {\draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (\tilesize,.5*\tilesize) to[out=180, in=-90] (.5*\tilesize,\tilesize);}}
+\newcommand{\tileiv}[1][{}]{\tikz {\draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (0,.5*\tilesize) to[out=0, in=-90] (.5*\tilesize,\tilesize);}}
+\newcommand{\tilev}[1][{}]{\tikz {\draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (0,.5*\tilesize) to (\tilesize,.5*\tilesize);}}
+\newcommand{\tilevi}[1][{}]{\tikz {\draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (.5*\tilesize,0) to (.5*\tilesize,\tilesize);}}
+\newcommand{\tilevii}[1][{}]{\tikz {\draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (0,.5*\tilesize) to[out=0, in=90] (.5*\tilesize,0); \draw[#1,knotstyle={\tilesize*\knotthickness}] (\tilesize,.5*\tilesize) to[out=180, in=-90] (.5*\tilesize,\tilesize);}}
+\newcommand{\tileviii}[1][{}]{\tikz {\draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (\tilesize,.5*\tilesize) to[out=180, in=90] (.5*\tilesize,0); \draw[#1,knotstyle={\tilesize*\knotthickness}] (0,.5*\tilesize) to[out=0, in=-90] (.5*\tilesize,\tilesize);}}
+\newcommand{\tileix}[1][{}]{\tikz {\draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (0,.5*\tilesize) to (\tilesize,.5*\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (.5*\tilesize,0) to (.5*\tilesize,.5*\tilesize-\tilesize*\cspace); \draw[#1,knotstyle={\tilesize*\knotthickness}] (.5*\tilesize,.5*\tilesize+\tilesize*\cspace) to (.5*\tilesize,\tilesize);}}
+\newcommand{\tilex}[1][{}]{\tikz {\draw[tilestyle] (0,0) rectangle (\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (.5*\tilesize,0) to (.5*\tilesize,\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (0,.5*\tilesize) to (.5*\tilesize-\tilesize*\cspace,.5*\tilesize); \draw[#1,knotstyle={\tilesize*\knotthickness}] (.5*\tilesize+\tilesize*\cspace,.5*\tilesize) to (\tilesize,.5*\tilesize);}}
+
+\tikzset{tilestyle/.style={use as bounding box, line width=\tileedge}} % Add colors/styles here for tile edge and fill. Example: fill=gray!30 for light gray background
+\tikzset{knotstyle/.style={line width=#1}} % Add colors and other line styles here
+\tikzset{mosai/.style={execute at begin cell=\node\bgroup, execute at end cell=\egroup;, column sep={\tilesize cm,between origins}, row sep={\tilesize cm,between origins}, inner sep=0}}
+
+
+\begin{document}
+
+This is a displayed classical mosaic with tiles $T_0$--$T_{10}$ running across the rows. Classical mosaics need not be square. Empty entries leave empty mosaic tiles, i.e., no border square.
+
+\[
+\begin{mosaic}{1}
+    \tileo \& \tilei \& \tileii \& \tileiii\\
+    \tileiv \& \tilev \& \tilevi \& \tilevii\\
+    \tileviii \& \tileix \& \tilex \\
+\end{mosaic}
+\]
+\vspace{2cm}
+
+\[
+\begin{mosaic}[font=\Large\sffamily]{1}
+  \& 1 \& 2\& 3 \& 4 \&5 \& 6\\
+1 \& \tilex \& \tilex \& \tileviii \& \tileviii \& \tileviii \& \tileiv\\
+2 \& \tileviii \& \tileviii \& \tileviii \& \tileviii \& \tileiv\\
+3 \& \tilex \& \tilex \& \tilex \& \tileiv\\
+4 \& \tilex \& \tileviii \& \tileiv\\
+5 \& \tileviii \& \tileiv\\
+6 \& \tileiv\\
+\end{mosaic}
+\]
+
+\end{document}

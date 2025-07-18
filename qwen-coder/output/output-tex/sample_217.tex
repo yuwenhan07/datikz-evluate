@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=0pt]
+    % First node
+    \node (firstNode) {First Node};
+    
+    % Second node with the same width as the first node
+    \node[right=of firstNode] (secondNode) [inner xsep=0pt, outer xsep=0pt] {Second Node};
+    
+    % Separator between scopes
+    \draw[thick,->] ([xshift=-2pt]firstNode.east) -- ++(2pt,0);
+    
+    % Third scope to demonstrate the effect of the separator
+    \scope[xshift=3cm]
+        \node (thirdNode) {Third Node};
+    \endscope
+    
+    % Fourth scope to demonstrate the effect of the separator
+    \scope[xshift=7cm]
+        \node (fourthNode) {Fourth Node};
+    \endscope
+\end{tikzpicture}
+
+\end{document}

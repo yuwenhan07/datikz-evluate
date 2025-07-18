@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define the number of steps in the geometric progression
+    \def\numSteps{13} % Starting from 0 and going up to 1, this gives us 12 steps plus the initial point
+
+    % Draw the vertical lines
+    \foreach \i in {0,...,\numSteps}{
+        \draw[thin] (\i/2,0) -- (\i/2,1);
+    }
+
+    % Draw the dots at the points of the geometric progression
+    \foreach \i in {0,...,\numSteps}{
+        \filldraw[black] (\i/2, \i/4) circle (1pt);
+    }
+
+    % Label the axes
+    \node[below left] at (0,0) {$x$};
+    \node[above right] at (6,1) {$y$};
+
+    % Add a title
+    \node[above] at (3,1.2) {Geometric Progression with Common Ratio 0.5};
+\end{tikzpicture}
+\end{document}

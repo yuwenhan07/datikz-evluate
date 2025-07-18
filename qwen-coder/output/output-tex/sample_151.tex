@@ -1,0 +1,38 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Define colors
+    \colorlet{bg}{white}
+    \colorlet{F_color}{red}
+    \colorlet{T_color}{blue}
+
+    % Set up the grid
+    \draw[step=1cm,gray!30] (-1,-1) grid (6,6);
+
+    % Draw the nodes
+    \foreach \i in {1,...,5} {
+        \node[circle, draw, fill=F_color, inner sep=2pt] (\i) at (\i,5-\i) {};
+    }
+    \foreach \i in {2,...,5} {
+        \node[circle, draw, fill=T_color, inner sep=2pt] (T\i) at (\i+1,5-\i) {};
+    }
+
+    % Connect the nodes
+    \foreach \i in {1,...,4} {
+        \draw[-stealth, thick] (\i) -- (T\i);
+    }
+    \foreach \i in {2,...,4} {
+        \draw[-stealth, thick] (T\i) -- (\i+1);
+    }
+
+    % Add labels
+    \foreach \i in {1,...,5} {
+        \node[left] at (\i-0.5,5-\i) {$F_\i$};
+    }
+    \foreach \i in {2,...,5} {
+        \node[right] at (\i+0.5,5-\i) {$T_\i$};
+    }
+\end{tikzpicture}
+\end{document}

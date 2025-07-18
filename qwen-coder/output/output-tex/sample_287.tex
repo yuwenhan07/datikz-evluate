@@ -1,0 +1,29 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Number of Publications by Year},
+        xlabel={Year},
+        ylabel={Number of Publications},
+        xmin=1990,
+        xmax=2020,
+        ymin=0,
+        ymax=20,
+        xtick=data,
+        grid=major,
+        width=\textwidth,
+        height=6cm,
+        bar width=10pt,
+        symbolic x coords={1990,1991,...,2020},
+        ]
+        
+        % Add your data here
+        % For example:
+        % \addplot coordinates {(1990, 2) (1991, 4) ... (2020, 15)};
+        
+    \end{axis}
+\end{tikzpicture}
+\end{document}

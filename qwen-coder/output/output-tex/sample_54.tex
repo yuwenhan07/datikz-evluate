@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (A) at (0,0) [circle, draw] {};
+    \node (B) at (2,0) [circle, draw] {};
+    \node (C) at (4,0) [circle, draw] {};
+    \node (D) at (6,0) [circle, draw] {};
+    \node (E) at (8,0) [circle, draw] {};
+
+    % Edges for D_{i-1} (dashed)
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (B) -- (C);
+    \draw[dashed] (C) -- (D);
+
+    % Path P_i (solid)
+    \draw[thick] (D) -- (E);
+
+    % Color labels
+    \node at (1,-0.5) [below] {1};
+    \node at (3,-0.5) [below] {2};
+    \node at (5,-0.5) [below] {3};
+
+    % Additional nodes and edges to illustrate more complex structure if needed
+    % \node (F) at (10,0) [circle, draw] {};
+    % \draw (D) -- (F);
+\end{tikzpicture}
+\end{document}

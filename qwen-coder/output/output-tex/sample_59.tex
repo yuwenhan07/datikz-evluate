@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define colors
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{green}{rgb}{0,1,0}
+\definecolor{blue}{rgb}{0,0,1}
+
+% Function to draw a cycle graph with edge coloring
+\newcommand{\drawCycle}[4]{
+    \begin{scope}[xshift=#1cm]
+        \foreach \i in {0,...,#2} {
+            \node[circle, draw, fill=white, inner sep=2pt] (\i) at ({360/#2 * \i}:#3cm) {};
+        }
+        \foreach \i in {0,...,#2} {
+            \pgfmathsetmacro{\next}{ifthenelse(\i == #2, 0, \i + 1)}
+            \draw[thick, #4] (\i) -- (\next);
+        }
+    \end{scope}
+}
+
+% Left: n/2 is even
+\begin{figure}[h]
+    \centering
+    \drawCycle{0}{6}{1}{red}
+    \drawCycle{5}{6}{1}{green}
+    \drawCycle{10}{6}{1}{blue}
+    \caption{3-Edge Coloring of \( G_6 \) (n/2 = 3, even)}
+    \label{fig:g6_even}
+\end{figure}
+
+% Right: n/2 is odd
+\begin{figure}[h]
+    \centering
+    \drawCycle{0}{7}{1}{red}
+    \drawCycle{5}{7}{1}{green}
+    \drawCycle{10}{7}{1}{blue}
+    \caption{3-Edge Coloring of \( G_7 \) (n/2 = 3.5, odd)}
+    \label{fig:g7_odd}
+\end{figure}
+
+\end{document}

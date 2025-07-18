@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[showframe]{geometry}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usetikzlibrary{calc, positioning}
+
+\begin{document}
+
+\lipsum[1]
+\bigskip
+
+\tikzset{%
+  T/.style={blue!50!black, fill=blue!50!black, text=white,
+    minimum width=0.48\textwidth, text width=0.48\textwidth-1ex
+  },
+  BW/.style={green!50!black, fill=green!70!black, text=black,
+    minimum width=0.17\textwidth, text width=0.17\textwidth-1ex
+  },
+  BE/.style={red!75!black, fill=red!95!black, text=black,
+    minimum width=0.30\textwidth, text width=0.30\textwidth-1ex,
+  }
+}
+\noindent\begin{tikzpicture}[%
+  every node/.style={draw, inner sep=1ex, outer sep=0pt, align=center,
+  minimum height=7ex}
+  ]
+  \node[T, anchor=north west] at (0, 0)
+  (nTW) {\bfseries \lipsum[2]};
+  \node[BW, below=0pt of nTW.south west, anchor=north west]
+  (n2) {scope 1, node 2};
+  \node[BE, below left=0pt and 0pt of n2.north east, anchor=north west]
+  (n3) {scope 1, node 3 that includes longer text to be broken into lines};
+
+  \path ($(nTW.south) -(nTW.north)$);
+  \pgfgetlastxy{\newW}{\newH}
+
+  \node[T, right=.02\textwidth of nTW.north east,
+  anchor=north west, minimum height={-\newH}]
+  (nTE) {\bfseries scope 2, node 1};
+  \node[BW, below=0pt of nTE.south west, anchor=north west]
+  (n2E) {scope 2, node 2};
+  \node[BE, below left=0pt and 0pt of n2E.north east, anchor=north west]
+  (n3E) {scope 2, node 3 that includes longer text to be broken
+    into lines; can be longer than the West corresponding node};
+
+  \fill[yellow!90!red] (nTW.north east) rectangle (nTE.south west);
+\end{tikzpicture}
+\end{document}

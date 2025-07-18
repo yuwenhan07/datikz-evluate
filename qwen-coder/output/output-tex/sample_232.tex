@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define the coordinates for the vertices of the parallelogram
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (4,2);
+    \coordinate (C) at (6,3);
+    \coordinate (D) at (2,1);
+
+    % Draw the parallelogram
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+
+    % Label the vertices
+    \node at (A) [below left] {A};
+    \node at (B) [above right] {B};
+    \node at (C) [above right] {C};
+    \node at (D) [below left] {D};
+
+    % Draw the vectors c_i and c_j
+    \draw[->, thick, red] (A) -- (B) node[midway, above] {$c_i$};
+    \draw[->, thick, blue] (A) -- (D) node[midway, below] {$c_j$};
+
+    % Geometric progression graph
+    \foreach \x in {1,...,11} {
+        \pgfmathsetmacro{\y}{1.5*exp(0.2*\x)} % Example formula: y = 1.5 * e^(0.2*x)
+        \ifnum\x=1
+            \draw[->, thick, orange] (\x,\y) node[above] {(\x, \y)};
+        \else
+            \draw[->, thick, orange] plot[smooth, tension=0.7] coordinates {(\x-1,\y) (\x,\y)};
+        \fi
+    }
+\end{tikzpicture}
+
+\end{document}

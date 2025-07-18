@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Positioning Error},
+        ylabel={ECDF},
+        legend pos=north west,
+        grid=major,
+        ymin=0,
+        ymax=1,
+        xmin=-5,
+        xmax=5,
+        xtick distance=2,
+        ytick distance=0.25,
+        width=8cm,
+        height=6cm,
+        samples=100,
+        ]
+        
+        % Lower Bound Line
+        \addplot[black, thick] {min(0.5*x + 0.2, 1)};
+        \addlegendentry{Lower Bound}
+        
+        % Estimator Lines
+        \addplot[red, thick] {max(-0.5*x - 0.2, 0)};
+        \addlegendentry{Estimator 1}
+        
+        \addplot[blue, thick] {max(0.2*x^2 - 1, 0)};
+        \addlegendentry{Estimator 2}
+        
+    \end{axis}
+\end{tikzpicture}
+\end{document}

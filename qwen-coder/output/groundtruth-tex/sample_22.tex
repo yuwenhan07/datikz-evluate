@@ -1,0 +1,124 @@
+\documentclass{scrartcl}
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz,tikz-cd,xstring}
+\usetikzlibrary{fit, external}
+%\tikzexternalize
+\makeatletter
+\tikzcdset{
+  fit/.code={% tikz-cd uses an asymmetrical rectangle …
+    \pgf@process{\pgfpointanchor{\tikz@pp@name{#1}}{east}}\pgf@xa=2\pgf@x
+    \pgf@process{\pgfpointanchor{\tikz@pp@name{#1}}{west}}\pgf@x=-2\pgf@x
+    \ifdim\pgf@xa>\pgf@x \pgf@x=\pgf@xa \fi
+    \pgfkeysalso{/tikz/text width/.expanded=+\the\pgf@x}%
+    \pgf@process{\pgfpointdiff{\pgfpointanchor{\tikz@pp@name{#1}}{south}}
+                              {\pgfpointanchor{\tikz@pp@name{#1}}{north}}}%
+    \pgf@ya=.5\pgf@y \pgf@yb=\pgf@ya
+    \pgfmathaddtolength\pgf@ya{axis_height}%
+    \pgfmathaddtolength\pgf@yb{-axis_height}%
+    \pgfkeysalso{/tikz/text height/.expanded=+\the\pgf@ya,
+                 /tikz/text depth/.expanded=+\the\pgf@yb}},
+  /utils/temp/.initial/.expand once=\tikzcd,
+  /utils/temp/.prefix=% https://tex.stackexchange.com/a/665688/16595
+    \ifx\path\tikz@command@path
+      \let\tikzpicture\scope \let\endtikzpicture\endscope
+    \else \tikzexternaldisable \fi,/utils/temp/.get=\tikzcd}
+\makeatother
+\tikzset{
+  matrix node/.style={
+    name=\tikzmatrixname-\the\pgfmatrixcurrentrow-\the\pgfmatrixcurrentcolumn},
+  cd vcenter/.style={baseline={([yshift=-axis_height]\tikzcdmatrixname)}},
+  matrix bb node/.style={
+    commutative diagrams/fit=current bounding box, inner sep=0pt,
+    outer sep=+0pt, shape=asymmetrical rectangle, path only,  matrix node},
+  add bb node/.style={execute at end cell={\node[matrix bb node]{};}},
+  no bb node/.style={matrix bb node/.style={shape=coordinate}}}
+\tikzcdset{
+  no matrix of nodes/.style={
+    /tikz/add bb node,
+    /tikz/matrix of nodes/.code=,
+    /tikz/matrix of math nodes/.code=}}
+\newcommand{\FilteredBall}[1][abcfghxy]{
+%   \tikzset{}
+    %\fill[white] (0,0) circle (2);
+    \begin{scope}[every node/.append style={inner sep=2pt}]
+        \begin{scope}[gray]
+            \draw[dashed] (2,0) arc (0:180:2 and 0.6);
+            \draw (0,0) circle (2) ;
+            \draw (-2,0) arc (180:360:2 and 0.6);
+        \end{scope}
+        \begin{scope}[opacity=.5]
+            \IfSubStr{#1}{f}{
+                \begin{scope}
+                    \clip (0,2) arc (90:-90:2) arc (-90:90:.6 and 2);
+                    \shade[ball color=red!70] (0,0) circle[radius=2];
+                \end{scope}
+                \begin{scope}
+                    \clip (0,2) arc (90:-90:2) arc (-90:90:1.2 and 2);
+                    \shade[ball color=red!70] (0,0) circle[radius=2];
+                \end{scope}
+            }{}
+            \IfSubStr{#1}{g}{
+                \begin{scope}
+                    \clip (0,2) arc (90:-90:-2 and 2) arc (-90:90:.6 and 2);
+                    \shade[ball color=blue!60] (0,0) circle[radius=2];
+                \end{scope}
+                \begin{scope}
+                    \clip (0,2) arc (90:-90:-2 and 2) arc (-90:90:-1.3 and 2);
+                    \shade[ball color=blue!60] (0,0) circle[radius=2];
+                \end{scope}
+            }{}
+            \IfSubStr{#1}{h}{
+                \begin{scope}
+                    \clip (0,2) arc (90:-90:-1.2 and 2) arc (-90:90:1.2 and 2);
+                    \shade[ball color=green!70] (0,0) circle[radius=2];
+                \end{scope}
+            }{}
+        \end{scope}
+        \begin{scope}[thick]
+            \IfSubStr{#1}{a}{\draw[red] (0,2) arc (90:-90:-1.3 and 2) node[below left, pos=.9] {$a$};}{}
+            \IfSubStr{#1}{b}{\draw[blue] (0,2) arc (90:-90:1.2 and 2) node[below right, pos=.9] {$b$};}{}
+            \IfSubStr{#1}{c}{
+                \IfSubStr{#1}{h}{
+                    \draw[Aqua, densely dotted] (0,2) arc (90:270:-0.6 and 2) node[left=-2pt, midway] {$c$};
+                }{
+                    \draw[Aqua] (0,2) arc (90:270:-0.6 and 2) node[left=-2pt, midway] {$c$};
+                }
+            }{}
+        \end{scope}
+        \IfSubStr{#1}{x}{\fill (0,2) circle (0.15);}{}
+        \IfSubStr{#1}{y}{\fill (0,-2) circle (0.15);}{}
+        \path
+        (0,2) arc (90:-90:2) node[text=red, pos=.4, above right]                   {\IfSubStr{#1}{f}{$f$}{\phantom{{$f$}}}}
+        (0,2) arc (90:-90:-2 and 2) node[text=blue!50!black, pos=.6,, below left]  {\IfSubStr{#1}{g}{$g$}{\phantom{{$g$}}}}
+        (-.4, .65) node[text=green!50!black]                                        {\IfSubStr{#1}{h}{$h$}{\phantom{{$h$}}}}
+        (0,2) node[above]                                                          {\IfSubStr{#1}{x}{$x$}{\phantom{{$x$}}}}
+        (0,-2) node[below]                                                         {\IfSubStr{#1}{y}{$y$}{\phantom{{$y$}}}};
+    \end{scope}
+}
+\begin{document}
+\begin{equation}
+\begin{tikzpicture}[x=2mm, y=2mm, cd vcenter]
+\begin{tikzcd}[row sep=tiny, column sep=tiny, no matrix of nodes]
+\FilteredBall[xya] \rar["\subseteq", phantom] &
+\FilteredBall[xyabh] \rar["\subseteq", phantom] &
+\FilteredBall[xyabchg] \rar["\subseteq", phantom] &
+\FilteredBall[xyabcfgh]
+\\
+\FilteredBall[xya] \rar["\subseteq", phantom] &
+\FilteredBall[xyab] \rar["\subseteq", phantom] \uar["\subseteq", phantom, sloped]  &
+\FilteredBall[xyabcg] \rar["\subseteq", phantom] \uar["\subseteq", phantom, sloped]  &
+\FilteredBall[xyabcfg] \uar["\subseteq", phantom, sloped]  &
+\\
+\FilteredBall[xy] \rar["\subseteq", phantom] \uar["\subseteq", phantom, sloped] &
+\FilteredBall[xyb] \rar["\subseteq", phantom] \uar["\subseteq", phantom, sloped] &
+\FilteredBall[xybc] \rar["\subseteq", phantom] \uar["\subseteq", phantom, sloped] &
+\FilteredBall[xybcf] \uar["\subseteq", phantom, sloped] \\
+\tikzset{no bb node} \node[matrix node]{$0_{0_{0_0}}$}; \rar[red] \uar &
+\tikzset{no bb node} \node[matrix node]{$0^{0^{0^0}}$}; \rar["\subseteq", phantom] \uar["\subseteq", phantom, sloped]&
+%&               \FilteredBall[xy] \draw (current bounding box.base) node (B){} circle(2pt); \rar["\subseteq", phantom] \uar["\subseteq", phantom, sloped]&
+\FilteredBall[xyc] \rar["\subseteq", phantom] \uar["\subseteq", phantom, sloped] &
+\FilteredBall[xyc] \uar["\subseteq", phantom, sloped].
+\end{tikzcd}
+\end{tikzpicture}
+\end{equation}
+\end{document}

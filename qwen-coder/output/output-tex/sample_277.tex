@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,3) node[above] {$f(x)$};
+
+    % Function f(x)
+    \draw[thick, domain=-2:-0.1, samples=100] plot (\x, {abs(\x)});
+    \draw[thick, domain=0.1:2, samples=100] plot (\x, {abs(\x)});
+
+    % Discontinuity at x = 0
+    \filldraw (0,0) circle (2pt);
+    \node at (0,0) [below right] {$0$};
+
+    % Subdifferential at x = 0
+    \draw[dashed, thick] (0,-1) -- (0,1);
+
+    % Labels for subdifferential
+    \node at (0,1.5) [right] {$\partial f(0)$};
+    \node at (0,-0.5) [right] {$\{-1, 1\}$};
+
+    % Annotations
+    \node at (-1.5,1) [left] {$f(-1) = 1$};
+    \node at (1.5,1) [right] {$f(1) = 1$};
+\end{tikzpicture}
+
+\end{document}

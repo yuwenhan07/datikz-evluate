@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define colors
+    \definecolor{circleColor}{RGB}{255, 255, 255} % White background
+
+    % Draw the background
+    \fill (0,0) circle (3cm);
+
+    % Draw concentric circles
+    \foreach \radius/\label in {3/b, 2/c, 1/d, 0.75/K}{
+        \draw[thick] (0,0) circle (\radius cm);
+        \node at (0,\radius-0.1) {\label};
+    }
+
+    % Add labels for clarity
+    \node at (0,-4) {Concentric Circles};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+    % Define a custom fading named 'edgefade'
+    \pgfdeclarefading[edgefade]{%
+        \shade[left color=transparent!0, right color=transparent!100] (0,0) rectangle (1,1);
+    }
+    
+    % Draw a rectangle with the custom fading applied to its fill
+    \draw[fill=blue, fill opacity=0.5, path fading=edgefade]
+        (0,-2) rectangle (4,2);
+\end{tikzpicture}
+\end{document}

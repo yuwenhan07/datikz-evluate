@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Hexagon
+    \draw (0,0) -- (2,3) -- (4,0) -- (2,-3) -- (0,0);
+    
+    % Square around the hexagon
+    \draw (-2,-3) rectangle (6,3);
+    
+    % Triangle around the hexagon
+    \draw (-2,3) -- (6,3) -- (2,-3) -- cycle;
+    
+    % Hexagon and square combination
+    \fill[white] (0,0) circle (2cm);
+    \draw (0,0) -- (2,3) -- (4,0) -- (2,-3) -- (0,0);
+    \draw (-2,-3) rectangle (6,3);
+    
+    % Hexagon inside a square
+    \draw[dashed] (0,0) rectangle (4,2);
+    \draw (0,0) -- (2,3) -- (4,0) -- (2,-3) -- (0,0);
+    
+    % Hexagon inside a triangle
+    \draw[dashed] (-2,3) -- (6,3) -- (2,-3) -- cycle;
+    \draw (0,0) -- (2,3) -- (4,0) -- (2,-3) -- (0,0);
+    
+    % Hexagon inside a square again
+    \draw[dashed] (0,0) rectangle (4,2);
+    \draw (0,0) -- (2,3) -- (4,0) -- (2,-3) -- (0,0);
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw the outer circle (outer sphere)
+    \draw[thick] (0,0) circle (3); % Radius is 3
+
+    % Draw the inner circle (inner sphere)
+    \filldraw[white] (-1,-1) rectangle (1,1);
+    
+    % Add lines on the surface of the inner sphere
+    \foreach \i in {0,45,...,360}{
+        \draw[very thick, purple] (\i:1) -- ++(\i+45:0.1);
+    }
+    \foreach \i in {0,45,...,360}{
+        \draw[very thick, green] (\i:1) -- ++(\i-45:0.1);
+    }
+
+    % Add the opening at the bottom of the inner sphere
+    \clip (-1,-1) rectangle (1,1);
+
+    % Add the opening at the top of the outer sphere
+    \clip (-3,-3) rectangle (3,3);
+
+    % Draw the opening at the bottom of the inner sphere
+    \filldraw[white] (-1,-1) rectangle (1,-0.8);
+
+    % Draw the opening at the top of the outer sphere
+    \filldraw[white] (-3,3) rectangle (3,3.2);
+
+    % Add a small circle inside the inner sphere to represent the convex point
+    \filldraw[blue] (0,0) circle (0.1);
+
+\end{tikzpicture}
+\end{document}

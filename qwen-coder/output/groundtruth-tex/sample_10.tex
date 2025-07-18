@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+		\begin{axis}[
+			width=0.9\textwidth,
+			title={Performance Metrics vs. Sentence Length},
+			xlabel={Sentence Length},
+			ylabel={Proportion},
+		    xmin=0, xmax=65,
+			ymin=0, ymax=1.1,
+			xtick={0,5,10,15,20,25,30,35,40,45,50,55,60},
+			ytick={0,0.2,0.4,0.6,0.8,1.0},
+			minor tick num=1,
+			legend pos=south west,
+			ymajorgrids=true,
+			yminorgrids=true,
+			grid style=dashed,
+			]
+	
+			\addplot[
+			color=blue,
+			mark=none,
+			]
+			coordinates {
+				(2,0.968085)(5,0.974241)(10,0.981263)(15,0.986469)(20,0.985184)(25,0.983443)(30,0.980166)(35,0.972496)(40,0.962926)(45,0.945075)(50,0.916054)(55,0.871399)(60,0.812079)
+			};
+			\addlegendentry{Matched Words}
+			
+			\addplot[
+			color=red,
+			mark=none,
+			]
+			coordinates {
+				(2,0.946809)(5,0.887613)(10,0.862725)(15,0.846772)(20,0.782246)(25,0.702063)(30,0.610265)(35,0.472129)(40,0.334229)(45,0.167394)(50,0.0486486)(55,0.011236)(60,0)
+			};
+			\addlegendentry{Exact Sentences}
+			
+		\end{axis}
+	\end{tikzpicture}
+
+\end{document}

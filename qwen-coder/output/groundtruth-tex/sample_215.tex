@@ -1,0 +1,108 @@
+\documentclass[lettersize,journal,12p]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\begin{axis}[%
+% width=76mm,
+% height=40mm,
+width=75mm,
+height=32mm,
+% height=25mm,
+at={(0mm,0mm)},
+scale only axis,
+xmin=0,
+xmax=170,
+ymin=0,
+ymax=1.8,
+% ymode=log,
+yticklabel style = {font=\small,xshift=0.5ex},
+xticklabel style = {font=\small,yshift=0ex},
+axis background/.style={fill=white},
+xmajorgrids,
+ymajorgrids,
+legend columns=2, 
+legend style={font=\scriptsize, at={(1.0, 1.0)}, anchor=north east, legend cell align=left, align=left, draw=white!15!black}
+]
+
+\addplot [color=red, dashdotted, line width=1.5pt, mark=square, mark options={solid, red}]
+  table[row sep=crcr]{%
+9	1.39090744809841\\
+25	0.646817346862029\\
+49	0.356497283443273\\
+81	0.297822222575296\\
+121	0.262562621018892\\
+169	0.24191355078457\\
+};
+\addlegendentry{UE-1 (RIS)}
+
+
+\addplot [color=red, line width=1.5pt]
+  table[row sep=crcr]{%
+9	1.03962439653431\\
+25	1.03962439653431\\
+49	1.03962439653431\\
+81	1.03962439653431\\
+121	1.03962439653431\\
+169	1.03962439653431\\
+};
+\addlegendentry{UE-1 (beacon)}
+
+\addplot [color=blue, dashdotted, line width=1.5pt, mark=o, mark options={solid, blue}]
+  table[row sep=crcr]{%
+9	0.914306329922275\\
+25	0.396158405831729\\
+49	0.166582641352161\\
+81	0.110622759813143\\
+121	0.0705341590680314\\
+169	0.0481927190338715\\
+};
+\addlegendentry{UE-2 (RIS)}
+
+\addplot [color=blue, line width=1.5pt]
+  table[row sep=crcr]{%
+9	0.674278969820222\\
+25	0.674278969820222\\
+49	0.674278969820222\\
+81	0.674278969820222\\
+121	0.674278969820222\\
+169	0.674278969820222\\
+};
+\addlegendentry{UE-2 (beacon)}
+
+\addplot [color=green, dashdotted, line width=1.5pt, mark=diamond, mark options={solid, green}]
+  table[row sep=crcr]{%
+9	0.643978746886802\\
+25	0.33398091375918\\
+49	0.19181630270469\\
+81	0.118553935662132\\
+121	0.0751335607564167\\
+169	0.0493076747121825\\
+};
+\addlegendentry{UE-3 (RIS)}
+
+\addplot [color=green, line width=1.5pt]
+  table[row sep=crcr]{%
+9	0.732411714322808\\
+25	0.732411714322808\\
+49	0.732411714322808\\
+81	0.732411714322808\\
+121	0.732411714322808\\
+169	0.732411714322808\\
+};
+\addlegendentry{UE-3 (beacon)}
+
+
+\end{axis}
+
+\node[rotate=0,fill=white] (BOC6) at (3.35cm,-.7cm){\small Number of RIS Elements};
+\node[rotate=90] at (-8mm,12.5mm){\small PEB [m]};
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,45 @@
+Certainly! Below is a sample TikZ LaTeX code that generates a graph similar to the one you described. This code includes a vertical axis representing accuracy values and horizontal bars for different voice recognition models or settings.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Define colors
+    \colorlet{blueModel}{blue!70!black}
+    \colorlet{whiteModel}{white!70!black}
+
+    % Define dimensions
+    \def\graphWidth{8cm}
+    \def\graphHeight{6cm}
+    \def\barWidth{0.5cm}
+    \def\axisXStart{-1}
+    \def\axisYStart{0}
+    \def\axisXEnd{4}
+    \def\axisYEnd{100}
+
+    % Draw background grid
+    \draw[step=20, thin, gray] (\axisXStart,\axisYStart) grid (\axisXEnd,\axisYEnd);
+
+    % Draw axes
+    \draw[-stealth] (\axisXStart,\axisYStart) -- (\axisXEnd,\axisYStart) node[right] {Voice Recognition Models};
+    \draw[-stealth] (\axisXStart,\axisYStart) -- (\axisXStart,\axisYEnd) node[above] {Accuracy};
+
+    % Draw data bars
+    \node at (0,30) [rectangle, fill=blueModel, minimum width=\barWidth, minimum height=30pt] {};
+    \node at (1,60) [rectangle, fill=whiteModel, minimum width=\barWidth, minimum height=60pt] {};
+
+    % Add labels for data bars
+    \node at (-1.5, 30) [anchor=east] {Model A};
+    \node at (-1.5, 60) [anchor=east] {Model B};
+
+    % Draw tick marks and labels on the Y-axis
+    \foreach \y in {0,20,...,100} {
+        \draw (\axisXStart, \y) -- ++(-0.1, 0);
+        \node at (\axisXStart - 0.3, \y) {\y\%};
+    }
+
+    % Draw tick marks and labels

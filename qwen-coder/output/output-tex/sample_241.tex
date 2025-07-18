@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+    % Define the dimensions of the rectangle
+    \def\width{5cm}
+    \def\height{3cm}
+    
+    % Draw the main rectangle
+    \draw (0,0) rectangle (\width,\height);
+    
+    % Trim the top right corner
+    \clip (0,0) rectangle ++(\width-\width/10,-\height/10);
+\end{tikzpicture}
+
+\end{document}

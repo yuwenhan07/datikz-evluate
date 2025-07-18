@@ -1,0 +1,44 @@
+Certainly! Below is a TikZ LaTeX code to illustrate several symmetric padding modes for a 1D discrete signal:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Original Signal
+    \draw[thick, ->] (0,0) -- (5,0);
+    \foreach \i in {1,...,4} {
+        \fill (\i,0.2) circle (2pt) node[above] {$x_{\i}$};
+    }
+    
+    % Symmetric Padding Modes
+    \def\n{4}
+    \def\pad{3}
+    \def\shift{\n+\pad}
+    \def\width{8}
+    
+    % Left Symmetric Padding
+    \draw[thick, ->] (\shift,0) -- (\width,0);
+    \foreach \i in {1,...,\pad} {
+        \fill (\shift+\i,0.2) circle (2pt) node[above] {$x_{\i}$};
+    }
+    \foreach \i in {1,...,\n} {
+        \fill (\shift+\n+\i,0.2) circle (2pt) node[above] {$x_{\n-\i+1}$};
+    }
+    
+    % Right Symmetric Padding
+    \draw[thick, ->] (\shift+\width,0) -- (\shift+2*\width,0);
+    \foreach \i in {1,...,\pad} {
+        \fill (\shift+\width+\i,0.2) circle (2pt) node[above] {$x_{\n-\i+1}$};
+    }
+    \foreach \i in {1,...,\n} {
+        \fill (\shift+\width+\n+\i,0.2) circle (2pt) node[above] {$x_{\i}$};
+    }
+    
+    % Full Symmetric Padding
+    \draw[thick, ->] (\shift+2*\width,0) -- (\shift+3*\width,0);
+    \foreach \i in {1,...,\pad} {
+        \fill (\shift+2*\width+\i,0.2) circle (2pt) node[above] {$x_{\n-\i+1}$};
+    }
+    \foreach \i in {1

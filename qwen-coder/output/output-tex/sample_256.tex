@@ -1,0 +1,37 @@
+To create a TikZ diagram that visually represents the concept of an invertible mapping \( f \) between a space \( D \) and a convex polytope, parameterized by a differentiable Voronoi tessellation, we can follow these steps:
+
+1. **Define the Space \( D \)**: This could be represented as a 2D or 3D region.
+2. **Define the Convex Polytope**: This will be the target space for the mapping \( f \).
+3. **Voronoi Tessellation**: Show how the space \( D \) is divided into regions (cells) based on the Voronoi tessellation.
+4. **Mapping Function \( f \)**: Illustrate how points in \( D \) map to the convex polytope.
+5. **Inverse Mapping \( f^{-1} \)**: Indicate how points in the convex polytope map back to \( D \).
+
+Below is a TikZ code that demonstrates this setup:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{tikzpicture}[scale=0.8]
+
+% Define the convex polytope
+\node[draw, fill=blue!20, regular polygon, regular polygon sides=6] (polytope) at (0,0) {};
+\node at (0,0) {Convex Polytope};
+
+% Define the space D
+\fill[green!20] (-2,-2) rectangle (2,2);
+\node at (0,0) {Space $D$};
+
+% Voronoi cells
+\foreach \x in {-1,1} {
+    \foreach \y in {-1,1} {
+        \node[draw, fill=red!20, circle, radius=0.1] (\x,\y) at (\x,\y) {};
+        \draw[dashed] (\x,\y) -- ++(0.5,0.5);
+        \draw[dashed] (\x,\y) -- ++(-0.5,0.5);
+        \draw[dashed] (\x,\y) -- ++(0.5,-0.5);
+        \draw[dashed] (\x,\y) -- ++(-0.5,-

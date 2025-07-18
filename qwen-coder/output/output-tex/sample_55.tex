@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+\begin{tikzpicture}
+    \matrix (eqs) [
+        matrix of math nodes,
+        column sep=1cm,
+        row sep=2cm,
+        align=center,
+        text height=1.5ex,
+        text depth=0.25ex,
+        every odd row/.style={nodes={anchor=south}},
+        every even row/.style={nodes={anchor=north}}
+    ] {
+        1 & = & 2 \\
+        3 & = & 4 \\
+        5 & = & 6 \\
+        7 & = & 8 \\
+    };
+
+    % Draw lines to connect the equals signs
+    \draw[dashed] (eqs-1-2.north) -- (eqs-2-2.south);
+    \draw[dashed] (eqs-3-2.north) -- (eqs-4-2.south);
+\end{tikzpicture}
+\end{document}

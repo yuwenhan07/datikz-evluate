@@ -1,0 +1,34 @@
+To create a TikZ diagram that illustrates a coarse triangulation of the unit disk \( \{x \in \mathbb{R}^2 : \|x\| < 1\} \) with a velocity field \( \mathbf{u} = [-y, x]^T \), where the normal component of the velocity is zero but the blue edge gets transported out of the domain to the green edge, you can follow these steps:
+
+1. **Define the unit disk**: Use TikZ's `circle` command to draw the boundary of the unit disk.
+2. **Triangulate the unit disk**: Create a simple triangular mesh inside the disk.
+3. **Draw the velocity vectors**: At each vertex of the triangles, draw arrows representing the velocity vector \( \mathbf{u} = [-y, x]^T \).
+4. **Highlight the edges**: Color the edges differently (e.g., blue and green) to show the transport effect.
+
+Here is the TikZ code to achieve this:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw the unit circle
+    \draw[thick] (0,0) circle (1);
+    
+    % Define vertices of the triangle mesh
+    \coordinate (A) at (1,0);
+    \coordinate (B) at (-0.5,0.866);
+    \coordinate (C) at (-0.5,-0.866);
+    \coordinate (D) at (0.5,0.866);
+    \coordinate (E) at (0.5,-0.866);
+    
+    % Draw the triangles
+    \fill[gray!30] (A) -- (B) -- (C) -- cycle;
+    \fill[gray!30] (B) -- (D) -- (E) -- cycle;
+    
+    % Draw velocity vectors at each vertex
+    \draw[-stealth,blue] (A) -- ++(0,-1);
+    \draw[-stealth,red] (B) -- ++(-0.5,0.866);
+    \draw[-stealth,green] (C) -- ++(-0.5,-0.866);
+    \draw[-stealth,blue] (D)

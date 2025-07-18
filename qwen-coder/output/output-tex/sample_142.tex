@@ -1,0 +1,34 @@
+Certainly! Below is a TikZ LaTeX code that generates a diagram resembling the description you provided. This diagram includes a chain of interconnected circles, each labeled with a mathematical expression related to a variable \(x_a\) in the context of a 2-attractor reduction in a 2-substring graph.
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    node style/.style={circle, draw, fill=black!30, minimum size=15pt},
+    edge style/.style={thick, ->, >=Stealth[round]},
+    label style/.style={font=\small}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node[node style] (n1) at (0,0) {$x_{a_1}$};
+    \node[node style] (n2) at (2,0) {$x_{a_2}$};
+    \node[node style] (n3) at (4,0) {$x_{a_3}$};
+    \node[node style] (n4) at (6,0) {$x_{a_4}$};
+
+    % Edges
+    \draw[edge style] (n1) -- node[label style, above] {Edge 1} (n2);
+    \draw[edge style] (n2) -- node[label style, above] {Edge 2} (n3);
+    \draw[edge style] (n3) -- node[label style, above] {Edge 3} (n4);
+
+    % Additional nodes and edges for more complexity
+    \node[node style] (n5) at (8,0) {$x_{a_5}$};
+    \draw[edge style] (n4) -- node[label style, above] {Edge 4} (n5);
+
+    \node[node style] (n6) at (0,-2) {$x_{a_6}$};
+    \node[node style] (n7) at (2,-2) {$x_{a_7}$};
+    \node[node style] (n8) at (4,-2) {$x_{a_8}$};
+    \node[node style] (n9) at (6,-2) {$x_{a_9}$};
+    \node[node style]

@@ -1,0 +1,170 @@
+\documentclass[final,5p,times,twocolumn,authoryear,table]{elsarticle}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\pgfplotsset{plot coordinates/math parser=false}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=7.2cm,
+height=5.1cm,
+at={(0.333in,0.303in)},
+scale only axis,
+xmin=540,
+xmax=820,
+xtick={545, 579, 622, 658, 701, 737, 779, 816},
+xlabel style={font=\color{white!15!black}},
+xlabel={wavelength [nm]},
+ymin=0.1,
+ymax=1,
+ylabel style={font=\color{white!15!black}},
+ylabel={Normalized reflectance},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+axis x line*=bottom,
+axis y line*=left,
+xmajorgrids,
+ymajorgrids,
+legend style={at={(0.03,0.97)}, anchor=north west, legend cell align=left, align=left, draw=white!15!black}
+]
+
+\addplot[area legend, draw=none, fill=blue, fill opacity=0.2]
+table[row sep=crcr] {%
+x	y\\
+545	0.141801175050094\\
+579	0.157974785065961\\
+622	0.169511550526569\\
+658	0.177747168404482\\
+701	0.185613108243024\\
+737	0.198039385930972\\
+779	0.214569294568038\\
+816	0.209176733695083\\
+816	0.70981800864902\\
+779	0.732540444422245\\
+737	0.700666787143725\\
+701	0.578505094244516\\
+658	0.509519688673441\\
+622	0.496026735279884\\
+579	0.474714505333089\\
+545	0.457821020420955\\
+}--cycle;
+\addlegendentry{2 std. dev. $\sigma$}
+
+\addplot [color=white!55!blue, forget plot]
+  table[row sep=crcr]{%
+545	0.141801175050091\\
+579	0.157974785066017\\
+622	0.169511550526522\\
+658	0.177747168404494\\
+701	0.185613108243047\\
+737	0.198039385930997\\
+779	0.214569294568037\\
+816	0.209176733695131\\
+};
+\addplot [color=white!55!blue, forget plot]
+  table[row sep=crcr]{%
+545	0.457821020420965\\
+622	0.496026735279884\\
+658	0.509519688673436\\
+701	0.57850509424452\\
+737	0.700666787143746\\
+779	0.732540444422284\\
+816	0.709818008648995\\
+};
+\addplot [color=blue]
+  table[row sep=crcr]{%
+545	0.299811097735528\\
+579	0.316344645199479\\
+622	0.332769142903203\\
+658	0.343633428538965\\
+701	0.382059101243726\\
+737	0.449353086537371\\
+779	0.47355486949516\\
+816	0.459497371172006\\
+};
+\addlegendentry{Scab}
+
+
+\addplot[area legend, draw=none, fill=black, fill opacity=0.2]
+table[row sep=crcr] {%
+x	y\\
+545	0.19321542609238\\
+579	0.210394747712112\\
+622	0.225718913130852\\
+658	0.23477016335149\\
+701	0.272537751268131\\
+737	0.363700173881785\\
+779	0.399010402354098\\
+816	0.375771723791977\\
+816	0.914928760522262\\
+779	0.962247330349749\\
+737	0.914875781144891\\
+701	0.706224745517086\\
+658	0.62159987128075\\
+622	0.603057257309427\\
+579	0.577229143197011\\
+545	0.554356130383077\\
+}--cycle;
+\addlegendentry{2 std. dev. $\sigma$}
+
+\addplot [color=white!55!black, forget plot]
+  table[row sep=crcr]{%
+545	0.193215426092365\\
+579	0.210394747712144\\
+622	0.225718913130891\\
+658	0.234770163351527\\
+701	0.272537751268146\\
+737	0.363700173881739\\
+779	0.399010402354065\\
+816	0.375771723792013\\
+};
+\addplot [color=white!55!black, forget plot]
+  table[row sep=crcr]{%
+545	0.554356130383098\\
+579	0.577229143196973\\
+622	0.603057257309388\\
+658	0.62159987128075\\
+701	0.706224745517034\\
+737	0.914875781144929\\
+779	0.962247330349783\\
+816	0.91492876052223\\
+};
+\addplot [color=black]
+  table[row sep=crcr]{%
+545	0.373785778237675\\
+579	0.393811945454559\\
+622	0.414388085220139\\
+658	0.428185017316082\\
+701	0.489381248392647\\
+737	0.639287977513391\\
+779	0.680628866351867\\
+816	0.645350242157065\\
+};
+\addlegendentry{Leaves}
+
+\end{axis}
+
+\begin{axis}[%
+width=2.835in,
+height=2.362in,
+at={(0in,0in)},
+scale only axis,
+xmin=0,
+xmax=1,
+ymin=0,
+ymax=1,
+axis line style={draw=none},
+ticks=none,
+axis x line*=bottom,
+axis y line*=left
+]
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{tikzpicture}[overlay, remember picture]
+    % Import the image
+    \node[anchor=north] (image) at (current page.center) {\includegraphics[width=0.5\textwidth]{white_card_with_border.png}};
+    
+    % Add centered text above the image
+    \node[above=1cm of image, anchor=south, font=\large\bfseries] {Your Text Here};
+\end{tikzpicture}
+
+\end{document}

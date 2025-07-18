@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    % Define the binary matrix (0 for empty, 1 for filled)
+    \def\matrix{
+        {1,0,1},
+        {0,1,0},
+        {1,0,1}
+    };
+
+    % Set line thicknesses
+    \newcommand{\gridthickness}{0.5pt} % Adjust this value to change grid line thickness
+    \newcommand{\boundarythickness}{2pt} % Adjust this value to change boundary line thickness
+
+    % Draw the grid
+    \foreach \i in {0,...,3}{
+        \draw[\gridthickness] (\i,0) -- (\i,3);
+        \draw[\gridthickness] (0,\i) -- (3,\i);
+    }
+
+    % Draw the polyomino boundary
+    \foreach \i/\j in {
+        0/0,
+        2/0,
+        0/2,
+        2/2
+    }{
+        \ifnum\matrix\i\j=1
+            \fill[blue!50!white] (\i+0.5,\j+0.5) circle (0.4);
+        \fi
+    }
+    \draw[\boundarythickness] (0,0) rectangle (2,2);
+
+    % Additional shapes for the cross pattern
+    \fill[green!50!white] (1,0) rectangle (2,1);
+    \fill[red!50!white] (0,1) rectangle (1,2);
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,59 @@
+\documentclass[a4paper]{article} % To avoid confusion, let us explicitly 
+                             % declare the paper format.
+
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tikz}           %for TikZ graphics
+\usepackage{tikz-3dplot} %for 3dplot functionality
+
+%\usetikzlibrary{external}
+%\tikzexternalize
+
+\newcommand{\myboundingbox}{%
+    \useasboundingbox[draw=yellow] (2.5,0,-1.5) rectangle (0,2.5,3);
+}
+\tikzset{
+    mysphericalsurfaceplot/.style={scale=1,line join=bevel,tdplot_main_coords, fill opacity=.7}
+}
+
+\begin{document}
+
+%harmonics.tex: produces spherical harmonic plots using the 3dplot package
+% Author: Jeff Hein
+\begin{figure}[htb]
+    \centering
+    %Here's some more examples.
+    \tdplotsetmaincoords{70}{135}
+    \begin{tikzpicture}[mysphericalsurfaceplot]
+        \myboundingbox
+        %L = 0
+        \tdplotsphericalsurfaceplot[parametricfill]{72}{36}%
+        {1}{black}{0}%
+           {\draw[color=black,thick,->] (0,0,0) -- (2,0,0) node[anchor=north east]{$x$};}%
+           {\draw[color=black,thick,->] (0,0,0) -- (0,2,0) node[anchor=north west]{$y$};}%
+           {\draw[color=black,thick,->] (0,0,0) -- (0,0,2) node[anchor=south]{$z$};}%
+    \end{tikzpicture}
+    \begin{tikzpicture}[mysphericalsurfaceplot]
+        \myboundingbox
+        %L = 1, M_L = -1
+        \tdplotsphericalsurfaceplot[parametricfill]{72}{36}%
+        {sqrt(3/2)*sin(\tdplottheta)}{black}{-\tdplotphi}%
+           {\draw[color=black,thick,->] (0,0,0) -- (2,0,0) node[anchor=north east]{$x$};}%
+           {\draw[color=black,thick,->] (0,0,0) -- (0,2,0) node[anchor=north west]{$y$};}%
+           {\draw[color=black,thick,->] (0,0,0) -- (0,0,2) node[anchor=south]{$z$};}%
+    \end{tikzpicture}
+    \begin{tikzpicture}[mysphericalsurfaceplot]
+        \myboundingbox
+        %L = 1, M_L = 0
+        \tdplotsphericalsurfaceplot[parametricfill]{72}{36}%
+        {sqrt(3)*cos(\tdplottheta)}{black}{0}%
+           {\draw[color=black,thick,->] (0,0,0) -- (2,0,0) node[anchor=north east]{$x$};}%
+           {\draw[color=black,thick,->] (0,0,0) -- (0,2,0) node[anchor=north west]{$y$};}%
+           {\draw[color=black,thick,->] (0,0,0) -- (0,0,2) node[anchor=south]{$z$};}%
+    \end{tikzpicture}
+    \caption{Various spherical harmonics with TikZ}
+\end{figure}
+
+\end{document}

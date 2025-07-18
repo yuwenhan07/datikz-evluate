@@ -1,0 +1,45 @@
+Certainly! Below is a TikZ LaTeX code that generates a visually appealing tree representing the computation of the packaged surface Tutte polynomial using deletion and contraction. Each level of the tree is colored differently to make it easy to follow.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  node distance=2cm,
+  start chain/.style={start chain=going below},
+  box/.style={draw, rectangle, rounded corners, fill=#1, text width=4em, align=center, join=by {-Stealth}},
+  level 1/.style={fill=red!30},
+  level 2/.style={fill=blue!30},
+  level 3/.style={fill=green!30},
+  level 4/.style={fill=orange!30},
+  level 5/.style={fill=purple!30}
+}
+
+\begin{document}
+\begin{tikzpicture}[auto]
+
+% Level 1
+\node (n1) [box=level 1] {Node 1};
+\node (n2) [box=level 1, right=of n1] {Node 2};
+
+% Level 2
+\node (n3) [box=level 2, below=of n1] {Node 3};
+\node (n4) [box=level 2, below=of n2] {Node 4};
+
+% Level 3
+\node (n5) [box=level 3, below=of n3] {Node 5};
+\node (n6) [box=level 3, below=of n4] {Node 6};
+
+% Level 4
+\node (n7) [box=level 4, below=of n5] {Node 7};
+\node (n8) [box=level 4, below=of n6] {Node 8};
+
+% Level 5
+\node (n9) [box=level 5, below=of n7] {Node 9};
+\node (n10) [box=level 5, below=of n8] {Node 10};
+
+% Connections
+\draw[->] (n1) -- (n3);
+\draw[->] (n1) -- (n4);
+\draw

@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[node distance=2cm]
+        % First square with "A"
+        \node (square1) [draw, fill=white, minimum size=2cm] {A};
+        
+        % Second square without any text initially
+        \node (square2) [draw, fill=white, minimum size=2cm, below=of square1] {};
+        
+        % Arrow below the second square
+        \draw[->] ([yshift=-0.5cm]square2.south west) -- node[midway, above] {B} -| ([yshift=-0.5cm]square2.south east);
+        
+        % Adding "C" at the end of the arrow
+        \node[right=of square2.east, yshift=-0.7cm] {C};
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

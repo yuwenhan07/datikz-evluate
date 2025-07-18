@@ -1,0 +1,44 @@
+Certainly! Below is a TikZ LaTeX code snippet that represents your described architecture:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white!30, 
+        text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style = {draw, thick, ->, >=stealth'}
+}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+
+        % Nodes for Transformer Decoder (TD)
+        \node[block] (TD) at (0,0) {Transformer Decoder};
+        \node[block, below of=TD] (TD_output) {Output: $a^Q_1, \ldots, a^Q_m$};
+
+        % Nodes for Context (demonstrations)
+        \node[block, right of=TD, xshift=6cm] (Context) {Context: $(I_k, A_k)$};
+        
+        % Nodes for Transformer Encoder-Decoder (T)
+        \node[block, left of=TD, yshift=-2cm] (TE_decoder) {Transformer Encoder-Decoder};
+        \node[block, above of=TE_decoder, yshift=2cm] (TE_encoder) {Transformer Encoder};
+        
+        % Nodes for State S
+        \node[block, below of=TE_decoder, yshift=-2cm] (State_S) {State: $S$};
+        
+        % Nodes for Instructions (pink blocks)
+        \node[block, pink, above of=TE_encoder, yshift=2cm] (Instructions) {Instructions};
+        
+        % Arrows between nodes
+        \path [line] (TD) -- node[above] {$I^Q$} (TE_decoder);
+        \path [line] (TE_decoder) -- node[right] {$S$} (TE_encoder);
+        \path [line] (TE_encoder) -- node[right] {$A_k$} (Context);
+        \path [line] (Context) -- node[below] {$I_k$} (TE_decoder);
+        \path [line] (TE_decoder) -- node[below] {$a^Q_1, \ldots, a^Q_m$} (TD_output);
+
+    \

@@ -1,0 +1,33 @@
+To create a visually appealing and informative TikZ LaTeX diagram representing the described choice functions lattice with 12 nodes arranged in a three-dimensional structure, you can use the following code:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{3d}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8, x={(1,0,0)}, y={(0,1,0)}, z={(0,0,-1)}]
+
+% Define the nodes
+\node[draw,circle,fill=red] (A) at (0,0,2) {};
+\node[draw,circle,fill=green] (B) at (2,0,0) {};
+\node[draw,circle,fill=blue] (C) at (-2,0,0) {};
+\node[draw,circle,fill=red] (D) at (1,1,1) {};
+\node[draw,circle,fill=green] (E) at (1,-1,1) {};
+\node[draw,circle,fill=blue] (F) at (-1,1,1) {};
+\node[draw,circle,fill=red] (G) at (-1,-1,1) {};
+\node[draw,circle,fill=green] (H) at (1,1,-1) {};
+\node[draw,circle,fill=blue] (I) at (1,-1,-1) {};
+\node[draw,circle,fill=red] (J) at (-1,1,-1) {};
+\node[draw,circle,fill=green] (K) at (-1,-1,-1) {};
+
+% Connect the nodes
+\draw[-stealth,thick] (A) -- (B);
+\draw[-stealth,thick] (A) -- (C);
+\draw[-stealth,thick] (A) -- (D);
+\draw[-stealth,thick] (A) -- (E);
+\draw[-stealth,thick] (A) -- (F);
+\draw[-stealth,thick] (A) -- (G);
+\draw[-stealth,thick] (A) -- (H);
+\draw[-stealth,thick] (A) -- (I);
+\draw[-stealth,thick] (A) -- (

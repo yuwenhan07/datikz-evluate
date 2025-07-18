@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the outer circle
+    \draw (0,0) circle (2cm);
+    
+    % Place the numbers 1, 2, and 3 in three equal parts of the circle
+    \node at (2,0) {1};
+    \node at (-1,-1.732) {2}; % -sqrt(3)/2
+    \node at (1,-1.732) {3}; % sqrt(3)/2
+    
+    % Draw lines from the center to each number
+    \draw[->] (0,0) -- (2,0);
+    \draw[->] (0,0) -- (-1,-1.732);
+    \draw[->] (0,0) -- (1,-1.732);
+\end{tikzpicture}
+
+\end{document}

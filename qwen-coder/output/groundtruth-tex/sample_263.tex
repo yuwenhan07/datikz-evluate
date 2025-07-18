@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{nicematrix,tikz}
+
+\begin{document}
+
+\NewDocumentCommand{\Fill}{m}{\Block[fill=#1,rounded-corners]{}}
+
+\begin{NiceTabular}{rw{c}{2cm}cw{c}{2cm}cw{c}{2cm}}[cell-space-limits=3mm]
+   xx: & something \\
+   yy: & \Fill{blue!15} A && \Fill{blue!15} B && \Fill{blue!15} C  \\
+   xx: &   && \Fill{yellow!15} D && \Fill{green!15} E \\
+\CodeAfter
+   \begin{tikzpicture} [->]
+   \draw (2.5-|3) -- (2.5-|4) ;
+   \draw (2.5-|5) -- (2.5-|6) ;
+   \draw (3.5-|5) -- (3.5-|6) ;
+   \end{tikzpicture}
+\end{NiceTabular}
+
+\end{document}

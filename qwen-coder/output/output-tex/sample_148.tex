@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+
+% Define the vertices of the skewed polygon
+\coordinate (A) at (0,0);
+\coordinate (B) at (1,1);
+\coordinate (C) at (1.5,-0.5);
+\coordinate (D) at (0.5,-1);
+
+% Draw the white triangle
+\fill[white] (A) -- (B) -- (C) -- cycle;
+
+% Draw the blue and red pattern inside the triangle
+\fill[blue] (A) -- (B) -- ($(B)!0.6!(C)$) -- cycle;
+\fill[red] ($(A)!0.4!(B)$) -- ($(B)!0.6!(C)$) -- (C) -- cycle;
+
+% Add some shading to make it more interesting
+\shade[left color=blue, right color=red] (A) -- (B) -- (C) -- cycle;
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,40 @@
+To create a TikZ LaTeX diagram representing a torus embedding of the Paley graph \( P_{13} \) with a black and white pattern of a dodecahedron, you can use the following code:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+
+\tikzset{
+    dot/.style={circle, fill=black, inner sep=0pt, minimum size=2pt},
+    triangle/.style={draw, regular polygon, regular polygon sides=3, minimum size=2cm, inner sep=0pt}
+}
+
+\begin{tikzpicture}[scale=1]
+
+% Draw the dodecahedron
+\node[triangle] (dodecahedron) {};
+\foreach \i in {1,...,12} {
+    \node[dot] at (dodecahedron.corner \i) {};
+}
+
+% Connect the dots to form edges of the dodecahedron
+\foreach \i in {1,...,12} {
+    \foreach \j in {\i+1,\i+2,1} {
+        \draw[dotted] (dodecahedron.corner \i) -- (dodecahedron.corner \j);
+    }
+}
+
+% Fill the dodecahedron with a checkerboard pattern
+\fill[white] (dodecahedron.corner 1) rectangle ++(1,-1);
+\fill[black] (dodecahedron.corner 2) rectangle ++(1,-1);
+\fill[black] (dodecahedron.corner 3) rectangle ++(1,-1);
+\fill[white] (dodecahedron.corner 4) rectangle ++(1,-1);
+\fill[white] (dodecahedron.corner 5) rectangle ++(1,-1);
+\fill[black] (dodecahedron.corner 6) rectangle ++(1,-1);
+\fill[black] (dodecahedron.corner 7) rectangle ++(1,-1);
+\fill[white] (dodecahedron.corner 8) rectangle ++(1,-1);
+\fill[white] (dodecahedron.corner 9) rectangle ++(1,-1);
+\fill[black] (dodecahed

@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Whiteboard background
+    \fill[white] (-3,-3) rectangle (3,3);
+
+    % Lines on the whiteboard
+    \draw[thick, black] (-3,0) -- (3,0); % Horizontal line
+    \draw[thick, black] (0,-3) -- (0,3); % Vertical line
+    \draw[thick, blue] (-3,-3) -- (3,3); % Diagonal line
+
+    % Red arrows
+    \node at (0,0) [red, arrow box, draw=none] {};
+    \node at (1,1) [red, arrow box, draw=none] {};
+
+    % Labels for clarity
+    \node at (-2,0) [below] {Escape};
+    \node at (0,2) [left] {$a$};
+    \node at (2,-2) [right] {$a \to \infty$};
+
+    % Additional details for interest
+    \foreach \x in {-2,-1,0,1,2} {
+        \foreach \y in {-2,-1,0,1,2} {
+            \fill (\x,\y) circle (0.05);
+        }
+    }
+
+    % Arrows pointing in opposite directions
+    \draw[->, thick, red] (0.5,0.5) -- (-0.5,-0.5);
+    \draw[<-, thick, red] (-0.5,0.5) -- (0.5,-0.5);
+\end{tikzpicture}
+
+\end{document}

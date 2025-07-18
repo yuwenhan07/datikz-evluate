@@ -1,0 +1,26 @@
+Certainly! Below is the TikZ LaTeX code for generating a hexagonal trapezohedron with the specified characteristics:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define colors
+    \definecolor{customblue}{RGB}{0, 153, 255} % Blue component increased
+    \definecolor{customgreen}{RGB}{0, 255, 153} % Green component increased
+
+    % Draw the main hexagon
+    \draw[fill=customblue] (0,0) -- (1,0.866) -- (2,0) -- (1,-0.866) -- (0,0);
+    \draw[fill=customgreen] (1,0.866) -- (2,1.732) -- (3,0.866) -- (2,0) -- (1,0.866);
+
+    % Draw the top hexagon
+    \draw[fill=white] (-1,0) -- (0,0.866) -- (1,0) -- (0,-0.866) -- (-1,0);
+    \draw[fill=white] (0,0.866) -- (1,1.732) -- (2,0.866) -- (1,0) -- (0,0.866);
+
+    % Connect the hexagons
+    \draw[thick] (0,0) -- (1,0.866) -- (2,0) -- (1,-0.866) -- (0,0);
+    \draw[thick] (1,0.866) -- (2,1.732) -- (3,0.866) -- (2,0) -- (1,0.866);
+    \draw[thick] (-1,0) -- (0,0.866) -- (1,0) -- (0,-0.866) -- (-1,0);
+    \draw[thick] (0,0.866) -- (1,1.732) -- (2,0

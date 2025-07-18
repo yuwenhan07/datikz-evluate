@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18} 
+\begin{document}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[trim axis left, trim axis right]
+\begin{axis}[
+ylabel={something},
+]
+\addplot{x^2};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+\begin{tikzpicture}[remember picture, overlay]
+\draw[dashed] (current page.north) -- (current page.south);
+\end{tikzpicture}
+\end{document}

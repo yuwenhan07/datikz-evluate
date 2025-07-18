@@ -1,0 +1,31 @@
+Certainly! Below is a TikZ LaTeX code that illustrates the trajectory \( a(t) = (0, 0, 2t) \) for \( t_1, t_2 \) in the \( xOz \) plane. The green arc represents the observable points, while the dotted arc represents the non-observable points.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Draw the axes
+    \draw[->] (-3,0,0) -- (3,0,0) node[right] {$x$};
+    \draw[->] (0,-3,0) -- (0,3,0) node[above] {$y$};
+    \draw[->] (0,0,-3) -- (0,0,3) node[below left] {$z$};
+
+    % Draw the trajectory
+    \draw[domain=-3:3,samples=100,blue] plot (\x,0,\x*\x);
+    
+    % Define points t1 and t2
+    \def\t1{-2}
+    \def\t2{2}
+    
+    % Observable points (green)
+    \fill[green] (\t1,0,\t1*\t1) circle (2pt) node[above right] {Observable Point at $t_1$};
+    \fill[green] (\t2,0,\t2*\t2) circle (2pt) node[above right] {Observable Point at $t_2$};
+    
+    % Non-observable points (dotted)
+    \fill[dotted,red] (-(\t1+0.5),0,\t1*\t1+1) circle (2pt) node[above right] {Non-Observable Point at $t_1 + 0.5$};
+    \fill[dotted,red] ((\t2-0.5),0,\t2*\t2-1) circle (2pt) node[above right] {Non-Observable Point at $t_2 - 0.5$};
+    
+    % Labels for the trajectory
+    \node at (0,0,4) [above] {Trajectory $a(t) = (0, 0, 2t)$};
+\end{tikz

@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{pgfplots}
+\pgfmathdeclarefunction{gauss}{2}{%
+\pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+\usepackage{pgfplots}
+\pgfplotsset{width = 0.75\linewidth ,compat=1.17}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[ylabel={Count},
+    xlabel={Feature Y}, every axis plot post/.append style={
+  mark=none,domain=-2:3,samples=50,smooth}, % All plots: from -2:2, 50 samples, smooth, no marks
+  axis x line*=bottom, % no box around the plot, only x and y axis
+  axis y line*=left, % the * suppresses the arrow tips
+  enlargelimits=upper] % extend the axes a bit to the right and top
+  \addplot[dashed][blue] {gauss(0,0.5)};
+  \addplot {gauss(1,0.75)};
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

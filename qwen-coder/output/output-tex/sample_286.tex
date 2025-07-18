@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{tikz}
+
+% Define a new command for the plus-sign line-to operation
+\newcommand{\plusLineTo}[2]{
+    -- ++(#1:#2)
+}
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture]
+    % Place your nodes here
+    \node (start) at (0,0) {Start};
+    \node (end) at (3,3) {End};
+
+    % Mark the start node for later reference
+    \node[draw,circle,inner sep=2pt] (mark) at (start) {};
+
+    % Draw the path using the plus-line-to operation
+    \draw[->] (mark) plusLineTo(45,1cm) node[midway,right] {Path};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,32 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, calc}
+
+\tikzset{
+    smallhex/.style={
+        regular polygon,
+        regular polygon sides=6,
+        inner sep=0pt,
+        minimum size=1cm,
+        draw=green,
+        fill=green
+    }
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw the outer hexagon
+    \node[regular polygon, regular polygon sides=6, inner sep=0pt, minimum size=4cm, draw=black] (outer) {};
+
+    % Draw the inner hexagons
+    \foreach \i in {0, 1, ..., 5} {
+        \foreach \j in {0, 1, ..., 5} {
+            \pgfmathsetmacro{\x}{\i*sqrt(3)/2 + (\j mod 2)*sqrt(3)}
+            \pgfmathsetmacro{\y}{\j/2 + \i}
+            \node at (\x, \y) [smallhex] {};
+        }
+    }
+
+    % Fill the outer hexagon
+    \fill[white] ([xshift=-2cm,yshift=-2cm]outer.center) rectangle ++(4,4);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,22 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style = {draw, thick, ->, >=stealth'}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=3cm]
+
+\node[block] (input) {Input};
+\node[block, below of=input] (resblock1) {ResBlock 1};
+\node[block, below of=resblock1] (resblock2) {ResBlock 2};
+\node[block, below of=resblock2] (output) {Output};
+
+\draw[line] (input) -- node[above] {$S$} (resblock1);
+\draw[line] (resblock1) -- node[above] {$S$} (resblock2);
+\draw[line] (resblock2) -- (output);
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+\newcommand*\showStrut{\smash{\rule[-.3\baselineskip]{.1pt}{\baselineskip}}}
+\newcommand\tikzImageAndText[2]{%
+\begin{tikzpicture}[baseline=(m1.base)]
+\node[
+  path only, inner sep=+0pt, outer sep=+0pt](m1) {%
+    \raisebox{-\dp\strutbox}{%
+      \includegraphics[totalheight=\dimexpr\ht\strutbox+\dp\strutbox]
+        {#1}}};
+\node[
+  base right=10pt of m1,
+  fill=green, outer sep=+0pt] (m2) {\showStrut #2};
+%%% Debug
+  \tikzset{every path/.append style=help lines}
+  \draw (m1.base east)  --  (m2.base west);
+  \draw (m1.south east) --++(right:15pt);
+  \draw (m1.north east) --++(right:15pt);
+\end{tikzpicture}}
+\begin{document}
+
+\tikzImageAndText{example-image}{Some text}
+\tikzImageAndText{example-image}{\strut Some text}
+
+\tikzImageAndText{example-image}{(g}
+\tikzImageAndText{example-image}{.\strut}
+\end{document}

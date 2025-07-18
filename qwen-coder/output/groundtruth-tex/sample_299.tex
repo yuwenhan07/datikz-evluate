@@ -1,0 +1,121 @@
+\documentclass[a4paper]{article}
+
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{datavisualization}
+\usepackage{etoolbox}
+\usepackage{calculus}
+
+% (A) "input" definitions
+\newcommand{\MyColorMapName}{colormap/viridis}
+\newcommand{\MyColorSamples}{0.5, 0.0, 1.0, 0.25, 0.75}
+
+% (B) retrieve number of sample points and make individual values availabe via \MyColorSample{<i>} command
+\newcommand*{\MyColorSample}[1]{\csname MyColorSample:#1\endcsname}
+\newcounter{MyColorSamplesSize}
+\renewcommand*{\do}[1]{%
+    \stepcounter{MyColorSamplesSize}%
+    \listxadd{\MyColorSampleIDs}{\theMyColorSamplesSize}%
+    \expandafter\def\csname MyColorSample:\theMyColorSamplesSize\endcsname{#1}%
+}
+\expandafter\docsvlist\expandafter{\MyColorSamples}
+
+% (C) caclulate color map samples based on \MyColorSamples but mapped to range [0,1000]
+\def\MyColorMapSamples{}
+\newcommand*{\MyColorMapSample}[1]{\csname MyColorMapSample:#1\endcsname}
+\renewcommand*{\do}[1]{
+    \MULTIPLY{\MyColorSample{#1}}{1000.0}{\val}%
+    \FLOOR{\val}{\valf}%
+    \ifstrequal{\val}{\valf}{\edef\val{\val .0}}%
+    \expandafter\edef\csname MyColorMapSample:#1\endcsname{\val}%
+    \edef\MyColorMapSamples{\MyColorMapSamples\MyColorMapSample{#1}\ifnumcomp{#1}{=}{\theMyColorSamplesSize}{}{, }}%
+}
+\dolistloop{\MyColorSampleIDs}
+
+% (D) define individual colors based on sample points of colormap
+\colorlet{DefaultColor}{.} % save current default color
+\newcommand*{\MyColor}[1]{MyColor#1}
+\renewcommand*{\do}[1]{%
+    \pgfplotsset{color of colormap=\MyColorMapSample{#1} of \MyColorMapName}%
+    \colorlet{MyColor#1}{.}
+}
+\dolistloop{\MyColorSampleIDs}
+\colorlet{.}{DefaultColor} % restore default color
+
+
+% (E) define PGFPLOTS cycle list
+\pgfplotscreateplotcyclelist{MyColorCycleList}{
+    [colors of colormap={\MyColorMapSamples} of \MyColorMapName]
+}
+
+% (F) define TikZ/PGF style sheet
+\renewcommand*{\do}[1]{%
+    #1/.style={\MyColor{#1}, line width=2pt},
+}
+\edef\MyStyle{\noexpand\pgfkeys{
+    /pgf/data visualization/style sheets/MyStyle/.cd,
+    \dolistloop{\MyColorSampleIDs}
+    default style/.style={black,line width=5pt}
+}}
+\MyStyle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\section{color map}
+selected color map: \texttt{\MyColorMapName}\\
+\pgfplotscolorbardrawstandalone[
+    \MyColorMapName,
+    colorbar horizontal
+]
+
+\section{color boxes and colored text}
+\theMyColorSamplesSize\ color samples have been defined:
+\begin{enumerate}
+    \renewcommand*{\do}[1]{
+        \item \colorbox{\MyColor{#1}}{\textcolor{-\MyColor{#1}}{colored box with complementary text color}}
+    }
+    \dolistloop{\MyColorSampleIDs}
+\end{enumerate}
+
+\section{PGFPLOTS cycle list}
+% adapted from PGFPLOTS manual (v1.18.1) section 4.7.7
+\begin{tikzpicture}
+\begin{axis}[
+    stack plots=y,stack dir=minus,
+    cycle list name=MyColorCycleList,
+    fatline/.style={line width=2pt},
+]
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+    \addplot+[fatline] coordinates {(0,1) (0.5,1) (1,1)};
+\end{axis}
+\end{tikzpicture}
+
+\section{TikZ data visualization}
+% adapted from TikZ/PGF manual (v3.1.9a) section 84.4.2
+\tikz \datavisualization [
+    school book axes,
+    visualize as line=1,
+    visualize as line=2,
+    visualize as line=3,
+    style sheet=MyStyle]
+data point [x=0, y=0, set=1]
+data point [x=2, y=2, set=1]
+data point [x=0, y=1, set=2]
+data point [x=2, y=1, set=2]
+data point [x=0.5, y=1.5, set=3]
+data point [x=2.25, y=1.75, set=3];
+
+\end{document}

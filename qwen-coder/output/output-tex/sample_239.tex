@@ -1,0 +1,42 @@
+Certainly! Below is a TikZ LaTeX code that generates a Directed Acyclic Graph (DAG) representing the scenario you described:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em, node distance=3cm, inner sep=0pt]
+\tikzstyle{line} = [draw, thick, -Stealth]
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm, auto]
+        % Nodes
+        \node (u) [block] {U};
+        \node (x) [block, below of=u] {X};
+        \node (y) [block, right of=x] {Y};
+        \node (z) [block, above right of=y] {Z};
+        \node (uz) [block, left of=z] {U_z};
+
+        % Edges
+        \path [line] (u) -- (x);
+        \path [line] (x) -- (y);
+        \path [line] (y) -- (z);
+        \path [line] (z) -- (y); % Loop from Z back to Y
+        \path [line] (uz) -- (z); % Edge from U_z to Z
+
+        % White sphere with a blue arrow pointing to the right
+        \fill[white] (0,0) circle (1cm);
+        \draw[-Stealth, thick, blue] (0,-1) -- (1,-1);
+
+        % Label for the arrow
+        \node at (0.5, -1.5) {$U$};
+        
+        % Equation X = Y
+        \node at (6, 0) {$X = Y$};
+    \end{tikzpicture}
+    \caption{DAG with Common Parent Confounding and Deleted Edge Between $U_z$ and $z$. Counterfactual Quantity Independent of Its Parents.}
+\

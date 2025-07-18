@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+    % Draw the background image (black and white)
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{background_image_bw}};
+    
+    % Draw the red circle
+    \draw[red] (4,2) circle (1cm);
+    
+    % Overlay the alt text
+    \node[above right] at (4,3) {the alt};
+\end{tikzpicture}
+\end{document}

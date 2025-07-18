@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        % Define the spiral parameters
+        \def\rmin{1} % Minimum radius
+        \def\rmax{4} % Maximum radius
+        \def\a{0.2}   % Constant factor for spiral
+
+        % Draw the spiral
+        \draw[thick,->] plot[variable=\t,domain=0:360,samples=500]
+            ({(\rmin+\a*\t)*cos(\t)}, {(\rmin+\a*\t)*sin(\t)});
+
+        % Add labels (optional)
+        \node at (current bounding box.south west) {Spiral};
+    \end{tikzpicture}
+    \caption{Archimedean Spiral}
+    \label{fig:arch-spiral}
+\end{figure}
+
+\end{document}

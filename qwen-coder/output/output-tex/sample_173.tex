@@ -1,0 +1,26 @@
+To center the Y-axis label without shifting the graph to the right, you can use the `ylabels` option in the `axis` environment. This option allows you to specify the location of the Y-axis label relative to the axis itself.
+Here's an example of how you could use this option to center the Y-axis label:
+```
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel=$x$,
+    ylabel=$y$,
+    ylabels={left},
+    xmin=0,
+    xmax=10,
+    ymin=0,
+    ymax=10,
+    xtick=\emptyset,
+    ytick=\emptyset,
+    axis lines*=middle,
+    axis equal image,
+    samples=50,
+    domain=0:10,
+    smooth,
+    thick,
+  ]
+    \addplot {x^2};
+  \end{axis}
+\end{tikzpicture}
+```
+In this example, the `ylabels` option is set to `{left}`, which centers the Y-axis label to the left of the axis. You can also use other options for `ylabels`, such as `{right}` or `{above}`/`{below}` to position the label differently.

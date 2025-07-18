@@ -1,0 +1,22 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Axes
+    \draw[->] (-1,0) -- (3,0) node[right] {Farkas' Lemma};
+    \draw[->] (0,-1) -- (0,3) node[above] {Neural ISMs};
+
+    % Lines
+    \draw[dashed] (0,0) -- (3,3); % Line y = x
+
+    % Points
+    \filldraw[blue] (0.5,1) circle[radius=2pt] node[left] {Program-Agnostic};
+    \filldraw[green] (1.5,2) circle[radius=2pt] node[right] {Program-Aware};
+    \filldraw[red] (2.5,1.5) circle[radius=2pt] node[right] {Farkas' Lemma};
+
+    % Labels
+    \node at (0.5,-0.5) [below] {Below the line};
+    \node at (2.5,-0.5) [below] {Above the line};
+\end{tikzpicture}
+\end{document}

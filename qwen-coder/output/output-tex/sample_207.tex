@@ -1,0 +1,37 @@
+To create a table with an offset column in TikZ LaTeX, you can use the `tabular` environment within a node. Here's an example code that creates a table with an offset column:
+```
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (table) {
+  \begin{tabular}{|c|c|c|}
+    \hline
+    Step & Gear & Clutch \\
+    \hline
+    1 & 1st & Engaged \\
+    2 & 2nd & Disengaged \\
+    3 & 3rd & Engaged \\
+    4 & Reverse & Disengaged \\
+    \hline
+  \end{tabular}
+};
+\node[below=of table] (offset) {
+  \begin{tabular}{|c|}
+    \hline
+    Brake \\
+    \hline
+    0 \\
+    50 \\
+    100 \\
+    \hline
+  \end{tabular}
+};
+\draw[-latex] (table.east) -- ++(0.5,0) |- (offset.west);
+\end{tikzpicture}
+\end{center}
+\end{document}
+```
+In this example, we first create a `tabular` environment within a node called `table`. We then create another `tabular` environment within a node called `offset`, which will serve as our offset column. Finally, we draw an arrow from the eastern edge of the `table` node to the western edge of the `offset` node using the `\draw` command.
+This code produces a table with an offset column that shows the brake settings corresponding to each step in the mechanical or automotive process. You can customize the content of the tables and the appearance of the arrow to suit your needs.

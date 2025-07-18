@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=10pt]
+    % Define nodes for the image and the text
+    \node (image) {\includegraphics[width=2cm]{example-image}};
+    \node[right=of image] (text) {This is some aligned text.};
+    
+    % Draw lines to show alignment
+    \draw[dashed] (image.south) -- (image.north);
+    \draw[dashed] (text.south) -- (text.north);
+\end{tikzpicture}
+
+\end{document}

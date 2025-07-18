@@ -1,0 +1,35 @@
+\documentclass[a4paper]{llncs}
+\usepackage{tikz,float,comment,amsfonts,complexity,graphicx,soul}
+\usepackage{amsmath,amssymb}
+\usetikzlibrary{decorations.pathreplacing}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+\draw(3,2)--(6,2);
+\draw(12,0.7)--(16,0.7);
+\draw(5.3,1.5)--(7.5,1.5);
+\draw(6.8,1.3)--(9,1.3);
+
+\draw (3,1) ellipse (0.5cm and 1.75cm);
+\draw (4.5,1) ellipse (0.5cm and 1.75cm);
+\draw (6,1) ellipse (0.5cm and 1.75cm);
+\draw (7.5,1) ellipse (0.5cm and 1.75cm);
+\draw (9.2,1) ellipse (0.5cm and 1.75cm);
+\draw[very thick,dotted] (10,1)--(11,1);
+
+\draw (12,1) ellipse (0.5cm and 1.75cm);
+\draw (14,1) ellipse (0.5cm and 1.75cm);
+\draw (16,1) ellipse (0.5cm and 1.75cm);
+
+
+\draw(5.2,2.2) node{$v_i$};
+\draw(13,1) node{$v_j$};
+\draw(6.8,1.8) node{$v_{i+1}$};
+\draw(8.3,1.6) node{$v_{i+2}$};
+\draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=4ex}]
+  (7.5,-1) -- (12,-1) node[midway,yshift=-3em]{$l-2$};
+
+\end{tikzpicture}
+
+\end{document}

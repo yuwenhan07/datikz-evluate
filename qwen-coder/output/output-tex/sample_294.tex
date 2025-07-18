@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Define the styles for places and transitions
+    \tikzset{
+        place/.style={circle, thick, draw=black, fill=yellow!50},
+        transition/.style={rectangle, thick, draw=black, fill=green!50}
+    }
+
+    % Place nodes
+    \node[place] (s1_bfc) {s_1};
+    \node[place] (s3) {s_3};
+
+    % Transition node
+    \node[transition] (s1_d) [below left of=s1_bfc] {s_1};
+
+    % Draw edges between nodes
+    \draw[-stealth] (s1_bfc) -- (s3);
+    \draw[-stealth] (s1_d) -- (s3);
+
+    % Decision point circle
+    \node[circle, draw=red, inner sep=1pt] (decision) [right of=s1_bfc] {};
+
+    % Lines indicating possible paths
+    \draw[dashed] (s1_bfc) -- (decision);
+    \draw[dashed] (s1_d) -- (decision);
+\end{tikzpicture}
+\end{document}

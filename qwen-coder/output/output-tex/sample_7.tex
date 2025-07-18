@@ -1,0 +1,39 @@
+To create a TikZ LaTeX diagram that represents the cut curve for a genus two Riemann surface and its corresponding weighted graph, we can follow these steps:
+
+1. **Draw the genus two Riemann surface**: We will represent it as a torus with an additional handle.
+2. **Draw the cut curve**: This will be a single simple closed curve that separates the surface into two components.
+3. **Label the components**: Indicate which component corresponds to the top and bottom.
+4. **Draw the weighted graph**: Represent the vertices and edges of the graph.
+
+Here is the TikZ code to achieve this:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the torus part
+    \draw (0,0) ellipse (2 and 1);
+    
+    % Draw the handle
+    \draw (-2,-1) -- (-2,1) arc (0:180:1) -- (2,1) -- (2,-1) arc (0:-180:1);
+    
+    % Draw the cut curve
+    \draw[thick, ->] (0,0) .. controls (-1,1) and (-1,-1) .. (0,0);
+    
+    % Label the components
+    \node at (2.5,0) [above] {Top};
+    \node at (-2.5,0) [below] {Bottom};
+    
+    % Draw the weighted graph
+    \draw[dashed, thick] (0,0) node[anchor=north west] {$v_1$} -- (1,0.5) node[anchor=south east] {$v_2$};
+    \draw[dashed, thick] (1,0.5) -- (2,0);
+    \draw[dashed, thick] (2,0) -- (1,-0.5);
+    \draw[dashed, thick] (1,-0.5) -- (0,0);
+    
+    % Add weights
+    \node at (0.5,0.25) [above] {$w_1$};
+    \node at (1.5,0.75) [right] {$w_2$};
+    \node at (2.25,0) [below right] {$w_3$

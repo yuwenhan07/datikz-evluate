@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define colors for the quandle elements
+    \colorlet{a}{red!50!black}
+    \colorlet{b}{green!50!black}
+    \colorlet{c}{blue!50!black}
+
+    % Draw the trefoil knot
+    \draw[thick] (0,1) .. controls (0.5,-0.3) and (-0.5,-0.3) .. (0,-1);
+    \draw[thick, a] (0,1) -- (0.5,0.5);
+    \draw[thick, b] (0.5,0.5) -- (1,1);
+    \draw[thick, c] (1,1) -- (1,-1);
+    \draw[thick, b] (1,-1) -- (0.5,-0.5);
+    \draw[thick, a] (0.5,-0.5) -- (0,1);
+
+    % Add labels for clarity
+    \node at (0,1.2) {a};
+    \node at (1.2,1) {b};
+    \node at (1.2,-1) {c};
+    \node at (0,-1.2) {a};
+
+    % Fill the regions between the loops
+    \fill[a] (0,1) rectangle (0.5,0.5);
+    \fill[b] (0.5,0.5) rectangle (1,1);
+    \fill[c] (1,1) rectangle (1,-1);
+    \fill[a] (1,-1) rectangle (0.5,-0.5);
+    \fill[b] (0.5,-0.5) rectangle (0,1);
+
+    % Set the background color to white
+    \path[fill=white] (-1,-1) rectangle (2,2);
+\end{tikzpicture}
+\end{document}

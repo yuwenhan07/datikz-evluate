@@ -1,0 +1,27 @@
+\documentclass[a4,11pt]{amsart}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz-cd}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\filldraw[black] (4,0) circle (2pt)  node[anchor=west]{};
+\filldraw[black] (-4,0) circle (2pt) node[anchor=east]{};
+\filldraw[black] (2,3.4) circle (2pt) node[anchor=east]{};
+\filldraw[black] (-2,3.4) circle (2pt) node[anchor=south]{$Q$};
+\filldraw[black] (2,-3.4) circle (2pt) node[anchor=north]{$P$};
+\filldraw[black] (-2,-3.4) circle (2pt) node[anchor=east]{};
+\filldraw[black] (3,1.7) circle (2pt) node[anchor=west]{};
+\filldraw[black] (3,-1.7) circle (0pt) node[anchor=west]{$l$};
+\filldraw[black] (0,-3.4) circle (0pt) node[anchor=north]{$m$};
+
+\draw (4,0) -- (2,3.4) -- (-2,3.4) -- (-4,0) -- (-2,-3.4) -- (2,-3.4) -- (4,0) ;
+\draw[blue,dashed] (2,3.4) --  (-4,0) -- (2,-3.4) -- (2,3.4);
+\draw[red, line cap=round, line width=2.5pt, dash pattern=on 0pt off 3\pgflinewidth] (2,-3.4) --  (3,1.7) -- (-2,3.4);
+
+\end{tikzpicture}
+
+\end{document}

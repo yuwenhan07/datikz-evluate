@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Define nodes
+    \node (left) [draw, rectangle] {Left};
+    \node (middle) [draw, rectangle, below of=left] {Middle};
+    \node (right) [draw, rectangle, below of=middle] {Right};
+
+    % Draw arrows
+    \draw[->] (left) -- node[above] {$id$} (middle);
+    \draw[->] (middle) -- node[above] {(15)} (right);
+
+    % Label nodes with their definitions
+    \node[left=of left.north] {defT};
+    \node[left=of middle.north] {defT'};
+    \node[left=of right.north] {defT'};
+
+\end{tikzpicture}
+
+\end{document}

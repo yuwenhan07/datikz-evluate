@@ -1,0 +1,38 @@
+\documentclass[10pt]{article}
+\usepackage{tikz}
+\usepackage{tikz-network}
+\usetikzlibrary{matrix,arrows,positioning,calc,shapes}
+
+\begin{document}
+
+\begin{tikzpicture} 
+% fake vertices to attach edges should be slightly larger
+\Vertex[x = -1, y = 1, size = 0.9, opacity = 0, Pseudo = True]{x1} 
+\Vertex[x = 0, y = 0, size = 0.9, opacity = 0, Pseudo = True]{x2} 
+\Vertex[x = 1, y = 1, size = 0.9, opacity = 0, Pseudo = True]{x3} 
+\Vertex[x = -1.5, y = -0.5, size = 0.9, opacity = 0, Pseudo = True]{x4} 
+\Vertex[x = 0, y = -1.5, size = 0.9, opacity = 0, Pseudo = True]{x5} 
+\Vertex[x = 2, y = -0.5, size = 0.9, opacity = 0, Pseudo = True]{x6} 
+% real vertices with labels 
+\Vertex[x = -1, y = 1, size = 0.8, opacity = 0, label = $1$]{X1} 
+\Vertex[x = 0, y = 0, size = 0.8, opacity = 0, label = $2$]{X2} 
+\Vertex[x = 1, y = 1, size = 0.8, opacity = 0, label = $3$]{X3} 
+\Vertex[x = -1.5, y = -0.5, size = 0.8, opacity = 0, label = $4$]{X4} 
+\Vertex[x = 0, y = -1.5, size = 0.8, opacity = 0, label = $5$]{X5} 
+\Vertex[x = 2, y = -0.5, size = 0.8, opacity = 0, label = $6$]{X6} 
+% edges
+\Edge[lw = 1, color = black, Direct, bend = 15](x1)(x3)
+\Edge[lw = 1, color = black, Direct, bend = 15, style = {-{|[scale = 0.5]}}](x2)(x1)
+\Edge[lw = 1, color = black, Direct, bend = 15, style = {-{|[scale = 0.5]}}](x2)(x5)
+\Edge[lw = 1, color = black, Direct, bend = 15, style = {-{|[scale = 0.5]}}](x3)(x2)
+\Edge[lw = 1, color = black, Direct, bend = 15](x3)(x5)
+\Edge[lw = 1, color = black, Direct, bend = 15, style = {-{|[scale = 0.5]}}](x3)(x6)
+\Edge[lw = 1, color = black, Direct, bend = 15, style = {-{|[scale = 0.5]}}](x4)(x1)
+\Edge[lw = 1, color = black, Direct, bend = 15, style = {-{|[scale = 0.5]}}](x4)(x5)
+\Edge[lw = 1, color = black, Direct, bend = 15, style = {-{|[scale = 0.5]}}](x5)(x2)
+\Edge[lw = 1, color = black, Direct, bend = 15, style = {-{|[scale = 0.5]}}](x5)(x4)
+\Edge[lw = 1, color = black, Direct, bend = -15, style = {-{|[scale = 0.5]}}](x5)(x6)
+\Edge[lw = 1, color = black, Direct, bend = 15, style = {-{|[scale = 0.5]}}](x6)(x3)
+\end{tikzpicture}
+
+\end{document}

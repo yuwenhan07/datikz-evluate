@@ -1,0 +1,36 @@
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    % Define the style for the tiles
+    \tikzset{
+        tile/.style={
+            rectangle,
+            draw=black,
+            fill=white,
+            minimum width=1cm,
+            minimum height=1cm,
+            align=center
+        }
+    }
+
+    % Place the tiles in their respective positions
+    \node[tile] (Tile1) {1};
+    \node[tile] (Tile2) [below=of Tile1] {2};
+    \node[tile] (Tile3) [right=of Tile1] {3};
+    \node[tile] (Tile4) [below=of Tile3] {4};
+    \node[tile] (Tile5) [right=of Tile3] {5};
+    \node[tile] (Tile6) [below=of Tile5] {6};
+
+    % Draw the lines connecting the tiles
+    \draw[thick,->] (Tile1.east) -- (Tile3.west);
+    \draw[thick,->] (Tile2.east) -- (Tile4.west);
+    \draw[thick,->] (Tile3.south) -- (Tile4.north);
+    \draw[thick,->] (Tile4.east) -- (Tile6.west);
+    \draw[thick,->] (Tile5.south) -- (Tile6.north);
+
+\end{tikzpicture}
+
+\end{document}

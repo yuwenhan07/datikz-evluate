@@ -1,0 +1,23 @@
+\documentclass[tikz,border=10pt]{standalone}
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the full circle
+    \draw[black] (0,0) circle (4cm);
+    
+    % Draw the line segment cut out
+    \draw[white, thick] (-2,0) -- (2,0);
+    
+    % Highlight the line segment
+    \fill[red] (-2,0) rectangle ++(4,0.2); % Red bar above the line segment
+    
+    % Label vertices v_i and v_j
+    \node at (-3,-0.5) [below] {v\_i};
+    \node at (3,-0.5) [below] {v\_j};
+    
+    % Add labels for clarity
+    \node at (0,4.5) [above] {Circle};
+    \node at (0,-4.5) [below] {Line Segment};
+\end{tikzpicture}
+
+\end{document}

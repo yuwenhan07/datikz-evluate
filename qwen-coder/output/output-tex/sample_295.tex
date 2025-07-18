@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define the vertices
+    \node[draw, circle] (A) at (0,0) {A};
+    \node[draw, circle] (B) at (2,0) {B};
+    \node[draw, circle] (C) at (1,2) {C};
+
+    % Draw edges
+    \draw (A) -- (B);
+    \draw (B) -- (C);
+
+    % Label the edges
+    \path (A) -- node[midway, above] {} (B);
+    \path (B) -- node[midway, right] {} (C);
+\end{tikzpicture}
+\end{document}

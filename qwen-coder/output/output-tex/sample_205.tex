@@ -1,0 +1,31 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{calc,shapes.geometric}
+
+\begin{document}
+
+\tikzset{
+    mydot/.style={circle,fill,inner sep=1pt},
+    myline/.style={thick}
+}
+
+\begin{tikzpicture}[scale=2]
+    % Define the axes
+    \draw[->] (-1,0) -- (1.5,0) node[right] {$\frac{1}{p}$};
+    \draw[->] (0,-1) -- (0,1.5) node[above] {$\frac{1}{q}$};
+
+    % Draw the boundary lines
+    \draw[dashed] (0,0) -- (1,0);
+    \draw[dashed] (0,0) -- (0,1);
+
+    % Draw the region for case (1)
+    \draw[myline] (0,0) -- ($(0,0)!0.6!(1,0)$);
+    \draw[myline] ($(0,0)!0.6!(1,0)$) -- ($(0,0)!0.8!(0,1)$);
+    \draw[myline] ($(0,0)!0.8!(0,1)$) -- (0,0);
+    \node at (0.3,0.1) {Case (1)};
+
+    % Draw the line segment for case (2)
+    \draw[myline] (0.4,0) -- ($(0.4,0)!0.4!(0,1)$);
+    \node at (0.7,0.2) {Case (2)};
+\end{tikzpicture}
+
+\end{document}

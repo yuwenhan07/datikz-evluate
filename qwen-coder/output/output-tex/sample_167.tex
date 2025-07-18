@@ -1,0 +1,39 @@
+To illustrate this concept in a TikZ LaTeX diagram, we need to create a visual representation that shows the transition from the non-perturbative regime (dominated by black hole formation/evaporation) to the perturbative regime (calculated using string theory). We will also indicate the boundary \(I\) where the matching between these two regimes occurs.
+
+Here's a possible TikZ LaTeX code to achieve this:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define colors for better visibility
+    \definecolor{blackhole}{RGB}{0, 0, 255} % Blue for black hole
+    \definecolor{stringtheory}{RGB}{255, 0, 0} % Red for string theory
+
+    % Draw the time axis
+    \draw[->] (-3,0) -- (3,0) node[right] {$t$};
+    
+    % Draw the non-perturbative region (left side)
+    \fill[left color=blackhole!40, right color=blackhole!20] (-3,-1) rectangle (-1,-0.5);
+    \node at (-2,-0.75) [below] {Non-perturbative};
+    
+    % Draw the perturbative region (right side)
+    \fill[left color=stringtheory!40, right color=stringtheory!20] (1,-1) rectangle (3,-0.5);
+    \node at (2,-0.75) [below] {Perturbative};
+    
+    % Draw the boundary I
+    \draw[dashed] (0,-1) -- (0,-0.5);
+    \node at (0,-0.75) [below] {$I$};
+    
+    % Add labels
+    \node at (-1.5,1) [above] {Black Hole Formation/Evaporation};
+    \node at (1.5,1) [above] {String Theory Calculation};
+    
+    % Add arrows to show direction
+    \draw[-stealth] (-2,-0.25) -- (-1,-0.25);
+    \draw[-stealth] (1,-0.25) -- (2,-0.25);
+    
+    % Add legend
+    \node at (-

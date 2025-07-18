@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+
+% white key dimensons
+\pgfmathsetmacro\x{3.5}  % width
+\pgfmathsetmacro\y{0.95} % height
+\pgfmathsetmacro\r{0.1}  % corner radius
+\tikzset
+{% pics
+   pics/blackkey/.style 2 args={code=% #1 = number, #2 = label
+   {% black key
+     \filldraw[thick]   (0,\y/3) rectangle (-0.6*\x,-\y/3);
+     \filldraw[gray!30] (0.1,\y/3) -| (\x,-\y/3) -- (0.1,-\y/3);
+     \node[white] at    (-0.5*\x,0) {\bfseries\footnotesize #1};
+     \node[right] at    (0,0)       {\strut\footnotesize #2};
+   }},
+   pics/whitekey/.style 2 args={code=% #1 = number, #2 = label
+   {% white key
+     \begin{scope}[on background layer]
+       \draw[thick]   (0,\y) |- (\r-\x,0) arc (270:180:\r) -- (-\x,\y-\r) arc (180:90:\r) -- cycle;
+       \draw[gray!30] (0.1,\y) -| (\x,0) -- (0.1,0);
+     \end{scope}
+     \node at  (-0.5*\x,0.5*\y) {\bfseries\footnotesize #1};
+     \node[right] at (0,0.5*\y) {\strut\footnotesize #2};
+   }},
+}
+
+\begin{document}
+\lipsum[1][1-2]
+
+\begin{figure}[ht]\centering\sffamily
+\begin{tikzpicture}[line cap=round,line join=round]
+% table header
+\begin{scope}[shift={(0,0.5*\y)},x=\x cm,y=\y cm,]
+  \draw[thick] (0,1) -- (0,0) -- (-1,1) -| (1,0) -| (-1,1);
+  \node at (-0.75,0.35) {\bfseries KEY \#};
+  \node[text width=\x cm,align=center] at (0.5,.5) {\bfseries General MIDI Drum Map};
+\end{scope}
+% table
+\pgfmathsetmacro\LastKeyPosition{0}
+\foreach[count=\ii from 35]\i in
+{% Drums
+   Acoustic Bass Drum,
+   Bass Drum 1,
+   Side Stick,
+   Acoustic Snare,
+   Hand Clap,
+   Electric Snare,
+   Low Floor Tom,
+   Closed Hi-Hat,
+   High Floor Tom,
+   Pedal Hi-Hat,
+   Low Tom,
+   Open Hi-Hat 2,
+   Low-Mid Tom,
+   High-Mid Tom
+%  ...
+}
+{% this stuff computes if a key is black (\k=0) or white (\k=1)
+   \pgfmathtruncatemacro\j{mod(\ii-1,12)<4?mod(\ii-1,12)+2:mod(\ii-1,12)+1}
+   \pgfmathtruncatemacro\k{\j<11?mod(\j,2):1}
+   \ifnum\k=0% black key
+     \pic at (0,-\LastKeyPosition) {blackkey={\ii}{\i}};
+   \else% white key
+     \pgfmathsetmacro\posy{\LastKeyPosition+\y}
+     \pic at (0,-\posy) {whitekey={\ii}{\i}};
+     \global\let\LastKeyPosition=\posy
+   \fi
+}
+% First and last black keys
+\pic at (0,0) {blackkey={}{}};
+\pic at (0,-\LastKeyPosition) {blackkey={}{}};
+\end{tikzpicture}
+\end{figure}
+
+\lipsum[2]
+\end{document}

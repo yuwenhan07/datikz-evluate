@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+    % Define styles for nodes
+    \tikzset{
+        mybox/.style={
+            draw=white,
+            fill=white,
+            minimum size=2cm, % Adjust as needed
+            inner sep=0pt,
+            outer sep=0pt
+        },
+        mydollar/.style={
+            font=\Huge,
+            color=green,
+            inner sep=0pt,
+            outer sep=0pt
+        }
+    }
+
+    % Create node00
+    \node[mybox] (node00) at (0,0) {};
+
+    % Create node01 with the same size as node00
+    \node[mybox, mydollar] (node01) at (3,0) {\$};
+
+\end{tikzpicture}
+\end{document}

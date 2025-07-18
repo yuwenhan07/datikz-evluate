@@ -1,0 +1,13 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define the center point
+    \coordinate (center) at (2, 3);
+    
+    % Define the radius using the let command with 80% of x1
+    \path let \p1 = (4, 0), \n1 = {veclen(\x1,\y1)}, \n2 = {0.8 * \n1} in
+        node[draw, circle, radius=\n2] at (center) {};
+\end{tikzpicture}
+\end{document}

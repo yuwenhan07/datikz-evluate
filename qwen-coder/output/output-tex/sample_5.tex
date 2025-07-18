@@ -1,0 +1,34 @@
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define the points for the triangle
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (3,0);
+    \coordinate (C) at (1.5,2.6);
+
+    % Draw the main triangle
+    \draw[thick, black] (A) -- (B) -- (C) -- cycle;
+
+    % Label the vertices
+    \node at (A) [below left] {$F_0$};
+    \node at (B) [below right] {$F_1$};
+    \node at (C) [above] {$F_2$};
+
+    % Draw the lines representing the filtration stages
+    \draw[dashed, thin, gray] (A) -- (B);
+    \draw[dashed, thin, gray] (B) -- (C);
+    \draw[dashed, thin, gray] (C) -- (A);
+
+    % Draw the lines representing the cofiltration stages
+    \draw[dotted, thin, red] (A) -- (C);
+    \draw[dotted, thin, red] (B) -- (C);
+    \draw[dotted, thin, red] (A) -- (B);
+
+    % Label the cofiltration stages
+    \node at (A) [left] {$G_0$};
+    \node at (B) [right] {$G_1$};
+    \node at (C) [above] {$G_2$};
+\end{tikzpicture}
+\end{document}

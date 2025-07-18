@@ -1,0 +1,36 @@
+Certainly! Below is an example of a TikZ LaTeX diagram representing a stochastic control model (SCM) with a comonotonic copula, where the noise nodes \( U_t \) and \( V_t \) are scalars rather than vectors.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\tikzset{
+    node distance=2cm,
+    every node/.style={circle, draw, align=center},
+    process/.style={rectangle, draw, rounded corners, align=center},
+    arrow/.style={thick,->,>=stealth}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Nodes
+\node (X0) at (0, 0) {Initial State};
+\node (X1) at (-3, -2) {Control Policy};
+\node (U1) at (-6, -4) {$U_1$};
+\node (V1) at (-3, -4) {$V_1$};
+\node (Y1) at (0, -4) {$Y_1$};
+\node (X2) at (-3, -6) {Control Policy};
+\node (U2) at (-6, -8) {$U_2$};
+\node (V2) at (-3, -8) {$V_2$};
+\node (Y2) at (0, -8) {$Y_2$};
+
+% Arrows
+\draw[arrow] (X0) -- node[above]{$x_0$} (X1);
+\draw[arrow] (X1) -- node[below]{$u_1$} (U1);
+\draw[arrow] (X1) -- node[below]{$v_1$} (V1);
+\draw[arrow] (U1) -- node[right]{$\epsilon_1^U$} (Y1);
+\draw[arrow] (V1) -- node[right]{$\epsilon_1^V$} (Y1);
+\draw[arrow] (Y1) -- node[above]{$y_1$} (X2);
+\draw[arrow] (X2) -- node[below]{$u_2$} (U2);
+\draw[arrow] (X2) -- node[below]{$v_2$} (V2);

@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5, every node/.style={inner sep=2pt}]
+    % Define the nodes for the matrix H^T
+    \node (H_T) at (0,0) {$
+        \begin{pmatrix}
+            a & b & c \\
+            d & e & f \\
+            g & h & i
+        \end{pmatrix}
+    $};
+    
+    % Define the nodes for the submatrices H'^T and H''^T
+    \node (H_prime_T) at (-3,-2) {$
+        \begin{pmatrix}
+            a & b \\
+            d & e
+        \end{pmatrix}
+    $};
+    \node (H_double_prime_T) at (3,-2) {$
+        \begin{pmatrix}
+            c & f \\
+            g & i
+        \end{pmatrix}
+    $};
+    
+    % Draw arrows to show the relationship between H^T and its submatrices
+    \draw[->] (H_T.north west) -- (H_prime_T.south east);
+    \draw[->] (H_T.north east) -- (H_double_prime_T.south west);
+    
+    % Add labels to explain the submatrices
+    \node at (-3,-4) {$H'^T$};
+    \node at (3,-4) {$H''^T$};
+\end{tikzpicture}
+\end{document}

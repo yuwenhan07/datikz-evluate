@@ -1,0 +1,17 @@
+To vertically align a TikZ image inside angled brackets, you can use the `tikzpicture` environment within a node and adjust the vertical alignment using the `align` option. Here's an example code snippet:
+```
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+$\langle \begin{tikzpicture}[baseline=(current bounding box.center)]
+  \node[draw, rectangle, minimum width=2cm, minimum height=2cm] (box) {};
+  \node at (box.north west) {a};
+  \node at (box.south east) {b};
+  \node at (box.south west) {c};
+  \draw (box.west) -- (box.east);
+\end{tikzpicture} \rangle$
+\end{document}
+```
+In this example, the `tikzpicture` environment is placed inside a node with the `baseline` option set to `(current bounding box.center)` to ensure that the baseline of the text outside the brackets aligns with the center of the TikZ picture. The `minimum width` and `minimum height` options are used to set the size of the box, and the `draw` option adds a border around it.
+The nodes representing the variables "a", "b", and "c" are positioned at the top-left, bottom-right, and bottom-left corners of the box respectively. A horizontal line is drawn across the left side of the box using the `\draw` command.
+You can customize the appearance of the TikZ picture by modifying the options and commands inside the `tikzpicture` environment. For example, you can change the color of the border, add labels or annotations, or modify the layout of the nodes.

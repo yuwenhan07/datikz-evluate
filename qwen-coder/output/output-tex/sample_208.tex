@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+
+% Penrose diagram at zero temperature
+\draw[dotted] (-1,-1) -- (1,-1); % Time axis
+\draw[dotted] (-1,-1) -- (-1,1); % Spatial axis
+\draw[dotted] (1,-1) -- (1,1);
+
+% Black hole apparent horizon
+\fill[black] (0,0) circle[radius=0.05];
+
+% Cosmological horizons
+\fill[red] (0,-0.75) circle[radius=0.05];
+\fill[red] (0,0.75) circle[radius=0.05];
+
+% Labels
+\node at (0,-1.1) {Time};
+\node at (-1.1,0) {Spatial};
+
+\end{tikzpicture}
+
+\end{document}

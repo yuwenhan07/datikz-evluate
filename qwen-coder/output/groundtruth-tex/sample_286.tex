@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\usepackage{lipsum}
+\begin{document}
+
+\lipsum[1]\tikzmarknode[inner sep=2pt,draw]{surname}{\mbox{Kennedy}}\lipsum[1]
+
+\vspace{25pt}
+
+\lipsum[1]
+
+\begin{tikzpicture}[remember picture, overlay]
+\draw[blue,thick,->](surname.south west) --++ (-1.5,0) |-++ (1.5,-5) node [right, draw]{\footnotesize John Fitzgerald Kennedy, the 35th president of the USA from 1961 to 1963};
+
+\end{tikzpicture}
+\end{document}

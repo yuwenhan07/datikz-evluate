@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define nodes for the dual graph
+    \node (A) at (0,0) {};
+    \node (B) at (-1,-1) {};
+    \node (C) at (1,-1) {};
+    \node (D) at (-2,-2) {};
+    \node (E) at (0,-2) {};
+    \node (F) at (2,-2) {};
+
+    % Draw edges between nodes to form the dual graph structure
+    \draw[thick] (A) -- (B);
+    \draw[thick] (A) -- (C);
+    \draw[thick] (B) -- (D);
+    \draw[thick] (C) -- (F);
+    \draw[thick] (D) -- (E);
+    \draw[thick] (F) -- (E);
+
+    % Fill nodes with colors
+    \fill[black] (A) circle (2pt);
+    \fill[white] (B) circle (2pt);
+    \fill[white] (C) circle (2pt);
+    \fill[black] (D) circle (2pt);
+    \fill[black] (E) circle (2pt);
+    \fill[white] (F) circle (2pt);
+
+    % Label nodes with mathematical symbols
+    \node at (A) [above left] {$\infty$};
+    \node at (B) [below left] {$a_1$};
+    \node at (C) [below right] {$a_2$};
+    \node at (D) [below left] {$b_1$};
+    \node at (E) [below right] {$b_2$};
+    \node at (F) [below left] {$c_1$};
+
+    % Add background color
+    \fill[white] (-3,-3) rectangle (3,3);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define styles
+\tikzset{
+    node style/.style={circle, draw=black, fill=white, minimum size=10pt},
+    edge style/.style={->, thick}
+}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+
+        % Nodes for part (a)
+        \node[node style] (n1) at (0, 3) {$p_1$};
+        \node[node style] (n2) at (2, 3) {$p_2$};
+        \node[node style] (nq) at (4, 3) {$p_{q+1}$};
+
+        % Edges for part (a)
+        \draw[edge style] (n1) -- (n2);
+        \draw[edge style] (n2) -- (nq);
+
+        % Nodes for part (b)
+        \node[node style] (n1b) at (0, -3) {$p_1'$};
+        \node[node style] (n2b) at (2, -3) {$p_2'$};
+        \node[node style] (nqb) at (4, -3) {$p_{q+1}'$};
+
+        % Edges for part (b)
+        \draw[edge style] (n1b) -- (n2b);
+        \draw[edge style] (n2b) -- (nqb);
+
+        % Arrows connecting parts (a) and (b)
+        \draw[->, dashed] (nq.south) -- node[midway, below] {Queries} ++(0, -2) |- (n1b.north);
+
+    \end{tikzpicture}
+    \caption{(a) Permutation chain $p_1, p_2, \ldots, p_{q+1}$ specified by $\sigma$. (b) After removing permutations based on queries.}
+    \label{fig:schematic_diagram}
+\end{figure}
+
+\end{document}

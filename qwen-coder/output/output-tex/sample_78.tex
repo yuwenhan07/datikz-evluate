@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define the dimensions of the cylinder
+    \def\cylinderheight{3cm}
+    \def\cylinderradius{1cm}
+
+    % Draw the cylinder
+    \draw[thick] (0,-\cylinderheight/2) -- (0,\cylinderheight/2);
+    \draw[thick] (\cylinderradius,-\cylinderheight/2) arc[start angle=-90,end angle=90,radius=\cylinderradius];
+    \draw[thick] (-\cylinderradius,-\cylinderheight/2) arc[start angle=90,end angle=-90,radius=\cylinderradius];
+
+    % Label the cylinder
+    \node[below left] at (0,-\cylinderheight/2-0.1) {q};
+    \node[above right] at (0,\cylinderheight/2+0.1) {r};
+
+    % Draw the lines
+    \draw[-stealth] (0,0) -- ++(4,0) node[right] {p};
+    \draw[dashed,thick] (0,0) -- ++(0,3) node[above] {U};
+    \draw[dashed,thick] (0,0) -- ++(-3,0);
+
+    % Add additional details if needed
+    % For example, you could add labels or annotations to the lines and shapes
+
+\end{tikzpicture}
+\end{document}

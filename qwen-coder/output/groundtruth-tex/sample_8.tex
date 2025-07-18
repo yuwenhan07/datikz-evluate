@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage[showframe]{geometry}
+\begin{document}
+\begin{figure}
+    \centering %better than {center} environment, no vertical spurious space
+        \fbox{\begin{tikzpicture}[scale = 0.4]
+            \def\nx{12}
+            \def\ny{12}
+            \foreach \i in {0, ..., \nx}{
+                \path (0:13+\i) -- ++ (-60:\i) -- ++ (-120:\i) coordinate (f\i) circle (2pt) node[right] {\small$f_{\i}$}; %node[right] {\i};
+            }
+            \foreach \j in {0, ..., \ny}{
+                \fill (0:11-\j) ++ (-60:\j) ++ (-120:\j) coordinate (e\j) circle (2pt) node[left]{\small$e_{\j}$}; % node[left] (e\j) {\j};
+            }
+            \draw (f0) -- (f12);
+            \draw (e0) -- (e12);
+            %% take responsibility for the bounding box
+            \pgfresetboundingbox
+            \draw [use as bounding box]
+                ([shift={(-2,2)}] e12 |- f0) rectangle ([shift={(2,-2)}] f12);
+            %% Notice the use of the perpendicular coordinate system here
+            %% and a shift added to avoid clipping labels.
+    \end{tikzpicture}}
+\end{figure}
+\end{document}

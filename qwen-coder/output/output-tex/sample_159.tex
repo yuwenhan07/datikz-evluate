@@ -1,0 +1,36 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{
+    arrow/.style={thick,->,>=Stealth[length=4pt]},
+    node style/.style={circle, draw, fill=white, inner sep=3pt},
+    node style alt/.style={circle, draw, fill=black, inner sep=3pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+
+% Nodes
+\node[node style] (U_1) at (0,0) {};
+\node[node style] (U_2) at (2,-2) {};
+\node[node style] (U_3) at (4,-4) {};
+\node[node style alt] (U_4) at (6,-6) {};
+
+% Arrows
+\draw[arrow] (U_1) -- (U_2);
+\draw[arrow] (U_2) -- (U_3);
+\draw[arrow] (U_3) -- (U_4);
+
+% Additional arrows to create a visually interesting pattern
+\draw[arrow] (U_1) -- ++(1,-1);
+\draw[arrow] (U_2) -- ++(1,-1);
+\draw[arrow] (U_3) -- ++(1,-1);
+\draw[arrow] (U_4) -- ++(1,-1);
+
+\draw[arrow] (U_1) -- ++(-1,-1);
+\draw[arrow] (U_2) -- ++(-1,-1);
+\draw[arrow] (U_3) -- ++(-1,-1);
+\draw[arrow] (U_4) -- ++(-1,-1);
+
+\end{tikzpicture}
+\end{document}

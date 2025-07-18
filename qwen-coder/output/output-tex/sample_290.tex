@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\tikzset{
+    node distance=2cm,
+    block/.style={rectangle, draw=black, fill=white!30, text centered, minimum width=4cm, minimum height=1cm},
+    line/.style={draw, -stealth'}
+}
+
+\begin{document}
+\begin{tikzpicture}[auto]
+
+\node (modelA) [block] {Model A};
+\node (modelB) [block, below of=modelA] {Model B};
+\node (modelC) [block, below of=modelB] {Model C};
+
+\node (phase1) [block, left of=modelA, xshift=-5cm] {Phase 1};
+\node (phase2) [block, right of=modelA, xshift=5cm] {Phase 2};
+\node (futurePhase) [block, below of=modelA, yshift=-3cm] {Future Phase};
+
+\draw [line] (modelA) -- (phase1);
+\draw [line] (modelA) -- (phase2);
+\draw [line] (modelA) -- (futurePhase);
+
+\draw [line] (modelB) -- (phase1);
+\draw [line] (modelB) -- (phase2);
+\draw [line] (modelB) -- (futurePhase);
+
+\draw [line] (modelC) -- (phase1);
+\draw [line] (modelC) -- (phase2);
+\draw [line] (modelC) -- (futurePhase);
+
+\end{tikzpicture}
+\end{document}

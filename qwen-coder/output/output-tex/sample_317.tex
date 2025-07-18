@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Define the start point and the increment for the geometric progression
+    \def\xstart{2.5}
+    \def\ratio{1.5}
+    
+    % Calculate the number of terms
+    \pgfmathsetmacro{\numterms}{int((ln(30)/ln(\ratio)) + 1)}
+    
+    % Draw the axes
+    \draw[->] (0,0) -- (6,0) node[right] {Values};
+    \draw[->] (0,0) -- (0,4) node[above] {Number of Terms};
+    
+    % Plot the points and connect them with lines
+    \foreach \i in {0,...,\numterms} {
+        \pgfmathsetmacro{\xval}{\xstart * pow(\ratio, \i)}
+        \pgfmathsetmacro{\yval}{\i+1}
+        \ifnum\i=0
+            \node at (\xval,-0.5) [below] {$\xval$};
+            \node at (-0.5,\yval) [left] {$\yval$};
+        \else
+            \node at (\xval,-0.5) [below] {$\xval$};
+            \node at (-0.5,\yval) [left] {$\yval$};
+            \draw[blue] plot coordinates {(\xval,0) (\xval,\yval)};
+        \fi
+    }
+    
+    % Add labels
+    \node at (3,0.5) [above right] {Geometric Progression};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,37 @@
+Here's some sample TikZ code that generates a phylogenetic tree with the characteristics you described:
+```
+\documentclass[tikz,border=5mm]{standalone}
+\begin{document}
+\tikzstyle{tree} = [draw,circle,inner sep=2pt]
+\tikzstyle{edge} = [-stealth,thick]
+\tikzstyle{node} = [rectangle,draw,minimum width=1cm,minimum height=0.5cm]
+\tikzstyle{dot} = [circle,fill,inner sep=1pt]
+\begin{tikzpicture}[scale=1.5]
+    % Nodes
+    \node (root) at (0,4) {Root};
+    \node (taxon1) at (-2,2) {Taxon 1};
+    \node (taxon2) at (0,2) {Taxon 2};
+    \node (taxon3) at (2,2) {Taxon 3};
+    \node (node1) at (-3,-1) {};
+    \node (node2) at (-1,-1) {};
+    \node (node3) at (1,-1) {};
+    \node (node4) at (3,-1) {};
+    % Edges
+    \draw[edge] (root) -- node[above] {1} (taxon1);
+    \draw[edge] (root) -- node[above] {2} (taxon2);
+    \draw[edge] (root) -- node[above] {3} (taxon3);
+    \draw[edge] (taxon1) -- (node1);
+    \draw[edge] (taxon1) -- (node2);
+    \draw[edge] (taxon2) -- (node3);
+    \draw[edge] (taxon3) -- (node4);
+    % Dots
+    \node[dot,green] at (node1) {};
+    \node[dot,blue] at (node2) {};
+    \node[dot,orange] at (node3) {};
+    \node[dot,orange] at (node4) {};
+    % Numbers
+    \node at (node1) {4};
+    \node at (node2) {5};
+    \node at (node3) {6};
+    \node at (node4) {7};
+\end{t

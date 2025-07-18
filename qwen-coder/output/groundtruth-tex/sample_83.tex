@@ -1,0 +1,32 @@
+\documentclass[10pt, a4paper, notitlepage]{article}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{cd}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{tikzpicture}
+\path[draw, ->] (0, 0) -- (1, 0) node[midway, below] {$ b_1 $};
+\path[draw, ->] (1, 0) -- (1, 1) coordinate[midway] (X);
+\path[fill=gray!50] (X) -- ++(45:0.7) -- ($ (X) + (315:0.7) $) node[midway, above, sloped] {$ … $} -- cycle;
+\path[fill=gray!50] (X) -- ++(135:0.7) -- ($ (X) + (225:0.7) $) node[midway, below, sloped] {$ … $} -- cycle;
+\path[draw] (1, 1) -- (2, 1);
+\path (X) node[right] {$ b_2 $};
+\begin{scope}[shift={(4, 0.5)}]
+\path[fill=gray!50] (0, 0) -- (135:0.7) -- (225:0.7) node[midway, below, sloped] {$ … $} -- cycle;
+\path (0.5, 0) node {$ - $};
+\path[fill=gray!50] (1, 0) -- ++(45:0.7) -- ($ (1, 0) + (315:0.7) $) node[midway, above, sloped] {$ … $} -- cycle;
+\path (3, 0) node {$ = ~~ b_2 ∂_{b_2} W_q $};
+\end{scope}
+\end{tikzpicture}
+
+\end{document}

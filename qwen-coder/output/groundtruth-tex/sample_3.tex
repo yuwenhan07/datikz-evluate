@@ -1,0 +1,84 @@
+\documentclass[11pt, margin=1cm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc, shapes.arrows}
+\begin{document}
+
+\tikzset{%
+  pics/cap/.style n args={3}{% label, delta width, label distance
+    code={%
+      \node[draw, circle, inner sep=.7ex, outer sep=0] (-N) {};
+      \path ($(-N) +(-4.5ex, -7ex) -(#2ex, 0)$)
+      node[inner sep=.7ex, outer sep=.5ex] (-SW) {};
+      \path ($(-N) +(4.5ex, -7ex) +(#2ex, 0)$)
+      node[inner sep=.7ex, outer sep=.5ex] (-SE) {};
+      \path (-N.220) edge[out=190, in=90] (-SW)
+      (-N.{-40}) edge[out=-10, in=90] (-SE);
+      \path ($(-N) -(0, 7ex) -(0, #3ex)$) node {#1};
+    }
+  },
+  pics/rBranch/.style n args={3}{% label, delta width, delta height
+    code={%
+      \node[inner sep=.7ex, outer sep=0] (-N) {};
+      \path (-N.center) ++(0, -2ex)
+      node[inner sep=0, outer sep=0] (-C) {};
+      \path ($(-C) +(4.5ex, -8ex) +(#2ex, 0) -(0, #3ex)$)
+      node[draw, circle, inner sep=.7ex, outer sep=0,
+      label={[label distance=0ex, scale=.8] 60:#1}] (-SE) {};
+      \path (-N.270) edge[out=270, in=90] (-C);
+      \path (-C) edge[out=-50, in=90] (-SE.90);
+    }
+  },
+  pics/lBranch/.style n args={4}{% llabel, rlabel, delta width, delta height
+    code={%
+      \node[inner sep=.7ex, outer sep=0] (-N) {};
+      \path (-N.center) ++(0, -2ex)
+      node[inner sep=0, outer sep=0] (-C) {};
+      \path ($(-C) +(-4.5ex, -5ex) +(#3ex, 0)$) 
+      node[inner sep=0, outer sep=0] (tmp) {};
+      % \path (tmp) pic (lrB) {rBranch={#2}{0}{0}};
+      \path ($(tmp) +(4ex, -3ex)$)
+      node[draw, circle, inner sep=.7ex, outer sep=0,
+      label={[label distance=0ex, scale=.8] 60:#2}] (tmpSE) {};
+      \path ($(tmp) +(-3ex, -5ex) -(0, #4ex)$)
+      node[draw, circle, inner sep=.7ex, outer sep=0,
+      label={[label distance=0ex, scale=.8] 0:#1}] (-SW) {};
+      \path (-N.270) edge[out=270, in=90] (-C.center);
+      \path (-C.center) edge[out=220, in=90] (tmp);
+      \path (tmp) edge[out=265, in=80] (-SW.80);
+      \path (tmp) edge[out=-10, in=110] (tmpSE.110);
+    }
+  }
+}
+
+\begin{tikzpicture}[x={(4ex, 0)}, y={(0, 4ex)}]
+  % left side  
+  \path (0, 0) pic (z1) {cap={$\Sigma(z_1)$}{0}{0}};
+  \path (2, -1) node {$\oplus$};
+  \path (4, 0) pic (z2) {cap={$\Sigma(z_2)$}{0}{0}};
+  \path (6.5, -1) node {$=$};
+
+  % right side
+  \path (10, 1) pic (z12) {cap={$\Sigma(z_1)\oplus\Sigma(z_1)$}{1}{9}};
+  \path (z12-SW) pic {cap={}{0}{0}};
+  \path (z12-SE) pic {cap={}{0}{0}};
+\end{tikzpicture}
+
+% \begin{tikzpicture}[x={(4ex, 0)}, y={(0, 4ex)}]
+%   % left side
+%   \path (2, 5) pic[yscale=2] (bell) {cap={}{7}{0}};
+%   \path (bell-N) pic (rB) {rBranch={$\gamma$}{2}{0}};
+%   \path (bell-N) pic (lB) {lBranch={$\alpha$}{$\beta$}{0}{0}};
+  
+%   \path (0, 0) pic (z1) {cap={$\Sigma(z_1)$}{0}{0}};
+%   \path (4, 0) pic (z2) {cap={$\Sigma(z_2)$}{0}{0}};
+
+%   \path (7.25, 0) node[draw, single arrow] {\phantom{aaaa}};
+%   % right side
+%   \path (13, 4) pic[yscale=2.5] (bell) {cap={}{9}{0}};
+%   \path (bell-N) pic (lB) {lBranch={$\alpha$}{$\beta$}{0}{0}};
+%   \path (bell-N) pic (rB) {rBranch={$\gamma$}{3}{0}};
+
+%   \path (lB-SW) pic (z1) {cap={$\Sigma(z_1)$}{0}{1}};
+%   \path (rB-SE) pic (z2) {cap={$\Sigma(z_2)$}{0}{1}};
+% \end{tikzpicture}
+\end{document}

@@ -1,0 +1,22 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles}
+\usepackage{tikz-3dplot}
+\begin{document}
+\tdplotsetmaincoords{60}{-30}
+\begin{tikzpicture}[tdplot_main_coords, >=stealth, scale=2.5]
+\draw[->, thick] (0,0,0) coordinate (O)--(0,0,3) coordinate(A) node[left] {$\vec{z}_{n-1}$};
+\draw[->, thick] (O)--(3,0,0) coordinate(B) node[below] {$\vec{x}_{n-1}$};
+\draw[dashed] (O)--(0,0.53,0.47);
+\draw[dashed] (1.75,0,0)--(1.75,0,1);
+\draw[->, thick] (1.75,0,0)  coordinate(C) --(1.75,2,1.75)  coordinate(D) node[left] {$\vec{z}_{n}$};
+\draw[dashed] (1.75,0.97,0.85)--(3,0.97,0.85);
+\draw[->, thick] (1.75,0.97,0.85)--(3,0.97,1.5) node[below] {$\vec{x}_n$};
+\draw[<->, thick] (0,0.32,0.25)--(1.75,0.32,0.25) node[above, midway] {$d_n$};
+\draw[<->, thick] (2.75,0,0)--(2.75,0.97,0.85) node[right, midway] {$r_n$};
+\tdplotsetthetaplanecoords{90}
+\draw[red] pic[draw] {right angle=B--O--A};
+\tdplotsetthetaplanecoords{0}
+\draw[red] pic[draw] {right angle=O--C--D};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    % Normal Website
+    \begin{tikzpicture}
+        \fill[white] (0,0) rectangle (2,2);
+        \node at (1,1) {Normal Website};
+    \end{tikzpicture}%
+    % Broken Website
+    \begin{tikzpicture}
+        \fill[white] (4,0) rectangle (6,2);
+        \draw[red, thick] (4,0) rectangle (6,2);
+        \node at (5,1) {Broken Website};
+    \end{tikzpicture}%
+\end{figure}
+
+\end{document}

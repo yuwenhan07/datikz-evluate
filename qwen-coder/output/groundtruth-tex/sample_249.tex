@@ -1,0 +1,41 @@
+\documentclass{article}
+
+\usepackage{tabularray}
+\usepackage{tikz}
+
+\tikzset{
+  baseline={([yshift=-2pt]current bounding box)},
+  every edge/.style={draw, ->},
+  ccgeneral/.style={
+    fill=#1,
+    rounded corners=2pt,
+    thick,
+    inner sep=4,
+    outer sep=0,
+    minimum width=18mm,
+  },
+  cc/.style={ccgeneral=blue!20},
+  cyellow/.style={ccgeneral=yellow!20},
+  cgreen/.style={ccgeneral=green!20},
+  corange/.style={ccgeneral=orange!20},
+}
+
+
+\begin{document}
+\begin{tblr}{
+    colspec = {Q[l,m]Q[r,m]},
+    rowsep = 0pt,
+    colsep = 3pt,
+    row{1} = {l},
+  }
+  zz: & something \\
+  yy: & \begin{tikzpicture}
+          \path (0,0) node[cc] (A) {A} (2.3,0) node[cc] (B) {B} (4.6,0) node[cc] (C) {C};
+          \draw (A) edge (B) (B) edge (C);
+        \end{tikzpicture} \\
+  xx: & \begin{tikzpicture}
+          \path (2.3,0) node[cyellow] (D) {D} (4.6,0) node[cgreen] (E) {E};
+          \draw (D) edge (E);
+        \end{tikzpicture}
+\end{tblr}
+\end{document}

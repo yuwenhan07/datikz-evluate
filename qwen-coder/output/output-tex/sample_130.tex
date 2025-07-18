@@ -1,0 +1,26 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  decision/.style={diamond, draw, fill=blue!20, text width=4em, text badly centered, node distance=3cm, inner sep=0pt},
+  block/.style={rectangle, draw, fill=orange!20, text width=5em, text centered, rounded corners, minimum height=4em},
+  line/.style={draw, thick, ->, >=stealth}
+}
+
+\begin{document}
+\begin::tikzpicture}[node distance=2cm]
+
+\node (start) [decision] {Climate Change};
+\node (costs) [block, below of=start] {Costs};
+\node (benefits) [block, below of=costs] {Benefits};
+\node (impact) [block, left of=costs, xshift=-3cm] {Impact};
+\node (solutions) [block, right of=benefits, xshift=3cm] {Solutions};
+
+% Drawing lines
+\draw [line] (start) -- (costs);
+\draw [line] (start) -- (benefits);
+\draw [line] (costs) -- (impact);
+\draw [line] (benefits) -- (solutions);
+
+\end{tikzpicture}
+\end{document}

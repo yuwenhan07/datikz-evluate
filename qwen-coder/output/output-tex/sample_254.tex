@@ -1,0 +1,47 @@
+Creating a colorful prism with a gradient coloring, a different base color, and letter labeling in TikZ can be quite an interesting task! Below is a step-by-step guide to achieve this. We'll use `tikz` along with `shadings` for the gradient effect.
+
+Here's a complete example:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+
+% Define colors
+\definecolor{baseColor}{RGB}{255, 165, 0} % Orange
+\definecolor{topColor}{RGB}{255, 238, 0} % Gold
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+
+    % Define coordinates
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (4,0);
+    \coordinate (C) at (4,2);
+    \coordinate (D) at (0,2);
+
+    \coordinate (E) at (0,-1);
+    \coordinate (F) at (4,-1);
+    \coordinate (G) at (4,1);
+    \coordinate (H) at (0,1);
+
+    % Draw the bottom face with gradient shading
+    \fill[bottom color=baseColor, top color=baseColor] (A) -- (B) -- (C) -- (D) -- cycle;
+
+    % Draw the top face with gradient shading
+    \fill[bottom color=topColor, top color=topColor] (E) -- (F) -- (G) -- (H) -- cycle;
+
+    % Draw the sides
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+    \draw[thick] (E) -- (F) -- (G) -- (H) -- cycle;
+    \draw[thick] (A) -- (E);
+    \draw[thick] (B) -- (F);
+    \draw[thick] (C) -- (G);
+    \draw[thick] (D) -- (H);
+
+    % Add labels
+    \node at (2,-0.5) {Base};
+    \node at (2,2.5) {Top};
+
+    % Label the vertices
+    \node at (0,0) [label=left:A

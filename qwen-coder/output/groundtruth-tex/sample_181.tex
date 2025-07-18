@@ -1,0 +1,21 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tikz}
+
+\newcommand{\arrow}{\draw[->]}
+
+\begin{document}
+
+\begin{tikzpicture}
+                \node (v1) at (-1.5, 0) {$\overline{v}_1$};
+                \node (v2) at (0, 0) {$\overline{v}_2$};
+                \node (w) at (1.5, 0) {$\overline{w}$};
+                
+                \arrow (v1) edge [loop left] node {1} (v1);
+                \arrow (v2) -- node[above] {1} (v1);
+                \arrow (w) -- node[above] {2} (v2);
+            \end{tikzpicture}
+
+\end{document}

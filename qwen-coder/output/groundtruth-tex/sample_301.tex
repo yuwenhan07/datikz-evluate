@@ -1,0 +1,37 @@
+\documentclass[margin=3mm, varwidth]{standalone}
+%\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, 
+                bending, 
+                decorations, decorations.markings, 
+                hobby, 
+                intersections, 
+                knots, 
+                shapes, spath3}
+\newcommand{\KP}[2]{%
+\begin{tikzpicture}[baseline=#1,
+                    ]
+    #2
+\end{tikzpicture}%
+                    }
+\newcommand{\KPthirtyoneone}%
+{
+    \KP{1.4ex}{%
+\begin{knot}[flip crossing=2, consider self intersections = true,
+             clip width = 3, ignore endpoint intersections=false]
+ \draw[scale=0.6, line width=0.6pt]
+            (0,1) .. controls (0.5,0.8) .. (1,1);
+ \strand[scale=0.6, line width=0.6pt, looseness=1.4]
+            (0,0) to [out=0,in=0] (0.5,0.7) to [out=180,in=180] (1,0);
+\end{knot}
+        }
+}
+\begin{document}
+\[
+\alpha
+\Bigl\langle
+    \beta
+    \KPthirtyoneone
+\Bigr\rangle
+\]
+\end{document}

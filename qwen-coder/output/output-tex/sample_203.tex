@@ -1,0 +1,48 @@
+To create the described image using TikZ in LaTeX, we need to define the structure of the graphs and place the red and black squares accordingly. Below is a sample TikZ code that generates the described image:
+
+```latex
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Define the coordinates for the first graph
+    \def\xmin{-2}
+    \def\xmax{7}
+    \def\ymin{-1}
+    \def\ymax{7}
+    
+    % Draw the axes for the first graph
+    \draw[->] (\xmin,0) -- (\xmax,0) node[right] {$x$};
+    \draw[->] (0,\ymin) -- (0,\ymax) node[above] {$y$};
+    
+    % Plot the first graph
+    \foreach \x in {0,...,6} {
+        \pgfmathsetmacro{\y}{\x*2 + 1}
+        \ifnum\x=0
+            \node[circle, fill=black, inner sep=1pt] at (\x,\y) {};
+        \else
+            \node[circle, fill=white, inner sep=1pt] at (\x,\y) {};
+        \fi
+    }
+    
+    % Define the coordinates for the second graph
+    \def\xmin{9}
+    \def\xmax{16}
+    
+    % Draw the axes for the second graph
+    \draw[->] (\xmin,0) -- (\xmax,0) node[right] {$x$};
+    \draw[->] (0,\ymin) -- (0,\ymax) node[above] {$y$};
+    
+    % Plot the second graph
+    \foreach \x in {0,...,6} {
+        \pgfmathsetmacro{\y}{(\x+1)*2 + 1}
+        \ifnum\x=0
+            \node[circle, fill=black, inner sep=1pt] at (\x+\xmin,\y) {};
+        \else
+            \node[circle, fill=white, inner sep=1pt] at (\x+\xmin,\y) {};
+        \fi
+    }
+    
+    % Place red and black squares
+    \node[rectangle, fill=red, draw, minimum

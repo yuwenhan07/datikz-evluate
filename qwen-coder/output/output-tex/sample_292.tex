@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+
+% Axes
+\draw[->] (0,0) -- (10,0) node[right] {Wavelength (nm)};
+\draw[->] (0,0) -- (0,6) node[above] {Reflectance};
+
+% Data lines
+\draw[blue, thick] (1,1) -- (3,4) -- (5,3) -- (7,5);
+\draw[gray, thick] (2,2) -- (4,5) -- (6,4) -- (8,6);
+
+% Leaves
+\filldraw[green, fill opacity=0.5] (2.5,2.5) circle (0.1);
+\filldraw[green, fill opacity=0.5] (4.5,3.5) circle (0.1);
+\filldraw[green, fill opacity=0.5] (6.5,4.5) circle (0.1);
+\filldraw[green, fill opacity=0.5] (8.5,5.5) circle (0.1);
+
+% Labels for leaves
+\node[below left] at (2.5,2.5) {Leaf};
+\node[below left] at (4.5,3.5) {Leaf};
+\node[below left] at (6.5,4.5) {Leaf};
+\node[below left] at (8.5,5.5) {Leaf};
+
+\end{tikzpicture}
+
+\end{document}

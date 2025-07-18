@@ -1,0 +1,22 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, shapes.arrows}
+
+\begin{document}
+
+\tikzset{
+    redsquare/.style={draw=red, fill=white, rectangle, minimum size=5mm},
+    tree/.style={level distance=2cm, sibling distance=1cm, level 1/.style={sibling distance=3cm}}
+}
+
+\begin{tikzpicture}[tree]
+    \node (root) [redsquare] {}
+        child {node (child1) [redsquare] {}}
+        child {node (child2) [redsquare] {}}
+        child {node (child3) [redsquare] {}
+            child {node (grandchild1) [redsquare] {}}
+            child {node (grandchild2) [redsquare] {}}
+        }
+        child {node (child4) [redsquare] {}};
+\end{tikzpicture}
+
+\end{document}

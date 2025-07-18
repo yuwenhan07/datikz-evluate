@@ -1,0 +1,30 @@
+Certainly! Below is an example of a double-circle diagram (also known as a concentric circle diagram) created using TikZ in LaTeX. This diagram represents a network of interconnected systems or processes, emphasizing the relationships and dependencies between them.
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        % Outer circle
+        \draw[thick] (0,0) circle (2cm);
+        
+        % Inner circle
+        \draw[thick] (0,0) circle (1cm);
+        
+        % Nodes on outer circle
+        \node at (2,0) [circle, draw, fill=blue!30, inner sep=5pt] {1};
+        \node at (1.414, 1.414) [circle, draw, fill=red!30, inner sep=5pt] {2};
+        \node at (-1.414, 1.414) [circle, draw, fill=green!30, inner sep=5pt] {3};
+        \node at (-2,0) [circle, draw, fill=yellow!30, inner sep=5pt] {4};
+        \node at (-1.414, -1.414) [circle, draw, fill=purple!30, inner sep=5pt] {5};
+        \node at (1.414, -1.414) [circle, draw, fill=orange!30, inner sep=5pt] {6};
+        
+        % Nodes on inner circle
+        \node at (0.707, 0.707) [circle, draw, fill=gray!30, inner sep=5pt] {A};
+        \node at (-0.707, 0.707) [circle, draw, fill=gray!30, inner sep=5pt] {B};
+        \node at (-0.707, -0.707) [circle, draw, fill=gray!30, inner sep=5pt] {C};
+        \node at (0.707, -0.707) [circle, draw, fill=gray!3

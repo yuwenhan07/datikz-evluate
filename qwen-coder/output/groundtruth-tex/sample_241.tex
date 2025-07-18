@@ -1,0 +1,21 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+
+\tikzset{fileshape/.style 2 args={chamfered rectangle, 
+    draw, ultra thick,
+    chamfered rectangle corners=north east, 
+    minimum height=12mm, minimum width=10mm,
+    #1, label={[text=#1]270:{\sffamily #2}}
+}}
+
+\begin{document}
+
+\begin{tikzpicture}
+\node[fileshape={gray}{code}]at (0,0) (A){$<>$};
+\node[fileshape={cyan}{file.psd}]at (2,0) (B){};
+\draw[thick, gray] (A)--(B);
+\end{tikzpicture}
+
+\end{document}

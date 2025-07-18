@@ -1,0 +1,36 @@
+To create a TikZ LaTeX diagram that represents the composition of transformations mapping \( v_3^B \) to \( v_3^A \) through two intermediate bases \( B \), \( C \), and \( A \), we need to visualize the steps involved in this process. Each step will involve an integral over the principal series with a kernel proportional to a 6j symbol.
+
+Here is a possible TikZ code to represent this scenario:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style={rectangle, draw=black, fill=white!20, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style={draw, thick, -Stealth, shorten >=1pt},
+    decision/.style={diamond, draw=black, fill=white!20, text width=5em, text badly centered, node distance=3cm, inner sep=0pt},
+    cloud/.style={cloud, draw=black, fill=white!20, text width=7em, text badly centered, aspect=2},
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+\node (v3_B) [block] {\( v_3^B \)};
+\node (v3_C) [block, below of=v3_B] {\( v_3^C \)};
+\node (v3_A) [block, below of=v3_C] {\( v_3^A \)};
+
+\node (integral1) [decision, left of=v3_C, xshift=-3cm] {Integral};
+\node (integral2) [decision, right of=v3_C, xshift=3cm] {Integral};
+
+\node (kernel1) [cloud, above of=integral1, yshift=2cm] {Kernel \\ Proportional to 6j Symbol};
+\node (kernel2) [cloud, below of=integral2, yshift=-2cm] {Kernel \\ Proportional to 6j Symbol};
+
+% Draw lines
+\draw [line] (v3_B) -- (v3_C);
+\draw [line] (v3_C) -- (v3_A);
+
+\draw [line] (v3_C) |- (integral1);
+\draw [

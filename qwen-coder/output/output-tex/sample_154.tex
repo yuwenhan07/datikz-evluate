@@ -1,0 +1,35 @@
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\tdplotsetmaincoords{70}{110} % Adjust view angle
+
+\begin{tikzpicture}[scale=1.5]
+    \foreach \i in {1,...,4} {
+        \node[circle, fill=blue!20, inner sep=2pt] (U\i) at (\i*36:3) {};
+    }
+    \node[sphere, fill=red!20, inner sep=4pt] (SU) at (0,0,0) {};
+
+    \draw[->, thick, -Stealth] (U1) -- node[midway, above left] {$H$} (U2);
+    \draw[->, thick, -Stealth] (U2) -- node[midway, above right] {$H$} (U3);
+    \draw[->, thick, -Stealth] (U3) -- node[midway, below right] {$H$} (U4);
+    \draw[->, thick, -Stealth] (U4) -- node[midway, below left] {$H$} (U1);
+
+    \draw[dashed, thick] (SU) -- (U1);
+    \draw[dashed, thick] (SU) -- (U2);
+    \draw[dashed, thick] (SU) -- (U3);
+    \draw[dashed, thick] (SU) -- (U4);
+
+    \foreach \i in {1,...,4} {
+        \foreach \j in {\i,...,4} {
+            \ifnum\i<\j
+                \draw[->, thick, -Stealth] ($(U\i)+(0,-1)$) -- node[midway, above] {$H$} ($(U\j)+(0,1)$);
+            \fi
+        }
+    }
+
+\end{tikzpicture}
+
+\end{document}

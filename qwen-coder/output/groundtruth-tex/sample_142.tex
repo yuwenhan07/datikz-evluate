@@ -1,0 +1,31 @@
+\documentclass[conference,compsoc,draftclsnofoot,onecolumn,11pt]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance={25mm}, thick, main/.style = {draw, circle, minimum size=15mm}]
+        \node[main] (1) {$C_i C_i$}; 
+        \node[main] (2)[right of=1] {$C_i L_j$}; 
+        \node[main] (3)[right of=2] {$L_j X_a$}; 
+        \node[main] (4)[right of=3] {$X_a L_{j'}$}; 
+        \node[main] (5)[right of=4] {$L_{j'} C_{i'}$}; 
+        \node[main] (6)[right of=5] {$C_{i'} C_{i'}$}; 
+        \draw[dotted,->](1) to [out=150,in=210,looseness=5] node[draw=none,fill=none,pos=0.19,above] {\(C_i\)} (1) ;
+        \draw[->] (1) -> node[draw=none,fill=none,midway,above] {\(C_i\)} (2); 
+        \draw[dashed,->] (2) -- node[draw=none,fill=none,midway,above] {\(L_j\)} (3); 
+        \draw[->] (3) -- node[draw=none,fill=none,midway,above] {\(X_a\)} (4) ; 
+        \draw[dashed,->] (4) -- node[draw=none,fill=none,midway,above] {\(L_{j'}\)} (5); 
+        \draw[->] (5) -- node[draw=none,fill=none,midway,above] {\(C_{i'}\)} (6); 
+        \draw[dotted, ->](6) to [out=330,in=30,looseness=5] node[draw=none,fill=none,pos=0.81,above] {\(C_{i'}\)} (6) ; 
+        \node[main] (7)[below of=1] {$C_{i''} C_{i''}$}; 
+        \node[main] (8)[right of=7] {$C_{i''} L_{j''}$}; 
+        \node[main] (9)[right of=8] {$L_{j''} X_a$}; 
+        \draw[dotted,->](7) to [out=150,in=210,looseness=5] node[draw=none,fill=none,pos=0.19,above] {\(C_{i''}\)} (7) ;
+        \draw[dashed,->] (7) -- node[draw=none,fill=none,midway,above] {\(C_{i''}\)} (8); 
+        \draw[->] (8) -- node[draw=none,fill=none,midway,above] {\(L_{j''}\)} (9); 
+        \draw[dashed,->] (9) to [out=330,in=30,looseness=5] node[draw=none,fill=none,pos=0.81,above] {\(X_a\)} (9) ;
+    \end{tikzpicture}
+
+\end{document}

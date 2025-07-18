@@ -1,0 +1,41 @@
+To generate a TikZ LaTeX diagram that accurately represents the given description, we need to create a visual representation of a graph \( G \) with specific properties and an intricate arrangement of shapes. Here's a step-by-step guide to creating such a diagram:
+
+1. **Understand the Graph Properties**:
+   - \( TS_2(G) = D_1,3,2 \): This means there is one size-2 stable set of size 1 (a single vertex), one size-2 stable set of size 3, and two size-2 stable sets of size 2.
+
+2. **Design the Layout**:
+   - We will use circles and triangles to represent nodes and edges.
+   - The layout should form a maze-like structure with the specified stable sets.
+
+3. **Create the TikZ Code**:
+   - Use `\node` for vertices and `\draw` for edges.
+   - Position nodes using coordinates to create the maze-like structure.
+
+Here is the TikZ LaTeX code to achieve this:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, positioning}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes representing size-2 stable sets
+    \node[circle, draw, fill=black] (v1) at (0,0) {};
+    \node[triangle, draw, fill=white] (v2) at (2,-1) {};
+    \node[triangle, draw, fill=white] (v3) at (4,-1) {};
+    \node[triangle, draw, fill=white] (v4) at (6,-1) {};
+    \node[circle, draw, fill=black] (v5) at (8,0) {};
+    
+    % Edges between nodes
+    \draw (v1) -- (v2);
+    \draw (v2) -- (v3);
+    \draw (v3) -- (v4);
+    \draw (v4) -- (v5);
+    \draw (v5) -- (v1);
+    
+    % Additional edges to form the maze-like structure
+    \draw (v2) -- (v5);
+    \draw (v3) -- (v1);
+    \draw (v4) -- (v2);
+    
+    % Nodes for size-2 stable sets of size 2

@@ -1,0 +1,36 @@
+Certainly! Below is a TikZ LaTeX code to create a figure that visually represents the element \( A = M_1 + M_4 - X \) as described. The code includes nodes labeled with the given values and conditions.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes for the elements
+    \node (M1) {\( M_1 \)};
+    \node (M4) [right=of M1] {\( M_4 \)};
+    \node (X) [below=of M1] {\( X \)};
+    
+    % Node for A
+    \node (A) [above right=of M4, yshift=1cm] {\( A \)};
+    
+    % Connections between nodes
+    \draw[->] (M1) -- node[midway, above] {+} (M4);
+    \draw[->] (M4) -- node[midway, below] {-} (X);
+    \draw[->] (A) -- (M1);
+    \draw[->] (A) -- (M4);
+    \draw[->] (A) -- (X);
+    
+    % Labels for A at specific points
+    \node at ([yshift=1cm]M1) {\( A(3) = A(6) = -x_2 \)};
+    \node at ([yshift=1cm]M4) {};
+    \node at ([yshift=1cm]X) {};
+    
+    % Additional labels for specific points
+    \node at ([xshift=1cm]M1) {\( A(1) \)};
+    \node at ([xshift=1cm]M4) {\( A(2) \)};
+    \node at ([xshift=1cm]X) {\( A(4) \)};
+    \node at ([xshift=1cm]A) {\( A(5) \)};
+    
+    % Conditions for specific points
+    \node at ([yshift=0.5cm]M1) {\(_{\{3,6\}}(1) = _{\{3,6\}}(2) = _{\{3,6\}}(4) = _{\{3,

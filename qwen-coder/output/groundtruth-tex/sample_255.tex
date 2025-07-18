@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{latexsym,exscale,amssymb,amsmath}
+\usepackage{amssymb,bbold}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}    
+%Three-Spider
+
+
+
+\draw[orange, thick] (0,0) -- ({1*cos(0)}, {1*sin(0)});
+\filldraw[orange] (1,0) circle (2pt);
+\draw[gray, thick] ({1*cos(0)}, {1*sin(0)}) -- ({2*cos(0)}, {2*sin(0)});
+\draw[gray, thick] (0,0) -- ({2*cos(120)}, {2*sin(120)});
+\draw[gray, thick] ({1.5*cos(240)}, {1.5*sin(240)}) -- ({2*cos(240)}, {2*sin(240)});
+\filldraw[black] ({2*cos(0)}, {2*sin(0)}) circle (0pt) node[right](13_02){13/02};
+\filldraw[black] ({2*cos(120)}, {2*sin(120)}) circle (0pt) node[above](12_03){12/03};
+\filldraw[black] ({2*cos(240)}, {2*sin(240)}) circle (0pt) node[below](23_01){23/01};
+
+\draw[blue, thick] (0,0) -- ({0.5*cos(120)}, {0.5*sin(120)});
+\filldraw[blue] ({0.5*cos(120)}, {0.5*sin(120)}) circle (2pt);
+
+\draw[green, thick] (0,0) -- ({1.5*cos(240)}, {1.5*sin(240)});
+\filldraw[green] ({1.5*cos(240)}, {1.5*sin(240)}) circle (2pt);
+
+%tree 13/02
+\draw[orange, thin] (5,-0.5) -- (4.5, -1);
+\draw[black, thin] (4.5,-1) -- (4, -1.5);
+\draw[black, thin] (4.5,-1) -- (5, -1.5);
+\draw[black, thin] (5,-0.5) -- (6, -1.5);
+\draw[black, thin] (5,-0.5) -- (5,-0.25);
+
+\filldraw[black] (5, -0.25) circle (0pt) node[above](){0};
+
+\filldraw[black] (5, -1.5) circle (0pt) node[below](){3};
+\filldraw[black] (4, -1.5) circle (0pt) node[below](){1};
+\filldraw[black] (6, -1.5) circle (0pt) node[below](){2};
+
+
+
+%arrow
+
+\draw[orange, dashed, <-> ] plot[smooth] coordinates {(1.5,-0.25) (2,-0.5) (3,-0.7) (4.1, -0.72)};
+%startree 
+\filldraw[black] (0.5,1) circle (0pt) node[below](){1};
+\filldraw[black] (1.5,1) circle (0pt) node[below](){2};
+\filldraw[black] (2.5,1) circle (0pt) node[below](){3};
+\filldraw[black] (1.5,2.25) circle (0pt) node[above](){0};
+
+\draw[black, thin] (0.5,1) -- (1.5,2);
+\draw[black, thin] (1.5,1) -- (1.5,2);
+\draw[black, thin] (2.5,1) -- (1.5,2);
+\draw[black, thin] (1.5,2) -- (1.5,2.25);
+
+
+\filldraw[gray] (0,0) circle (2pt);
+\draw[gray,dashed, <->] plot[smooth] coordinates {(0.1,0.1) (0.4,0.2) (0.7,0.3) (0.8, 0.4)};
+
+%tree 12/03
+
+\filldraw[black] (-2, 0.5) circle(0pt) node[below](){2};
+\filldraw[black] (-3.5,0.5) circle(0pt) node[below](){1};
+\filldraw[black] (-4, 0.5) circle(0pt) node[below](){3};
+\filldraw[black] (-3, 1.75) circle (0pt) node[above](){0};
+
+\draw[black, thin] (-2,0.5 ) -- (-2.75,1.25);
+\draw[blue, thin] (-2.75,1.25) -- (-3,1.5);
+\draw[black,thin] (-2.75,1.25) -- (-3.5,0.5);
+\draw[black,thin] (-3,1.5)--(-4,0.5);
+\draw[black,thin] (-3,1.5)--(-3,1.75);
+
+%arrow
+\draw[blue,dashed, <->] plot[smooth] coordinates {(-2,0.8) (-1.2, 0.75)({0.5*cos(120)-0.2}, {0.5*sin(120)})};
+
+%tree 23/01 
+
+\draw[black,thin] (0,-2)--(0.25,-1.75);
+\draw[black,thin] (0.25,-1.75) --(0.5,-2);
+
+\draw[green,thin] (0.25,-1.75) --(1,-1);
+
+\draw[black,thin] (2,-2) --(1,-1);
+\draw[black,thin] (1,-0.75) --(1,-1);
+
+
+\filldraw[black] (0,-2) circle(0pt) node[below](){2};
+\filldraw[black] (2,-2) circle(0pt) node[below](){1};
+\filldraw[black] (0.5,-2) circle(0pt) node[below](){3};
+\filldraw[black] (1,-0.75) circle (0pt) node[above](){0};
+
+%arrow
+\draw[green, dashed, <->] plot[smooth] coordinates {({1*cos(240)+0.2}, {1*sin(240)}) (0.2, -1.) (0.4, -1.2)};
+
+
+
+%label three spider
+\filldraw (-3,-1.5) circle(0pt) node[minimum size=3cm] {$\mathcal{S}_3$};
+\end{tikzpicture}
+
+\end{document}

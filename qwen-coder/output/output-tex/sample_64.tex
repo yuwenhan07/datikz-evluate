@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define coordinates
+    \coordinate (chord_center) at (0,0);
+    \coordinate (anchor_point) at (3,1);
+
+    % Draw the semicircle
+    \draw[thick, blue] (chord_center) circle[radius=1cm] arc[start angle=0, end angle=180];
+
+    % Draw lines from the chord center to the anchor point
+    \draw[-stealth, red] (chord_center) -- (anchor_point);
+    \draw[-stealth, green] (anchor_point) -- (chord_center);
+
+    % Label the points
+    \node[above left] at (chord_center) {Chord Center};
+    \node[above right] at (anchor_point) {Anchor Point};
+
+\end{tikzpicture}
+\end{document}

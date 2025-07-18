@@ -1,0 +1,35 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+
+\tikzset{
+    block/.style = {rectangle, draw, fill=blue!20, 
+                    text width=5em, text centered, rounded corners,
+                    minimum height=4em},
+    line/.style = {draw, -Stealth', thick},
+    decision/.style={diamond, draw, fill=green!20, 
+                      text width=5em, text badly centered, node distance=3cm,
+                      inner sep=0pt},
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (init) [block] {Initialize};
+    \node (setup) [block, below=of init] {Setup Problem};
+    \node (computeJacobian) [block, below=of setup] {Compute Jacobian};
+    \node (solveLinearSystem) [block, below=of computeJacobian] {Solve Linear System};
+    \node (updateSolution) [block, below=of solveLinearSystem] {Update Solution};
+    \node (checkConvergence) [decision, below=of updateSolution, yshift=-1cm] {Check Convergence?};
+    \node (output) [block, below=of checkConvergence, yshift=-1cm] {Output Result};
+
+    % Edges
+    \path [line] (init) -- (setup);
+    \path [line] (setup) -- (computeJacobian);
+    \path [line] (computeJacobian) -- (solveLinearSystem);
+    \path [line] (solveLinearSystem) -- (updateSolution);
+    \path [line] (updateSolution) -- (checkConvergence);
+    \path [line] (checkConvergence) -- node[anchor=east] {Yes} (output);
+    \path [line] (checkConvergence) -- node[anchor=south] {No} (solveLinearSystem);
+
+\end{tikzpicture}
+\end{document}

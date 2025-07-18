@@ -1,0 +1,76 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amscd,amssymb}
+\usepackage{color, xcolor}
+\usepackage{tikz, wrapfig,array}
+\usetikzlibrary{calc,patterns,
+	decorations.pathmorphing,cd,
+	decorations.markings, shapes.geometric, graphs, graphs.standard, quotes,shapes,chains,scopes,positioning,arrows}
+
+\begin{document}
+
+\begin{tikzpicture}[main_node/.style={circle,draw,minimum size=1em,inner sep=3pt]}]
+ 		
+ 		\begin{scope}[shift={(-5,0)}]
+ 			\node[main_node] (0) at (-4.2285714285714291, 2.785714285714286) {$x$};
+ 			\node[main_node] (1) at (-2.828571428571429, -0.9) {$z$};
+ 			\node[main_node] (2) at (-4.857142857142858, -0.8571428571428577) {$y$};
+ 			\node[main_node] (3) at (-2.4, 2.4) {1};
+ 			\node[main_node] (4) at (-1.800000000000001, 0.2428571428571434) {3};
+ 			\node[main_node] (5) at (-1, 1.4000000000000004) {2};
+ 			
+ 			\path[draw, thick]
+ 			(2) edge node {} (0) 
+ 			(0) edge node {} (1) 
+ 			(2) edge node {} (1) 
+ 			(0) edge node {} (3) 
+ 			(3) edge node {} (5) 
+ 			(5) edge node {} (4) 
+ 			(4) edge node {} (1) 
+ 			;
+ 			\node  at (-4,-3) {$A$};
+ 		\end{scope}
+ 		
+ 		\begin{scope}
+ 			\node[main_node] (0) at (-0.2285714285714291, 4.785714285714286) {$x$};
+ 			\node[main_node] (1) at (-0.5857142857142854, 2.5142857142857142) {$a$};
+ 			\node[main_node] (2) at (1.042857142857143, 1.8999999999999997) {$b$};
+ 			\node[main_node] (3) at (3.828571428571429, -1) {$z$};
+ 			\node[main_node] (4) at (-1.4857142857142858, 0.1428571428571428) {$d$};
+ 			\node[main_node] (5) at (0.5, 0.11428571428571477) {$c$};
+ 			\node[main_node] (6) at (-2.114285714285714, 1.9142857142857146) {$e$};
+ 			\node[main_node] (7) at (-4.857142857142858, -0.8571428571428577) {$y$};
+ 			\node[main_node] (8) at (2.2857142857142856, 4.642857142857142) {1};
+ 			\node[main_node] (9) at (4.200000000000001, 0.8428571428571434) {3};
+ 			\node[main_node] (10) at (3.885714285714286, 3.4000000000000004) {2};
+ 			
+ 			\path[draw, thick]
+ 			(7) edge node {} (0) 
+ 			(1) edge node {} (7) 
+ 			(0) edge node {} (6) 
+ 			(0) edge node {} (5) 
+ 			(0) edge node {} (2) 
+ 			(0) edge node {} (3) 
+ 			(1) edge node {} (2) 
+ 			(2) edge node {} (5) 
+ 			(5) edge node {} (4) 
+ 			(4) edge node {} (6) 
+ 			(6) edge node {} (1) 
+ 			(7) edge node {} (2) 
+ 			(7) edge node {} (4) 
+ 			(7) edge node {} (3) 
+ 			(1) edge node {} (3) 
+ 			(3) edge node {} (5) 
+ 			(0) edge node {} (8) 
+ 			(8) edge node {} (10) 
+ 			(10) edge node {} (9) 
+ 			(9) edge node {} (3) 
+ 			;
+ 			\node at (0,-3) {$B=C$};
+ 		\end{scope}
+ 		
+ 	\end{tikzpicture}
+
+\end{document}

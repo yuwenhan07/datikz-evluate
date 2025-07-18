@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define the domain for the plot
+    \def\xmin{-5}
+    \def\xmax{5}
+    \def\ymin{-3}
+    \def\ymax{3}
+
+    % Draw the axes
+    \draw[->] (\xmin,0) -- (\xmax,0) node[right] {$x$};
+    \draw[->] (0,\ymin) -- (0,\ymax) node[above] {$y$};
+
+    % Set the style for the curves
+    \colorlet{bluecurve}{blue!70!black}
+    \colorlet{redcurve}{red!70!black}
+
+    % Plot the blue curve on the left side
+    \draw[bluecurve, thick] plot[domain=\xmin:0,samples=100] (\x,{sin(\x r)}); % Example function
+
+    % Plot the red curve on the right side
+    \draw[redcurve, thick] plot[domain=0:\xmax,samples=100] (\x,{cos(\x r)}); % Example function
+
+    % Add breaks or intersections between the curves
+    \fill[bluecurve] (0,-1) circle[radius=0.05]; % Intersection point example
+    \fill[redcurve] (0,1) circle[radius=0.05];  % Intersection point example
+
+    % Add labels or annotations if needed
+    \node at (0,-1.5) [below] {Intersection};
+    \node at (0,1.5) [above] {Intersection};
+
+\end{tikzpicture}
+\end{document}

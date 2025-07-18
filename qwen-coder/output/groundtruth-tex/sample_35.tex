@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{math}
+\usepackage{ifthen}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%
+% File name: nautilus.tex
+% Description: 
+% A geometric representation of a nautilus is shown.
+% 
+% Date of creation: January, 03rd, 2021.
+% Date of last modification: October, 9th, 2022.
+% Author: Efraín Soto Apolinar.
+% https://www.aprendematematicas.org.mx/author/efrain-soto-apolinar/instructing-courses/
+% Source: To appear in the English version of the 
+% Glosario Ilustrado de Matem\'aticas Escolares.
+% https://tinyurl.com/5udm2ufy
+%
+% Terms of use:
+% According to TikZ.net
+% https://creativecommons.org/licenses/by-nc-sa/4.0/
+% Your commitment to the terms of use is greatly appreciated.
+%
+\begin{document}
+%
+\begin{center}
+\tdplotsetmaincoords{20}{120}
+%
+\begin{tikzpicture}[tdplot_main_coords]
+	% parametric equations of the surface
+	\tikzmath{function equis(\u,\v) {return 1.2^(\v) * (sin(\u r) * sin(\u r)* cos(\v r));};}
+	\tikzmath{function ye(\u,\v) {return 1.2^(\v) * (sin(\u r) * sin(\u r) * sin(\v r));};}
+	\tikzmath{function zeta(\u,\v) {return 1.2^(\v) * (sin(\u r) * cos(\u r));};}
+	% values for the domain of the graph
+	\pgfmathsetmacro{\tcero}{0.0} 
+	\pgfmathsetmacro{\ti}{-2.0*pi}
+	\pgfmathsetmacro{\tf}{2.0*pi}
+	\pgfmathsetmacro{\n}{100}
+	\pgfmathsetmacro{\step}{(\tf-\ti)/250}
+	\pgfmathsetmacro{\ts}{\ti+\step}
+	\pgfmathsetmacro{\r}{1.0}
+	% The graph of the nautilus
+	\foreach \u in {0,\step,...,\tf}{
+		\draw[cyan,opacity=0.25] plot[domain=\ti:\tf,smooth,variable=\v,samples=\n] ({\r*equis(\u,\v)},{\r*ye(\u,\v)},{\r*zeta(\u,\v)});
+	}
+	\foreach \v in {0,\step,...,\tf}{
+		\draw[cyan,opacity=0.25] plot[domain=\ti:\tf,smooth,variable=\u,samples=\n] ({\r*equis(\u,\v)},{\r*ye(\u,\v)},{\r*zeta(\u,\v)});
+	}
+\end{tikzpicture}
+\end{center}
+%
+\end{document}

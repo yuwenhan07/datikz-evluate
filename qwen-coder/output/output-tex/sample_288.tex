@@ -1,0 +1,32 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, positioning}
+
+\tikzset{
+    storage/.style={rectangle, draw=black, thick, fill=#1},
+    inventory/.style={circle, draw=black, thick, fill=#2, inner sep=5pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=3cm]
+
+    % Storage Areas
+    \node[storage=white] (S) {S};
+    \node[storage=blue, right=of S] (GroupInventory) {Group Inventory};
+    \node[storage=green, below=of S] (HotPop) {Hot Pop};
+    \node[storage=red, left=of S] (T1) {T};
+    \node[storage=purple, right=of T1] (TypeInventory) {Type Inventory};
+
+    % Inventory Types
+    \node[inventory=black, above=of S.north west] (SI) {S, I};
+    \node[inventory=black, above=of S.north east] (SH) {S, H};
+    \node[inventory=black, above=of GroupInventory.north west] (TP) {T, P};
+    \node[inventory=black, above=of GroupInventory.north east] (TT) {T, T};
+    \node[inventory=black, above=of HotPop.north west] (TI) {T, I};
+    \node[inventory=black, above=of HotPop.north east] (TH) {T, H};
+    \node[inventory=black, above=of T1.north west] (HI) {H, I};
+    \node[inventory=black, above=of T1.north east] (HH) {H, H};
+    \node[inventory=black, above=of TypeInventory.north west] (PI) {P, I};
+    \node[inventory=black, above=of TypeInventory.north east] (PH) {P, H};
+
+\end{tikzpicture}
+\end{document}

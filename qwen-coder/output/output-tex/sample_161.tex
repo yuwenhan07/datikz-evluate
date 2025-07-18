@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the white background
+    \fill[white] (0,0) rectangle (6,4);
+
+    % Draw the white triangle
+    \draw[thick, black] (2,2) -- (4,2) -- (3,4) -- cycle;
+
+    % Label the vertices of the triangle
+    \node at (2,2) [below left] {$A$};
+    \node at (4,2) [below right] {$B$};
+    \node at (3,4) [above] {$C$};
+
+    % Draw the altitude from C to AB
+    \draw[dashed, thick, red] (3,4) -- node[midway, above] {h} (3,2);
+    
+    % Label the sides of the triangle
+    \draw[dashed, thick, blue] (2,2) -- node[left] {a} (2,4);
+    \draw[dashed, thick, green] (4,2) -- node[right] {b} (4,4);
+    \draw[dashed, thick, orange] (2,2) -- node[below] {c} (4,2);
+
+    % Equations around the triangle
+    \node at (1,3.5) [left] {$a^2 + b^2 = c^2$}; % Pythagorean theorem
+    \node at (5,3.5) [right] {$h = \frac{ab}{c}$}; % Altitude in terms of sides
+
+    % Add some labels for clarity
+    \node at (3,1.5) [below] {Right-angled Triangle};
+\end{tikzpicture}
+
+\end{document}

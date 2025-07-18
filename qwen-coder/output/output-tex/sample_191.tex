@@ -1,0 +1,32 @@
+Certainly! Below is an example of how you can create a TikZ diagram to represent a cycle decomposition with two cycles \(c_1\) and \(c_2\), where \(c_1\) is in red and \(c_2\) is in blue. The cycle \(c_1\) is represented by \(v_0 \rightarrow w_0 \rightarrow v_1 \rightarrow w_6 \rightarrow v_5\).
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define nodes
+    \node (v0) at (0, 0) [circle, draw] {$v_0$};
+    \node (w0) at (1.5, 1.5) [circle, draw] {$w_0$};
+    \node (v1) at (3, 0) [circle, draw] {$v_1$};
+    \node (w6) at (4.5, 1.5) [circle, draw] {$w_6$};
+    \node (v5) at (6, 0) [circle, draw] {$v_5$};
+
+    % Draw edges for cycle c1 in red
+    \draw[red, thick, ->] (v0) -- (w0);
+    \draw[red, thick, ->] (w0) -- (v1);
+    \draw[red, thick, ->] (v1) -- (w6);
+    \draw[red, thick, ->] (w6) -- (v5);
+    \draw[red, thick, ->] (v5) -- (v0);
+
+    % Draw edges for cycle c2 in blue
+    \draw[blue, thick, ->] (v0) -- (v1);
+    \draw[blue, thick, ->] (v1) -- (v5);
+    \draw[blue, thick, ->] (v5) -- (w6);
+    \draw[blue, thick, ->] (w6) -- (w0);
+    \draw[blue, thick, ->] (w0) -- (v0);
+
+    % Add labels if needed
+    % \node at (2.25, -0.75) [below] {Cycle $c_1$};

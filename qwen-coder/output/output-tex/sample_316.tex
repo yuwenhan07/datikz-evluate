@@ -1,0 +1,46 @@
+Certainly! Below is a TikZ LaTeX code snippet that demonstrates the RV (Reversal) move for rotating a vertex around one of its incident edges. This code includes both the forward and reverse transformations as described.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\tikzset{
+    vertex/.style={circle, fill=black, inner sep=2pt},
+    edge/.style={->, thick},
+    state/.style={draw, rectangle, rounded corners, minimum width=4cm, minimum height=1cm, align=center},
+    arrow/.style={thick, ->, >=stealth'}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+
+% State 1: Initial state
+\node[state] (state1) at (0,0) {State 1};
+\node[vertex] (v1) at (-2,-2) {};
+\node[vertex] (v2) at (2,-2) {};
+\node[vertex] (v3) at (0,2) {};
+\draw[edge] (v1) -- (v2);
+\draw[edge] (v2) -- (v3);
+\draw[edge] (v3) -- (v1);
+
+% State 2: After rotation
+\node[state] (state2) at (6,0) {State 2};
+\node[vertex] (v4) at (-2,-2) {};
+\node[vertex] (v5) at (2,-2) {};
+\node[vertex] (v6) at (0,2) {};
+\draw[edge] (v4) -- (v6);
+\draw[edge] (v6) -- (v5);
+\draw[edge] (v5) -- (v4);
+
+% Arrow from State 1 to State 2
+\draw[arrow] ([yshift=-0.5cm]state1.south) -- node[midway, below] {RV} ([yshift=-0.5cm]state2.south);
+
+% Reverse transformation
+
+% State 3: Reverse state
+\node[state] (state3) at (0,-5) {State 3};
+\node[vertex] (v7) at (-2,-7) {};
+\node[vertex] (v8) at (2,-7) {};
+\node[vertex] (v9) at (0,-3) {};
+\draw[edge] (v7

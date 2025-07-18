@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tikz}
+
+% Define the size of the board and spacing between dots
+\newcommand{\boardwidth}{10cm}
+\newcommand{\boardheight}{15cm}
+\newcommand{\dotspacing}{1cm} % Adjust this value to change the dot spacing
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % Draw the background rectangle
+        \fill[white] (0, 0) rectangle (\boardwidth, \boardheight);
+
+        % Draw the dots
+        \foreach \x in {0, \dotspacing,...,\boardwidth-\dotspacing}{
+            \foreach \y in {0, \dotspacing,...,\boardheight-\dotspacing}{
+                \fill (\x, \y) circle (1pt);
+            }
+        }
+    \end{tikzpicture}
+    \caption{Evenly-Spaced Dots Pattern}
+    \label{fig:dots-pattern}
+\end{figure}
+
+\end{document}

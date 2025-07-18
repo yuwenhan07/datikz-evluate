@@ -1,0 +1,37 @@
+To create a minimal poset with the given multiset of maximal chain cardinalities using TikZ in LaTeX, we can construct a series of chains where each chain has a length corresponding to one of the numbers in the set \{3, 4, 5, 6, 7, 8, 9, 10\}. We will then combine these chains into an ordinal sum, ensuring that each color represents a different poset.
+
+Here's the TikZ code to generate this poset:
+
+```latex
+\documentclass[tikz,border=1cm]{standalone}
+\usetikzlibrary{positioning}
+
+\tikzset{
+    node style/.style={circle, draw, fill=blue!20, minimum size=10pt},
+    label style/.style={font=\footnotesize}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=1cm]
+
+% First poset (length 3)
+\node[node style] (a) at (0,0) [label=label style:1];
+\node[node style] (b) at (1,0) [label=label style:2];
+\node[node style] (c) at (2,0) [label=label style:3];
+
+% Second poset (length 4)
+\node[node style] (d) at (3,-1) [label=label style:4];
+\node[node style] (e) at (4,-1) [label=label style:5];
+\node[node style] (f) at (5,-1) [label=label style:6];
+\node[node style] (g) at (6,-1) [label=label style:7];
+
+% Third poset (length 5)
+\node[node style] (h) at (7,-2) [label=label style:8];
+\node[node style] (i) at (8,-2) [label=label style:9];
+\node[node style] (j) at (9,-2) [label=label style:10];
+\node[node style] (k) at (10,-2);
+\node[node style] (l) at (11,-2);
+
+% Fourth poset (length 6)
+\node[node style] (m) at (12,-3) [label=label style:11];
+\node[node style] (n) at (13,-3) [label=label style:

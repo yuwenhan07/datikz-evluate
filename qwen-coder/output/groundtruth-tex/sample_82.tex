@@ -1,0 +1,45 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem, xcolor, amssymb,latexsym,amsmath,bbm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+\usepackage[colorlinks=true,citecolor=blue, linkcolor=blue,urlcolor=blue]{hyperref}
+
+\begin{document}
+
+\begin{tikzpicture}[xscale=.8,yscale=.8]
+
+\draw (-8,0) to (-4,0);
+\draw (-6,2) to (-6,-2);
+
+\draw (2,0) .. controls (1.7386,0.4658) .. (1.732,1) .. controls (1.2727,1.2727) .. (1,1.732);
+\draw[dashed] (2,0) .. controls (1.7386,-0.4658).. (1.5588,-1);
+\draw (-2,0) .. controls (-1.7386,-0.4658) .. (-1.732,-1) .. controls (-1.2727,-1.2727) .. (-1,-1.732);
+\draw[dashed] (-2,0) .. controls (-1.7386,0.4658).. (-1.5588,1);
+\draw[dashed] (1,1.732) .. controls (0.83857,1.7386) .. (0,2);
+\draw[dashed] (-1,-1.732) .. controls (-0.83857,-1.7386) .. (0,-2);
+\draw (1.6,1.55) node {$\alpha_i^{-1}$};
+\draw (2.2,.5) node {$\beta_j^{-1}$};
+\draw (-1.7,-1.55) node {$\beta_j$};
+\draw (-2.2,-.5) node {$\alpha_{i-1}^{-1}$};
+
+\draw (0,0) node {\LARGE{$\curvearrowright$}};
+
+\draw [-{Stealth[color=blue]}] (-5,0)--(-4.99,0);
+\draw [-{Stealth[color=blue]}] (-7,0)--(-6.99,0);
+\draw [-{Stealth[color=blue]}] (-6,1)--(-6,.99);
+\draw [-{Stealth[color=blue]}] (-6,-1)--(-6,-1.01);
+
+\draw (-5,-.4) node {$\alpha_{i}$};
+\draw (-7,-.4) node {$\alpha_{i-1}$};
+\draw (-5.5,1) node {$\beta_{j-1}$};
+\draw (-5.6,-1) node {$\beta_{j}$};
+
+\draw (-6,-3) node {(a)} (0,-3) node {(b)};
+
+\end{tikzpicture}
+
+\end{document}

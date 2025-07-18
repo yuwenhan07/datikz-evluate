@@ -1,0 +1,18 @@
+\documentclass[tikz]{standalone}
+\usepackage{tkz-euclide}
+
+\begin{document}
+
+\begin{tikzpicture}
+\tkzDefPoints{0/0/A,3/0/B,0/5/C}
+\begin{scope}[color=magenta]
+   \tkzMarkRightAngle(B,A,C)
+   \tkzMarkAngle(C,B,A)
+\end{scope}
+
+\tkzDrawPolygon(A,B,C)
+\tkzLabelPoints[below](A,B)
+\tkzLabelPoints[above](C)
+\end{tikzpicture}
+
+\end{document}

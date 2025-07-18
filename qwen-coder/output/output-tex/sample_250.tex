@@ -1,0 +1,35 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+    % Define styles for nodes and arrows
+    \tikzset{
+        state/.style={circle, thick, draw=black, fill=white, minimum size=1cm},
+        initial/.style={state, initial text=},
+        accept/.style={state, double},
+        arrow/.style={->, >=stealth', shorten >=1pt}
+    }
+
+    % Nodes
+    \node[state, initial] (q0) {$q_0$};
+    \node[state, right of=q0] (q1) {$q_1$};
+    \node[state, below of=q0] (q2) {$q_2$};
+
+    % Edges
+    \path[arrow]
+        (q0) edge node[above] {n} (q1)
+             (q1) edge node[above] {n} (q1)
+             (q1) edge[bend left] node[left] {} (q2)
+             (q2) edge[bend right] node[right] {} (q1);
+
+    % Accepting state
+    \node[state, accept, right of=q1] (q3) {$q_f$};
+
+    % Connecting to accepting state
+    \path[arrow]
+        (q1) edge node[above] {n} (q3);
+\end{tikzpicture}
+
+\end{document}

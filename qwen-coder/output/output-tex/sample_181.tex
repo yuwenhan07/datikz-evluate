@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define the style for nodes
+\tikzset{
+    nodeStyle/.style={
+        circle,
+        draw=black,
+        fill=white,
+        minimum size=6mm,
+        font=\sffamily,
+    },
+    edgeStyle/.style={
+        ->,
+        thick,
+        >=stealth',
+    }
+}
+
+\begin{tikzpicture}[scale=0.8]
+
+% Nodes in E1
+\node[nodeStyle] (A) at (0,0) {A};
+\node[nodeStyle] (B) at (3,0) {B};
+
+% Edge in E1
+\draw[edgeStyle, bend left=45] (A) to node[midway, above] {$1$} (B);
+
+% Nodes in E2
+\node[nodeStyle] (A1) at (-1,-1) {A};
+\node[nodeStyle] (A2) at (1,-1) {A};
+\node[nodeStyle] (B1) at (2,-1) {B};
+\node[nodeStyle] (B2) at (4,-1) {B};
+
+% Edges in E2
+\draw[edgeStyle] (A1) to node[midway, above] {$1$} (B1);
+\draw[edgeStyle] (A2) to node[midway, above] {$1$} (B2);
+
+\end{tikzpicture}
+
+\end{document}

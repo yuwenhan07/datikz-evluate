@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+
+% Set default colors for angles and right angles
+\tkzSetUpAngle[color=red]
+\tkzSetUpRightAngle[color=blue]
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the triangle
+    \tkzDefPoints{0/0/A, 5/0/B, 2.5/3/C}
+    \tkzDrawPolygon(A,B,C)
+    
+    % Draw the pink line segment AB
+    \tkzDrawSegment[thick, color=pink](A,B)
+    \tkzLabelSegment[pos=.5](A,B){AB}
+    
+    % Mark the right angle at C
+    \tkzMarkRightAngle[size=0.2](B,C,A)
+    
+    % Label the points
+    \tkzLabelPoint[left](A){A}
+    \tkzLabelPoint[right](B){B}
+    \tkzLabelPoint[above](C){C}
+\end{tikzpicture}
+
+\end{document}

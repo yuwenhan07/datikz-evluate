@@ -1,0 +1,39 @@
+Certainly! Below is a TikZ LaTeX code that represents the described paths and stages. This code includes labels and annotations to help understand each step.
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta, decorations.pathreplacing}
+
+\tikzset{
+    mydot/.style={fill=black,circle,inner sep=1pt},
+    myarrow/.style={->,thick},
+    dottedline/.style={dotted,thick},
+    dashedline/.style={dashed,thick}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Nodes
+    \node[mydot] (A) at (-1,0) {};
+    \node[mydot] (B) at (5,0) {};
+    \node[mydot] (C) at (1,0) {};
+    \node[mydot] (D) at (6,0) {};
+    \node[mydot] (E) at (1,-1) {};
+    \node[mydot] (F) at (2,-1) {};
+    \node[mydot] (G) at (3,-1) {};
+    \node[mydot] (H) at (4,-1) {};
+    \node[mydot] (I) at (5,-1) {};
+    \node[mydot] (J) at (1,1) {};
+    \node[mydot] (K) at (2,1) {};
+    \node[mydot] (L) at (3,1) {};
+    \node[mydot] (M) at (4,1) {};
+    \node[mydot] (N) at (5,1) {};
+
+    % Paths
+    \draw[dottedline] (A) -- node[midway,below] {Path from $-1$ to $(5)$} (B);
+    \draw[dottedline] (B) -- node[midway,below] {Dotted line to $(1)$} (C);
+    \draw[dottedline] (C) -- node[midway,below] {Dotted line to $(6)$} (D);
+    \draw[dashedline] (C) -- node[midway,right] {Construction of the competitor} (F);
+    \draw[dashedline] (F) -- (G);
+    \

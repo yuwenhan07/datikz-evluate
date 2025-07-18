@@ -1,0 +1,41 @@
+Certainly! Below is a TikZ LaTeX code that visualizes the example you provided:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[level distance=1.5cm,
+                    level 1/.style={sibling distance=3cm},
+                    level 2/.style={sibling distance=2cm},
+                    level 3/.style={sibling distance=1cm}]
+    % Nodes
+    \node (root) [circle, draw] {T};
+    child { node (n1) [circle, draw] {7} 
+        child { node (n2) [circle, draw] {2} }
+        child { node (n3) [circle, draw] {1}
+            child { node (n4) [circle, draw] {3} }
+            child { node (n5) [circle, draw] {4} }
+        }
+    };
+    
+    % Edges
+    \draw[red] (root) -- (n1);
+    \draw[red] (n1) -- (n2);
+    \draw[red] (n1) -- (n3);
+    \draw[red] (n3) -- (n4);
+    \draw[red] (n3) -- (n5);
+
+    % Labels
+    \node at ([yshift=-1cm]n1.east) {7};
+    \node at ([yshift=-1cm]n2.west) {2};
+    \node at ([yshift=-1cm]n3.west) {1};
+    \node at ([yshift=-1cm]n4.east) {3};
+    \node at ([yshift=-1cm]n5.east) {4};
+
+    % Binomial numbers and k indicators
+    \node at ([xshift=1.5cm,yshift=-1.5cm]root.south) {B_1: 1};
+    \node at ([xshift=2.5cm,yshift=-1.5cm]n1.south) {B_2: 1};
+    \node at ([xshift=3.5cm,yshift=-1.5cm]n2.south) {B_3: 1};
+    \node at ([xshift=4.5cm,yshift=-1.5cm]n3

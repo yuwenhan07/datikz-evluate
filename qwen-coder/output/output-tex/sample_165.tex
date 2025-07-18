@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+
+  % Define styles for nodes and edges
+  \tikzset{
+    block/.style={rectangle, draw=black, fill=white, text centered, rounded corners, minimum width=3cm, minimum height=1cm},
+    line/.style={draw=black, thick, -stealth'},
+  }
+
+  % Nodes
+  \node [block] (R) {Resistance};
+  \node [block, below of=R] (L) {Inductor};
+  \node [block, below of=L] (C) {Capacitor};
+  \node [block, left of=R, xshift=-4cm] (V) {Voltage Source};
+  \node [block, right of=R, xshift=4cm] (I) {Current Sink};
+
+  % Edges
+  \draw [line] (V) -- node[above]{$v(t)$} (R);
+  \draw [line] (R) -- node[right]{$i_1(t)$} (L);
+  \draw [line] (L) -- node[below]{$i_2(t)$} (C);
+  \draw [line] (C) -- node[left]{$i(t)$} (I);
+
+  % Additional connections
+  \draw [dashed, line] (R) -- (L);
+  \draw [dashed, line] (L) -- (C);
+  \draw [dashed, line] (C) -- (R);
+
+\end{tikzpicture}
+
+\end{document}

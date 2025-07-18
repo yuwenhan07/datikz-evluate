@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        symbolic x coords={TL-NODE, Vanilla NODE, TayNODE, T-NODE},
+        xtick=data,
+        nodes near coords,
+        nodes near coords align={vertical},
+        ylabel={Time (seconds)},
+        bar width=20pt,
+        ymin=0,
+        ymax=5,
+        ylabel style={yshift=-1ex},
+        xlabel={Methods},
+        legend pos=north west,
+        ]
+        
+        % Evaluation Times
+        \addplot coordinates {(TL-NODE, 0.1) (Vanilla NODE, 1) (TayNODE, 2) (T-NODE, 3)};
+        \label{plot:eval_times}
+        
+        % Training Times
+        \addplot coordinates {(TL-NODE, 0.2) (Vanilla NODE, 2) (TayNODE, 4) (T-NODE, 6)};
+        \label{plot:train_times}
+        
+        % Number of Function Evaluations (NFE)
+        \addplot coordinates {(TL-NODE, 100) (Vanilla NODE, 500) (TayNODE, 1000) (T-NODE, 2000)};
+        \label{plot:nfe}
+        
+        \legend{Evaluation Time, Training Time, NFE}
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

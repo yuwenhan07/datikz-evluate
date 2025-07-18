@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+
+% Square Grid 2-Neighborhood
+\node (square) at (0,0) {
+    \begin{scope}[xshift=-1cm, yshift=1cm]
+        \fill[black] (0,0) -- (1,0) -- (1,-1) -- (0,-1) -- cycle;
+        \fill[white] (0,0) -- (1,0) -- (1,-1) -- (0,-1) -- cycle;
+    \end{scope}
+};
+
+% Triangular Grid 2-Neighborhood
+\node (triangle) at (4,0) {
+    \begin{scope}[xshift=-2cm, yshift=1cm]
+        \fill[black] (0,0) -- (1,0) -- (0.5,sqrt(3)/2) -- cycle;
+        \fill[white] (0,0) -- (1,0) -- (0.5,sqrt(3)/2) -- cycle;
+    \end{scope}
+};
+
+% King Grid 2-Neighborhood
+\node (king) at (8,0) {
+    \begin{scope}[xshift=-2cm, yshift=1cm]
+        \fill[black] (0,0) -- (1,0) -- (1,-1) -- (0,-1) -- cycle;
+        \fill[white] (0,0) -- (1,0) -- (1,-1) -- (0,-1) -- cycle;
+        \fill[black] (0,-1) -- (1,-1) -- (1,-2) -- (0,-2) -- cycle;
+        \fill[white] (0,-1) -- (1,-1) -- (1,-2) -- (0,-2) -- cycle;
+    \end{scope}
+};
+
+\end{tikzpicture}
+
+\end{document}

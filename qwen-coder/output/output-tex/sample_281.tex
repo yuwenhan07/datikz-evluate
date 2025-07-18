@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Axes
+    \draw[->] (0,0) -- (6,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,3) node[above] {$y$};
+
+    % Labels for intervals
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \node at (\x,-0.2) {\small $\x$};
+    }
+
+    % Curves for different intervals
+    \foreach \i in {0,...,4} {
+        \pgfmathsetmacro{\xstart}{0.1*\i}
+        \pgfmathsetmacro{\xend}{0.1*(\i+1)}
+        \draw[blue!50!\red, thick] plot[domain=\xstart:\xend,samples=100] ({\x},{\x^2}); % Example function
+    }
+
+    % Arrows indicating continuation
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \draw[-stealth, red] (\x,-0.1) -- ++(0,-0.3);
+    }
+
+    % Title and labels
+    \node at (3,-0.5) [below] {Distribution of Solutions};
+    \node at (-0.5,2) [left] {$y = f(x)$};
+\end{tikzpicture}
+
+\end{document}

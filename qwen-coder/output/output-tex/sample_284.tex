@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Background: Sky
+    \fill[blue!50] (0,0) rectangle (4,3);
+    
+    % Plane
+    \draw[thick, fill=white] (1.5,1) -- ++(0,-0.5) -- ++(0.5,0) -- cycle;
+    \draw[thick, fill=white] (1.5,1) -- ++(0,-0.5) -- ++(-0.5,0) -- cycle;
+    \draw[thick, fill=black] (1.5,1) circle (0.05);
+    \draw[thick, fill=black] (2,1) circle (0.05);
+    \draw[thick, fill=black] (2.5,1) circle (0.05);
+    \draw[thick, fill=black] (1.5,0.5) circle (0.05);
+    \draw[thick, fill=black] (2,0.5) circle (0.05);
+    \draw[thick, fill=black] (2.5,0.5) circle (0.05);
+    \draw[thick, fill=black] (1.75,0.75) circle (0.05);
+    \draw[thick, fill=black] (2.25,0.75) circle (0.05);
+    \draw[thick, fill=black] (1.75,0.25) circle (0.05);
+    \draw[thick, fill=black] (2.25,0.25) circle (0.05);
+
+    % Sun
+    \fill[yellow] (3.5,2.5) circle (0.3);
+\end{tikzpicture}
+
+\end{document}

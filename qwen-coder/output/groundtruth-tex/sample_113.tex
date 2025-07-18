@@ -1,0 +1,18 @@
+\documentclass[tikz,border=1.618mm]{standalone}
+\tikzset{declare function={f(\x)=8-abs(8-\x);}}
+
+\begin{document}
+\pgfmathsetmacro{\xinc}{1.}
+\pgfmathsetmacro{\yinc}{1.5}
+
+\begin{tikzpicture}[scale=.5, transform shape]
+\draw[ultra thick,red,x=0.5cm,y=1cm] (0,0) foreach\i in {1,...,15}
+  {sin ++(\xinc,\yinc) cos ++(\xinc,-\yinc) sin ++(\xinc,-\yinc) cos ++(\xinc,\yinc)};
+\draw[ultra thick,blue,x=0.5cm,y=1cm] (0,-16) foreach\i in {1,...,15}
+  {sin ++(\xinc,{\yinc*f(\i)}) cos ++(\xinc,{-\yinc*f(\i)}) sin ++(\xinc,{-\yinc*f(\i)}) cos ++(\xinc,{\yinc*f(\i)})};
+% with \draw plot
+\node at (16,-30) {\huge with \verb|\draw plot|:};
+\draw[ultra thick,blue,x=0.5cm,y=1cm] plot[domain=0:64,samples=1001] (\x,{-40+f(0.25*\x)*sin(104*\x)});
+\draw[ultra thick,blue,x=0.5cm,y=1cm] plot[domain=0:64,samples=1001] (\x,{-56+7*sin(2.8*\x)*sin(104*\x)});
+\end{tikzpicture}
+\end{document}

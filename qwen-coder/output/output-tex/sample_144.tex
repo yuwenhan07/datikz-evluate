@@ -1,0 +1,37 @@
+Certainly! Below is an example of a TikZ LaTeX code that generates a simple argumentation graph for the purpose of demonstrating how to create a structured network or graph in TikZ.
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm, auto]
+        % Define styles for nodes
+        \tikzset{
+            decision/.style={diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt},
+            block/.style={rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em},
+            line/.style={draw, thick, ->, >=stealth'},
+            cloud/.style={draw, ellipse, fill=red!20, node distance=3cm, minimum height=2em}
+        }
+
+        % Nodes
+        \node (start) [block] {Début};
+        \node (dec1) [decision, below of=start] {Est-ce que la personne est une IRM?};
+        \node (dec2) [decision, right of=dec1, xshift=3cm] {Est-ce qu'il y a un signal radio?};
+        \node (radio) [cloud, above of=dec2] {Signal Radio};
+        \node (irm) [cloud, left of=dec1] {IRM};
+        \node (end) [block, below of=dec2, yshift=-2cm] {Fin};
+
+        % Edges
+        \path [line] (start) -- (dec1);
+        \path [line] (dec1) -| node[anchor=north east] {Non} (end);
+        \path [line] (dec1) -| node[anchor=south west] {Oui} (dec2);
+        \path [line] (dec2) |- node[anchor=north] {Non} (end);
+        \path [line] (dec2) |- node[anchor=south] {Oui} (radio);
+        \path [line] (radio) -- (end);
+
+    \end{tikzpicture}
+    \caption{Graphique d'Argumentation pour IRM ou

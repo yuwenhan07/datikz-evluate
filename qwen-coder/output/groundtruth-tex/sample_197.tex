@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+
+    \coordinate (aux1) at ([xshift=-25mm, yshift=-30mm]current page.north east);
+    \coordinate (aux2) at ([xshift=-25mm, yshift=30mm]current page.south east);
+    
+    \begin{scope}[black]
+        \foreach \i in {0, ..., 4}{
+            \draw[line width=\ifodd \i\space 1pt\else 2pt\fi]([
+                    xshift=\i mm,
+                    yshift=0mm
+                ]aux1)
+                -- 
+                ([
+                    xshift=\i mm,
+                    yshift=0mm]
+                aux2);
+        }
+        
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}

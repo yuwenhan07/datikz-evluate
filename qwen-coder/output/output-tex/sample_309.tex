@@ -1,0 +1,42 @@
+To add and label angles in a 3D TikZ diagram representing an airplane's orientation, you can use the `angles` library from TiKZ. Below is an example code snippet that demonstrates how to add and label angles at various points in a 3D scene.
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{3d,angles}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define the coordinate system
+    \coordinate (O) at (0,0,0);
+    \coordinate (X) at (4,0,0);
+    \coordinate (Y) at (0,4,0);
+    \coordinate (Z) at (0,0,4);
+
+    % Draw the axes
+    \draw[->] (O) -- (X) node[anchor=north east]{$x$};
+    \draw[->] (O) -- (Y) node[anchor=south west]{$y$};
+    \draw[->] (O) -- (Z) node[anchor=south east]{$z$};
+
+    % Define the airplane position
+    \def\x{1}
+    \def\y{1}
+    \def\z{1}
+    \def\n{30} % Angle of inclination
+
+    % Calculate the new coordinates after rotation
+    \pgfmathsetmacro{\xnew}{\x*cos(\n)-\z*sin(\n)}
+    \pgfmathsetmacro{\znew}{\x*sin(\n)+\z*cos(\n)}
+
+    % Draw the airplane
+    \fill[white] (\x,\y,\z) circle (0.1);
+    \fill[black] (\xnew,\y,\znew) circle (0.1);
+
+    % Draw the angle lines
+    \draw[dashed] (\x,\y,\z) -- ++(1,0,0) node[midway,right]{$a_1$};
+    \draw[dashed] (\x,\y,\z) -- ++(0,1,0) node[midway,above]{$a_2$};
+    \draw[dashed] (\x,\y,\z) -- ++(0,0,1) node[midway,below left]{$a_3$};
+
+    % Label the angles
+    \anglelabel{a_1}{a_

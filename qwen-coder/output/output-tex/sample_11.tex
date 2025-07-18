@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Axes
+    \draw[->] (-1.5,0) -- (4,0) node[right] {$x$};
+    \draw[->] (0,-1.5) -- (0,3) node[above] {$y$};
+
+    % Function R
+    \draw[thick, red] (0,2) to[out=-90,in=180] (1,2);
+    \draw[thick, red] (1,2) to[out=0,in=-90] (2,0);
+    \fill[red] (1,2) circle (2pt); % Discontinuity at x=1
+
+    % Flipped Function R
+    \draw[thick, blue] (3,2) to[out=90,in=180] (4,2);
+    \draw[thick, blue] (4,2) to[out=0,in=90] (3,0);
+    \fill[blue] (3,2) circle (2pt); % Discontinuity at x=3
+
+    % Maximum Function R
+    \draw[dashed, thick, green] (0,1) -- (2,1);
+
+    % Minimum Function B'
+    \draw[dashed, thick, orange] (1,0) -- (3,0);
+
+    % Labels
+    \node at (0.5,2.2) [right] {R};
+    \node at (3.5,2.2) [left] {B'};
+    \node at (0.5,1.2) [right] {Max};
+    \node at (3.5,0.2) [left] {Min};
+\end{tikzpicture}
+\end{document}

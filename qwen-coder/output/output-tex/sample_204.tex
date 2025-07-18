@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=5]
+    % Draw the white triangle
+    \draw[fill=white] (0,0) -- (1,0) -- (0.5,-sqrt(3)/2) -- cycle;
+    
+    % Draw the red square on the left side of the triangle
+    \node at (0.25,-sqrt(3)/4) [rectangle, fill=red, minimum size=0.2cm] {};
+    
+    % Draw the green square on the right side of the triangle
+    \node at (0.75,-sqrt(3)/4) [rectangle, fill=green, minimum size=0.2cm] {};
+    
+    % Draw the green square on the bottom side of the triangle
+    \node at (0.5,-sqrt(3)/2-0.1) [rectangle, fill=green, minimum size=0.2cm] {};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,10 @@
+\documentclass[tikz, border=1cm]{standalone}
+\usetikzlibrary{fadings}
+\begin{document}
+\begin{tikzpicture}
+\node at (2, 1.5){With \verb|path fading=south| and \verb|fill opacity|};
+\filldraw[fill=blue, path fading=south, fill opacity=0.01] (0,0) circle[radius=1cm];
+\filldraw[fill=blue, path fading=south, fill opacity=0.50] (2,0) circle[radius=1cm];
+\filldraw[fill=blue, path fading=south, fill opacity=1.00] (4,0) circle[radius=1cm];
+\end{tikzpicture}
+\end{document}

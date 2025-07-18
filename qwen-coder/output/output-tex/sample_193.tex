@@ -1,0 +1,29 @@
+Certainly! Below is a TikZ LaTeX code that generates an illustration of two gray rectangles (representing pages of a book) with randomly drawn lines representing magnetic fields. The lines will be filled with opposite polarity to illustrate the concept that even if a magnet is broken, the pieces retain their polarity.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{decorations.pathmorphing}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Define the gray rectangles
+\fill[gray!30] (-2,-2) rectangle (2,2);
+\fill[gray!30] (2,-2) rectangle (4,2);
+
+% Draw random lines with opposite polarity
+\draw[dashed, thick, decorate, decoration={zigzag, amplitude=0.5cm, segment length=1cm}] (-2,1.5) -- (2,1.5);
+\draw[dotted, thick, decorate, decoration={snake, amplitude=0.5mm, segment length=2mm}] (2,1.5) -- (4,1.5);
+
+\draw[dashed, thick, decorate, decoration={zigzag, amplitude=0.5cm, segment length=1cm}] (-2,0.5) -- (2,0.5);
+\draw[dotted, thick, decorate, decoration={snake, amplitude=0.5mm, segment length=2mm}] (2,0.5) -- (4,0.5);
+
+\draw[dashed, thick, decorate, decoration={zigzag, amplitude=0.5cm, segment length=1cm}] (-2,-0.5) -- (2,-0.5);
+\draw[dotted, thick, decorate, decoration={snake, amplitude=0.5mm, segment length=2mm}] (2,-0.5) -- (4,-0.5);
+
+\draw[dashed, thick, decorate, decoration={zigzag, amplitude=0.5cm, segment length=1cm}] (-2,-1.5) -- (2,-1.5);
+\draw[dotted, thick, decorate, decoration={snake, amplitude=0.5mm, segment length=2mm}] (2,-1.5) -- (4,-1.5);
+
+% Add text annotations
+\node at (-2,2.5) {Page 1};
+\n

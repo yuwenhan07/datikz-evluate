@@ -1,0 +1,31 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, decorations.pathmorphing}
+
+\tikzset{
+    myarrow/.style={->, thick, magenta},
+    myline/.style={thick, black},
+    myshape/.style={draw=blue, fill=white, regular polygon, regular polygon sides=8, inner sep=0pt, outer sep=0pt},
+    mycircle/.style={draw=black, circle, radius=1cm, inner sep=0pt, outer sep=0pt}
+}
+
+\begin{document}
+\begin{tikzpicture}
+    % Draw the geometric shape
+    \node[myshape] (shape) {};
+    
+    % Draw the circular pattern at the center
+    \node[mycircle] (circle) at (shape.center) {};
+    
+    % Draw the first magenta arrow outside the foreach loop
+    \draw[myarrow] (-2, 0) -- node[midway, above] {Arrow 1} (-1, 0);
+    
+    % Draw the second magenta arrow using a foreach loop
+    \foreach \i in {0, ..., 7} {
+        \pgfmathsetmacro{\angle}{45*\i}
+        \draw[myarrow] (shape.corner \i) -- ++(\angle:1cm) node[pos=0.5, right] {Arrow 2};
+    }
+    
+    % Draw the black line connecting the two arrows
+    \draw[myline] (-1, 0) -- (shape.corner 0);
+\end{tikzpicture}
+\end{document}

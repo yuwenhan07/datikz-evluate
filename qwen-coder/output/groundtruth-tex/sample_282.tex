@@ -1,0 +1,110 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{pgfplotstable} % pgfplotstable loads pgfplots, pgfplots loads tikz
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{patterns}
+
+\begin{document}
+    \pgfplotsset{
+        my axis style/.style={
+            width=\linewidth,
+            ybar=2*\pgflinewidth,
+            ybar=5pt,
+            bar width=0.30cm,
+            enlarge y limits=0.0,
+            enlarge x limits=0.25,      
+            xticklabels from table={\data}{material},
+            xtick={data},
+            table/x expr={\coordindex},
+            xtick align=inside,
+            minor y tick num=1,
+            scaled y ticks=false, 
+            yticklabel style={/pgf/number format/fixed},
+        },
+        Name/.style={
+            nodes near coords,
+            nodes near coords style={
+                coordinate,
+                name=#1\coordindex,
+                mark=*, % add red circle at node
+                mark options={mark size=2pt, fill=red}, % set size and fill color of mark
+            },
+        },
+    }
+    
+    \pgfplotstableread{
+    material d1 d2 d3 d4 d5 d6 T1 T2 T3 T4 T5 T6
+    CPU 0.25 0.21 0.23  0.33 0.25 0.28 75 63 71 85 70 80
+    GPU 0.18 0.16 0.17 0.22 0.18 0.20 77 65 72 84 69 79
+    FPGA 0.19 0.15 0.18 0.25 0.16 0.19 69 59 68 80 68 74
+    }{\data}
+    
+    \begin{tikzpicture}
+        \begin{axis}[
+            my axis style,
+            legend image code/.code={
+                \draw[#1, draw=none, fill=none] 
+                    (0cm,-0.1cm) rectangle (0.3cm,0.25cm);
+            },
+            ymin=0,
+            ymax=0.5,
+            axis x line*=bottom,
+            axis y line*=left,
+            ylabel=Execution time (ms),        
+            cycle list={
+                {draw=black, pattern=north east lines, pattern color=black, fill=blue!20, postaction={pattern=north east lines}},
+                {draw=black, pattern=grid, pattern color=black, fill=blue!20,postaction={pattern=grid}},
+                {draw=black, pattern=horizontal lines, pattern color=black, fill=blue!20,postaction={pattern=horizontal lines}},
+                {draw=black, pattern=north east lines, pattern color=black, fill=red!20,postaction={pattern=north east lines}},
+                {draw=black, pattern=grid, pattern color=black, fill=red!20,postaction={pattern=grid}},
+                {draw=black, pattern=horizontal lines, pattern color=black, fill=red!20,postaction={pattern=horizontal lines}},
+            },
+            scaled y ticks=false, 
+        ]
+            \addplot table [y=d1] {\data};
+            \addplot table [y=d2] {\data};
+            \addplot table [y=d3] {\data};
+            \addplot table [y=d4] {\data};
+            \addplot table [y=d5] {\data};
+            \addplot table [y=d6] {\data};
+            \legend{{Baseline}, {Datatype}, {Downsampling}}
+        \end{axis}
+    
+        \begin{axis}[
+            my axis style,
+            legend style={
+                at={(0.5,-0.08)},
+                anchor=north,
+                legend columns=-1
+            },
+            ymin=0,
+            ymax=100,
+            axis y line*=right,
+            ylabel=Accuracy (\%),
+            xticklabels=\empty,
+            only marks,
+            scaled y ticks=false, 
+       ]
+            \addplot [Name=a] table [y=T1] {\data};
+            \addplot [Name=b] table [y=T2] {\data};
+            \addplot [Name=c] table [y=T3] {\data};
+            \addplot [Name=d] table [y=T4] {\data};
+            \addplot [Name=e] table [y=T5] {\data};
+            \addplot [Name=f] table [y=T6] {\data};
+            \legend{
+                {\color{blue!50}\rule{5mm}{2mm} \textcolor{black}{MobileNetV2}}, 
+                {\color{red!50}\rule{5mm}{2mm} \textcolor{black}{Resnet18}}
+            }
+        \end{axis}
+    
+        \foreach \i in {0,1,2} {
+            \fill [blue!90] (a\i) circle (2pt);
+            \fill [blue!90] (b\i) circle (2pt);
+            \fill [blue!90] (c\i) circle (2pt);
+            \draw [very thick,blue!90] (a\i) -- (b\i) -- (c\i);
+            \fill [red!90] (d\i) circle (2pt);
+            \fill [red!90] (e\i) circle (2pt);
+            \fill [red!90] (f\i) circle (2pt);
+            \draw [very thick,red!90] (d\i) -- (e\i) -- (f\i);
+        }
+    \end{tikzpicture}
+\end{document}

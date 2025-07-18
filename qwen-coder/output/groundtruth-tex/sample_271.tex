@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,landscape,a4paper,showframe]{geometry}
+\usepackage{tikz}
+\definecolor{dotcolor}{RGB}{204,204,198}
+\setlength\parindent{0pt}
+% \usepackage{layouts,blindtext}
+\tikzset{
+  maxgrid/dot distance/.initial=+5mm,
+  maxgrid/dot diameter/.initial=+.8mm,
+  maxgrid/margin/.initial=+3mm,
+  maxgrid/minimal column sep/.initial=+10mm,
+  maxgrid/columns/.initial=3,
+  maxgrid/@dots/.style={
+    xstep=\pgfkeysvalueof{/tikz/maxgrid/dot distance}, ystep=+0pt,
+    line width=\pgfkeysvalueof{/tikz/maxgrid/dot diameter}, line cap=round,
+    dash pattern=on +0pt off \pgfkeysvalueof{/tikz/maxgrid/dot distance}},
+  maxgrid/rectangle/.style={draw=dotcolor!70},
+  maxgrid/dots/.style={draw=dotcolor},
+  maxgrid/diagram/.style={trim left=+0pt,trim right=+\linewidth,baseline=+1em}}
+\newcommand*\tikzmaxgrid[1][]{%
+\begin{tikzpicture}[maxgrid/diagram,maxgrid/.cd,#1]
+\pgfmathtruncatemacro\tmgDotsPerColumn{
+  ((\linewidth-(\pgfkeysvalueof{/tikz/maxgrid/columns}-1)
+              *(\pgfkeysvalueof{/tikz/maxgrid/minimal column sep})
+             )/(\pgfkeysvalueof{/tikz/maxgrid/columns})
+            -2*(\pgfkeysvalueof{/tikz/maxgrid/margin})
+             )/(\pgfkeysvalueof{/tikz/maxgrid/dot distance})}
+\pgfmathsetlengthmacro\tmgColumnWidth{
+  \tmgDotsPerColumn*(\pgfkeysvalueof{/tikz/maxgrid/dot distance})
+                 +2*(\pgfkeysvalueof{/tikz/maxgrid/margin})}
+\pgfmathsetlengthmacro\tmgColumnWidthExtra{
+  (\linewidth-(\pgfkeysvalueof{/tikz/maxgrid/columns})*\tmgColumnWidth)
+             /(\pgfkeysvalueof{/tikz/maxgrid/columns}-1)}
+\pgfmathsetlengthmacro\tmgYMargin{
+  .5*mod(\textheight,\pgfkeysvalueof{/tikz/maxgrid/dot distance})}
+\pgfmathsetlengthmacro\tmgYMargin{
+  \tmgYMargin < \pgfkeysvalueof{/tikz/maxgrid/margin} ?
+    \tmgYMargin+.5*(\pgfkeysvalueof{/tikz/maxgrid/dot distance}) : \tmgYMargin}
+\foreach[parse=true, count=\tmgColumnZero from 0] \tmgColumn in {
+  1,...,\pgfkeysvalueof{/tikz/maxgrid/columns}}{
+  \draw[maxgrid/rectangle,
+        xshift=\tmgColumnZero*(\tmgColumnWidth+\tmgColumnWidthExtra]
+    (0,0) rectangle ++ (\tmgColumnWidth,\textheight);
+  \draw[maxgrid/@dots, maxgrid/dots,
+        xshift=\tmgColumnZero*(\tmgColumnWidth+\tmgColumnWidthExtra,
+        shift={({\pgfkeysvalueof{/tikz/maxgrid/margin}},\tmgYMargin)}]
+    (+0pt,+0pt) grid ++(
+      {\tmgColumnWidth-2*(\pgfkeysvalueof{/tikz/maxgrid/margin})},
+      {\textheight-2*\tmgYMargin});}
+\end{tikzpicture}}
+\begin{document}
+\tikzmaxgrid[columns=2]
+
+\tikzmaxgrid
+
+\tikzmaxgrid[columns=4, minimal column sep=5mm]
+\end{document}

@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define colors
+    \colorlet{blue}{blue!80!white}
+    \colorlet{white}{white!100!black}
+
+    % Draw nodes for each sector
+    \node (sector) at (0, 0) [draw, circle, fill=blue, label=below:Sector] {};
+    \node (im) at (45:3) [draw, circle, fill=blue, label=above right:Im] {};
+    \node (a) at (90:3) [draw, circle, fill=blue, label=above:A] {};
+    \node (b) at (135:3) [draw, circle, fill=blue, label=above left:B] {};
+    \node (c) at (180:3) [draw, circle, fill=blue, label=left:C] {};
+    \node (re) at (-45:3) [draw, circle, fill=blue, label=below left:Re] {};
+
+    % Draw arrows between nodes
+    \draw[->, thick] (sector) -- (im);
+    \draw[->, thick] (sector) -- (a);
+    \draw[->, thick] (sector) -- (b);
+    \draw[->, thick] (sector) -- (c);
+    \draw[->, thick] (sector) -- (re);
+
+    % Draw labels outside the nodes
+    \node at (225:2.5) {D};
+    \node at (315:2.5) {E};
+
+    % Draw a large circle representing the complex plane
+    \draw[dashed, thin] (0,0) circle (4);
+
+    % Add title
+    \node at (0, -5) {Spectrum of Matrix $A$};
+\end{tikzpicture}
+\end{document}

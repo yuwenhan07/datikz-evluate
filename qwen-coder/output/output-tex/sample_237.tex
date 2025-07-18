@@ -1,0 +1,39 @@
+Certainly! Below is a TikZ LaTeX code snippet that captures the described quiver diagram with the specified features:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta,shapes.geometric}
+
+\tikzset{
+    gauge/.style={draw,fill=cyan!50,circle,inner sep=1pt},
+    hyper/.style={draw,->,thick},
+    wavy/.style={draw,wave,dashed,thick},
+    fermi/.style={draw,dashed,thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes representing gauge nodes
+    \node[gauge] (G1) at (0,0) {};
+    \node[gauge] (G2) at (4,0) {};
+    
+    % Nodes representing vector multiplets
+    \node[rectangle,draw,inner sep=2pt] (V1) at (-1,-1) {Vector};
+    \node[rectangle,draw,inner sep=2pt] (V2) at (5,-1) {Vector};
+    
+    % Straight solid lines representing (4,4) hypermultiplets
+    \draw[hyper] (G1) -- node[above,midway] {(4,4)} (V1);
+    \draw[hyper] (G2) -- node[below,midway] {(4,4)} (V2);
+    
+    % Wavy lines representing (4,0) hypermultiplets
+    \draw[wavy] (G1) -- node[left,midway] {(4,0)} (V1.west);
+    \draw[wavy] (G2) -- node[right,midway] {(4,0)} (V2.east);
+    
+    % Dashed lines representing Fermi multiplets
+    \draw[fermi] (G1) -- node[left,midway] {Fermi} (V1.west);
+    \draw[fermi] (G2) -- node[right,midway] {Fermi} (V2.east);
+    
+    % Labels for the nodes
+    \node[above left] at (G1.west) {AdS$_2$};
+    \node[above right] at (G2.east) {NS-NS};
+    \node[below left] at (G1.south

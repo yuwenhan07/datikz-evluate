@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\usepackage{subcaption}
+
+\captionsetup[subfigure]{labelformat=simple}
+\DeclareCaptionSubType*{figure}
+\renewcommand\thesubfigure{\thefigure.\arabic{subfigure}}
+
+\begin{document}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[
+    marr/.style={
+        line width=1mm,
+        -latex
+    }]
+\matrix[matrix of nodes, column sep=1cm, row sep=5mm] (mat) { 
+  \subcaptionbox{foo\label{subfig:1-1}}{\includegraphics[width=3cm]{example-image-duck}} & 
+  \subcaptionbox{bar\label{subfig:1-2}}{\includegraphics[width=3cm]{example-image-duck}} \\
+  \subcaptionbox{baz\label{subfig:1-3}}{\includegraphics[width=3cm]{example-image-duck}} & 
+  \subcaptionbox{foo\label{subfig:1-4}}{\includegraphics[width=3cm]{example-image-duck}} & 
+  \subcaptionbox{bar\label{subfig:1-5}}{\includegraphics[width=3cm]{example-image-duck}} \\
+};
+\draw[marr] (mat-1-1) -- (mat-1-2);
+\end{tikzpicture}
+\caption{A matrix of figures.}
+\label{fig:pffft}
+\end{figure}
+
+See subfigure \ref{subfig:1-1} and \ref{subfig:1-5}.
+
+\end{document}

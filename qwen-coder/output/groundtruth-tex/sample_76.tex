@@ -1,0 +1,162 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{0.125pt}
+%
+% File name: truncated-dodecahedron.tex
+% Description: 
+% A geometric representation of the truncated dodecahedron is shown.
+% 
+% Date of creation: May, 25th, 2021.
+% Date of last modification: October, 9th, 2022.
+% Author: Efraín Soto Apolinar.
+% https://www.aprendematematicas.org.mx/author/efrain-soto-apolinar/instructing-courses/
+% Source: page 142 of the 
+% Glosario Ilustrado de Matem\'aticas Escolares.
+% https://tinyurl.com/5udm2ufy
+%
+% Terms of use:
+% According to TikZ.net
+% https://creativecommons.org/licenses/by-nc-sa/4.0/
+% Your commitment to the terms of use is greatly appreciated.
+%
+\begin{document}
+\tdplotsetmaincoords{70}{130}
+%
+\begin{tikzpicture}[tdplot_main_coords]
+	% Change the value of the number at {\escala}{##} to scale the figure up or down
+	\pgfmathsetmacro{\escala}{0.75}
+	% Coordinates of the vertices
+	\coordinate(1) at (\escala*0., -\escala*1.61803, \escala*2.4899);
+	\coordinate(2) at (\escala*0., -\escala*1.61803, -\escala*2.4899);
+	\coordinate(3) at (\escala*0., \escala*1.61803, \escala*2.4899);
+	\coordinate(4) at (\escala*0., \escala*1.61803, -\escala*2.4899);
+	\coordinate(5) at (\escala*0.425325, -\escala*2.92705, \escala*0.262866);
+	\coordinate(6) at (\escala*0.425325, \escala*2.92705, \escala*0.262866);
+	\coordinate(7) at (\escala*0.688191, -\escala*2.11803, \escala*1.96417);
+	\coordinate(8) at (\escala*0.688191, \escala*2.11803, \escala*1.96417);
+	\coordinate(9) at (-\escala*2.75276, \escala*0., -\escala*1.11352);
+	\coordinate(10) at (-\escala*2.06457, -\escala*2.11803, \escala*0.262866);
+	%
+	\coordinate(11) at (-\escala*2.06457, \escala*2.11803, \escala*0.262866);
+	\coordinate(12) at (-\escala*1.37638, -\escala*2.61803, -\escala*0.262866);
+	\coordinate(13) at (-\escala*1.37638, \escala*2.61803, -\escala*0.262866);
+	\coordinate(14) at (-\escala*0.688191, -\escala*2.11803, -\escala*1.96417);
+	\coordinate(15) at (-\escala*0.688191, \escala*2.11803, -\escala*1.96417);
+	\coordinate(16) at (\escala*1.37638, -\escala*2.61803, \escala*0.262866);
+	\coordinate(17) at (\escala*1.37638, \escala*2.61803, \escala*0.262866);
+	\coordinate(18) at (\escala*2.75276, \escala*0., \escala*1.11352);
+	\coordinate(19) at (\escala*1.80171, -\escala*1.30902, -\escala*1.96417);
+	\coordinate(20) at (\escala*1.80171, \escala*1.30902, -\escala*1.96417);
+	%
+	\coordinate(21) at (\escala*2.06457, -\escala*2.11803, -\escala*0.262866);
+	\coordinate(22) at (\escala*2.06457, \escala*2.11803, -\escala*0.262866);
+	\coordinate(23) at (\escala*2.22703, \escala*0., \escala*1.96417);
+	\coordinate(24) at (\escala*2.22703, -\escala*1.61803, -\escala*1.11352);
+	\coordinate(25) at (\escala*2.22703, \escala*1.61803, -\escala*1.11352);
+	\coordinate(26) at (-\escala*2.65236, -\escala*1.30902, \escala*0.262866);
+	\coordinate(27) at (-\escala*2.65236, \escala*1.30902, \escala*0.262866);
+	\coordinate(28) at (\escala*2.65236, -\escala*1.30902, -\escala*0.262866);
+	\coordinate(29) at (\escala*2.65236, \escala*1.30902, -\escala*0.262866);
+	\coordinate(30) at (\escala*2.91522, -\escala*0.5, \escala*0.262866);
+	%
+	\coordinate(31) at (\escala*2.91522, \escala*0.5, \escala*0.262866);
+	\coordinate(32) at (-\escala*2.91522, -\escala*0.5, -\escala*0.262866);
+	\coordinate(33) at (-\escala*2.91522, \escala*0.5, -\escala*0.262866);
+	\coordinate(34) at (\escala*0.951057, -\escala*1.30902, \escala*2.4899);
+	\coordinate(35) at (\escala*0.951057, -\escala*1.30902, -\escala*2.4899);
+	\coordinate(36) at (\escala*0.951057, \escala*1.30902, \escala*2.4899);
+	\coordinate(37) at (\escala*0.951057, \escala*1.30902, -\escala*2.4899);
+	\coordinate(38) at (\escala*0.850651, -\escala*2.61803, \escala*1.11352);
+	\coordinate(39) at (\escala*0.850651, \escala*2.61803, \escala*1.11352);
+	\coordinate(40) at (-\escala*0.951057, -\escala*1.30902, \escala*2.4899);
+	%
+	\coordinate(41) at (-\escala*0.951057, -\escala*1.30902, -\escala*2.4899);
+	\coordinate(42) at (-\escala*0.951057, \escala*1.30902, \escala*2.4899);
+	\coordinate(43) at (-\escala*0.951057, \escala*1.30902, -\escala*2.4899);
+	\coordinate(44) at (-\escala*1.53884, -\escala*0.5, \escala*2.4899);
+	\coordinate(45) at (-\escala*1.53884, -\escala*0.5, -\escala*2.4899);
+	\coordinate(46) at (-\escala*1.53884, \escala*0.5, \escala*2.4899);
+	\coordinate(47) at (-\escala*1.53884, \escala*0.5, -\escala*2.4899);
+	\coordinate(48) at (\escala*1.53884, -\escala*0.5, \escala*2.4899);
+	\coordinate(49) at (\escala*1.53884, -\escala*0.5, -\escala*2.4899);
+	\coordinate(50) at (\escala*1.53884, \escala*0.5, \escala*2.4899);
+	%
+	\coordinate(51) at (\escala*1.53884, \escala*0.5, -\escala*2.4899);
+	\coordinate(52) at (-\escala*2.22703, \escala*0., -\escala*1.96417);
+	\coordinate(53) at (-\escala*2.22703, -\escala*1.61803, \escala*1.11352);
+	\coordinate(54) at (-\escala*2.22703, \escala*1.61803, \escala*1.11352);
+	\coordinate(55) at (-\escala*0.850651, -\escala*2.61803, -\escala*1.11352);
+	\coordinate(56) at (-\escala*0.850651, \escala*2.61803, -\escala*1.11352);
+	\coordinate(57) at (-\escala*1.80171, -\escala*1.30902, \escala*1.96417);
+	\coordinate(58) at (-\escala*1.80171, \escala*1.30902, \escala*1.96417);
+	\coordinate(59) at (-\escala*0.425325, -\escala*2.92705, -\escala*0.262866);
+	\coordinate(60) at (-\escala*0.425325, \escala*2.92705, -\escala*0.262866);
+	% Triangular faces of the polyhedron (back)
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (9) -- (32) -- (33) -- (9); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (47) -- (45) -- (52) -- (47); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (10) -- (53) -- (26) -- (10); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (27) -- (54) -- (11) -- (27); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (40) -- (44) -- (57) -- (40); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (35) -- (49) -- (19) -- (35); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (12) -- (55) -- (59) -- (12); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (41) -- (2) -- (14) -- (41); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (38) -- (5) -- (16) -- (38); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (15) -- (4) -- (43) -- (15); 
+	% Decagonal faces 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (47) -- (43) -- (4) 
+			-- (37) -- (51) -- (49) -- (35) -- (2) 
+			-- (41) -- (45) -- (47); 	
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (45) -- (41) -- (14) 
+			-- (55) -- (12) -- (10) -- (26) -- (32) 
+			-- (9) -- (52) -- (45); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (43) -- (47) -- (52) 
+			-- (9) -- (33) -- (27) -- (11) -- (13) 
+			-- (56) -- (15) -- (43); 
+	
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (10) -- (12) -- (59) -- (5) 
+			-- (38) -- (7) -- (1) -- (40) -- (57) 
+			-- (53) -- (10); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (27) -- (33) -- (32) 
+			-- (26) -- (53) -- (57) -- (44) -- (46) 
+			-- (58) -- (54) -- (27); 
+
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (2) -- (35) -- (19) 
+			-- (24) -- (21) -- (16) -- (5) -- (59) 
+			-- (55) -- (14) -- (2); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (49) -- (51) -- (20) 
+			-- (25) -- (29) -- (31) -- (30) -- (28) 
+			-- (24) -- (19) -- (49); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (37) -- (4) -- (15) 
+			-- (56) -- (60) -- (6) -- (17) -- (22) 
+			-- (25) -- (20) -- (37); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (6) -- (60) -- (13) -- (11) 
+			-- (54) -- (58) -- (42) -- (3) 
+			-- (8) -- (39) -- (6); 
+	%
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (16) -- (21) -- (28) -- (30) 
+			-- (18) -- (23) -- (48) -- (34) -- (7) 
+			-- (38) -- (16); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (31) -- (29) -- (22) 
+			-- (17) -- (39) -- (8) -- (36) -- (50) 
+			-- (23) -- (18) -- (31); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (3) -- (42) -- (46) -- (44) 
+			-- (40) -- (1) -- (34) -- (48) -- (50) 
+			-- (36) -- (3); 
+	% More triangular faces (front)
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (17) -- (6) -- (39) -- (17); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (50) -- (48) -- (23) -- (50); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (18) -- (30) -- (31) -- (18); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (29) -- (25) -- (22) -- (29); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (60) -- (56) -- (13) -- (60); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (8) -- (3) -- (36) -- (8); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (21) -- (24) -- (28) -- (21); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (58) -- (46) -- (42) -- (58); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (20) -- (51) -- (37) -- (20); 
+	\draw[red,thick,fill=cyan!35,opacity=0.75]  (34) -- (1) -- (7) -- (34); 
+	%
+	\end{tikzpicture}
+	%
+\end{document}

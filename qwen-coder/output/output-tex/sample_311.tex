@@ -1,0 +1,23 @@
+To achieve this, you can use the `start angle` option in the `smartdiagramanimated` environment to shift the starting point of the animation. Additionally, you can use the `item count` option to specify how many items should be displayed in the animation. Here's an example code that should work for your needs:
+```
+\documentclass{beamer}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage[english]{babel}
+\begin{document}
+\begin{frame}{Diagrama de flujo animado}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{scope}[xshift=-2cm,yshift=-1cm]
+\begin{smartdiagramanimated}[circular diagram, item count=3,start angle=120]
+    {Etapa 1\\Proceso A, Etapa 2\\Proceso B, Etapa 3\\Proceso C}
+\end{smartdiagramanimated}
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+\end{document}
+```
+In this code, the `start angle` option is set to `120`, which will shift the starting point of the animation by 120 degrees clockwise. This means that the first item (Etapa 1) will not be displayed in the animation, but the second item (Etapa 2) will start at the top of the circle.
+The `item count` option is set to `3`, which means that only three items will be displayed in the animation. If you want to display more items, simply increase this value accordingly.
+Note that you may need to adjust the `scale` and `xshift/yshift` options to position the diagram correctly within your frame.

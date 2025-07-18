@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define colors
+    \definecolor{orange}{RGB}{255,165,0}
+    \definecolor{blue}{RGB}{0,0,255}
+
+    % Background rectangle
+    \fill[white] (0,0) rectangle (10,2);
+
+    % Ruler line
+    \draw[thick, orange] (0,1) -- (10,1);
+    
+    % Numbers along the ruler
+    \foreach \x in {0, 1, ..., 9} {
+        \pgfmathparse{\x*0.1} % Convert index to number
+        \node at (\x, 1.2) [font=\small, blue] {\pgfmathresult};
+        
+        % Scientific notation for larger numbers
+        \ifnum\x>4
+            \pgfmathparse{\x*0.1} % Convert index to number
+            \node at (\x, 0.8) [font=\scriptsize, orange] {$1\times10^{\pgfmathresult}$};
+        \fi
+    }
+
+    % Title
+    \node at (5, 2.3) [font=\large, bold, black] {Spectral Diagram of $|T|$ AN(H)};
+\end{tikzpicture}
+
+\end{document}

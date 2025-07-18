@@ -1,0 +1,34 @@
+To construct the graph \( T \) from a 3-uniform hypergraph \( H \) with the specified properties using TikZ, we need to represent the vertices and edges according to the given rules. Here's how you can do it:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+% Define nodes
+\node[circle, draw] (v1) at (0,0) {v\_1};
+\node[circle, draw] (v11) at (-2,-2) {v\_{1,1}};
+\node[circle, draw] (v12) at (0,-2) {v\_{1,2}};
+\node[circle, draw] (v13) at (2,-2) {v\_{1,3}};
+
+\node[circle, draw] (v2) at (4,0) {v\_2};
+\node[circle, draw] (v21) at (2,-2) {v\_{2,1}};
+\node[circle, draw] (v22) at (4,-2) {v\_{2,2}};
+\node[circle, draw] (v23) at (6,-2) {v\_{2,3}};
+
+% Red edges going down for v1
+\draw[red, thick, ->] (v11) -- (v1);
+\draw[red, thick, ->] (v12) -- (v1);
+\draw[red, thick, ->] (v13) -- (v1);
+
+% Arcs from v'_{a,i} to v_{b,j}
+\draw[thick, ->] (v11) -- (v21);
+\draw[thick, ->] (v11) -- (v22);
+\draw[thick, ->] (v11) -- (v23);
+\draw[thick, ->] (v12) -- (v21);
+\draw[thick, ->] (v12) -- (v22);
+\draw[thick, ->] (v12) -- (v23);
+\draw[thick, ->] (v13) -- (v21);
+\draw[th

@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Set the background color to white
+    \fill[white] (0,0) rectangle (\paperwidth,\paperheight);
+    
+    % Define the spiral parameters
+    \def\radius{1cm}
+    \def\angleincrement{3}
+    \def\maxangle{360}
+    
+    % Draw the spiral
+    \draw[blue, thick] plot[variable=\t, domain=0:\maxangle, samples=1000] ({\radius*cos(\t*\angleincrement)}, {\radius*sin(\t*\angleincrement)});
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define colors
+    \definecolor{gridcolor}{rgb}{1, 1, 1} % White
+    \definecolor{arrowcolor}{rgb}{0, 0, 1} % Blue
+
+    % Draw the grid
+    \foreach \x in {0,1,...,5} {
+        \draw[very thin, color=gridcolor] (\x,0) -- (\x,6);
+        \draw[very thin, color=gridcolor] (0,\x) -- (6,\x);
+    }
+
+    % Draw arrows at intersections
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \foreach \y in {0.5,1.5,2.5,3.5,4.5} {
+            \pgfmathsetmacro{\angle}{rnd*360}
+            \draw[->, thick, color=arrowcolor] (\x,\y) ++(\angle:0.1);
+        }
+    }
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,25 @@
+\documentclass[12pt,english]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\begin{document}
+
+\begin{tikzpicture}
+\node (s1) at (0,2){$\sigma_1$};
+\node (s2) at (0,0){$\sigma_2$};
+\node (t1) at (2,2){$\tau_1$};
+\node (t2) at (2,0){$\tau_2$};
+\node (nu) at (3,1){$\tau_1 \cdot \tau_2=\nu$};
+\node (n0) at (5,1){$\nu_0$};
+
+\draw (t1)--(nu);
+\draw (t2)--(nu);
+\draw (n0)[->]--(nu);
+\draw (t1)[->]--(s1);
+\draw (t2)[->]--(s2);
+\end{tikzpicture}
+
+\end{document}

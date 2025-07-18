@@ -1,0 +1,60 @@
+\documentclass[tikz]{standalone}
+\tikzset{
+  polyomino/rect/.style={thin},
+  polyomino/border/.style={very thick, line cap=rect},
+  polyomino/picture/.style={yscale=-1},
+  polyomino/.code=\pgfqkeys{/tikz/polyomino}{#1},
+  store matrix/.style={
+    /utils/exec=\def\listrow{0},
+    /utils/rows/.style={
+      /utils/exec=\def\listcol{0}%
+                  \edef\listrow{\the\numexpr\listrow+1\relax},
+      /utils/cols/.estyle={
+        /utils/exec=\edef\noexpand\listcol{\noexpand\the\numexpr\noexpand\listcol+1\relax},
+        /tikz/matrix/storage \listrow-\noexpand\listcol/.initial={####1}
+      },
+      /utils/cols/.list={##1},
+    },
+    /utils/rows/.list={#1}
+  },
+  matrix check/.code args={#1:#2=#3}{%
+    \pgfkeysgetvalue{/tikz/matrix/storage \pgfinteval{#1}-\pgfinteval{#2}}{#3}%
+    \ifx#3\relax \def#3{0}\fi},
+}
+
+\newcommand{\drawPolyomino}[2][]{
+  \begin{tikzpicture}[store matrix={#2},polyomino/picture,polyomino={#1}]
+    % Draw the squares
+  \draw[polyomino/rect] foreach \col in {1,...,\listcol}{
+    foreach \row in {1,...,\listrow}{
+    [matrix check/.list={\row:\col=\cell,
+                         \row:\col-1=\cellPrev,
+                         \row:\col+1=\cellNext,
+                         \row+1:\col=\cellAbove,
+                         \row-1:\col=\cellBelow}]
+      \ifnum\cell=1
+                              (\col  , \row  ) rectangle +(1,1)
+          \ifnum\cellPrev=0   (\col  , \row  ) edge[polyomino/border] +(up:1)   \fi
+          \ifnum\cellAbove=0  (\col  , \row+1) edge[polyomino/border] +(right:1)\fi
+          \ifnum\cellBelow=0  (\col  , \row  ) edge[polyomino/border] +(right:1)\fi
+          \ifnum\cellNext=0   (\col+1, \row  ) edge[polyomino/border] +(up:1)   \fi
+      \fi
+    }};
+  \end{tikzpicture}}
+
+\begin{document}
+\drawPolyomino{
+  {0,1,0,0,0},
+  {1,1,1,1,0},
+  {0,0,1,1,1},
+  {0,0,0,1,0}
+}
+\drawPolyomino[
+  rect/.append style={draw=none, top color=green!50, bottom color=blue!50},
+  border/.append style={ultra thick, draw=red, dash=on 3mm off 4mm phase 0mm}]{
+  {0,1,0,0,0},
+  {1,1,1,1,0},
+  {0,0,1,1,1},
+  {0,0,0,1,0}
+}
+\end{document}

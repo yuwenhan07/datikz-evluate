@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{nicematrix}
+\usetikzlibrary{calc}
+\begin{document}
+
+$det = \begin{vNiceArray}{c!{\hspace{5mm}}c}[first-row]
+    u & v  \\
+    x & x' \\[5mm]
+    y & y'
+\CodeAfter
+  \begin{tikzpicture}
+    \draw[->, red, looseness=2](1-1.east) to[out=0, in=0]($(2-1)!.5!(2-2)$)node[above=1mm]{$-$} to[out=180, in=180] (1-2.west|-1-1);
+  \end{tikzpicture}
+\end{vNiceArray}
+= \cdots$
+
+\end{document}

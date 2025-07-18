@@ -1,0 +1,29 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{
+    front/.style={->,thick,dashed},
+    rarefaction/.style={->,thick,solid}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->] (-2,0) -- (4,0) node[right] {$x$};
+    \draw[->] (0,-2) -- (0,4) node[above] {$t$};
+
+    % Shock Front
+    \draw[front] (0,0) -- (2,2);
+
+    % Rarefaction Front
+    \draw[rarefaction] (0,0) to[out=60,in=-60] (2,2);
+
+    % Labels
+    \node at (1,-0.5) {Shock Front};
+    \node at (1,2.5) {Rarefaction Front};
+
+    % Profile at time t > 0
+    \draw[domain=0:2,smooth,samples=100,blue] plot (\x,{\x^2});
+    \node at (2,4.5) {Profile $x^n(t,x)$ at time $t > 0$};
+\end{tikzpicture}
+\end{document}

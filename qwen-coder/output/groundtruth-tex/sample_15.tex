@@ -1,0 +1,17 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsmath}
+\usepackage{tikz,float,caption}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,patterns,cd,patterns.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[xscale=2]
+      \path[every node/.style={draw,inner sep=1pt,fill}] (0,0)node{}--node(A)[pos=0.3]{}node(Bp)[pos=0.4]{}node(Ap)[pos=0.6]{}node[pos=0.7](B){}(6,0)node{};
+      \node at (A) [above] {$a_{n}$};
+      \node at (B) [above] {$b_{n}$};
+      \node at (Ap) [above] {$a^{\prime}_{n}$};
+      \node at (Bp) [above] {$b^{\prime}_{n}$};
+      \draw (0,0)node[below]{$-\ell_{n}$}--node[pos=0.5][above]{$I_{n}$}node[pos=0.15,above]{$I_{n}^{-}$}node[pos=0.85,above]{$I_{n}^{+}$}(6,0)node[below]{$\ell_{n}$};
+    \end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,36 @@
+To create a TikZ LaTeX diagram that visualizes the publication year distribution of 386 corpus papers based on their origin (preliminary manual search or digital library), you can use a bar chart. Below is an example of how you might generate this diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc, positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define colors for each category
+    \colorlet{manual}{blue!70!black}
+    \colorlet{digital}{red!70!black}
+
+    % Publication years range
+    \def\startYear{2015}
+    \def\endYear{2024}
+    \pgfmathsetmacro{\numYears}{\endYear - \startYear + 1}
+
+    % Create x-axis
+    \draw[->] (-1,0) -- (\numYears+1,0) node[right] {Year};
+    \foreach \year in {\startYear,...,\endYear} {
+        \draw (\year-0.5,0) -- (\year-0.5,-0.1);
+        \node at (\year-0.5,-0.3) {\year};
+    }
+
+    % Create y-axis
+    \draw[->] (0,-1) -- (0,40) node[above] {Number of Papers};
+
+    % Data for manual and digital categories
+    % Replace these with your actual data
+    \def\manualPapersPerYear{%
+        2015=5, 2016=7, 2017=9, 2018=12, 2019=15, 2020=18, 2021=22, 2022=25, 2023=28, 2024=31%
+    }
+    \def\digitalPapersPerYear{%
+        2015=3, 2016=5, 2017=7, 2018=10, 2019=13, 2020=16, 2021=19, 2022=22
