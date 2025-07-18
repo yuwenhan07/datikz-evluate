@@ -1,0 +1,38 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Define the center of the circle
+    \def\centerx{0}
+    \def\centery{0}
+    \def\radius{10}
+    
+    % Function to calculate the angle for the next position
+    \newcommand{\nextangle}[2]{
+        \pgfmathsetmacro{\angle}{#1 + #2 * 360 / (#3)}
+        \pgfmathsetmacro{\x}{\centerx + \radius * cos(\angle)}
+        \pgfmathsetmacro{\y}{\centery + \radius * sin(\angle)}
+        (\x,\y)
+    }
+    
+    % Number of rows and columns in the grid
+    \def\nrows{20} % Adjust as needed
+    \def\ncols{20} % Adjust as needed
+    
+    % Draw the grid
+    \foreach \i in {0,...,\nrows}{
+        \foreach \j in {0,...,\ncols}{
+            \pgfmathsetmacro{\angle}{90 - (45 * atan2(\j/\nrows - 0.5, \i/\ncols - 0.5))}
+            \pgfmathsetmacro{\x}{\centerx + \radius * cos(\angle)}
+            \pgfmathsetmacro{\y}{\centery + \radius * sin(\angle)}
+            \draw (\x, \y) rectangle ++(1,1);
+        }
+    }
+    
+    % Draw the circle boundary
+    \draw[thick,dashed] (0,0) circle (\radius);
+\end{tikzpicture}
+
+\end{document}

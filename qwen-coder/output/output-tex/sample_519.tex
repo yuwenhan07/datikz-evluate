@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[level distance=2cm,
+  level 1/.style={sibling distance=3cm},
+  level 2/.style={sibling distance=2cm},
+  every node/.style={draw, circle, inner sep=2pt}]
+  
+  % Nodes representing the Wadge hierarchies
+  \node (WN) {W_N};
+  \node (WC) [below left of=WN] {W_C};
+  \node (WX) [below right of=WN] {W_X};
+  
+  % Edges representing the partial order
+  \draw[->] (WN) -- (WX);
+  \draw[->] (WC) -- (WX);
+  
+  % Labels indicating the ordinal relationship
+  \node at ([yshift=-0.5cm]WX) {$<_X$};
+  \node at ([xshift=0.75cm,yshift=-0.5cm]WX) {$<\omega_1$};
+
+\end{tikzpicture}
+
+\end{document}

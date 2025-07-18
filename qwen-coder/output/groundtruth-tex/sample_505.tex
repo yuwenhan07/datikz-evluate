@@ -1,0 +1,30 @@
+\documentclass{amsart}
+\usepackage{amsmath, amscd}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{matrix, arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathreplacing}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,
+    nodes in empty cells,nodes={minimum width=5ex,
+    minimum height=5ex,outer sep=-5pt},
+    column sep=1ex,row sep=10ex]{         
+\ddots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \reflectbox{$\ddots$} \\         
+         \cdots & 0 & 0 & 0 & 0 & 0 & \mathbb{Z} & 0 & 0 & 0 & 0 & \cdots \\
+          \cdots & 0 & 0 & 0 & 0 & 0 & \mathcal{O}^{\ast}(X) & \mathrm{Pic}(X) & 0 & 0 & 0 & \cdots \\
+     \cdots & 0 & 0 & 0 & 0 & \mathbb{Z}/(q^{2}-1)\mathbb{Z} & 0 & \bigoplus_{\ell\neq p}{(\mathrm{Pic}(X_{\overline{\mathbb{F}}_{q}}\otimes\mathbb{Z}_{\ell}(1))}_{\Gamma}& \mathbb{Z} & 0 & 0 & \cdots \\
+    \cdots & 0 & 0 & 0 & \mathbb{Z}/(q^{3}-1)\mathbb{Z} & 0 & \displaystyle\bigoplus_{\ell\neq p}{(\mathrm{Pic}(X_{\overline{\mathbb{F}}_{q}}\otimes\mathbb{Z}_{\ell}(2))}_{\Gamma}& \mathbb{Z}/2\mathbb{Z} & \mathbb{Z}/(q-1)\mathbb{Z} & 0 & 0 & \cdots \\
+    \cdots & 0 & 0 & \mathbb{Z}/(q^{4}-1)\mathbb{Z} & 0 & \displaystyle\bigoplus_{\ell\neq p}{(\mathrm{Pic}(X_{\overline{\mathbb{F}}_{q}}\otimes\mathbb{Z}_{\ell}(3))}_{\Gamma}& \mathbb{Z}/2\mathbb{Z} & \mathbb{Z}/(q^{2}-1)\mathbb{Z} & 0 & 0 & 0 & \cdots \\ 
+    \cdots & 0 & \mathbb{Z}/(q^{5}-1)\mathbb{Z} & 0 & \displaystyle\bigoplus_{\ell\neq p}{(\mathrm{Pic}(X_{\overline{\mathbb{F}}_{q}}\otimes\mathbb{Z}_{\ell}(4))}_{\Gamma}& \mathbb{Z}/2\mathbb{Z} & \mathbb{Z}/(q^{3}-1)\mathbb{Z} & 0 & 0 & 0 & 0 & \cdots \\
+    \reflectbox{$\ddots$} & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots \\};
+  \draw[-stealth] (m-3-7.south east) -- (m-4-9.north west)node[midway,above right] {$d_{2}$};
+  \draw[-stealth] (m-4-6.south east) -- (m-5-8.north west);
+  \draw[-stealth] (m-5-5.south east) -- (m-6-7.north west);
+  \draw[-stealth] (m-6-4.south east) -- (m-7-6.north west);
+\end{tikzpicture}
+
+\end{document}

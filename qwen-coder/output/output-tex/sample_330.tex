@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+% Define a macro to measure text dimensions
+\newcommand{\measuretext}[3]{%
+    \begin{scope}[overlay]
+        \node[inner sep=0pt] (text) {#2};
+        \pgfmathsetmacro{\width}{\wd\pgfnodebox{text}}
+        \pgfmathsetmacro{\height}{\ht\pgfnodebox{text}+\dp\pgfnodebox{text}}
+        #1{\width}{\height}
+    \end{scope}
+}
+
+\begin{document}
+\begin{tikzpicture}
+    % Measure the dimensions of the text "Test 1 Some Test"
+    \measuretext{\mywidth}{Test 1 Some Test}
+    
+    % Draw a rectangle with the same dimensions as the text
+    \draw (0,0) rectangle (\mywidth,\myheight);
+    
+    % Place the text at the center of the rectangle
+    \node at (\mywidth/2,\myheight/2) [anchor=center, inner sep=0pt] {Test 1 Some Test};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,11 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+\begin{tikzpicture}
+  \node (A) at (0,0) {test};
+  \begin{scope}[even odd rule]
+    \clip (-2,-2) rectangle (2,2)% outside border
+      (A.south west) rectangle (A.north east);% clipped area
+    \fill[blue] (-2,-2) rectangle (2,2);
+  \end{scope}
+\end{tikzpicture}
+\end{document}

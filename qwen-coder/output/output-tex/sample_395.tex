@@ -1,0 +1,37 @@
+To illustrate the local complementation of a graph \( G \) with respect to a vertex \( u \), we need to understand that local complementation involves flipping the edges between the neighbors of \( u \). In this case, let's assume \( G \) is a simple undirected graph where vertices \( v_1 \), \( v_2 \), and \( v_3 \) are connected as follows:
+
+- \( v_1 \) is connected to \( u \)
+- \( v_2 \) is connected to \( u \)
+- \( v_3 \) is connected to \( u \)
+
+Additionally, there are direct edges:
+- \( v_1 \) is connected to \( v_3 \)
+- \( v_1 \) is connected to \( v_2 \)
+- \( v_2 \) is connected to \( v_3 \)
+
+The local complementation of \( G \) with respect to \( u \) will flip the edges between \( v_1 \), \( v_2 \), and \( v_3 \).
+
+Here’s how you can represent this using TikZ in LaTeX:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Nodes
+    \node (u) at (0, 0) [circle, draw] {$u$};
+    \node (v1) at (-1.5, -1.5) [circle, draw] {$v_1$};
+    \node (v2) at (0, -1.5) [circle, draw] {$v_2$};
+    \node (v3) at (1.5, -1.5) [circle, draw] {$v_3$};
+
+    % Edges before local complementation
+    \draw[thick] (u) -- (v1);
+    \draw[thick] (u) -- (v2);
+    \draw[thick] (u) -- (v3);
+    \draw[thick] (v1) -- (v2);
+    \draw[thick] (v2) -- (v3);
+    \draw[thick] (v1) -- (v3);
+
+    % Labeling edges before local complementation
+    \path (u) -- (v1) node[midway, below left

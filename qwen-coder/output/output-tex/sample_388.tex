@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        % Define the data points from the first row of the table
+        \def\dataX{1, 2, 3, 4, 5}
+        \def\dataY{2, 4, 6, 8, 10}
+
+        % Plot the data
+        \begin{axis}[
+            xlabel=$x$,
+            ylabel=$y$,
+            title=Sample Plot,
+            grid=major,
+            ]
+            \addplot coordinates {(\dataX,\dataY)};
+        \end{axis}
+
+        % Add a blue annotation at the point corresponding to the first row of the table
+        \draw[->, thick, blue] (axis cs:1,2) -- ++(0.5,-0.5) node[midway, below left, blue] {Annotation};
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

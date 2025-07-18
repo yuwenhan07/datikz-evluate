@@ -1,0 +1,27 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usepackage{tikz-3dplot}
+
+\begin{document}
+\tdplotsetmaincoords{70}{120} % Set the main coordinates (azimuthal angle, polar angle)
+
+\begin{tikzpicture}[scale=3]
+    \draw[thick, draw=white] (0,0,0) circle (1); % Draw the white sphere
+
+    % Define the number of intersection points
+    \pgfmathsetmacro{\numPoints}{8}
+
+    % Loop through each point to draw the green lines
+    \foreach \i in {0,...,\numPoints}{
+        \pgfmathsetmacro{\theta}{360/\numPoints * \i}
+        \pgfmathsetmacro{\phi}{45} % Polar angle for the lines
+
+        % Calculate the Cartesian coordinates of the intersection point
+        \pgfmathsetmacro{\x}{sin(\phi)*cos(\theta)}
+        \pgfmathsetmacro{\y}{sin(\phi)*sin(\theta)}
+        \pgfmathsetmacro{\z}{cos(\phi)}
+
+        % Draw the line from the center of the sphere to the intersection point
+        \draw[green, thick] (0,0,0) -- (\x,\y,\z);
+    }
+\end{tikzpicture}
+\end{document}

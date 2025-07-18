@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+
+\begin{document}
+
+% Define some colors
+\definecolor{overlaycolor}{rgb}{0.2, 0.4, 0.6} % A semi-transparent blue
+
+\begin{center}
+    \begin{tikzpicture}[remember picture]
+        % Draw a rectangle in the background layer
+        \begin{scope}[on background layer]
+            \fill[overlaycolor] (current page.center) circle (3cm);
+        \end{scope}
+        
+        % Place your text here
+        \node at (current page.center) {Hello, World!};
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

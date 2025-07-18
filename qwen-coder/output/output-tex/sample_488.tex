@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Define the vertices for the incoming particles
+\node (in1) at (-2,0) [circle, draw, fill=blue!30] {$C_i$};
+\node (in2) at (2,0) [circle, draw, fill=red!30] {$C_j$};
+
+% Draw arrows from the vertices to indicate incoming particles
+\draw[->] (in1) -- node[midway, above] {Particle 1} ++(0,-1);
+\draw[->] (in2) -- node[midway, above] {Particle 2} ++(0,-1);
+
+% Define the vertex for the outgoing particle
+\node (out) at (0,-4) [circle, draw, fill=green!30] {};
+
+% Draw arrows from the outgoing vertex to indicate the outgoing particle
+\draw[<-] (out) -- node[midway, below] {Outgoing Particle} ++(0,1);
+
+% Draw lines connecting the incoming and outgoing vertices
+\draw[dashed] (in1) -- (out);
+\draw[dashed] (in2) -- (out);
+
+% Label the outgoing particle as a linear combination of 1-particle states
+\node at (0,-5) [below] {
+    \(\sum_{k} c_k | \psi_k \rangle\)
+};
+
+% Add labels for the conjugacy classes
+\node at (-2,-6) [left] {Conjugacy Class 1};
+\node at (2,-6) [right] {Conjugacy Class 2};
+
+\end{tikzpicture}
+\end{document}

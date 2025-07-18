@@ -1,0 +1,34 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+
+\tikzset{
+  loop/.style={draw=black, thick, ->},
+  node distance=2cm,
+  start chain=going below,
+  every join/.style=-stealth,
+}
+
+\begin{tikzpicture}[start chain]
+
+% Define the nodes for the loops
+\node[on chain] (1) {Loop 1};
+\node[on chain] (2) {Loop 2};
+\node[on chain] (3) {Loop 3};
+
+% Draw the loops
+\foreach \i [count=\j from 1] in {1,...,3} {
+  \node[on chain, draw=white, circle, inner sep=0pt, minimum size=1cm, label=left:Loop \i] (loop-\i) {};
+  \draw[loop] (loop-\i.west) -- ++(-1,-1) |- (loop-\i.east);
+}
+
+% Reflect the loops vertically
+\foreach \i [count=\j from 1] in {1,...,3} {
+  \node[on chain, draw=black, circle, inner sep=0pt, minimum size=1cm, label=right:Loop \i] (loop-reflected-\i) {};
+  \draw[loop] (loop-reflected-\i.east) -- ++(1,-1) |- (loop-reflected-\i.west);
+}
+
+\end{tikzpicture}
+
+\end{document}

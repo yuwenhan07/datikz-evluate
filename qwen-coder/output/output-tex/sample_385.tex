@@ -1,0 +1,43 @@
+Certainly! Below is a TikZ code that aligns a grid on a `pgfplots` axis. The grid consists of 4x4 smaller squares, each labeled from 1 to 16, starting from the top-left corner and proceeding clockwise.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis equal,
+        axis lines=middle,
+        xtick={0,1,2,3,4},
+        ytick={0,1,2,3,4},
+        tick style={thick,black},
+        xlabel=$x$,
+        ylabel=$y$,
+        ymin=-0.5, ymax=4.5,
+        xmin=-0.5, xmax=4.5,
+        enlargelimits=false,
+        samples=100,
+        domain=-0.5:4.5,
+        y domain=-0.5:4.5
+    ]
+        
+        % Draw the grid
+        \foreach \x in {0,1,...,4}{
+            \draw[thick,black] (\x,-0.5) -- (\x,4.5);
+        }
+        \foreach \y in {0,1,...,4}{
+            \draw[thick,black] (-0.5,\y) -- (4.5,\y);
+        }
+
+        % Label the grid
+        \node at (0.5,4.5) [anchor=south west] {1};
+        \node at (1.5,4.5) [anchor=south west] {2};
+        \node at (2.5,4.5) [anchor=south west] {3};
+        \node at (3.5,4.5) [anchor=south west] {4};
+        \node at (0.5,3.5) [anchor=south west] {5};
+        \node at (1.5,3.5) [anchor=south west] {6};
+        \node at (2.5,3.5) [anchor=south west] {7};
+        \node at (3.5,3.5) [anchor=south west] {8};
+        \node at (0.5,2.5) [anchor=south west] {9

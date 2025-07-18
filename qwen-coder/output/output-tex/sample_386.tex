@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw x and y axes
+    \draw[->] (-1.5,0) -- (3,0) node[right] {$x$};
+    \draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};
+
+    % Draw the wave
+    \draw[domain=-1.4:2.8,samples=200,thick,blue] plot (\x, {sin(\x r)});
+
+    % Add labels and title
+    \node at (3.2,0.5) [below right] {Orbital Wave};
+    \node at (0,-1.7) [left] {$y = \sin(x)$};
+\end{tikzpicture}
+
+\end{document}

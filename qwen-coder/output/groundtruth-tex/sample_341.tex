@@ -1,0 +1,31 @@
+\documentclass[tikz]{standalone}
+%\usepackage{tikz}
+\usetikzlibrary{arrows.meta, bending, angles, decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[
+  x=4cm, y=4cm, >=Triangle,
+  bracy/.style={decoration={brace, amplitude=2mm}},
+  dec/.style={decorate, draw, solid}
+]
+\coordinate[label=below left:$O$]         (O) at (0,0)
+ coordinate[label=above right:{$P(x,y)$}] (P) at (60:1)
+ coordinate[label=below right:$Q$]        (Q) at (P|-O)
+ foreach \xy in {x, y} {foreach \pm in {+, -} {
+   coordinate (\xy\pm) at (xyz cs: \xy=\pm 1.1)}};
+
+\draw (O) circle [radius=1];
+\fill (P) circle [radius=2pt];
+
+\draw[densely dotted] (P) -- (Q) [postaction={dec, bracy}]
+  node[midway, fill=white, right=2mm] {$y=\sin \phi$};
+\draw[densely dotted] (Q) -- (O) [postaction={dec, bracy}]
+  node[midway, below=2mm] {$x=\cos \phi$};
+\draw[decorate, bracy] (O) -- (P) node[midway, above left=1mm] {$1$};
+
+\draw[->] (x-) -- (O) -- (P)
+          (Q)  -- (x+) node[right] {$x$};
+\draw[->] (y-) -- (y+) node[above] {$y$};
+
+\pic[draw, blue, ->, pic text=$\phi$, angle radius=7mm] {angle=Q--O--P};
+\end{tikzpicture}
+\end{document}

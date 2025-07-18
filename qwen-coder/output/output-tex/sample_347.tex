@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define styles for shapes
+    \tikzset{
+        shape/.style={draw=black, thick, rounded corners},
+        mono/.style={fill=blue!20},
+        nonmono/.style={fill=red!20}
+    }
+
+    % Monotonic Shapes (Left)
+    \node[shape, mono] at (0,0) (monocircle) {Circle};
+    \node[shape, mono, below=of monocircle] (monosquare) {Square};
+
+    % Non-Monotonic Shapes (Left)
+    \node[shape, nonmono, right=of monocircle, xshift=3cm] (nonmonocircle) {Ellipse};
+    \node[shape, nonmono, below=of nonmonocircle] (nonmonsquare) {Parallelogram};
+
+    % Monotonic Shapes (Right)
+    \node[shape, mono, right=of nonmonocircle, xshift=6cm] (monorectangle) {Rectangle};
+    \node[shape, mono, below=of monorectangle] (monodiamond) {Diamond};
+
+    % Non-Monotonic Shapes (Right)
+    \node[shape, nonmono, right=of monorectangle, xshift=9cm] (nonmonorectangle) {Trapezoid};
+    \node[shape, nonmono, below=of nonmonorectangle] (nonmondiamond) {Pentagon};
+
+    % Labels
+    \node[left=of monocircle] {Monotonic};
+    \node[right=of nonmonocircle] {Non-Monotonic};
+    \node[left=of monorectangle, yshift=-2cm] {Monotonic};
+    \node[right=of nonmonorectangle, yshift=-2cm] {Non-Monotonic};
+
+\end{tikzpicture}
+
+\end{document}

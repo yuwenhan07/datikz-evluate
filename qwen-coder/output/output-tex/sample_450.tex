@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw the whiteboard
+    \filldraw[white] (0,-1) rectangle (4,1);
+    
+    % Define the scalar and variable
+    \def\sx{3} % Scalar value
+    \def\xv{z} % Variable
+    
+    % Draw the arrow
+    \draw[thick, ->] (1,0) -- (3,0)
+        node[midway, above] {$\sx \cdot \xv$};
+\end{tikzpicture}
+\end{document}

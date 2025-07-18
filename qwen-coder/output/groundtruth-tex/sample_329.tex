@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+\begin{document}
+
+\begin{center}
+\begin{tabular}{c c c c c}
+    T1 & T2 & T3 & T4 & T5 \\
+    & & & & \tikzmark{a} Read x   \\
+    Read x \tikzmark{b} \\
+    & Write x \tikzmark{c} \\
+    Read y \tikzmark{d} \\
+    & & Read y \tikzmark{e}  \\
+    & & Write z \tikzmark{f} \\
+    & & & Write x \tikzmark{g} \\
+    & & & & Write y \tikzmark{h}  \\
+    & & & & Read z \tikzmark{i} \\
+    & & & & Commit \tikzmark{g} 
+\end{tabular}
+\begin{tikzpicture}[overlay, remember picture, shorten >=.5pt, shorten <=.5pt, transform canvas={yshift=.25\baselineskip}]
+    \draw [->] ({pic cs:a}) -- ({pic cs:b});
+    \draw [->] ({pic cs:a}) -- ({pic cs:c});
+    %\draw [->] ([yshift=.75pt]{pic cs:aa}) -- ({pic cs:bb});
+\end{tikzpicture}
+\end{center}
+
+\end{document}

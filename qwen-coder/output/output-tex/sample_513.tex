@@ -1,0 +1,29 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define the size of the grid
+    \def\gridsize{4}
+    
+    % Loop through each cell in the grid
+    \foreach \x in {0,...,\gridsize} {
+        \foreach \y in {0,...,\gridsize} {
+            % Determine if the cell should be gray or white
+            \ifodd\x
+                \ifodd\y
+                    \fill[gray!50] (\x,\y) rectangle ++(1,1);
+                \else
+                    \fill[white] (\x,\y) rectangle ++(1,1);
+                \fi
+            \else
+                \ifodd\y
+                    \fill[white] (\x,\y) rectangle ++(1,1);
+                \else
+                    \fill[gray!50] (\x,\y) rectangle ++(1,1);
+                \fi
+            \fi
+        }
+    }
+\end{tikzpicture}
+\end{document}

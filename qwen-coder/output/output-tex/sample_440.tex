@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Trigonometric Curve
+\draw[thick, blue] plot[domain=-180:180,samples=400] (\x:1+radii*sin(\x));
+
+% Circle with Dashed Lines
+\draw[dashed, thick, red] (0,0) circle (1);
+\draw[dashed, thick, green] (0,0) -- (1,0);
+
+% Overlapping Circles for White Middle Section
+\fill[white] (0,-0.5) circle (1.5) (-0.5,0) circle (1.5);
+
+% Additional Styling
+\draw[thick, black] (0,0) node[below left] {Origin};
+\draw[thick, black] (1,0) node[right] {X-axis};
+\draw[thick, black] (0,1) node[above] {Y-axis};
+
+\end{tikzpicture}
+\end{document}

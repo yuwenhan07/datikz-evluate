@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Set up the axes
+    \draw[->] (-2,0) -- (5,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,3) node[above] {$y$};
+
+    % Draw the black background
+    \fill[black] (-2,-1) rectangle (5,3);
+
+    % Draw the white dots
+    \foreach \x in {0, 1, 2, 3, 4} {
+        \ifnum\x=0
+            \fill[white] (\x,2) circle (0.1);
+        \else ifnum\x=1
+            \fill[white] (\x,1) circle (0.1);
+        \else ifnum\x=2
+            \fill[white] (\x,0.5) circle (0.1);
+        \else ifnum\x=3
+            \fill[white] (\x,0.2) circle (0.1);
+        \else ifnum\x=4
+            \fill[white] (\x,0.1) circle (0.1);
+        \fi
+    }
+
+    % Connect the dots with lines
+    \foreach \x in {0, 1, 2, 3, 4} {
+        \ifnum\x>0
+            \draw[white] (\x-1,0.1+\x*0.3) -- (\x,0.1+\x*0.3);
+        \fi
+    }
+\end{tikzpicture}
+\end{document}

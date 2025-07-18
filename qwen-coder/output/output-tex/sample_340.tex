@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,4) node[above] {$y$};
+
+    % Opportunity Set B1
+    \fill[red!80!black] (0,1) circle (0.1);
+    \fill[red!80!black] (1.5,2) circle (0.1);
+    \fill[red!80!black] (-1.5,2) circle (0.1);
+
+    % Opportunity Set B2
+    \fill[red!40!black] (0,1.5) circle (0.1);
+    \fill[red!40!black] (1.75,2.5) circle (0.1);
+    \fill[red!40!black] (-1.75,2.5) circle (0.1);
+
+    % Labels
+    \node at (0,1) [below right] {B$_1$};
+    \node at (0,1.5) [below right] {B$_2$};
+
+    % Arrows to indicate nesting
+    \draw[-stealth] (0,1) -- (0,1.5);
+    \draw[-stealth] (1.5,2) -- (1.75,2.5);
+    \draw[-stealth] (-1.5,2) -- (-1.75,2.5);
+\end{tikzpicture}
+\end{document}

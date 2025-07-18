@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{3d, backgrounds}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Set up the coordinate system
+    \begin{scope}[canvas is xy plane at z=0]
+        % Draw the white background box
+        \draw[fill=white] (-1,-1) rectangle (1,1);
+        
+        % Draw the red sphere
+        \begin{scope}[on background layer]
+            \shade[left color=red!80, right color=red!50, middle color=red!70, opacity=0.6] (-0.4,-0.4) circle (0.4cm);
+        \end{scope}
+        
+        % Draw the green sphere
+        \begin{scope}[on background layer]
+            \shade[left color=green!80, right color=green!50, middle color=green!70, opacity=0.6] (0.4,-0.4) circle (0.4cm);
+        \end{scope}
+        
+        % Draw the white space in the middle
+        \draw[fill=white] (0,-0.8) rectangle (0,0);
+    \end{scope}
+    
+    % Draw the vertical lines to indicate the axis
+    \draw[-stealth] (0,0,0) -- (0,0,1) node[above]{$z$};
+    \draw[-stealth] (0,0,0) -- (1,0,0) node[right]{$x$};
+    \draw[-stealth] (0,0,0) -- (0,1,0) node[above left]{$y$};
+\end{tikzpicture}
+
+\end{document}

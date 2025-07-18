@@ -1,0 +1,173 @@
+\documentclass[11pt]{book}
+\usepackage[paperwidth=20cm, paperheight=29cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{multicol}
+\usepackage{qtree}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows.meta,arrows,chains,automata,shapes,matrix,positioning,scopes,calc,babel}
+\usepackage{tikz-qtree}
+
+\definecolor{light-gray}{gray}{0.9}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+\newcommand{\phase}[1]{\par\medskip\textbf{#1}\par\nopagebreak}
+
+\RequirePackage[framemethod=default]{mdframed} % Required for creating the theorem, definition, exercise and corollary boxes
+
+\definecolor{ocre}{RGB}{70,50,212} % Define the orange color used for highlighting throughout the book
+
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=ocre!10,
+linecolor=ocre,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt]{eBox}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newtheorem{exempleT}{Exemple}[chapter]
+\newenvironment{exemple}% environment name
+{
+\par
+    \begin{exempleT}
+        %\par\vspace{\baselineskip}\noindent
+        %\hfill{\tiny\ensuremath{\blacksquare}}
+        \par\vspace{\baselineskip}\noindent
+        \tiny\ensuremath{\blacksquare}
+        \par\vspace{\baselineskip}\noindent\ignorespaces
+        %\ignorespacesafterend
+    \end{exempleT}
+}
+
+\newtheorem{exerciceT}{Exercice}[chapter]
+\newenvironment{exercice}% environment name
+{
+\par
+    \begin{eBox}\begin{exerciceT}
+        %\par\vspace{\baselineskip}\noindent
+        %\hfill{\tiny\ensuremath{\blacksquare}}
+        %\par\vspace{\baselineskip}\noindent
+        \hfill{\color{ocre}\tiny\ensuremath{\blacksquare}}
+        \par\vspace{\baselineskip}\noindent\ignorespaces
+        %\ignorespacesafterend
+    \end{exerciceT}\end{eBox}
+}
+
+\begin{document}
+            \begin{exercice}\label{exercice:deterministeVersNonDeterministe}
+                Transformez l'automate non déterministe \code{A = (Q,$\Sigma,\delta$,s,F)} de la figure~\ref{exemple:afnd} en un automate fini déterministe \code{A' = (Q',$\Sigma',\delta'$,s',F')}.\\
+
+                Construction de l'automate fini déterministe \code{A'}:\\
+
+                \begin{enumerate}
+                    \item Si \code{Q} $= \{1, 2, 3\}$ est l'ensemble des états de l'automate \code{A} alors:\\
+                                        \code{Q'} est l'ensemble des sous ensembles de \code{Q}.\\
+                                        \code{Q'} $= \{\varnothing, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\} \}$.\\
+                    \item $\Sigma$ ne change pas. Donc $\Sigma' = \Sigma$.
+                    \item Si $\delta$ est la fonction de transition de \code{A}, alors $\delta'$ est la fonction de transition de \code{A'}. $\delta'$ est la fonction de transition suivante, et est un sous ensemble de \code{Q'} $\times \Sigma \times$ \code{Q'}:
+                        \begin{multicols}{2}
+                            $\delta = \{\\
+                            \delta(\varnothing, a)=\varnothing$\\           
+                            $\delta(\{1\}, a)=\varnothing$\\
+                            $\delta(\{2\}, a)=\varnothing$\\
+                            $\delta(\{3\}, a)=\{1,2\}$\\
+                            $\delta(\{1,2\}, a)=\varnothing$\\
+                            $\delta(\{1,3\},a)=\{1,2\}$\\
+                            $\delta(\{2,3\},a)=\{1,2\}$\\
+                            $\delta(\{1,2,3\}, a)=\{1,2\}$
+
+                        \columnbreak
+
+                        \vline \hspace{1cm}
+
+                            $\delta(\{\varnothing,b\})=\varnothing$\\
+                            $\delta(\{1\},b)=\{2,3\}$\\
+                            $\delta(\{2\},b)=\varnothing$\\
+                            $\delta(\{3\},b)=\varnothing$\\
+                            $\delta(\{1,2\},b)=\{2,3\}$\\
+                            $\delta(\{1,3\},b)=\{2,3\}$\\
+                            $\delta(\{2,3\},b)=\varnothing$\\
+                            $\delta(\{1,2,3\},b)=\{2,3\}\}$
+                        \end{multicols}
+
+                    \item \code{s} ne change pas. \code{s} étant l'état initial de \code{A}, il demeure l'état initial de \code{A'}. Si \code{s'} est l'état initial de \code{A'}, alors \code{s' = s = 1}.
+                    \item \code{F} étant l'ensemble des états finaux de \code{A} alors \code{F'} est l'ensemble des états finaux de \code{A'}.
+                        Les états finaux du nouvel automate \code{A'} sont tous des sous ensembles des états contenant l'état $3$.
+
+                        Donc \code{F'} $= \{\{3\},\{1,3\},\{2,3\},\{1,2,3\}\}$\\
+                        D'où le diagramme des transitions suivant:
+                        \begin{center}
+                            \begin{tikzpicture}[>=Stealth, shorten >=1pt, auto, node distance=2.5cm, initial text = Début]
+                                \node[initial, state](4){$1$};
+                                \node[state](1)[above left=of 4]{$2$};
+                                \node[state](2)[right=of 1]{$\varnothing$};
+                                \node[state, accepting](3)[right=of 2]{$3$};
+                                \node[state, accepting](5)[right=of 4]{${\{2, 3\}}$};
+                                \node[state](6)[right of=5]{${\{1, 2\}}$};
+                                \node[state, accepting](7)[below=of 5]{${\{1, 3\}}$};
+                                \node[state, accepting](8)[below=of 6]{${\{1, 2, 3\}}$};
+
+                                \path[->] (1) edge node {a}   (2);
+                                \path[->] (1) edge [swap] node {b}   (2);
+
+                                \path[->] (2) edge [loop above] node {a, b}   (2);
+
+                                \path[->] (3) edge node {b}   (2);
+                                \path[->] (3) edge node {a}   (6);
+
+                                \path[->] (4) edge node {a}   (2);
+                                \path[->] (4) edge node {b}   (5);
+                                \path[->] (5) edge node {b}   (2);
+                                \path[->] ({5}) edge node {a}   (6);
+                                \path[->] ({6}) edge node {b}   (5);
+                                \path[->] ({6}) edge node {b}   (2);
+
+                                \path[->] (7) edge node {b}   (5);
+                                \path[->] (7) edge node {a}   (6);
+
+                                \path[->] (8) edge node {a}   (6);
+                                \path[->] (8) edge node {b}   (5);
+                            \end{tikzpicture}
+                        \end{center}
+
+                        Si on supprime les états qui ne peuvent être atteints, on obtient l'AFD suivant:
+
+                    \begin{tikzpicture}[>=Stealth, shorten >=1pt, auto, node distance=3cm, initial text = Début]
+                        \node[initial, state](A){$\{1\}$};
+                        \node[state](B)[above right=of A]{$\varnothing$};
+                        \node[state, accepting](C)[below of=B]{$\{2, 3\}$};
+                        \node[state](D)[right of=C]{$\{1, 2\}$};
+
+                        \path[->] (A) edge node {a}   (B);
+                        \path[->] (B) edge [loop above] node {a, b}   (B);
+                        \path[->] (A) edge node {b}  (C);
+                        \path[->] (C) edge [bend right] node {a}   (D);
+                        \path[->] (C) edge node {b}   (B);
+                        \path[->] (D) edge [bend right] node {b}   (C);
+                        \path[->] (D) edge node {a}   (B);
+                    \end{tikzpicture}
+
+                    Le langage que cet automate accepte est le suivant:\\
+
+                    \begin{center}
+                        $\{b(ab)^n$ : $n \in \mathbb{N} \, \}$
+                    \end{center}
+                \end{enumerate}
+            \end{exercice}
+\end{document}

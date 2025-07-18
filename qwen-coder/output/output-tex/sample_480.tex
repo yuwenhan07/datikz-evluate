@@ -1,0 +1,26 @@
+Certainly! Below is an example of how you might represent the given scenario using TikZ LaTeX. This example includes nodes representing the variables \(Y_2\), \(Y_6\), \(Y_{42}\), \(Y_8\), \(Y_9\) with their respective support values and probabilities, as well as a node indicating that if the total probability of variables in \(X_{v_i}^*\) is at most \(1/10\), they are ignored.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=3cm]
+
+  % Nodes for the variables
+  \node (Y2) {\(Y_2\)};
+  \node (Y6) [below left of=Y2] {\(Y_6\)};
+  \node (Y42) [below right of=Y2] {\(Y_{42}\)};
+  \node (Y8) [right of=Y42] {\(Y_8\)};
+  \node (Y9) [above right of=Y42] {\(Y_9\)};
+  
+  % Nodes for the support values
+  \node (v2) [right of=Y2, xshift=2cm] {\(v_i = (1+\epsilon)^k\)};
+  \node (v6) [right of=Y6, xshift=2cm] {\(v_i = (1+\epsilon)^k\)};
+  \node (v42) [right of=Y42, xshift=2cm] {\(v_i = (1+\epsilon)^k\)};
+  \node (v8) [right of=Y8, xshift=2cm] {\(v_i = (1+\epsilon)^k\)};
+  \node (v9) [right of=Y9, xshift=2cm] {\(v_i = (1+\epsilon)^k\)};
+  
+  % Nodes for the probabilities
+  \node (p2) [below left of=v2, yshift=-1cm] {Pr(\(Y_2 \neq 0\)) \(\leq 1/20\)};
+  \node (p6) [below left of=v6, yshift=-1cm] {Pr(\(Y_6 \neq 0\)) \(\leq 1/2

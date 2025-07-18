@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.3]
+    % Define the root node
+    \node (root) at (0,0) [circle, draw, fill=black] {};
+
+    % Function to generate child nodes recursively
+    \def\generateTree(#1,#2,#3,#4,#5){
+        \ifnum #3>0
+            \pgfmathsetmacro{\angle}{#2*360/#5}
+            \pgfmathsetmacro{\xpos}{#1*cos(\angle)}
+            \pgfmathsetmacro{\ypos}{#1*sin(\angle)}
+            \node (child-\the\numexpr#3-1\relax) at (\xpos,\ypos) [circle, draw, fill=black] {};
+            \draw[thick, black] (#1) -- (child-\the\numexpr#3-1\relax);
+            \generateTree(#1,#2,\the\numexpr#3-1\relax,#4,#5)
+        \fi
+    }
+
+    % Generate the tree starting from the root
+    \generateTree(root,1,45,1,4)
+
+    % Optionally, add more levels if needed
+    % Uncomment the following lines to add more levels
+    % \generateTree(child-0,0.7,9,1,4)
+    % \generateTree(child-1,0.7,9,1,4)
+    % \generateTree(child-2,0.7,9,1,4)
+    % \generateTree(child-3,0.7,9,1,4)
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, decorations.pathmorphing}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define colors
+    \definecolor{curveColor}{RGB}{255,165,0} % Orange color for the curve
+    \definecolor{dotColor}{RGB}{0,128,0}   % Green color for the dots
+
+    % Draw the x-axis and y-axis
+    \draw[->] (-3,0) -- (7,0) node[right] {$Score$};
+    \draw[->] (0,-1) -- (0,4) node[above] {$Frequency$};
+
+    % Draw the normal distribution curve
+    \draw[curveColor, thick, samples=100] plot function {1/sqrt(2*pi*1)*exp(-0.5*((x-4)^2)/(2*1))};
+
+    % Add evenly spaced dots along the x-axis
+    \foreach \x in {-2,-1,0,1,2,3,4,5,6} {
+        \fill[dotColor] (\x,0) circle[radius=2pt];
+    }
+
+    % Add colored lines and dots above the curve
+    \foreach \x in {-2,-1,0,1,2,3,4,5,6} {
+        \draw[curveColor, dashed] (\x,0) -- (\x,1.5);
+        \fill[dotColor] (\x,1.5) circle[radius=2pt];
+    }
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,124 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{polyglossia}
+\setmainlanguage{spanish}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc,positioning}
+\tikzstyle{every picture}+=[remember picture]
+
+\usepackage{musicography}
+\usepackage{musixtex} 
+\input{musixlyr}
+\input {musixcho}
+\input {musixdat}%fecha
+\input {musixfll}
+\input {musixgre}%gregoriano
+\input {musixper}%percusión
+\input {musixppff}
+\input {musixstr}
+\input {musixvbm}  % experimental vectorized beams
+\input {musixdbr} % lineas de barras punteadas, discontinuas y arbitrariamente discontinuas
+\input {musixbm} % compatibilidad garrapateas con ganchos o con barras
+\input {musixbbm} % compatibilidad semi garrapateas con ganchos o con barras
+
+
+% Rutinas para dibujar el piano
+\newlength{\CtoBwd}%% Width of 7 adjacent white (natural) keys
+\newlength{\Whitewd}%% Width of a natural key
+\newlength{\Blackwd}%% Width of a black key
+\newlength{\Whitefrontht}%% Distance from front of white key to black key
+\newlength{\Backwdi}%% <<-- See below
+\newlength{\Backwdii}%% <<-- See below
+\newlength{\Backwdiii}%% <<-- See below
+\newlength{\FronttoBack}%% Total length of a natural key
+\newlength{\Blackht}%% Length of a black key
+
+%% http://datagenetics.com/blog/may32016/index.html
+
+\NewDocumentCommand{\drawaccidental}{mmmm}{% Lower left, sharp name, flat name, coordinate name for upper right of accidental
+  \draw[fill=black] (#1)
+  rectangle node[white,text width=\Backwdii,align=center]
+  {\bfseries\large#2$^\sharp$\\[1ex]#3$^\flat$}
+  ++ (\Blackwd,\Blackht)coordinate (#4);
+}
+
+\NewDocumentCommand{\drawname}{m}{% Coordinate name of lower left of key and name of key
+  \node at ($(#1) + (\Whitewd/2,\Whitefrontht/2)$) {\bfseries\large#1};
+}
+
+%% f b = \Backwdi
+%% cs ds fs gs as = \Backwdii
+%% d g a = \Backwdii
+%% c e = \Backwdiii
+
+\NewDocumentCommand{\drawkeyboard}{}{%
+\draw (0,0)coordinate(Do) -- ++(0,\FronttoBack) -- ++(\Backwdiii,0) --
+  ++(0,-\Blackht)coordinate(DoS) -| (\Whitewd,0)coordinate(Re) -- cycle;
+  \drawaccidental{DoS}{Do}{Re}{DoS0}
+  \drawname{Do}
+  
+  \draw (Re) -- ++(0,\Whitefrontht) -| (DoS0) -- ++(\Backwdii,0) -- ++(0,-\Blackht)coordinate(ReS)
+  -| (2\Whitewd,0)coordinate(Mi) -- cycle;
+  \drawaccidental{ReS}{Re}{Mi}{ReS0}
+  \drawname{Re}
+  
+  \draw (Mi) -- ++(0,\Whitefrontht) -| (ReS0) -- ++(\Backwdiii,0) -- ++(0,-\FronttoBack)coordinate(Fa)
+  -- cycle;
+  \drawname {Mi}
+  
+  \draw (Fa) -- ++(0,\FronttoBack) -- ++(\Backwdi,0) -- ++(0,-\Blackht)coordinate(FaS)
+  -| (4\Whitewd,0)coordinate(Sol) -- cycle;
+  \drawaccidental{FaS}{Fa}{Sol}{FaS0}
+  \drawname{Fa}
+  
+  \draw (Sol) -- ++(0,\Whitefrontht) -| (FaS0) -- ++(\Backwdii,0) -- ++(0,-\Blackht)coordinate(SolS)
+  -| (5\Whitewd,0)coordinate(La) -- cycle;
+  \drawaccidental{SolS}{Sol}{La}{SolS0}
+  \drawname{Sol}
+  
+  \draw (La) -- ++(0,\Whitefrontht) -| (SolS0) -- ++(\Backwdii,0) -- ++(0,-\Blackht)coordinate(LaS)
+  -| (6\Whitewd,0)coordinate(Si) -- cycle;
+  \drawaccidental{LaS}{La}{Si}{LaS0}
+  \drawname{La}
+  
+  \draw (Si) -- ++(0,\Whitefrontht) -| (LaS0) -- ++(\Backwdi,0) -- ++(0,-\FronttoBack)coordinate(Do1) -- cycle;
+  \drawname{Si}
+}
+
+% Dibujo del piano
+\setlength{\CtoBwd}{6.5in} %% This varies between 160mm to 167mm depending upon manufacturer
+\pgfmathsetlengthmacro{\tmpwd}{\CtoBwd/5880}\typeout{\tmpwd!!!!}
+\setlength{\Whitewd}{\dimexpr \tmpwd*840\relax}
+\setlength{\Blackwd}{\dimexpr \tmpwd*490\relax}
+\setlength{\Blackht}{1.5in}
+\setlength{\Whitefrontht}{1in}
+\setlength{\FronttoBack}{\dimexpr \Whitefrontht + \Blackht\relax}
+\setlength{\Backwdi}{\dimexpr\tmpwd*455\relax}
+\setlength{\Backwdii}{\dimexpr\tmpwd*490\relax}
+\setlength{\Backwdiii}{\dimexpr\tmpwd*525\relax}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.7,rounded corners=4pt]
+  % \foreach \oct in {0,...,3}{% for 4 octaves; vary at will
+  \foreach \oct in {0}{% for 4 octaves; vary at will
+    \begin{scope}[xshift=\oct*\CtoBwd]
+      \drawkeyboard
+    \end{scope}
+  }
+  % Poniendo etiquetas
+  \tikzset{
+    space/.style={text width=1cm,align=center,draw,below=2mm of #1},
+    tono/.style={space=#1,fill=red!20},
+    semitono/.style={space=#1,fill=yellow!70},
+  }
+  \node[tono=Re] (tonoDoRe) {\textbf{1 tono}};
+  \node[tono=Mi] (tonoReMi) {\textbf{1 tono}};
+  \node[semitono=Fa] (semiTonoMiFa) {\textbf{$1/2$ tono}};
+  \node[tono=Sol] (tonoFaSol) {\textbf{1 tono}};
+  \node[tono=La] (tonoSolLa) {\textbf{1 tono}};
+  \node[tono=Si] (tonoLaSi) {\textbf{1 tono}};
+  \node[semitono=Do1] (semiTonoSiDo) {\textbf{$1/2$ tono}};
+  
+\end{tikzpicture}
+\end{document}

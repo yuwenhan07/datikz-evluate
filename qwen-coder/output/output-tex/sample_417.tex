@@ -1,0 +1,37 @@
+Certainly! Below is a TikZ LaTeX code that generates a visual representation of the zigzag paths \( L_1 \) and \( L_2 \), along with the morphism \( X_{a_2}: L_1 \to L_2 \). The design incorporates a maze-like structure with interconnected lines and curves.
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing}
+
+\begin{document}
+\begin{tikzpicture}[thick]
+    % Define coordinates for zigzag paths
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (4,-2);
+    \coordinate (C) at (8,0);
+    \coordinate (D) at (12,-2);
+    
+    \coordinate (E) at (0,-4);
+    \coordinate (F) at (4,-6);
+    \coordinate (G) at (8,-4);
+    \coordinate (H) at (12,-6);
+    
+    % Draw zigzag paths L1 and L2
+    \draw[->, thick] (A) -- (B) node[midway, above left] {$L_1$};
+    \draw[->, thick] (B) -- (C) node[midway, below right] {};
+    \draw[->, thick] (C) -- (D) node[midway, above left] {};
+    
+    \draw[->, thick, dotted] (E) -- (F) node[midway, above left] {$X_{a_2}$};
+    \draw[->, thick, dotted] (F) -- (G) node[midway, below right] {};
+    \draw[->, thick, dotted] (G) -- (H) node[midway, above left] {};
+    
+    % Add more paths to create a maze-like effect
+    \draw[dashed, thin] (A) -- (E);
+    \draw[dashed, thin] (B) -- (F);
+    \draw[dashed, thin] (C) -- (G);
+    \draw[dashed, thin] (D) -- (H);
+    
+    \draw[dashed, thin] (A) -- (G);
+    \draw[dashed, thin] (B) -- (H);
+    \draw[dashed, thin] (C) -- (E

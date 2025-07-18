@@ -1,0 +1,35 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\tikzset{
+    pics/u shape/.style={
+        code={
+            \tikzset{u shape/.cd, #1}
+            \path[rounded corners, pic actions]
+                (0,0) -- ++(0,{\pgfkeysvalueof{/tikz/u shape/height}}) 
+                    -- ++(1,0)
+                [sharp corners]
+                    -- ++(0,{1-\pgfkeysvalueof{/tikz/u shape/height}})
+                    -- ++({\pgfkeysvalueof{/tikz/u shape/width}-2},0)
+                [rounded corners]
+                    -- ++(0,{\pgfkeysvalueof{/tikz/u shape/height}-1})
+                    -- ++(1,0)
+                    -- ++(0,{-\pgfkeysvalueof{/tikz/u shape/height}})
+                    -- ++({-\pgfkeysvalueof{/tikz/u shape/width}},0)
+                    -- cycle; 
+        }
+    },
+    u shape/.cd,
+    width/.initial=3,
+    height/.initial=2,
+}
+
+\begin{document}
+\begin{tikzpicture}
+
+    \pic[fill=red] at (0,0) {u shape};
+    
+    \pic[fill=green, rotate=30, opacity=0.5] at (0,-2) {u shape={width=5, height=3}};
+
+\end{tikzpicture}
+\end{document}

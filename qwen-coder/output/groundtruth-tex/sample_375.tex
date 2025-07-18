@@ -1,0 +1,119 @@
+\documentclass[border=3pt,tikz]{report}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{caption}
+\usetikzlibrary{arrows.meta} % for arrow size
+\tikzset{>=latex}
+
+\begin{document}
+
+\begin{figure}[H]
+    \colorlet{metalcol}{blue!25!black!20!white}
+    \tikzstyle{metal}=[draw=metalcol!30!black,rounded corners=0.1,top color=metalcol,bottom color=metalcol!80!black,shading angle=10]
+    \tikzstyle{force}=[->,red!65!black]
+    \def\W{0.7}     % side width
+    \def\H{1.6}     % total height
+    \def\F{0.28*\H} % force magnitude
+    
+    \begin{tikzpicture}[scale=0.96,x={(0.72cm,-0.08cm)},y={(0.40cm,0.30cm)},z={(0,1cm)}]
+        % BLOCK - NORMAL (Unloaded)
+        \draw[metal]
+                (0,0,0) --++ (\W,0,0) --++ (0,0,\H) --++ (-\W,0,0) -- cycle
+                (\W,0,0) --++ (0,\W,0) --++ (0,0,\H) --++ (0,-\W,0) -- cycle
+                (0,0,\H) --++ (\W,0,0) --++ (0,\W,0) --++ (-\W,0,0) -- cycle;
+        
+        \node[anchor=center] at (\W/2,\W/2,-1.2){Unloaded\vphantom{p}};
+        
+        
+        % BLOCK - TENSION
+        \begin{scope}[xshift=1/6*\textwidth]
+                \def\h{1.12*\H}
+                \draw[force] (\W/2,\W/2,0) --++ (0,0,-\F);
+                \node[below=0pt,left=0pt] at (-3.3,7.5) {$\vec{\sigma}$};
+            \node[below=0pt,left=0pt] at (1.6,-1.4) {$\vec{\sigma}$};
+            \draw[metal,top color=metalcol!80!blue,bottom color=metalcol!80!blue!80!black]
+                (0,0,0) --++ (\W,0,0) to[out=92,in=-92]++ (0,0,\h) --++ (-\W,0,0) to[out=-84,in=84] cycle
+                    (\W,0,0) --++ (0,\W,0) to[out=96,in=-96]++ (0,0,\h) --++ (0,-\W,0) to[out=-92,in=92] cycle
+                    (0,0,\h) --++ (\W,0,0) --++ (0,\W,0) --++ (-\W,0,0) -- cycle;
+            \draw[force] (\W/2,\W/2,\h) --++ (0,0,\F);
+              
+            \node[anchor=center] at (\W/2,\W/2,-1.2){Tension\vphantom{p}};
+        \end{scope}        
+
+
+        % BLOCK - COMPRESSION
+        \begin{scope}[xshift=2/6*\textwidth]
+            \def\h{0.88*\H}
+                \draw[force] (\W/2,\W/2,-\F) --++ (0,0,\F);
+                \node[below=0pt,left=0pt] at (-2.7,6.4) {$\vec{\sigma}$};
+                \node[below=0pt,left=0pt] at (1.6,-1.4) {$\vec{\sigma}$};
+                \draw[metal,top color=metalcol!78!red,bottom color=metalcol!78!red!80!black]
+                    (0,0,0) --++ (\W,0,0) to[out=85,in=-85]++ (0,0,\h) --++ (-\W,0,0) to[out=-99,in=99] cycle
+                    (\W,0,0) --++ (0,\W,0) to[out=81,in=-81]++ (0,0,\h) --++ (0,-\W,0) to[out=-85,in=85] cycle
+                    (0,0,\h) --++ (\W,0,0) --++ (0,\W,0) --++ (-\W,0,0) -- cycle;
+            \draw[force] (\W/2,\W/2,\h+\F) --++ (0,0,-\F);
+            
+            \node[anchor=center] at (\W/2,\W/2,-1.2){Compression};
+        \end{scope}
+        
+        
+        % BLOCK - BENDING (flexion)
+        \begin{scope}[xshift=3/6*\textwidth]
+            \def\F{0.38*\H} % force magnitude
+                \def\dh{0.02*\H}
+                \draw[force] (0,0.3*\W,0.85*\H) --++ (-\F,0,-0.25*\F);
+                \node[below=0pt,left=0pt] at (-2.7,4.8) {$\vec{M}$};
+                \draw[force] (0,0.4*\W,0.13*\H) --++ (-\F,0, 0.10*\F);
+            \node[below=0pt,left=0pt] at (-0.2,0.3) {$\vec{M}$};
+            \draw[metal,top color=metalcol!70!orange,bottom color=metalcol!70!orange!80!black]
+                    (0,0,\dh) -- (\W,0,-\dh) to[out=80,in=-80] (\W,0,\H+\dh) -- (0,0,\H-\dh) to[out=-80,in=80] cycle
+                    (\W,0,-\dh) -- (\W,\W,-\dh) to[out=80,in=-80] (\W,\W,\H+\dh) -- (\W,0,\H+\dh) to[out=-80,in=80] cycle
+                    (0,0,\H-\dh) -- (\W,0,\H+\dh) -- (\W,\W,\H+\dh) -- (0,\W,\H-\dh) -- cycle;
+                    
+            \node[anchor=center] at (\W/2,\W/2,-1.2){Bending};
+        \end{scope}
+        
+        
+        % BLOCK - TORSION
+        \begin{scope}[xshift=4/6*\textwidth]
+            \def\F{0.41*\H} % force magnitude
+            \draw[force] (0,0.04*\W,0.02*\H) --++ (-\F, 0.2*\F,0);
+                \node[below=0pt,left=0pt] at (-0.6,0.4) {$\vec{\tau}$};
+            \draw[force] (0,0.96*\W,0.98*\H) --++ (-\F,-0.2*\F,0);
+            \node[below=0pt,left=0pt] at (-3,4.8) {$\vec{\tau}$};
+            \draw[metal,top color=metalcol!80!green,bottom color=metalcol!80!green!80!black]
+                    (\W,0,0) --++ (0,\W,0) to[out=92,in=-92]++ (-\W,0,\H) -- cycle;
+            \draw[metal,top color=metalcol!80!green,bottom color=metalcol!80!green!80!black]
+                    (0,\W,0) to[out=92,in=-92]++ (0,-\W,\H) --++ (\W,0,0) to[out=-92,in=90] cycle;
+                \draw[metal,top color=metalcol!80!green,bottom color=metalcol!80!green!80!black]
+                (0,0,0) --++ (\W,0,0) to[out=92,in=-92]++ (0,\W,\H) --++ (0,-\W,0) to[out=-92,in=92] cycle
+                (0,0,\H) --++ (\W,0,0) --++ (0,\W,0) --++ (-\W,0,0) -- cycle;
+                \draw[force] (1.02*\W,0.10*\W,0.98*\H) --++ (\F, 0.2*\F,0);
+                \node[below=0pt,left=0pt] at (-0.6,4.8) {$\vec{\tau}$};
+                \draw[force] (1.02*\W,0.90*\W,0.02*\H) --++ (\F,-0.2*\F,0);
+            \node[below=0pt,left=0pt] at (1.61,1) {$\vec{\tau}$};
+            
+            \node[anchor=center] at (\W/2,\W/2,-1.2){Torsion\vphantom{p}};
+        \end{scope}
+        
+        
+        % BLOCK - SHEAR
+        \begin{scope}[xshift=5/6*\textwidth]
+            \def\dw{\W}
+            \def\F{0.38*\H} % force magnitude
+            \draw[force] (0,\W/2,0.01*\H) --++ (-\F,0,0);
+                \node[below=0pt,left=0pt] at (-0.2,5.3) {$\vec{\tau}$};
+            \draw[metal,top color=metalcol!78!purple,bottom color=metalcol!78!purple!80!black]
+                    (0,0,0) --++ (\W,0,0) --++ (\dw,0,\H) --++ (-\W,0,0) -- cycle
+                    (\W,0,0) --++ (0,\W,0) --++ (\dw,0,\H) --++ (0,-\W,0) -- cycle
+                    (\dw,0,\H) --++ (\W,0,0) --++ (0,\W,0) --++ (-\W,0,0) -- cycle;
+                \draw[force] (\W+\dw,\W/2,0.98*\H) --++ (\F,0,0);
+                \node[below=0pt,left=0pt] at (-0.6,0.4) {$\vec{\tau}$};
+            
+            \node[anchor=center] at (\W/2+\dw/2,\W/2,-1.2){Shear\vphantom{p}};
+        \end{scope}
+    \end{tikzpicture}   
+    
+    \caption{Most common types of material deformations}
+    \end{figure}
+\end{document}

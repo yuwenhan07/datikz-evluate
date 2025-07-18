@@ -1,0 +1,36 @@
+To illustrate how the words of an equivalence class are related by swaps, we can use a directed graph in TikZ where each node represents a word and each directed edge represents a swap operation. Let's consider a simple example with the set of all permutations of the word "abc". We will show how these permutations are connected through swap operations.
+
+Here's a TikZ code to create this illustration:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+    % Define nodes for each permutation
+    \node (a) {abc};
+    \node (b) at (4,0) {acb};
+    \node (c) at (2,-2) {bac};
+    \node (d) at (6,-2) {bca};
+    \node (e) at (1,-4) {cab};
+    \node (f) at (5,-4) {cba};
+
+    % Draw edges representing swap operations
+    \draw[->] (a) -- node[above] {swap b and c} (b);
+    \draw[->] (a) -- node[left] {swap a and b} (c);
+    \draw[->] (b) -- node[right] {swap a and c} (d);
+    \draw[->] (b) -- node[below] {swap b and c} (f);
+    \draw[->] (c) -- node[above] {swap a and c} (e);
+    \draw[->] (c) -- node[left] {swap a and b} (d);
+    \draw[->] (d) -- node[below] {swap a and c} (f);
+    \draw[->] (d) -- node[right] {swap b and c} (b);
+    \draw[->] (e) -- node[above] {swap a and c} (b);
+    \draw[->] (e) -- node[left] {swap a and b} (f);
+    \draw[->] (f) -- node[below] {swap a and c} (d);
+    \draw[->] (f) -- node[right] {swap b and c} (b);
+
+    % Add labels to nodes
+    \foreach \node in {a,b,c,d,e,f} {
+       

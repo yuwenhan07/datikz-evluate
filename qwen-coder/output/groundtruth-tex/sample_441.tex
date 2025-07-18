@@ -1,0 +1,40 @@
+\documentclass[preprint,12pt]{elsarticle}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \draw[->] (-0.5, 0) -- (7.5, 0) node[right] {$t$};
+    \draw[->] (0, -0.5) -- (0, 3.5) node[above] {$V(t)$};
+    % Closed dots
+    \node at (0, 1.2) [scale=0.7, circle,fill,inner sep=1.5pt]{};
+    \node at (1.8, 2.2) [scale=0.7, circle,fill,inner sep=1.5pt]{};
+    \node at (3, 2) [scale=0.7, circle,fill,inner sep=1.5pt]{};
+    \node at (6, 3) [scale=0.7, circle,fill,inner sep=1.5pt]{};
+    % Open dots
+    \draw (1.8, 0) circle (1.5pt);
+    \draw (3, 1) circle (1.5pt);
+    \draw (6, 0) circle (1.5pt);
+    \draw (7, 2) circle (1.5pt);
+    % indices
+    \node at (-0.2, -0.3) {$0$};
+    \node at (1.8, -0.4) {$t_1$};
+    \node at (3, -0.4) {$t_2$};
+    \node at (6, -0.4) {$t_3$};
+    \node at (7, -0.4) {$t_4$};
+    % Lines
+    \draw[domain=0:1.2, smooth, variable=\x, line width=1pt] plot ({\x}, {1.2-\x});
+    \draw[domain=1.2:1.76, smooth, variable=\x, line width=1pt] plot ({\x}, {0});
+    \draw[domain=1.8:2.98, smooth, variable=\x, line width=1pt] plot ({\x}, {4-\x});
+    \draw[domain=3:5, smooth, variable=\x, line width=1pt] plot ({\x}, {5-\x});
+    \draw[domain=5:5.97, smooth, variable=\x, line width=1pt] plot ({\x}, {0});
+    \draw[domain=6:6.98, smooth, variable=\x, line width=1pt] plot ({\x}, {9-\x});
+    \end{tikzpicture}
+
+\end{document}

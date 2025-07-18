@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Define nodes
+    \node (A) [circle, draw] {A};
+    \node (B) [circle, draw, below left of=A] {B};
+    \node (C) [circle, draw, above right of=A] {C};
+    
+    % Draw edges
+    \draw (A) -- (B);
+    \draw (A) -- (C);
+    \draw (B) -- (C);
+    \draw (B) -- (A);
+\end{tikzpicture}
+
+\end{document}

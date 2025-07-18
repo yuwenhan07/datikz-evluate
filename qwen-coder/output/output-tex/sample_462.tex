@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\tikzset{
+    img/.style={minimum size=5cm, node distance=2cm},
+    txt/.style={text width=4cm, align=center}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=3cm]
+
+% Left side (Town01)
+\node[img] (town01_top) {Events};
+\node[img,below=of town01_top] (town01_lidar) {LiDAR};
+\node[img,below=of town01_lidar] (town01_pred_depth) {Predicted Depth Map};
+\node[img,below=of town01_pred_depth] (town01_gt) {Ground Truth};
+
+% Right side (Town02)
+\node[img,right=of town01_top] (town02_top) {Events};
+\node[img,below=of town02_top] (town02_lidar) {LiDAR};
+\node[img,below=of town02_lidar] (town02_pred_depth) {Predicted Depth Map};
+\node[img,below=of town02_pred_depth] (town02_gt) {Ground Truth};
+
+% Text labels
+\node[txt,below=of town01_top.west] {Town01};
+\node[txt,below=of town02_top.east] {Town02};
+
+\end{tikzpicture}
+\end{document}

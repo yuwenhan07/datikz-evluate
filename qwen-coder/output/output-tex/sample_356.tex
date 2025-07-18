@@ -1,0 +1,47 @@
+To create a TikZ LaTeX diagram for the described graph \(G_D\) and its square \(G_D^2\), we need to carefully place the vertices and edges according to the given conditions. Here's a step-by-step approach to generate the TikZ code:
+
+1. **Define the Black Vertices**: The black vertices form a clique of order \( \frac{5D}{2} \).
+2. **Place White Vertices**: Each black vertex should have at most one white neighbor.
+3. **Connect Gray Vertices**: Each pair of black vertices without a common white neighbor should be connected by a gray vertex.
+
+Let's assume \(D = 4\) for simplicity, so the clique size will be \( \frac{5 \times 4}{2} = 10 \).
+
+Here's the TikZ code to achieve this:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, positioning}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+% Define the black vertices
+\foreach \i in {1,...,10} {
+    \node[draw, circle, fill=black] (B-\i) at (\i*1.5-7.5,0) {};
+}
+
+% Connect black vertices to form a clique
+\foreach \i in {1,...,9} {
+    \foreach \j in {\i+1,...,10} {
+        \draw (B-\i) -- (B-\j);
+    }
+}
+
+% Place white vertices
+\node[draw, circle, fill=white] (W1) at (-2,-1) {};
+\node[draw, circle, fill=white] (W2) at (2,-1) {};
+
+% Connect black vertices to white vertices
+\foreach \i in {1,...,10} {
+    \draw (B-\i) -- (W1);
+    \draw (B-\i) -- (W2);
+}
+
+% Place gray vertices
+\node[draw, circle, fill=gray] (G1) at (-2,-2) {};
+\node[draw, circle, fill=gray] (G2) at (2,-2) {};
+
+% Connect black pairs without common white neighbors to gray vertices
+\draw (B-1) -- (G1);
+\draw (B-2) -- (G1);
+\draw (B-3)

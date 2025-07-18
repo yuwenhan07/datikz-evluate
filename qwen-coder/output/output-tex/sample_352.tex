@@ -1,0 +1,43 @@
+To create a TikZ diagram that illustrates Z/2-equivariant long cylinders in the doubled domain \( D_n = n(n) \left( \text{left} \right) \) converging to nodes, with an emphasis on how collapsing boundary components need to be isolated via an additional cut, we can follow these steps:
+
+1. **Define the Doubled Domain**: This involves creating a structure where each point in the original domain is duplicated.
+2. **Show Convergence to Nodes**: This involves showing how the cylinders converge to nodes in the limit domain.
+3. **Isolate Collapsing Boundary Components**: This involves adding additional cuts to isolate these components.
+
+Here's a TikZ code snippet that attempts to capture this concept:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\tikzset{
+    cylinder/.style={draw, cylinder body fill=blue!30, cylinder end fill=red!30, aspect=2},
+    node/.style={circle, draw, inner sep=2pt, label=#1},
+    cut/.style={dashed, thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+
+% Left side: Original domain with doubled structure
+\node[node=north west] at (-4, 3) {};
+\node[node=north east] at (-2, 3) {};
+\node[node=south west] at (-4, -1) {};
+\node[node=south east] at (-2, -1) {};
+
+\node[cylinder] at (-3, 1) {};
+\node[cylinder] at (-1, 1) {};
+\node[cylinder] at (-3, -2) {};
+\node[cylinder] at (-1, -2) {};
+
+% Right side: Limit domain with nodes
+\node[node=north] at (4, 3) {};
+\node[node=south] at (4, -1) {};
+
+\node[node=north] at (6, 3) {};
+\node[node=south] at (6, -1) {};
+
+% Connect the left and right sides
+\draw[->, >=Stealth] (-3, 1) -- (4, 3);
+\draw[->, >=Stealth] (-1, 1) -- (4, 3);
+\draw[->, >=Stealth]

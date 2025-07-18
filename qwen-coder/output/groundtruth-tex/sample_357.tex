@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+    \begin{tikzpicture}
+        \tikzset{declare function={hourstoangle(\h) = 90-(\h)*360/12;}}
+        \def\dialR{3cm} % dial radius
+
+        \foreach \num/\lab in {0/label 1, 1/label 2, 3/label 3, 4/label 4, 6/label 5, 7/label 6, 9/label 7, 10/label 8}{
+            \pgfmathsetmacro\dist{\dialR+2mm+2mm*\num}
+            
+            \draw[Bar-Bar]
+            ({hourstoangle(\num)}:\dist pt)
+            arc[start angle={hourstoangle(\num)},end angle={hourstoangle(\num+3)},radius=\dist pt]node[fill=white, midway, sloped, allow upside down, inner ysep=0pt]{\lab};
+        }
+      
+    \end{tikzpicture}    
+\end{document}

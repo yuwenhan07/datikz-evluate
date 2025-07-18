@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Set up the white background
+    \fill[white] (-5,-5) rectangle (5,5);
+
+    % Define styles for arrows
+    \tikzset{
+        arrow/.style={thick, ->},
+        thickarrow/.style={very thick, ->},
+        thinarrow/.style={thin, ->}
+    }
+
+    % Draw random arrows
+    \foreach \x in {-4,-3,-2,-1,0,1,2,3,4} {
+        \foreach \y in {-4,-3,-2,-1,0,1,2,3,4} {
+            \pgfmathsetmacro{\angle}{rand*360}
+            \pgfmathsetmacro{\length}{rand*3+1}
+            \pgfmathsetmacro{\thickness}{ifthenelse(rand>0.5, 2, 1)}
+            \draw[arrow style=\ifnum\thickness=2\relax thickarrow\else thinarrow\fi] (\x,\y) -- ++(\angle:\length);
+        }
+    }
+
+    % Label equations
+    \node at (0,5) [above] {Eqn.~(eqn:p1)};
+    \node at (0,-5) [below] {Eqn.~(eqn:p2)};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,61 @@
+Certainly! Below is a sample TikZ LaTeX code that generates a graph depicting a power distribution gas distribution race with two curves (red and blue) on the same plot. The x-axis represents the time synchronization constant.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define styles for axes and grid
+    \def\axisstyle{\draw[->] #1; }
+    \def\gridstyle{\draw[dashed, thin] #1; }
+
+    % Set up the axis limits and ticks
+    \def\xmin{-2}
+    \def\xmax{4}
+    \def\ymin{0}
+    \def\ymax{10}
+    \def\xtickstep{1}
+    \def\ytickstep{2}
+
+    % Draw the x-axis and y-axis
+    \axisstyle{(0,\ymin) -- (\xmax,0)}
+    \axisstyle{(\xmin,0) -- (0,\ymax)}
+
+    % Draw the grid
+    \foreach \x in {\xmin,\xtickstep,...,\xmax} {
+        \gridstyle{(\x,0) -- (\x,\ymax)};
+    }
+    \foreach \y in {0,\ytickstep,...,\ymax} {
+        \gridstyle{(0,\y) -- (\xmax,\y)};
+    }
+
+    % Label the axes
+    \node at (\xmax,0.5) [below] {$Time Synchronization Constant$};
+    \node at (-0.5,\ymax) [left]  {$Power Distribution$};
+
+    % Draw the red curve
+    \draw[red, thick] plot coordinates {
+        (-1, 2)
+        (0, 3)
+        (1, 6)
+        (2, 8)
+        (3, 9)
+        (4, 7)
+    };
+
+    % Draw the blue curve
+    \draw[blue, thick] plot coordinates {
+        (-1, 1)
+        (0, 2)
+        (1, 5)
+        (2, 7)
+        (3, 8)
+        (4, 6)
+    };
+
+    % Add legend
+    \node at (3.5,-0.5) [below right] {
+        \textcolor{red}{Red Curve: Race 1} \\
+        \

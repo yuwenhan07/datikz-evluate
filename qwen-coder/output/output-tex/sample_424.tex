@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Define the nodes
+    \foreach \i in {1,...,7} {
+        \node (n\i) at (\i*1.5,0) [circle,draw,fill=black!20] {$\i$};
+    }
+
+    % Draw the connections
+    \foreach \i in {1,...,4} {
+        \draw[->] (n\i) -- (n\the\numexpr\i+1\relax);
+    }
+    \draw[dashed,->] (n5) -- (n6); % Pause here
+    \foreach \i in {6,...,7} {
+        \draw[->] (n\i) -- (n\the\numexpr\i+1\relax);
+    }
+\end{tikzpicture}
+\end{document}

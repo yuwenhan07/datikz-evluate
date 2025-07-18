@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\tikzset{
+  treenode/.style = {align=center, inner sep=0pt, text centered},
+  arrown/.style = {->,thick,>=stealth},
+  base/.style = {draw, ellipse, minimum width=3cm, minimum height=1cm,
+                  font=\small\bfseries, fill=orange!75!black}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+\node (root) [base] {$c$};
+\node (child1) [base, below left of=root] {$a$};
+\node (child2) [base, below right of=root] {$b$};
+
+% Draw arrows between root and its children
+\draw[arrown] (root) -- (child1);
+\draw[arrown] (root) -- (child2);
+\end{tikzpicture}
+
+\end{document}

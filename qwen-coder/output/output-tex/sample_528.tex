@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Central Circle
+    \node[circle, draw=black, fill=white, inner sep=0pt] (central) at (0,0) {};
+    
+    % Radius for smaller circles
+    \def\radius{1cm}
+    
+    % Positions for smaller circles
+    \foreach \angle [count=\i from 0] in {30, 90, 150, 210, 270, 330} {
+        \pgfmathsetmacro{\x}{\radius*cos(\angle)}
+        \pgfmathsetmacro{\y}{\radius*sin(\angle)}
+        \node[circle, draw=black, fill=gray!30, inner sep=0pt] (\i) at (\x,\y) {};
+        
+        % Draw arrows from central circle to each smaller circle
+        \draw[->, thick] (central) -- (\i);
+    }
+\end{tikzpicture}
+
+\end{document}

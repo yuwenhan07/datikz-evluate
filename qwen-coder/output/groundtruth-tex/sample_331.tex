@@ -1,0 +1,26 @@
+\documentclass[12pt, reqno]{article}
+\usepackage{enumerate,amsmath,amssymb,bm,ascmac,amsthm,url}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}
+[scale = 0.7,
+line width = 0.8pt,
+v/.style = {circle, fill = black, inner sep = 0.8mm},u/.style = {circle, fill = white, inner sep = 0.1mm}]
+  \node[v] (1) at (0, 0) {};
+  \node[v] (2) at (1.5, 1.2) {};
+  \node[v] (3) at (1.5, -1.2) {};
+  \node[v] (4) at (3, 0) {};
+  \node[v] (5) at (4.5, 0) {};
+  \draw[->] (1) to (2);
+  \draw[->] (3) to (1);
+  \draw[->] (2) to (3); 
+  \draw[->] (2) to (4);
+  \draw[->] (3) to (4);
+  \draw[->] (5) to (2);
+  \draw[->] (5) to (3);
+\end{tikzpicture}
+
+\end{document}

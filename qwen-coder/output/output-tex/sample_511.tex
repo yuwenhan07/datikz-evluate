@@ -1,0 +1,29 @@
+To create a stream plot in TikZ with singularities, you can use the `stream plot` command from the `pgfplots` package. Here's an example code that produces a stream plot with three different equations, each with variables in different colors:
+```
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis equal,
+        xmin=-2, xmax=2,
+        ymin=-2, ymax=2,
+        xlabel=$x$,
+        ylabel=$y$,
+        domain=-2:2,
+        samples=50,
+        ]
+        % Red equation
+        \addplot[red] {x^3 - y};
+        % Tanh equation
+        \addplot[tanh] {tanh(x)};
+        % White equation
+        \addplot[white] {1/(x^2 + 1)};
+    \end{axis}
+\end{tikzpicture}
+\end{document}
+```
+In this code, we first load the necessary packages (`tikz` and `pgfplots`). Then, we create a `tikzpicture` environment and add an `axis` environment inside it. We set some options for the axis, such as the range of x and y values, labels, and sample density.
+Next, we add three `addplot` commands to the `axis` environment, each representing one of the equations. We use the `red`, `tanh`, and `white` options to specify the color of each plot. The first equation is `x^3 - y`, which has a singularity at `(0,0)`. The second equation is `tanh(x)`, which is periodic and has no singularities. The third equation is `1/(x^2 + 1)`, which also has a singularity at `(0,0)`.
+Finally, we close the `tikzpicture` environment and compile the document using a LaTeX editor like TeXShop or Overleaf. This will produce a stream plot with three different equations, each with variables in different colors and showing the behavior of the tanh function and its application with different variables.

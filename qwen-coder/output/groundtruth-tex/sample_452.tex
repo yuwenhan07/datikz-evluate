@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+				\draw (0, 0) -- (5, 0) -- (1.8, 2.4) -- cycle;
+				\draw (0, 0) -- (5, 0) -- (1.8, -2.4) -- cycle;
+				\draw (0, 0) circle (3);
+				\draw (5, 0) circle (4);
+
+				\filldraw (0, 0) circle (0.05);
+				\node[below] (O) at (0, 0) {$O$};
+
+				\filldraw (5, 0) circle (0.05);
+				\node[below] (A) at (5, 0) {$A$};
+
+				\filldraw (1.8, 2.4) circle (0.05);
+				\node[above] (X) at (1.8, 2.5) {$X$};
+
+				\filldraw (1.8, -2.4) circle (0.05);
+				\node[below] (X) at (1.8, -2.5) {$Y$};
+
+				\filldraw (1, 0) circle (0.05);
+				\node[below left] (N) at (1, 0) {$N$};
+
+				\filldraw (1.8, 0) circle (0.05);
+				\node[below right] (H) at (1.8, 0) {$H$};
+
+				\filldraw (1.5, 0) circle (0.05);
+				\node[below] (M) at (1.5, 0) {$M$};
+
+				\draw (1.8, 2.4) -- (1.8, 0);
+				\draw (1.8, -2.4) -- (1.8, 0);
+			\end{tikzpicture}
+
+\end{document}

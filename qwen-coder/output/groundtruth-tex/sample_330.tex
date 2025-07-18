@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{varwidth}
+\newsavebox\testTempBox
+
+\makeatletter % for \pgfutil@selectfont
+\NewDocumentCommand{\commonFunction}{+m}{%
+    \begin{lrbox}{\testTempBox}%
+    \begin{varwidth}{6cm}%
+        \pgfutil@selectfont#1%
+    \end{varwidth}%
+    \end{lrbox}%
+    %Function is simplified a lot; has more inputs and outputs
+}
+\makeatother
+\ExplSyntaxOn % for \exp_args
+\NewDocumentCommand{\variationA}{+m}{
+    \commonFunction{#1}
+    \exp_args:Nnff \variationAInternal { #1 } % no expand
+                                       { \the\wd\testTempBox } % fully expand
+                                       { \the\ht\testTempBox } % fully expand
+}
+\ExplSyntaxOff
+\NewDocumentCommand{\variationAInternal}{+m m m }{
+    \node[draw, align=center,
+      label={[node font=\tiny,xscale=.5]#2${}\times{}$#3}]{#1};
+}
+\begin{document}
+\begin{tikzpicture}
+\variationA{Test 1:\\Some Test}
+\end{tikzpicture}
+\end{document}

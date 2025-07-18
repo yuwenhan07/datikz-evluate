@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{patterns, decorations}
+\usetikzlibrary{decorations.pathreplacing, calc}
+\usepackage{xcolor}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{tikzpicture} 
+        \node(Start)[anchor=west] at (0,4) {$Starting \ values \ H_i^0 \ \ \forall i = 1, \ldots, N$ given};
+        
+        \node(00)[anchor=west] at (0,3) {$Step\ 0:$};
+        \node(H01) at (3,3) {$H_1^0$};
+        \node(H02) at (5,3) {$H_2^0$};
+        \node(H0x) at (7,3) {$\ldots$};
+        \node(H03) at (9,3) {$H_N^0$};
+        
+        \node(01) at (3,2) {$\boldsymbol{K}_1^0$};
+        \node(02) at (5,2) {$\boldsymbol{K}_2^0$};
+        \node(0x) at (7,2) {$\ldots$};
+        \node(03) at (9,2) {$\boldsymbol{K}_N^0$};
+        
+        \node(H10)[anchor=west]  at (0,-1) {$Step\ 1:$};
+        \node(H11) at (3,-1) {$H_1^1$};
+        \node(H12) at (5,-1) {$H_2^1$};
+        \node(H1x) at (7,-1) {$\ldots$};
+        \node(H13) at (9,-1) {$H_N^1$};
+        
+        \node(11) at (3,-2) {$\boldsymbol{K}_1^1$};
+        \node(12) at (5,-2) {$\boldsymbol{K}_2^1$};
+        \node(1x) at (7,-2) {$\ldots$};
+        \node(13) at (9,-2) {$\boldsymbol{K}_N^1$};
+        
+        \node(22) at (6,-3) {$\vdots$};
+        
+        \node(end)[anchor=west]  at (0,-4.2) {$Until \ convergence: \ H_i^m = H_i^{m-1} \ \ \forall i = 1, \ldots, N$};
+        \node(cstep1) at (8.3, 0.6) {\textit{C-step}};
+        \node(cstep1) at (8.3, -3.2) {\textit{C-step}};
+        
+        
+        \draw(H01)[-stealth] to (01);
+        \draw(H02)[-stealth] to (02);
+        \draw(H03)[-stealth] to (03);
+        
+        \draw [decorate, decoration = {brace,mirror, raise=0.35cm}] (2.75,2) --  (9.25,2);
+        
+        \draw(6,1.4)[-stealth] to (H11);
+        \draw(6,1.4)[-stealth] to (H12);
+        \draw(6,1.4)[-stealth] to (H13);
+        \draw(6,1.4)[-stealth] to (7,-0.7);
+        
+        \draw(H11)[-stealth] to (11);
+        \draw(H12)[-stealth] to (12);
+        \draw(H13)[-stealth] to (13);
+        
+        \draw [decorate, decoration = {brace,mirror, raise=0.35cm}] (2.75,-2) --  (9.25,-2);
+
+    \end{tikzpicture}
+
+\end{document}

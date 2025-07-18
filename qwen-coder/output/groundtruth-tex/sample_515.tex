@@ -1,0 +1,39 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning, automata, arrows, shapes, matrix, arrows, decorations.pathmorphing, decorations.pathreplacing}
+\tikzset{main node/.style={circle,draw,minimum size=0.3em,inner sep=0.5pt}}
+\tikzset{small node/.style={circle, draw,minimum size=0.1cm,scale=0.3,fill}}
+\tikzset{anchorbase/.style={>=To,baseline={([yshift=-0.5ex]current bounding box.center)}}}
+\tikzset{->-/.style={decoration={markings, mark=at position 0.53 with {\arrow[-Latex]{>}}},postaction={decorate}}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+            \node[main node] (1) {};
+            \node[main node] (2) [right=1cm of 1] {};
+            \node[main node] (3) [right=1.5cm of 2] {};
+            \node[main node] (4) [right=1cm of 3] {};
+            \node[main node] (5) [above right=0.7cm and 0.9cm of 4] {};
+            \node[main node] (6) [below right=0.7cm and 0.9cm of 4] {};
+
+            \node (11) [below=0.1cm of 1] {\small{$1$}};
+            \node (22) [below=0.1cm of 2] {\small{$2$}};
+            \node (33) [below=0.1cm of 3] {\small{$n-3$}};
+            \node (44) [right=0.1cm of 4] {\small{$n-2$}};
+            \node (55) [right=0.1cm of 5] {\small{$n-1$}};
+            \node (66) [right=0.1cm of 6] {\small{$n$}};
+
+            \path[draw]
+            (1)--(2)
+            (3)--(4)--(5)
+            (4)--(6);
+
+            \path[draw,dashed]
+            (2)--(3);
+\end{tikzpicture}
+
+\end{document}

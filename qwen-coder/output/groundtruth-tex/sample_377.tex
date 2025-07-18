@@ -1,0 +1,53 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\ExplSyntaxOn
+% transforms any number of the form x, x*pi, pi/x or x*pi/y 
+% into properly styled math-mode
+% where x and y can be any number, with or without decimal separator (dot)
+\seq_new:N \l_topifrac_temp_seq
+\NewDocumentCommand{\topifrac}{ m }{
+    \regex_extract_once:nnN { \A(\d*\.?\d+)?(\*?pi)?(/(\d*\.?\d+))?\Z } 
+        { #1 } \l_topifrac_temp_seq
+    \seq_item:Nn \l_topifrac_temp_seq { 2 }
+    \tl_if_blank:eTF { \seq_item:Nn \l_topifrac_temp_seq { 5 } } 
+        { \tl_if_blank:eTF { \seq_item:Nn \l_topifrac_temp_seq { 3 } }  
+            { }
+            { \pi }
+        }
+        { \frac{\pi}{ \seq_item:Nn \l_topifrac_temp_seq { 5 } } }
+}
+\ExplSyntaxOff
+
+\tikzset{
+    pics/circle with segment/.style 2 args={
+        code={
+            \draw (0,0) circle[radius=#2];
+            \draw[pic actions] 
+                (0,0) -- ({deg(#1)}:#2) 
+                arc[start angle={deg(#1)}, end angle=0, radius=#2] -- cycle;
+            \draw[<->] 
+                ({deg(#1)}:1.2) 
+                arc[start angle={deg(#1)}, end angle=0, radius=1.2] 
+                node[midway, shift={({deg(#1)/2}:15pt)}] {
+                    $\topifrac{#1}$
+                };
+            \draw[->] (0,0) -- (0:#2) 
+                node[midway, below=2pt]{
+                    \pgfmathparse{#2}
+                    $\pgfmathprintnumber{\pgfmathresult}$
+                };
+        }
+    }
+}
+
+\begin{document}
+\begin{tikzpicture}[thick, >=latex, font=\sffamily\Large]
+
+\pic[fill=blue!30] {circle with segment={5*pi/4}{5}};
+
+\pic[fill=red!30] at (10,0) {circle with segment={pi/2}{3}};
+    
+\end{tikzpicture}
+
+\end{document}

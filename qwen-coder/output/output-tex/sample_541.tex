@@ -1,0 +1,39 @@
+Here's some TikZ code that generates a 4-regular graph of order 12 that is not doubly Eulerian:
+```
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[scale=0.5]
+    \foreach \i in {1,...,12} {
+        \node (n\i) at (\i*36:1cm) {};
+    }
+    \foreach \i in {1,...,12} {
+        \draw (n\i) -- (n\nextif{\i}{1});
+        \draw (n\i) -- (n\nextif{\i}{2});
+        \draw (n\i) -- (n\nextif{\i}{3});
+        \draw (n\i) -- (n\nextif{\i}{4});
+    }
+\end{tikzpicture}
+\end{document}
+```
+This code creates a regular dodecagon with 12 nodes, each connected to its four neighboring nodes. This forms a 4-regular graph of order 12.
+To make this graph non-doubly Eulerian, we can remove one edge between two adjacent nodes. Here's an updated version of the code that removes the edge between nodes 1 and 2:
+```
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[scale=0.5]
+    \foreach \i in {1,...,12} {
+        \node (n\i) at (\i*36:1cm) {};
+    }
+    \foreach \i in {1,...,12} {
+        \draw (n\i) -- (n\nextif{\i}{1});
+        \draw (n\i) -- (n\nextif{\i}{2});
+        \draw (n\i) -- (n\nextif{\i}{3});
+        \draw (n\i) -- (n\nextif{\i}{4});
+    }
+    \draw[thick,->] (n1) -- (n2);
+\end{tikzpicture}
+\end{document}
+```
+This updated code removes the arrow from node 1 to node 2, making the graph non-doubly Eulerian. The resulting pattern should be visually interesting and challenging to interpret

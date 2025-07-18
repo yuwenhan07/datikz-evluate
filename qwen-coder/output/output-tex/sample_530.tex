@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        % Define the data points for each model
+        \def\modelA{(20,3), (40,6), (60,9), (80,12)}
+        \def\modelB{(20,4), (40,7), (60,10), (80,13)}
+        \def\modelC{(20,5), (40,8), (60,11), (80,14)}
+
+        % Set up the axes
+        \draw[->] (-5,0) -- (90,0) node[right] {Model Size};
+        \draw[->] (0,-1) -- (0,12) node[above] {Percentage of Final Sparsity};
+
+        % Plot the data points and connect them with lines
+        \foreach \point in \modelA {
+            \node[circle, fill=red!50] at \point {};
+        }
+        \foreach \point in \modelB {
+            \node[circle, fill=blue!50] at \point {};
+        }
+        \foreach \point in \modelC {
+            \node[circle, fill=green!50] at \point {};
+        }
+
+        \draw[thick, red] plot coordinates \modelA;
+        \draw[thick, blue] plot coordinates \modelB;
+        \draw[thick, green] plot coordinates \modelC;
+
+        % Add labels for the models
+        \node[below right] at (40,3) {Model A};
+        \node[below right] at (40,4) {Model B};
+        \node[below right] at (40,5) {Model C};
+    \end{tikzpicture}
+    \caption{Final Sparsity Percentage (s_f) vs Model Size and MAE}
+    \label{fig:final_sparsity_vs_model_size}
+\end{figure}
+
+\end{document}

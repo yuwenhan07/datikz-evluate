@@ -1,0 +1,35 @@
+Certainly! Below is a TikZ LaTeX code that generates a diagram based on your description. This diagram includes a cycle labeled `_0^-1_1` with encircled elements, a white background, and three columns of numbers and variables colored red, white, and black.
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric,backgrounds}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Background rectangle
+    \fill[white] (0,-4) rectangle (6,4);
+
+    % Cycle
+    \draw[thick] (0,0) circle (2);
+    \node[circle,draw,inner sep=1pt,label={above:$0$}] at (0,0) {};
+    \node[circle,draw,inner sep=1pt,label={below:$-1$}] at (0,-2) {};
+    \node[circle,draw,inner sep=1pt,label={right:$1$}] at (2,0) {};
+
+    % Encircled elements
+    \foreach \i/\j in {0/1, 1/-1, -1/0} {
+        \node[circle,draw,inner sep=1pt] at (\i,\j) {};
+    }
+
+    % Columns
+    \foreach \x/\y/\color in {1/0/red, 2/0/white, 3/0/black} {
+        \node[rectangle,draw,fill=\color,minimum width=1cm,minimum height=2cm] at (\x,\y) {};
+        \node[text=black,anchor=north west,xshift=5pt,yshift=-5pt] at (\x,\y) {\textbf{\x}};
+    }
+
+    % Equations
+    \node[anchor=east,text=red] at (1,2) {$a = b + c$};
+    \node[anchor=east,text=red] at (1,0) {$d = e - f$};
+    \node[anchor=east,text=red] at (1,-2) {$g = h \times i$};
+
+    \node[anchor=east,text=white] at (2,2) {$j = k / l$};
+    \node[anchor=east,text=white] at (2,0) {$m = n

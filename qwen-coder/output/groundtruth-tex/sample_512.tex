@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+\newsavebox{\tempbox}
+
+\begin{document}
+
+\savebox{\tempbox}{\begin{minipage}{\textwidth}
+This is some text: \tikzmarknode{Foo}{foo}.
+
+And this is some text in between that the filling partially covers
+
+And this is another node:\tikzmarknode{Bar}{bar}
+\end{minipage}}%
+
+\noindent\begin{tikzpicture}[remember picture, overlay]
+  \draw[draw=none, fill=red] (Foo.north west)
+    -- (Bar.south west)
+    -- (Bar.south east)
+    -- (Foo.north east)
+    -- cycle;
+\end{tikzpicture}\usebox\tempbox
+\end{document}

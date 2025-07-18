@@ -1,0 +1,44 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define colors
+    \colorlet{stone}{brown!50!gray}
+    \colorlet{bridge}{blue!70!black}
+    
+    % Draw the arch
+    \draw[thick, stone] plot coordinates {
+        (-3,-1) 
+        (-2,-2) 
+        (-1,-3) 
+        (0,-4) 
+        (1,-3) 
+        (2,-2) 
+        (3,-1)
+    };
+    
+    % Draw the bridge supports
+    \foreach \x in {-3, -2, -1, 0, 1, 2, 3} {
+        \fill[stone] (\x, -1) circle (0.1);
+    }
+    
+    % Draw the bridge beams
+    \draw[thick, bridge] (-3,-1) -- (-2,-1);
+    \draw[thick, bridge] (-2,-1) -- (-1,-1);
+    \draw[thick, bridge] (-1,-1) -- (0,-1);
+    \draw[thick, bridge] (0,-1) -- (1,-1);
+    \draw[thick, bridge] (1,-1) -- (2,-1);
+    \draw[thick, bridge] (2,-1) -- (3,-1);
+    
+    % Add some details to make it look more realistic
+    \foreach \x in {-3, -2, -1, 0, 1, 2, 3} {
+        \foreach \y in {-2, -3} {
+            \fill[stone] (\x,\y) circle (0.05);
+        }
+    }
+    
+    % Label the bridge
+    \node at (0, -6) {Stone Arch Bridge};
+\end{tikzpicture}
+\end{document}

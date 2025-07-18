@@ -1,0 +1,37 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{patterns}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define the grid and checkered pattern
+    \draw[step=1, pattern=north east lines, pattern color=black] (0,0) grid (5,5);
+    
+    % Draw the function F(x)
+    \draw[blue, thick] (0,0) -- (1,1) -- (2,4) -- (3,9) -- (4,16);
+    
+    % Draw the inverse function F^{-1}(x)
+    \draw[red, thick] (0,0) -- (1,0) -- (4,1) -- (9,2) -- (16,3);
+    
+    % Add labels for clarity
+    \node at (2.5,-0.5) {$F(x)$};
+    \node at (-0.5,2.5) {$F^{-1}(x)$};
+    
+    % Set axis limits and ticks
+    \draw[->] (-1,0) -- (5,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,5) node[above] {$y$};
+    \foreach \x in {0,1,2,3,4} {
+        \fill (\x,0) circle (2pt);
+        \fill (0,\x) circle (2pt);
+    }
+    
+    % Label the axes
+    \foreach \x in {1,2,3,4} {
+        \node at (\x,-0.2) {\x};
+    }
+    \foreach \y in {1,2,3,4} {
+        \node at (-0.2,\y) {\y};
+    }
+\end{tikzpicture}
+
+\end{document}

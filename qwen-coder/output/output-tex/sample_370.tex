@@ -1,0 +1,21 @@
+Yes, TikZ provides the necessary tools to create an E-R (Entity-Relationship) diagram with a customized rectangular style that combines the entity title and its attributes into a single figure. You can use the `node` command to define the entity rectangle and its label, and then use the `edge` command to draw lines connecting the entity to other entities or relationships.
+Here's an example code snippet that creates an E-R diagram with a single entity:
+```
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+  % Define entity node
+  \node[rectangle,draw,minimum width=4cm,minimum height=1cm] (entity) {Customer};
+  
+  % Add attributes as child nodes
+  \node[left=of entity.west,anchor=east] (name) {Name};
+  \node[right=of entity.east,anchor=west] (address) {Address};
+  
+  % Draw lines connecting attributes to entity
+  \draw[-stealth] (name.south) -- (entity.north);
+  \draw[-stealth] (address.south) -- (entity.north);
+\end{tikzpicture}
+\end{document}
+```
+In this example, we define an entity called "Customer" using the `node` command with a `rectangle` shape. We then add two attributes ("Name" and "Address") as child nodes, positioned above the entity using the `left` and `right` options. Finally, we draw lines connecting the attributes to the entity using the `edge` command with the `-stealth` option to indicate directionality.

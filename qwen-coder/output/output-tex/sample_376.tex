@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \begin{tikzpicture}
+            % Left Panel: Two supports at time 1
+            \draw[thick] (-2,-1) rectangle (2,1);
+            \node[black, ellipse, draw, minimum width=3cm, minimum height=1cm] at (0,0) {};
+            \node[black, ellipse, draw, minimum width=3cm, minimum height=1cm] at (0,-2) {};
+
+            % Time indication
+            \node[below=1cm] at (0,-2.5) {Time 1};
+        \end{tikzpicture}
+    \end{minipage}
+    \hspace{0.1\textwidth}
+    \begin{minipage}{0.45\textwidth}
+        \begin{tikzpicture}
+            % Right Panel: Two supports at time 0 with OREC assumption
+            \draw[thick] (-2,-1) rectangle (2,1);
+            \node[red, ellipse, draw, minimum width=3cm, minimum height=1cm] at (0,0) {};
+            \node[red, ellipse, draw, minimum width=3cm, minimum height=1cm] at (0,-2) {};
+
+            % OREC assumption line
+            \draw[dashed, thick] (0,0) -- (0,-2);
+
+            % Time indication
+            \node[below=1cm] at (0,-2.5) {Time 0};
+        \end{tikzpicture}
+    \end{minipage}
+    \caption{Graphical Illustrations}
+    \label{fig:supports_orec}
+\end{figure}
+
+\end{document}

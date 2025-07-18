@@ -1,0 +1,38 @@
+To create a graphical model for a hierarchical Gaussian Process (GP) using TikZ in LaTeX, you can follow the code snippet below. This code will generate a network with 11 nodes and 15 directed arrows, simulating the structure described.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Define node styles
+    \tikzset{
+        node/.style={circle, draw, fill=black!30, minimum size=8mm},
+        arrow/.style={->, thick, >=stealth}
+    }
+
+    % Nodes
+    \node[node] (n1) {Node 1};
+    \node[node] (n2) [below left of=n1] {Node 2};
+    \node[node] (n3) [below right of=n1] {Node 3};
+    \node[node] (n4) [below left of=n2] {Node 4};
+    \node[node] (n5) [below right of=n2] {Node 5};
+    \node[node] (n6) [below left of=n3] {Node 6};
+    \node[node] (n7) [below right of=n3] {Node 7};
+    \node[node] (n8) [below left of=n4] {Node 8};
+    \node[node] (n9) [below right of=n4] {Node 9};
+    \node[node] (n10) [below left of=n5] {Node 10};
+    \node[node] (n11) [below right of=n5] {Node 11};
+
+    % Arrows
+    \draw[arrow] (n1) -- (n2);
+    \draw[arrow] (n1) -- (n3);
+    \draw[arrow] (n2) -- (n4);
+    \draw[arrow] (n2) -- (n5);
+    \draw[arrow] (n3) -- (n6);
+    \draw[arrow] (n3) -- (n7);
+    \draw[arrow] (n4) -- (n8);
+    \draw[arrow] (n4) -- (n9);
+    \draw[arrow] (n5) -- (n10);
+   

@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    % Define dimensions
+    \def\h1{2} % Height of the smaller rectangle (H_1)
+    \def\h2{3} % Height of the larger rectangle (H_2)
+
+    % Draw the background
+    \draw[fill=white] (0,0) rectangle (\h2,4); % Background rectangle
+
+    % Draw the smaller rectangle (H_1)
+    \draw[fill=gray] (0,0) rectangle (\h1,\h1);
+
+    % Draw the larger rectangle (H_2)
+    \draw[fill=gray] (\h1,0) rectangle (\h2,\h2);
+
+    % Add labels for clarity
+    \node at (\h1/2,-0.5) [below] {$H_1$};
+    \node at (\h2/2,-0.5) [below] {$H_2$};
+
+    % Add labels for the heights
+    \node at (0,\h1/2) [left] {$h_1 = 2$};
+    \node at (\h2,\h2/2) [right] {$h_2 = 3$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,49 @@
+Certainly! Below is a sample TikZ LaTeX code that generates a graph representing the sample path of the offered waiting time \( V(t) \). This code will create a series of dots connected by straight lines to illustrate the function's behavior over time.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Define the domain and range
+    \def\xmin{0}
+    \def\xmax{10}
+    \def\ymin{0}
+    \def\ymax{5}
+
+    % Draw the axes
+    \draw[->] (\xmin,0) -- (\xmax,0) node[right] {$t$};
+    \draw[->] (0,\ymin) -- (0,\ymax) node[above] {$V(t)$};
+
+    % Set the tick marks
+    \foreach \x in {\xmin,1,...,\xmax} {
+        \draw (\x,-0.2) -- (\x,0.2);
+    }
+    \foreach \y in {1,...,\ymax} {
+        \draw (-0.2,\y) -- (0.2,\y);
+    }
+
+    % Label the axes ticks
+    \foreach \x in {1,...,\xmax} {
+        \node at (\x,-0.3) {$\x$};
+    }
+    \foreach \y in {1,...,\ymax} {
+        \node at (-0.3,\y) {$\y$};
+    }
+
+    % Sample path data points
+    \coordinate (P0) at (0,2);
+    \coordinate (P1) at (2,3);
+    \coordinate (P2) at (4,1);
+    \coordinate (P3) at (6,4);
+    \coordinate (P4) at (8,2);
+    \coordinate (P5) at (10,3);
+
+    % Draw the sample path
+    \draw[thick, blue] (P0) -- (P1) -- (P2) -- (P3) -- (P4) -- (P5);
+
+    % Mark the data points
+    \fill[blue] (P0) circle (2pt) node[below left] {$V(0)=2$};
+    \fill[blue] (P1) circle (2pt) node[above

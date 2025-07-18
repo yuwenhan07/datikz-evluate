@@ -1,0 +1,35 @@
+To create a flowchart with custom starting and ending points of arrows in TikZ while ensuring they do not overlap with the content, you can use the `positioning` library for precise node placement and the `arrows.meta` library for custom arrow tips. Below is an example of how you can structure your flowchart:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30},
+    process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+    decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
+    arrow/.style={thick->,>=Stealth[length=5mm]}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (start) [startstop] {Start};
+    \node (readX) [process, below of=start] {Read X};
+    \node (writeX) [process, below of=readX] {Write X};
+    \node (readY) [process, below of=writeX] {Read Y};
+    \node (writeY) [process, below of=readY] {Write Y};
+    \node (end) [startstop, below of=writeY] {End};
+
+    % Arrows
+    \draw [arrow] (start) -- (readX);
+    \draw [arrow] (readX) -- (writeX);
+    \draw [arrow] (writeX) -- (readY);
+    \draw [arrow] (readY) -- (writeY);
+    \draw [arrow] (writeY) -- (end);
+
+    % Custom arrow positions
+    \draw [arrow] ([yshift=-0.5cm]readX.east) -- ++(1,-1) node[midway, above] {custom arrow} |- (writeX.west);
+    \draw [arrow] ([xshift=0.5cm]writeX.south) -- ++(1,-1) node[midway, right]

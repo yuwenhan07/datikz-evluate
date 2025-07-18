@@ -1,0 +1,36 @@
+Certainly! Below is a TikZ LaTeX code that creates a visually appealing diagram representing the RapIRSA time-slots structure you described. This code includes a black and white grid, blue and white squares, and red and white squares.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{matrix,shapes.geometric}
+
+\begin{document}
+
+\tikzstyle{grid} = [draw=black, thick]
+\tikzstyle{square} = [rectangle, draw=black, minimum size=2cm]
+
+\begin{tikzpicture}[scale=1.5]
+
+% Draw the grid
+\draw[grid] (0,0) grid (4,3);
+
+% Place labels
+\node at (-0.5, 1.5) {RapIRSA};
+\node at (2, -0.5) {Time Slots};
+
+% Place colored squares
+\node[square, fill=blue!70, anchor=south west] at (0.5, 2.5) {};
+\node[square, fill=white, anchor=north east] at (0.5, 2.5) {};
+\node[square, fill=red!70, anchor=south west] at (1.5, 2.5) {};
+\node[square, fill=white, anchor=north east] at (1.5, 2.5) {};
+
+\node[square, fill=blue!70, anchor=south west] at (2.5, 2.5) {};
+\node[square, fill=white, anchor=north east] at (2.5, 2.5) {};
+\node[square, fill=red!70, anchor=south west] at (3.5, 2.5) {};
+\node[square, fill=white, anchor=north east] at (3.5, 2.5) {};
+
+\node[square, fill=blue!70, anchor=south west] at (0.5, 1.5) {};
+\node[square, fill=white, anchor=north east] at (0.5, 1.5) {};
+\node[square, fill=red!70, anchor=south west] at (1.5, 1.5) {};
+\node[s

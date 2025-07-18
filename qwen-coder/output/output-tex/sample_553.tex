@@ -1,0 +1,31 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+\begin{tikzpicture}[scale=2]
+  % Define the size of the large square
+  \def\largeSquareSize{4cm}
+
+  % Draw the large square
+  \draw (0,0) rectangle (\largeSquareSize,\largeSquareSize);
+
+  % Calculate the number of small squares per side
+  \def\numSmallSquaresPerSide{8} % You can adjust this value for different m-dimensions
+
+  % Calculate the size of each small square
+  \pgfmathsetmacro{\smallSquareSize}{\largeSquareSize / \numSmallSquaresPerSide}
+
+  % Draw the smaller squares
+  \foreach \x in {0,...,\numSmallSquaresPerSide-1}{
+    \foreach \y in {0,...,\numSmallSquaresPerSide-1}{
+      \fill[white] (\x*\smallSquareSize, \y*\smallSquareSize) rectangle ({(\x+1)*\smallSquareSize}, {(\y+1)*\smallSquareSize});
+    }
+  }
+
+  % Add black lines to divide the squares
+  \foreach \x in {0,...,\numSmallSquaresPerSide}{
+    \draw (0,\x*\smallSquareSize) -- (\largeSquareSize,\x*\smallSquareSize);
+  }
+  \foreach \y in {0,...,\numSmallSquaresPerSide}{
+    \draw (\y*\smallSquareSize,0) -- (\y*\smallSquareSize,\largeSquareSize);
+  }
+\end{tikzpicture}
+\end{document}

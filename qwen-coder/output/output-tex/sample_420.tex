@@ -1,0 +1,43 @@
+To create a TikZ diagram that visually represents the described configuration, we can use the following LaTeX code. This code will generate a grid-like structure with specified numbers of colored lines in each direction.
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{xcolor}
+
+% Define colors
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{blue}{rgb}{0,0,1}
+\definecolor{orange}{rgb}{1,0.647,0}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Draw the grid
+\draw[thick] (0,0) rectangle (4,4);
+
+% Left panel description
+\node[left] at (-0.5,2) {Fix $n = 3$};
+\node[left] at (-0.5,1) {$i = (1, 0, 0)$};
+\node[left] at (-0.5,0) {$j = (0, 1, 1)$};
+\node[left] at (-0.5,-1) {$k = (1, 1, 1)$};
+\node[left] at (-0.5,-2) {$l = (0, 0, 0)$};
+
+% Right panel illustration
+\foreach \x in {0,...,3}{
+    \foreach \y in {0,...,3}{
+        % Bottom
+        \ifnum\x>0
+            \draw[red, thick] (\x-0.5,\y+0.5) -- (\x+0.5,\y+0.5);
+        \fi
+        % Left
+        \ifnum\y>0
+            \draw[blue, thick] (\x+0.5,\y-0.5) -- (\x+0.5,\y+0.5);
+        \fi
+        % Top
+        \ifnum\y<3
+            \draw[orange, thick] (\x+0.5,\y+0.5) -- (\x+0.5,\y+1.5);
+        \fi
+        % Right
+        \ifnum\x<3
+            \draw[green, thick] (\x+1.5,\y+0.5) -- (\x+0.5,\y+0.5);
+        \fi

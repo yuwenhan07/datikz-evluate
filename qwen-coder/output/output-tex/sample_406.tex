@@ -1,0 +1,33 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{trees}
+
+\tikzset{
+  node distance=2cm,
+  every node/.style={circle,draw},
+  vertex/.style={fill=blue!30},
+  edge/.style={thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+  % Define the nodes (elements of Z/p^nZ x Z/q^mZ)
+  \foreach \i in {0,...,4} {
+    \foreach \j in {0,...,3} {
+      \node[vertex] (\i,\j) at (\i,\j) {};
+    }
+  }
+
+  % Draw edges based on the power relationship
+  \foreach \i in {0,...,4} {
+    \foreach \j in {0,...,3} {
+      \ifnum\i>0
+        \path[edge] (\i,\j) -- ++(\i-1,0);
+      \fi
+      \ifnum\j>0
+        \path[edge] (\i,\j) -- ++(0,\j-1);
+      \fi
+    }
+  }
+\end{tikzpicture}
+\end{document}

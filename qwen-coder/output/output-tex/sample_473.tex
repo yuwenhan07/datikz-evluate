@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm, align=center]
+    % Define nodes
+    \node (start) {Start};
+    \node (line1) [below of=start] {print("Hello, World!")};
+    \node (line2) [below of=line1] {exit};
+
+    % Draw arrows
+    \draw[->] (start) -- (line1);
+    \draw[->] (line1) -- (line2);
+\end{tikzpicture}
+\end{document}

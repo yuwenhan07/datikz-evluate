@@ -1,0 +1,36 @@
+Certainly! Below is a TikZ LaTeX code that generates a graph representing the mathematics score spectrum of Vietnamese students in 2021. The graph includes a line with several colored dots representing different groups of students.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->] (-2,0) -- (8,0) node[right] {Score};
+    \draw[->] (0,-1) -- (0,6) node[above] {Frequency};
+
+    % Draw the line with dots
+    \draw[blue, thick] (0,0) -- (1,4) -- (2,3) -- (3,5) -- (4,2) -- (5,6) -- (6,3) -- (7,4);
+    
+    % Dots at specific points
+    \fill[red] (1,4) circle (2pt) node[below right] {Group A};
+    \fill[green] (3,5) circle (2pt) node[above left] {Group B};
+    \fill[blue] (5,6) circle (2pt) node[above right] {Group C};
+    \fill[yellow] (7,4) circle (2pt) node[below left] {Group D};
+
+    % Labels for clarity
+    \node at (0,-0.5) [below] {0};
+    \node at (1,-0.5) [below] {10};
+    \node at (2,-0.5) [below] {20};
+    \node at (3,-0.5) [below] {30};
+    \node at (4,-0.5) [below] {40};
+    \node at (5,-0.5) [below] {50};
+    \node at (6,-0.5) [below] {60};
+    \node at (7,-0.5) [below] {70};
+    \node at (8,-0.5) [below] {80};
+
+    \node at (-1,0) [left] {0};
+    \node at (-1,1) [left] {1};
+    \node at (-1

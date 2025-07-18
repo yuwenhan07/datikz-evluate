@@ -1,0 +1,11 @@
+\documentclass[tikz,border=1.618]{standalone}
+\begin{document}
+\begin{tikzpicture}[blend mode=screen]
+\fill[red ,opacity=0.5] (1,0) rectangle (2,2);
+\fill[blue,opacity=0.5] (0,1) rectangle (2,2);
+\begin{scope}[xscale=-1,xshift=-4cm] % <-- I want the figures joined
+  \fill[blue,opacity=0.5] (0,1) rectangle (2,2);
+  \fill[red ,opacity=0.5] (1,0) rectangle (2,2);
+\end{scope}
+\end{tikzpicture}
+\end{document}

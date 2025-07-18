@@ -1,0 +1,36 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{positioning, arrows.meta}
+
+\tikzset{
+    node distance=2cm,
+    dot/.style={circle, fill=black, inner sep=1pt},
+    line/.style={thick, -Stealth},
+    label style={font=\footnotesize}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+
+% Central Black Circle
+\node (center) at (0,0) [dot] {};
+
+% Nodes around the circle
+\node (A) [dot, right=of center] {};
+\node (B) [dot, above=of center] {};
+\node (C) [dot, left=of center] {};
+\node (D) [dot, below=of center] {};
+
+% Edges with labels
+\draw[line] (A) -- node[midway, above right, sloped, label style] {Available Time: 5s, Delay: 2s} (B);
+\draw[line] (B) -- node[midway, above left, sloped, label style] {Available Time: 7s, Delay: 3s} (C);
+\draw[line] (C) -- node[midway, below left, sloped, label style] {Available Time: 6s, Delay: 1s} (D);
+\draw[line] (D) -- node[midway, below right, sloped, label style] {Available Time: 8s, Delay: 4s} (A);
+
+% Labels for nodes
+\node[below=0.2cm of A] {Node A};
+\node[left=0.2cm of B] {Node B};
+\node[above=0.2cm of C] {Node C};
+\node[right=0.2cm of D] {Node D};
+
+\end{tikzpicture}
+\end{document}

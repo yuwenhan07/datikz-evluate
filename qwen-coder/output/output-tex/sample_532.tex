@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+
+    % Draw the large circle
+    \draw[fill=white] (0,0) circle (1cm);
+    
+    % Draw the small circle
+    \draw[fill=white] (0,-0.5) circle (0.3cm);
+    
+    % Mark the right angle at the intersection
+    \node at (-0.15,-0.6) {\textbf{\Large $\angle$}};
+    
+    % Draw an arrow pointing towards the center of the large circle
+    \draw[-stealth, thick] (0,-0.5) -- (0,0.5);
+    
+    % Draw arrows at the top and bottom (indicating axes)
+    \draw[-stealth, thick] (1.5,0) -- (2,0);
+    \draw[-stealth, thick] (-1.5,0) -- (-2,0);
+    
+    % Label the axes if needed
+    \node at (2.1,0) [right] {$x$};
+    \node at (-2.1,0) [left] {$-x$};
+
+\end{tikzpicture}
+
+\end{document}

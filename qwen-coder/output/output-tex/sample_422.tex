@@ -1,0 +1,41 @@
+To create a TikZ diagram based on your description, we need to plot the function \( f(x) \) over the specified range and indicate the behavior of the function at specific points. Here's a step-by-step guide to creating the diagram:
+
+1. **Define the range and steps**: We will use steps of 0.1 for both the parameter and \( x \).
+2. **Plot the function values**: We will calculate \( f(x) \) for each \( x \) in the range and determine whether it is positive or negative.
+3. **Indicate the sign changes**: We will use blue for positive values and red for negative values.
+
+Let's assume the function \( f(x) = x^2 - 4x + 3 \) as an example. This function has roots at \( x = 1 \) and \( x = 3 \), and it opens upwards (since the coefficient of \( x^2 \) is positive).
+
+Here is the TikZ code to generate the diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Define the domain and step size
+    \def\xmin{-5}
+    \def\xmax{5}
+    \def\ymin{-10}
+    \def\ymax{10}
+    \def\step{0.1}
+
+    % Draw the axes
+    \draw[->] (\xmin,0) -- (\xmax,0) node[right] {$x$};
+    \draw[->] (0,\ymin) -- (0,\ymax) node[above] {$f(x)$};
+
+    % Plot the function
+    \foreach \x in \xmin\step...\xmax {
+        \pgfmathsetmacro{\y}{(\x)^2 - 4*\x + 3}
+        \ifdim\y pt>0pt
+            \filldraw[blue] (\x,\y) circle (0.05);
+        \else
+            \filldraw[red] (\x,\y) circle (0.05);
+        \fi
+    }
+
+    % Indicate the critical points
+    \filldraw[black] (1,-1) circle (0.05) node[below right] {$(1, -1)$};
+    \filldraw[black] (3,-6) circle (0.

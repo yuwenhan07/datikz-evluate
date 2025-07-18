@@ -1,0 +1,18 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[level 2/.style={every node/.style={xshift=-7.5mm}}]
+    \node {0} 
+        child {node {a}}
+        child {node {b}}
+        child {node {c} 
+            child {node {a1}}
+            child {node {b1}}
+            child[missing] {}
+            child {node {d1}}
+        }
+        child {node {d}}
+        ;
+\end{tikzpicture}
+\end{document}

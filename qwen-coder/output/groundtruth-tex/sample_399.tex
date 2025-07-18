@@ -1,0 +1,44 @@
+\documentclass[12pt,onecolumn,a4paper, draftcls]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts,amssymb,amsthm}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{color, colortbl}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=.7, transform shape]
+       \color{black}
+        \draw[dashed,step=1cm,black,thin] (3,-3) grid (13.1,2.99);
+        \path (2,2.5) node(u1) {User 1};
+        \path (2,1.6) node(u) {\textbf{$\boldsymbol{\vdots}$}};
+        \path (2,0.5) node(um) {User $m$};
+         \draw[-,black] (2,0) -- (13.1,0) ;
+        \path (2,-0.5) node(cN) {$c\mathcal{N}$ 1};
+        \path (2,-1.4) node(c) {\textbf{$\boldsymbol{\vdots}$}};
+        \path (2,-2.5) node(cN) {$c\mathcal{N}$ $q$};
+        \draw[thick,<->,black] (3,3.5) -- (9.9,3.5) node[pos=0.5,above] {$T_{RAF}$ [s], $n_{RAF}$ [Slots]};
+        \draw[thick,<->,black] (10,3.5) -- (12.9,3.5) node[pos=0.5,above] {$T_q$ [s], $n_q$ [Slots]};
+        \filldraw[fill=blue!40!white, draw=black] (3,2) rectangle (4,3) node[pos=0.5] {RP 1};
+        \filldraw[fill=blue!40!white, draw=black] (8,2) rectangle (9,3) node[pos=0.5] {RP $d_1$};
+        \filldraw[fill=blue!40!white, draw=black] (4,0) rectangle (5,1) node[pos=0.5] {RP 1};
+        \filldraw[fill=blue!40!white, draw=black] (8,0) rectangle (9,1) node[pos=0.5] {RP $d_\text{m}$};
+        
+        \path (6.5,2.5) node(c) {\textbf{$\boldsymbol{\dots}$}};
+        \path (6.5,1.5) node(c) {\textbf{$\boldsymbol{\ddots}$}};
+        \path (6.5,0.5) node(c) {\textbf{$\boldsymbol{\dots}$}};
+        \path (6.5,-0.5) node(c) {\textbf{$\boldsymbol{\dots}$}};
+        \path (6.5,-1.5) node(c) {\textbf{$\boldsymbol{\ddots}$}};
+        \path (6.5,-2.5) node(c) {\textbf{$\boldsymbol{\dots}$}};
+
+        \draw[-,black] (10,-3) -- (10,3) ;
+        \filldraw[fill=gray!40!white, draw=black] (10,-1) rectangle (11,0) node[pos=0.5] {$S_{c \mathcal{N}_1}$};
+        \path (11.5,-1.4) node(c) {\textbf{$\boldsymbol{\ddots}$}};
+        \path (11.5,1.5) node(c) {\textbf{$\boldsymbol{\dots}$}};
+        \filldraw[fill=gray!40!white, draw=black] (12,-3) rectangle (13,-2) node[pos=0.5] { $S_{c \mathcal{N}_q}$};
+    \end{tikzpicture}
+
+\end{document}

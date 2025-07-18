@@ -1,4 +1,5 @@
 import os
+from tqdm import tqdm
 from automatikz.evaluate.eed import TER  # 使用TER类
 
 # 设置文件夹路径
@@ -23,8 +24,10 @@ def evaluate_tex_files(groundtruth_dir, output_dir):
     if len(groundtruth_files) != len(output_files):
         raise ValueError("groundtruth和output文件夹中的文件数目不一致！")
 
+    sum = 0
+    count = 0
     # 遍历所有文件并进行评测
-    for gt_file, out_file in zip(groundtruth_files, output_files):
+    for gt_file, out_file in tqdm(zip(groundtruth_files, output_files), total=len(groundtruth_files), desc="Evaluating"):
         gt_path = os.path.join(groundtruth_dir, gt_file)
         out_path = os.path.join(output_dir, out_file)
 
@@ -33,15 +36,19 @@ def evaluate_tex_files(groundtruth_dir, output_dir):
         output = read_file(out_path)
 
         # 将groundtruth和output包装成包含单个元素的列表
-        ter_score = ter_metric.compute(references=[groundtruth], predictions=[output])
+        ter_score = ter_metric.compute(references=[[groundtruth]], predictions=[output])
 
-        print(ter_score)
-        # 检查返回值是否为None
+        # 累加分数
         if ter_score is not None:
-            print(f"评测文件: {gt_file} vs {out_file}")
-            print(f"TER Score: {ter_score['EED']}")  # 输出最终的TER值
-        else:
-            print(f"评测文件: {gt_file} vs {out_file} - 未计算有效的TER分数")
+            sum += ter_score['EED']
+            count += 1
+        
+    # 计算平均分数
+    if count > 0:
+        average_score = sum / count
+        print(f"平均EED分数: {average_score}")
+    else:
+        print("没有有效的评测结果。请检查文件内容。")
 
 # 调用评测函数
 if __name__ == "__main__":

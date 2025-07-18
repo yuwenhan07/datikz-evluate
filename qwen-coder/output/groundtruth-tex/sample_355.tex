@@ -1,0 +1,30 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{tikzpicture}
+		% Draw time axis
+		\draw [->,thick] (0.5,0.8) -- (8,0.8) node (time) [right] {$t$};
+		
+		% Draw Intersections
+		\draw (1,0.4) node [below, align=center] {$S$ \\ \texttt{invest()}} -- (1,3.3) ;
+		\draw (7,0.4) node [below, align=center] {$T_{1}$ \\ \texttt{divest()}} -- (7,3.3);
+		
+		% Draw Price Graphs
+		\draw [](1,2) node[left] {\small{$p_{_C}$}} -- (7,2);
+		\draw[blue] (1,2.5) node[left,blue] {\small{$p_{_A}$}} -- (7,2.8);
+		\draw[red] (1,1.5) node[left,red] {\small{$p_{_B}$}} -- (7,2.8);
+		
+		% Interest Accumulation
+		\draw [<->,thick] (7.2, 2) -- node[right, align=left] {\small{Interest}} (7.2,2.8) ;
+		
+	\end{tikzpicture}
+
+\end{document}

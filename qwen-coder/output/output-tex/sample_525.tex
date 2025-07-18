@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[level distance=2cm,
+                    level 1/.style={sibling distance=4cm},
+                    level 2/.style={sibling distance=3cm}]
+    % Nodes
+    \node (A) {A};
+    child {
+        node (B) {B}
+    }
+    child {
+        node (C) {C}
+    };
+\end{tikzpicture}
+\end{document}

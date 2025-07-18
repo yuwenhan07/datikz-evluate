@@ -1,0 +1,51 @@
+Certainly! Below are two TikZ LaTeX diagrams representing the two cases you described for Operation `op01`. The first case shows a scenario where `v` is a 0-anchor, and the green edge is the edge `{v, v'}`. The second case shows a scenario where `v` is a 1-anchor, and the green edge is still the edge `{v, v'}`.
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    node/.style={circle, draw, minimum size=1cm},
+    anchor/.style={rectangle, draw, minimum width=0.8cm, minimum height=0.4cm},
+    edge/.style={->, thick},
+    greenedge/.style={->, thick, green}
+}
+
+\begin{document}
+
+% Case 1: v is a 0-anchor
+\begin{tikzpicture}[x=2cm, y=2cm]
+    % Nodes
+    \node[node] (v) at (0,0) {v};
+    \node[node] (v') at (2,0) {v'};
+    
+    % Anchor
+    \node[anchor] (anchor) at (1,-1) {};
+    
+    % Edges
+    \draw[edge] (v) -- (anchor);
+    \draw[edge] (v') -- (anchor);
+    \draw[greenedge] (v) -- (v');
+    
+    % Labels
+    \node[left] at (-0.3,-1) {0-anchor};
+\end{tikzpicture}
+
+% Case 2: v is a 1-anchor
+\begin{tikzpicture}[x=2cm, y=2cm]
+    % Nodes
+    \node[node] (v) at (0,0) {v};
+    \node[node] (v') at (2,0) {v'};
+    
+    % Anchor
+    \node[anchor] (anchor) at (1,-1) {};
+    
+    % Edges
+    \draw[edge] (v) -- (anchor);
+    \draw[edge] (v') -- (anchor);
+    \draw[greenedge] (v) -- (v');
+    
+    % Labels
+    \node[right] at (2.3,-1) {1-anchor};
+\end{tikzpicture}
+

@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw the larger white triangle
+    \draw[fill=white] (-1,-1) -- (1,-1) -- (0,1) -- cycle;
+    
+    % Draw the smaller white triangle with apex at the origin
+    \draw[fill=white] (0,0) -- (1,0) -- (0,1) -- cycle;
+    
+    % Label the vertices of the smaller triangle
+    \node at (1,0) [below right] {B};
+    \node at (0,1) [above left] {C};
+    
+    % Draw three arcs with equal centers at (0,0) and different radii
+    \draw[thick,->] (0,0) -- (0.5,0);
+    \draw[thick,->] (0,0) -- (0,0.5);
+    \draw[thick,->] (0,0) -- (0.3,0.4);
+    
+    % Label the radii
+    \node at (0.6,0) [right] {$r_1$};
+    \node at (0,0.6) [above] {$r_2$};
+    \node at (0.4,0.4) [right above] {$r_3$};
+\end{tikzpicture}
+\end{document}

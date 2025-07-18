@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{xparse}
+
+% Define a command to print counter values
+\newcommand{\printcounter}[1]{%
+    \typeout{Counter #1 value: \the#1}%
+}
+
+\begin{document}
+
+\begin{tikzpicture}[matrix of nodes, nodes in empty cells,
+    row sep=-\pgflinewidth, column sep=-\pgflinewidth]
+    \int_step_inline:nnnn {1} {1} {10}{
+        \int_step_inline:nnnn {1} {1} {10}{
+            \node {\int_eval:n {##1 + (#1 - 1) * 10}};
+        }
+    };
+\end{tikzpicture}
+
+\end{document}

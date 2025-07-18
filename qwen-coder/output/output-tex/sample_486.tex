@@ -1,0 +1,35 @@
+Certainly! Below is a TikZ LaTeX code that represents the described configuration:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+
+        % Upper part: Weighted Graph Corresponding to Rank l Version of H_n and E_n Theories
+
+        % Genus Zero Component
+        \node[circle, draw, fill=blue!20] (G0_1) at (0, 0) {};
+        \node[circle, draw, fill=blue!20] (G0_2) at (2, 0) {};
+        \node[circle, draw, fill=red!20] (G0_3) at (4, 0) {};
+        
+        % Edges for Genus Zero Component
+        \draw[->] (G0_1) -- node[midway, above] {$1 + \frac{1}{l} + \frac{l - 1}{l}$} (G0_2);
+        \draw[->] (G0_2) -- node[midway, above] {$\frac{3}{4} + \frac{3}{4} + \frac{1}{2}$} (G0_3);
+
+        % Genus One Component
+        \node[circle, draw, fill=green!20] (G1_1) at (-2, -2) {};
+        \node[circle, draw, fill=green!20] (G1_2) at (0, -2) {};
+        \node[circle, draw, fill=green!20] (G1_3) at (2, -2) {};
+
+        % Edges for Genus One Component
+        \draw[->] (G1_1) -- node[midway, below] {$3$} (G1_2);
+        \draw[->] (G1_2) -- node[midway, below] {$3$} (G1_3);
+        \draw[->] (G1_3) -- node[midway, below] {$\frac{1}{2}$} (G1_1);
+
+        % Automorphism Permutation
+        \draw[dashed, ->] (G0_1) -- (G1_1);

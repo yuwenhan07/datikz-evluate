@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes
+    \node (quantum_state) [draw, circle, label=left:Quantum State] {};
+    \node (meter) [draw, rectangle, below=of quantum_state, label=below:Meter] {};
+    \node (measurement_result) [draw, circle, right=of meter, label=right:Measurement Result $m$] {};
+
+    % Lines
+    \draw[-stealth] (quantum_state) -- node[above]{$H$} (meter); % Assuming H for Hamiltonian interaction
+    \draw[-stealth] (meter) -- (measurement_result);
+
+\end{tikzpicture}
+
+\end{document}

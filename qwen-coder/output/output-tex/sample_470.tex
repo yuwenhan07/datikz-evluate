@@ -1,0 +1,47 @@
+Certainly! Below is a TikZ LaTeX code snippet that illustrates the possible structures for a critical component \( K \) of \( H + C \) as described:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    vertex/.style={circle, draw=black, fill=white, inner sep=3pt},
+    anchor/.style={rectangle, draw=gray, fill=gray!50, inner sep=3pt},
+    critical/.style={rectangle, draw=red, fill=red!50, inner sep=3pt},
+    edge/.style={draw=black, thick},
+    dashed/.style={draw=black, dashed},
+    thin/.style={draw=black, thin},
+    filled/.style={fill=black},
+    blank/.style={}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Structure 1: Matching M
+\node[vertex] (v1) at (0,0) {};
+\node[vertex] (v2) at (2,0) {};
+\node[vertex] (v3) at (4,0) {};
+\node[vertex] (v4) at (6,0) {};
+
+\draw[edge] (v1) -- (v2);
+\draw[dashed] (v3) -- (v4);
+
+% Structure 2: Path-Cycle Cover C
+\node[vertex] (w1) at (-2,-2) {};
+\node[vertex] (w2) at (0,-2) {};
+\node[vertex] (w3) at (2,-2) {};
+\node[vertex] (w4) at (4,-2) {};
+\node[vertex] (w5) at (2,-4) {};
+\node[vertex] (w6) at (4,-4) {};
+
+\draw[edge] (w1) -- (w2);
+\draw[edge] (w2) -- (w3);
+\draw[edge] (w3) -- (w4);
+\draw[dashed] (w4) -- (w5);
+\draw[dashed] (w5) -- (w6);
+\draw[dashed] (w6) -- (w1);
+
+% Structure 3: Critical Component K
+\node[critical] (k1) at (8,0) {};
+\node[critical

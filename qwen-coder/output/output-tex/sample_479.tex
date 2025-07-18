@@ -1,0 +1,41 @@
+Certainly! Below is a TikZ LaTeX code to generate a diagram representing the Mealy machine for the prioritized arbiter specification you described. The preMealy machine obtained after generalizing the examples and before completion is highlighted in red.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\tikzset{
+    state/.style={circle, draw=black, fill=white, inner sep=5pt},
+    arrow/.style={->, >=stealth', shorten >=1pt, shorten <=1pt},
+    decision/.style={diamond, draw=black, fill=white, inner sep=5pt},
+    highlight/.style={draw=red, thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+% States
+\node[state] (q0) {q0};
+\node[state, below left of=q0] (q1) {q1};
+\node[state, below right of=q0] (q2) {q2};
+\node[state, below of=q1, yshift=-1cm] (q3) {q3};
+\node[state, right of=q2, xshift=1cm] (q4) {q4};
+
+% Arrows and labels
+\path[arrow] 
+    (q0) edge node[above] {$r_0$} (q1)
+    (q0) edge node[below] {$r_1$} (q2)
+    (q1) edge node[above] {$r_1$} (q3)
+    (q2) edge node[below] {$r_0$} (q3)
+    (q1) edge node[below] {$r_0$} (q4)
+    (q2) edge node[above] {$r_1$} (q4);
+
+% Decision nodes
+\node[decision, above of=q3, yshift=-1cm] (d1) {Grant $r_0$?};
+\node[decision, below of=q3, yshift=1cm] (d2) {Grant $r_1$?};
+\node[decision, right of=q4, xshift=1cm] (d3) {Grant $r_1$?};
+
+% Highlighting the preMealy machine
+\draw[dashed, highlight]
+    (q1) -- (d1)
+    (

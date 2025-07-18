@@ -1,0 +1,44 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,decorations.pathreplacing}
+
+\begin{document}
+
+\begin{tikzpicture}
+		% Cell edges
+		\draw [dotted] (-4.0, -2.0) -- (-4.0, 2.0);
+		\draw [dotted] (-2.0, -2.0) -- (-2.0, 2.0);
+		\draw [dotted] (0.0, -2.0) -- (0.0, 2.0);
+		\draw [dotted] (2.0, -2.0) -- (2.0, 2.0);
+		\draw [dotted] (4.0, -2.0) -- (4.0, 2.0);
+		% Solution
+		\draw  (-4.0, -2.0) .. controls (0.0, 2.0)  .. (4.0, -1.5);
+		% mean values
+		\draw (-4.0, -1.0) -- (-2.0, -1.0);
+		\draw (-2.0, 0.6) -- (0.0, 0.6);
+		\draw (4.0, -0.5) -- (2.0, -0.5);
+		\draw (2.0, 0.55) -- (0.0, 0.55);
+		% Reconstructions
+		\draw [dashed] (-4.0, -2.0) .. controls (-2.0, 0.0) .. (0.0, 1.0);
+		\draw [dashed] (-4.0, -2.0) .. controls (0.0, 1.8) .. (2.0, 0.0);
+		\draw [dashed] (-2.0, 0.5) .. controls (2.0, 0.8) .. (4.0, -2.0);
+		% Annotations
+		\node  at (-3.0, 2.0) {$u_{ll}$};
+		\node at (-1.0, 2.0) {$u_{l}$};
+		\node at (1.0, 2.0) {$u_r$};
+		\node at (3.0, 2.0) {$u_{rr}$};
+		
+		\node  at (-3.0, 0.0) {$x_{ll}$};
+		\node at (-1.0, 0.0) {$x_{l}$};
+		\node at (1.0, 0.0) {$x_r$};
+		\node at (3.0, 0.0) {$x_{rr}$};
+		
+		
+	\end{tikzpicture}
+
+\end{document}

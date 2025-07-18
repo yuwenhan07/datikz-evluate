@@ -1,0 +1,39 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{amsmath}
+\usepackage[
+    colorlinks,
+    citecolor=blue!70!black,
+    linkcolor=blue!70!black,
+    urlcolor=blue!70!black
+]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{tikzpicture}
+    	\begin{scope}[yscale=.87,xslant=.5]
+        \node at (1+1/3,1/3) {$\rightarrow$};
+        \draw[dotted,gray] (0,0) -- (1,0);
+        \draw[dotted,gray] (0,0) -- (0,1);
+        \draw[dotted,gray] (1,0) -- (0,1);
+        \draw[dotted,gray] (2,0) -- (4,0);
+        \draw[dotted,gray] (2,0) -- (2,2);
+        \draw[dotted,gray] (4,0) -- (2,2);
+        \draw[dotted,gray] (2,1) -- (3,1);
+        \draw[dotted,gray] (3,0) -- (3,1);
+        \draw[dotted,gray] (3,0) -- (2,1);
+        \node at (0,0) {$x$};
+        \node at (0,1) {$z$};
+        \node at (1,0) {$y$};
+        \node at (2,0) {$x$};
+        \node at (2,1) {$xz$};
+        \node at (2,2) {$z$};
+        \node at (3,0) {$xy$};
+        \node at (3,1) {$yz$};
+        \node at (4,0) {$y$};
+    	\end{scope}
+    \end{tikzpicture}
+
+\end{document}

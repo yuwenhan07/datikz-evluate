@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance=2cm]
+    \node[state] (q0) {$q_0$};
+    \node[state] (q1) [right of=q0] {$q_1$};
+    \node[state] (q2) [below right of=q0] {$q_2$};
+    
+    \path (q0) edge[loop above] node {a} (q0)
+          (q0) edge[bend left] node {b} (q1)
+          (q1) edge[bend left] node {a} (q2)
+          (q2) edge[bend right] node {b} (q0);
+\end{tikzpicture}
+\end{document}

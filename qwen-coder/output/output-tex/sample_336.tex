@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes
+    \node (SCFT) [rectangle, draw, fill=blue!30] {SCFT};
+    \node (GaugeTheory1) [rectangle, draw, fill=red!30, below left of=SCFT] {Gauge Theory 1};
+    \node (GaugeTheory2) [rectangle, draw, fill=red!30, below right of=SCFT] {Gauge Theory 2};
+    \node (Supergravity) [rectangle, draw, fill=green!30, above right of=SCFT] {Supergravity};
+
+    % Arrows
+    \draw[->] (SCFT) -- node[midway, above] {$m$} (Supergravity);
+    \draw[->] (SCFT) -- (GaugeTheory1);
+    \draw[->] (SCFT) -- (GaugeTheory2);
+
+    % Labels for Gauge Theories
+    \node at ($(GaugeTheory1)!0.5!(SCFT)$) [above] {Supersymmetric Yang-Mills Kinetic Term};
+
+\end{tikzpicture}
+\end{document}

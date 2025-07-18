@@ -1,0 +1,47 @@
+\documentclass[12pt,a4paper]{amsart}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{positioning}
+\usetikzlibrary{cd}
+\usetikzlibrary{calc}
+\usetikzlibrary{backgrounds}
+\usepackage{xcolor}
+\tikzset{%
+    symbol/.style={%
+        draw=none,
+        every to/.append style={%
+            edge node={node [sloped, allow upside down, auto=false]{$#1$}}}
+    }
+}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position .5 with {\arrow{>}}},postaction={decorate}}}
+\tikzset{mid/.style 2 args={
+        decoration={markings,
+            mark= at position #2 with {\arrow{{#1}[scale=1.5]}} ,
+        },
+        postaction={decorate}
+    },
+mid/.default={>}{0.5}
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+        
+        \draw (0,0) rectangle ++(2,1);
+        \draw[mid] (0.25,1) -- ++(0,2) node[xshift=0.25cm, yshift=-0.25cm] {\Large $a$};
+        \draw[mid] (1.75,1) -- ++(0,2) node[xshift=0.25cm, yshift=-0.25cm] {\Large $b$};
+        \draw[{|[scale=1.5]}-{>[scale=1.5]}] (3,0.5) -- ++(1.5,0) node[midway, yshift=0.5cm] {\Large $\tau_{a,b}$};
+        
+        \draw (6,0) rectangle ++(2,1);
+        \draw[mid] ($(6,0) + (0.25,1)$) -- ++(0,2) node[xshift=0.25cm, yshift=-0.25cm] {\Large $a$};
+        \draw ($(6,0) + (1.75,1)$) -- ++(0,0.25) arc (180:0:0.5cm) -- ++(0,-1.5) .. controls ++(0,-1) and ++(0,-1) .. ++(-3.5,0) -- ++(0,3.25) [mid={>}{0.906}] node[xshift=0.25cm, yshift=-0.25cm] {\Large $b$};
+        
+    \end{tikzpicture}
+
+\end{document}

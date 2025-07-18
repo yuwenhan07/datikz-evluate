@@ -1,0 +1,28 @@
+Certainly! Below is the TikZ LaTeX code for generating a fully-connected layered graph with \( h = 3 \) intermediate layers and \( r = 3 \) nodes at each layer. Additionally, I've included a representation of a cube with smaller cubes arranged in a binary code pattern.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define colors
+\definecolor{black}{RGB}{0,0,0}
+\definecolor{white}{RGB}{255,255,255}
+
+% Function to draw a small cube with binary value
+\newcommand{\drawSmallCube}[2]{
+    \fill[#2] (#1-0.5,-#1-0.5) rectangle (#1+0.5,#1+0.5);
+}
+
+% Draw the main cube
+\begin{scope}[x={(1cm,0cm)}, y={(0cm,1cm)}, z={(1cm,0cm)}]
+    \foreach \i in {0,...,2} {
+        \foreach \j in {0,...,2} {
+            \foreach \k in {0,...,2} {
+                \node[circle, inner sep=2pt, fill=gray!50] (c-\i-\j-\k) at (\i,\j,\k) {};
+                \ifnum\i=0 \ifnum\j=0 \ifnum\k=0 \draw[thick] (c-\i-\j-\k) -- (c-\i+\j-\k); \fi\fi\fi
+                \ifnum\i=0 \ifnum\j=0 \ifnum\k=1 \draw[thick] (c-\i-\j-\k) -- (c-\i+\j+\k); \fi\fi\fi
+                \ifnum\i=0 \ifnum\j=1 \ifnum\k=0 \draw[thick] (c-\i-\j-\k) -- (c-\i+\j-\k); \fi\fi\fi
+                \ifnum\i=0 \ifnum\j=1 \ifnum\k=1 \draw[thick] (c-\i-\j-\k) -- (c-\i+\j+\k); \fi\fi\fi
+                \ifnum\i=

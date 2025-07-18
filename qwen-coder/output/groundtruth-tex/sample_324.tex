@@ -1,0 +1,409 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{tkz-tab}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.3}
+\usetikzlibrary{positioning, fit, calc}
+\tikzset{block/.style={draw, thick, text width=2cm ,minimum height=1.3cm, align=center},   
+	line/.style={-latex}     
+}
+\tikzset{blocktext/.style={draw, thick, text width=5.2cm ,minimum height=1.3cm, align=center},   
+	line/.style={-latex}     
+}
+\tikzset{font=\footnotesize}
+
+\begin{document}
+
+\begin{tikzpicture}
+				\begin{axis}[
+					legend style={at={(0.5,-0.125)}, 	
+						anchor=north,legend columns=-1}, 
+					symbolic x coords={
+						0,
+						0.25,
+						0.5,
+						0.75,
+						1,
+						1.25,
+						1.5,
+						1.75,
+						2,
+						2.25,
+						2.5,
+						2.75,
+						3,
+						3.25,
+						3.5,
+						3.75,
+						4,
+						4.25,
+						4.5,
+						4.75,
+						5,
+						5.25,
+						5.5,
+						5.75,
+						6,
+						6.25,
+						6.5,
+						6.75,
+						7,
+						7.25,
+						7.5,
+						7.75,
+						8,
+						8.25,
+						8.5,
+						8.75,
+						9,
+						9.25,
+						9.5,
+						9.75,
+						10,	
+					},
+					%xtick=data,
+					hide axis,
+					ybar,
+					bar width=5pt,
+					ymin=0,
+					%enlarge x limits,
+					%nodes near coords,   
+					every node near coord/.append style={rotate=90, anchor=west},
+					width=\textwidth, 
+					enlarge x limits={abs=0.5*\pgfplotbarwidth},
+					height=9cm, 
+					width=16cm,
+					axis x line*=bottom, axis y line*=left
+					]
+					\addplot [fill=green] coordinates {
+						(0,0)
+					};
+					\addplot [fill=red] coordinates {
+						(5,0)
+					};	
+					\addplot [fill=blue] coordinates {
+						(10,0)
+					};	
+					\legend{ChatGPT, BingChat,Vietnamese students}	
+				\end{axis}
+				
+				\begin{axis}[
+					symbolic x coords={
+						0,
+						0.25,
+						0.5,
+						0.75,
+						1,
+						1.25,
+						1.5,
+						1.75,
+						2,
+						2.25,
+						2.5,
+						2.75,
+						3,
+						3.25,
+						3.5,
+						3.75,
+						4,
+						4.25,
+						4.5,
+						4.75,
+						5,
+						5.25,
+						5.5,
+						5.75,
+						6,
+						6.25,
+						6.5,
+						6.75,
+						7,
+						7.25,
+						7.5,
+						7.75,
+						8,
+						8.25,
+						8.5,
+						8.75,
+						9,
+						9.25,
+						9.5,
+						9.75,
+						10,	
+					},
+					%xtick=data,
+					hide axis,
+					x tick label style={rotate=90,anchor=east},
+					ybar,
+					bar width=5pt,
+					ymin=0,
+					%ymax=90000,
+					%enlarge x limits,
+					%nodes near coords,   
+					every node near coord/.append style={rotate=90, anchor=west},
+					width=\textwidth, 
+					height=9cm, 
+					width=16cm,
+					axis x line*=bottom, axis y line*=left
+					]
+					\addplot [fill=green] coordinates {
+						(0,0)
+						(0.25,0)
+						(0.5,0)
+						(0.75,0)
+						(1,0)
+						(1.25,0)
+						(1.5,0)
+						(1.75,0)
+						(2,0)
+						(2.25,0)
+						(2.5,0)
+						(2.75,0)
+						(3,0)
+						(3.25,0)
+						(3.5,0)
+						(3.75,0)
+						(4,0)
+						(4.25,0)
+						(4.5,0)
+						(4.75,0)
+						(5,0)
+						(5.25,0)
+						(5.5,0)
+						(5.75,0)
+						(6,0)
+						(6.25,0)
+						(6.5,30000)
+						(6.75,0)
+						(7,0)
+						(7.25,0)
+						(7.5,0)
+						(7.75,0)
+						(8,0)
+						(8.25,0)
+						(8.5,0)
+						(8.75,0)
+						(9,0)
+						(9.25,0)
+						(9.5,0)
+						(9.75,0)
+						(10,0)
+						
+					};	
+				\end{axis}
+				
+				\begin{axis}[ 
+					symbolic x coords={
+						0,
+						0.25,
+						0.5,
+						0.75,
+						1,
+						1.25,
+						1.5,
+						1.75,
+						2,
+						2.25,
+						2.5,
+						2.75,
+						3,
+						3.25,
+						3.5,
+						3.75,
+						4,
+						4.25,
+						4.5,
+						4.75,
+						5,
+						5.25,
+						5.5,
+						5.75,
+						6,
+						6.25,
+						6.5,
+						6.75,
+						7,
+						7.25,
+						7.5,
+						7.75,
+						8,
+						8.25,
+						8.5,
+						8.75,
+						9,
+						9.25,
+						9.5,
+						9.75,
+						10,	
+					},
+					%xtick=data,
+					hide axis,
+					ybar,
+					bar width=5pt,
+					ymin=0,
+					%ymax=90000,
+					%enlarge x limits,
+					%nodes near coords,   
+					every node near coord/.append style={rotate=90, anchor=west},
+					width=\textwidth, 
+					height=9cm, 
+					width=16cm,
+					axis x line*=bottom, axis y line*=left
+					]
+					\addplot [fill=red] coordinates {
+						(0,0)
+						(0.25,0)
+						(0.5,0)
+						(0.75,0)
+						(1,0)
+						(1.25,0)
+						(1.5,0)
+						(1.75,0)
+						(2,0)
+						(2.25,0)
+						(2.5,0)
+						(2.75,0)
+						(3,0)
+						(3.25,0)
+						(3.5,0)
+						(3.75,0)
+						(4,0)
+						(4.25,0)
+						(4.5,0)
+						(4.75,0)
+						(5,0)
+						(5.25,0)
+						(5.5,0)
+						(5.75,0)
+						(6,0)
+						(6.25,0)
+						(6.5,0)
+						(6.75,30000)
+						(7,0)
+						(7.25,0)
+						(7.5,0)
+						(7.75,0)
+						(8,0)
+						(8.25,0)
+						(8.5,0)
+						(8.75,0)
+						(9,0)
+						(9.25,0)
+						(9.5,0)
+						(9.75,0)
+						(10,0)
+						
+					};	
+				\end{axis}
+				
+				\begin{axis}[
+					ylabel={Number of Student},
+					symbolic x coords={
+						0,
+						0.25,
+						0.5,
+						0.75,
+						1,
+						1.25,
+						1.5,
+						1.75,
+						2,
+						2.25,
+						2.5,
+						2.75,
+						3,
+						3.25,
+						3.5,
+						3.75,
+						4,
+						4.25,
+						4.5,
+						4.75,
+						5,
+						5.25,
+						5.5,
+						5.75,
+						6,
+						6.25,
+						6.5,
+						6.75,
+						7,
+						7.25,
+						7.5,
+						7.75,
+						8,
+						8.25,
+						8.5,
+						8.75,
+						9,
+						9.25,
+						9.5,
+						9.75,
+						10,	
+					},
+					xtick=data,
+					x tick label style={rotate=90,anchor=east},
+					ybar,
+					bar width=5pt,
+					ymin=0,
+					%enlarge x limits,
+					nodes near coords,   
+					every node near coord/.append style={rotate=90, anchor=west},
+					width=\textwidth, 
+					height=9cm, 
+					width=16cm,
+					axis x line*=bottom, axis y line*=left
+					]
+					\addplot [fill=blue] coordinates {
+						(0,12)
+						(0.25,0)
+						(0.5,0)
+						(0.75,1)
+						(1,11)
+						(1.25,24)
+						(1.5,71)
+						(1.75,138)
+						(2,241)
+						(2.25,388)
+						(2.5,645)
+						(2.75,1029)
+						(3,1526)
+						(3.25,2031)
+						(3.5,2818)
+						(3.75,3581)
+						(4,4613)
+						(4.25,5661)
+						(4.5,7005)
+						(4.75,8252)
+						(5,9549)
+						(5.25,11160)
+						(5.5,12696)
+						(5.75,14556)
+						(6,16355)
+						(6.25,17962)
+						(6.5,19475)
+						(6.75,21240)
+						(7,22546)
+						(7.25,23162)
+						(7.5,22883)
+						(7.75,21849)
+						(8,19664)
+						(8.25,16373)
+						(8.5,13432)
+						(8.75,10232)
+						(9,7192)
+						(9.25,4278)
+						(9.5,2012)
+						(9.75,708)
+						(10,154)
+						
+					};	
+					
+				\end{axis}
+			\end{tikzpicture}
+
+\end{document}

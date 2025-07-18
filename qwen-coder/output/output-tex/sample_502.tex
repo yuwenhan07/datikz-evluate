@@ -1,0 +1,41 @@
+Certainly! Below is a TikZ LaTeX code to generate the Petri nets for the processes \( \text{CB} \), \( (\text{CB})^h \), and \( (\text{BB})^h \).
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define the style for places and transitions
+\tikzset{
+    place/.style={circle, draw=black, fill=white, inner sep=6pt},
+    transition/.style={rectangle, draw=black, fill=gray!30, rounded corners, inner sep=8pt},
+    arrow/.style={->, thick, >=stealth}
+}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+
+        % Process CB
+        \node (place1_cb) [place] {P1};
+        \node (transition1_cb) [transition, right of=place1_cb] {$T_1$};
+        \node (place2_cb) [place, right of=transition1_cb] {P2};
+
+        \draw[arrow] (place1_cb) -- node[above] {a} (transition1_cb);
+        \draw[arrow] (transition1_cb) -- node[above] {b} (place2_cb);
+
+        \node at (4, 0) {\textbf{(a) Process CB}};
+
+        % Process (CB)^h
+        \node (place1_cbh) [place, below left of=place1_cb, yshift=-3cm] {P1'};
+        \node (transition1_cbh) [transition, right of=place1_cbh] {$T_1'$};
+        \node (place2_cbh) [place, right of=transition1_cbh] {P2'};
+
+        \draw[arrow] (place1_cbh) -- node[below] {a'} (transition1_cbh);
+        \draw[arrow] (transition1_cbh) -- node[below] {b'} (place2_cbh);
+
+        \node at (2, -3) {\textbf{(b) $(\text{CB})^h$}};
+
+        % Process (BB)^h
+        \node (place1_bbh) [place, below left of=place1_cbh, xshift=-3cm] {P1

@@ -1,0 +1,44 @@
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+
+% Define vertices
+\coordinate (A) at (0,0);
+\coordinate (B) at (2,0);
+\coordinate (C) at (4,0);
+\coordinate (D) at (6,0);
+\coordinate (E) at (8,0);
+\coordinate (F) at (10,0);
+\coordinate (G) at (5,-2);
+\coordinate (H) at (7,-2);
+
+% Draw ears P_i and P_j
+\draw[thick] (A) -- (B); % P_i
+\draw[thick] (B) -- (C); % P_i
+\draw[dashed, thick] (C) -- (D); % P_j
+\draw[dashed, thick] (D) -- (E); % P_j
+\draw[dashed, thick] (E) -- (F); % P_j
+
+% Draw additional edges to form R
+\draw[dotted] (B) -- (G); % R
+\draw[dotted] (C) -- (G); % R
+\draw[dotted] (D) -- (H); % R
+\draw[dotted] (E) -- (H); % R
+
+% Mark the internal vertex v
+\filldraw[black] (G) circle (2pt) node[below] {v};
+
+% Label vertices for clarity
+\node[left] at (A) {A};
+\node[right] at (B) {B};
+\node[right] at (C) {C};
+\node[right] at (D) {D};
+\node[right] at (E) {E};
+\node[right] at (F) {F};
+\node[midway below] at (G) {v};
+\node[midway below] at (H) {H};
+
+\end{tikzpicture}
+\end{document}

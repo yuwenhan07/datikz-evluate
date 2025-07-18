@@ -1,0 +1,27 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{amsmath}
+
+\tikzset{
+    mytriangle/.style={draw=black, fill=white, regular polygon, regular polygon sides=3},
+    mylabel/.style={font=\small, above right},
+    myline/.style={->, thick}
+}
+
+\begin{document}
+\begin{tikzpicture}
+    % Background rectangle
+    \fill[black] (-1,-1) rectangle (5,5);
+    
+    % White triangle
+    \node[mytriangle, minimum size=4cm, label=mylabel:$U$] (triangle) at (2,2) {};
+    
+    % Lines extending from the center of the triangle
+    \coordinate (center) at (2,2);
+    \draw[myline] (center) -- node[mylabel:$1$] ++(1,1);
+    \draw[myline] (center) -- node[mylabel:$2$] ++(-1,1);
+    \draw[myline] (center) -- node[mylabel:$3$] ++(0,-1);
+    
+    % Curve labeled "u(x)"
+    \draw[dashed, thick, ->] (3,1) to[out=-60,in=120] node[midway, left] {$u(x)$} (4,3);
+\end{tikzpicture}
+\end{document}

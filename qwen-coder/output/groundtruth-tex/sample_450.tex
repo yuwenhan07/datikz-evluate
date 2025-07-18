@@ -1,0 +1,40 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+\begin{tikzpicture}[axis/.style=->]
+\def\myr{7}
+\def\mytheta{45}
+\def\myphi{50}
+\def\px{\myr*sin(\mytheta)*cos(\myphi)}
+\def\py{\myr*sin(\mytheta)*sin(\myphi)}
+\def\pz{\myr*cos(\mytheta)}
+
+\draw[axis] (0,0,0) -- ({1.2*\px},0,0) node[right]{$x$};
+\draw[axis] (0,0,0) -- (0,{1.2*\py},0) node[above]{$y$};
+\draw[axis] (0,0,0) -- (0,0,{1.2*\pz}) node[below left]{$z$};
+\end{tikzpicture}
+\begin{tikzpicture}[
+  axis/.style=->,
+  declare function={
+    myR = 7; myTheta = 45; myPhi = 50;
+    px(\radius,\theta,\phi) = \radius*sin(\theta)*cos(\phi);
+    py(\radius,\theta,\phi) = \radius*sin(\theta)*sin(\phi);
+    pz(\radius,\theta,\phi) = \radius*cos(\theta);
+    myPx = px(myR, myTheta, myPhi);
+    myPy = py(myR, myTheta, myPhi);
+    myPz = pz(myR, myTheta, myPhi);}]
+\draw[axis] (0,0,0) -- (1.2*myPx,0,0) node[right]{$x$};
+\draw[axis] (0,0,0) -- (0,1.2*myPy,0) node[above]{$y$};
+\draw[axis] (0,0,0) -- (0,0,1.2*myPz) node[below left]{$z$};
+\end{tikzpicture}
+\begin{tikzpicture}[
+  axis/.style=->,
+  my cs/.style n args={3}{
+    x={1cm*(#1)*sin(#2)*cos(#3)},
+    y={1cm*(#1)*sin(#2)*sin(#3)},
+    z={-.385cm*(#1)*cos(#2)}},
+  my cs={7}{45}{50}]
+\draw[axis] (0,0,0) -- (1.2, 0,   0  ) node[right]{$x$};
+\draw[axis] (0,0,0) -- (0,   1.2, 0  ) node[above]{$y$};
+\draw[axis] (0,0,0) -- (0,   0,   1.2) node[below left]{$z$};
+\end{tikzpicture}
+\end{document}

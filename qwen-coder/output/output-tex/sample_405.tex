@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+\begin{document}
+
+% Define the equation with \tikzmarks for annotation points
+\[ 
+\text{Minimize } R = \sum_{i=1}^{n} \left( y_i - \hat{y}_i(x) \right)^2 + \lambda \sum_{j=1}^{m} w_j^2
+\tikzmark{start} 
+\]
+
+% Add annotations using TikZ
+\begin{tikzpicture}[overlay, remember picture]
+    % Annotation for the first term
+    \node[anchor=north west, inner sep=0pt] at (pic cs:start) {\tikzmark{end}};
+    \draw[->, thick, red] (pic cs:start) -- ++(2,-1) node[midway, above right] {Regret Minimization Strategy};
+    
+    % Additional annotations can be added similarly
+\end{tikzpicture}
+
+\end{document}

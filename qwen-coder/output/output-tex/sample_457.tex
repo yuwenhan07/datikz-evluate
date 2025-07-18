@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{tikzpicture}[bar width=15pt,
+    bar/.style={rectangle, draw=black, fill=#1},
+    x axis line style = {-},
+    y axis line style = {-},
+    ylabel = {Running Time (minutes)},
+    xlabel = {Alphabet Size},
+    ymin=0,
+    ymax=20,
+    enlarge x limits=0.3,
+    enlarge y limits=0.05,
+    symbolic x coords={A, B, C, D, E},
+    xtick=data,
+    nodes near coords,
+    nodes near coords align={vertical},
+    ]
+    
+    \addplot[bar=red] coordinates {(A, 5) (B, 7) (C, 9) (D, 11) (E, 13)};
+    \addplot[bar=blue] coordinates {(A, 6) (B, 8) (C, 10) (D, 12) (E, 14)};
+    \addplot[bar=green] coordinates {(A, 7) (B, 9) (C, 11) (D, 13) (E, 15)};
+    
+\end{tikzpicture}
+\end{document}

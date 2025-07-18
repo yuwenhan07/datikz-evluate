@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    \def\radius{1} % Radius of the helix
+    \def\twist{0.5} % Number of twists per full circle
+
+    \draw[blue] plot[variable=\t, domain=-4*pi:4*pi, samples=100] ({\radius*cos(\t)}, {\radius*sin(\t)}, {\twist*\t});
+
+    % Optional: Draw the central axis for reference
+    \draw[dashed, black] (0,0,0) -- (0,0,-8);
+\end{tikzpicture}
+
+\end{document}

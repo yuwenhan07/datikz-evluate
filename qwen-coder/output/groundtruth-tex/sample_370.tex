@@ -1,0 +1,14 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary {shapes.multipart}
+
+\begin{document}
+
+\begin{tikzpicture}[every text node part/.style={align=center}]
+\node[rectangle split, rectangle split parts=2, draw, text width=2.5cm, rectangle split part fill={blue!30,none}, font=\itshape, inner sep=5pt] 
+    {department
+    \nodepart{two} \underline{dept name}\\[3pt]building\\[3pt]budget};
+\end{tikzpicture}
+
+\end{document}

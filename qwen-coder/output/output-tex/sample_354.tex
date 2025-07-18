@@ -1,0 +1,33 @@
+To create a visually appealing and semantically accurate circuit diagram for a MOSFET with customized body diode using TikZ in LaTeX, you can follow the code snippet below. This example includes various colored wires and components to match your description.
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{circuits.ee.IEC}
+
+\begin{document}
+\begin{tikzpicture}[circuit ee IEC, >=stealth]
+  % Define colors
+  \colorlet{mygreen}{green!50!black}
+  \colorlet{myblue}{blue!50!black}
+  \colorlet{myred}{red!50!black}
+  \colorlet{myyellow}{yellow!50!black}
+  \colorlet{mypurple}{purple!50!black}
+
+  % Nodes
+  \node (VDD) at (0,4) {VDD};
+  \node (GND) at (0,-2) {GND};
+  \node (MOSFET) at (3,0) {};
+  \node (Diode) at (6,0) {};
+
+  % Wires
+  \draw[thick, mygreen] (VDD) -- node[above]{$V_{DD}$} ++(1,0) |- (MOSFET.north);
+  \draw[thick, myblue] (MOSFET.south) -- node[below]{$G$} ++(-1,0) |- (GND);
+  \draw[thick, myred] (MOSFET.drain) -- node[right]{$D$} ++(2,0) |- (Diode.anode);
+  \draw[thick, myyellow] (MOSFET.source) -- node[left]{$S$} ++(-2,0) |- (Diode.cathode);
+  \draw[thick, mypurple] (Diode) -- node[right]{$D$} ++(1,0);
+
+  % MOSFET symbol
+  \draw[circuit symbol=MOSFET, symbol style={scale=0.8}] (MOSFET) node[MOSFET] (MOSFET) {};
+
+  % Diode symbol
+  \draw[circuit symbol=bipole, symbol style={diode, scale=0.8

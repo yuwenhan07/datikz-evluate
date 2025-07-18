@@ -1,0 +1,51 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta, positioning, chains, ext.paths.ortho, quotes, shapes.geometric}
+\ExplSyntaxOn\makeatletter\tl_replace_once:Nnn\tikz@do@matrix@cont{\tikz@node@finish}{\tikz@alias\tikz@node@finish}\makeatother\ExplSyntaxOff
+\tikzset{tight matrix/.style={every outer matrix/.append style={inner sep=+0pt, outer sep=+0pt}}}
+\begin{document}
+\begin{tikzpicture}[
+  node distance = 5mm and 7mm,
+  arr/.style = {-{Triangle[scale=.75]}, very thick},
+  arr*/.style= {arr, rounded corners},
+  box/.style = {rectangle, draw, semithick, rounded corners=3pt,
+                minimum height=9mm, minimum width=17mm},
+  boxie/.style={box, minimum height=7mm, minimum width=14mm},
+  ell/.style = {box, shape=ellipse},
+  start chain=ch going right,
+  every join/.append style=arr,
+  marker/.style={node font=\small, fill=white, inner sep=1pt, outer sep=8pt}
+]
+\node[box, on chain]       (n1) {Task};
+\node[box, on chain, join] (n2) {Representation};
+\matrix[node distance=1.5cm, on chain=ch, tight matrix]{
+  \tikzset{start chain=m going below, node distance=3mm}
+  \foreach \i in {1, ..., 4} \node[boxie, on chain]{};
+\\};
+\foreach[count=\i]\t in {4, 3, 2, 1}
+  \path (n2) edge[arr*, horizontal vertical horizontal,
+                  ortho/distance={\i==2||\i==3?4mm:3mm},
+                  "$\t\,\%$" {left, marker, at end}] (m-\i);
+\scoped[start chain=x going above]
+  \chainin (m-begin) node[box, on chain, join] (top) {Hat};
+\chainin (m-2);
+\node[box, on chain, join] {Pi};
+
+\tikzset{continue chain=going below}                           % ← turn down!
+\node[box, on chain, join] {Pa};
+\node[box, on chain, join] {Po};
+\node[ell, on chain, join] {Ellie};
+
+\tikzset{continue chain=going left}                            % ← turn left!
+\node[box, on chain, join] (ta) {Turn};
+
+\matrix[node distance=1.5cm, on chain=ch, tight matrix]{
+  \tikzset{start chain=m going below, node distance=3mm}
+  \foreach \i in {1, 2} \node[box, on chain]{};
+\\};
+\node[node distance=1.5cm, ell, on chain] {};
+\foreach[count=\i]\t/\u in {A/C, B/D}
+  \path[arr*, horizontal vertical horizontal]
+      (ta) edge["$\t$" {right, marker, at end  }] (m-\i)
+    (m-\i) edge["$\u$" {left,  marker, at start}] (ch-end);
+\end{tikzpicture}
+\end{document}

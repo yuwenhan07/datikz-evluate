@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Define the number of qubits
+        \def\numberofqubits{4}
+        
+        % Draw the qubits
+        \foreach \i in {0,...,\numberofqubits} {
+            \draw (\i,-0.2) rectangle (\i+1,0.2);
+            \node at (\i+0.5,0) {$A^{(\i)}$};
+        }
+        
+        % Draw the lines connecting the matrices
+        \foreach \i in {0,...,\numberofqubits-1} {
+            \draw[thick] (\i,0) -- (\i+1,0);
+        }
+        
+        % Add labels if needed
+        \node at (-0.5,-0.7) {MPS};
+    \end{tikzpicture}
+    \caption{Matrix Product State Representation}
+    \label{fig:mps}
+\end{figure}
+
+\end{document}

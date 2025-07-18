@@ -1,0 +1,34 @@
+Here's a possible TikZ code to generate the described flowchart:
+```
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\tikzset{
+    startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30},
+    process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+    decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
+    arrow/.style={thick,->,>=stealth}
+}
+\begin{document}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+        % Nodes
+        \node (start) [startstop] {Start};
+        \node (social) [process, below of=start] {Social Value};
+        \node (economic) [process, right of=social, xshift=4cm] {Economic Value};
+        \node (environmental) [process, left of=social, xshift=-4cm] {Environmental Value};
+        \node (infra) [decision, below of=social, yshift=-2cm] {Social Infrastructure};
+        \node (tech) [decision, below of=economic, yshift=-2cm] {Technological Innovations};
+        \node (water) [decision, below of=environmental, yshift=-2cm] {Water Supply};
+        \node (manage) [decision, below of=infra, yshift=-2cm] {Management};
+        \node (resour) [decision, below of=tech, yshift=-2cm] {Environmental Resources};
+        \node (end) [startstop, below of=end, yshift=-2cm] {End};
+        % Arrows
+        \draw [arrow] (start) -- (social);
+        \draw [arrow] (social) -- (infra);
+        \draw [arrow] (infra) -- (manage);
+        \draw [arrow] (manage) |- (social);
+        \draw [arrow] (social) -- (tech);
+        \draw [arrow] (tech) -- (resour);
+       

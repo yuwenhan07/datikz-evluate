@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing, shapes.geometric}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+
+% Whiteboard background
+\fill[white] (-3,-4) rectangle (6,4);
+
+% Equations
+\node at (-2.5, 3) {\(C_p\) in Eq: \(\theta\) and Related Quantities};
+\node at (-2.5, 2) {For \(p=1\) and \(0 < \theta < \frac{\pi}{2}\)};
+\node at (-2.5, 1) {\tan(\theta)};
+\node at (-2.5, -1) {\(y = mx + b\)};
+\node at (-2.5, -3) {\(y = \ln(x+1)\)};
+
+% Graphs
+\draw[thick, ->] (-3,0) -- (6,0) node[right] {$x$};
+\draw[thick, ->] (0,-4) -- (0,4) node[above] {$y$};
+
+% Tangent Function
+\draw[blue, thick, samples=100] plot (\x, {tan(\x r)}) node[right] at (5,1) {Tan(\theta)};
+
+% Linear Function
+\draw[red, thick] plot[domain=-2:4] (\x, {0.5*\x + 1}) node[right] at (5,-2) {\(y = 0.5x + 1\)};
+
+% Logarithmic Function
+\draw[green, thick] plot[domain=-1:5] (\x, {ln(\x + 1)}) node[right] at (5,-4) {\(y = \ln(x+1)\)};
+
+\end{tikzpicture}
+\end{document}

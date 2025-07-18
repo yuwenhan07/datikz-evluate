@@ -1,0 +1,28 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[french]{babel}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+\usetikzlibrary{babel} % Important, or I get issues on other code when using french babel like "! Package tikz
+
+\NewDocumentEnvironment{mytest}{+b}{%
+  #1 % I do want to use +b as in practice I do more involved stuff here, involving recursion etc…
+}{}
+
+\AddToHook{env/mytest/begin}{\shorthandoff{:}}
+\begin{document}
+
+\begin{frame}[fragile]
+  \begin{mytest}
+    \begin{tikzpicture}
+      \node[label={45:mylabel},fill=green]{AAA};
+    \end{tikzpicture}
+  \end{mytest}
+\end{frame}
+
+\end{document}

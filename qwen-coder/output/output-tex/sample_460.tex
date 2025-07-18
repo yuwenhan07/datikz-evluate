@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=1cm]
+    % Nodes for the equation
+    \node (var1) at (0,0) {x};
+    \node (operator1) at (1,-0.5) {$+$};
+    \node (var2) at (2,-0.5) {y};
+    \node (operator2) at (3,-0.5) {$=$};
+    \node (result) at (4,-0.5) {z};
+
+    % Draw arrows between nodes
+    \draw[-stealth] (var1) -- (operator1);
+    \draw[-stealth] (operator1) -- (var2);
+    \draw[-stealth] (operator2) -- (result);
+\end{tikzpicture}
+\end{document}

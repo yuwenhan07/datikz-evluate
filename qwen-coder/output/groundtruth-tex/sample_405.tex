@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{tikz, amsmath}
+\usetikzlibrary{tikzmark, positioning}
+\begin{document}
+\[
+\text{Regret}_T = \tikzmarknode{a}{T \cdot {\mu^*}} - \tikzmarknode{b}{\sum_{t=0}^{T-1} \mu_{a_t}}
+\]
+\begin{center}
+\tikzmarknode[text=red, align=center]{aa}{total expected reward\\if pull best arm over $T$ rounds}
+\qquad
+\tikzmarknode[text=blue, align=center]{bb}{total expected reward\\of our selected arms}
+\end{center}
+\begin{tikzpicture}[remember picture, overlay]
+\draw[red, thick, ->, shorten <= 4pt] (a) to[out=250, in=90] (aa);
+\draw[blue, thick,->, shorten <=-2pt] (b) to[out=320, in=90] (bb);
+\end{tikzpicture}
+And this line of text is not overlapped.
+\end{document}

@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    neuron/.style={circle, draw=black, fill=white, thick, minimum size=20mm},
+    arrow/.style={->, >=stealth', shorten >=1pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Define nodes
+    \node[neuron] (A) {1};
+    \node[neuron, right of=A] (B) {2};
+    \node[neuron, right of=B] (C) {3};
+    \node[neuron, right of=C] (D) {4};
+
+    % Draw arrows
+    \draw[arrow] (A) -- node[midway, above] {$i$} (B);
+    \draw[arrow] (B) -- node[midway, above] {$i$} (C);
+    \draw[arrow] (C) -- node[midway, above] {$i$} (D);
+    \draw[arrow] (D) -- node[midway, above] {$i$} (A);
+
+    % Add transition rates
+    \node at ($(A)!0.5!(B)$) [below] {$r_1$};
+    \node at ($(B)!0.5!(C)$) [below] {$r_2$};
+    \node at ($(C)!0.5!(D)$) [below] {$r_3$};
+    \node at ($(D)!0.5!(A)$) [below] {$r_4$};
+
+\end{tikzpicture}
+\end{document}

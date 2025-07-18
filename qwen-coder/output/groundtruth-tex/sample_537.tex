@@ -1,0 +1,12 @@
+\documentclass[tikz, 11pt, border=1cm]{standalone}
+\tikzset{
+twoline/.style={draw, align=left},
+threeline/.style={draw, align=left, text depth=\baselineskip},
+}
+\begin{document}
+\begin{tikzpicture}
+\node[threeline] (A) at (0,0) {First line\\Second line};
+\node[twoline] (B) at (3,0) {First line\\Second line};
+\draw[red] (A) -- (B);
+\end{tikzpicture}
+\end{document}

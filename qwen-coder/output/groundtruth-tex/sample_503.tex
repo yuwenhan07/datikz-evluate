@@ -1,0 +1,99 @@
+\documentclass[11pt]{article}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage{colortbl}
+\usepackage{pgfplots}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{tikzpicture}
+\scalebox{0.8}{
+\begin{axis}[
+    title={Impact of batch size on inference speedups},
+    ylabel={Speedup},
+    xlabel={Batch Size},
+    ymin=1, ymax=6,
+    xmin=1, xmax=16,
+    ytick={1,2,3,4,5},
+    xtick={1, 8, 16},
+    legend pos=north east,
+    xmajorgrids=true,
+    grid style=dashed,
+    legend style={nodes={scale=0.3, transform shape}}, 
+    legend image post style={mark=*}
+] 
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (1, 1.65) (8, 1.18) (16,1.15)
+    };
+\addplot[
+    color=black,
+    mark=square,
+    ]
+    coordinates {
+    (1, 2.03) (8, 1.25) (16,1.22)
+    };
+\addplot[
+    color=purple,
+    mark=square,
+    ]
+    coordinates {
+    (1, 2.70) (8, 1.36) (16,1.29)
+    };
+\addplot[
+    color=green,
+    mark=triangle,
+    ]
+    coordinates {
+    (1, 1.13) (8, 1.48) (16,1.54)
+    };
+\addplot[
+    color=yellow,
+    mark=triangle,
+    ]
+    coordinates {
+    (1, 1.19) (8, 1.68) (16,1.89)
+    };
+\addplot[
+    color=orange,
+    mark=triangle,
+    ]
+    coordinates {
+    (1, 1.27) (8, 2.21) (16,2.43)
+    };
+\addplot[
+    color=brown,
+    mark=star,
+    ]
+    coordinates {
+    (1, 1.94) (8, 1.96) (16,1.97)
+    }; 
+\addplot[
+    color=pink,
+    mark=star,
+    ]
+    coordinates {
+    (1, 2.78) (8, 2.88) (16,2.92)
+    }; 
+\addplot[
+    color=red,
+    mark=star,
+    ]
+    coordinates {
+    (1, 4.96) (8, 5.54) (16,5.64)
+    };  
+\legend{$6_{enc}-3_{dec}$, $6_{enc}-2_{dec}$,$6_{enc}-1_{dec}$,$3_{enc}-6_{dec}$,$2_{enc}-6_{dec}$,$1_{enc}-6_{dec}$,$3_{enc}-3_{dec}$ ,$2_{enc}-2_{dec}$ ,$1_{enc}-1_{dec}$ }
+ \end{axis}}
+\end{tikzpicture}
+
+\end{document}

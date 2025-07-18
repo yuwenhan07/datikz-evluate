@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, shapes.geometric, positioning}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm, auto]
+
+    % Define styles for nodes
+    \tikzset{
+        equation/.style={draw, rectangle, rounded corners, minimum width=4cm, minimum height=1cm},
+        circle/.style={circle, draw, fill=white, inner sep=0pt, minimum size=8mm},
+        arrow/.style={->, >=Stealth', thick}
+    }
+
+    % Nodes representing equations
+    \node (eq1) [equation] {Equation 1};
+    \node (eq2) [equation, below left=of eq1] {Equation 2};
+    \node (eq3) [equation, below right=of eq1] {Equation 3};
+
+    % Circles representing variables or parameters
+    \node (x) [circle, above left=of eq1] {$x$};
+    \node (y) [circle, above right=of eq1] {$y$};
+    \node (z) [circle, below=of eq1] {$z$};
+
+    % Arrows connecting nodes
+    \draw[arrow] (x) -- node[midway, above] {$a$} (eq1);
+    \draw[arrow] (y) -- node[midway, above] {$b$} (eq1);
+    \draw[arrow] (z) -- node[midway, above] {$c$} (eq1);
+
+    \draw[arrow] (eq1) -- node[midway, right] {$f$} (eq2);
+    \draw[arrow] (eq1) -- node[midway, left] {$g$} (eq3);
+
+    \draw[arrow] (eq2) -- node[midway, below] {$h$} (eq3);
+
+    % Adding labels and annotations
+    \node (label) [below=2cm of eq1] {Homogeneous Extension};
+
+\end{tikzpicture}
+\end{document}

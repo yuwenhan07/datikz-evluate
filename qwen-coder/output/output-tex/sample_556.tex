@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Set up the axis
+    \draw[->] (-2,0) -- (4,0) node[right] {$x$};
+    \draw[->] (0,-3) -- (0,3) node[above] {$y$};
+    
+    % Draw the steep slope line
+    \draw[thick, blue] plot[domain=-2:4,samples=50] (\x, {2*\x});
+    
+    % Scatter points with varying positions
+    \foreach \x in {-1.5,-1,-0.5,0.5,1,1.5,2} {
+        \foreach \y in {-2,-1,0,1,2} {
+            \ifdim\random<0.5
+                \filldraw[red] (\x, {2*\x + \y}) circle (1pt);
+            \else
+                \filldraw[blue] (\x, {2*\x - \y}) circle (1pt);
+            \fi
+        }
+    }
+    
+    % Add labels for clarity
+    \node at (-2,-1) [below left] {\textcolor{red}{Red Points}};
+    \node at (-2,1) [below left] {\textcolor{blue}{Blue Points}};
+\end{tikzpicture}
+
+\end{document}

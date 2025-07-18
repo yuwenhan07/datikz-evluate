@@ -1,0 +1,30 @@
+Certainly! Below is a TikZ LaTeX code that represents the described photovoltaic power processing architecture:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node[draw, rectangle, fill=green!30] (solar1) {Solar Panel 1};
+    \node[draw, rectangle, fill=green!30] (solar2) [right of=solar1] {Solar Panel 2};
+    \node[draw, rectangle, fill=green!30] (solar3) [below of=solar1, xshift=-2cm] {Solar Panel 3};
+    
+    \node[draw, rectangle, fill=green!60, minimum height=2cm] (inverter) [below of=solar3, xshift=-1cm] {Inverter};
+    
+    \node[draw, rectangle, fill=blue!50] (dc1) [above right of=solar1, yshift=-1cm] {DC Converter 1};
+    \node[draw, rectangle, fill=blue!50] (dc2) [below right of=solar2, yshift=-1cm] {DC Converter 2};
+    \node[draw, rectangle, fill=blue!50] (dc3) [below of=dc2, yshift=-1cm] {DC Converter 3};
+
+    % Arrows
+    \draw[->] (solar1.east) -- node[midway, above] {Current} (dc1.west);
+    \draw[->] (solar2.east) -- node[midway, above] {Current} (dc2.west);
+    \draw[->] (solar3.east) -- node[midway, above] {Current} (dc3.west);
+
+    \draw[->] (dc1.east) -- node[midway, above] {Voltage} (inverter.west);
+    \draw[->] (dc2.east) -- node[midway, above] {Voltage} (inverter.west);
+    \draw[->] (dc3.east) -- node[midway, above] {Voltage} (inverter.west);
+
+    % Additional connections
+    \draw[dashed, ->] (solar3

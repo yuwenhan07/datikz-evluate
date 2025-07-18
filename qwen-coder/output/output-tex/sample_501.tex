@@ -1,0 +1,43 @@
+To create a TikZ LaTeX diagram that represents several deformation contours in the complex plane for different dimensions and signs of the cosmological constant, you can follow these steps:
+
+1. Define the complex plane.
+2. Draw the deformation contours for positive and negative cosmological constants.
+3. Rotate the contours counterclockwise by \( \frac{\pi}{2} \) with each increment in dimension.
+
+Here is an example TikZ code to achieve this:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Complex plane axes
+    \draw[->] (-2,0) -- (2,0) node[right] {$Re(z)$};
+    \draw[->] (0,-2) -- (0,2) node[above] {$Im(z)$};
+
+    % Cosmological constant values
+    \def\lambdaP{1}; % Positive cosmological constant
+    \def\lambdaN{-1}; % Negative cosmological constant
+
+    % Function to draw a contour at angle theta
+    \newcommand{\drawContour}[3]{%
+        \draw[dashed, thick] (#2:#3) arc[start angle=#2,end angle=#2+90,radius=#3];
+        \draw[dashed, thick] (#2+90:#3) arc[start angle=#2+90,end angle=#2+180,radius=#3];
+        \draw[dashed, thick] (#2+180:#3) arc[start angle=#2+180,end angle=#2+270,radius=#3];
+        \draw[dashed, thick] (#2+270:#3) arc[start angle=#2+270,end angle=#2,radius=#3];
+    }
+
+    % Deformation contours for positive lambda
+    \foreach \n in {1,...,4}{
+        \pgfmathsetmacro{\theta}{(\n-1)*90}
+        \drawContour{\theta}{1}{1+\n/4}
+    }
+
+    % Deformation contours for negative lambda
+    \foreach \n in {1,...,4}{
+        \pgfmathsetmacro{\theta}{(\n-1)*90 + 180}
+        \drawContour{\theta}{-1}{1+\n/4}
+    }
+\end{tik

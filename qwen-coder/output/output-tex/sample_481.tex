@@ -1,0 +1,46 @@
+Certainly! Below is a TikZ LaTeX code that generates a visual representation of the algebraic expression \((x)^2 + 2(xy) + y^2\) as a tree-like structure:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[level distance=1.5cm,
+    level 1/.style={sibling distance=3cm},
+    level 2/.style={sibling distance=1.5cm}]
+    
+    % Root node
+    \node (root) {$+$};
+    
+    % Level 1 nodes
+    \node (term1) [below left of=root] {$(x)^2$};
+    \node (term2) [below right of=root] {$(y)^2$};
+    
+    % Level 2 nodes
+    \node (factor1) [below left of=term1] {$(x)$};
+    \node (factor2) [below right of=term1] {$(x)$};
+    \node (factor3) [below left of=term2] {$(y)$};
+    \node (factor4) [below right of=term2] {$(y)$};
+    
+    % Connecting lines
+    \draw[-stealth] (root) -- (term1);
+    \draw[-stealth] (root) -- (term2);
+    \draw[-stealth] (term1) -- (factor1);
+    \draw[-stealth] (term1) -- (factor2);
+    \draw[-stealth] (term2) -- (factor3);
+    \draw[-stealth] (term2) -- (factor4);
+    
+    % Additional terms for the middle part
+    \node (middle1) [below left of=root] {$2$};
+    \node (middle2) [below right of=root] {};
+    
+    \node (product1) [below left of=middle1] {$(xy)$};
+    
+    % Middle level nodes
+    \node (factor5) [below left of=product1] {$(x)$};
+    \node (factor6) [below right of=product1] {$(y)$};
+    
+    % Connecting lines for middle part
+    \draw[-stealth] (middle1) -- (product1);
+    \draw[-stealth] (product1) -- (factor5);
+    \

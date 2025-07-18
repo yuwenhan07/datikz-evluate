@@ -1,0 +1,27 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+
+% Define some colors for better visibility
+\definecolor{lightgray}{gray}{0.9}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+
+    % Draw the tubes
+    \draw[thick] (0,0) -- ++(4,0); % Tube 1
+    \draw[thick] (5,0) -- ++(4,0); % Tube 2
+
+    % Place the square between the tubes
+    \node[square, draw=black, fill=white, inner sep=5pt] at (2.5,0) {Square};
+
+    % Add some lines and symbols around the tubes and square
+    \draw[dashed] (0,-1) rectangle (6,1);
+    \draw[-stealth] (3,-1) -- node[left] {$A$} (3,-2);
+    \draw[-stealth] (3,1) -- node[right] {$B$} (3,2);
+
+    % Add more symbols or equations if needed
+    \node[above right] at (0,-1) {$x = y + z$};
+    \node[below left] at (6,1) {$F(x,y,z)$};
+
+\end{tikzpicture}
+\end{document}

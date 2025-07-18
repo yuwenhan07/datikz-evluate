@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Draw the triangle
+    \draw[thick] (0,0) -- node[midway, below left] {0} (3,0) -- node[midway, above right] {2} (1.5,2.6) -- node[midway, above left] {2};
+    
+    % Label the vertices
+    \filldraw[black] (0,0) circle (2pt);
+    \filldraw[black] (3,0) circle (2pt);
+    \filldraw[black] (1.5,2.6) circle (2pt);
+    
+    % Draw the smaller angles
+    \draw[dashed, thick] (0,0) -- (1.5,2.6);
+    \draw[dashed, thick] (1.5,2.6) -- (3,0);
+    
+    % Draw the larger angle
+    \draw[thick] (0,0) -- (1.5,2.6) arc[start angle=0, end angle=120, radius=1.5];
+    
+    % Add labels for the angles
+    \node at (1.5,-0.5) {$\alpha$};
+    \node at (2.5,1.8) {$\beta$};
+    \node at (0.5,1.8) {$\gamma$};
+    
+    % Set the background color
+    \fill[white] (-2,-2) rectangle (4,3);
+\end{tikzpicture}
+\end{document}

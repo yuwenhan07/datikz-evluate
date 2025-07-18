@@ -1,0 +1,38 @@
+Certainly! Below is a TikZ LaTeX code that generates a comparison between the continuous function \( f \) and the distance from a set \( S \) in the real numbers \( \mathbb{R} \). The code includes a white upward-pointing arrow with a bowl-like shape, and it features some mathematical expressions.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define colors
+    \colorlet{whitearrow}{white}
+    \colorlet{blackbackground}{black}
+
+    % Draw the x-axis
+    \draw[thick, ->] (-2,0) -- (4,0) node[right] {$x$};
+
+    % Draw the y-axis
+    \draw[thick, ->] (0,-1) -- (0,3) node[above] {$y$};
+
+    % Draw the function f(x)
+    \draw[thick, blue] plot[domain=-1.5:1.5,samples=100] (\x,{\x^2 + 1});
+
+    % Draw the distance function d_S(x)
+    \draw[thick, red, dashed] plot[domain=-1.5:1.5,samples=100] (\x,{abs(\x^2 - 2)});
+
+    % Draw the upward-pointing white arrow
+    \node at (0,2.5) [inner sep=0pt,outer sep=0pt] {
+        \begin{scope}[overlay]
+            \path[fill=whitearrow] (0,2.5) circle[radius=0.2];
+            \draw[whitearrow, thick, <->] (0,2.5) to[bend right=30] ++(-0.8,-0.8);
+        \end{scope}
+    };
+
+    % Add labels and annotations
+    \node at (-1.7,2.5) [left] {\( f(x) \)};
+    \node at (1.7,2.5) [right] {\( d_S(x) \)};
+    \node at (0,1.5) [below left] {Mathematical Formula};
+    \node at (0,0.5) [below right] {Expression};
+\end{t

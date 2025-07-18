@@ -1,0 +1,41 @@
+To generate a TikZ LaTeX diagram representing the acyclic j-partitions of the parcycle \( C_{n,M} \) for \( j = 2, 3, 4 \), with \(\{s_1, s_2\}\) contained in the sink vertex, we need to understand the structure of the parcycle and how to partition it acyclically.
+
+A parcycle \( C_{n,M} \) typically consists of a cycle with additional edges that connect specific vertices. For simplicity, let's assume \( C_{n,M} \) is a simple cycle with additional edges forming a path from one vertex to another, creating a "parcycle" effect.
+
+Here’s a step-by-step guide to creating the TikZ code:
+
+1. **Define the Cycle**: Create a cycle with \( n \) vertices.
+2. **Add Additional Edges**: Add edges to form the "parcycle" effect.
+3. **Partition Acyclically**: Partition the graph into \( j \)-partitions such that each partition is acyclic and contains \(\{s_1, s_2\}\).
+
+Let's write the TikZ code for this:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{graphs, graphs.standard}
+
+\begin{document}
+
+\begin{tikzpicture}
+    % Define the number of vertices and additional edges
+    \def\n{5} % Number of vertices in the cycle
+    \def\M{2} % Number of additional edges
+
+    % Draw the cycle
+    \graph[cycle graph, n=\n] {
+        [nodes={draw, circle, inner sep=2pt}]
+        0 -> 1 -> 2 -> 3 -> 4 -> 0;
+    };
+
+    % Add additional edges to form the parcycle effect
+    \foreach \i in {1,...,\M}{
+        \pgfmathsetmacro{j}{mod(\i+1,\n)}
+        \draw (0) -- (\j);
+    }
+
+    % Highlight the sink vertex containing {s1, s2}
+    \node[fill=red!30, draw, circle, inner sep=2pt] at (0) {};
+    \node[fill=blue!30, draw, circle, inner sep=2pt] at (1) {};
+
+    % Partition into j-partitions for j=2, 3, 4
+    \begin{scope

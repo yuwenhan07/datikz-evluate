@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Large black circle
+    \draw[black] (0,0) circle (3);
+
+    % Number of points
+    \def\E{8}
+
+    % Calculate angle between each point
+    \pgfmathsetmacro{\angle}{360 / \E}
+
+    % Draw points at specified angles
+    \foreach \i in {0,...,\E-1} {
+        \pgfmathsetmacro{\x}{3 * cos(\i * \angle)}
+        \pgfmathsetmacro{\y}{3 * sin(\i * \angle)}
+        \node[circle, fill=white, inner sep=0pt, minimum size=5mm] at (\x, \y) {};
+    }
+\end{tikzpicture}
+
+\end{document}

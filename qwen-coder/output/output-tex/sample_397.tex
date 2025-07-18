@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Define colors for clarity
+\tikzset{level/.style={draw, thick, fill=blue!30}}
+\tikzset{vertex/.style={circle, draw, fill=red}}
+
+% Draw the first level (base)
+\node[vertex] (v0) at (0,0) {};
+\node[level] (l0) at (0,-2) {};
+
+% Draw the second level
+\node[vertex] (v1) at (-1,-4) {};
+\node[vertex] (v2) at (1,-4) {};
+\node[level] (l1) at (0,-6) {};
+
+% Draw the third level
+\node[vertex] (v3) at (-2,-8) {};
+\node[vertex] (v4) at (0,-8) {};
+\node[vertex] (v5) at (2,-8) {};
+\node[level] (l2) at (0,-10) {};
+
+% Draw the fourth level
+\node[vertex] (v6) at (-3,-12) {};
+\node[vertex] (v7) at (-1,-12) {};
+\node[vertex] (v8) at (1,-12) {};
+\node[vertex] (v9) at (3,-12) {};
+\node[level] (l3) at (0,-14) {};
+
+% Connect vertices to levels
+\foreach \i in {0,...,9} {
+    \draw[dotted] (\i/2,-2*\i-2) -- (0,-2*(\i+1));
+}
+
+% Labels
+\node[below] at (0,-2) {Level 0};
+\node[below] at (0,-6) {Level 1};
+\node[below] at (0,-10) {Level 2};
+\node[below] at (0,-14) {Level 3};
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,38 @@
+Certainly! Below is a TikZ LaTeX code that illustrates the status of each player being the favorite while the election is secured (FS) or still open (FO), considering whether they are contestable favorites (CF) or uncontestable favorites (UCF). The positions of the players and the median voter \(m\) are also shown.
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{
+    player/.style={circle, draw, fill=blue!20, inner sep=2pt},
+    medianvoter/.style={circle, draw, fill=red!20, inner sep=2pt},
+    line/.style={->, thick, >=Stealth[round]},
+    textnode/.style={anchor=north west, font=\small\sffamily},
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Players and Median Voter
+    \node[player] (A) at (0,2) {Player A};
+    \node[player] (B) at (4,2) {Player B};
+    \node[medianvoter] (M) at (2,0) {$m$};
+
+    % Lines representing the election status
+    \draw[line] (A) -- node[textnode] {FS} ++(0,-1);
+    \draw[line] (B) -- node[textnode] {FS} ++(0,-1);
+
+    % Positioning of players relative to the median voter
+    \node[player] (AFO) at (-2,0) {Player A FO};
+    \node[player] (AUCF) at (0,0) {Player A UCF};
+    \node[player] (AFO) at (2,0) {Player A FO};
+    \node[player] (AUCF) at (4,0) {Player A UCF};
+
+    % Lines indicating contestability and uncontestability
+    \draw[dashed] (AFO) -- (AFO |- M);
+    \draw[dashed] (AUCF) -- (AUCF |- M);
+    \draw[dashed] (BFO) -- (BFO |- M);
+    \draw[dashed] (BUCF) -- (BUCF |- M);
+
+    % Labels for contestability and uncontestability
+    \node[textnode]

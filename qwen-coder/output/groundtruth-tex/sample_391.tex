@@ -1,0 +1,16 @@
+\documentclass[a4paper,reqno]{amsart}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \draw[fill] (0,0) circle(0.05);
+    \foreach \ph in {0,45,90,135,180,225,270,315}{
+        \draw[fill] ({2*cos(\ph)},{2*sin(\ph)}) circle(0.05);
+        \draw (0,0)--({2*cos(\ph)},{2*sin(\ph)}) ;
+    }
+  \end{tikzpicture}
+
+\end{document}

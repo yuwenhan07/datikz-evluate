@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        % Define styles for matrices
+        \tikzset{
+            matrix/.style={matrix of nodes, nodes in empty cells, row sep=0.5cm, column sep=0.5cm},
+            cell/.style={draw, minimum size=1cm}
+        }
+
+        % First matrix H_i^j
+        \node[matrix] (H) at (0,0) {
+            \node[cell]{1} & \node[cell]{2} & \node[cell]{3} \\
+            \node[cell]{4} & \node[cell]{5} & \node[cell]{6} \\
+            \node[cell]{7} & \node[cell]{8} & \node[cell]{9} \\
+        };
+        \node[below=0.5cm of H] {\(H_i^j\)};
+        
+        % Second matrix K_i^j
+        \node[matrix] (K) at (3,0) {
+            \node[cell]{a} & \node[cell]{b} & \node[cell]{c} \\
+            \node[cell]{d} & \node[cell]{e} & \node[cell]{f} \\
+            \node[cell]{g} & \node[cell]{h} & \node[cell]{i} \\
+        };
+        \node[below=0.5cm of K] {\(K_i^j\)};
+    \end{tikzpicture}
+    \caption{Matrices \(H_i^j\) and \(K_i^j\) used in the C-step after each iteration step.}
+    \label{fig:matrices}
+\end{figure}
+
+\end{document}

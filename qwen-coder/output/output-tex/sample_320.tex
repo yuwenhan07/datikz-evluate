@@ -1,0 +1,48 @@
+To generate a TikZ diagram that visualizes the STG (State Transition Graph) superposed over the rectangular domains dividing phase space for a toggle switch, along with its corresponding MG (Markov Graph), we can use the following LaTeX code. This example assumes you have the necessary packages installed and properly configured in your LaTeX document.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    state/.style={rectangle, draw=black, fill=blue!20, text width=4em, text centered, rounded corners, minimum height=3em},
+    arrow/.style={thick,->,>=stealth}
+}
+
+\begin{document}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        node distance=2cm,
+        x=1cm,
+        y=1cm
+    ]
+        % Phase Space Rectangles
+        \draw[fill=gray!20] (0,0) rectangle (2,2);
+        \draw[fill=gray!20] (2,0) rectangle (4,2);
+        
+        % State Nodes
+        \node[state] (A) at (1,1) {Off};
+        \node[state] (B) at (3,1) {On};
+        
+        % Arrows between states
+        \draw[arrow] (A) -- (B);
+        \draw[arrow] (B) -- (A);
+        
+        % STG Superposition
+        \draw[dashed, thick, red] (0.5,0.5) rectangle (1.5,1.5);
+        \draw[dashed, thick, blue] (3.5,0.5) rectangle (4.5,1.5);
+        
+        % Labels for STG
+        \node[right] at (1,0.75) {STG};
+        \node[right] at (3,0.75) {STG};
+        
+        % MG Nodes
+        \node[state] (C) at (1,-1) {A};
+        \node[state] (D) at (3,-1) {B};
+        
+        % Arrows between MG nodes
+        \draw[arrow] (C) -- (D);
+        \draw[arrow] (D) -- (C);
+        

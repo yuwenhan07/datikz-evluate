@@ -1,0 +1,28 @@
+\documentclass{article}
+
+\usepackage{filecontents}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\pgfplotsset{compat=newest}
+
+\begin{filecontents}{sample_data.csv}
+    x     y
+    0.5   0
+    0.5   0.7
+\end{filecontents}
+
+\begin{document}
+    \begin{tikzpicture}
+        \begin{axis}[xmin = 0, xmax = 1, ymin = 0, ymax = 1]
+            \pgfplotstableread{sample_data.csv}\mydata;
+
+            \addplot+[mark=none, dashed, gray] table [
+                x = x,
+                y = y,
+            ] {\mydata};
+            
+            \addplot+[ mark=none, draw=none] table[x=x, y=y] {\mydata} node[anchor=south west, pos=0, blue] {a} node[anchor=south west, pos=1, red] {b};
+        \end{axis}
+    \end{tikzpicture}
+\end{document}

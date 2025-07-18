@@ -1,0 +1,77 @@
+\documentclass[11pt, oneside]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usetikzlibrary{snakes}
+\usetikzlibrary{decorations}
+\usetikzlibrary{trees}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{external}
+\usetikzlibrary{intersections}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{fadings}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{tikzmark,calc,arrows,shapes,decorations.pathreplacing}
+\tikzset{
+        cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+	branchCut/.style={postaction={decorate},
+		snake=zigzag,
+		decoration = {snake=zigzag,segment length = 2mm, amplitude = 2mm}	
+    }}
+
+\begin{document}
+
+\begin{tikzpicture}
+        % Circle boundary
+        \draw (0,0) circle (2 cm);
+        
+        % Points
+        \coordinate (2) at (-0.70,-1.87);
+        \coordinate (1) at (-1.87,-0.70);
+        \coordinate (A) at (-0.707,-0.707);
+        \coordinate (B) at (0.707,-0.707);
+        \coordinate (C) at (0,0);
+       \coordinate (D) at (-0.707,0.707);
+        \coordinate (E) at (0.707,0.707);
+         \coordinate (3) at (0.70,-1.87);
+        \coordinate (4) at (1.87,-0.707);
+         \coordinate (5) at (1.87,0.70);
+        \coordinate (6) at (0.70,1.87);
+        \coordinate (7) at (-0.70,1.87);
+        \coordinate (8) at (-1.87,0.70);
+        % Lines connecting points
+        \draw (1)-- (A);
+        \draw (2) -- (A);
+        \draw[decorate, decoration={coil, aspect=0, segment length=5pt, amplitude=4pt}]  (A) -- (C) ;
+          \draw  (3) -- (B);
+        \draw (4) -- (B);
+         \draw[decorate, decoration={coil, aspect=0, segment length=5pt, amplitude=4pt}]  (B) -- (C); 
+         \draw (5) -- (E);
+        \draw (6) -- (E);
+        \draw[decorate, decoration={coil, aspect=0, segment length=5pt, amplitude=4pt}]  (D) -- (C);
+         \draw (7) -- (D);
+        \draw (8) -- (D);
+        \draw[decorate, decoration={coil, aspect=0, segment length=5pt, amplitude=4pt}]  (E) -- (C);
+        
+        % Points
+        \fill (1)  node[left] {$1$};
+        \fill (2) node[below] {$2$};
+        \fill (3) node[below] {$3$};
+         \fill (4) node[right] {$4$};
+          \fill (5) node[right] {$5$};
+         \fill (6) node[above] {$6$};
+         \fill (7) node[above] {$7$};
+         \fill (8) node[left] {$8$};
+       \end{tikzpicture}
+
+\end{document}

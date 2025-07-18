@@ -1,0 +1,36 @@
+\documentclass[12pt,dvipsnames]{article}
+\usepackage{amsmath,amsthm,mathtools,amsfonts,amssymb,tikz,verbatim,curves,enumitem, bbm, bm, mathrsfs, float, fullpage, xfrac, hyperref}
+\usepackage{xcolor}
+\usetikzlibrary{arrows,automata,positioning,shapes,shadows}
+
+\begin{document}
+
+\begin{tikzpicture}[shorten >=0.5pt,node distance=3cm,on grid,auto] 
+    \node[state] (q_0)   {$p_0$}; 
+    \node[state] (q_1) [xshift=4cm,yshift=0cm] {$q_0$};
+   \node[state] (q_3) [xshift=4cm,yshift=-3cm] {$q_2$}; 
+   \node[state] (q_5)[xshift=8cm,yshift=-3cm] {$q_1$}; 
+   \node[state] (q_4)[xshift=8cm,yshift=0cm] {$p_1$};
+   \node[state] (q_2)[xshift=8cm,yshift=-6cm] {$p_2$};
+    \path[->] 
+    (q_0) edge node {$1$ \quad $0$} (q_1)
+          edge [out=330,in=135]  node [xshift=-0.3cm,yshift=0.cm] {$2$} node  [xshift=0.3cm,yshift=-0.4cm] {$3$} (q_3)
+          edge [out=90,in=90]  node [xshift=-0.2cm,yshift=0.15cm] {$4$} node [xshift=0.5cm,yshift=0.15cm] {$5$} (q_4)
+    (q_1) edge [in=170,out=10]  node [xshift=-0.5cm,yshift=0.5cm,swap]  {$4$} node [xshift=0.1cm,yshift=0.5cm,swap]  {$5$} (q_4)
+          edge [in=95,out=85, loop] node [xshift=-0.4cm,yshift=-0.3cm,swap] {$0$} node [xshift=0.4cm,yshift=-0.3cm,swap] {$1$} ()
+          edge  node [xshift=0cm,yshift=0.3cm,swap] {$2$} node [xshift=0cm,yshift=-0.3cm,swap]  {$3$} (q_3)
+    (q_3) edge  node [xshift=0cm, yshift=0.15cm] {$1$}  node [xshift=0.5cm, yshift=-0.2cm] {$0$} (q_0)
+          edge node [xshift=0.15cm, yshift=-0.1cm]  {$4$ \quad $5$} (q_5) 
+          edge [in=275,out=265, loop] node [xshift=-0.3cm,yshift=0.2cm,swap] {$2$} node [xshift=0.3cm, yshift=0.2cm,swap] {$3$} ()
+    (q_5) edge [in=330,out=135]  node [xshift=-0.2cm,yshift=0cm,swap] {$1$} node [xshift=0.2cm, yshift=-0.4cm,swap] {$0$} (q_1)
+          edge [out=260,in=100] node [xshift=0cm,yshift=-0.4cm,swap] {$2$} node [xshift=0cm,yshift=0.4cm,swap] {$3$} (q_2) 
+          edge [in=355,out=5, loop] node [xshift=0cm, yshift=0.3cm,swap] {$4$} node [xshift=0cm, yshift=-0.3cm,swap] {$5$} ()
+    (q_4) edge [in=0,out=0]  node [xshift=0cm,yshift=-0.4cm] {$2$} node [xshift=0cm, yshift=0.4cm] {$3$} (q_2)
+          edge  node [xshift=0cm,yshift=-0.4cm] {$5$} node [xshift=0cm,yshift=0.4cm] {$4$} (q_5) 
+          edge node [xshift=-0.5cm, yshift=0.05cm] {$1$} node [xshift=0.2cm, yshift=0.05cm] {$0$} (q_1)
+    (q_2) edge [in=225,out=225]  node [xshift=-0.4cm,yshift=0.2cm] {$0$} node [xshift=0.4cm, yshift=-0.2cm] {$1$} (q_0)
+          edge  node [xshift=-0.4cm,yshift=0.33cm] {$3$} node [xshift=0.4cm,yshift=-0.1cm] {$2$} (q_3) 
+          edge node [xshift=0cm, yshift=-0.4cm,swap] {$4$} node [xshift=0cm, yshift=0.4cm,swap] {$5$} (q_5);
+\end{tikzpicture}
+
+\end{document}

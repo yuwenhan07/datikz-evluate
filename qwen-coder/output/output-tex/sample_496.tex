@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Define coordinates for each point
+    \coordinate[label=above left:Very Large Models] (vl) at (3,4);
+    \coordinate[label=below right:Large Models] (l) at (6,2);
+    \coordinate[label=below left:Medium-Sized Models] (m) at (9,1);
+    \coordinate[label=above right:Small Models] (s) at (12,3);
+
+    % Draw lines connecting the points
+    \draw[green, thick] (vl) -- (l);
+    \draw[blue, thick] (l) -- (m);
+    \draw[red, thick] (m) -- (s);
+
+    % Add labels to axes
+    \draw[->] (0,0) -- (15,0) node[right] {Generation Length};
+    \draw[->] (0,0) -- (0,5) node[above] {Model Size};
+
+    % Add legend
+    \node at (15,4.5) [right] {\textcolor{green}{Very Large}};
+    \node at (15,3.5) [right] {\textcolor{blue}{Large}};
+    \node at (15,2.5) [right] {\textcolor{red}{Medium-Sized}};
+
+\end{tikzpicture}
+
+\end{document}

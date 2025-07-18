@@ -1,0 +1,14 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfornament}
+
+\begin{document}
+
+\begin{tikzpicture}[x=1cm,y=1cm]
+    \draw[thick, gold] (0,-1) -- (8,-1); % Draw a straight line for reference
+    \foreach \i in {0,...,7} {
+        \pgfornamentline[width=2mm,scale=1.5]{-}{0,-1+\i*1}{0,-1+\i*1};
+    }
+\end{tikzpicture}
+
+\end{document}

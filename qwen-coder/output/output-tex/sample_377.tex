@@ -1,0 +1,19 @@
+To create a more versatile approach that can handle a broader range of angles in radians, we can use the `calc` library in TikZ to calculate the coordinates of the points on the circle. Here's an example code that draws a circle with radius 5 and an angle of 3.14 radians (which is approximately 180 degrees):
+```
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+  \def\radius{5} % define radius
+  \def\angle{3.14} % define angle in radians
+  \draw[thick] (0,0) circle (\radius); % draw circle
+  \coordinate (O) at (0,0); % define origin
+  \coordinate (A) at ($(\radius*cos(\angle),\radius*sin(\angle))$); % calculate coordinates of point A
+  \draw[dashed] (O) -- (A); % draw line from origin to point A
+  \node at ($(O)!0.5!(A)$) [below] {$r = \radius$}; % label radius
+  \node at ($(O)!0.7!(A)$) [left] {Angle: $\angle$ radians}; % label angle
+\end{tikzpicture}
+\end{document}
+```
+This code uses the `cos()` and `sin()` functions to calculate the x and y coordinates of point A based on the radius and angle. It then draws a dashed line from the origin to point A and labels the radius and angle. You can modify the values of `\radius` and `\angle` to draw circles with different radii and angles.

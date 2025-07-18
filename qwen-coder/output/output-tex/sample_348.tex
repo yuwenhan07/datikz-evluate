@@ -1,0 +1,52 @@
+To achieve the desired outcome, we need to accurately measure the width of the `tabularray` table and then use that width to create a box with the same width using both `tcolorbox` and `tikz`. We will also address the issue with the positioning and sizing differences.
+
+Here's a step-by-step approach:
+
+1. **Measure the Width of the Table**: Use the `measuretext` command from the `xstring` package to measure the width of the table.
+2. **Create a Box Using `tcolorbox`**: Use the measured width to set the width of the `tcolorbox`.
+3. **Create a Rectangle Using `tikz`**: Use the measured width to set the width of the rectangle in `tikz`.
+
+Let's write the LaTeX code for this:
+
+```latex
+\documentclass{article}
+\usepackage{tabularray}
+\usepackage{xstring}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+
+% Define a new length to store the width of the table
+\newlength{\tablewidth}
+
+% Create a command to measure the width of the table
+\newcommand{\measuretablewidth}[1]{%
+  \setlength{\tablewidth}{0pt}%
+  \begin{tabular}{@{}#1@{}}%
+    % Add some content to measure the width
+    & Content & Content & Content \\%
+  \end{tabular}%
+  \settowidth{\tablewidth}{\the\tabcolsep}%
+  \addtolength{\tablewidth}{\dimexpr\the\tabcolsep+\tabularray@hlineskip\relax}%
+}
+
+% Example usage of the measuretablewidth command
+\measuretablewidth{|c|c|c|}
+
+\begin{document}
+
+\section*{Table Width: \the\tablewidth}
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    Column 1 & Column 2 & Column 3 \\
+    \hline
+    Data 1   & Data 2   & Data 3   \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\section*{Box Created by tcolorbox}
+\begin{tcolorbox}[width=\tablewidth]
+  This is a box created by tcolorbox with the same width as the table.
+\end{t

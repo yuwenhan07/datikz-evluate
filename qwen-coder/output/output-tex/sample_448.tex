@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel=$x$,
+        ylabel=$y$,
+        xmin=-1, xmax=11,
+        ymin=-1, ymax=6,
+        grid=major,
+        width=8cm,
+        height=6cm,
+        samples=2,
+        only marks,
+        mark=*,
+        mark size=2pt
+    ]
+        
+        % Loop over the range of integers from 0 to 10
+        \foreach \x in {0,...,10}{
+            \foreach \y in {0,...,10}{
+                % Check if the point satisfies the inequality x + y <= 5
+                \ifnum\x+\y<=5
+                    \addplot coordinates {(\x,\y)};
+                \fi
+            }
+        }
+
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

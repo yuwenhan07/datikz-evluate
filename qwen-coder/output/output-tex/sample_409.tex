@@ -1,0 +1,17 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Background (black)
+    \fill[black] (-3,-2) rectangle (3,2);
+    
+    % Building (white)
+    \fill[white] (-2,-1) rectangle (2,1);
+    
+    % Interval chain on the wall
+    \foreach \y in {-0.8, -0.4, 0, 0.4, 0.8} {
+        \draw[black, thick] (-2, \y) -- (2, \y);
+    }
+\end{tikzpicture}
+\end{document}

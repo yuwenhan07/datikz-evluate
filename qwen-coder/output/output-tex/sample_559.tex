@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define styles for nodes
+    \tikzset{
+        vertex/.style={circle, fill=blue!20, inner sep=0pt, minimum size=8pt},
+        edge/.style={thick, ->, >=stealth'}
+    }
+
+    % Left figure: k=4
+    \node[vertex] (A) at (-2, 2) {};
+    \node[vertex] (B) at (-2, -2) {};
+    \node[vertex] (C) at (2, 2) {};
+    \node[vertex] (D) at (2, -2) {};
+
+    \draw[edge] (A) -- (C);
+    \draw[edge] (B) -- (D);
+
+    \node at (0, 2.5) {Left (k=4)};
+    \draw[dashed] (0, 2) rectangle (0, 3);
+
+    % Right figure: k=2
+    \node[vertex] (E) at (-2, 2) {};
+    \node[vertex] (F) at (-2, -2) {};
+    \node[vertex] (G) at (2, 2) {};
+    \node[vertex] (H) at (2, -2) {};
+
+    \draw[edge] (E) -- (G);
+    \draw[edge] (F) -- (H);
+
+    \node at (0, -0.5) {Right (k=2)};
+    \draw[dashed] (0, -1) rectangle (0, 0);
+
+    % Cycle indicators
+    \node[anchor=east] at (1.5, 1.5) {Cycle};
+    \node[anchor=east] at (1.5, -1.5) {No Cycle};
+
+    % Draw dashed lines to indicate the jump
+    \draw[dashed] (A) -- (G);
+    \draw[dashed] (B) -- (H);
+\end{tikzpicture}
+\end{document}

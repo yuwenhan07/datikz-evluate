@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning}
+
+\begin{document}
+
+\tikzset{
+    cell/.style={draw, minimum width=2cm, minimum height=1cm, align=center},
+    header/.style={cell, font=\bfseries},
+    value/.style={cell, text=black!50}
+}
+
+\begin{tikzpicture}[node distance=0.5cm]
+
+% Left Panel: Right Lane
+\node[matrix of nodes, row sep=-2mm, column sep=2mm] (left_panel) {
+    \textbf{Algorithm} & \textbf{MOBIL Model} \\
+    ML Algorithm 1 & \value{0.95} \\
+    ML Algorithm 2 & \value{0.87} \\
+    ML Algorithm 3 & \value{0.91} \\
+    ML Algorithm 4 & \value{0.89} \\
+    ML Algorithm 5 & \value{0.93} \\
+    ML Algorithm 6 & \value{0.90} \\
+};
+
+\node[left=of left_panel.west, xshift=-1cm] {Right Lane};
+
+% Right Panel: Left Lane
+\node[right=of left_panel.east, xshift=1cm] (right_panel) {
+    \textbf{Algorithm} & \textbf{MOBIL Model} \\
+    ML Algorithm 1 & \value{0.94} \\
+    ML Algorithm 2 & \value{0.86} \\
+    ML Algorithm 3 & \value{0.90} \\
+    ML Algorithm 4 & \value{0.88} \\
+    ML Algorithm 5 & \value{0.92} \\
+    ML Algorithm 6 & \value{0.89} \\
+};
+
+\node[right=of right_panel.east, xshift=1cm] {Left Lane};
+
+\end{tikzpicture}
+
+\end{document}

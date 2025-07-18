@@ -1,0 +1,151 @@
+\documentclass[12pt]{extarticle}
+\usepackage{amsmath, amsthm, amssymb, mathtools, hyperref,color}
+\usepackage{tikz}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tikz-cd}
+\usepackage{tkz-graph}
+\usetikzlibrary{shapes,arrows,positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.3]
+\SetVertexMath
+\GraphInit[vstyle=Art]
+\SetUpVertex[MinSize=3pt]
+\SetVertexLabel
+\tikzset{VertexStyle/.style = {%
+shape = circle,
+shading = ball,
+ball color = black,
+inner sep = 1.5pt
+}}
+\SetUpEdge[color=black]
+\tikzstyle{every node}=[font=\small]
+
+%%4-acyclic 2-partitions
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=-1,y=9,L={1,v_0}]{a}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=-1,y=8,L={3,2,v_1,s_1,s_2}]{b}
+\Edge[style={-triangle 45}](a)(b)
+
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=1.5,y=9,L={3}]{a}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=1.5,y=8,L={2,v_1,s_1,s_2,1,v_0}]{b}
+\Edge[style={-triangle 45}](a)(b)
+
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=4,y=9,L={2,v_1}]{a}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=4,y=8,L={s_1,s_2,1,v_0,3}]{b}
+\Edge[style={-triangle 45}](a)(b)
+
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=6,y=9,L={1,v_0,3}]{a}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=6,y=8,L={2,v_1,s_1,s_2}]{b}
+\Edge[style={-triangle 45}](a)(b)
+
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=8,y=9,L={3,2,v_1}]{a}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=8,y=8,L={s_1,s_2,1,v_0}]{b}
+\Edge[style={-triangle 45}](a)(b)
+
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=10,y=9,L={1,v_0,3,2,v_1}]{a}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=10,y=8,L={s_1,s_2}]{b}
+\Edge[style={-triangle 45}](a)(b)
+
+
+
+%%4-acyclic 3-partitions
+
+
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=0.5,y=6,L={1,v_0,3}]{2}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=1.5,y=6,L={2,v_1}]{1}
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=1,y=6.8,L={s_2,s_1}]{34}
+\Edge[style=-{triangle 45}](2)(1)
+\Edge[style={-triangle 45}](1)(34)
+\Edge[style={-triangle 45}](2)(34)
+
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=3,y=6,L={1,v_0,3}]{2}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=4,y=6,L={2,v_1}]{1}
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=3.5,y=6.8,L={s_2,s_1}]{34}
+\Edge[style=-{triangle 45}](1)(2)
+\Edge[style={-triangle 45}](1)(34)
+\Edge[style={-triangle 45}](2)(34)
+
+
+
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=5.5,y=6,L={1,v_0}]{2}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=6.5,y=6,L={3,2,v_1}]{1}
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=6,y=6.8,L={s_2,s_1}]{34}
+\Edge[style=-{triangle 45}](2)(1)
+\Edge[style={-triangle 45}](1)(34)
+\Edge[style={-triangle 45}](2)(34)
+
+
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=8,y=6,L={1,v_0}]{2}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=9,y=6,L={3,2,v_1}]{1}
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=8.5,y=6.8,L={s_2,s_1}]{34}
+\Edge[style=-{triangle 45}](1)(2)
+\Edge[style={-triangle 45}](1)(34)
+\Edge[style={-triangle 45}](2)(34)
+
+
+
+%%4-acyclic 3-partitions, continued
+
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=0.5,y=4,L={3}]{2}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=1.5,y=4,L={2,v_1}]{1}
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=1,y=4.8,L={v_0,1,s_2,s_1}]{34}
+\Edge[style=-{triangle 45}](2)(1)
+\Edge[style={-triangle 45}](1)(34)
+\Edge[style={-triangle 45}](2)(34)
+
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=3,y=4,L={3}]{2}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=4,y=4,L={2,v_1}]{1}
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=3.5,y=4.8,L={v_0,1,s_2,s_1}]{34}
+\Edge[style=-{triangle 45}](1)(2)
+\Edge[style={-triangle 45}](1)(34)
+\Edge[style={-triangle 45}](2)(34)
+
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=5.5,y=4,L={1,v_0}]{2}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=6.5,y=4,L={3}]{1}
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=6,y=4.8,L={s_2,s_1,v_1,2}]{34}
+\Edge[style=-{triangle 45}](2)(1)
+\Edge[style={-triangle 45}](1)(34)
+\Edge[style={-triangle 45}](2)(34)
+
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=8,y=4,L={1,v_0}]{2}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=9,y=4,L={3}]{1}
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=8.5,y=4.8,L={s_2,s_1,v_1,2}]{34}
+\Edge[style=-{triangle 45}](1)(2)
+\Edge[style={-triangle 45}](1)(34)
+\Edge[style={-triangle 45}](2)(34)
+
+
+%%4-acyclic 4-partitions
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=1.5,y=2.5,L={s_2,s_1}]{1}
+\Vertex[LabelOut,Lpos=180, Ldist=.05cm,x=1,y=2,L={1,v_0}]{2}
+\Vertex[LabelOut,Lpos=0, Ldist=.05cm,x=2,y=2,L={2,v_1}]{3}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=1.5,y=1.5,L={3}]{4}
+\Edge[style={-triangle 45}](2)(1)
+\Edge[style={-triangle 45}](3)(1)
+\Edge[style={-triangle 45}](2)(4)
+\Edge[style={-triangle 45}](4)(3)
+
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=4.5,y=2.5,L={s_2,s_1}]{1}
+\Vertex[LabelOut,Lpos=180, Ldist=.05cm,x=4,y=2,L={1,v_0}]{2}
+\Vertex[LabelOut,Lpos=0, Ldist=.05cm,x=5,y=2,L={2,v_1}]{3}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=4.5,y=1.5,L={3}]{4}
+\Edge[style={-triangle 45}](2)(1)
+\Edge[style={-triangle 45}](3)(1)
+\Edge[style={-triangle 45}](4)(2)
+\Edge[style={-triangle 45}](4)(3)
+
+
+
+\Vertex[LabelOut,Lpos=90, Ldist=.05cm,x=7.5,y=2.5,L={s_2,s_1}]{1}
+\Vertex[LabelOut,Lpos=180, Ldist=.05cm,x=7,y=2,L={1,v_0}]{2}
+\Vertex[LabelOut,Lpos=0, Ldist=.05cm,x=8,y=2,L={2,v_1}]{3}
+\Vertex[LabelOut,Lpos=270, Ldist=.05cm,x=7.5,y=1.5,L={3}]{4}
+\Edge[style={-triangle 45}](2)(1)
+\Edge[style={-triangle 45}](3)(1)
+\Edge[style={-triangle 45}](4)(2)
+\Edge[style={-triangle 45}](3)(4)
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,45 @@
+Certainly! Below is a TikZ LaTeX code that visualizes the described process step by step:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5, every node/.style={inner sep=0pt}]
+
+% Step (a)
+\node (A) at (0,0) {A};
+\node (U) at (-2,-2) {U};
+
+% Draw boundary of A
+\draw[thick] (A.north east) -- (A.south east) -- (A.south west) -- (A.north west);
+
+% Draw hole in A for U
+\filldraw[gray!30] (-1.5,-1.5) rectangle (0.5,0.5);
+
+% Step (b)
+\node (A_prime) at (4,0) {A'};
+\node (B) at (5,-1) {};
+\node (C) at (3,-1) {};
+
+% Draw boundary of A'
+\draw[thick] (A_prime.north east) -- (A_prime.south east) -- (A_prime.south west) -- (A_prime.north west);
+\draw[thick] (B.east) -- (B.west);
+\draw[thick] (C.east) -- (C.west);
+
+% Partially cover boundary of A'BC
+\clip (A_prime.north east) rectangle (C.south west);
+\draw[thick] (A_prime.north east) -- (A_prime.south east) -- (A_prime.south west) -- (A_prime.north west);
+\draw[thick] (B.east) -- (B.west);
+\draw[thick] (C.east) -- (C.west);
+
+% Step (c)
+\node (U_double_prime) at (8,0) {U''};
+\node (gates) at (7,-1) {};
+
+% Draw U''
+\draw[thick] (U_double_prime.north east) -- (U_double_prime.south east) -- (U_double_prime.south west) -- (U_double_prime.north west);
+\draw[thick] (gates.east) -- (gates.west);
+
+% Remove some gates around A'
+\clip (A_prime.north east) rectangle (C

@@ -1,0 +1,36 @@
+Certainly! Below is a TikZ LaTeX diagram that compares the upper bounds and conjectures on \( \beta_2,3^{(0)}(\alpha) \) and \( \beta_2,3^\alpha(\alpha) \) for various values of \( \alpha = N^{-\beta} \). This diagram includes Wooley's conjecture (Wool3) which applies when \( \alpha = \frac{2}{3} \).
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{amsmath}
+
+\tikzset{
+    node/.style={draw, circle, fill=blue!20, inner sep=5pt},
+    label/.style={font=\small, above right},
+    legend/.style={rectangle, draw=black, fill=white, inner sep=2pt, text width=2cm}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+
+% Axes
+\draw[->] (-0.5,0) -- (4.5,0) node[right] {$\alpha$};
+\draw[->] (0,-1) -- (0,3) node[above] {$\beta$};
+
+% Labels on axes
+\node at (0,-0.5) [below left] {0};
+\node at (4,-0.5) [below right] {$N^{-\beta}$};
+\node at (0,2.5) [left] {$\beta = 1$};
+\node at (0,1.5) [left] {$\beta = \frac{2}{3}$};
+\node at (0,0.5) [left] {$\beta = 0$};
+
+% Lines representing different values of beta
+\draw[dashed] (0,1) -- (4,1);
+\draw[dashed] (0,2/3) -- (4,2/3);
+\draw[dashed] (0,0) -- (4,0);
+
+% Points and labels for beta = 1
+\node[node,label=right:$\beta_2,3^{(0)}(N^{-1})$] at (1,1.8) {};
+\node[node,label=right:$\beta_2,3^\alpha(N^{-1})$] at (3,1.8) {};
+
+% Points and labels for beta = 2

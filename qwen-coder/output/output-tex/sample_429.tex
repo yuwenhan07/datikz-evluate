@@ -1,0 +1,47 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric,positioning}
+
+\begin{document}
+
+\tikzset{
+    point/.style={circle, fill=black, inner sep=2pt},
+    line/.style={thick, -stealth}
+}
+
+\begin{tikzpicture}[node distance=2cm]
+
+% Define the points
+\node (A) [point] {};
+\node (B) [point, right of=A] {};
+\node (C) [point, above of=B] {};
+\node (D) [point, left of=C] {};
+\node (E) [point, below of=D] {};
+\node (F) [point, left of=E] {};
+
+% Connect the points
+\draw[line] (A) -- (B);
+\draw[line] (B) -- (C);
+\draw[line] (C) -- (D);
+\draw[line] (D) -- (E);
+\draw[line] (E) -- (F);
+\draw[line] (F) -- (A);
+
+% Additional connections to make it more complex
+\draw[line] (A) -- (C);
+\draw[line] (B) -- (D);
+\draw[line] (C) -- (E);
+\draw[line] (D) -- (F);
+\draw[line] (E) -- (A);
+\draw[line] (F) -- (B);
+
+% Label the points
+\node[above left] at (A.west) {A};
+\node[above right] at (B.east) {B};
+\node[right] at (C.north) {C};
+\node[left] at (D.south) {D};
+\node[below left] at (E.west) {E};
+\node[below right] at (F.east) {F};
+
+\end{tikzpicture}
+
+\end{document}

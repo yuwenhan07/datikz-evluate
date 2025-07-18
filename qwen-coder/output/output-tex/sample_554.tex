@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    % Define the radius of the circle
+    \def\radius{5.12}
+    
+    % Draw the circle
+    \draw[black] (0,0) circle (\radius);
+    
+    % Draw the radius lines for dividing the circle
+    \foreach \angle in {0,40,80,120,160,200,240,280,320} {
+        \draw[dashed] (0,0) -- (\angle:\radius);
+    }
+    
+    % Label the points
+    \foreach \angle [evaluate=\i as \label using int(\i+1)] in {0,40,80,120,160,200,240,280,320} {
+        \node at (\angle:\radius) {\label};
+    }
+    
+    % Draw the center point
+    \fill (0,0) circle (0.1);
+    
+    % Draw the coordinate axes
+    \draw[-stealth] (-\radius,0) -- (\radius,0) node[right] {$x$};
+    \draw[-stealth] (0,-\radius) -- (0,\radius) node[above] {$y$};
+\end{tikzpicture}
+\end{document}

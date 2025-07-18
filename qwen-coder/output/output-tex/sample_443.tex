@@ -1,0 +1,38 @@
+Certainly! Below is an example of how you can create a TikZ diagram to represent an ear decomposition \( ED = \{P_1, P_2, P_3, P_4\} \) of a graph. In this example, \( P_1 \) is a cycle with 10 edges, \( P_2 \) is a path with 4 edges, \( P_3 \) is a path with 3 edges, and \( P_4 \) is a path with 2 edges.
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta, positioning}
+
+\tikzset{
+    node distance=2cm,
+    every node/.style={circle, draw, fill=white},
+    edge/.style={thick, -Stealth},
+    thinedge/.style={thin, -Stealth}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+
+% Cycle P1
+\node (P1_1) at (0,0) {};
+\node (P1_2) at (2,0) {};
+\node (P1_3) at (4,-2) {};
+\node (P1_4) at (6,-2) {};
+\node (P1_5) at (8,-4) {};
+\node (P1_6) at (8,-6) {};
+\node (P1_7) at (6,-6) {};
+\node (P1_8) at (4,-4) {};
+\node (P1_9) at (2,-4) {};
+\node (P1_10) at (0,-2) {};
+
+\draw[edge] (P1_1) -- (P1_2);
+\draw[edge] (P1_2) -- (P1_3);
+\draw[edge] (P1_3) -- (P1_4);
+\draw[edge] (P1_4) -- (P1_5);
+\draw[edge] (P1_5) -- (P1_6);
+\draw[edge] (P1_6) -- (P1_7);
+\draw[edge] (P1_7) -- (P1_8);
+\draw[edge] (P1_8) -- (P1_9);
+\draw[edge] (P1_9) -- (P1_

@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, backgrounds}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Draw the AdS_4 spacetime as a cylinder with an arrow indicating its direction
+    \draw[thick, ->] (-3,-1) -- (-3,1);
+    \draw[thick, ->] (3,-1) -- (3,1);
+    \draw[thick, dashed] (-3,-1) arc[start angle=-90, end angle=90, radius=3];
+    \node at (0,1.5) {AdS$_4$};
+
+    % Draw the D4-brane as a magenta rectangle wrapping around the AdS_4 cylinder
+    \begin{scope}[on background layer]
+        \fill[magenta!70] (-3,-1) rectangle (3,1);
+    \end{scope}
+    \node at (0,-1.5) {D4-brane};
+
+    % Draw the 1-cycle as a blue curve moving along the AdS_4 cylinder
+    \draw[blue, thick, <->] plot coordinates {(-2,-1) (-1,-0.5) (0,0) (1,0.5) (2,-1)};
+    \node at (0,0.5) {1-cycle};
+
+    % Draw the 2-cycle as a green surface
+    \begin{scope}[on background layer]
+        \fill[green!60] plot [smooth cycle] coordinates {(-2,-1) (-1,-0.5) (0,0) (1,0.5) (2,-1)};
+    \end{scope}
+    \node at (0,-0.5) {2-cycle};
+\end{tikzpicture}
+\end{document}

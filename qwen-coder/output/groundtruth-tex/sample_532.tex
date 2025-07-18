@@ -1,0 +1,25 @@
+\documentclass[border=2.72mm]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{calc,intersections,angles}
+\begin{document}
+\begin{tikzpicture}[declare function={
+        d=4*sqrt(2)*1.2;
+        r1=4;
+        r2=4;
+    }]
+    \draw [cyan, thin] (0,0) coordinate(A) node[fill,circle,label=above:A]{} --
+        (d,0) coordinate(B) node[fill,circle,label=above:B]{};
+    \draw [thin, name path=circleA] (A) circle[radius=r1];
+    \draw [thin, name path=circleB] (B) circle[radius=r2];
+    \path [name intersections={of=circleA and circleB, name=I}]
+        (I-1) node[fill,circle,label=above:I]{};
+    \draw [thick] (A) -- (I-1) -- (B);
+    \pic [draw, red, <->, angle radius=5mm] {angle=A--I-1--B};
+    \pgfmathanglebetweenlines
+        {\pgfpointanchor{A}{center}}{\pgfpointanchor{I-1}{center}}
+        {\pgfpointanchor{B}{center}}{\pgfpointanchor{I-1}{center}}
+    \edef\angle{\pgfmathresult}
+    \node [below=1cm, fill=white, inner sep=1pt] at (I-1) {\angle};
+\end{tikzpicture}
+\end{document}

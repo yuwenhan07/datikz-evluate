@@ -1,0 +1,19 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+    % Define the node with a background color
+    \node (myNode) [draw=black, fill=yellow!50, inner sep=10pt] {
+        \begin{scope}[on background layer]
+            % Clip to the complement of the node's bounding box
+            \clip (myNode.south west) rectangle (myNode.north east);
+            % Draw content outside the node's bounding box
+            \fill[blue!50] ([xshift=-1cm,yshift=-1cm]myNode.south west) rectangle ([xshift=1cm,yshift=1cm]myNode.north east);
+        \end{scope}
+    };
+
+    % Add some other nodes for context
+    \node (otherNode) at (4,0) {Other Node};
+\end{tikzpicture}
+\end{document}

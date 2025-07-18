@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=3]
+
+    % Draw the outer circle with a white border and black fill
+    \draw[thick, black] (0,0) circle (1);
+    
+    % Draw the inner circle with a white border and white fill
+    \draw[thick, white] (0,0) circle (0.8);
+    
+    % Draw the vertical line through the center
+    \draw[thick, black] (-1,0) -- (1,0);
+    
+    % Draw the horizontal line through the center
+    \draw[thick, black] (0,-1) -- (0,1);
+    
+    % Label the quadrants if needed
+    \node at (1.2, 0) {I};
+    \node at (-1.2, 0) {II};
+    \node at (0, 1.2) {III};
+    \node at (0, -1.2) {IV};
+
+\end{tikzpicture}
+
+\end{document}

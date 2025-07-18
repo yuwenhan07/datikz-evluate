@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={font=\ttfamily}]
+    \node (N) at (0,0) {1};
+    \node (N+2/3) at (1.5,0) {2};
+    \node (N+3+1/3) at (3,0) {3};
+
+    % Define colors
+    \definecolor{sameColor}{RGB}{173,216,230} % Light blue
+
+    % Apply colors to nodes
+    \filldraw[sameColor] ([xshift=-0.2cm,yshift=0.2cm]N.south west) rectangle ([xshift=0.2cm,yshift=-0.2cm]N.north east);
+    \filldraw[sameColor] ([xshift=-0.2cm,yshift=0.2cm](N+2/3).south west) rectangle ([xshift=0.2cm,yshift=-0.2cm](N+2/3).north east);
+    \filldraw[sameColor] ([xshift=-0.2cm,yshift=0.2cm](N+3+1/3).south west) rectangle ([xshift=0.2cm,yshift=-0.2cm](N+3+1/3).north east);
+
+    % Draw lines between nodes
+    \draw[-stealth] (N.east) -- ++(1.5,0);
+    \draw[-stealth] (N+2/3.east) -- ++(1.5,0);
+\end{tikzpicture}
+
+\end{document}

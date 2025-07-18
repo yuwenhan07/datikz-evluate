@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  node distance=2cm,
+  start chain=going right,
+  every join/.style={->, thick},
+  state/.style={circle, draw, minimum size=10mm, inner sep=0pt, outer sep=0pt, on chain},
+  equation/.style={rectangle, draw, minimum width=3cm, minimum height=1cm, align=center, anchor=north west}
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+  % Nodes
+  \node[state] (A) {A};
+  \node[state] (B) [below=of A] {B};
+  \node[state] (C) [right=of B] {C};
+  \node[state] (D) [left=of C] {D};
+  
+  % Equations
+  \node[equation] (eq1) at ([yshift=-3cm]current bounding box.west|-A) {$A^2$};
+  \node[equation] (eq2) at ([xshift=3cm,yshift=-3cm]current bounding box.east|-B) {$A^2$};
+  
+  % Connections
+  \draw[join] (A) -- (B);
+  \draw[join] (B) -- (C);
+  \draw[join] (C) -- (D);
+  \draw[join] (D) -- (A);
+  
+  % Equation connections
+  \draw[->, thick] (eq1.south) -- ++(0,-1) |- (A.north);
+  \draw[->, thick] (eq2.south) -- ++(0,-1) |- (B.north);
+\end{tikzpicture}
+
+\end{document}

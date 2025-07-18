@@ -1,0 +1,38 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric}
+
+\tikzset{
+    hexagon/.style={
+        regular polygon,
+        regular polygon sides=6,
+        draw,
+        fill=#1,
+        inner sep=0pt,
+        outer sep=0pt
+    }
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+
+% Define the grid size for each pattern
+\def\largeHexSize{4}
+\def\smallHexSize{2}
+\def\gridSpacing{\largeHexSize * sqrt(3)}
+
+% Draw the large hexagon pattern in green
+\foreach \y in {0,...,5} {
+    \foreach \x in {0,...,5} {
+        \node[hexagon=green] at (\x*\gridSpacing/2 + (\y mod 2) * \gridSpacing/2, \y*\gridSpacing*sqrt(3)/2) {};
+    }
+}
+
+% Draw the small hexagon pattern in yellow
+\foreach \y in {0,...,3} {
+    \foreach \x in {0,...,3} {
+        \node[hexagon=yellow] at (\x*\gridSpacing/2 + (\y mod 2) * \gridSpacing/2, \y*\gridSpacing*sqrt(3)/2 - 2*\gridSpacing*sqrt(3)/2) {};
+    }
+}
+
+\end{tikzpicture}
+\end{document}

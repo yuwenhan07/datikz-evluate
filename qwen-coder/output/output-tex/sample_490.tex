@@ -1,0 +1,44 @@
+Certainly! To create lines connecting values from the first column to values from the second column in a LaTeX table using TikZ, you can use the `TikZ` package along with the `matrix` library for handling tables. Below is an example of how you might achieve this:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Year} & \textbf{Values} \\
+        \hline
+        2018 & A \\
+        2019 & B \\
+        2020 & C \\
+        2021 & D \\
+        \hline
+    \end{tabular}
+    \caption{Example Table}
+    \label{tab:example}
+\end{table}
+
+% Add TikZ code to connect values from the first column to the second column
+\begin{tikzpicture}[overlay, remember picture]
+    % Define nodes for each cell in the first column
+    \node (n1) at ([yshift=-3ex]pic cs:n1) {};
+    \node (n2) at ([yshift=-3ex]pic cs:n2) {};
+    \node (n3) at ([yshift=-3ex]pic cs:n3) {};
+    \node (n4) at ([yshift=-3ex]pic cs:n4) {};
+
+    % Define nodes for each cell in the second column
+    \node (v1) at ([xshift=3cm,yshift=-3ex]pic cs:v1) {};
+    \node (v2) at ([xshift=3cm,yshift=-3ex]pic cs:v2) {};
+    \node (v3) at ([xshift=3cm,yshift=-3ex]pic cs:v3) {};
+    \node (v4) at ([xshift=3cm,yshift=-3ex]pic cs:v4) {};
+
+    % Draw lines connecting corresponding cells
+    \draw[-stealth] (n1) -- (v1);
+    \draw[-stealth] (n2) -- (v2);
+    \draw[-stealth] (n3) -- (v3);
+    \draw[-stealth] (n4

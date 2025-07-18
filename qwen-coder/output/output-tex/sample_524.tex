@@ -1,0 +1,31 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style={rectangle, draw=black, fill=white!20, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style={draw, thick, ->, >=stealth'},
+    cloud/.style={draw=black, ellipse, minimum width=3em, minimum height=2em, node contents={}},
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+% Define nodes
+\node [block] (x0) {\( x_0 \)};
+\node [cloud, below of=x0, yshift=-1cm] {};
+\node [block, below of=x0, yshift=-2cm] (x1) {\( x_1 \)};
+\node [block, below of=x1, yshift=-2cm] (x2) {\( x_2 \)};
+% Continue adding nodes up to xL-1
+\node [block, below of=xL-1, yshift=-2cm] (xL) {\( x_L \)};
+\node [cloud, below of=xL, yshift=-1cm] {};
+\node [block, below of=xL, yshift=-2cm] (y) {\( y \)};
+
+% Draw lines between nodes
+\draw [line] (x0) -- (x1);
+\draw [line] (x1) -- (x2);
+% Continue drawing lines up to xL-1
+\draw [line] (xL-1) -- (xL);
+\draw [line] (xL) -- (y);
+
+\end{tikzpicture}
+\end{document}

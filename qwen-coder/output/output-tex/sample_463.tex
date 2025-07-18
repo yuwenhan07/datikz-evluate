@@ -1,0 +1,38 @@
+Certainly! Below is an example of how you can create a TikZ diagram that represents the transformation \( G' \) from \( G \) with \( c = 3 \). This example includes two depictions of a triangle with a red dot in the middle, where the dots are labeled with numbers.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Define coordinates for the original triangle G
+\coordinate (A) at (-1, -1);
+\coordinate (B) at (1, -1);
+\coordinate (C) at (0, 1);
+
+% Draw the original triangle G
+\draw[fill=white] (A) -- (B) -- (C) -- cycle;
+\node[circle, fill=red, inner sep=1pt] (G_dot) at ($(A)!0.5!(B)$) {};
+\node[circle, fill=red, inner sep=1pt] (G_midpoint) at ($(A)!0.5!(C)$) {};
+\node[circle, fill=red, inner sep=1pt] (G_third_point) at ($(B)!0.5!(C)$) {};
+
+% Label the points
+\node[below left] at (A) {1};
+\node[below right] at (B) {2};
+\node[left] at (C) {3};
+
+% Define coordinates for the transformed triangle G'
+\coordinate (A_prime) at (-1.5, -1.5);
+\coordinate (B_prime) at (1.5, -1.5);
+\coordinate (C_prime) at (0, 1.5);
+
+% Draw the transformed triangle G'
+\draw[fill=white] (A_prime) -- (B_prime) -- (C_prime) -- cycle;
+\node[circle, fill=red, inner sep=1pt] (G'_dot) at ($(A_prime)!0.5!(B_prime)$) {};
+\node[circle, fill=red, inner sep=1pt] (G'_midpoint) at ($(A_prime)!0.5!(C_prime)$) {};
+\node[circle, fill=red, inner sep=1pt] (G'_third_point) at ($(B_prime)!0.5!(C_prime)$) {};
+
+% Label the points
+\node[below left] at

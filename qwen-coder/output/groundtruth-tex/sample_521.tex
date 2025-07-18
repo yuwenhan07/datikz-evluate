@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+    \begin{tikzpicture}
+            \begin{scope}
+            \clip (0,0) circle(5.5);
+            \foreach \a in {30,90,...,270,330}
+                \fill[cyan] plot[domain=-3:3, smooth, rotate=\a] (\x,{.4*\x*\x+2});
+        \end{scope}
+            \node[align=center] at (0,0) () {\large \bfseries Six Positioning\\ \bfseries Technology Trends\\\large \bfseries Toward 6G};
+            \node[align=center,white] at (4,.2) () {\large \bfseries High\\\large \bfseries accuracy};
+            \node[align=center,white] at (2.2,3) () {\large \bfseries Low cost \&\\\large \bfseries Low complexity};
+            \node[align=center,white] at (-2.2,3) () {\large \bfseries Beyond\\\large \bfseries connectivity};
+            \node[align=center,white] at (-4,.2) () {\large \bfseries Architecture\\\large \bfseries evolution};
+            \node[align=center,white] at (-2.2,-3) () {\large \bfseries Sidelink};
+            \node[align=center,white] at (2.2,-3) () {\large \bfseries Low latency};
+    \end{tikzpicture}
+\end{document}

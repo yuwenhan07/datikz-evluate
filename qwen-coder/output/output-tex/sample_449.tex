@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes
+    \node (whiteboard) [rectangle, draw, fill=white, text width=5cm, align=center] {Whiteboard};
+    \node (blackarrow) [right=of whiteboard, rectangle, draw, fill=black, text width=1cm, align=center] {$\rightarrow$};
+
+    % Arrow labels
+    \draw[dashed] (whiteboard.east) -- node[midway, above] {$x \text{ and } y \text{ odd} \implies z \text{ odd}} (blackarrow.west);
+
+    % Mathematical symbols on the black arrow
+    \draw[->] ([yshift=-0.3cm]blackarrow.west) -- node[midway, below] {$x, y, z$} ([yshift=0.3cm]blackarrow.west);
+    
+\end{tikzpicture}
+
+\end{document}

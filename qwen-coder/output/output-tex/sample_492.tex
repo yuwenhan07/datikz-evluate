@@ -1,0 +1,53 @@
+Certainly! Below is a TikZ LaTeX code to create an illustration of a stone arch bridge with the specified features:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric,backgrounds}
+
+\tikzset{
+    stone/.style={fill=gray!80,rounded corners},
+    water/.style={fill=blue!30},
+    sky/.style={fill=cyan!50},
+    bridge/.style={stone,minimum width=2cm,minimum height=1cm},
+    arch/.style={bridge,draw=black,thick,rounded corners=10pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+
+% Background elements
+\begin{scope}[on background layer]
+    % Sky
+    \node[sky,rectangle,minimum width=\paperwidth,minimum height=\paperheight] (sky) {};
+    
+    % Water
+    \node[water,rectangle,minimum width=\paperwidth,minimum height=2cm] (water) at (0,-2) {};
+\end{scope}
+
+% Bridge components
+\node[arch] (arch1) at (-4,0) {};
+\node[arch] (arch2) at (4,0) {};
+
+% Connecting beams
+\foreach \x in {-3,-2,-1,0,1,2,3} {
+    \draw[stone,thick] (\x,-0.5) -- (\x+1,-0.5);
+}
+
+% Support columns
+\foreach \x in {-3,-2,-1,0,1,2,3} {
+    \draw[stone,thick] (\x,-1.5) -- (\x,-0.5);
+}
+
+% Adding details to make it look more realistic
+\foreach \x in {-3,-2,-1,0,1,2,3} {
+    \foreach \y in {0.5,1.5} {
+        \fill[stone] (\x,\y) circle (0.1);
+    }
+}
+
+% Drawing the water reflections
+\draw[dashed,blue!30] (-4,-0.5) -- (-4,-2);
+\draw[dashed,blue!30] (4,-0.5) -- (4,-2);
+
+% Drawing the sun in the sky
+\fill[yellow] (-6

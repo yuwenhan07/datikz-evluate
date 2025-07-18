@@ -1,0 +1,26 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+
+\tikzstyle{nodeStyle} = [circle, draw, fill=blue!20, text width=4em, text centered]
+\tikzstyle{arrowStyle} = [-Stealth]
+
+\begin{tikzpicture}[scale=1.5]
+
+% Nodes
+\node[nodeStyle] (X1) at (-3,-1) {$X'_1$};
+\node[nodeStyle] (X2) at (1,3) {$X'_2$};
+\node[nodeStyle] (X3) at (3,-1) {$X'_3$};
+
+% Edges
+\draw[arrowStyle] (X1) -- node[above]{$N(X'_1, \mathcal{X}') = \{X'_2\}$} (X2);
+\draw[arrowStyle] (X2) -- node[left]{$N(X'_2, \mathcal{X}') = \{X'_1\}$} (X1);
+\draw[arrowStyle] (X2) -- node[right]{$N(X'_3, \mathcal{X}') = \{X'_2\}$} (X3);
+
+% Additional information
+\node at (0,4) {Hence, $\mathcal{T} = \{(X'_3, 2)\}$, which induces a constant label $2$ on all $\mathcal{X}$.};
+
+\end{tikzpicture}
+
+\end{document}

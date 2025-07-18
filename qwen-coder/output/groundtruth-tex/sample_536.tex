@@ -1,0 +1,25 @@
+\documentclass[review]{elsarticle}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{pgf}
+\usetikzlibrary{automata, positioning, arrows}
+\tikzset{ ->, node distance=2cm, every state/.style={thick, fill=gray!10}, initial text=$ $, }
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\newcommand{\Heads}{\mathit{Heads}}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[xlabel={Probability of $\Heads$},ylabel={Prior probability}]
+\addplot[ybar] plot coordinates
+	{(0.5,2/5) (0.8,1/5) (0.9,2/5)};
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

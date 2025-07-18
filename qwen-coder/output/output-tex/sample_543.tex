@@ -1,0 +1,39 @@
+Certainly! Below is a TikZ LaTeX code snippet that generates a diagram representing the uniform grid you described. The boundaries, known values, and unknown values are clearly marked with different colors.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define constants
+    \def\T{2} % Total time T
+    \def\Smax{4} % Maximum value of S
+    \def\nsteps{8} % Number of steps in the grid
+
+    % Draw the horizontal axis (time)
+    \draw[->] (-0.5, 0) -- (\nsteps+0.5, 0) node[right] {$q$};
+    
+    % Draw the vertical axis (space)
+    \draw[->] (0, -0.5) -- (0, \Smax+0.5) node[above] {$S$};
+    
+    % Draw the boundaries
+    \draw[dashed, thick, color=brown] (0, 0) -- (\nsteps+0.5, 0) node[midway, below] {S=0};
+    \draw[dashed, thick, color=yellow] (0, \Smax) -- (\nsteps+0.5, \Smax) node[midway, above] {S=\Smax};
+    \draw[dashed, thick, color=green] (0, 0) -- (0, \Smax+0.5) node[left, midway] {q=0};
+    
+    % Draw the grid points
+    \foreach \i in {0,...,\nsteps}{
+        \foreach \j in {0,...,\Smax}{
+            \ifnum\i=0 \or \i=\nsteps \or \j=0 \or \j=\Smax
+                \node[circle, draw, fill=red, inner sep=1pt] at (\i, \j) {};
+            \else
+                \node[circle, draw, fill=blue, inner sep=1pt] at (\i, \j) {};
+            \fi
+        }
+    }
+    
+    % Add labels for clarity
+    \node[below left] at (0, 0) {Start};
+    \node[above right] at (\nsteps, \Smax) {End};
+\

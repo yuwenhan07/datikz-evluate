@@ -1,0 +1,46 @@
+Certainly! Below is a TikZ LaTeX code snippet that generates the described graph:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+
+% Define styles for each color
+\tikzset{
+    red/.style={red, mark=*},
+    green/.style={green, mark=*},
+    blue/.style={blue, mark=*},
+    yellow/.style={yellow, mark=*}
+}
+
+% Draw axes
+\draw[->] (0,0) -- (17,0) node[right] {Batch Size};
+\draw[->] (0,0) -- (0,5) node[above] {Inference Speedup};
+
+% Plot data points with different colors
+\foreach \i/\j in {
+    5/2.5, 6/3.0, 7/3.5, 8/4.0, 9/4.5, 10/5.0, 11/5.2, 12/5.3, 13/5.4, 14/5.5, 15/5.6, 16/5.7
+}{
+    \ifnum\i<6
+        \node[red] at (\i,\j) {};
+    \else ifnum\i<9
+        \node[green] at (\i,\j) {};
+    \else ifnum\i<11
+        \node[blue] at (\i,\j) {};
+    \else
+        \node[yellow] at (\i,\j) {};
+    \fi
+}
+
+% Add labels for specific points
+\node[red] at (5,2.5) [below right] {5};
+\node[red] at (6,3.0) [below right] {6};
+\node[red] at (7,3.5) [below right] {7};
+\node[red] at (8,4.0) [below right] {8};
+\node[red] at (9,4.5) [below right] {9};
+\node[green] at (10,5.0) [below right] {10};
+\node[green] at (11,5.2)

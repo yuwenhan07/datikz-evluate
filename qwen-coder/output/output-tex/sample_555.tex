@@ -1,0 +1,49 @@
+To create a TikZ LaTeX diagram that accurately represents the described network, we can use circles for the interconnected parts and nodes with labels for the numbers. Here's a sample code that you can modify and customize further:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, positioning}
+
+\tikzset{
+    node style/.style={
+        circle,
+        draw=black,
+        fill=white,
+        minimum size=1cm,
+        font=\sffamily\bfseries,
+        inner sep=0pt,
+        outer sep=0pt
+    },
+    label style/.style={
+        above left,
+        font=\sffamily\small
+    }
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes for the interconnected parts
+    \node[node style] (circle1) {1};
+    \node[node style, right=of circle1] (circle2) {2};
+
+    % Nodes for the group of interconnected nodes
+    \node[node style, below=of circle1] (group1-1) {3};
+    \node[node style, right=of group1-1] (group1-2) {4};
+    \node[node style, below=of group1-2] (group1-3) {5};
+
+    % Nodes for the smaller nodes
+    \node[node style, below=of group1-3] (small1) {0.3};
+    \node[node style, right=of small1] (small2) {0.5};
+    \node[node style, below=of small2] (small3) {0.7};
+
+    % Connections between nodes
+    \draw[-stealth] (circle1) -- (circle2);
+    \draw[-stealth] (circle1) -- (group1-1);
+    \draw[-stealth] (group1-1) -- (group1-2);
+    \draw[-stealth] (group1-2) -- (group1-3);
+    \draw[-stealth] (group1-3) -- (small1);
+    \draw[-stealth] (small1) -- (small2);
+    \draw[-stealth] (small2) -- (small3);
+
+    % Labels for the connections
+    \node[label style, above=of circle1.east] {Connection 1};
