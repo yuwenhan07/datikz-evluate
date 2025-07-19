@@ -35,7 +35,6 @@ kid = KernelInceptionDistance(subset_size=subset_size)
 # 从 JSON 文件中读取预测结果
 with open(json_file_path, "r", encoding="utf-8") as json_file:
     data = json.load(json_file)
-    data = dict(list(data.items())[:312])  # 使用前312条数据
     for key, value in data.items():
         pred_image_path = os.path.join(output_dir, key.replace(".tex", ".png"))
         ref_image_path = os.path.join(groundtruth_dir, key.replace(".tex", ".png"))

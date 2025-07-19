@@ -14,11 +14,11 @@ ds = load_dataset("nllg/datikz", split="test")
 clip_score_metric = CLIPScore()
 
 # 读取数据集中的所有参考文本
-text_references = [ds[i]["caption"] for i in range(312)]
+text_references = [ds[i]["caption"] for i in range(560)]
 
 # 定义图像路径
-groundtruth_image_paths = ["/home/yuwenhan/Tikz/evaluate/qwen-coder/tikz_output/groundtruth-pdf&png/sample_{}.png".format(i) for i in range(312)]
-generated_image_paths = ["/home/yuwenhan/Tikz/evaluate/qwen-coder/tikz_output/output-pdf&png/sample_{}.png".format(i) for i in range(312)]
+groundtruth_image_paths = ["/home/yuwenhan/Tikz/evaluate/qwen-coder/tikz_output/groundtruth-pdf&png/sample_{}.png".format(i) for i in range(560)]
+generated_image_paths = ["/home/yuwenhan/Tikz/evaluate/qwen-coder/tikz_output/output-pdf&png/sample_{}.png".format(i) for i in range(560)]
 
 # 读取图像并确保文件存在
 def load_images(image_paths, references):
