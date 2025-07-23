@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\[
+\text{Regret}_T = T \cdot \mu^* - \sum_{t=0}^{T-1} \mu_{a_t}
+\]
+
+\begin{tikzpicture}[overlay, remember picture]
+    \draw[red, thick, ->] (pic cs:regret) -- ++(0,-1) node[below, pos=0.5, anchor=east] {total expected reward};
+    \draw[red, thick, ->] (pic cs:regret) -- ++(0,-2) node[below, pos=0.5, anchor=east] {if pull best arm over $T$ rounds};
+    
+    \draw[blue, thick, ->] (pic cs:reward) -- ++(3,0) node[right, pos=0.5, anchor=south] {total expected reward};
+    \draw[blue, thick, ->] (pic cs:reward) -- ++(3,-1) node[right, pos=0.5, anchor=south] {of our selected arms};
+\end{tikzpicture}
+
+And this line of text is not overlapped.
+
+\end{document}

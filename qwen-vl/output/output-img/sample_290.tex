@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define the main node
+    \node[circle,fill,inner sep=2pt] (vc) at (0,0) {};
+    
+    % Define the labels for the main node
+    \node[above=0.1cm of vc] {$v_c$};
+    
+    % Define the circles representing Omega_n
+    \draw[fill=gray!20] (-1,-1) circle (0.5);
+    \node[right=0.2cm of -1,-1] {$\Omega_n$};
+    
+    % Define the circles representing Omega_s U Omega_w
+    \draw[fill=gray!20] (1,-1) circle (0.5);
+    \node[right=0.2cm of 1,-1] {$\Omega_s \cup \Omega_w$};
+    
+    % Define the circles representing Omega_p
+    \draw[fill=gray!20] (2,-1) circle (0.5);
+    \node[right=0.2cm of 2,-1] {$\Omega_p$};
+    
+    % Draw the lines connecting the main node to the circles
+    \draw (vc) -- (-1,-1);
+    \draw (vc) -- (0,-1);
+    \draw (vc) -- (1,-1);
+    \draw (vc) -- (2,-1);
+    
+    % Add dots inside the circles
+    \foreach \x in {-0.8,-0.4,...,0.8} {
+        \fill (-1,\x) circle (0.05);
+    }
+    \foreach \x in {0.2,0.6,...,1.2} {
+        \fill (0,\x) circle (0.05);
+    }
+    \foreach \x in {1.8,2.2,...,3.2} {
+        \fill (1,\x) circle (0.05);
+    }
+    \foreach \x in {2.8,3.2,...,4.2} {
+        \fill (2,\x) circle (0.05);
+    }
+\end{tikzpicture}
+
+\end{document}

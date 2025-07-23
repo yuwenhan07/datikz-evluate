@@ -1,0 +1,6 @@
+\begin{tikzpicture}
+  \node[draw, minimum size=0pt] (testnode) {Test 1 Some Test};
+  \pgfextractx{\testwidth}{\pgfpointdiff{\pgfpointanchor{testnode}{west}}{\pgfpointanchor{testnode}{east}}}
+  \pgfextracty{\testheight}{\pgfpointdiff{\pgfpointanchor{testnode}{south}}{\pgfpointanchor{testnode}{north}}}
+  % Then use \testwidth and \testheight
+\end{tikzpicture}

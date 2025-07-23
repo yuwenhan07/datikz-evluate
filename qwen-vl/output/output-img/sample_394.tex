@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Right lane},
+            ytick=data,
+            yticklabels={LR,LDA,DT,SVM,NB,ANN,MOBILE},
+            xbar stacked,
+            bar width=0.2cm,
+            nodes near coords,
+            point meta=explicit symbolic,
+            legend style={
+                at={(0.5,-0.2)},
+                anchor=north,
+                legend columns=-1
+            },
+            colorbar,
+            colorbar style={
+                at={(0.95,0.5)},
+                anchor=south east,
+                width=0.1*\textwidth,
+                height=0.1*\textwidth,
+                samples=100,
+                colormap={mycolormap}{color=(red) color=(blue)}
+            }
+        ]
+            \addplot[draw=none] coordinates {(0.8,LR) (0.7,LDA) (0.6,DT) (0.5,SVM) (0.4,NB) (0.3,ANN) (0.2,MOBILE)};
+            \addplot[draw=none] coordinates {(0.7,LR) (0.6,LDA) (0.5,DT) (0.4,SVM) (0.3,NB) (0.2,ANN) (0.1,MOBILE)};
+            \addplot[draw=none] coordinates {(0.6,LR) (0.5,LDA) (0.4,DT) (0.3,SVM) (0.2,NB) (0.1,ANN) (0.0,MOBILE)};
+            \addplot[draw=none] coordinates {(0.5,LR) (0.4,LDA) (0.3,DT) (0.2,SVM) (0.1,NB) (0.0,ANN) (-0.1,MOBILE)};
+            \addplot[draw=none] coordinates {(0.4,LR) (0.3,LDA) (0.2,DT) (0.1,SVM) (0.0,NB) (-0.1,ANN) (-0.2,MOBILE)};
+            \addplot[draw=none] coordinates {(0.3,LR) (0.2,LDA) (0.1,DT) (0.0,SVM) (-0.1,NB) (-0.2,ANN) (-0.3,MOBILE)};
+            \addplot[draw=none] coordinates {(0.2,LR) (0.1,LDA) (0.0,DT) (-0.1,SVM) (-0.2,NB) (-0.3,ANN) (-0.4,MOBILE)};
+            \legend{LR,LDA,DT,SVM,NB,ANN,MOBILE};
+        \end{axis}
+    \end{tikzpicture}
+    
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Left lane},
+            ytick=data,
+            yticklabels={LR,LDA,DT,SVM,NB,ANN,MOBILE},
+            xbar stacked,
+            bar width=0.2cm,
+            nodes near coords,
+            point meta=explicit symbolic,
+            legend style={
+                at={(0.5,-0.2)},
+                anchor=north,
+                legend columns=-1
+            },
+            colorbar,
+            colorbar style={
+                at={(0.95,0.5)},
+                anchor=south east,
+                width=0.1*\textwidth,
+                height=0.1*\textwidth,
+                samples=100,
+                colormap={mycolormap}{color=(red) color=(blue)}
+            }
+        ]
+            \addplot[draw=none] coordinates {(0.8,LR) (0.7,LDA) (0.6,DT) (0.5,SVM) (0.4,NB) (0.3,ANN) (0.2,MOBILE)};
+            \addplot[draw=none] coordinates {(0.7,LR) (0.6,LDA) (0.5,DT) (0.4,SVM) (0.3,NB) (0.2,ANN) (0.1,MOBILE)};
+            \addplot[draw=none] coordinates {(0.6,LR) (0.5,LDA) (0.4,DT) (0.3,SVM) (0.2,NB) (0.1,ANN) (0.0,MOBILE)};
+            \addplot[draw=none] coordinates {(0.5,LR) (0.4,LDA) (0.3,DT) (0.2,SVM) (0.1,NB) (0.0,ANN) (-0.1,MOBILE)};
+            \addplot[draw=none] coordinates {(0.4,LR) (0.3,LDA) (0.2,DT) (0.1,SVM) (0.0,NB) (-0.1,ANN) (-0.2,MOBILE)};
+            \addplot[draw=none] coordinates {(0.3,LR) (0.2,LDA) (0.1,DT) (0.0,SVM) (-0.1,NB) (-0.2,ANN) (-0.3,MOBILE)};
+            \addplot[draw=none] coordinates {(0.2,LR) (0.1,LDA) (0.0,DT) (-0.1,SVM) (-0.2,NB) (-0.3,ANN) (-0.4,MOBILE)};
+            \legend{LR,LDA,DT,SVM,NB,ANN,MOBILE};
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

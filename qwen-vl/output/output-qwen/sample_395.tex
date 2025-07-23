@@ -1,0 +1,32 @@
+It seems like you're describing a process related to graph theory, specifically local complementation. Let's break down the steps involved:
+
+### Local Complementation:
+Local complementation is an operation on a graph \( G \) that involves selecting a vertex \( u \) and then complementing the subgraph induced by the neighbors of \( u \). Here’s how it works:
+
+1. **Identify the Vertex \( u \)**: You have chosen a vertex \( u \) in the graph \( G \).
+
+2. **Identify the Neighbors of \( u \)**: The neighbors of \( u \), denoted as \( N(u) \), are all vertices \( v_i \) such that there is an edge between \( u \) and \( v_i \). In your case, \( v_1 \) and \( v_3 \) are neighbors of \( u \).
+
+3. **Complement the Subgraph Induced by \( N(u) \)**: The subgraph induced by \( N(u) \) consists of the vertices \( v_1, v_2, v_3 \) and the edges among them. If there is an edge between two vertices \( v_i \) and \( v_j \) in this subgraph, then after complementation, there will be no edge between them; if there is no edge, then there will be one.
+
+4. **Apply the Operation**:
+   - Initially, the edges in the subgraph \( \{v_1, v_2, v_3\} \) are given as follows:
+     - \( v_1v_3 \in E \)
+     - \( v_1v_2 \notin E \)
+     - \( v_2v_3 \notin E \)
+
+   - After complementation, the edges will change as follows:
+     - Since \( v_1v_3 \in E \), after complementation, \( v_1v_3 \notin E \).
+     - Since \( v_1v_2 \notin E \), after complementation, \( v_1v_2 \in E \).
+     - Since \( v_2v_3 \notin E \), after complementation, \( v_2v_3 \in E \).
+
+So, the new edges in the subgraph \( \{v_1, v_2, v_3\} \) will be:
+- \( v_1v_2 \in E \)
+- \( v_2v_3 \in E \)
+- \( v_1v_3 \notin E \)
+
+### Summary:
+- The original edges in the subgraph \( \{v_1, v_2, v_3\} \) were \( v_1v_3 \) (present), \( v_1v_2 \) (absent), and \( v_2v_3 \) (absent).
+- After local complementation at \( u \), the edges become \( v_1v_2 \) (present), \( v_2v_3 \) (present), and \( v_1v_3 \) (absent).
+
+This operation can be repeated for different vertices in the graph to study its properties or to transform the graph into another form.

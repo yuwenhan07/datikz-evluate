@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=3cm,
+                    semithick]
+  \node (A) {$A$};
+  \node (Lx) [right of=A] {$\mathbf{L_x}$};
+  \node (Ly) [below right of=Lx] {$\mathbf{L_y}$};
+  \node (Z) [right of=Ly,red] {$\mathbf{Z}$};
+
+  \path (A) edge node {} (Lx);
+  \path (Lx) edge node {} (Ly);
+  \path (Ly) edge[dashed,red] node {} (Z);
+\end{tikzpicture}
+
+\end{document}

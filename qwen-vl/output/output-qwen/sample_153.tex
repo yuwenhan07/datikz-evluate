@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{tkz-euclide}
+
+% Set the default color for angles and right angles to pink
+\tkzSetUp{AngleColor=pink, RightAngleColor=pink}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \tkzDefPoints{0/0/A, 5/0/B, 0/6/C}
+    \tkzDrawPolygon(A,B,C)
+    \tkzLabelPoints(A,B,C)
+    \tkzMarkRightAngle(A,B,C)
+    \tkzDrawSegment[ultra thick,pink](A,B)
+    \tkzLabelSegment[above](A,B){$AB$}
+\end{tikzpicture}
+
+\end{document}

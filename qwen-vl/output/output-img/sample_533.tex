@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=0, xmax=8,
+        ymin=0, ymax=2.5,
+        xtick={1,2,...,8},
+        ytick={0,0.5,...,2.5},
+        axis lines=left,
+        grid=none,
+        clip=false,
+        width=10cm,
+        height=10cm,
+        xlabel={},
+        ylabel={},
+        every axis plot/.append style={thick},
+        every axis/.append style={font=\footnotesize},
+    ]
+        % Red diagonal line
+        \addplot[red, domain=0:8] {x};
+        
+        % Blue horizontal line
+        \addplot[blue, domain=0:8] {1.5};
+        
+        % Fill the area between the red and blue lines
+        \addplot[gray!50, fill opacity=0.5] coordinates {(0,0) (8,8)} |- cycle;
+        
+        % Fill the area below the red line
+        \addplot[gray!70, fill opacity=0.5] coordinates {(0,0) (8,8)} |- cycle;
+        
+        % Fill the area above the blue line
+        \addplot[gray!90, fill opacity=0.5] coordinates {(0,0) (8,8)} |- cycle;
+        
+        % Labels for the filled areas
+        \node at (0.5, 2.25) {1};
+        \node at (3.5, 2.25) {2};
+        \node at (6.5, 2.25) {3};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        hide axis,
+        width=0.8\textwidth,
+        height=0.2\textwidth,
+        scale only axis,
+        clip=false,
+        domain=-5*pi:5*pi,
+        samples=200,
+        no markers,
+        thick,
+        smooth,
+        every axis plot/.append style={ultra thick},
+        every axis plot post/.append style={blue},
+        every axis legend/.append style={at={(0.5,-0.1)}, anchor=north,legend columns=-1},
+        ]
+        \addplot [red] {sin(deg(x))};
+    \end{axis}
+    
+    \begin{axis}[
+        hide axis,
+        width=0.8\textwidth,
+        height=0.2\textwidth,
+        scale only axis,
+        clip=false,
+        domain=-5*pi:5*pi,
+        samples=200,
+        no markers,
+        thick,
+        smooth,
+        every axis plot/.append style={ultra thick},
+        every axis plot post/.append style={blue},
+        every axis legend/.append style={at={(0.5,-0.1)}, anchor=north,legend columns=-1},
+        ]
+        \addplot [blue] {sin(deg(x))};
+    \end{axis}
+    
+    \node at (current axis.north) {\tiny with \verb|draw plot|};
+    
+    \begin{axis}[
+        hide axis,
+        width=0.8\textwidth,
+        height=0.2\textwidth,
+        scale only axis,
+        clip=false,
+        domain=-5*pi:5*pi,
+        samples=200,
+        no markers,
+        thick,
+        smooth,
+        every axis plot/.append style={ultra thick},
+        every axis plot post/.append style={blue},
+        every axis legend/.append style={at={(0.5,-0.1)}, anchor=north,legend columns=-1},
+        ]
+        \addplot [blue] {sin(deg(x))};
+    \end{axis}
+    
+    \begin{axis}[
+        hide axis,
+        width=0.8\textwidth,
+        height=0.2\textwidth,
+        scale only axis,
+        clip=false,
+        domain=-5*pi:5*pi,
+        samples=200,
+        no markers,
+        thick,
+        smooth,
+        every axis plot/.append style={ultra thick},
+        every axis plot post/.append style={blue},
+        every axis legend/.append style={at={(0.5,-0.1)}, anchor=north,legend columns=-1},
+        ]
+        \addplot [blue] {sin(deg(x))};
+    \end{axis}
+\end{tikzpicture}

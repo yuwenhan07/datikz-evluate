@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Property optimised},
+        ylabel={Property keyword category},
+        xtick={1,2,3,4,5},
+        xticklabels={Time, Size, Energy, Other, Memory},
+        ytick={1,2,3,4,5},
+        yticklabels={Other, Memory, Quality, Energy, Time},
+        scatter/classes={
+            a={mark=*, draw=black, fill=blue!50},
+            b={mark=square*, draw=black, fill=red!50},
+            c={mark=diamond*, draw=black, fill=yellow!50},
+            d={mark=triangle*, draw=black, fill=orange!50},
+            e={mark=otimes*, draw=black, fill=gray!50}
+        },
+        scatter,
+        only marks,
+        point meta=explicit symbolic
+    ]
+        \addplot[scatter, scatter src=explicit symbolic] table [
+            x index=0,
+            y index=1,
+            meta index=2
+        ] {
+            x y z
+            1 1 1
+            2 2 2
+            3 3 3
+            4 4 4
+            5 5 5
+            1 2 1
+            2 3 2
+            3 4 3
+            4 5 4
+            5 1 5
+            1 3 1
+            2 4 2
+            3 5 3
+            4 1 4
+            5 2 5
+            1 4 1
+            2 5 2
+            3 1 3
+            4 2 4
+            5 3 5
+            1 5 1
+            2 1 2
+            3 2 3
+            4 3 4
+            5 4 5
+            1 1 1
+            2 2 2
+            3 3 3
+            4 4 4
+            5 5 5
+            1 2 1
+            2 3 2
+            3 4 3
+            4 5 4
+            5 1 5
+            1 3 1
+            2 4 2
+            3 5 3
+            4 1 4
+            5 2 5
+            1 4 1
+            2 5 2
+            3 1 3
+            4 2 4
+            5 3 5
+            1 5 1
+            2 1 2
+            3 2 3
+            4 3 4
+            5 4 5
+        };
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

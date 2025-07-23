@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the vertical line
+    \draw[red, thick] (0,0) -- (0,4);
+    
+    % Draw the horizontal lines
+    \foreach \i in {1,...,4} {
+        \draw (-1,\i) -- (3,\i);
+    }
+    
+    % Label the horizontal lines
+    \node at (-1.5,4) {$\mathbf{f}_n$};
+    \node at (-1.5,3) {$\mathbf{f}_{n-1}$};
+    \node at (-1.5,2) {$\vdots$};
+    \node at (-1.5,1) {$\mathbf{f}_1$};
+    
+    \node at (3.5,4) {$g_n$};
+    \node at (3.5,3) {$g_{n-1}$};
+    \node at (3.5,2) {$\vdots$};
+    \node at (3.5,1) {$g_1$};
+    
+    % Label the vertical line
+    \node at (0,4.5) {$\mathbf{e}$};
+    \node at (0,4.25) {$\mid$};
+    \node at (0,4) {$g$};
+    
+    % Arrows on the horizontal lines
+    \draw[->] (2.8,4) -- (3.2,4);
+    \draw[->] (2.8,3) -- (3.2,3);
+    \draw[->] (2.8,2) -- (3.2,2);
+    \draw[->] (2.8,1) -- (3.2,1);
+\end{tikzpicture}
+
+\end{document}

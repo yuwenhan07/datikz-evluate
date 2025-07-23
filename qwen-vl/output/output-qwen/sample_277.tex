@@ -1,0 +1,58 @@
+To illustrate a convex and lower-semicontinuous (LSC) function \( f \) that has a discontinuity at \( x_0 \), we can consider a simple example involving the absolute value function. Let's define:
+
+\[ f(x) = |x| \]
+
+This function is convex and LSC everywhere except at \( x = 0 \). At \( x = 0 \), it is not differentiable but has a subdifferential.
+
+### Step-by-Step Explanation
+
+1. **Function Definition:**
+   \[ f(x) = |x| \]
+   This function is defined as:
+   \[
+   f(x) = 
+   \begin{cases} 
+   x & \text{if } x \geq 0 \\
+   -x & \text{if } x < 0 
+   \end{cases}
+   \]
+
+2. **Convexity:**
+   The function \( f(x) = |x| \) is convex because for any \( x_1, x_2 \in \mathbb{R} \) and \( t \in [0, 1] \):
+   \[
+   f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t)f(x_2)
+   \]
+   This can be verified by considering the cases \( x_1 \geq 0 \) and \( x_2 \geq 0 \), \( x_1 \geq 0 \) and \( x_2 \leq 0 \), etc.
+
+3. **Lower-Semicontinuity:**
+   The function \( f(x) = |x| \) is LSC everywhere. For any sequence \( x_n \to x_0 \), we have:
+   \[
+   \liminf_{n \to \infty} f(x_n) \geq f(x_0)
+   \]
+   This holds because the absolute value function is continuous from the right and left at every point.
+
+4. **Discontinuity at \( x_0 = 0 \):**
+   At \( x = 0 \), the function is not differentiable. However, it has a subdifferential. The subdifferential of \( f \) at \( x = 0 \) is given by:
+   \[
+   \partial f(0) = [-1, 1]
+   \]
+   This means that for any \( y \in [-1, 1] \), the inequality:
+   \[
+   f(x) \geq f(0) + y(x - 0)
+   \]
+   holds for all \( x \).
+
+5. **Linear Continuous Tangent Functionals:**
+   The subdifferential \( \partial f(0) = [-1, 1] \) represents the set of linear continuous tangent functionals at \( x = 0 \). These can be visualized as dashed lines in a graph where each line corresponds to a value in the interval \([-1, 1]\).
+
+### Graphical Representation
+
+In a graph, you would see the function \( f(x) = |x| \) as a V-shaped curve with a sharp corner at \( x = 0 \). The subdifferential at \( x = 0 \) is represented by the horizontal lines \( y = -1 \) and \( y = 1 \), which are tangent to the function at \( x = 0 \) in the sense of subgradients.
+
+### Conclusion
+
+The function \( f(x) = |x| \) is a convex and LSC function that is discontinuous at \( x = 0 \). The subdifferential at \( x = 0 \) is the interval \([-1, 1]\), and this is represented by the two dashed lines \( y = -1 \) and \( y = 1 \) in the graph.
+
+\[
+\boxed{f(x) = |x|}
+\]

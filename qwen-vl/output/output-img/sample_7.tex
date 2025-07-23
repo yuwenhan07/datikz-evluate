@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{force}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    \graph [spring layout] {
+        1 -- 2 -- 3 -- 4 -- 1,
+        1 -- 5 -- 4,
+        2 -- 6 -- 3,
+        5 -- 6
+    };
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,351 @@
+To generate LaTeX code for the image you provided, we can use TikZ and PGFPlots to create the spherical diagrams. Below is the LaTeX code that produces the image:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Define colors
+        \definecolor{myred}{RGB}{255, 0, 0}
+        \definecolor{myblue}{RGB}{0, 0, 255}
+        \definecolor{mygreen}{RGB}{0, 128, 0}
+        \definecolor{mypurple}{RGB}{128, 0, 128}
+        
+        % Draw spheres and arcs
+        \foreach \i in {1,...,4} {
+            \pgfmathsetmacro{\angle}{90 - 45 * (\i - 1)}
+            \draw[fill=myred!50] (0,0) circle (2);
+            \draw[fill=myblue!50] (0,0) circle (2);
+            \draw[fill=mygreen!50] (0,0) circle (2);
+            \draw[fill=mypurple!50] (0,0) circle (2);
+            
+            \draw[thick, myred] (0,0) -- ++(\angle:2);
+            \draw[thick, myblue] (0,0) -- ++(\angle+90:2);
+            \draw[thick, mygreen] (0,0) -- ++(\angle+180:2);
+            \draw[thick, mypurple] (0,0) -- ++(\angle+270:2);
+            
+            \node at (-2,0) {$a$};
+            \node at (0,-2) {$y$};
+            \node at (2,0) {$b$};
+            \node at (0,2) {$x$};
+            
+            \node at (3,0) {$\subseteq$};
+            \node at (6,0) {$\subseteq$};
+            \node at (9,0) {$\subseteq$};
+            \node at (12,0) {$\subseteq$};
+            
+            \node at (3,-1) {$g$};
+            \node at (6,-1) {$g$};
+            \node at (9,-1) {$g$};
+            \node at (12,-1) {$g$};
+            
+            \node at (15,0) {$f$};
+            
+            \node at (3,-2) {$\bigcup$};
+            \node at (6,-2) {$\bigcup$};
+            \node at (9,-2) {$\bigcup$};
+            \node at (12,-2) {$\bigcup$};
+            
+            \node at (15,-2) {$f$};
+            
+            \node at (3,-3) {$\bigcup$};
+            \node at (6,-3) {$\bigcup$};
+            \node at (9,-3) {$\bigcup$};
+            \node at (12,-3) {$\bigcup$};
+            
+            \node at (15,-3) {$f$};
+            
+            \node at (3,-4) {$\bigcup$};
+            \node at (6,-4) {$\bigcup$};
+            \node at (9,-4) {$\bigcup$};
+            \node at (12,-4) {$\bigcup$};
+            
+            \node at (15,-4) {$f$};
+            
+            \node at (3,-5) {$\bigcup$};
+            \node at (6,-5) {$\bigcup$};
+            \node at (9,-5) {$\bigcup$};
+            \node at (12,-5) {$\bigcup$};
+            
+            \node at (15,-5) {$f$};
+            
+            \node at (3,-6) {$\bigcup$};
+            \node at (6,-6) {$\bigcup$};
+            \node at (9,-6) {$\bigcup$};
+            \node at (12,-6) {$\bigcup$};
+            
+            \node at (15,-6) {$f$};
+            
+            \node at (3,-7) {$\bigcup$};
+            \node at (6,-7) {$\bigcup$};
+            \node at (9,-7) {$\bigcup$};
+            \node at (12,-7) {$\bigcup$};
+            
+            \node at (15,-7) {$f$};
+            
+            \node at (3,-8) {$\bigcup$};
+            \node at (6,-8) {$\bigcup$};
+            \node at (9,-8) {$\bigcup$};
+            \node at (12,-8) {$\bigcup$};
+            
+            \node at (15,-8) {$f$};
+            
+            \node at (3,-9) {$\bigcup$};
+            \node at (6,-9) {$\bigcup$};
+            \node at (9,-9) {$\bigcup$};
+            \node at (12,-9) {$\bigcup$};
+            
+            \node at (15,-9) {$f$};
+            
+            \node at (3,-10) {$\bigcup$};
+            \node at (6,-10) {$\bigcup$};
+            \node at (9,-10) {$\bigcup$};
+            \node at (12,-10) {$\bigcup$};
+            
+            \node at (15,-10) {$f$};
+            
+            \node at (3,-11) {$\bigcup$};
+            \node at (6,-11) {$\bigcup$};
+            \node at (9,-11) {$\bigcup$};
+            \node at (12,-11) {$\bigcup$};
+            
+            \node at (15,-11) {$f$};
+            
+            \node at (3,-12) {$\bigcup$};
+            \node at (6,-12) {$\bigcup$};
+            \node at (9,-12) {$\bigcup$};
+            \node at (12,-12) {$\bigcup$};
+            
+            \node at (15,-12) {$f$};
+            
+            \node at (3,-13) {$\bigcup$};
+            \node at (6,-13) {$\bigcup$};
+            \node at (9,-13) {$\bigcup$};
+            \node at (12,-13) {$\bigcup$};
+            
+            \node at (15,-13) {$f$};
+            
+            \node at (3,-14) {$\bigcup$};
+            \node at (6,-14) {$\bigcup$};
+            \node at (9,-14) {$\bigcup$};
+            \node at (12,-14) {$\bigcup$};
+            
+            \node at (15,-14) {$f$};
+            
+            \node at (3,-15) {$\bigcup$};
+            \node at (6,-15) {$\bigcup$};
+            \node at (9,-15) {$\bigcup$};
+            \node at (12,-15) {$\bigcup$};
+            
+            \node at (15,-15) {$f$};
+            
+            \node at (3,-16) {$\bigcup$};
+            \node at (6,-16) {$\bigcup$};
+            \node at (9,-16) {$\bigcup$};
+            \node at (12,-16) {$\bigcup$};
+            
+            \node at (15,-16) {$f$};
+            
+            \node at (3,-17) {$\bigcup$};
+            \node at (6,-17) {$\bigcup$};
+            \node at (9,-17) {$\bigcup$};
+            \node at (12,-17) {$\bigcup$};
+            
+            \node at (15,-17) {$f$};
+            
+            \node at (3,-18) {$\bigcup$};
+            \node at (6,-18) {$\bigcup$};
+            \node at (9,-18) {$\bigcup$};
+            \node at (12,-18) {$\bigcup$};
+            
+            \node at (15,-18) {$f$};
+            
+            \node at (3,-19) {$\bigcup$};
+            \node at (6,-19) {$\bigcup$};
+            \node at (9,-19) {$\bigcup$};
+            \node at (12,-19) {$\bigcup$};
+            
+            \node at (15,-19) {$f$};
+            
+            \node at (3,-20) {$\bigcup$};
+            \node at (6,-20) {$\bigcup$};
+            \node at (9,-20) {$\bigcup$};
+            \node at (12,-20) {$\bigcup$};
+            
+            \node at (15,-20) {$f$};
+            
+            \node at (3,-21) {$\bigcup$};
+            \node at (6,-21) {$\bigcup$};
+            \node at (9,-21) {$\bigcup$};
+            \node at (12,-21) {$\bigcup$};
+            
+            \node at (15,-21) {$f$};
+            
+            \node at (3,-22) {$\bigcup$};
+            \node at (6,-22) {$\bigcup$};
+            \node at (9,-22) {$\bigcup$};
+            \node at (12,-22) {$\bigcup$};
+            
+            \node at (15,-22) {$f$};
+            
+            \node at (3,-23) {$\bigcup$};
+            \node at (6,-23) {$\bigcup$};
+            \node at (9,-23) {$\bigcup$};
+            \node at (12,-23) {$\bigcup$};
+            
+            \node at (15,-23) {$f$};
+            
+            \node at (3,-24) {$\bigcup$};
+            \node at (6,-24) {$\bigcup$};
+            \node at (9,-24) {$\bigcup$};
+            \node at (12,-24) {$\bigcup$};
+            
+            \node at (15,-24) {$f$};
+            
+            \node at (3,-25) {$\bigcup$};
+            \node at (6,-25) {$\bigcup$};
+            \node at (9,-25) {$\bigcup$};
+            \node at (12,-25) {$\bigcup$};
+            
+            \node at (15,-25) {$f$};
+            
+            \node at (3,-26) {$\bigcup$};
+            \node at (6,-26) {$\bigcup$};
+            \node at (9,-26) {$\bigcup$};
+            \node at (12,-26) {$\bigcup$};
+            
+            \node at (15,-26) {$f$};
+            
+            \node at (3,-27) {$\bigcup$};
+            \node at (6,-27) {$\bigcup$};
+            \node at (9,-27) {$\bigcup$};
+            \node at (12,-27) {$\bigcup$};
+            
+            \node at (15,-27) {$f$};
+            
+            \node at (3,-28) {$\bigcup$};
+            \node at (6,-28) {$\bigcup$};
+            \node at (9,-28) {$\bigcup$};
+            \node at (12,-28) {$\bigcup$};
+            
+            \node at (15,-28) {$f$};
+            
+            \node at (3,-29) {$\bigcup$};
+            \node at (6,-29) {$\bigcup$};
+            \node at (9,-29) {$\bigcup$};
+            \node at (12,-29) {$\bigcup$};
+            
+            \node at (15,-29) {$f$};
+            
+            \node at (3,-30) {$\bigcup$};
+            \node at (6,-30) {$\bigcup$};
+            \node at (9,-30) {$\bigcup$};
+            \node at (12,-30) {$\bigcup$};
+            
+            \node at (15,-30) {$f$};
+            
+            \node at (3,-31) {$\bigcup$};
+            \node at (6,-31) {$\bigcup$};
+            \node at (9,-31) {$\bigcup$};
+            \node at (12,-31) {$\bigcup$};
+            
+            \node at (15,-31) {$f$};
+            
+            \node at (3,-32) {$\bigcup$};
+            \node at (6,-32) {$\bigcup$};
+            \node at (9,-32) {$\bigcup$};
+            \node at (12,-32) {$\bigcup$};
+            
+            \node at (15,-32) {$f$};
+            
+            \node at (3,-33) {$\bigcup$};
+            \node at (6,-33) {$\bigcup$};
+            \node at (9,-33) {$\bigcup$};
+            \node at (12,-33) {$\bigcup$};
+            
+            \node at (15,-33) {$f$};
+            
+            \node at (3,-34) {$\bigcup$};
+            \node at (6,-34) {$\bigcup$};
+            \node at (9,-34) {$\bigcup$};
+            \node at (12,-34) {$\bigcup$};
+            
+            \node at (15,-34) {$f$};
+            
+            \node at (3,-35) {$\bigcup$};
+            \node at (6,-35) {$\bigcup$};
+            \node at (9,-35) {$\bigcup$};
+            \node at (12,-35) {$\bigcup$};
+            
+            \node at (15,-35) {$f$};
+            
+            \node at (3,-36) {$\bigcup$};
+            \node at (6,-36) {$\bigcup$};
+            \node at (9,-36) {$\bigcup$};
+            \node at (12,-36) {$\bigcup$};
+            
+            \node at (15,-36) {$f$};
+            
+            \node at (3,-37) {$\bigcup$};
+            \node at (6,-37) {$\bigcup$};
+            \node at (9,-37) {$\bigcup$};
+            \node at (12,-37) {$\bigcup$};
+            
+            \node at (15,-37) {$f$};
+            
+            \node at (3,-38) {$\bigcup$};
+            \node at (6,-38) {$\bigcup$};
+            \node at (9,-38) {$\bigcup$};
+            \node at (12,-38) {$\bigcup$};
+            
+            \node at (15,-38) {$f$};
+            
+            \node at (3,-39) {$\bigcup$};
+            \node at (6,-39) {$\bigcup$};
+            \node at (9,-39) {$\bigcup$};
+            \node at (12,-39) {$\bigcup$};
+            
+            \node at (15,-39) {$f$};
+            
+            \node at (3,-40) {$\bigcup$};
+            \node at (6,-40) {$\bigcup$};
+            \node at (9,-40) {$\bigcup$};
+            \node at (12,-40) {$\bigcup$};
+            
+            \node at (15,-40) {$f$};
+            
+            \node at (3,-41) {$\bigcup$};
+            \node at (6,-41) {$\bigcup$};
+            \node at (9,-41) {$\bigcup$};
+            \node at (12,-41) {$\bigcup$};
+            
+            \node at (15,-41) {$f$};
+            
+            \node at (3,-42) {$\bigcup$};
+            \node at (6,-42) {$\bigcup$};
+            \node at (9,-42) {$\bigcup$};
+            \node at (12,-42) {$\bigcup$};
+            
+            \node at (15,-42) {$f$};
+            
+            \node at (3,-43) {$\bigcup$};
+            \node at (6,-43) {$\bigcup$};
+            \node at (9,-43) {$\bigcup$};
+            \node at (12,-43) {$\bigcup$};
+            
+            \node at (15,-43) {$f$};
+            
+            \node at (3,-44) {$\bigcup$};
+            \node at (6,-44) {$\bigcup$};
+            \node at (9,-44) {$\bigcup$};
+            \node at (12,-44) {$\bigcup$};
+            
+            \node at (15,-44) {$f$};
+            
+            \node at (3,-45) {$\bigcup$};
+            \node at (6,-4

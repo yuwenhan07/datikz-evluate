@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em] {
+      \sigma_1 & \tau_1 \\
+      & \tau_1 \cdot \tau_2 = \nu \\
+      \sigma_2 & \tau_2 \\};
+    \path[-stealth]
+      (m-1-1) edge node [left] {} (m-3-1)
+      (m-1-2) edge node [left] {} (m-3-2)
+      (m-1-2) edge node [right] {} (m-2-2)
+      (m-2-2) edge node [right] {} (m-3-2);
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the coordinates for the centers of the squares
+    \coordinate (Square1) at (current page.center);
+    \coordinate (Square2) at ([yshift=3cm]Square1);
+
+    % Draw the first square
+    \draw[fill=white] (Square1) ++(-1,-1) rectangle ++(2,2) node[midway] {A};
+
+    % Draw the second square
+    \draw[fill=white] (Square2) ++(-1,-1) rectangle ++(2,2);
+
+    % Draw the arrow from the first square to the second square
+    \draw[->, thick] (Square1) -- (Square2) node[midway, above] {B} node[midway, below] {C};
+\end{tikzpicture}
+
+\end{document}

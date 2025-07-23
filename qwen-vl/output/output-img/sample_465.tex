@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm, auto]
+        % Define nodes
+        \node (F1) [circle, draw] {$F_{1}(n)$};
+        \node (X1) [circle, draw, below of=F1] {X};
+        \node (F2) [circle, draw, right of=F1] {$F_{2}(n)$};
+        \node (X2) [circle, draw, below of=F2] {X};
+        \node (F3) [circle, draw, right of=F2] {$F_{3}(n)$};
+        \node (F4) [circle, draw, right of=F3] {$F_{4}(n)$};
+        \node (F5) [circle, draw, below of=F3] {$F_{5}(n)$};
+        \node (F6) [circle, draw, right of=F5] {$F_{6}(n)$};
+        \node (F7) [circle, draw, right of=F6] {$F_{7}(n)$};
+        \node (F8) [circle, draw, below of=F5] {$F_{8}(n)$};
+        \node (F9) [circle, draw, right of=F8] {$F_{9}(n)$};
+        \node (F10) [circle, draw, right of=F9] {$F_{10}(n)$};
+        \node (F11) [circle, draw, below of=F10] {$F_{11}(n)$};
+
+        % Draw edges
+        \draw[->] (F1) -- (X1);
+        \draw[->] (F2) -- (X2);
+        \draw[->] (F3) -- (X2);
+        \draw[->] (F3) -- (F4);
+        \draw[->] (F5) -- (F6);
+        \draw[->] (F5) -- (F7);
+        \draw[->] (F8) -- (F9);
+        \draw[->] (F8) -- (F10);
+        \draw[->] (F10) -- (F11);
+
+        % Nodes within circles
+        \node at (F1.north) [above] {\(1\)};
+        \node at (F1.east) [right] {\(2\)};
+        \node at (F1.south) [below] {\(3\)};
+
+        \node at (F2.north) [above] {\(1\)};
+        \node at (F2.east) [right] {\(2\)};
+        \node at (F2.south) [below] {\(3\)};
+        \node at (F2.east east) [right] {\(4\)};
+
+        \node at (F3.north) [above] {\(2\)};
+        \node at (F3.east) [right] {\(3\)};
+
+        \node at (F4.north) [above] {\(2\)};
+        \node at (F4.east) [right] {\(3\)};
+
+        \node at (F5.north) [above] {\(Y\)};
+        \node at (F5.east) [right] {\(X\)};
+
+        \node at (F6.north) [above] {\(Y\)};
+        \node at (F6.east) [right] {\(X\)};
+
+        \node at (F7.north) [above] {\(1\)};
+        \node at (F7.east) [right] {\(2\)};
+
+        \node at (F8.north) [above] {\(X\)};
+
+        \node at (F9.north) [above] {\(X\)};
+
+        \node at (F10.north) [above] {\(X\)};
+
+        \node at (F11.north) [above] {\(1\)};
+        \node at (F11.east) [right] {\(2\)};
+        \node at (F11.south) [below] {\(3\)};
+
+        % Additional nodes
+        \node at (F8.south) [below] {\(3A\)};
+        \node at (F9.south) [below] {\(5A\)};
+        \node at (F10.south) [below] {\(7A\)};
+
+        % Ellipses
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F1, xshift=-1cm] {};
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F2, xshift=-1cm] {};
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F3, xshift=-1cm] {};
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F4, xshift=-1cm] {};
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F5, xshift=-1cm] {};
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F6, xshift=-1cm] {};
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F7, xshift=-1cm] {};
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F8, xshift=-1cm] {};
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F9, xshift=-1cm] {};
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F10, xshift=-1cm] {};
+        \node [ellipse, draw, minimum width=2cm, minimum height=1cm, right of=F11, xshift=-1cm] {};
+
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

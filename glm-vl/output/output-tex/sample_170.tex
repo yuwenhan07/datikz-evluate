@@ -1,0 +1,27 @@
+tikz
+\begin{tikzpicture}
+    % Set white background for the entire image
+    \fill[white] (-3,-3) rectangle (3,3);
+
+    % Draw the first magenta arrow (outside the foreach loop)
+    \draw[magenta, -latex] (-4,0) -- (-2,0);
+
+    % Draw the black line connecting the two arrows
+    \draw[black] (-2,0) -- (2,0);
+
+    % Draw the geometric shape: radiating lines from the center
+    % Use a foreach loop to draw alternating blue and white lines
+    \foreach \i in {0,30,...,330} {
+        % Calculate the angle for each line
+        \pgfmathsetmacro{\angle}{\i}
+        % Alternate colors (blue for odd indices, white for even)
+        \ifodd\i
+            \draw[blue] (0,0) -- (\angle:2cm);
+        \else
+            \draw[white] (0,0) -- (\angle:2cm);
+        \fi
+    }
+
+    % Draw the second magenta arrow (connected by the black line)
+    \draw[magenta, -latex] (2,0) -- (4,0);
+\end{tikzpicture}

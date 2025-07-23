@@ -1,0 +1,78 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Grid lines
+    \draw[gray!50] (0,0) grid (6,4);
+    
+    % Labels for axes
+    \node at (-0.5,2) {$Q$};
+    \node at (-0.5,0) {$S = 0$};
+    \node at (6,-0.5) {$S$};
+    \node at (7.5,2) {$H(t,S_{max},q)$};
+    
+    % Time label
+    \node at (0,4) {$t = T - k\Delta t$};
+    
+    % Points and labels
+    \foreach \x in {0,...,6} {
+        \fill[blue] (\x,0) circle (2pt) node[below] {$H^{k}_{\x,0}$};
+        \fill[red] (\x,1) circle (2pt) node[above] {$H^{k}_{\x,1}$};
+    }
+    \fill[blue] (0,0) circle (2pt) node[left] {$(0,0)$};
+    \fill[blue] (0,1) circle (2pt) node[left] {$H^{k+1}_{1,1}$};
+    \fill[blue] (6,1) circle (2pt) node[right] {$H^{k}_{6,1}$};
+    \fill[blue] (6,0) circle (2pt) node[right] {$H^{k}_{5,0}$};
+    
+    % Arrows
+    \draw[->, dashed, blue] (0,0) -- (0,1);
+    \draw[->, green] (6,0) -- (6,1);
+    \draw[->, yellow] (6,1) -- (6,4);
+    
+    % Labels for H values
+    \node at (0.5,0.5) {$H^{k}_{1,0}$};
+    \node at (1.5,0.5) {$H^{k}_{2,0}$};
+    \node at (2.5,0.5) {$H^{k}_{3,0}$};
+    \node at (3.5,0.5) {$H^{k}_{4,0}$};
+    \node at (4.5,0.5) {$H^{k}_{5,0}$};
+    \node at (5.5,0.5) {$H^{k}_{6,0}$};
+    
+    \node at (0.5,1.5) {$H^{k}_{1,1}$};
+    \node at (1.5,1.5) {$H^{k}_{2,1}$};
+    \node at (2.5,1.5) {$H^{k}_{3,1}$};
+    \node at (3.5,1.5) {$H^{k}_{4,1}$};
+    \node at (4.5,1.5) {$H^{k}_{5,1}$};
+    \node at (5.5,1.5) {$H^{k}_{6,1}$};
+    
+    \node at (0.5,2.5) {$H^{k}_{1,1}$};
+    \node at (1.5,2.5) {$H^{k}_{2,1}$};
+    \node at (2.5,2.5) {$H^{k}_{3,1}$};
+    \node at (3.5,2.5) {$H^{k}_{4,1}$};
+    \node at (4.5,2.5) {$H^{k}_{5,1}$};
+    \node at (5.5,2.5) {$H^{k}_{6,1}$};
+    
+    \node at (0.5,3.5) {$H^{k}_{1,1}$};
+    \node at (1.5,3.5) {$H^{k}_{2,1}$};
+    \node at (2.5,3.5) {$H^{k}_{3,1}$};
+    \node at (3.5,3.5) {$H^{k}_{4,1}$};
+    \node at (4.5,3.5) {$H^{k}_{5,1}$};
+    \node at (5.5,3.5) {$H^{k}_{6,1}$};
+    
+    \node at (0.5,4.5) {$H^{k}_{1,1}$};
+    \node at (1.5,4.5) {$H^{k}_{2,1}$};
+    \node at (2.5,4.5) {$H^{k}_{3,1}$};
+    \node at (3.5,4.5) {$H^{k}_{4,1}$};
+    \node at (4.5,4.5) {$H^{k}_{5,1}$};
+    \node at (5.5,4.5) {$H^{k}_{6,1}$};
+    
+    % Labels for q and S_max
+    \node at (6.5,2) {$H(t,S_{max},q)$};
+    \node at (6.5,0) {$q = 0$};
+    \node at (0,4.5) {$Q$};
+    
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphdrawing, quotes}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \node (u7) {$u_{7}$};
+    \node (x7) [right of=u7] {$x_{7}$};
+    \node (u3) [below right of=x7] {$u_{3}$};
+    \node (x3) [right of=u3] {$x_{3}$};
+    \node (X) [above right of=x7] {$X$};
+    \node (y) [below right of=X] {$y$};
+    \node (U) [above right of=y] {$U$};
+    \node (uy) [below right of=U] {$u_{y}$};
+
+    \draw[->] (u7) -- (x7);
+    \draw[->] (u3) -- (x3);
+    \draw[->] (x7) -- (X);
+    \draw[->] (x3) -- (X);
+    \draw[->] (X) -- (y);
+    \draw[->] (U) -- (y);
+    \draw[->] (uy) -- (y);
+\end{tikzpicture}
+
+\end{document}

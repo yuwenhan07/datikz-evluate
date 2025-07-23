@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            % Draw horizontal line
+            \draw[thick] (-1.5,0) -- (1.5,0);
+            % Draw vertical lines
+            \draw[thick] (0,-1.5) -- (0,1.5);
+            % Draw arrows for alpha and beta
+            \draw[-{Latex[length=3mm]}] (-1.5,0) -- node[below] {$\alpha_{i-1}$} (0,0);
+            \draw[-{Latex[length=3mm]}] (0,0) -- node[above] {$\alpha_i$} (1.5,0);
+            \draw[-{Latex[length=3mm]}] (0,0) -- node[left] {$\beta_j$} (0,-1.5);
+            \draw[-{Latex[length=3mm]}] (0,0) -- node[right] {$\beta_{j-1}$} (0,1.5);
+        \end{tikzpicture}
+        \caption{}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            % Draw dashed lines
+            \draw[dashed] (-1.5,0) -- node[below] {$\alpha_{i-1}^{-1}$} (0,0);
+            \draw[dashed] (0,0) -- node[above] {$\alpha_i^{-1}$} (1.5,0);
+            \draw[dashed] (0,0) -- node[left] {$\beta_j$} (0,-1.5);
+            \draw[dashed] (0,0) -- node[right] {$\beta_{j-1}$} (0,1.5);
+            % Draw curved arrow
+            \draw[->, bend left=60] (0,0) to node[below] {} (1.5,0);
+        \end{tikzpicture}
+        \caption{}
+    \end{subfigure}
+    \caption{}
+\end{figure}
+
+\end{document}

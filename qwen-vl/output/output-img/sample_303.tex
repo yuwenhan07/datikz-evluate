@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    \node[draw] (node1) {Node};
+    \node[draw, right of=node1] (node2) {Node\\text};
+    \node[draw, below of=node2] (node3) {Node};
+    
+    \node[circle, draw, blue, label={[blue]left:①}] at (node1.west) {};
+    \node[circle, draw, blue, label={[blue]left:②}] at (node2.west) {};
+    \node[circle, draw, blue, label={[blue]left:③}] at (node3.west) {};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,26 @@
+\begin{tikzpicture}[3d]
+    % Define coordinates
+    \coordinate (A) at (0,0,0);
+    \coordinate (B) at (3,0,0);
+    \coordinate (C) at (1.5,2,0);
+    \coordinate (D) at (0,0,4);
+    \coordinate (E) at (3,0,4);
+    \coordinate (F) at (1.5,2,4);
+    
+    % Draw bottom base triangle (A-B-C)
+    \fill[red, opacity=0.5] (A) -- (B) -- (C) -- cycle;
+    % Draw top base triangle (D-E-F)
+    \fill[green, opacity=0.5] (D) -- (E) -- (F) -- cycle;
+    % Draw side faces
+    \fill[blue, opacity=0.5] (A) -- (B) -- (E) -- (D) -- cycle;
+    \fill[orange, opacity=0.5] (B) -- (C) -- (F) -- (E) -- cycle;
+    \fill[purple, opacity=0.5] (C) -- (A) -- (D) -- (F) -- cycle;
+    
+    % Add letter labels
+    \node at (A) [above left] {A};
+    \node at (B) [above right] {B};
+    \node at (C) [above] {C};
+    \node at (D) [above left] {D};
+    \node at (E) [above right] {E};
+    \node at (F) [above] {F};
+\end{tikzpicture}

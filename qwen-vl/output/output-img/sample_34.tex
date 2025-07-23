@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=-5, xmax=508,
+        ymin=0, ymax=4,
+        axis lines=left,
+        xlabel={},
+        ylabel={},
+        xtick={-4,-2,...,508},
+        ytick={1,2,3,4},
+        no markers,
+        smooth,
+        domain=-4:508,
+        samples=6,
+        ]
+        \addplot[thick] coordinates {
+            (-4, 1)
+            (-2, 3)
+            (0, 4)
+            (500, 4)
+            (502, 2)
+            (504, 1)
+        };
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+    % Place nodes
+    \node [coordinate] (input) {$\dot{x}_i(t_0)$};
+    \node [coordinate, right=of input] (sum) {};
+    \node [coordinate, right=of sum] (block) {};
+    \node [coordinate, right=of block] (output) {$\dot{x}_i(t_0)$};
+    
+    % Draw edges
+    \draw [->] (input) -- node [name=inputlabel] {Input} (sum);
+    \draw [->] (sum) -- node [name=sumlabel] {} (block);
+    \draw [->] (block) -- node [name=outputlabel] {} (output);
+    
+    % Add equations inside the block
+    \node [draw, minimum width=6cm, minimum height=4cm, right=of sum] (equation) {
+        \begin{tabular}{l}
+            $\theta_{1}=0$ \\
+            $\theta_{i+1}(t_o)=x_i(t_0)+\theta_{1}(t_0)$ \\
+            $\theta_{i}(t_0)$ \\
+        \end{tabular}
+    };
+    
+    % Connect the block to the edges
+    \draw [->] (sum) -- node [name=sumlabel] {} (equation);
+    \draw [->] (equation) -- node [name=outputlabel] {} (output);
+\end{tikzpicture}
+
+\end{document}

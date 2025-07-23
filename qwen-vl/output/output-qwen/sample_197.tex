@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+% Define the width of the thick and thin lines
+\newcommand{\lineWidth}{0.5pt}
+\newcommand{\thickLineWidth}{1.5pt}
+
+% Define the length of the object
+\newcommand{\objectLength}{\textwidth}
+
+% Draw the object with alternating thick and thin lines
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \draw[ultra thick] (0,0) -- (\objectLength,0);
+        \foreach \x in {0.5, 1, ..., \objectLength} {
+            \pgfmathtruncatemacro{\lineType}{mod(\x,2)}
+            \ifnum\lineType=0
+                \draw[line width=\thickLineWidth] (\x-\lineWidth/2,0) -- (\x+\lineWidth/2,0);
+            \else
+                \draw[line width=\lineWidth] (\x-\lineWidth/2,0) -- (\x+\lineWidth/2,0);
+            \fi
+        }
+    \end{tikzpicture}
+    \caption{A minimalistic image with an alternating thick and thin line pattern.}
+    \label{fig:alternating_lines}
+\end{figure}
+
+\end{document}

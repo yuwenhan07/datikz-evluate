@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define coordinates
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (2,0);
+    \coordinate (C) at (4,0);
+    
+    % Draw nodes with labels
+    \node[circle,fill,inner sep=1pt,label=right:$y_1$] (y1) at (1,1) {};
+    \node[circle,fill,inner sep=1pt,label=right:$y_4$] (y4) at (2,2) {};
+    \node[circle,fill,inner sep=1pt,label=right:$y_5$] (y5) at (2,3) {};
+    \node[circle,fill,inner sep=1pt,label=right:$y_6$] (y6) at (3,3) {};
+    \node[circle,fill,inner sep=1pt,label=right:$y_2$] (y2) at (3,2) {};
+    
+    % Draw edges
+    \draw (y1) -- (y4);
+    \draw (y4) -- (y5);
+    \draw (y1) -- (y2);
+    \draw (y2) -- (y6);
+    
+    % Draw node z1
+    \node[rectangle,fill,inner sep=1pt,label=left:$z_1$,label=left:$2,3$] (z1) at (0,1) {};
+    
+    % Draw edge from z1 to y3
+    \draw (z1) -- (y3);
+    
+    % Label y3
+    \node[circle,fill,inner sep=1pt,label=right:$y_3$] (y3) at (0.5,2) {};
+    
+    % Draw edge from y1 to y3
+    \draw (y1) -- (y3);
+    
+    % Label y1 with coordinates
+    \node[above left] at (y1) {$1,0$};
+    \node[below right] at (y1) {$3,1$};
+    
+    % Label y2 with coordinates
+    \node[above left] at (y2) {$0,3$};
+    
+    % Label y3 with coordinates
+    \node[above left] at (y3) {$2,3$};
+    
+    % Label y4 with coordinates
+    \node[above left] at (y4) {$1,0$};
+    \node[below right] at (y4) {$3,1$};
+    
+    % Label y5 with coordinates
+    \node[above left] at (y5) {$1,0$};
+    
+    % Label y6 with coordinates
+    \node[above left] at (y6) {$0,3$};
+\end{tikzpicture}
+
+\end{document}

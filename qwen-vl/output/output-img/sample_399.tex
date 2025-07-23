@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->] (-3,0) -- (3,0) node[right] {$x_a$};
+    \draw[->] (0,-2) -- (0,3) node[above] {$x_{n+1}$};
+
+    % Lines
+    \draw[red, thick] (0,0) -- (3,2) node[right] {$L_\phi$};
+    \draw[dashed, blue] (0,0) -- (3,1) node[right] {$P_\eta$};
+
+    % Curves
+    \draw[green, thick] (0,0) arc (0:90:1);
+    \draw[magenta, thick] (0,0) arc (0:45:2);
+
+    % Points
+    \fill (0,0) circle (1pt) node[below left] {$p_0$};
+
+    % Angles
+    \pic [draw, angle radius=1cm, "$\phi$", angle eccentricity=1.2] {angle = 0--0--3};
+    \pic [draw, angle radius=1cm, "$\eta$", angle eccentricity=1.2] {angle = 0--3--1};
+    \pic [draw, angle radius=1cm, "$\theta_0$", angle eccentricity=1.2] {angle = 0--0--2};
+    \pic [draw, angle radius=1cm, "$\overline{N}$", angle eccentricity=1.2] {angle = 0--2--3};
+
+    % Text
+    \node at (-2,2) [red] {$B_{\text{int}}$};
+    \node at (2,1.5) [purple] {$S_{p_0}$};
+    \node at (1.5,0.5) [purple] {$\Sigma$};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphdrawing, quotes, shapes.geometric, arrows.meta}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \node[draw, fill=gray!30] (c_code) {C Code};
+    \node[draw, right of=c_code, node distance=3cm] (feature_extractor) {feature extractor};
+    \node[draw, below right of=feature_extractor, node distance=3cm] (ml_model) {ML Model};
+    \node[draw, above right of=ml_model, node distance=3cm] (flag_generator) {flag generator};
+    \node[draw, right of=flag_generator, node distance=3cm] (esbmc) {ESBMC};
+    \node[draw, right of=esbmc, node distance=3cm] (property_file) {Property File};
+    \node[draw, below right of=esbmc, node distance=3cm] (result) {Result};
+
+    \draw[-Latex] (c_code) -- (feature_extractor);
+    \draw[-Latex] (feature_extractor) -- (ml_model) node [midway, left] {extract features};
+    \draw[-Latex] (flag_generator) -- (ml_model) node [midway, right] {best prediction};
+    \draw[-Latex] (flag_generator) -- (esbmc) node [midway, above] {optimal flags};
+    \draw[-Latex] (property_file) -- (esbmc);
+    \draw[-Latex] (esbmc) -- (result);
+\end{tikzpicture}
+
+\end{document}

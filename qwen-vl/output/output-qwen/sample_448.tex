@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel=$x$,
+        ylabel=$y$,
+        xmin=0,
+        xmax=10,
+        ymin=0,
+        ymax=10,
+        grid=major,
+        grid style={dashed, gray!30},
+        clip=false,
+        samples=100,
+        domain=0:10,
+        restrict y to domain=0:10,
+        width=10cm,
+        height=10cm,
+        every axis plot/.append style={ultra thick},
+        ]
+        % Plot the line x + y = 5
+        \addplot[red] {5 - x};
+        
+        % Iterate over all lattice points (x, y) such that 0 <= x, y <= 10 and x + y <= 5
+        \foreach \x in {0,...,10} {
+            \foreach \y in {0,...,10} {
+                \ifnum\x+\y<=5
+                    \filldraw[black] (\x,\y) circle (2pt);
+                \fi
+            }
+        }
+    \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        view={45}{45},
+        axis lines=center,
+        axis on top,
+        xlabel=$x$,
+        ylabel=$y$,
+        zlabel=$z$,
+        enlargelimits=false,
+        hide obscured axis,
+        clip=false,
+        domain=0:360,
+        samples=100,
+        colormap/viridis,
+        point meta min=0,
+        point meta max=1,
+        colorbar,
+        colorbar style={
+            at={(1.1,0.5)},
+            anchor=south west,
+            width=0.2*\textwidth,
+            height=0.2*\textwidth,
+        },
+    ]
+        % Draw the concentric circles
+        \foreach \r in {0.1,0.2,...,3}{
+            \addplot3 [surf, shader=flat, opacity=0.5] ({\r*cos(x)}, {\r*sin(x)}, 0);
+        }
+        
+        % Draw the central sphere
+        \addplot3 [surf, shader=flat, opacity=0.5] ({0.5*cos(x)}, {0.5*sin(x)}, 0) 
+            \closedcycle;
+        
+        % Draw the arrows
+        \draw[blue, thick, -latex] (0,0,0) -- (1,0,0);
+        \draw[blue, thick, -latex] (0,0,0) -- (0,1,0);
+        \draw[blue, thick, -latex] (0,0,0) -- (0,0,1);
+    \end{axis}
+\end{tikzpicture}
+\end{document}

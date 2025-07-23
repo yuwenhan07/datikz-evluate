@@ -1,0 +1,69 @@
+\begin{tikzpicture}[3d view={60}{30}, % 3D view angle
+                    every path/.style={thick},
+                    fill=blue!30, % or some color
+                    draw=black]
+    % Define the center point
+    \coordinate (center) at (0,0,0);
+    % Draw the first hemisphere (smallest)
+    \draw[canvas is xy plane at z=0, fill=blue!30] (center) circle (1cm);
+    \draw[canvas is xz plane at y=0, fill=blue!30] (center) circle (1cm);
+    \draw[canvas is yz plane at x=0, fill=blue!30] (center) circle (1cm);
+    Wait, no, that's not right. A hemisphere is half of a sphere. So, maybe the first hemisphere is the top half. So, to draw a hemisphere, we can use the `sphere` command if available, but in TikZ, the `sphere` is part of the `3d` library. Wait, the `3d` library has a `sphere` command. Let me check. The `3d` library allows drawing spheres. So, for example:
+
+\draw[canvas is xy plane at z=0, fill=blue!30] (center) circle (1cm);
+\draw[canvas is xz plane at y=0, fill=blue!30] (center) circle (1cm);
+\draw[canvas is yz plane at x=0, fill=blue!30] (center) circle (1cm);
+No, that's drawing circles on each plane, which would form a sphere. But a hemisphere is half of that. So, maybe we need to draw the curved surface of the hemisphere. Alternatively, use the `shading` to make it look like a hemisphere. Wait, another approach: use the `surface` library to draw a parametric surface. For a hemisphere, the parametric equations are x = r sinθ cosφ, y = r sinθ sinφ, z = r cosθ, where θ goes from 0 to π/2 (for the upper hemisphere), and φ from 0 to 2π. So, using the `surface` command with these parameters. But TikZ's `surface` might need the `3d` library. Let's try:
+
+\begin{tikzpicture}[3d view={60}{30}]
+    \coordinate (center) at (0,0,0);
+    % Define the radius for each hemisphere
+    \def\radius{1} % first radius
+    \def\newRadius{1.5} % second radius
+    \def\newerRadius{2} % third radius
+    % Draw the first hemisphere (smallest)
+    \draw[canvas is xy plane at z=0, fill=blue!30] (center) circle (\radius);
+    \draw[canvas is xz plane at y=0, fill=blue!30] (center) circle (\radius);
+    \draw[canvas is yz plane at x=0, fill=blue!30] (center) circle (\radius);
+    Wait, no, that's not a hemisphere. A hemisphere is a half-sphere, so maybe we need to draw the curved surface with a parametric equation. Alternatively, use the `sphere` command with a limited angle. Wait, the `3d` library has a `sphere` command that can take a radius and a start and end angle for the hemisphere. For example:
+
+\draw[canvas is xy plane at z=0, fill=blue!30] (center) sphere (\radius);
+But I need to check if that's possible. Alternatively, use the `shading` to make the hemisphere look like a 3D shape. For example, using a `shading` with a `ball` or `axis` type. Wait, the `shading` library can do that. So, for a hemisphere, we can use a `shading` with a `ball` shading, but maybe adjust the parameters. Alternatively, use the `surface` command to draw the parametric surface of the hemisphere. Let's try:
+
+\begin{tikzpicture}[3d view={60}{30}]
+    \coordinate (center) at (0,0,0);
+    % Define the radii
+    \def\radius{1}
+    \def\secondRadius{1.5}
+    \def\thirdRadius{2}
+    % Draw the first hemisphere
+    \begin{scope}[canvas is xy plane at z=0]
+        \draw[fill=blue!30] (center) circle (\radius);
+    \end{scope}
+    \begin{scope}[canvas is xz plane at y=0]
+        \draw[fill=blue!30] (center) circle (\radius);
+    \end{scope}
+    \begin{scope}[canvas is yz plane at x=0]
+        \draw[fill=blue!30] (center) circle (\radius);
+    \end{scope}
+    % Draw the second hemisphere (larger)
+    \begin{scope}[canvas is xy plane at z=0]
+        \draw[fill=blue!30] (center) circle (\secondRadius);
+    \end{scope}
+    \begin{scope}[canvas is xz plane at y=0]
+        \draw[fill=blue!30] (center) circle (\secondRadius);
+    \end{scope}
+    \begin{scope}[canvas is yz plane at x=0]
+        \draw[fill=blue!30] (center) circle (\secondRadius);
+    \end{scope}
+    % Draw the third hemisphere (largest)
+    \begin{scope}[canvas is xy plane at z=0]
+        \draw[fill=blue!30] (center) circle (\thirdRadius);
+    \end{scope}
+    \begin{scope}[canvas is xz plane at y=0]
+        \draw[fill=blue!30] (center) circle (\thirdRadius);
+    \end{scope}
+    \begin{scope}[canvas is yz plane at x=0]
+        \draw[fill=blue!30] (center) circle (\thirdRadius);
+    \end{scope}
+\end{tikzpicture}

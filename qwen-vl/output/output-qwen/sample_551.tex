@@ -1,0 +1,31 @@
+python
+def loop_game(start_node, end_node):
+    # Define the game structure
+    game_structure = {
+        'A': {'value': 1, 'next': ['B', 'C']},
+        'B': {'value': 2, 'next': ['C', 'D']},
+        'C': {'value': 3, 'next': ['D', 'E']},
+        'D': {'value': 4, 'next': ['E']},
+        'E': {'value': 5, 'next': []}  # End node
+    }
+    
+    current_node = start_node
+    while True:
+        print(f"Current Node: {current_node}, Value: {game_structure[current_node]['value']}")
+        
+        if current_node == end_node:
+            print(f"Win! Reached the end node {end_node}.")
+            break
+        
+        next_nodes = game_structure[current_node]['next']
+        if not next_nodes:
+            print(f"Loss! No valid moves from {current_node}.")
+            break
+        
+        # Choose the next node randomly or based on some rule
+        import random
+        next_node = random.choice(next_nodes)
+        current_node = next_node
+
+# Example usage
+loop_game('A', 'E')

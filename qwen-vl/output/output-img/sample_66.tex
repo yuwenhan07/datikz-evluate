@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=left,
+        xlabel=$0$, ylabel=$0.6$,
+        xmin=0, xmax=1,
+        ymin=0, ymax=0.7,
+        xtick={0,h,2*h,3*h,4*h,5*h,6*h,7*h,1},
+        ytick={0,0.2,0.4,0.6},
+        xticklabels={0,$h$,2$h$,3$h$,4$h$,5$h$,6$h$,7$h$,1},
+        yticklabels={0,0.2,0.4,0.6},
+        width=12cm,
+        height=10cm,
+        domain=0:1,
+        samples=100,
+        no markers,
+        every axis plot post/.append style={
+            thick,
+            mark options={fill=white}
+        }
+    ]
+        \addplot [black] {0.6 * exp(-((x-0.5)^2) / (2*0.1^2))};
+        \addplot [blue]  {0.6 * exp(-((x-1.5)^2) / (2*0.1^2))};
+        \addplot [red]   {0.6 * exp(-((x-2.5)^2) / (2*0.1^2))};
+        \addplot [green] {0.6 * exp(-((x-3.5)^2) / (2*0.1^2))};
+        \addplot [orange]{0.6 * exp(-((x-4.5)^2) / (2*0.1^2))};
+        \addplot [magenta]{0.6 * exp(-((x-5.5)^2) / (2*0.1^2))};
+        \addplot [cyan]  {0.6 * exp(-((x-6.5)^2) / (2*0.1^2))};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{fit}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=0pt]
+    \node (A) [draw] {Node A};
+    \node (B) [draw, right=of A, anchor=west, inner sep=0pt, outer sep=0pt, fit=(A)] {Node B};
+    
+    % To prevent extending beyond the textwidth, we can use a scope with a fixed width
+    \begin{scope}[text width=\linewidth-2*\pgfkeysvalueof{/pgf/inner xsep}-2*\pgfkeysvalueof{/pgf/outer xsep}]
+        \node (C) at (current bounding box.east) {Node C};
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,13 @@
+The description you provided pertains to a specific finite volume method for solving partial differential equations, particularly in the context of computational fluid dynamics (CFD). Let's break down the key points:
+
+1. **P=2 Scheme**: This likely refers to a second-order accurate finite volume scheme, which is commonly used in CFD simulations. The "P" here could stand for "polynomial," indicating that the scheme uses polynomial interpolation.
+
+2. **Regular Cell Footprint**: In this context, the "regular cell footprint" refers to the stencil or neighborhood around a given cell where the numerical fluxes are computed. For a standard five-point Laplacian, the footprint includes the central cell and its four neighboring cells.
+
+3. **Cut Cells**: These are cells that intersect with boundaries of the computational domain. When a cell is cut by a boundary, it becomes irregular because the standard five-point stencil cannot be applied directly due to the boundary conditions.
+
+4. **Irregular Cells**: These are cells that have at least one point within their footprint that is a cut cell. Since the standard five-point stencil cannot be applied to these cells, they require special treatment, often involving a different numerical scheme or interpolation method.
+
+5. **Shading**: The use of dark shading for cut cells and light shading for irregular cells helps visualize the irregularity of the grid. White cells represent those that are fully inside the domain and can be treated as regular cells using the standard five-point stencil.
+
+In summary, the P=2 scheme uses a five-point Laplacian stencil for regular cells. However, when a cell intersects with a boundary (cut cell), the stencil becomes irregular, and special handling is required to compute the fluxes accurately. The visual representation of these cells through shading helps in identifying and managing the irregularities in the computational grid.

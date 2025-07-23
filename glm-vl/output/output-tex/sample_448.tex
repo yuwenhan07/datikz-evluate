@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+    width=10cm, height=10cm,
+    xmin=0, xmax=11, ymin=0, ymax=11,
+    xtick={0,1,...,10}, ytick={0,1,...,10},
+    grid=both, grid style=dashed,
+    axis lines=middle
+]
+% For loop for x from 0 to 10
+\foreach \x in {0,1,...,10} {
+    % For loop for y from 0 to min(10, 5 - \x) (ensures y ≤ 5 - x and y ≥ 0)
+    \foreach \y in {0,1,...,min(10, 5 - \x)} {
+        % Plot the lattice point (x, y)
+        \addplot[only marks, mark=*] coordinates {(\x, \y)};
+    }
+}
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

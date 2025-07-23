@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Draw the axes
+    \draw[->] (0,0) -- (7,0) node[right] {$t$};
+    \draw[->] (0,0) -- (0,3) node[above] {$V(t)$};
+
+    % Mark the points on the x-axis
+    \foreach \x/\y in {0/0, 2/0, 4/0, 6/0} {
+        \fill (\x,\y) circle (2pt);
+        \node at (\x+0.1, -0.2) {$t_{\y}$};
+    }
+
+    % Draw the lines
+    \draw (0,2) -- (2,0) -- (4,1) -- (6,0) -- (7,2);
+
+    % Mark the points on the y-axis
+    \fill (0,2) circle (2pt);
+    \fill (0,0) circle (2pt);
+    \fill (0,1) circle (2pt);
+    \fill (0,0) circle (2pt);
+    \fill (0,2) circle (2pt);
+\end{tikzpicture}
+
+\end{document}

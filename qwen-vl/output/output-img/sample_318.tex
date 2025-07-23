@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    % Draw the x-axis
+    \draw[->] (-4.5,0) -- (4.5,0);
+    % Draw the y-axis
+    \draw[->] (0,-4.5) -- (0,4.5);
+    
+    % Draw the grid lines
+    \foreach \x in {-4,...,4} {
+        \draw (\x,-0.1) -- (\x,0.1);
+        \draw (-0.1,\x) -- (0.1,\x);
+    }
+    
+    % Label the x-axis
+    \foreach \x in {-4,...,4} {
+        \node at (\x,-0.2) {\x};
+    }
+    
+    % Label the y-axis
+    \foreach \y in {-4,...,4} {
+        \node at (-0.2,\y) {\y};
+    }
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar,
+            enlargelimits=0.15,
+            legend style={at={(0.5,-0.2)},
+                anchor=north,legend columns=-1},
+            ylabel={Accuracy},
+            symbolic x coords={MLP, WL-Kernel, FEATHER, Slag-LSD, Slag-VGINE},
+            xtick=data,
+            nodes near coords,
+            nodes near coords align={vertical},
+            ]
+            \addplot coordinates {(MLP, 0.8054) (WL-Kernel, 0.7053) (FEATHER, 0.8488) (Slag-LSD, 0.7799) (Slag-VGINE, 0.5499)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Comparison of different models' accuracy on a specific dataset.}
+    \label{fig:sample_37}
+\end{figure}
+
+\end{document}

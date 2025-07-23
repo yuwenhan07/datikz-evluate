@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the circle
+    \draw (0,0) circle (1);
+    
+    % Label the points
+    \node at (1,0) {$1$};
+    \node at (0,1) {$i$};
+    \node at (-1,0) {$0$};
+    \node at (0,-1) {$\gamma$};
+    \node at (1,0.5) {$\alpha$};
+    \node at (-1,0.5) {$\beta$};
+    
+    % Draw the arrows
+    \draw[->] (1,0) arc (0:-90:1);
+    \draw[->] (0,1) arc (90:180:1);
+    \draw[->] (-1,0) arc (180:270:1);
+    \draw[->] (0,-1) arc (270:360:1);
+\end{tikzpicture}
+
+\end{document}

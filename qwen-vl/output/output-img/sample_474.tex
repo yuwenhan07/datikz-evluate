@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \node (A) {$A$};
+    \node (B) [right of=A] {$B$};
+    \node (C) [below right of=A, below left of=B] {$C$};
+
+    \draw[->] (A) -- (C);
+    \draw[->] (B) -- (C);
+\end{tikzpicture}
+
+\end{document}

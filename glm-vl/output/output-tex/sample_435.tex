@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+  % Draw the center
+  \filldraw (0,0) circle (1pt); % Just to mark the center
+  % Draw three arcs with different radii
+  \draw[thick] (0,0) arc[start angle=0, end angle=90, radius=2];
+  \draw[thick] (0,0) arc[start angle=90, end angle=180, radius=3];
+  \draw[thick] (0,0) arc[start angle=180, end angle=270, radius=4];
+  % Draw the smaller triangle with base along x-axis and height along y-axis
+  \fill[white] (0,0) -- (2,0) -- (0,3) -- cycle;
+  % Label the sides B and C
+  \node at (1,0) {B};
+  \node at (0,1.5) {C};
+\end{tikzpicture}

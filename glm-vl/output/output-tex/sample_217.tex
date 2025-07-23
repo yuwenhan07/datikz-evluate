@@ -1,0 +1,15 @@
+tikz
+\begin{tikzpicture}
+  % First node (reference for width)
+  \node [inner sep=0pt, outer sep=0pt] (first) {Hello};
+  % Second node with same width as first
+  \node [minimum width=\pgfnodeinftextwidth{first}, inner sep=0pt, outer sep=0pt] (second) {World};
+  % Separator between two scopes
+  \begin{scope}[xshift=0pt, yshift=0pt]
+    \node [inner sep=0pt, outer sep=0pt] {First scope content};
+  \end{scope}
+  \node [minimum width=0.5em, inner sep=0pt, outer sep=0pt] (sep) {};
+  \begin{scope}[xshift=0pt, yshift=0pt]
+    \node [inner sep=0pt, outer sep=0pt] {Second scope content};
+  \end{scope}
+\end{tikzpicture}

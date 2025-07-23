@@ -1,0 +1,43 @@
+python
+from PIL import Image
+
+def alpha_blend(image1, image2):
+    # Convert images to RGBA mode if they are not already
+    image1 = image1.convert('RGBA')
+    image2 = image2.convert('RGBA')
+
+    # Get the width and height of the images
+    width, height = image1.size
+
+    # Create a new image with the same size as the input images
+    result = Image.new('RGBA', (width, height))
+
+    # Loop through each pixel and apply the alpha blending formula
+    for x in range(width):
+        for y in range(height):
+            # Get the alpha values from both images
+            alpha1 = image1.getpixel((x, y))[3]
+            alpha2 = image2.getpixel((x, y))[3]
+
+            # Calculate the final alpha value
+            alpha = min(alpha1, alpha2)
+
+            # Calculate the final RGB values using the Multiply blend function
+            r = int((image1.getpixel((x, y))[0] * alpha / 255) * (image2.getpixel((x, y))[0] * alpha / 255))
+            g = int((image1.getpixel((x, y))[1] * alpha / 255) * (image2.getpixel((x, y))[1] * alpha / 255))
+            b = int((image1.getpixel((x, y))[2] * alpha / 255) * (image2.getpixel((x, y))[2] * alpha / 255))
+
+            # Set the pixel in the result image
+            result.putpixel((x, y), (r, g, b, alpha))
+
+    return result
+
+# Load the images
+image1 = Image.open('image1.png')
+image2 = Image.open('image2.png')
+
+# Apply the alpha blend
+result = alpha_blend(image1, image2)
+
+# Save the result
+result.save('result.png')

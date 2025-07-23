@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel=$n$,
+        ylabel=Mean squared linking number,
+        xmin=0, xmax=32,
+        ymin=0, ymax=2.6,
+        xtick={0,5,...,30},
+        ytick={0,0.5,1,1.5,2,2.5},
+        width=\textwidth,
+        height=0.8\textheight,
+        enlargelimits=false,
+        ]
+        \addplot[domain=0:30,samples=100] {x/4 + 0.2};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

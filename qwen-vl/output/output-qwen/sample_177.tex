@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+% First code snippet (should work)
+\begin{tikzpicture}
+    \draw[->] (0,0) -- (1,1);
+\end{tikzpicture}
+
+% Second code snippet (should also work if tikzset is defined correctly)
+\tikzset{
+    myarrow/.style={
+        ->,
+        thick
+    }
+}
+\begin{tikzpicture}
+    \draw[myarrow] (0,0) -- (1,1);
+\end{tikzpicture}
+
+\end{document}

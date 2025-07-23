@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={draw, minimum size=1cm}]
+    \matrix (m) [matrix of nodes, column sep=2cm, row sep=0.5cm] {
+        \node {Thread 1}; & \node {Thread n}; \\
+        \node {$wb^{1,x}$}; & \node {$wb^{n,x}$}; \\
+        \node {$wb^{1,y}$}; & \node {$wb^{n,y}$}; \\
+        \node {}; & \node {}; \\
+        \node {}; & \node {}; \\
+        \node {$\cdots$}; & \node {$\cdots$}; \\
+        \node {}; & \node {}; \\
+        \node {}; & \node {}; \\
+        \node {$\cdots$}; & \node {$\cdots$}; \\
+    };
+    
+    \draw[->] (m-2-1.south) -- ++(0,-0.5) -| (m-6-2.north);
+    \draw[->] (m-3-1.south) -- ++(0,-0.5) -| (m-7-2.north);
+    \draw[->] (m-2-2.south) -- ++(0,-0.5) -| (m-6-1.north);
+    \draw[->] (m-3-2.south) -- ++(0,-0.5) -| (m-7-1.north);
+    
+    \node at (m-8-1.south) [below=0.5cm] {\large Shared Memory};
+\end{tikzpicture}
+
+\end{document}

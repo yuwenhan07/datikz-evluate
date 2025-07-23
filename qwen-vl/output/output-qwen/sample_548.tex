@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{3d}
+
+\begin{document}
+\begin{tikzpicture}[x={(-0.5cm,-0.5cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}, scale=2]
+
+% Define the particle spin axis
+\draw[red, thick] (0,0,0) -- (1,0,0);
+\draw[green, thick] (0,0,0) -- (0,1,0);
+
+% Define the particle
+\shade[ball color=red!80!black] (0,0,0) circle (0.4);
+\shade[ball color=green!80!black] (0,0,0) circle (0.4);
+
+% Define the white space in the middle
+\shade[ball color=white] (0,0,0) circle (0.4);
+
+% Define the particle box
+\draw[fill=white] (-1,-1,-1) -- (-1,1,-1) -- (1,1,-1) -- (1,-1,-1) -- cycle;
+\draw[fill=white] (-1,-1,1) -- (-1,1,1) -- (1,1,1) -- (1,-1,1) -- cycle;
+\draw[fill=white] (-1,-1,-1) -- (-1,-1,1) -- (1,-1,1) -- (1,-1,-1) -- cycle;
+\draw[fill=white] (-1,1,-1) -- (-1,1,1) -- (1,1,1) -- (1,1,-1) -- cycle;
+\draw[fill=white] (-1,-1,-1) -- (-1,1,-1) -- (-1,1,1) -- (-1,-1,1) -- cycle;
+\draw[fill=white] (1,-1,-1) -- (1,1,-1) -- (1,1,1) -- (1,-1,1) -- cycle;
+
+% Position the particle in the center of the box
+\begin{scope}[canvas is xy plane at z=0]
+    \draw[fill=white] (0,0) circle (0.4);
+\end{scope}
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{graphicx} % For \includegraphics
+
+\begin{document}
+
+\begin{tikzpicture}
+  % Step 1: Include the black-and-white image
+  \node (img) {\includegraphics[width=4cm]{example-image-duck}};
+  
+  % Step 2: Overlay a red circle on the image
+  % Use 'overlay' to ensure the circle is drawn on top of the image
+  % 'on background layer' (optional, if image is on a different layer)
+  \node[red, circle, draw, minimum size=1cm, overlay, on background layer] 
+    at (img) {};
+\end{tikzpicture}
+
+\end{document}

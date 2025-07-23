@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}[
+  node distance=2cm, % Space between boxes
+  every node/.style={draw, rectangle} % Style for all boxes
+]
+  % Define nodes (boxes)
+  \node (read) {Read};
+  \node (write) [below=of read] {Write};
+  \node (readX) [below=of write] {Read X};
+  \node (writeX) [below=of readX] {Write X};
+  \node (readY) [below=of writeX] {Read Y};
+  \node (writeY) [below=of readY] {Write Y};
+  
+  % Draw arrows with custom start/end points (avoiding box overlap)
+  % Arrow from "Read" to "Write" (starts 10pt above "Read", ends 10pt below "Write")
+  \draw [->] (read.north) + (0,10pt) -- (write.south) + (0,-10pt);
+  
+  % Arrow from "Write" to "Read X" (starts 10pt above "Write", ends 10pt below "Read X")
+  \draw [->] (write.north) + (0,10pt) -- (readX.south) + (0,-10pt);
+  
+  % Arrow from "Read X" to "Write X" (starts 10pt above "Read X", ends 10pt below "Write X")
+  \draw [->] (readX.north) + (0,10pt) -- (writeX.south) + (0,-10pt);
+  
+  % Arrow from "Write X" to "Read Y" (starts 10pt above "Write X", ends 10pt below "Read Y")
+  \draw [->] (writeX.north) + (0,10pt) -- (readY.south) + (0,-10pt);
+  
+  % Arrow from "Read Y" to "Write Y" (starts 10pt above "Read Y", ends 10pt below "Write Y")
+  \draw [->] (readY.north) + (0,10pt) -- (writeY.south) + (0,-10pt);
+\end{tikzpicture}
+
+\end{document}

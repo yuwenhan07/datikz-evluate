@@ -1,0 +1,55 @@
+To illustrate the relationship between the words in an equivalence class using swaps, we can represent this as a directed graph where each vertex represents a word in the equivalence class, and there is a directed edge from one vertex to another if the two words are related by a swap.
+
+Here's a step-by-step explanation:
+
+1. **Identify the Equivalence Class**: Start with a set of words that belong to the same equivalence class. For example, let's consider the equivalence class of words formed by the permutation group \( S_3 \) acting on the set \(\{a, b, c\}\). The equivalence class might include words like "abc", "acb", "bac", "bca", "cab", and "cba".
+
+2. **Define the Swap Operation**: A swap operation is a transposition, which is a permutation that exchanges two elements while leaving the others fixed. For example, the swap "ab" -> "ba" is a transposition.
+
+3. **Construct the Graph**:
+   - Each word in the equivalence class is a vertex.
+   - Draw a directed edge from vertex \( w_1 \) to vertex \( w_2 \) if \( w_2 \) can be obtained from \( w_1 \) by a single swap.
+
+Let's construct the graph for the equivalence class of permutations of \(\{a, b, c\}\):
+
+- Vertices: "abc", "acb", "bac", "bca", "cab", "cba"
+- Directed Edges:
+  - From "abc" to "bac" (swap 'a' and 'b')
+  - From "abc" to "bca" (swap 'a' and 'c')
+  - From "abc" to "cab" (swap 'b' and 'c')
+  - From "acb" to "abc" (swap 'a' and 'b')
+  - From "acb" to "bca" (swap 'a' and 'c')
+  - From "acb" to "cab" (swap 'b' and 'c')
+  - From "bac" to "abc" (swap 'a' and 'b')
+  - From "bac" to "bca" (swap 'a' and 'c')
+  - From "bac" to "cab" (swap 'b' and 'c')
+  - From "bca" to "abc" (swap 'a' and 'b')
+  - From "bca" to "acb" (swap 'a' and 'c')
+  - From "bca" to "cab" (swap 'b' and 'c')
+  - From "cab" to "abc" (swap 'a' and 'b')
+  - From "cab" to "acb" (swap 'a' and 'c')
+  - From "cab" to "bca" (swap 'b' and 'c')
+  - From "cba" to "abc" (swap 'a' and 'b')
+  - From "cba" to "acb" (swap 'a' and 'c')
+  - From "cba" to "bac" (swap 'b' and 'c')
+
+The resulting graph will be a directed graph where each vertex is connected to exactly three other vertices, forming a cycle. This cycle represents the fact that any permutation in the equivalence class can be transformed into any other permutation in the class through a series of swaps.
+
+The final answer is the directed graph representing the equivalence class of permutations of \(\{a, b, c\}\):
+
+\[
+\boxed{
+\begin{array}{ccc}
+\text{Vertices} & \text{Directed Edges} \\
+\hline
+\text{"abc"} & \text{"bac", "bca", "cab"} \\
+\text{"acb"} & \text{"abc", "bca", "cab"} \\
+\text{"bac"} & \text{"abc", "bca", "cab"} \\
+\text{"bca"} & \text{"abc", "acb", "cab"} \\
+\text{"cab"} & \text{"abc", "acb", "bca"} \\
+\text{"cba"} & \text{"abc", "acb", "bac"} \\
+\end{array}
+}
+\]
+
+This graph shows that each permutation can be transformed into any other permutation in the class through a series of swaps, forming a cycle.

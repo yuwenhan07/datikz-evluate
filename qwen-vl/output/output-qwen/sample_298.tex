@@ -1,0 +1,11 @@
+The comparison between the mgn baseline and a version that uses one-hot encoded edge types instead of explicit edge type partitioning (indicated by mgn(1H)) reveals that there is no significant advantage to using the explicit edge type partitioning method. This finding supports the decision made in the study to adopt the one-hot encoding approach for several reasons:
+
+1. **Conceptual Simplicity**: One-hot encoding is generally considered more straightforward and easier to understand than explicit edge type partitioning. This simplicity can make the model's architecture and training process more intuitive.
+
+2. **Computational Efficiency**: Using one-hot encoding typically requires less computational resources compared to explicitly partitioning edge types. This can lead to faster training times and potentially lower hardware requirements, which is beneficial for large-scale applications or when deploying models on resource-constrained devices.
+
+3. **Consistency with Previous Work**: The choice to use one-hot encoding aligns with the approach taken by previous studies, as indicated by the reference to "pfaff2020learning." This consistency helps maintain a standardized methodology across different research papers, making it easier to compare results and build upon existing knowledge.
+
+4. **No Significant Advantage Found**: The lack of a significant difference in performance between the two methods suggests that the explicit edge type partitioning introduced by mgn(1H) does not provide a substantial benefit over the simpler one-hot encoding approach. This finding supports the practical decision to use one-hot encoding, as it balances simplicity and efficiency without compromising on performance.
+
+In summary, the use of one-hot encoding in ggns is justified by its conceptual simplicity and computational efficiency, while the mgn baseline continues to employ explicit edge type partitioning as per the established practices in the field.

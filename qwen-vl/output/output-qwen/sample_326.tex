@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+% Load the backgrounds library
+\usetikzlibrary{backgrounds}
+
+\begin{document}
+\begin{tikzpicture}[every node/.style={draw=none, fill=none}]
+
+  % Define a node with some content
+  \node (A) at (0,0) {%
+    \begin{tikzpicture}[remember picture]
+      \fill[red] (0,0) rectangle (1,1);
+      \fill[blue] (0.5,-0.5) rectangle (1.5,0.5);
+    \end{tikzpicture}
+  };
+
+  % Clip the node to the complement of its bounding box
+  \begin{scope}[on background layer]
+    \node [clip, draw=none, fill=none, inner sep=0pt] at (A.north west) {};
+  \end{scope}
+
+\end{tikzpicture}
+\end{document}

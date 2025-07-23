@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \node (a) [circle,draw] {$a$};
+    \node (b) [circle,draw, left of=a,xshift=-2cm] {$b$};
+    \node (c) [circle,draw, above right of=a,xshift=2cm,yshift=2cm] {$c$};
+    \node (d) [circle,draw, below right of=a,xshift=2cm,yshift=-2cm] {$d$};
+    \node (e) [circle,draw, below of=d,yshift=-2cm] {$e$};
+    \node (f) [circle,draw, below left of=e,xshift=-2cm] {$f$};
+    \node (g) [circle,draw, left of=f,xshift=-2cm] {$g$};
+    \node (h) [circle,draw, right of=c,xshift=2cm] {$h$};
+    \node (i) [circle,draw, right of=d,xshift=2cm] {$i$};
+    \node (j) [circle,draw, below of=h,yshift=-2cm] {$j$};
+    \node (k) [circle,draw, below of=i,yshift=-2cm] {$k$};
+    \node (l) [circle,draw, right of=c,xshift=2cm] {$l$};
+    \node (m) [circle,draw, above of=l,yshift=2cm] {$m$};
+    \node (n) [circle,draw, above of=m,yshift=2cm] {$n$};
+
+    \path[->]
+        (b) edge (a)
+        (g) edge (f)
+        (f) edge (e)
+        (e) edge (d)
+        (d) edge (c)
+        (c) edge (n)
+        (n) edge (m)
+        (m) edge (l)
+        (l) edge (c)
+        (l) edge (h)
+        (l) edge (i)
+        (h) edge (c)
+        (h) edge (i)
+        (i) edge (c)
+        (i) edge (j)
+        (j) edge (h)
+        (j) edge (k)
+        (k) edge (i);
+\end{tikzpicture}
+
+\end{document}

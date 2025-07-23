@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Grades},
+        ylabel={Frequency},
+        xmin=40, xmax=100,
+        ymin=0, ymax=14,
+        xtick={40,50,...,100},
+        ytick={0,2,...,14},
+        width=\textwidth,
+        height=0.8*\textwidth,
+        enlargelimits=false,
+        axis lines*=left,
+        tick align=outside,
+        grid=none,
+        nodes near coords,
+        point meta=explicit symbolic,
+        scatter/classes={
+            a={mark=*,blue}
+        }
+    ]
+    % Add data points here
+    \addplot[scatter,only marks,scatter src=explicit symbolic] coordinates {
+        (40,0) [a]
+        (50,0) [a]
+        (60,0) [a]
+        (70,0) [a]
+        (80,0) [a]
+        (90,0) [a]
+        (100,0) [a]
+    };
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the circles
+    \draw (0,0) circle (1);
+    \draw (0,0) circle (1.5);
+
+    % Label the points on the outer circle
+    \foreach \angle in {0,30,...,330} {
+        \node at (\angle:1.5) {\pgfmathtruncatemacro{\myangle}{mod(\angle+90,360)}\myangle};
+    }
+
+    % Draw the lines connecting the points
+    \foreach \i in {0,1,...,7} {
+        \foreach \j in {\i+1,...,8} {
+            \draw (\i*45:1) -- (\j*45:1.5);
+        }
+    }
+\end{tikzpicture}
+
+\end{document}

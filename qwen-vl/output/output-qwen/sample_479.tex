@@ -1,0 +1,26 @@
+It sounds like you're describing a Mealy machine that models a prioritized arbiter system, where different requests (r_0 and r_1) can be pending at various states, and the order of granting these requests matters based on their priority.
+
+Let's break down the states and transitions:
+
+### States:
+- **q0**: No pending requests.
+- **q1**: Request \( r_0 \) is pending.
+- **q2**: Request \( r_1 \) is pending.
+- **q3**: Both requests \( r_0 \) and \( r_1 \) are pending, and \( r_0 \) has higher priority; thus, \( r_0 \) is granted first.
+- **q4**: Both requests \( r_0 \) and \( r_1 \) are pending, and \( r_1 \) has higher priority; thus, \( r_1 \) is granted first.
+
+### Transitions:
+1. **From q0 to q1**: Granting \( r_0 \) results in moving from q0 to q1.
+2. **From q0 to q2**: Granting \( r_1 \) results in moving from q0 to q2.
+3. **From q1 to q3**: Granting \( r_1 \) results in moving from q1 to q3.
+4. **From q2 to q4**: Granting \( r_0 \) results in moving from q2 to q4.
+5. **From q3 to q4**: Granting \( r_1 \) results in moving from q3 to q4.
+6. **From q4 to q3**: Granting \( r_0 \) results in moving from q4 to q3.
+
+### Example Transitions:
+- If the system starts in q0 and receives request \( r_0 \), it moves to q1.
+- If the system is in q1 and receives request \( r_1 \), it moves to q3.
+- If the system is in q2 and receives request \( r_0 \), it moves to q4.
+- If the system is in q4 and receives request \( r_0 \), it moves back to q3.
+
+This Mealy machine ensures that the requests are granted according to their priority, with \( r_0 \) having higher priority than \( r_1 \) when both are pending. The machine's behavior reflects the prioritization logic required for a prioritized arbiter system.

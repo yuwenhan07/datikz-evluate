@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \matrix (m) [matrix of nodes, row sep=0em, column sep=0em] {
+        & i &  & j & \\
+        x & u & a & d & b & w \\
+        y & u & \bar{a} & e & \bar{b} & w \\
+    };
+    \draw[->] (m-1-2) -- (m-2-2);
+    \draw[->] (m-1-4) -- (m-2-4);
+\end{tikzpicture}
+
+\end{document}

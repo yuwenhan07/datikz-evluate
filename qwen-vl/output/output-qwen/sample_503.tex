@@ -1,0 +1,25 @@
+The relationship between the inference batch size and the realized inference speedup for FLAN-T5 large on the CNNDM dataset can be analyzed through the provided graph. Here's a detailed breakdown:
+
+### Key Observations:
+1. **Batch Size Range**: The x-axis represents the batch size, ranging from 5 to 16.
+2. **Inference Speedup**: The y-axis represents the inference speedup achieved by varying the batch size.
+3. **Color Coding**:
+   - Red: Batch sizes 5 to 8.
+   - Green: Batch sizes 9 to 11.
+   - Blue: Batch sizes 12 to 13.
+   - Yellow: Batch size 16.
+
+### Analysis:
+- **Initial Increase (Red and Green)**: As the batch size increases from 5 to 11, there is a noticeable increase in the inference speedup. This suggests that the model benefits significantly from larger batch sizes within this range. The speedup is more pronounced at the lower end of the batch size spectrum, indicating that the model's performance improves rapidly as the batch size grows.
+  
+- **Plateauing (Blue and Yellow)**: After reaching a batch size of 11, the speedup starts to level off. By the time we reach batch size 16, the speedup does not show a significant increase compared to the previous batch sizes. This indicates that there is an optimal batch size beyond which further increases do not yield substantial improvements in inference speed.
+
+### Possible Explanations:
+1. **Memory Constraints**: Larger batch sizes require more memory, which might become a bottleneck if the system's memory capacity is limited. This could explain why the speedup plateaus after a certain point.
+   
+2. **Parallel Processing Efficiency**: Beyond a certain batch size, the efficiency of parallel processing may start to diminish due to increased communication overhead or other computational constraints. This could lead to diminishing returns in terms of speedup.
+
+3. **Model Complexity**: The model's complexity might also play a role. If the model is already optimized for smaller batch sizes, adding more data points per batch might not provide additional benefits.
+
+### Conclusion:
+The graph demonstrates that the inference speedup for FLAN-T5 large on the CNNDM dataset increases with increasing batch size until a certain point, after which the speedup plateaus. This suggests that there is an optimal batch size where the model achieves the best balance between speed and resource utilization. Further experimentation with different models and datasets might reveal similar trends but with different optimal batch sizes.

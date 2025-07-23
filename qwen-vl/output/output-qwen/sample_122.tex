@@ -1,0 +1,41 @@
+python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+K_max = 50
+h = 5
+num_instances = 100
+
+# Function to generate random test instances
+def generate_random_instances(num_instances):
+    return np.random.rand(num_instances)
+
+# Function to calculate average relative loss and mean absolute deviation
+def calculate_loss_and_deviation(K, instances):
+    # Placeholder for the calculation of relative loss and mean absolute deviation
+    # Replace this with your actual calculation logic
+    relative_loss = np.random.normal(0, 1, num_instances)
+    mean_absolute_deviation = np.mean(np.abs(relative_loss))
+    return np.mean(relative_loss), mean_absolute_deviation
+
+# Main loop to run the experiment
+results = []
+for K in range(1, K_max + 1):
+    instances = generate_random_instances(num_instances)
+    avg_relative_loss, mean_abs_deviation = calculate_loss_and_deviation(K, instances)
+    results.append((K, avg_relative_loss, mean_abs_deviation))
+
+# Convert results to arrays for plotting
+Ks, avg_losses, devs = zip(*results)
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.plot(Ks, avg_losses, marker='o', linestyle='-', label='Average Relative Loss')
+plt.fill_between(Ks, avg_losses - devs, avg_losses + devs, alpha=0.2, label='Mean Absolute Deviation')
+plt.xlabel('K')
+plt.ylabel('Relative Loss')
+plt.title('Average Relative Loss vs K with Mean Absolute Deviation')
+plt.legend()
+plt.grid(True)
+plt.show()

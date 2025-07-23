@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={draw=black, thick, minimum height=2cm, minimum width=1cm}]
+    \matrix (m) [matrix of nodes, column sep=0.5cm] {
+        \node[draw=red] (U1') {$U'_1$}; & \node[draw=red] (U2') {$U'_2$}; & \node[draw=red] (Uk') {$U'_{k'}$}; \\
+        \node[draw=blue] (U1) {$\overline{U}_1$}; & \node[draw=blue] (U2) {$\overline{U}_2$}; & \node[draw=blue] (Ukp) {$\overline{U}_{k'}$}; \\
+        U_1 & U_2 & U_{k'} \\
+    };
+    
+    \draw[->, red] (U1') -- (U2);
+    \draw[->, red] (U2') -- (U1);
+    \draw[->, blue] (U1) -- (U2);
+    \draw[->, blue] (U2) -- (U1);
+    \draw[->, red] (Uk') -- ++(0,-0.5) -- ++(0.5,0) -- ++(0,0.5);
+    \draw[->, red] (Uk') -- ++(0,-0.5) -- ++(-0.5,0) -- ++(0,0.5);
+    \draw[->, blue] (Ukp) -- ++(0,-0.5) -- ++(0.5,0) -- ++(0,0.5);
+    \draw[->, blue] (Ukp) -- ++(0,-0.5) -- ++(-0.5,0) -- ++(0,0.5);
+\end{tikzpicture}
+
+\end{document}

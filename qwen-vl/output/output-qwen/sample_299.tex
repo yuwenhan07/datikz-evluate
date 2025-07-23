@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define the color range
+\pgfmathsetmacro{\startColor}{0} % Start at blue
+\pgfmathsetmacro{\endColor}{1}   % End at red
+
+% Define the number of colors to pick
+\newcommand{\numColors}{5}
+
+% Calculate the step size
+\pgfmathsetmacro{\stepSize}{(\endColor - \startColor) / (\numColors - 1)}
+
+% Define the list of colors
+\def\colorList{}
+\foreach \i in {0,...,\numColors} {
+    \pgfmathsetmacro{\currentColor}{\startColor + \i * \stepSize}
+    \edef\temp{\noexpand\gappto\noexpand\colorList{\noexpand\color{myColor\i}!\currentColor!white}\noexpand\space}
+    \temp
+}
+
+\begin{tikzpicture}
+    \draw[fill=myColor0] (0,0) rectangle (1,1);
+    \draw[fill=myColor1] (1,0) rectangle (2,1);
+    \draw[fill=myColor2] (2,0) rectangle (3,1);
+    \draw[fill=myColor3] (3,0) rectangle (4,1);
+    \draw[fill=myColor4] (4,0) rectangle (5,1);
+\end{tikzpicture}
+
+\end{document}

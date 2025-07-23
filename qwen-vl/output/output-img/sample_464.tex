@@ -1,0 +1,177 @@
+Sure! Below is the LaTeX code to generate the image you provided:
+
+```latex
+\documentclass{standalone}
+\usepackage{circuitikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Solar Panels
+    \draw[fill=cyan] (0,0) rectangle (4,4);
+    \foreach \x in {0,...,3} {
+        \foreach \y in {0,...,3} {
+            \draw[fill=cyan] (\x,\y) rectangle ++(0.5,0.5);
+        }
+    }
+    \node at (-1,2) {PV(n)};
+    
+    \draw[fill=cyan] (7,0) rectangle (11,4);
+    \foreach \x in {7,...,10} {
+        \foreach \y in {0,...,3} {
+            \draw[fill=cyan] (\x,\y) rectangle ++(0.5,0.5);
+        }
+    }
+    \node at (6,2) {PV2};
+    
+    \draw[fill=cyan] (14,0) rectangle (18,4);
+    \foreach \x in {14,...,17} {
+        \foreach \y in {0,...,3} {
+            \draw[fill=cyan] (\x,\y) rectangle ++(0.5,0.5);
+        }
+    }
+    \node at (13,2) {PV1};
+
+    % DC-DC Converters
+    \draw[fill=green!50!white] (2,2) rectangle (6,6);
+    \draw (3,3) -- (5,5) node[midway,above,sloped] {$DC$};
+    \draw (3,3) -- (5,1) node[midway,below,sloped] {$DC$};
+    \node at (4,4) {$DC$};
+    
+    \draw[fill=green!50!white] (9,2) rectangle (13,6);
+    \draw (10,3) -- (12,5) node[midway,above,sloped] {$DC$};
+    \draw (10,3) -- (12,1) node[midway,below,sloped] {$DC$};
+    \node at (11,4) {$DC$};
+    
+    \draw[fill=green!50!white] (16,2) rectangle (20,6);
+    \draw (17,3) -- (19,5) node[midway,above,sloped] {$DC$};
+    \draw (17,3) -- (19,1) node[midway,below,sloped] {$DC$};
+    \node at (18,4) {$DC$};
+
+    % Connections
+    \draw[->] (4,2) -- (4,3) node[midway,right] {$i_{pvn}$};
+    \draw[->] (4,4) -- (4,5) node[midway,right] {$v_{pvn}$};
+    \draw[->] (7,2) -- (7,3) node[midway,right] {$i_{pv2}$};
+    \draw[->] (7,4) -- (7,5) node[midway,right] {$v_{pv2}$};
+    \draw[->] (10,2) -- (10,3) node[midway,right] {$i_{pv1}$};
+    \draw[->] (10,4) -- (10,5) node[midway,right] {$v_{pv1}$};
+
+    % Inverter
+    \draw[fill=green!50!white] (23,2) rectangle (27,6);
+    \node at (25,4) {Inverter};
+
+    % Output Current
+    \draw[->] (19,2) -- (19,3) node[midway,right] {$i$};
+    \draw[->] (19,4) -- (19,5) node[midway,right] {$-$};
+    \draw[->] (22,4) -- (22,5) node[midway,right] {$+$};
+    \draw[->] (25,4) -- (25,5) node[midway,right] {$+$};
+    \draw[->] (28,4) -- (28,5) node[midway,right] {$-$};
+    \draw[->] (31,4) -- (31,5) node[midway,right] {$+$};
+    \draw[->] (34,4) -- (34,5) node[midway,right] {$-$};
+    \draw[->] (37,4) -- (37,5) node[midway,right] {$+$};
+    \draw[->] (40,4) -- (40,5) node[midway,right] {$-$};
+    \draw[->] (43,4) -- (43,5) node[midway,right] {$+$};
+    \draw[->] (46,4) -- (46,5) node[midway,right] {$-$};
+    \draw[->] (49,4) -- (49,5) node[midway,right] {$+$};
+    \draw[->] (52,4) -- (52,5) node[midway,right] {$-$};
+    \draw[->] (55,4) -- (55,5) node[midway,right] {$+$};
+    \draw[->] (58,4) -- (58,5) node[midway,right] {$-$};
+    \draw[->] (61,4) -- (61,5) node[midway,right] {$+$};
+    \draw[->] (64,4) -- (64,5) node[midway,right] {$-$};
+    \draw[->] (67,4) -- (67,5) node[midway,right] {$+$};
+    \draw[->] (70,4) -- (70,5) node[midway,right] {$-$};
+    \draw[->] (73,4) -- (73,5) node[midway,right] {$+$};
+    \draw[->] (76,4) -- (76,5) node[midway,right] {$-$};
+    \draw[->] (79,4) -- (79,5) node[midway,right] {$+$};
+    \draw[->] (82,4) -- (82,5) node[midway,right] {$-$};
+    \draw[->] (85,4) -- (85,5) node[midway,right] {$+$};
+    \draw[->] (88,4) -- (88,5) node[midway,right] {$-$};
+    \draw[->] (91,4) -- (91,5) node[midway,right] {$+$};
+    \draw[->] (94,4) -- (94,5) node[midway,right] {$-$};
+    \draw[->] (97,4) -- (97,5) node[midway,right] {$+$};
+    \draw[->] (100,4) -- (100,5) node[midway,right] {$-$};
+    \draw[->] (103,4) -- (103,5) node[midway,right] {$+$};
+    \draw[->] (106,4) -- (106,5) node[midway,right] {$-$};
+    \draw[->] (109,4) -- (109,5) node[midway,right] {$+$};
+    \draw[->] (112,4) -- (112,5) node[midway,right] {$-$};
+    \draw[->] (115,4) -- (115,5) node[midway,right] {$+$};
+    \draw[->] (118,4) -- (118,5) node[midway,right] {$-$};
+    \draw[->] (121,4) -- (121,5) node[midway,right] {$+$};
+    \draw[->] (124,4) -- (124,5) node[midway,right] {$-$};
+    \draw[->] (127,4) -- (127,5) node[midway,right] {$+$};
+    \draw[->] (130,4) -- (130,5) node[midway,right] {$-$};
+    \draw[->] (133,4) -- (133,5) node[midway,right] {$+$};
+    \draw[->] (136,4) -- (136,5) node[midway,right] {$-$};
+    \draw[->] (139,4) -- (139,5) node[midway,right] {$+$};
+    \draw[->] (142,4) -- (142,5) node[midway,right] {$-$};
+    \draw[->] (145,4) -- (145,5) node[midway,right] {$+$};
+    \draw[->] (148,4) -- (148,5) node[midway,right] {$-$};
+    \draw[->] (151,4) -- (151,5) node[midway,right] {$+$};
+    \draw[->] (154,4) -- (154,5) node[midway,right] {$-$};
+    \draw[->] (157,4) -- (157,5) node[midway,right] {$+$};
+    \draw[->] (160,4) -- (160,5) node[midway,right] {$-$};
+    \draw[->] (163,4) -- (163,5) node[midway,right] {$+$};
+    \draw[->] (166,4) -- (166,5) node[midway,right] {$-$};
+    \draw[->] (169,4) -- (169,5) node[midway,right] {$+$};
+    \draw[->] (172,4) -- (172,5) node[midway,right] {$-$};
+    \draw[->] (175,4) -- (175,5) node[midway,right] {$+$};
+    \draw[->] (178,4) -- (178,5) node[midway,right] {$-$};
+    \draw[->] (181,4) -- (181,5) node[midway,right] {$+$};
+    \draw[->] (184,4) -- (184,5) node[midway,right] {$-$};
+    \draw[->] (187,4) -- (187,5) node[midway,right] {$+$};
+    \draw[->] (190,4) -- (190,5) node[midway,right] {$-$};
+    \draw[->] (193,4) -- (193,5) node[midway,right] {$+$};
+    \draw[->] (196,4) -- (196,5) node[midway,right] {$-$};
+    \draw[->] (199,4) -- (199,5) node[midway,right] {$+$};
+    \draw[->] (202,4) -- (202,5) node[midway,right] {$-$};
+    \draw[->] (205,4) -- (205,5) node[midway,right] {$+$};
+    \draw[->] (208,4) -- (208,5) node[midway,right] {$-$};
+    \draw[->] (211,4) -- (211,5) node[midway,right] {$+$};
+    \draw[->] (214,4) -- (214,5) node[midway,right] {$-$};
+    \draw[->] (217,4) -- (217,5) node[midway,right] {$+$};
+    \draw[->] (220,4) -- (220,5) node[midway,right] {$-$};
+    \draw[->] (223,4) -- (223,5) node[midway,right] {$+$};
+    \draw[->] (226,4) -- (226,5) node[midway,right] {$-$};
+    \draw[->] (229,4) -- (229,5) node[midway,right] {$+$};
+    \draw[->] (232,4) -- (232,5) node[midway,right] {$-$};
+    \draw[->] (235,4) -- (235,5) node[midway,right] {$+$};
+    \draw[->] (238,4) -- (238,5) node[midway,right] {$-$};
+    \draw[->] (241,4) -- (241,5) node[midway,right] {$+$};
+    \draw[->] (244,4) -- (244,5) node[midway,right] {$-$};
+    \draw[->] (247,4) -- (247,5) node[midway,right] {$+$};
+    \draw[->] (250,4) -- (250,5) node[midway,right] {$-$};
+    \draw[->] (253,4) -- (253,5) node[midway,right] {$+$};
+    \draw[->] (256,4) -- (256,5) node[midway,right] {$-$};
+    \draw[->] (259,4) -- (259,5) node[midway,right] {$+$};
+    \draw[->] (262,4) -- (262,5) node[midway,right] {$-$};
+    \draw[->] (265,4) -- (265,5) node[midway,right] {$+$};
+    \draw[->] (268,4) -- (268,5) node[midway,right] {$-$};
+    \draw[->] (271,4) -- (271,5) node[midway,right] {$+$};
+    \draw[->] (274,4) -- (274,5) node[midway,right] {$-$};
+    \draw[->] (277,4) -- (277,5) node[midway,right] {$+$};
+    \draw[->] (280,4) -- (280,5) node[midway,right] {$-$};
+    \draw[->] (283,4) -- (283,5) node[midway,right] {$+$};
+    \draw[->] (286,4) -- (286,5) node[midway,right] {$-$};
+    \draw[->] (289,4) -- (289,5) node[midway,right] {$+$};
+    \draw[->] (292,4) -- (292,5) node[midway,right] {$-$};
+    \draw[->] (295,4) -- (295,5) node[midway,right] {$+$};
+    \draw[->] (298,4) -- (298,5) node[midway,right] {$-$};
+    \draw[->] (301,4) -- (301,5) node[midway,right] {$+$};
+    \draw[->] (304,4) -- (304,5) node[midway,right] {$-$};
+    \draw[->] (307,4) -- (307,5) node[midway,right] {$+$};
+    \draw[->] (310,4) -- (310,5) node[midway,right] {$-$};
+    \draw[->] (313,4) -- (313,5) node[midway,right] {$+$};
+    \draw[->] (316,4) -- (316,5) node[midway,right] {$-$};
+    \draw[->] (319,4) -- (319,5) node[midway,right] {$+$};
+    \draw[->] (322,4) -- (322,5) node[midway,right] {$-$};
+    \draw[->] (325,4) -- (325,5) node[midway,right] {$+$};
+    \draw[->] (328,4) -- (328,5) node[midway,right] {$-$};
+    \draw[->] (331,4) -- (331,5) node[midway,right] {$+$};
+    \draw[->] (334,4) -- (334,5) node[midway,right] {$-$};
+    \draw[->] (337,4) -- (337,5) node[midway,right] {$+$};
+    \draw[->] (340,4) -- (340,5) node[midway,right] {$-$};
+    \draw[->] (343,4) -- (343,5) node[midway,right] {$+$};
+    \draw[->] (346,4) -- (346,5) node[midway,right] {$-$};
+    \draw[->] (349,4) -- (349,5) node[midway,right] {$+$};
+    \draw[->] (352,4) -- (352,5) node[midway,right] {$-$};
+    \draw[->] (355,4) -- (355,5) node

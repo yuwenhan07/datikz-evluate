@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{datavisualization}
+
+\begin{document}
+\begin{tikzpicture}
+    \datavisualization [school book axes,
+                        visualize as smooth line,
+                        y axis={label=$\text{Amount (in \$)}$},
+                        x axis={label=$\text{Years}$, ticks={step=5}},
+                        data/format=function]
+    data[set=payment1] {
+        var x : interval [0:30];
+        func y = 500 - 10 * x;
+    }
+    data[set=payment2] {
+        var x : interval [0:30];
+        func y = 750 - 25 * x;
+    }
+    [
+        visualize as smooth line,
+        label by point={at end, text={$\text{Point of Intersection}$}}
+    ]
+    data[set=intersection] {
+        var x : interval [0:30];
+        func y = 500 - 10 * x;
+        func x = 5; % This is the x-coordinate of the intersection point
+        func y = 750 - 25 * x;
+    };
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,22 @@
+csharp
+bool shouldPause = false; // Initialize to false, meaning resume by default
+LinkedListNode current = list.First; // Assuming list is a LinkedList
+
+foreach (var node in list) // This is the foreach loop
+{
+    if (shouldPause)
+    {
+        break; // Pause the loop
+    }
+    
+    // Process current node
+    Console.WriteLine(node.Value);
+    
+    // Check if we need to pause before the next node
+    if (current == list.Last && shouldPause) // If it's the last node and should pause
+    {
+        break;
+    }
+    
+    current = current.Next; // Move to next node
+}

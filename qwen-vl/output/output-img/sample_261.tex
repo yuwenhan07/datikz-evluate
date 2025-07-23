@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the first rectangle
+    \draw (0,0) rectangle (2,0.5);
+    
+    % Draw the vertical lines with labels
+    \draw[->] (0.5,0.5) -- (0.5,1.5) node[above] {$a$};
+    \draw[->] (1.5,0.5) -- (1.5,1.5) node[above] {$b$};
+    
+    % Draw the second rectangle
+    \draw (4,0) rectangle (6,0.5);
+    
+    % Draw the vertical lines with labels
+    \draw[->] (4.5,0.5) -- (4.5,1.5) node[above] {$b$};
+    \draw[->] (5.5,0.5) -- (5.5,1.5) node[above] {$a$};
+    
+    % Draw the arrow indicating the transformation
+    \draw[->] (2.5,-0.5) -- (5.5,-0.5) node[midway,above] {$\tau_{a,b}$};
+    
+    % Draw the curved line
+    \draw (6,0) to[out=90,in=180] (7,1) to[out=0,in=90] (8,0) to[out=-90,in=0] (7,-1) to[out=180,in=-90] (6,0);
+\end{tikzpicture}
+
+\end{document}

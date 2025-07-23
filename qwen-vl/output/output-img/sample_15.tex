@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Draw the circle
+    \draw (0,0) circle (5cm);
+    
+    % Draw the squares
+    \foreach \i in {0,30,...,330} {
+        \draw (\i:4.5cm) rectangle ++(90:1cm);
+    }
+    
+    % Draw the connecting lines
+    \foreach \i [count=\j] in {0,30,...,330} {
+        \draw (\i:4.5cm) -- ++(\i+90:1cm);
+        \ifnum\j<11
+            \draw (\i:4.5cm) -- ++(\i-90:1cm);
+        \fi
+    }
+    
+    % Draw the vertical lines
+    \foreach \i in {0,30,...,330} {
+        \draw (\i:4.5cm) -- ++(\i-90:1cm);
+    }
+    
+    % Draw the black dots
+    \filldraw[black] (0:4.5cm) circle (2pt);
+    \filldraw[black] (30:4.5cm) circle (2pt);
+    \filldraw[black] (60:4.5cm) circle (2pt);
+    
+    % Draw the horizontal line at the top
+    \draw (-15:4.5cm) -- ++(-15:1cm);
+    \draw (15:4.5cm) -- ++(15:1cm);
+    
+    % Draw the horizontal line at the bottom
+    \draw (-150:4.5cm) -- ++(-150:1cm);
+    \draw (-120:4.5cm) -- ++(-120:1cm);
+    \draw (-90:4.5cm) -- ++(-90:1cm);
+    \draw (-60:4.5cm) -- ++(-60:1cm);
+    \draw (-30:4.5cm) -- ++(-30:1cm);
+\end{tikzpicture}
+
+\end{document}

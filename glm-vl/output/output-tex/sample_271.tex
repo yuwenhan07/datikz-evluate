@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+  % Define the board rectangle
+  \fill[white] (0,0) rectangle (6,4); % width 6, height 4
+  % Define the number of columns and rows for dots
+  \def\columns{10} % number of dots horizontally
+  \def\rows{8}     % number of dots vertically
+  % Calculate spacing
+  \pgfmathsetmacro\hSpacing{6 / (\columns - 1)} % 6 is width, columns-1 intervals
+  \pgfmathsetmacro\vSpacing{4 / (\rows - 1)}    % 4 is height, rows-1 intervals
+  % Place dots
+  \foreach \i in {0,1,...,\columns-1} {
+    \foreach \j in {0,1,...,\rows-1} {
+      \fill[black] (\i * \hSpacing, \j * \vSpacing) circle (2pt); % 2pt radius
+    }
+  }
+\end{tikzpicture}

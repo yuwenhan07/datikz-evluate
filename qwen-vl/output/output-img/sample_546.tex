@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (A) {$A$};
+  \node[state] (B) [right of=A] {$B$};
+  \node[state] (C) [right of=B] {$C$};
+  \node[state] (D) [right of=C] {$D$};
+  \node[state] (E) [below right of=D] {$E$};
+  \node[state] (F) [below left of=E] {$F$};
+
+  \path (A) edge[bend left] node {} (B)
+        (B) edge[bend left] node {} (C)
+        (C) edge[bend left] node {} (D)
+        (D) edge[bend left] node {} (E)
+        (E) edge[bend left] node {} (F)
+        (F) edge[bend left] node {} (A);
+\end{tikzpicture}
+
+\end{document}

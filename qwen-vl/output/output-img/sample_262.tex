@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[
+  level distance=1.5cm,
+  level 1/.style={sibling distance=3.5cm},
+  level 2/.style={sibling distance=2.5cm},
+  level 3/.style={sibling distance=2.0cm},
+  level 4/.style={sibling distance=1.5cm},
+  level 5/.style={sibling distance=1.0cm},
+  edge from parent/.style={draw,thick,-},
+  every node/.style={circle,fill,inner sep=2pt}
+]
+
+\node (root) {}
+    child {node {$\theta_{1}$}
+        child {node {$\theta_{1}<\theta_{2}<l_{Clb2,SFF}<\theta_{3}<h_{Clb2,SFF}$}
+            child {node {$\theta_{1}<\theta_{2}<l_{Clb2,SFF}<\theta_{3}<h_{Clb2,SFF}<\theta_{3}$}
+                child {node {$\theta_{1}<l_{Clb2,SFF}<\theta_{2}<\theta_{3}<h_{Clb2,SFF}<\theta_{3}$}}
+                child {node {$\theta_{1}<l_{Clb2,SFF}<\theta_{2}<h_{Clb2,SFF}<\theta_{3}$}}
+            }
+            child {node {$l_{Clb2,SFF}<\theta_{1}<\theta_{2}<\theta_{3}<h_{Clb2,SFF}<\theta_{3}$}}
+        }
+        child {node {$l_{Clb2,SFF}<\theta_{1}<\theta_{2}<h_{Clb2,SFF}<\theta_{3}$}}
+    }
+    child {node {$l_{Clb2,SFF}<h_{Clb2,SFF}<\theta_{1}<\theta_{2}<\theta_{3}$}};
+
+\end{tikzpicture}
+
+\end{document}

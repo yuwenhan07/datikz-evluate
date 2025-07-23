@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define coordinates
+    \coordinate (O) at (0,0);
+    \coordinate (Xn) at (45:1);
+    \coordinate (Xn-1) at (-45:1);
+    \coordinate (Zn) at (90:1);
+    \coordinate (Zn-1) at (270:1);
+
+    % Draw axes
+    \draw[->] (O) -- (Xn) node[right] {$\vec{x}_n$};
+    \draw[->] (O) -- (Xn-1) node[right] {$\vec{x}_{n-1}$};
+    \draw[->] (O) -- (Zn) node[above] {$\vec{z}_n$};
+    \draw[->] (O) -- (Zn-1) node[left] {$\vec{z}_{n-1}$};
+
+    % Draw vectors
+    \draw[->] (O) -- (Xn |- Xn-1) node[below right] {$d_n$};
+    \draw[->] (Xn |- Xn-1) -- (Xn-1) node[below left] {$r_n$};
+
+    % Draw right angles
+    \draw[red, thick] (Xn |- Xn-1) -- ++(0,-0.1) -- ++(-0.1,0);
+    \draw[red, thick] (Xn |- Xn-1) -- ++(0,0.1) -- ++(0.1,0);
+    \draw[red, thick] (Xn |- Xn-1) -- ++(-0.1,0) -- ++(0,-0.1);
+    \draw[red, thick] (Xn |- Xn-1) -- ++(0.1,0) -- ++(0,-0.1);
+
+    % Dashed lines
+    \draw[dashed] (Xn |- Xn-1) -- (Xn);
+    \draw[dashed] (Xn |- Xn-1) -- (Xn-1);
+\end{tikzpicture}
+
+\end{document}

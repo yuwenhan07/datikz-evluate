@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=10cm,
+        height=6cm,
+        xlabel={X},
+        ylabel={Y},
+        xmin=0, xmax=10,
+        ymin=0, ymax=10,
+        xtick={0,2,...,10},
+        ytick={0,2,...,10},
+        grid=major,
+        axis lines=middle,
+        clip=false % This is important to ensure the node is placed outside the plot area
+    ]
+    
+    % Read data from the first row of the table
+    \pgfplotstablegetrowsof{data.txt} % Get the number of rows in the table
+    \pgfmathtruncatemacro{\numrows}{\pgfplotsretval-1} % Subtract 1 because we start counting from 0
+    
+    \ifnum\numrows>0
+        \pgfplotstablegetelem{0}{0}\of{data.txt} % Get the value from the first column of the first row
+        \edef\firstx{\pgfplotsretval} % Store the value in \firstx
+        
+        \pgfplotstablegetelem{0}{1}\of{data.txt} % Get the value from the second column of the first row
+        \edef\firsty{\pgfplotsretval} % Store the value in \firsty
+        
+        \node[draw=blue, fill=blue!30, circle, inner sep=2pt] at (\firstx,\firsty) {}; % Place the node at the coordinates (\firstx,\firsty)
+    \fi
+    
+    % Plot the data
+    \addplot [mark=x] table {data.txt};
+    
+\end{axis}
+\end{tikzpicture}
+\end{document}

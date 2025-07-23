@@ -1,0 +1,32 @@
+The scenario you've described involves the application of orthogonalized deflation to a rank-two tensor, specifically the tensor \( T_{ij} = \sum_{k=1}^{2} x_k^3 \delta_{ik} \delta_{jk} \), where \( \delta_{ik} \) and \( \delta_{jk} \) are Kronecker delta functions. This tensor can be simplified to:
+
+\[ T_{ij} = x_1^3 \delta_{i1} \delta_{j1} + x_2^3 \delta_{i2} \delta_{j2} \]
+
+This tensor represents a sum of two rank-one tensors, each corresponding to the signal components \( x_1 \) and \( x_2 \).
+
+### Orthogonalized Deflation Process
+
+1. **First Deflation Step:**
+   - The first step of orthogonalized deflation aims to estimate the signal component \( x_1 \).
+   - The deflated tensor after removing the influence of \( x_1 \) is:
+     \[ T_{ij} - x_1^3 \delta_{i1} \delta_{j1} \]
+   - This results in a new tensor that only contains the contribution from \( x_2 \):
+     \[ T_{ij} - x_1^3 \delta_{i1} \delta_{j1} = x_2^3 \delta_{i2} \delta_{j2} \]
+
+2. **Second Deflation Step:**
+   - The second step estimates the remaining signal component \( x_2 \) by further deflating the tensor.
+   - The deflated tensor now only contains the contribution from \( x_2 \):
+     \[ T_{ij} - x_1^3 \delta_{i1} \delta_{j1} - x_2^3 \delta_{i2} \delta_{j2} = 0 \]
+
+### Signal Recovery
+
+- **Orthogonal Case (\( x_1 = 0 \) and \( x_2 = 0 \)):**
+  - In this case, the original tensor \( T_{ij} = 0 \), and the deflation process correctly recovers both \( x_1 \) and \( x_2 \) as zero.
+
+- **Correlated Case (\( x_1 = 0.5 \) and \( x_2 = 0.5 \)):**
+  - Here, the signals are correlated, and the deflation process may alter the estimates due to the interdependence between the components.
+  - The deflated tensor will still contain contributions from both \( x_1 \) and \( x_2 \), but the estimation of each component might be biased or less accurate compared to the orthogonal case.
+
+### Conclusion
+
+The orthogonalized deflation method is effective in recovering the individual signal components when they are uncorrelated. However, in the presence of correlation, the estimation accuracy can degrade, as seen in the right figure where the signals are estimated differently than their true values. This highlights the importance of ensuring the independence of signal components for optimal deflation-based signal recovery.

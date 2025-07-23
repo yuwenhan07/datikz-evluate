@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        level 1/.style={sibling distance=40mm},
+        level 2/.style={sibling distance=20mm},
+        level 3/.style={sibling distance=10mm},
+        edge from parent/.style={draw, thick, -latex},
+        every node/.style={fill=white, inner sep=2pt, font=\footnotesize}
+    ]
+    
+    % Left Tree
+    \node (P) {$P$}
+        child {node {$b$}
+            child {node {$a$}}
+            child {node {$d$}}
+        }
+        child {node {$c$}};
+    
+    % Right Tree
+    \node[anchor=west] at (5,0) {$\operatorname{Int} P$}
+        child {node {$[d,\; d]$}
+            child {node {$[b,\; d]$}
+                child {node {$[b,\; b]$}}
+                child {node {$[a,\; d]$}}
+            }
+            child {node {$[c,\; d]$}
+                child {node {$[a,\; c]$}}
+                child {node {$[c,\; c]$}}
+            }
+        };
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

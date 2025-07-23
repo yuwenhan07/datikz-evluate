@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+        % First equation (left)
+        \node at (-2,0) {
+            \begin{equation}
+                \textcolor{red}{E_1} = \frac{1}{2}mv^2 + \frac{1}{2}I\omega^2
+            \end{equation}
+        };
+        \draw[red] (0,0) circle (1cm);
+    \end{tikzpicture}
+    \quad
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+        % Second equation (middle)
+        \node at (0,0) {
+            \begin{equation}
+                \textcolor{blue}{E_2} = \frac{1}{2}kx^2
+            \end{equation}
+        };
+        \draw[blue] (0,0) circle (1cm);
+    \end{tikzpicture}
+    \quad
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+        % Third equation (right)
+        \node at (2,0) {
+            \begin{equation}
+                \textcolor{green}{E_3} = \frac{1}{2}qV
+            \end{equation}
+        };
+        \draw[green] (0,0) circle (1cm);
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

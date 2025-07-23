@@ -1,0 +1,54 @@
+python
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Arrow
+
+# Define the center of the circle
+center = (0, 0)
+
+# Define the radius of the circle
+radius = 1
+
+# Define the number of points to plot on the circle
+num_points = 100
+
+# Calculate the angles for each point on the circle
+theta = np.linspace(0, 2 * np.pi, num_points, endpoint=False)
+
+# Calculate the x and y coordinates for each point on the circle
+x = center[0] + radius * np.cos(theta)
+y = center[1] + radius * np.sin(theta)
+
+# Create a figure and axis
+fig, ax = plt.subplots()
+
+# Plot the points on the circle
+ax.plot(x, y, 'o', color='blue')
+
+# Connect the points to form a circular path
+ax.plot(x, y, color='blue')
+
+# Add arrows at regular intervals along the path
+arrow_interval = 10  # Number of points between arrows
+for i in range(0, len(x), arrow_interval):
+    ax.add_patch(Arrow(center[0], center[1], 
+                       x[i+1] - x[i], 
+                       y[i+1] - y[i],
+                       width=0.05,
+                       head_width=0.1,
+                       head_length=0.2,
+                       fc='red',
+                       ec='red'))
+
+# Set the aspect ratio to equal so that the circle looks like a circle
+ax.set_aspect('equal')
+
+# Set the limits of the plot to ensure the entire circle is visible
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.5, 1.5)
+
+# Remove the axes
+ax.axis('off')
+
+# Show the plot
+plt.show()

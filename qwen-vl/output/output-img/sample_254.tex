@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.5]
+    % Define the number of waves
+    \def\n{3}
+    
+    % Loop through each wave
+    \foreach \i in {1,...,\n} {
+        % Draw the wave
+        \draw[thick] (0,0) sin (4*\i*pi, 2) cos (8*\i*pi, 0) sin (12*\i*pi, -2) cos (16*\i*pi, 0);
+        
+        % Add stars along the wave
+        \foreach \j in {0,0.2,...,4*\i*pi} {
+            \fill[yellow] (\j, 0.5) circle (0.1);
+        }
+        
+        % Add circles at the ends of the wave
+        \fill[black] (0,0) circle (0.2);
+        \fill[black] (16*\i*pi,0) circle (0.2);
+        
+        % Add red triangles at the peaks of the wave
+        \fill[red] (4*\i*pi, 2) -- ++(0.2,0) -- ++(0.2,-0.2) -- cycle;
+        \fill[red] (12*\i*pi, -2) -- ++(0.2,0) -- ++(0.2,-0.2) -- cycle;
+    }
+    
+    % Add blue squares along the wave
+    \foreach \i in {1,...,\n} {
+        \foreach \j in {0,0.2,...,4*\i*pi} {
+            \fill[blue] (\j, 0) rectangle ++(0.2,0.2);
+        }
+    }
+    
+    % Add green diamonds at the peaks of the wave
+    \foreach \i in {1,...,\n} {
+        \fill[green] (4*\i*pi, 2) -- ++(0.2,0) -- ++(0.2,-0.2) -- cycle;
+        \fill[green] (12*\i*pi, -2) -- ++(0.2,0) -- ++(0.2,-0.2) -- cycle;
+    }
+\end{tikzpicture}
+
+\end{document}

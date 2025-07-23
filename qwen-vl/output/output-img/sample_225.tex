@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm, auto]
+    % Define colors
+    \definecolor{red}{RGB}{255, 0, 0}
+    \definecolor{cyan}{RGB}{0, 255, 255}
+    \definecolor{magenta}{RGB}{255, 0, 255}
+    \definecolor{yellow}{RGB}{255, 255, 0}
+    
+    % Nodes (states)
+    \node[draw,circle,fill=red] (000) at (0,0) {$(0,0,0)$};
+    \node[draw,circle,fill=cyan] (001) [below left=of 000] {$(0,0,1)$};
+    \node[draw,circle,fill=red] (100) [below right=of 000] {$(1,0,0)$};
+    \node[draw,circle,fill=magenta] (002) [below left=of 001] {$(0,0,2)$};
+    \node[draw,circle,fill=magenta] (01) [below right=of 001] {$(0,1)$};
+    \node[draw,circle,fill=red] (101) [below right=of 100] {$(1,0,1)$};
+    \node[draw,circle,fill=magenta] (10) [below right=of 101] {$(1,0)$};
+    \node[draw,circle,fill=red] (02) [below left=of 01] {$(0,2)$};
+    \node[draw,circle,fill=magenta] (11) [below right=of 01] {$(1,1)$};
+    \node[draw,circle,fill=red] (03) [below left=of 02] {$(0,0,3)$};
+    \node[draw,circle,fill=magenta] (20) [below right=of 10] {$(2,0)$};
+    \node[draw,circle,fill=cyan] (112) [below right=of 11] {$(1,0,2)$};
+    \node[draw,circle,fill=cyan] (111) [below right=of 112] {$(1,1)$};
+    \node[draw,circle,fill=cyan] (110) [below right=of 111] {$(1,1)$};
+    \node[draw,circle,fill=cyan] (1111) [below right=of 110] {$(1,1)$};
+    
+    % Edges
+    \path[->]
+        (000) edge node {$x$} (001)
+        (000) edge node {$y$} (100)
+        (001) edge node {$x$} (002)
+        (001) edge node {$1$} (01)
+        (100) edge node {$x$} (101)
+        (100) edge node {$1$} (10)
+        (002) edge node {$x$} (02)
+        (002) edge node {$1$} (03)
+        (01) edge node {$x$} (02)
+        (01) edge node {$y$} (11)
+        (101) edge node {$x$} (112)
+        (101) edge node {$1$} (110)
+        (10) edge node {$x$} (111)
+        (10) edge node {$1$} (20)
+        (112) edge node {$x$} (1112)
+        (112) edge node {$1$} (1111)
+        (111) edge node {$x$} (1111)
+        (111) edge node {$1$} (1110)
+        (110) edge node {$x$} (1110)
+        (110) edge node {$1$} (1100)
+        (1111) edge node {$x$} (1111)
+        (1111) edge node {$1$} (1110)
+        (1110) edge node {$x$} (1110)
+        (1110) edge node {$1$} (1100);
+        
+    % Labels for edges
+    \node[above=0.5cm of 000] {$f$};
+    \node[above=0.5cm of 001] {$e$};
+    \node[above=0.5cm of 100] {$g$};
+    \node[above=0.5cm of 002] {$x$};
+    \node[above=0.5cm of 01] {$1$};
+    \node[above=0.5cm of 101] {$x$};
+    \node[above=0.5cm of 10] {$1$};
+    \node[above=0.5cm of 02] {$x$};
+    \node[above=0.5cm of 03] {$x_{1}y_{0}^{2}$};
+    \node[above=0.5cm of 20] {$x_{0}y_{1}$};
+    \node[above=0.5cm of 112] {$x_{0}y_{0}$};
+    \node[above=0.5cm of 111] {$x_{0}y_{0}$};
+    \node[above=0.5cm of 110] {$x_{0}y_{0}$};
+    \node[above=0.5cm of 1111] {$x_{0}y_{0}$};
+    \node[above=0.5cm of 1110] {$x_{0}y_{0}$};
+    \node[above=0.5cm of 1100] {$x_{0}y_{0}$};
+\end{tikzpicture}
+
+\end{document}

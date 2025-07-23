@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix, arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \matrix (m) [matrix of nodes, column sep=0.5cm, row sep=0.5cm] {
+        Starting values $H_i^0$ $\forall i=1,\ldots,N$ given & \\
+        Step 0: & $H_1^0$ & $H_2^0$ & $\cdots$ & $H_N^0$ \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        Step 1: & $H_1^1$ & $H_2^1$ & $\cdots$ & $H_N^1$ \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        Until convergence: & $H_i^m = H_i^{m-1}$ $\forall i=1,\ldots,N$ & \\
+    };
+
+    \draw[->] (m-2-2) -- node[below] {$K_1^0$} (m-3-2);
+    \draw[->] (m-2-3) -- node[below] {$K_2^0$} (m-3-3);
+    \draw[->] (m-2-5) -- node[below] {$K_N^0$} (m-3-5);
+
+    \draw[->] (m-4-2) -- node[below] {$K_1^1$} (m-5-2);
+    \draw[->] (m-4-3) -- node[below] {$K_2^1$} (m-5-3);
+    \draw[->] (m-4-5) -- node[below] {$K_N^1$} (m-5-5);
+
+    \draw[->] (m-2-2) -- node[right] {$C$-step} (m-4-2);
+    \draw[->] (m-2-3) -- node[right] {$C$-step} (m-4-3);
+    \draw[->] (m-2-5) -- node[right] {$C$-step} (m-4-5);
+
+    \draw[->] (m-5-2) -- node[below] {$K_1^1$} (m-6-2);
+    \draw[->] (m-5-3) -- node[below] {$K_2^1$} (m-6-3);
+    \draw[->] (m-5-5) -- node[below] {$K_N^1$} (m-6-5);
+
+    \draw[->] (m-6-2) -- node[right] {$C$-step} (m-8-2);
+    \draw[->] (m-6-3) -- node[right] {$C$-step} (m-8-3);
+    \draw[->] (m-6-5) -- node[right] {$C$-step} (m-8-5);
+\end{tikzpicture}
+
+\end{document}

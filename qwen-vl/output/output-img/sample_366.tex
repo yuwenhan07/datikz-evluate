@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=3cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (A) {$A$};
+  \node[state] (B) [right of=A] {$B$};
+  \node[state] (C) [below right of=A] {$C$};
+  \node[state] (D) [right of=C] {$D$};
+
+  \path (A) edge node {([0,1]),10} (B)
+        (A) edge node {([0,1],0)} (C)
+        (B) edge node {([10,11],5)} (D)
+        (C) edge node {([5,6],0)} (D);
+\end{tikzpicture}
+
+\end{document}

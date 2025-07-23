@@ -1,0 +1,66 @@
+csharp
+public class LinkedList<T>
+{
+    private Node<T> head;
+    private Node<T> current;
+
+    public LinkedList()
+    {
+        head = null;
+        current = null;
+    }
+
+    public void Add(T item)
+    {
+        var newNode = new Node<T>(item);
+        if (head == null)
+        {
+            head = newNode;
+            current = newNode;
+        }
+        else
+        {
+            current.next = newNode;
+            current = newNode;
+        }
+    }
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        Node<T> node = head;
+        while (node != null)
+        {
+            yield return node.item;
+            node = node.next;
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public void Resume()
+    {
+        current = head;
+    }
+
+    public void Pause()
+    {
+        // This is a placeholder for the actual pause logic
+        // In a real scenario, you might want to store the current position
+        // and then resume from there.
+    }
+}
+
+public class Node<T>
+{
+    public T item;
+    public Node<T> next;
+
+    public Node(T item)
+    {
+        this.item = item;
+        this.next = null;
+    }
+}

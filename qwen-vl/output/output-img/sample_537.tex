@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the coordinate system
+    \draw[->] (0,0) -- (1,0) node[right] {$y$};
+    \draw[->] (0,0) -- (0,1) node[above] {$z$};
+    
+    % Draw the inclined plane
+    \draw[fill=gray!30] (0,0) -- (1,0) -- (1,0.5) -- (0.5,1) -- cycle;
+    
+    % Draw the vectors
+    \draw[->] (0,0) -- (1,0.5) node[above right] {$\mathbf{q}$};
+    \draw[->] (0,0) -- (0.5,1) node[below right] {$\mathbf{r}$};
+    \draw[->] (0,0) -- (0.5,-0.5) node[below left] {$\mathbf{U}$};
+    
+    % Draw the angles
+    \pic [draw, ->, "$\theta$", angle eccentricity=1.5] {angle = 0--0.5--1};
+    \pic [draw, ->, "$\phi$", angle eccentricity=1.5] {angle = 0.5--1--0};
+    
+    % Draw the gravity vector
+    \draw[->] (4,0) -- (4,-1) node[below] {$\mathbf{g}$};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,34 @@
+It sounds like you're describing a specific type of Markov Decision Process (MDP) that incorporates multiple layers, each with its own horizon and transition dynamics. Let's break down the components of your description:
+
+### Layered MRP:
+- **Layers**: The system is divided into multiple layers, each with its own set of states and transitions.
+- **Width \( W \)**: This likely refers to the number of layers in the MDP.
+- **Horizon \( T \)**: This indicates the length of time or the number of steps within each layer before transitioning to another layer.
+
+### Transitions:
+- **Randomly Chosen**: The transitions between states within a layer are chosen randomly.
+- **Rewards**:
+  - The reward for moving from state \( s \) to state \( s' \) is uniformly distributed between \( r(s, s') - 1 \) and \( r(s, s') + 1 \).
+  - \( r(s, s') \) itself is chosen uniformly between -1 and 1.
+
+### Example:
+Imagine an MDP with two layers (width \( W = 2 \)) and a horizon of \( T = 3 \). Each layer has its own set of states and transitions, but the transitions are random, and the rewards are uniformly distributed around the value \( r(s, s') \), which is also uniformly distributed between -1 and 1.
+
+### Steps:
+1. **Initialization**: Start at the initial state of the first layer.
+2. **Transition within Layer**: At each step, choose a new state randomly based on the current state and the transition probabilities defined for that layer.
+3. **Reward Calculation**: The reward for the transition is calculated as a uniform distribution around \( r(s, s') \), where \( r(s, s') \) is uniformly distributed between -1 and 1.
+4. **Move to Next Layer**: After the horizon \( T \) steps within the current layer, move to the next layer randomly.
+5. **Repeat**: Continue this process until all layers have been traversed.
+
+### Mathematical Representation:
+Let's denote:
+- \( S_i \) as the set of states in layer \( i \).
+- \( A_{i, s} \) as the set of actions available in state \( s \) in layer \( i \).
+- \( P_{i, s, a, s'} \) as the probability of transitioning from state \( s \) to state \( s' \) in layer \( i \) when action \( a \) is taken.
+- \( R_{i, s, s'} \) as the reward for transitioning from state \( s \) to state \( s' \) in layer \( i \).
+
+The reward function \( R_{i, s, s'} \) is uniformly distributed between \( r(s, s') - 1 \) and \( r(s, s') + 1 \), where \( r(s, s') \) is uniformly distributed between -1 and 1.
+
+### Conclusion:
+This setup describes a complex MDP with layered structure, where the transitions and rewards are probabilistic and randomly determined. The randomness in both the transitions and rewards adds complexity to the decision-making process, making it a challenging problem for reinforcement learning algorithms to solve optimally.

@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.5]
+    % Draw horizontal lines
+    \foreach \y in {0,...,30} {
+        \draw[gray!30] (0,\y) -- (40,\y);
+    }
+    
+    % Draw vertical lines
+    \foreach \x in {0,10,...,40} {
+        \draw[gray!30] (\x,0) -- (\x,30);
+    }
+    
+    % Draw thicker horizontal line at the top
+    \draw[thick] (0,30) -- (40,30);
+    
+    % Draw thicker vertical lines at the left and right edges
+    \draw[thick] (0,0) -- (0,30);
+    \draw[thick] (40,0) -- (40,30);
+\end{tikzpicture}
+
+\end{document}

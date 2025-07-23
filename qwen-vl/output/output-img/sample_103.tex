@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=3cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=blue,text=black]
+
+  \node[state] (v0) {$v_0$};
+  \node[state] (v1) [right of=v0] {$v_1$};
+  \node[state] (v2) [right of=v1] {$v_2$};
+  \node[state] (v3) [right of=v2] {$v_3$};
+  \node[state] (v4) [right of=v3] {$v_2$};
+  \node[state] (v5) [right of=v4] {$v_4$};
+  \node[state] (v6) [right of=v5] {$v_5$};
+
+  \path (v0) edge node {$w_0$} (v1)
+        (v1) edge node {$w_1$} (v2)
+        (v2) edge[bend left] node {$w_2$} (v3)
+        (v3) edge[bend left] node {$w_3$} (v4)
+        (v4) edge node {$w_4$} (v5)
+        (v5) edge node {$w_5$} (v6)
+        (v6) edge node {$w_6$} (v1);
+\end{tikzpicture}
+
+\end{document}

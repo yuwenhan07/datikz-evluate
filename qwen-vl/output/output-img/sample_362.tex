@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \node[draw] (n1) {3};
+    \node[draw, right of=n1] (n2) {4};
+    \node[draw, right of=n2] (n3) {5};
+    
+    \node[draw, below of=n1, xshift=5cm] (m1) {6};
+    \node[draw, right of=m1] (m2) {7};
+    \node[draw, right of=m2] (m3) {8};
+    \node[draw, right of=m3] (m4) {9};
+    
+    \draw[->] (n1) -- (n2);
+    \draw[->] (n2) -- (n3);
+    
+    \draw[->] (m1) -- (m2);
+    \draw[->] (m2) -- (m3);
+    \draw[->] (m3) -- (m4);
+\end{tikzpicture}
+
+\end{document}

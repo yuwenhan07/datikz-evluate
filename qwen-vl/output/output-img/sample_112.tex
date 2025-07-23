@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Dataset size},
+        ylabel={Average},
+        xmin=500, xmax=200000,
+        ymin=0.5, ymax=0.7,
+        xtick={1000, 10000, 100000},
+        xticklabels={\(10^3\), \(10^4\), \(10^5\)},
+        ytick={0.55, 0.6, 0.65, 0.7},
+        legend pos=south east,
+        legend cell align=left,
+        legend style={nodes={right}},
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    
+    \addplot[
+        color=blue,
+        mark=square,
+        ]
+        coordinates {
+            (500, 0.55)
+            (1000, 0.64)
+            (3000, 0.64)
+            (5000, 0.62)
+            (10000, 0.63)
+            (200000, 0.67)
+        };
+        \addlegendentry{Multi-News}
+        
+    \addplot[
+        color=red,
+        mark=triangle,
+        ]
+        coordinates {
+            (500, 0.65)
+            (1000, 0.65)
+            (3000, 0.65)
+            (5000, 0.65)
+            (10000, 0.65)
+            (200000, 0.65)
+        };
+        \addlegendentry{SamSUM}
+        
+    \addplot[
+        color=green,
+        mark=x,
+        ]
+        coordinates {
+            (500, 0.69)
+            (1000, 0.66)
+            (3000, 0.67)
+            (5000, 0.68)
+            (10000, 0.66)
+            (200000, 0.67)
+        };
+        \addlegendentry{CNN/DM}
+        
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

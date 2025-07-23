@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage{circuitikz}
+
+\begin{document}
+
+\begin{tikzpicture}[american]
+    \draw (0,0) node[american voltage source, anchor=positive, rotate=-90] (U) {$U$};
+    \draw (U.positive) -- ++(1,0) coordinate (aux);
+    \draw (aux) -- ++(2,0) node[american current source, anchor=positive, rotate=-90] (m) {$m$};
+    \draw (aux) -- ++(2,0) node[american current source, anchor=positive, rotate=-90] (M) {$M_m\rho M_m^\dagger$};
+    
+    \draw (U.negative) -- ++(-1,0) node[left] {$\rho_e$};
+    \draw (U.input) -- ++(-1,0) node[left] {$\rho$};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the axes
+    \draw[->] (-0.5,0) -- (3.5,0) node[right] {$\mathcal{D}\left(\begin{array}{c} 2 \\ \end{array}\right)$};
+    \draw[->] (0,-0.5) -- (0,3.5) node[above] {$\mathcal{D}\left(\begin{array}{c} 1 \\ \end{array}\right)$};
+
+    % Draw the lines
+    \foreach \i in {1,...,10}{
+        \draw (\i/10,0) -- (0,\i/10);
+    }
+
+    % Label the lines
+    \node at (0.5,0.5) {$\mathcal{D}\left(\begin{array}{c} 1 \\ 2 \\ \end{array}\right)$};
+    \node at (0.5,0.25) {$\mathcal{D}\left(\begin{array}{c} 1 \\ 22 \\ \end{array}\right)$};
+    \node at (0.5,0.1) {$\mathcal{D}\left(\tau^{-1}\left(\begin{array}{c} 2 \\ \end{array}\right)\right)$};
+    \node at (0.5,0.05) {$\mathcal{D}\left(\begin{array}{c} 11 \\ 2 \\ \end{array}\right)$};
+    \node at (1.5,0.05) {$\mathcal{D}\left(\begin{array}{c} 1 \\ 2 \\ (d,\lambda) \\ \end{array}\right)$};
+\end{tikzpicture}
+
+\end{document}

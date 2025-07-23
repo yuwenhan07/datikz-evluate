@@ -1,0 +1,29 @@
+In the context of discretization and preprocessing in machine learning or data analysis, different cases can be considered depending on the specific requirements and goals of the task. Let's break down the two cases you mentioned:
+
+### Case 1: Standard Discretization
+In this case, standard discretization techniques are applied where the continuous variable \( v \) is divided into discrete intervals based on some criteria (e.g., equal-width bins, equal-frequency bins, or using quantiles). Each interval is then assigned a unique value, often the midpoint of the interval.
+
+For example, if you have a continuous variable \( v \) and you decide to use equal-width bins, you would divide the range of \( v \) into \( n \) equal intervals. The value \( v_{ip_i} \) would be assigned to the bin it falls into, and each bin would be represented by its midpoint.
+
+### Case 2: Variable Selection Based on Threshold
+In this case, you only consider the variables \( v_{ip_i} \) that exceed a certain threshold \( \frac{v}{n} \). This means that any value \( v_{ip_i} \) that does not meet this threshold will be omitted from further consideration.
+
+#### Preprocessing:
+- **Value-Probability Pairs**: These are the pairs \((v_{ip_i}, p_i)\), where \( v_{ip_i } \) is the value of the variable and \( p_i \) is the probability associated with that value.
+- **Omission**: Any pair \((v_{ip_i}, p_i)\) where \( v_{ip_i} \leq \frac{v}{n} \) is omitted from the dataset. This means that the probability \( p_i \) is also omitted, and the corresponding value \( v_{ip_i} \) is not included in the final dataset.
+
+### Example
+Suppose you have a continuous variable \( v \) with values \( [0.1, 0.3, 0.5, 0.7, 0.9] \) and their respective probabilities \( [0.1, 0.2, 0.3, 0.2, 0.2] \).
+
+- For \( n = 3 \):
+  - The threshold is \( \frac{v}{3} = \frac{0.9}{3} = 0.3 \).
+  - Values greater than or equal to 0.3 are kept: \( [0.5, 0.7, 0.9] \).
+  - Corresponding probabilities are: \( [0.3, 0.2, 0.2] \).
+
+The values less than 0.3 are omitted: \( [0.1, 0.3] \) and their probabilities \( [0.1, 0.2] \).
+
+### Summary
+- **Case 1** involves standard discretization where all values are considered, and the data is transformed into discrete intervals.
+- **Case 2** involves variable selection based on a threshold, where only values above a certain threshold are considered, leading to a reduced set of value-probability pairs.
+
+This approach can be useful when dealing with sparse data or when you want to focus on the more significant values in your dataset.

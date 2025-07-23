@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}
+  % Draw the larger box (white with black border)
+  \node[draw=black, fill=white, minimum size=4cm, inner sep=0.1cm] (outer) {};
+  
+  % Draw the smaller box (black) inside the larger box
+  \node[draw=black, fill=black, minimum size=2cm, inner sep=0.1cm] (inner) at (outer.center) {
+    \[ x + y = z \]
+    \[ \int f(x) dx \]
+    \[ e^{i\theta} = \cos\theta + i\sin\theta \]
+  };
+\end{tikzpicture}
+
+\end{document}

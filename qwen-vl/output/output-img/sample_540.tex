@@ -1,0 +1,151 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (1a) {$1a$};
+  \node[state] (2a) [below right of=1a] {$2a$};
+  \node[state] (3a) [below left of=2a] {$3a$};
+  \node[state] (4a) [below left of=3a] {$4a$};
+  \node[state] (5a) [below right of=3a] {$5a$};
+  \node[state] (6a) [below right of=4a] {$6a$};
+  \node[state] (7a) [right of=6a] {$7a$};
+  \node[state] (8a) [above right of=7a] {$8a$};
+  \node[state] (9a) [below right of=7a] {$9a$};
+  \node[state] (10a) [below right of=8a] {$10a$};
+  \node[state] (11a) [above right of=8a] {$11a$};
+  \node[state] (12a) [below right of=11a] {$12a$};
+  \node[state] (13a) [below right of=10a] {$13a$};
+  \node[state] (14a) [above right of=11a] {$14a$};
+  \node[state] (15a) [below right of=14a] {$15a$};
+
+  \path (1a) edge node {$a$} (2a)
+        (1a) edge node {$b$} (3a)
+        (2a) edge node {$a$} (3a)
+        (2a) edge node {$b$} (4a)
+        (3a) edge node {$a$} (4a)
+        (3a) edge node {$b$} (5a)
+        (4a) edge node {$a$} (5a)
+        (4a) edge node {$b$} (6a)
+        (5a) edge node {$a$} (6a)
+        (6a) edge node {$a$} (7a)
+        (6a) edge node {$b$} (8a)
+        (7a) edge node {$a$} (8a)
+        (7a) edge node {$b$} (9a)
+        (8a) edge node {$a$} (9a)
+        (8a) edge node {$b$} (10a)
+        (8a) edge[bend left] node {$a,b$} (11a)
+        (9a) edge node {$a$} (10a)
+        (9a) edge node {$b$} (11a)
+        (10a) edge node {$a$} (11a)
+        (10a) edge node {$b$} (12a)
+        (11a) edge node {$a$} (12a)
+        (11a) edge[bend left] node {$a$} (13a)
+        (12a) edge node {$a$} (13a)
+        (12a) edge node {$b$} (14a)
+        (13a) edge node {$a$} (14a)
+        (13a) edge node {$b$} (15a)
+        (14a) edge node {$a$} (15a);
+
+  % Right side of the diagram
+  \node[state] (1c) [right of=1a] {$1c$};
+  \node[state] (2c) [below right of=1c] {$2c$};
+  \node[state] (3c) [below left of=2c] {$3c$};
+  \node[state] (4c) [below left of=3c] {$4c$};
+  \node[state] (5c) [below right of=3c] {$5c$};
+  \node[state] (6c) [below right of=4c] {$6c$};
+  \node[state] (7c) [right of=6c] {$7c$};
+  \node[state] (8c) [above right of=7c] {$8c$};
+  \node[state] (9c) [below right of=7c] {$9c$};
+  \node[state] (10c) [below right of=8c] {$10c$};
+  \node[state] (11c) [above right of=8c] {$11c$};
+  \node[state] (12c) [below right of=11c] {$12c$};
+  \node[state] (13c) [below right of=10c] {$13c$};
+  \node[state] (14c) [above right of=11c] {$14c$};
+  \node[state] (15c) [below right of=14c] {$15c$};
+
+  \path (1c) edge node {$a$} (2c)
+        (1c) edge node {$b$} (3c)
+        (2c) edge node {$a$} (3c)
+        (2c) edge node {$b$} (4c)
+        (3c) edge node {$a$} (4c)
+        (3c) edge node {$b$} (5c)
+        (4c) edge node {$a$} (5c)
+        (4c) edge node {$b$} (6c)
+        (5c) edge node {$a$} (6c)
+        (6c) edge node {$a$} (7c)
+        (6c) edge node {$b$} (8c)
+        (7c) edge node {$a$} (8c)
+        (7c) edge node {$b$} (9c)
+        (8c) edge node {$a$} (9c)
+        (8c) edge node {$b$} (10c)
+        (8c) edge[bend left] node {$a,b$} (11c)
+        (9c) edge node {$a$} (10c)
+        (9c) edge node {$b$} (11c)
+        (10c) edge node {$a$} (11c)
+        (10c) edge node {$b$} (12c)
+        (11c) edge node {$a$} (12c)
+        (11c) edge[bend left] node {$a$} (13c)
+        (12c) edge node {$a$} (13c)
+        (12c) edge node {$b$} (14c)
+        (13c) edge node {$a$} (14c)
+        (13c) edge node {$b$} (15c)
+        (14c) edge node {$a$} (15c);
+
+  % Bottom left of the diagram
+  \node[state] (1b) [below of=1a,xshift=-2cm] {$1b$};
+  \node[state] (2b) [below right of=1b] {$2b$};
+  \node[state] (3b) [below left of=2b] {$3b$};
+  \node[state] (4b) [below left of=3b] {$4b$};
+  \node[state] (5b) [below right of=3b] {$5b$};
+  \node[state] (6b) [below right of=4b] {$6b$};
+  \node[state] (7b) [right of=6b] {$7b$};
+  \node[state] (8b) [above right of=7b] {$8b$};
+  \node[state] (9b) [below right of=7b] {$9b$};
+  \node[state] (10b) [below right of=8b] {$10b$};
+  \node[state] (11b) [above right of=8b] {$11b$};
+  \node[state] (12b) [below right of=11b] {$12b$};
+  \node[state] (13b) [below right of=10b] {$13b$};
+  \node[state] (14b) [above right of=11b] {$14b$};
+  \node[state] (15b) [below right of=14b] {$15b$};
+
+  \path (1b) edge node {$a$} (2b)
+        (1b) edge node {$b$} (3b)
+        (2b) edge node {$a$} (3b)
+        (2b) edge node {$b$} (4b)
+        (3b) edge node {$a$} (4b)
+        (3b) edge node {$b$} (5b)
+        (4b) edge node {$a$} (5b)
+        (4b) edge node {$b$} (6b)
+        (5b) edge node {$a$} (6b)
+        (6b) edge node {$a$} (7b)
+        (6b) edge node {$b$} (8b)
+        (7b) edge node {$a$} (8b)
+        (7b) edge node {$b$} (9b)
+        (8b) edge node {$a$} (9b)
+        (8b) edge node {$b$} (10b)
+        (8b) edge[bend left] node {$a,b$} (11b)
+        (9b) edge node {$a$} (10b)
+        (9b) edge node {$b$} (11b)
+        (10b) edge node {$a$} (11b)
+        (10b) edge node {$b$} (12b)
+        (11b) edge node {$a$} (12b)
+        (11b) edge[bend left] node {$a$} (13b)
+        (12b) edge node {$a$} (13b)
+        (12b) edge node {$b$} (14b)
+        (13b) edge node {$a$} (14b)
+        (13b) edge node {$b$} (15b)
+        (14b) edge node {$a$} (15b);
+
+  % Arrows between the diagrams
+  \draw[ultra thick,->] (1a) -- (1b);
+  \draw[ultra thick,->] (1c) -- (1b);
+  \draw[ultra thick,->] (1b) -- (1c);
+\end{tikzpicture}
+
+\end{document}

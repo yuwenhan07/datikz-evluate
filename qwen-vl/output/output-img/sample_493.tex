@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={anchor=center}]
+    \matrix (m) [matrix of nodes, column sep=0.1cm, row sep=0.1cm] {
+        & & n & & \\
+        & & & n-2 & \\
+        1 & 1 & & n-4,..,1 & \\
+        };
+    \draw[->] (m-3-1.south) -- ++(0,-1) -| (m-3-3.north);
+    
+    \matrix (m2) [matrix of nodes, column sep=0.1cm, row sep=0.1cm, below=of m-3-3.south] {
+        & & & & \\
+        & & & & \\
+        1 & & 1 & & \\
+        & & & n-2 & \\
+        n-6,..,1 & & & & \\
+        };
+    \draw[->] (m2-5-1.south) -- ++(0,-1) -| (m2-5-5.north);
+    
+    \matrix (m3) [matrix of nodes, column sep=0.1cm, row sep=0.1cm, below=of m2-5-5.south] {
+        & & & & \\
+        & & & & \\
+        1 & & 1 & & \\
+        & & & & \\
+        1 & & 1 & & \\
+        };
+    \draw[red] (m3-1-1.south west) -- (m3-5-5.south east);
+    \draw[red] (m3-1-5.south east) -- (m3-5-1.south west);
+\end{tikzpicture}
+
+\end{document}

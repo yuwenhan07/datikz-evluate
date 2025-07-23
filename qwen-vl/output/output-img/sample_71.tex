@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            view={45}{45},
+            axis lines=center,
+            axis on top,
+            xlabel=$x$,
+            ylabel=$y$,
+            zlabel=$z$,
+            width=0.3\textwidth,
+            height=0.3\textwidth,
+            colormap/hot,
+            domain=0:360,
+            y domain=0:90,
+            samples=30,
+            samples y=30,
+            z buffer=sort,
+            hide axis,
+            ]
+            \addplot3[surf] ({sin(x)*cos(y)}, {sin(x)*sin(y)}, {cos(x)});
+        \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \begin{axis}[
+            view={45}{45},
+            axis lines=center,
+            axis on top,
+            xlabel=$x$,
+            ylabel=$y$,
+            zlabel=$z$,
+            width=0.3\textwidth,
+            height=0.3\textwidth,
+            colormap/hot,
+            domain=0:360,
+            y domain=0:90,
+            samples=30,
+            samples y=30,
+            z buffer=sort,
+            hide axis,
+            ]
+            \addplot3[surf] ({sin(2*x)*cos(y)}, {sin(2*x)*sin(y)}, {cos(2*x)});
+        \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \begin{axis}[
+            view={45}{45},
+            axis lines=center,
+            axis on top,
+            xlabel=$x$,
+            ylabel=$y$,
+            zlabel=$z$,
+            width=0.3\textwidth,
+            height=0.3\textwidth,
+            colormap/hot,
+            domain=0:360,
+            y domain=0:90,
+            samples=30,
+            samples y=30,
+            z buffer=sort,
+            hide axis,
+            ]
+            \addplot3[surf] ({sin(3*x)*cos(y)}, {sin(3*x)*sin(y)}, {cos(3*x)});
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Various spherical harmonics with TikZ}
+    \label{fig:spherical_harmonics}
+\end{figure}
+
+\end{document}

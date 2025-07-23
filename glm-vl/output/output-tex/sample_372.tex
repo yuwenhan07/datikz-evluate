@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+    % Define the style for green cells
+    \tikzstyle{cell} = [rectangle, fill=green!50, text=black, minimum size=1cm]
+    
+    % Create eight cells in a vertical column with increased spacing
+    \foreach \i in {1,...,8} {
+        % Calculate vertical position with increased spacing (1.5cm between cells)
+        \node[cell] at (0, -\i * 1.5cm) {
+            \ifnum\i=1 x
+            \ifnum\i=2 z
+            \ifnum\i=3 t
+            \ifnum\i=4 v
+            \ifnum\i=5 c
+            \ifnum\i=6 c
+            \ifnum\i=7 c
+            \ifnum\i=8 c
+            \fi\fi\fi\fi\fi\fi\fi\fi
+        };
+    }
+\end{tikzpicture}
+
+\end{document}

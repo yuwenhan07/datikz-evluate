@@ -1,0 +1,48 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define the main nodes
+    \foreach \x in {0,1,...,5} {
+        \node[circle,fill,inner sep=2pt] (A\x) at (\x*60:3) {};
+        \node[circle,fill,inner sep=2pt] (B\x) at (\x*60+120:3) {};
+        \node[circle,fill,inner sep=2pt] (C\x) at (\x*60+240:3) {};
+    }
+    
+    % Draw the blue lines
+    \draw[thick,blue] (A0) -- (B0);
+    \draw[thick,blue] (A1) -- (B1);
+    \draw[thick,blue] (A2) -- (B2);
+    \draw[thick,blue] (A3) -- (B3);
+    \draw[thick,blue] (A4) -- (B4);
+    \draw[thick,blue] (A5) -- (B5);
+    
+    % Draw the red zigzag lines
+    \foreach \x in {0,1,...,5} {
+        \draw[red,thick,dashed,zigzag] (A\x) -- (B\x);
+    }
+    
+    % Draw the gray dashed lines
+    \foreach \x in {0,1,...,5} {
+        \foreach \y in {0,1,...,5} {
+            \ifnum\x=\y
+                \else
+                    \draw[gray,thin,dashed] (A\x) -- (B\y);
+            \fi
+        }
+    }
+    
+    % Draw the black dots
+    \foreach \x in {0,1,...,5} {
+        \foreach \y in {0,1,...,5} {
+            \ifnum\x=\y
+                \node[circle,fill,inner sep=2pt] at (A\x) {};
+                \node[circle,fill,inner sep=2pt] at (B\x) {};
+            \fi
+        }
+    }
+\end{tikzpicture}
+
+\end{document}

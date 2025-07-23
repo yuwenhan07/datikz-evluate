@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the horizontal line with dots
+    \draw (0,0) -- (6,0);
+    
+    % Draw the vertical line with dots
+    \draw (0,-1) -- (0,0);
+    
+    % Draw the large black circle
+    \filldraw[black] (3,0) circle (0.15);
+    
+    % Draw the smaller black circles
+    \filldraw[black] (1.5,0) circle (0.05);
+    \filldraw[black] (2.5,0) circle (0.05);
+    \filldraw[black] (4.5,0) circle (0.05);
+    \filldraw[black] (5.5,0) circle (0.05);
+    
+    % Draw the vertical line with dots on the right side
+    \foreach \x in {1.5, 2.5, 4.5, 5.5} {
+        \filldraw (\x,0) circle (0.05);
+    }
+    
+    % Draw the curved line
+    \draw (3,0) .. controls (3.5,-0.5) and (4,-0.5) .. (4.5,0);
+    
+    % Draw the lines from the large black circle to the smaller black circles
+    \draw (3,0) -- (1.5,0);
+    \draw (3,0) -- (2.5,0);
+    \draw (3,0) -- (4.5,0);
+    \draw (3,0) -- (5.5,0);
+    
+    % Add labels
+    \node at (-0.5, -1) {$D'$};
+    \node at (6.5, 0) {$T$};
+\end{tikzpicture}
+
+\end{document}

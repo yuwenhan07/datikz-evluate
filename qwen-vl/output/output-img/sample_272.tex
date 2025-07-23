@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the circle
+    \draw (0,0) circle (1);
+    
+    % Draw the numbered sections
+    \foreach \angle/\label in {0/7, 90/6, 180/5, 270/4, 360/3, 450/2, 540/1, 630/8}
+    {
+        \draw (\angle:0.9) -- (\angle:1.1) node at (\angle:1.2) {\label};
+    }
+    
+    % Draw the spiral
+    \draw[thick, spring] (0,0) -- (0:0.1) arc (0:90:0.1) -- (90:0.2) arc (90:180:0.2) -- (180:0.3) arc (180:270:0.3) -- (270:0.4) arc (270:360:0.4) -- (360:0.5) arc (360:450:0.5) -- (450:0.6) arc (450:540:0.6) -- (540:0.7) arc (540:630:0.7) -- cycle;
+    
+    % Draw the center square
+    \draw (0,0) rectangle (0.1,0.1);
+    
+    % Draw the center cross
+    \draw (-0.05,-0.05) -- (0.05,0.05);
+    \draw (-0.05,0.05) -- (0.05,-0.05);
+\end{tikzpicture}
+
+\end{document}

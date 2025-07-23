@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the rhombus
+    \draw (0,0) -- (1,1) -- (2,0) -- (1,-1) -- cycle;
+    
+    % Draw the curved top and bottom
+    \draw[thick] (0,0) .. controls (0.5,0.5) and (1.5,0.5) .. (2,0);
+    \draw[thick] (0,-1) .. controls (0.5,-0.5) and (1.5,-0.5) .. (2,-1);
+    
+    % Optional: Add dashed lines for reference
+    \draw[dashed] (0.5,0.5) -- (0.5,-0.5);
+    \draw[dashed] (1.5,0.5) -- (1.5,-0.5);
+\end{tikzpicture}
+
+\end{document}

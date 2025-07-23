@@ -1,0 +1,48 @@
+To compare the execution times of the non-restarted and thick-restarted methods when solving the invinterp problem with a sparse QR for the least squares using 1 MPI process, we need to consider several components of the algorithm: the initial computation of the QR factorization, the solution of the projected problem `eq-J-CS-decomp`, and the update of bases `eq-restart-a` and `eq-restart-b` required at restart.
+
+### Non-restarted Method
+In the non-restarted method, the entire problem is solved in one go without any intermediate restarts. This means that all the operations mentioned above are performed sequentially:
+
+1. **Initial Computation of the QR Factorization**: This involves decomposing the matrix \( A \) into an orthogonal matrix \( Q \) and an upper triangular matrix \( R \).
+2. **Solution of the Projected Problem `eq-J-CS-decomp`**: After obtaining the QR factorization, the problem is projected onto a smaller subspace and solved.
+3. **Update of Bases `eq-restart-a` and `eq-restart-b`**: These updates are not applicable since there are no restarts.
+
+The total execution time for the non-restarted method would be the sum of the times taken for each of these steps.
+
+### Thick-restarted Method
+In the thick-restarted method, the problem is solved in multiple iterations, with intermediate restarts. At each restart, the following operations are performed:
+
+1. **Initial Computation of the QR Factorization**: This step is repeated at each restart.
+2. **Solution of the Projected Problem `eq-J-CS-decomp`**: The projected problem is solved after each restart.
+3. **Update of Bases `eq-restart-a` and `eq-restart-b`**: These updates are performed at each restart.
+
+The thick-restarted method can potentially reduce the overall execution time by reducing the number of iterations needed to converge, but it also incurs additional overhead due to the repeated QR factorizations and base updates.
+
+### Comparison
+To compare the two methods, we need to measure the execution times for both the non-restarted and thick-restarted methods. Let's denote:
+- \( T_{QR} \): Time for the initial QR factorization.
+- \( T_{proj} \): Time for solving the projected problem `eq-J-CS-decomp`.
+- \( T_{update} \): Time for updating the bases `eq-restart-a` and `eq-restart-b`.
+
+For the non-restarted method, the total execution time \( T_{non-restarted} \) would be:
+\[ T_{non-restarted} = T_{QR} + T_{proj} + T_{update} \]
+
+For the thick-restarted method, if we perform \( k \) restarts, the total execution time \( T_{thick-restarted} \) would be:
+\[ T_{thick-restarted} = k \cdot (T_{QR} + T_{update}) + T_{proj} \]
+
+### Example Calculation
+Assume the following approximate times (in seconds):
+- \( T_{QR} = 5 \)
+- \( T_{proj} = 10 \)
+- \( T_{update} = 2 \)
+
+If we perform 3 restarts (\( k = 3 \)):
+\[ T_{thick-restarted} = 3 \cdot (5 + 2) + 10 = 3 \cdot 7 + 10 = 21 + 10 = 31 \]
+\[ T_{non-restarted} = 5 + 10 + 2 = 17 \]
+
+In this example, the thick-restarted method takes longer than the non-restarted method because the additional restarts and updates increase the total time.
+
+### Conclusion
+The execution time of the thick-restarted method depends on the number of restarts and the relative costs of the QR factorization and base updates compared to the projected problem solution. If the cost of the QR factorization and base updates is significantly lower than the cost of solving the projected problem, the thick-restarted method might be more efficient. However, if the cost of the QR factorization and base updates is high, the non-restarted method could be faster.
+
+To get precise results, you would need to run the actual code and measure the execution times under the specific conditions of your problem.

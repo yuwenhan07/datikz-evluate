@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, shapes.geometric, positioning, graphs, graphdrawing}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[->, >=Stealth, auto, node distance=2cm]
+    \node[draw, fill=blue!20] (DDmg) {$D_{Dmg}$};
+    \node[draw, fill=blue!20, right=of DDmg] (DT1) {$D_{T1}$};
+    \node[draw, fill=orange!50, right=of DT1] (CT1) {$C_{T1}$};
+    \node[draw, fill=blue!20, right=of CT1] (DT2) {$D_{T2}$};
+    \node[draw, fill=cyan!50, diamond, right=of DT2] (Subproblem) {subproblem};
+    \node[draw, fill=blue!20, below=of DT1] (DCS) {$D_{CS}$};
+
+    \path (DDmg) edge (CT1);
+    \path (DT1) edge (CT1);
+    \path (CT1) edge (DT2);
+    \path (DT2) edge (Subproblem);
+    \path (DCS) edge (Subproblem);
+    \path (DDmg) edge (Subproblem);
+
+    \draw[<->] (0,-4) -- (16,-4) node [midway, below] {2020};
+    \draw[<->] (16,-4) -- (32,-4) node [midway, below] {2030};
+    \draw[<->] (32,-4) -- (48,-4) node [midway, below] {2070};
+\end{tikzpicture}
+
+\end{document}

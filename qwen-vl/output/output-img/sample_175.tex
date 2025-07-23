@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    semithick]
+  \node (A) {$f$};
+  \node (B) [below of=A] {};
+  \node (C) [below of=B] {$f^{-1}$};
+
+  \path (A) edge[bend left] node {} (C);
+  \path (C) edge[bend left] node {} (A);
+\end{tikzpicture}
+
+\end{document}

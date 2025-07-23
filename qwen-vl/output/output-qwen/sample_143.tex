@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={align=center}]
+
+    % Define the image (replace with your actual image)
+    \node[anchor=west] (image) {\includegraphics[width=0.5\textwidth]{example-image}};
+    
+    % Define the text node above the image
+    \node[above=of image, anchor=south west, inner sep=0pt, outer sep=0pt] (text) {%
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            Your text here.
+        \end{minipage}
+    };
+
+\end{tikzpicture}
+
+\end{document}

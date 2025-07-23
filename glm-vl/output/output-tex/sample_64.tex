@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+    % Define chord points
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (4,0);
+    % Chord center (midpoint)
+    \coordinate (M) at ($(A)!0.5!(B)$);
+    % Semicircle centered at M, with diameter AB
+    \draw[thick] (A) -- (B);
+    \draw[thick, semicircle] (M) -- (A) arc[start angle=180, end angle=0, radius=2] -- cycle;
+    % Create a node at M, styled as a semicircle
+    \node[draw, semicircle, minimum size=2cm, anchor=center] (semicircle) at (M) {};
+    % Draw lines from semicircle node to chord center (M) and anchor point (say, (2,2))
+    \draw[->] (semicircle) -- (M); % to chord center
+    \draw[->] (semicircle) -- (2,2); % to anchor point
+\end{tikzpicture}

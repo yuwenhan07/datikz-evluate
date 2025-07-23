@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    \matrix (m) [matrix of nodes, row sep=1em, column sep=1em, nodes={draw, minimum width=1cm, minimum height=2cm, anchor=center}] {
+        & |[fill=black]| Do$^\#$ \\
+        & |[fill=black]| Re$^\flat$ \\
+        & |[fill=black]| Re$^\#$ \\
+        & |[fill=black]| Mi$^\flat$ \\
+        & |[fill=black]| Fa$^\#$ \\
+        & |[fill=black]| Sol$^\flat$ \\
+        & |[fill=black]| Sol$^\#$ \\
+        & |[fill=black]| La$^\flat$ \\
+        & |[fill=black]| La$^\#$ \\
+        & |[fill=black]| Si$^\flat$ \\
+    };
+
+    \foreach \i in {1,...,9} {
+        \node at (m-\i-1.south west) [below] {\textbf{Do}};
+        \node at (m-\i-2.south east) [below] {\textbf{Re}};
+        \node at (m-\i-3.south east) [below] {\textbf{Mi}};
+        \node at (m-\i-4.south east) [below] {\textbf{Fa}};
+        \node at (m-\i-5.south east) [below] {\textbf{Sol}};
+        \node at (m-\i-6.south east) [below] {\textbf{La}};
+        \node at (m-\i-7.south east) [below] {\textbf{Si}};
+    }
+
+    \foreach \i in {1,3,5,7,9} {
+        \node at (m-\i-1.south west) [below, fill=red!20] {\textbf{1 tono}};
+        \node at (m-\i-2.south east) [below, fill=red!20] {\textbf{1 tono}};
+        \node at (m-\i-4.south east) [below, fill=red!20] {\textbf{1 tono}};
+        \node at (m-\i-6.south east) [below, fill=red!20] {\textbf{1 tono}};
+        \node at (m-\i-8.south east) [below, fill=red!20] {\textbf{1 tono}};
+    }
+
+    \node at (m-3-2.south) [below, fill=yellow!50] {\textbf{$1/2$ tono}};
+    \node at (m-5-4.south) [below, fill=yellow!50] {\textbf{$1/2$ tono}};
+\end{tikzpicture}
+
+\end{document}

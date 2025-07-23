@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{musixtex}
+\begin{document}
+
+% Table showing the piano MIDI drum map
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline
+    Piano Note & Drum Sound \\
+    \hline
+    C4 & Kick \\
+    D4 & Snare \\
+    E4 & Hi-Hat \\
+    F4 & Crash \\
+    G4 & Ride \\
+    A4 & Tom \\
+    B4 & Cymbal \\
+    \hline
+  \end{tabular}
+  \caption{Piano MIDI Drum Map}
+\end{table}
+
+% Music score with drum mapping
+\begin{score}
+  \new DrumStaff \with {
+    instrumentName = "Drums"
+  } {
+    \drummode {
+      \drum { kick } \drum { snare } \drum { hi-hat } \drum { crash } \drum { ride } \drum { tom } \drum { cymbal }
+    }
+  }
+  \new PianoStaff {
+    \new Staff \with {
+      instrumentName = "Piano"
+    } {
+      \relative c' {
+        c4 d4 e4 f4 g4 a4 b4
+      }
+    }
+  }
+  \layout { }
+  \midi {
+    \context {
+      \PianoStaff
+      \consists "Piano_drums_engraver"
+    }
+    \context {
+      \DrumStaff
+      \consists "Piano_drums_engraver"
+    }
+  }
+\end{score}
+
+\end{document}

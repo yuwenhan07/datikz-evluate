@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw axes
+    \draw[->] (-0.5,0) -- (4,0) node[right] {$a$};
+    \draw[->] (0,-0.5) -- (0,4) node[above] {$\omega$};
+
+    % Plot points
+    \filldraw [black] (0,3) circle (1pt) node[left] {};
+    \filldraw [black] (0,1) circle (1pt) node[left] {};
+
+    % Draw vectors
+    \draw[red, thick, ->] (0,3) -- ++(0,-1) node[midway, left] {$v_{t,\omega}$};
+    \draw[red, thick, ->] (0,1) -- ++(0,-1) node[midway, left] {$v_{t,\omega}$};
+    \draw[red, thick, ->] (3,1) -- ++(1,0) node[midway, above] {$v_{t,a}$};
+
+    % Label area
+    \node at (2,1) {$A$};
+\end{tikzpicture}
+
+\end{document}

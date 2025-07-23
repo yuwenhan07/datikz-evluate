@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphs.standard, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \node[draw, fill=blue!20] (text) {Text Completion};
+    \node[draw, fill=blue!20, below=of text] (qa) {QA Engine};
+    \node[circle, draw, fill=green!20, right=of text] (open) {Open QA};
+    \node[circle, draw, fill=green!20, below=of open] (mcqa) {MCQA};
+
+    \graph [use existing nodes, grow'=right, edge quotes={pos=0.5}] {
+        text -> ["answers"] open;
+        qa -> ["answers"] open;
+        open -> ["remove choices"] mcqa;
+        text -> ["answers"] mcqa;
+        qa -> ["answers"] mcqa;
+    };
+\end{tikzpicture}
+
+\end{document}

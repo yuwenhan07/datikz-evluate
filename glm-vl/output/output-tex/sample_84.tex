@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        % Optional: Set axis limits to match the dataset's range
+        xmin=1, xmax=5, ymin=0, ymax=30,
+        % Other axis options (e.g., grid, labels)
+    ]
+    % Plot the dataset (e.g., scatter plot or line plot)
+    \addplot[scatter, only marks, color=blue] table {
+        1 1\\
+        2 4\\
+        3 9\\
+        4 16\\
+        5 25\\
+    };
+    % Plot the function (e.g., quadratic function y = x²)
+    \addplot[domain=1:5, samples=100, color=orange] {x^2};
+    \end{axis}
+\end{tikzpicture}

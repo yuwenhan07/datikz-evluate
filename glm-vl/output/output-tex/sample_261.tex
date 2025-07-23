@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{3d, shapes}
+
+\begin{document}
+\begin{tikzpicture}
+  % Base rectangle (server base)
+  \draw[thick] (0,0,0) rectangle (4,2,0);
+  % Top rectangle (3D perspective, solid)
+  \begin{scope}[on background layer]
+    \draw[thick, fill=gray] (0,2,0) rectangle (4,3,0);
+  \end{scope}
+  % Dashed circle enclosing the main figure
+  \draw[dashed] (2,1,0) circle (2.5);
+  % Small circle on the right corner (top right corner of base rectangle)
+  \draw (4,2,0) circle (0.3);
+\end{tikzpicture}
+\end{document}

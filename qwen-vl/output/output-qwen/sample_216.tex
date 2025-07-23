@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{ext.misc}
+
+\begin{document}
+\begin{tikzpicture}[declare constant=radius=0, % Initial radius
+                    full arc/.style={draw, radius=#1}, % Full arc style
+                    use int/.style={/utils/exec=\pgfmathtruncatemacro{\myint}{#1}}]
+
+  \foreach \i [evaluate=\i as \r using {int(\i*5)}] in {1,...,10} {
+    \path[full arc/.expanded=\r];
+  }
+
+  % Optionally, you can add a node at the end to show the last radius
+  \node at (current bounding box.south east) {\texttt{Radius: \myint}};
+\end{tikzpicture}
+\end{document}

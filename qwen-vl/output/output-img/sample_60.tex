@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \node[circle,draw] (u) {$u$};
+    \node[circle,draw, left of=u] (u') {$u'$};
+    \node[circle,draw, left of=u'] (u'') {$u''$};
+    \node[circle,draw, right of=u] (v) {$v$};
+    \node[circle,draw, right of=v] (v') {$v'$};
+    \node[circle,draw, right of=v'] (v'') {$v''$};
+    
+    \draw[thick] (u') -- (u);
+    \draw[thick] (u) -- (v);
+    \draw[thick] (v) -- (v');
+    \draw[thick] (v') -- (v'');
+\end{tikzpicture}
+
+\end{document}

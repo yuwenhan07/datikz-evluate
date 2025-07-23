@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+  % Define the entity style
+  \tikzstyle{entity} = [rectangle, draw=black, thick, minimum height=3cm, minimum width=4cm,
+    % Title area
+    append after command={\draw (0,0.5) -- (4,0.5);},
+    % Title node
+    node contents={\centering Entity Title\\},
+    % Attributes node
+    node [below=0.5cm of title node] {Attributes: attr1, attr2, attr3}
+  ]
+  
+  % Draw the first entity
+  \node [entity] at (0,0) {Entity 1};
+  
+  % Draw the second entity
+  \node [entity] at (6,0) {Entity 2};
+  
+  % Draw a relationship line between them
+  \draw [->] (entity 1) -- (entity 2);
+\end{tikzpicture}

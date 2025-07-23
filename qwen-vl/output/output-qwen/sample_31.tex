@@ -1,0 +1,51 @@
+python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define the original arcs
+arcs = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10']
+
+# Reorganize the arcs into three layers
+layer1 = ['B1', 'B4', 'B7']
+layer2 = ['B2', 'B5', 'B8']
+layer3 = ['B3', 'B6', 'B9']
+
+# Create a circle with three layers
+fig, ax = plt.subplots()
+ax.set_aspect('equal')
+theta = np.linspace(0.0, 2 * np.pi, 100)
+radius = 1
+x = radius * np.cos(theta)
+y = radius * np.sin(theta)
+
+# Plot the arcs
+for i, arc in enumerate(arcs):
+    if arc in layer1:
+        color = 'red'
+    elif arc in layer2:
+        color = 'blue'
+    else:
+        color = 'green'
+    ax.plot(x[i::3], y[i::3], color=color, label=arc)
+
+# Add labels to the arcs
+for i, arc in enumerate(arcs):
+    if arc in layer1:
+        ax.text(x[i::3][0], y[i::3][0], arc, ha='center', va='center')
+    elif arc in layer2:
+        ax.text(x[i::3][1], y[i::3][1], arc, ha='center', va='center')
+    else:
+        ax.text(x[i::3][2], y[i::3][2], arc, ha='center', va='center')
+
+# Add labels to the center of each arc
+for i, arc in enumerate(arcs):
+    if arc in layer1:
+        ax.text(0, 0, arc, ha='center', va='center', fontsize=12)
+    elif arc in layer2:
+        ax.text(0, 0, arc, ha='center', va='center', fontsize=12)
+    else:
+        ax.text(0, 0, arc, ha='center', va='center', fontsize=12)
+
+# Remove axes and show the plot
+ax.axis('off')
+plt.show()

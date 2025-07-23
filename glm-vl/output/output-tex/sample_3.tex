@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{trees, positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[
+  every node/.style={draw, circle, minimum size=10mm, inner sep=0pt},
+  edge from parent/.style={draw, -latex}
+]
+
+% Define the tree structure
+\node {√} [grow=right]
+  child { node {2} [grow=left]
+    child { node {4} }
+    child { node {5} }
+    child { node {6} }
+  }
+  child { node {3} [grow=right]
+    child { node {7} }
+  };
+
+% Add surrounding symbols and numbers
+\node [above left=of node-2] {+};
+\node [above right=of node-3] {-};
+\node [below left=of node-4] {×};
+\node [below right=of node-7] {÷};
+\node [left=of node-2] {1};
+\node [right=of node-3] {8};
+\node [below=of node-6] {∫};
+\node [above=of node-5] {∑};
+
+\end{tikzpicture}
+
+\end{document}

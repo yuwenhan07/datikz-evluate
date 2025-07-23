@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+    \node[state,initial] (q_0) {$q_0$};
+    \node[state] (q_1) [right=of q_0] {$q_1$};
+    \node[state] (q_2) [right=of q_1] {$q_2$};
+    \node[state] (q_3) [above right=of q_2] {$q_3$};
+    \node[state] (q_4) [below right=of q_3] {$q_4$};
+    \node[state] (q_5) [right=of q_4] {$q_5$};
+
+    \path[->]
+        (q_0) edge node {!!a,-1} (q_1)
+        (q_1) edge node {??b,+1} (q_2)
+        (q_2) edge node {??c,+1} (q_3)
+        (q_3) edge node {!!d,-1} (q_5)
+        (q_2) edge node {??d,+1} (q_4)
+        (q_6) edge node {??a,+1} (q_7)
+        (q_7) edge node {!!b,-1} (q_8)
+        (q_8) edge node {!!c,-1} (q_9);
+\end{tikzpicture}
+
+\end{document}

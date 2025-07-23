@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Node definitions
+        \node (v0) at (4,0) {$v_0$};
+        \node (v1) at (0,2) {$1$};
+        \node (v2) at (1,2) {$2$};
+        \node (v3) at (2,2) {$3$};
+        \node (v4) at (1,4) {$4$};
+        \node (v5) at (3,6) {$v_3$};
+
+        % Edges
+        \draw (v0) -- (v1);
+        \draw (v0) -- (v2);
+        \draw (v0) -- (v3);
+        \draw (v1) -- (v4);
+        \draw (v2) -- (v4);
+        \draw (v3) -- (v4);
+        \draw (v4) -- (v5);
+
+        % Wavy line
+        \draw[decorate, decoration={snake, amplitude=1pt, segment length=5pt}] (v2) -- (v4);
+
+        % Labels
+        \node at (1.5, 3) {$\tilde{r}$};
+        \node at (2.5, 5) {$\tilde{r}'$};
+
+        % Matrix
+        \matrix [right of=v0, matrix of math nodes, row sep=0.5cm] {
+            \{ & 1 & 2 & r' \\
+                & 3 & 4 & r \\
+            \} \\
+        };
+    \end{tikzpicture}
+
+    \caption{(A)}
+    \label{fig:sample_133a}
+
+    \begin{tikzpicture}[scale=0.8]
+        % Node definitions
+        \node (v0) at (4,0) {$v_0$};
+        \node (v1) at (0,2) {$1$};
+        \node (v2) at (1,2) {$2$};
+        \node (v3) at (2,2) {$3$};
+        \node (v4) at (3,4) {$4$};
+        \node (v5) at (3,6) {$v_3$};
+
+        % Edges
+        \draw (v0) -- (v1);
+        \draw (v0) -- (v2);
+        \draw (v0) -- (v3);
+        \draw (v1) -- (v4);
+        \draw (v2) -- (v4);
+        \draw (v3) -- (v4);
+        \draw (v4) -- (v5);
+
+        % Wavy line
+        \draw[decorate, decoration={snake, amplitude=1pt, segment length=5pt}] (v2) -- (v4);
+
+        % Labels
+        \node at (1.5, 3) {$\tilde{r}'$};
+        \node at (2.5, 5) {$\tilde{r}'$};
+
+        % Matrix
+        \matrix [right of=v0, matrix of math nodes, row sep=0.5cm] {
+            \{ & 1 & \tilde{r}' & v_2 \\
+                & v_0 & \tilde{v}_3 & 4 \\
+            \} \\
+        };
+    \end{tikzpicture}
+
+    \caption{(B)}
+    \label{fig:sample_133b}
+
+    \begin{tikzpicture}[scale=0.8]
+        % Node definitions
+        \node (v0) at (4,0) {$v_0$};
+        \node (v1) at (0,2) {$1$};
+        \node (v2) at (1,2) {$2$};
+        \node (v3) at (2,2) {$3$};
+        \node (v4) at (3,4) {$v_3$};
+        \node (v5) at (3,6) {$\tilde{v}_2$};
+
+        % Edges
+        \draw (v0) -- (v1);
+        \draw (v0) -- (v2);
+        \draw (v0) -- (v3);
+        \draw (v1) -- (v4);
+        \draw (v2) -- (v4);
+        \draw (v3) -- (v4);
+        \draw (v4) -- (v5);
+
+        % Wavy lines
+        \draw[decorate, decoration={snake, amplitude=1pt, segment length=5pt}] (v2) -- (v4);
+        \draw[decorate, decoration={snake, amplitude=1pt, segment length=5pt}] (v1) -- (v4);
+
+        % Labels
+        \node at (1.5, 3) {$\tilde{v}_1$};
+        \node at (2.5, 5) {$\tilde{v}_2$};
+
+        % Matrix
+        \matrix [right of=v0, matrix of math nodes, row sep=0.5cm] {
+            \{ & 2 & 3 & v_1 \\
+                & v_0 & v_2 & r' \\
+            \} \\
+        };
+    \end{tikzpicture}
+
+    \caption{(C)}
+    \label{fig:sample_133c}
+\end{figure}
+
+\end{document}

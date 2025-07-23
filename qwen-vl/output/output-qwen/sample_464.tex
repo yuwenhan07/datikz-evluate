@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel=$x$,
+        ylabel=$y$,
+        xmin=-5,
+        xmax=5,
+        ymin=-10,
+        ymax=30,
+        grid=major,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        enlargelimits=false,
+        clip=false,
+        domain=-5:5,
+        samples=100,
+        no markers,
+        smooth,
+        thick,
+        every axis plot/.append style={line width=1pt},
+        ]
+        
+        % Plot the curve y = x^2
+        \addplot [blue] {x^2};
+        
+        % Change the line style for the section where x is negative
+        \addplot [red, dashed] {x^2} coordinates {(-4,-16) (-3,-9) (-2,-4) (-1,-1)};
+        
+        % Add points with labels
+        \addplot [only marks, mark=*, mark size=2pt, black] coordinates {(0,0) (1,1) (2,4) (3,9) (4,16)};
+        \node at (0,0) [above right] {$0$};
+        \node at (1,1) [below left] {$1$};
+        \node at (2,4) [below left] {$4$};
+        \node at (3,9) [below left] {$9$};
+        \node at (4,16) [below left] {$16$};
+        
+    \end{axis}
+\end{tikzpicture}
+\end{document}

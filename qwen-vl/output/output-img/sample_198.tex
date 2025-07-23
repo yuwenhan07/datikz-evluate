@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the horizontal axis
+    \draw[->] (-3,0) -- (3,0) node[right] {$\rho$};
+    
+    % Draw the vertical axis
+    \draw[dotted] (0,-1) -- (0,2);
+    
+    % Mark the point ρ₀
+    \fill (0,0) circle (1pt) node[below] {$\rho_{0}$};
+    
+    % Draw the dashed lines
+    \foreach \angle in {0, 30, ..., 330} {
+        \draw[dashed] (0,0) -- (\angle:2);
+    }
+    
+    % Draw the solid line
+    \draw (-2, -1) -- (0,0);
+    
+    % Label infinity
+    \node at (0,2) {$\infty$};
+    
+    % Dotted line to infinity
+    \draw[dotted] (0,0) -- (0,2);
+    
+\end{tikzpicture}
+
+\end{document}

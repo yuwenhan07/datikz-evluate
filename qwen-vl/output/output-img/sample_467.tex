@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning, decorations.pathreplacing}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=0.2cm]
+    % Define the nodes for the circles
+    \foreach \x in {1,...,4} {
+        \foreach \y in {1,...,2} {
+            \node[circle, fill=gray!70, minimum size=0.5cm] (c\x\y) at (\x,\y) {};
+        }
+    }
+    
+    % Draw the vertical line
+    \draw[very thick] (3.5,0) -- (3.5,4);
+    
+    % Label the vertical line
+    \node[below=0.1cm of 3.5, anchor=north] {$\alpha_X$};
+    
+    % Add the dots and ellipses
+    \node[below=0.5cm of c11, anchor=north] {\dots};
+    \node[below=0.5cm of c21, anchor=north] {\dots};
+    \node[below=0.5cm of c31, anchor=north] {\dots};
+    \node[below=0.5cm of c41, anchor=north] {\dots};
+    
+    % Add the labels for Baire-like and Cantor-like
+    \node[above=0.5cm of c11, anchor=south, text width=6cm, align=center] (Baire) {Baire-like};
+    \node[above=0.5cm of c41, anchor=south, text width=6cm, align=center] (Cantor) {Cantor-like};
+    
+    % Draw the curved lines for the labels
+    \draw[decorate, decoration={brace, amplitude=10pt}, thick] (Baire.west) -- (Baire.east);
+    \draw[decorate, decoration={brace, amplitude=10pt}, thick] (Cantor.west) -- (Cantor.east);
+    
+    % Add the "any limit" labels
+    \node[below=0.5cm of c11, anchor=north] (limit1) {any limit};
+    \node[below=0.5cm of c41, anchor=north] (limit2) {any limit};
+    
+    % Add the omega_1 union Theta symbol
+    \node[below=1.5cm of c11, anchor=north, text width=8cm, align=center] (omega) {$\Theta_X \in \omega_1 \cup \{\Theta\}$};
+    
+    % Draw the curved line for the omega_1 union Theta label
+    \draw[decorate, decoration={brace, amplitude=10pt}, thick] (omega.west) -- (omega.east);
+\end{tikzpicture}
+
+\end{document}

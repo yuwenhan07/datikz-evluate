@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+    % Step 1: Black background rectangle
+    \fill[black] (-3,-3) rectangle (3,3);
+    
+    % Step 2: White square (centered within the black background)
+    \fill[white] (-1.5,-1.5) rectangle (1.5,1.5);
+    
+    % Step 3: Place green dots evenly on the white square
+    % Define spacing (e.g., every 0.75 units for 5x5 grid of dots)
+    \foreach \i in {0,1,2,3,4} {
+        \foreach \j in {0,1,2,3,4} {
+            \fill[green] (-1.5 + \i*0.75, -1.5 + \j*0.75) circle (1.5pt);
+        }
+    }
+\end{tikzpicture}
+\end{document}

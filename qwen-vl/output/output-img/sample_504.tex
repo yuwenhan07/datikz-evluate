@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning, graphs, graphdrawing, quotes, shapes.geometric}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \node[draw, rectangle, minimum width=3cm, minimum height=1cm] (social) {Social System};
+    \node[draw, rectangle, right=of social, minimum width=3cm, minimum height=1cm] (economic) {Economic System};
+    
+    \node[draw, rectangle, below=of social, minimum width=8cm, minimum height=6cm, fill=green!20] (supply) {Supply System};
+    \node[draw, rectangle, right=of supply, minimum width=8cm, minimum height=6cm, fill=red!20] (demand) {Demand System};
+    
+    \node[draw, rectangle, below=of supply, minimum width=4cm, minimum height=1cm] (political) {Political System};
+    \node[draw, rectangle, below=of demand, minimum width=4cm, minimum height=1cm] (ecological) {Ecological System};
+    \node[draw, rectangle, above=of supply, minimum width=4cm, minimum height=1cm] (market) {Market / Stakeholders};
+    \node[draw, rectangle, above=of demand, minimum width=4cm, minimum height=1cm] (technological) {Technological System};
+    
+    % Supply System nodes
+    \node[draw, rectangle, below left=of supply, minimum width=2cm, minimum height=1cm] (aircraft) {Aircraft Manufacturers};
+    \node[draw, rectangle, below right=of supply, minimum width=2cm, minimum height=1cm] (industry) {Industry Associates};
+    \node[draw, rectangle, below=of aircraft, minimum width=2cm, minimum height=1cm] (airports) {Airports};
+    \node[draw, rectangle, above=of supply, minimum width=2cm, minimum height=1cm] (regulator) {Regulator/ Airspace Control};
+    \node[draw, rectangle, right=of regulator, minimum width=2cm, minimum height=1cm] (ground) {Ground Services};
+    \node[draw, rectangle, below=of ground, minimum width=2cm, minimum height=1cm] (airlines) {Airlines};
+    
+    % Demand System nodes
+    \node[draw, rectangle, below left=of demand, minimum width=2cm, minimum height=1cm] (leisure) {Leisure Customers};
+    \node[draw, rectangle, below right=of demand, minimum width=2cm, minimum height=1cm] (business) {Business Customers};
+    \node[draw, rectangle, below=of leisure, minimum width=2cm, minimum height=1cm] (tour) {Tour Operators};
+    \node[draw, rectangle, below=of business, minimum width=2cm, minimum height=1cm] (travel) {Travel Service Provider};
+    
+    % Connections
+    \draw[->] (social) -- (market);
+    \draw[->] (economic) -- (market);
+    \draw[->] (social) -- (supply);
+    \draw[->] (economic) -- (supply);
+    \draw[->] (social) -- (demand);
+    \draw[->] (economic) -- (demand);
+    \draw[->] (political) -- (supply);
+    \draw[->] (political) -- (demand);
+    \draw[->] (ecological) -- (supply);
+    \draw[->] (ecological) -- (demand);
+    \draw[->] (market) -- (supply);
+    \draw[->] (market) -- (demand);
+    \draw[->] (supply) -- (aircraft);
+    \draw[->] (supply) -- (industry);
+    \draw[->] (supply) -- (airports);
+    \draw[->] (supply) -- (regulator);
+    \draw[->] (supply) -- (ground);
+    \draw[->] (supply) -- (airlines);
+    \draw[->] (demand) -- (leisure);
+    \draw[->] (demand) -- (business);
+    \draw[->] (demand) -- (tour);
+    \draw[->] (demand) -- (travel);
+    \draw[->] (aircraft) -- (supply);
+    \draw[->] (industry) -- (supply);
+    \draw[->] (airports) -- (supply);
+    \draw[->] (regulator) -- (supply);
+    \draw[->] (ground) -- (supply);
+    \draw[->] (airlines) -- (supply);
+    \draw[->] (leisure) -- (demand);
+    \draw[->] (business) -- (demand);
+    \draw[->] (tour) -- (demand);
+    \draw[->] (travel) -- (demand);
+\end{tikzpicture}
+
+\end{document}

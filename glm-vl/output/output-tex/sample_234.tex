@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{center} % Center the entire TikZ picture
+\begin{tikzpicture}
+  % First square with "A" in a white section
+  \node[draw, minimum size=2cm] (square1) at (0,0) {
+    \begin{tikzpicture}[inner sep=0pt]
+      \fill[white] (0.25,0.25) rectangle (1.75,1.75); % White rectangle inside the square
+      \node at (1,1) {A}; % Text "A" centered
+    \end{tikzpicture}
+  };
+  
+  % Second square
+  \node[draw, minimum size=2cm] (square2) at (4,0) {}; % Spaced to center the second square
+  
+  % Arrow under square2 with "B" (start) and "C" (end) on the arrow
+  \draw[->] (square2.south west) -- (square2.south east) 
+    node[above, pos=0] {B} % "B" at the start (south west) of the arrow
+    node[above, pos=1] {C} % "C" at the end (south east) of the arrow
+    ; % (pos=0 is start, pos=1 is end of the arrow)
+\end{tikzpicture}
+\end{center}
+
+\end{document}

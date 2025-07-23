@@ -1,0 +1,39 @@
+The proposal you've described involves creating an invertible mapping \( f \) from a domain \( \mathcal{D} \) to a convex polytope, where the mapping is parameterized by a differentiable Voronoi tessellation of \( \mathcal{D} \). This approach aims to integrate discrete structure into normalizing flows, which are a type of generative model used in machine learning for density estimation and sampling.
+
+### Key Components:
+
+1. **Voronoi Tessellation**: A Voronoi tessellation divides a space into regions based on proximity to a set of points (the Voronoi sites). Each region consists of all points closer to a specific site than to any other site. In this context, the Voronoi tessellation is differentiable, meaning that the boundaries of the regions can be smoothly parameterized.
+
+2. **Invertible Mapping \( f \)**: The function \( f \) maps points from the domain \( \mathcal{D} \) to a convex polytope. A convex polytope is a higher-dimensional generalization of a polygon or polyhedron, characterized by being convex and having flat faces. The invertibility ensures that every point in the convex polytope has a unique pre-image in \( \mathcal{D} \).
+
+3. **Efficient Computation**: The inverse mapping \( f^{-1} \) and the log-determinant Jacobian of the mapping can be computed efficiently. The Jacobian matrix captures how the mapping changes the volume of infinitesimal regions under the transformation. The log-determinant Jacobian is particularly important because it appears in the formula for the log-likelihood of a sample under the transformed distribution.
+
+4. **Discrete Structure**: By incorporating the discrete structure of the Voronoi tessellation, the mapping \( f \) can capture more complex patterns and structures within the data. This can be beneficial for tasks such as image generation, where the discrete nature of pixels can be leveraged.
+
+### Mathematical Formulation:
+
+Let's denote the domain \( \mathcal{D} \) as a subset of \( \mathbb{R}^d \), and let \( P \) be a convex polytope in \( \mathbb{R}^d \). The mapping \( f \) can be written as:
+\[ f: \mathcal{D} \rightarrow P \]
+
+The inverse mapping \( f^{-1} \) maps points from \( P \) back to \( \mathcal{D} \):
+\[ f^{-1}: P \rightarrow \mathcal{D} \]
+
+The Jacobian matrix \( J_f \) of the mapping \( f \) at a point \( x \in \mathcal{D} \) is given by:
+\[ J_f(x) = \frac{\partial f}{\partial x} \]
+
+The log-determinant Jacobian \( \log \det(J_f) \) is then used in the computation of the log-likelihood of a sample \( y \) under the transformed distribution:
+\[ \log p(y) = \log p(f(x)) + \log \det(J_f(x)) \]
+where \( x = f^{-1}(y) \).
+
+### Implementation and Applications:
+
+To implement this mapping, one would typically use optimization techniques to learn the parameters of the Voronoi tessellation. These parameters could include the positions of the Voronoi sites and possibly additional parameters that control the shape and structure of the polytope.
+
+Applications of such a mapping might include:
+
+- **Generative Modeling**: Using the mapping to generate new samples that are similar to the training data.
+- **Density Estimation**: Estimating the probability density function of the data.
+- **Anomaly Detection**: Identifying outliers in the data by comparing their transformed coordinates to a learned model.
+- **Image Processing**: Enhancing images by transforming them into a latent space where operations like denoising or compression can be performed more effectively.
+
+By combining the flexibility of normalizing flows with the structured representation provided by Voronoi tessellations, this approach offers a powerful tool for handling complex data distributions.

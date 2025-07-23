@@ -1,0 +1,15 @@
+\documentclass{beamer}
+\usepackage[french]{babel}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{frame}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node [anchor=south west, inner sep=0pt] (image) at (current page.south west)
+            {\includegraphics[width=\paperwidth,height=\paperheight]{example-image-a}};
+        \node [rotate=45, anchor=south west, inner sep=0pt, font=\Large] at (image.center) {mylabel AA};
+    \end{tikzpicture}
+\end{frame}
+
+\end{document}

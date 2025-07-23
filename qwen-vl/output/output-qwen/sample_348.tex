@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{tabularray}
+\usepackage{calc}
+
+\begin{document}
+
+\begin{tblr}{colspec={X[c] X[c]}, row{1} = {m}, col{1} = {c}, col{2} = {c}}
+    \textbf{Column 1} & \textbf{Column 2} \\
+    Data 1 & Data 2 \\
+    Data 3 & Data 4 \\
+\end{tblr}
+
+% Measure the width of the table
+\newlength{\tablewidth}
+\settowidth{\tablewidth}{\begin{tblr}{colspec={X[c] X[c]}, row{1} = {m}, col{1} = {c}, col{2} = {c}}
+    \textbf{Column 1} & \textbf{Column 2} \\
+    Data 1 & Data 2 \\
+    Data 3 & Data 4 \\
+\end{tblr}}
+
+\end{document}

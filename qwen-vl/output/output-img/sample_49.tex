@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+    \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+    \node[state] (CiCi) {$C_i C_i$};
+    \node[state] (CiLj) [right of=CiCi] {$C_i L_j$};
+    \node[state] (LjXa) [right of=CiLj] {$L_j X_a$};
+    \node[state] (XaLj') [right of=LjXa] {$X_a L_{j'}$};
+    \node[state] (Lj'Cii) [right of=XaLj'] {$L_{j'} C_{i'}$};
+    \node[state] (CiCi') [right of=Lj'Cii] {$C_{i'} C_{i'}$};
+
+    \node[state] (Ci''Ci'') [below of=CiCi] {$C_{i''} C_{i''}$};
+    \node[state] (Ci''Lj'') [right of=Ci''Ci''] {$C_{i''} L_{j''}$};
+    \node[state] (Lj''Xa) [right of=Ci''Lj''] {$L_{j''} X_a$};
+
+    \path[->] 
+        (CiCi) edge node {$C_i$} (CiLj)
+        (CiLj) edge node {$L_j$} (LjXa)
+        (LjXa) edge node {$X_a$} (XaLj')
+        (XaLj') edge node {$L_{j'}$} (Lj'Cii)
+        (Lj'Cii) edge node {$C_{i'}$} (CiCi')
+        (CiCi') edge[dotted,loop above] node {$C_{i'}$} (CiCi')
+        (Ci''Ci'') edge[dotted,loop left] node {$C_{i''}$} (Ci''Ci'')
+        (Ci''Ci'') edge[dotted,loop below] node {$C_{i''}$} (Ci''Ci'')
+        (Ci''Lj'') edge node {$C_{i''}$} (Ci''Lj'')
+        (Ci''Lj'') edge node {$L_{j''}$} (Lj''Xa)
+        (Lj''Xa) edge[bend right=30, dashed, loop above] node {$X_a$} (Lj''Xa);
+\end{tikzpicture}
+
+\end{document}

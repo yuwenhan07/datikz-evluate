@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \node (1) {$1$};
+  \node (v1) [right of=1] {$\overline{v}_1$};
+  \node (v2) [right of=v1] {$\overline{v}_2$};
+  \node (w) [right of=v2] {$\overline{w}$};
+
+  \path (1) edge [loop above] node {} (1);
+  \path (v1) edge node [above] {$1$} (v2);
+  \path (v2) edge node [above] {$2$} (w);
+\end{tikzpicture}
+
+\end{document}

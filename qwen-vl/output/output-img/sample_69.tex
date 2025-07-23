@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the axes
+    \draw[->] (0,0) -- (3,0) node[right] {$p_i$};
+    \draw[->] (0,0) -- (0,3) node[above] {$v_i$};
+
+    % Draw the horizontal lines
+    \draw (0,1/epsilon^2) -- (3,1/epsilon^2);
+    \draw (0,epsilon) -- (3,epsilon);
+
+    % Draw the vertical lines
+    \draw (epsilon^3/n,0) -- (epsilon^3/n,3);
+    \draw (epsilon^2,0) -- (epsilon^2,3);
+
+    % Fill the regions
+    \fill[pattern=north east lines] (epsilon^3/n,1/epsilon^2) rectangle (epsilon^2,3) node[midway, above] {Case 2};
+    \fill[gray!20] (0,epsilon) rectangle (epsilon^3/n,3) node[midway, below] {Preprocessing};
+    \fill[gray!20] (epsilon^3/n,epsilon) rectangle (epsilon^2,3) node[midway, above] {Case 1};
+
+    % Label the "Cannot Exist" region
+    \node at (epsilon^2+0.25,1/epsilon^2-0.25) {\textcolor{red}{Cannot Exist}};
+\end{tikzpicture}
+
+\end{document}

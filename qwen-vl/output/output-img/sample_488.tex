@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{forest}
+
+\begin{document}
+
+\begin{forest}
+  for tree={
+    grow'=0,
+    l sep+=1cm,
+    s sep+=1cm,
+    edge={thick},
+    parent anchor=south,
+    child anchor=north,
+    align=center,
+    fit=band,
+    where level=0{
+      draw,
+      label=above:$0$
+    }{}
+  }
+  [a
+    [a1]
+  ]
+  [b
+    [b1]
+  ]
+  [c
+    [d
+      [d1]
+    ]
+  ]
+  [d]
+\end{forest}
+
+\end{document}

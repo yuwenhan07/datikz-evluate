@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphs.standard, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={draw, rounded corners, fill=gray!30}]
+    \node (c1) [circle] {Chapter 1: Compactness};
+    \node (c2) [right=of c1] [rectangle, rounded corners] {Chapter 2: Degrees of compactness (Schauder's theorem and s-numbers)};
+    \node (c3) [below right=of c1] [rectangle, rounded corners] {Chapter 3: Approximation Schemes (Q-Compactness, Degrees of Q-compactness)};
+    \node (c4) [below right=of c3] [rectangle, rounded corners] {Chapter 4: Realizing certain approximation spaces as interpolation spaces (Applications of interpolation theory to PDEs)};
+    \node (c5) [below right=of c4] [rectangle, rounded corners] {Chapter 5: H-Operators as applications of interpolation theory};
+
+    \draw[->, blue] (c1) edge ["2"] (c2);
+    \draw[->, green] (c1) edge ["3"] (c3);
+    \draw[->, red] (c1) edge ["4"] (c4);
+    \draw[->, yellow] (c1) edge ["5"] (c5);
+\end{tikzpicture}
+
+\end{document}

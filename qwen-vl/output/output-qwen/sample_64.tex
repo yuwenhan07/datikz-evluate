@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[every node/.style={draw, circle, minimum size=1cm}]
+
+    % Define the coordinates for the chord center and the anchor point
+    \coordinate (center) at (0,0);
+    \coordinate (anchor) at (2,0);
+
+    % Draw the semicircle node centered at the chord center
+    \node[semicircle node] at (center) {};
+
+    % Draw the line from the chord center to the semicircle node
+    \draw[->] (center) -- (center);
+
+    % Draw the line from the chord center to the anchor point
+    \draw[->] (center) -- (anchor);
+
+\end{tikzpicture}
+\end{document}

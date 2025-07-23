@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    \node[draw,circle] (1) {1};
+    \node[draw,circle] (2) [below right of=1] {2};
+    \node[draw,circle] (3) [above right of=2] {3};
+    \node[draw,circle] (4) [below left of=1] {4};
+    \node[draw,circle] (5) [below right of=2] {5};
+    \node[draw,circle] (6) [below right of=3] {6};
+
+    \path[->]
+        (1) edge (2)
+        (1) edge (3)
+        (1) edge (4)
+        (2) edge (3)
+        (2) edge (5)
+        (3) edge (5)
+        (3) edge (6)
+        (4) edge (5)
+        (5) edge (6);
+\end{tikzpicture}
+
+\end{document}

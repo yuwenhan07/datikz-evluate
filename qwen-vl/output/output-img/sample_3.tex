@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+        % Define nodes for the table
+        \matrix (table) [matrix of nodes, column sep=3em, row sep=1em] {
+            tw $S_N$ & tw $S_M$ & Layer & tw${}^k S_N \setminus$ tw${}^k S_M \subset$ \\
+            \node[draw, ellipse, minimum width=1cm, minimum height=0.5cm, fill=gray!50] {}; & \node[draw, ellipse, minimum width=1cm, minimum height=0.5cm] {}; & $k \geq hS_N$ & small balls centred at \\ 
+            \node[draw, ellipse, minimum width=1cm, minimum height=0.5cm, fill=gray!70] {}; & \node[draw, ellipse, minimum width=1cm, minimum height=0.5cm] {}; & & changing points $p_{S_N}^k$ \\ 
+            \node[draw, ellipse, minimum width=1.5cm, minimum height=1cm, fill=gray!80] {}; & \node[draw, ellipse, minimum width=1cm, minimum height=0.5cm] {}; & $k > hS_N - n$ & \\ 
+            \node[draw, ellipse, minimum width=2cm, minimum height=1.5cm, fill=gray!90] {}; & \node[draw, ellipse, minimum width=1cm, minimum height=0.5cm] {}; & $k = hS_N - n$ & large ball centred at $p_{S_N}$ \\ 
+            \node[draw, ellipse, minimum width=2cm, minimum height=1.5cm, fill=gray!90] {}; & \node[draw, ellipse, minimum width=2cm, minimum height=1.5cm] {}; & $k < hS_N - n$ & difference of two large \\ 
+            & & & equally-sized balls centered at fixed points $p_{S_N}$ \\ 
+            & & & and $p_{S_M}$ resp. \\ 
+        };
+        
+        % Draw vertical lines
+        \draw (table-1-1.north west) -- (table-1-1.south west);
+        \draw (table-1-2.north west) -- (table-1-2.south west);
+        \draw (table-1-3.north west) -- (table-1-3.south west);
+        \draw (table-1-4.north west) -- (table-1-4.south west);
+        
+        % Add labels
+        \node[above=0.5em of table-1-1] {tw $S_N$};
+        \node[above=0.5em of table-1-2] {tw $S_M$};
+        \node[above=0.5em of table-1-3] {Layer};
+        \node[above=0.5em of table-1-4] {tw${}^k S_N \setminus$ tw${}^k S_M \subset$};
+    \end{tikzpicture}
+    
+    \caption{Caption for the figure.}
+    \label{fig:sample_100}
+\end{figure}
+
+\end{document}

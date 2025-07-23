@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    % Define nodes
+    \node (pipe1) [draw] {Pipe $B(1,1)$};
+    \node (filter1) [draw, right=of pipe1] {Filter $B(2,1)$};
+    \node (pipe2) [draw, right=of filter1] {Pipe $B(1,2)$};
+    \node (filter2) [draw, above right=of pipe2] {Filter $B(2,2)$};
+    \node (filter3) [draw, below right=of pipe2] {Filter $B(2,3)$};
+
+    % Draw connections
+    \draw[->] (pipe1.outp) -- (filter1.inf);
+    \draw[->] (filter1.outf) -- (pipe2.inp);
+    \draw[->] (pipe2.outp) -- (filter2.inf);
+    \draw[->] (pipe2.outp) -- (filter3.inf);
+\end{tikzpicture}
+
+\end{document}

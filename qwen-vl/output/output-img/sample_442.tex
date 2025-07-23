@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{circular}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \graph [simple, circular placement, radius=2cm] {
+        O^{(1)}_1 [style={draw=none}] -- 1 -- 2 -- 3 -- 4 -- 5 -- 6 -- 1,
+        O^{(1)}_2 [style={draw=none}] -- 1 -- 2 -- 3 -- 4 -- 1,
+        O^{(1)}_3 [style={draw=none}] -- 1 -- 2 -- 3 -- 1,
+    };
+\end{tikzpicture}
+
+\end{document}

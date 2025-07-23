@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em] {
+        & \vdots & \vdots & \vdots & \vdots \\
+        M_{\beta 0} & M_{\beta i_{\alpha\beta}} & M_{\beta i} & \cdots \\
+        \vdots & \Upsilon & \Upsilon & \cdots \\
+        M_{\alpha 0} & M_{\alpha i_{\alpha\beta}} & M_{\alpha i} & \cdots \\
+        & \vdots & \vdots & \vdots \\
+        M_{00} & M_{0i_{\alpha\beta}} & M_{0i} & \cdots \\};
+    \path[-stealth]
+        (m-2-2) edge node [left] {$\lessdot$} (m-2-1)
+        (m-2-3) edge node [left] {$\lessdot$} (m-2-2)
+        (m-2-4) edge node [left] {$\lessdot$} (m-2-3)
+        (m-3-2) edge node [left] {$\lessdot$} (m-3-1)
+        (m-3-3) edge node [left] {$\lessdot$} (m-3-2)
+        (m-3-4) edge node [left] {$\lessdot$} (m-3-3)
+        (m-4-2) edge node [left] {$\lessdot$} (m-4-1)
+        (m-4-3) edge node [left] {$\lessdot$} (m-4-2)
+        (m-4-4) edge node [left] {$\lessdot$} (m-4-3);
+\end{tikzpicture}
+
+\end{document}

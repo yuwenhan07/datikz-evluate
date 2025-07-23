@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphs.standard, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \graph [simple] {
+        T_{12} [as = {$x_1$, $x_2$}] -> T_{13} [as = {$x_1$, $x_3$}] -> {
+            T_{345} [as = {$x_3$, $x_4$, $x_5$}] -> S_{45} [as = {$x_4$, $x_5$, $x_6$}],
+            S_{37} [as = {$x_3$, $x_7$}] -> S_{78} [as = {$x_7$, $x_8$, $x_9$}]
+        }
+    };
+\end{tikzpicture}
+
+\end{document}

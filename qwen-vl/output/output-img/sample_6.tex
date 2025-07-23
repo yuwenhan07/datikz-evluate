@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=gray!50,text=white]
+
+  \node[state] (1) {$1$};
+  \node[state] (2) [right of=1] {$2$};
+  \node[state] (4) [right of=2] {$4$};
+  \node[state] (6) [right of=4] {$6$};
+
+  \path (1) edge node {$1$} (2)
+        (2) edge [loop above] node {$0$} ()
+            edge node {$2$} (4)
+            edge [bend left] node {$2$} (6)
+        (4) edge [loop above] node {$4$} ()
+            edge node {$2$} (6);
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=gray!50,text=white]
+
+  \node[state] (10) {$10$};
+  \node[state] (14) [right of=10] {$14$};
+
+  \path (10) edge node {$4$} (14)
+        (14) edge [loop above] node {$0$} ()
+            edge node {$4$} (10);
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=gray!50,text=white]
+
+  \node[state] (1) {$1$};
+  \node[state] (2) [right of=1] {$2$};
+  \node[state] (4) [right of=2] {$4$};
+  \node[state] (6) [right of=4] {$6$};
+
+  \path (1) edge node {$1$} (2)
+        (2) edge [loop above] node {$0$} ()
+            edge node {$2$} (4)
+            edge [bend left] node {$2$} (6)
+        (4) edge [loop above] node {$3$} ();
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=gray!50,text=white]
+
+  \node[state] (10) {$10$};
+  \node[state] (14) [right of=10] {$14$};
+
+  \path (10) edge node {$4$} (14)
+        (14) edge [loop above] node {$0$} ()
+            edge node {$4$} (10);
+\end{tikzpicture}
+
+\end{document}

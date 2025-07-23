@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define coordinates for the nodes
+    \coordinate (A) at (-2,0);
+    \coordinate (B) at (2,0);
+    \coordinate (C) at (0,2);
+    
+    % Draw the rectangle
+    \draw (A) -- (B) -- (C) -- cycle;
+    
+    % Draw the dots inside the rectangle
+    \foreach \x in {0,...,4} {
+        \fill (\x*0.5, 0.5) circle (0.05);
+    }
+    
+    % Draw the dots outside the rectangle
+    \foreach \x in {-2,-1.5,...,2} {
+        \fill (\x, 0.5) circle (0.05);
+    }
+    
+    % Draw the lines connecting the dots
+    \draw (A) -- (C);
+    \draw (B) -- (C);
+    
+    % Label the number 2
+    \node[draw] at (C) {2};
+    
+    % Label the letter D
+    \node at (0,-2) {$D$};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,54 @@
+Predicting and training Physics-Informed Neural Networks (PINNs) for solving inverse problems involving the scalar wave equation is an advanced topic in computational physics and machine learning. The scalar wave equation is a partial differential equation that describes how waves propagate through space and time, such as sound or seismic waves.
+
+### Overview
+
+1. **Wave Equation**: The scalar wave equation can be written as:
+   \[
+   \frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u + f(x, t)
+   \]
+   where \( u(x, t) \) is the wavefield, \( c \) is the wave speed, and \( f(x, t) \) represents external forces or sources.
+
+2. **Inverse Problem**: Inverse problems aim to determine the source term \( f(x, t) \) or other parameters from measurements of the wavefield \( u(x, t) \).
+
+3. **PINNs**: PINNs combine deep neural networks with the governing equations of the problem. They are trained to satisfy both the governing equations and the boundary conditions.
+
+4. **Training Process**:
+   - **Forward Pass**: The neural network predicts the wavefield \( u(x, t) \).
+   - **Backward Pass**: The gradients of the cost function \( L \) are computed using automatic differentiation.
+   - **Update**: The weights of the neural network are updated to minimize the cost function.
+
+### Prediction and Training
+
+#### Prediction
+The neural network \( A_u(\cdot) \) is used to predict the wavefield \( u(x, t) \). This network takes spatial and temporal coordinates as input and outputs the predicted wavefield.
+
+#### Indicator
+The indicator \( I(x, t) \) is a function that indicates whether the predicted solution satisfies the governing equations and boundary conditions. It is typically defined as:
+- \( I(x, t) = 0 \) if the solution satisfies the equations and boundary conditions.
+- \( I(x, t) = 1 \) otherwise.
+
+#### Cost Function
+The cost function \( L \) is a combination of the loss due to the governing equations and the indicator function:
+\[
+L = \sum_{i=1}^{N_{eq}} \left( \frac{\partial^2 u_i}{\partial t^2} - c^2 \nabla^2 u_i - f_i \right)^2 + \lambda \int I(x, t) dx dt
+\]
+where \( N_{eq} \) is the number of equations, \( u_i \) are the components of the wavefield, \( f_i \) are the source terms, and \( \lambda \) is a regularization parameter.
+
+#### Training
+During training, the gradients of the cost function \( L \) are computed using automatic differentiation. These gradients are then used to update the weights of the neural network \( A_u(\cdot) \) via an optimization algorithm like gradient descent.
+
+### Example Workflow
+
+1. **Define the Neural Network**: Define the architecture of the neural network \( A_u(\cdot) \) that will predict the wavefield \( u(x, t) \).
+
+2. **Define the Indicator**: Define the indicator function \( I(x, t) \) based on the governing equations and boundary conditions.
+
+3. **Define the Cost Function**: Combine the loss due to the governing equations and the indicator function into the cost function \( L \).
+
+4. **Train the Network**: Use an optimization algorithm to minimize the cost function \( L \) by updating the weights of the neural network.
+
+5. **Validation**: Validate the trained model on a separate dataset to ensure it generalizes well.
+
+### Conclusion
+
+By combining the power of deep learning with the physical constraints of the scalar wave equation, PINNs provide a powerful tool for solving inverse problems. The key steps involve defining the neural network architecture, the indicator function, and the cost function, followed by training and validation. This approach has been successfully applied to various inverse problems in seismology, acoustics, and other fields.

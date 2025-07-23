@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{array}
+\begin{document}
+
+\begin{tikzpicture}
+  % Define the matrix for the table
+  \matrix (m) [matrix of nodes,
+    nodes={align=center},
+    column 1/.style={anchor=west},
+    column 2/.style={anchor=west},
+    column 3/.style={anchor=west},
+    column 4/.style={anchor=west},
+    column 5/.style={anchor=west, xshift=10mm} % Offset column, shifted right
+  ] {
+    Step & Gear & Clutch & Brake & Offset \\
+    1 & N & engaged & off & [icon] \\
+    2 & D & disengaged & on & [icon] \\
+    3 & N & engaged & off & [icon] \\
+    4 & P & engaged & off & [icon] \\
+  };
+  % Add icons (example: gear icon, clutch symbol, brake symbol)
+  % For simplicity, use text-based icons or TikZ pictures
+  \node at (m-2-5) {\includegraphics[width=5mm]{gear.png}}; % Assuming gear icon
+  \node at (m-3-5) {\includegraphics[width=5mm]{clutch.png}}; % Clutch icon
+  \node at (m-4-5) {\includegraphics[width=5mm]{brake.png}}; % Brake icon
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphs.standard, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \graph [simple] {
+        "x" -> ["log"] "log" -> [".2"] "2" -> ["\Sigma"] "Σ",
+        "y" -> [".2"] "2" -> ["\Pi"] "Π",
+        "2" -> ["2"] "Σ",
+        "2" -> ["2"] "Π"
+    };
+\end{tikzpicture}
+
+\end{document}

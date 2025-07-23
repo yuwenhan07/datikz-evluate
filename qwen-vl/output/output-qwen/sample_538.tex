@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{tikz-qtree}
+
+\begin{document}
+
+\begin{tikzpicture}[sibling distance=10em,
+  every tree node/.style={align=center, anchor=north}]
+  \Tree 
+    [.a
+      [.b ]
+      [.\node (c) {c}; 
+        [.\node (d) {d}; ]
+        [.\node (e) {e}; ]
+      ]
+    ]
+\end{tikzpicture}
+
+\end{document}

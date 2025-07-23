@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        bar width=0.5cm,
+        ymin=0,
+        ymax=16,
+        ylabel={No. of paper published},
+        xlabel={Research Area},
+        xtick=data,
+        xticklabels={
+            Weather modeling,
+            Imaging and photonics,
+            Dynamic systems,
+            Fluid/solid mechanics,
+            Geology,
+            Remote sensing,
+            Manufacturing,
+            Materials science,
+            Acc. and conflict resolution,
+            Surveillance,
+            Medical imaging,
+            Robotics
+        },
+        nodes near coords,
+        every node near coord/.append style={anchor=north east, font=\footnotesize},
+        nodes near coords align={vertical},
+        point meta=explicit symbolic,
+        ]
+        \addplot coordinates {
+            (Weather modeling, 6)
+            (Imaging and photonics, 13)
+            (Dynamic systems, 4)
+            (Fluid/solid mechanics, 15)
+            (Geology, 3)
+            (Remote sensing, 6)
+            (Manufacturing, 4)
+            (Materials science, 4)
+            (Acc. and conflict resolution, 4)
+            (Surveillance, 10)
+            (Medical imaging, 13)
+            (Robotics, 2)
+        };
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[remember picture, overlay]
+
+    % Define the text as a node
+    \node (text) at (0,0) [anchor=west] {Test 1 Some Test};
+
+    % Split the text into components
+    \edef\temp{\noexpand\SplitArgument{2}{\noexpand\mywidth}{\noexpand\myheight}{Test 1 Some Test}}
+    \temp
+
+    % Print the width and height
+    \node at (1,-0.5) {\mywidth};
+    \node at (1,-1.0) {\myheight};
+
+\end{tikzpicture}
+\end{document}

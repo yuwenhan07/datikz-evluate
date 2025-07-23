@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.5] % Adjust scale as needed
+
+% Define the dimensions of the board
+\def\boardwidth{10} % Width of the board in inches
+\def\boardheight{8} % Height of the board in inches
+
+% Calculate the number of columns and rows based on the dimensions
+\def\ncols{3} % Number of columns
+\def\nrows{\boardheight/2} % Number of rows (assuming equal spacing)
+
+% Set the spacing between dots
+\def\dotsep{0.5} % Spacing between dots in inches
+
+% Draw the grid lines
+\draw[help lines] (0,0) grid (\boardwidth,\boardheight);
+
+% Draw the dots
+\foreach \x in {0,...,\ncols} {
+    \foreach \y in {0,...,\nrows} {
+        \fill (\x*\boardwidth/\ncols + \dotsep/2, \y*\boardheight/\nrows + \dotsep/2) circle (0.2);
+    }
+}
+
+\end{tikzpicture}
+
+\end{document}

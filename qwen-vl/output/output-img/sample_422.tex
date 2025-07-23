@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+    \node[state] (q_0) {$q_0$};
+    \node[state] (q_1) [below left of=q_0] {$q_1$};
+    \node[state] (q_2) [below right of=q_0] {$q_2$};
+    \node[state] (q_3) [below left of=q_1] {$q_3$};
+    \node[state] (q_4) [below right of=q_2] {$q_4$};
+
+    \path[->]
+        (q_0) edge [loop above] node {!r_0 \& !r_1 \& r_m/!g_0 \& !g_1 \& g_m} ()
+              edge [bend left] node {r_0 \& !r_1 \& !r_m/g_0 \& !g_1 \& !g_m} (q_1)
+              edge [bend left] node {!r_0 \& r_1 \& !r_m/!g_0 \& g_1 \& !g_m} (q_2)
+              edge [bend left] node {(r_0 \& !r_1 \& r_m)/!g_0 \& !g_1 \& !g_m} (q_3)
+              edge [bend left] node {(!r_m \& !r_0)/g_0 \& !g_1 \& !g_m} (q_4)
+        (q_1) edge [loop above] node {!r_m \& !r_1/!g_0 \& g_1 \& !g_m} ()
+              edge [bend left] node {r_m \& !r_1/g_0 \& !g_1 \& g_m} (q_0)
+              edge [bend left] node {!r_m \& r_1/g_0 \& !g_1 \& !g_m} (q_2)
+              edge [bend left] node {r_m \& r_1/!g_0 \& !g_1 \& g_m} (q_3)
+        (q_2) edge [loop above] node {r_m \& !r_0/g_0 \& !g_1 \& g_m} ()
+              edge [bend left] node {r_m \& r_0/g_0 \& !g_1 \& !g_m} (q_0)
+              edge [bend left] node {!r_m/!g_0 \& g_1 \& !g_m} (q_1)
+              edge [bend left] node {r_m/!g_0 \& !g_1 \& g_m} (q_4)
+        (q_3) edge [loop below] node {r_m/!g_0 \& !g_1 \& g_m} ()
+        (q_4) edge [loop below] node {r_m/!g_0 \& !g_1 \& g_m} ();
+\end{tikzpicture}
+
+\end{document}

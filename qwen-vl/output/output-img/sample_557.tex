@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define the nodes
+    \foreach \y in {0,...,7} {
+        \fill[orange] (\y,8-\y) circle (2pt);
+    }
+    \foreach \y in {3,...,7} {
+        \fill[blue] (\y,8-\y) circle (2pt);
+    }
+    \foreach \y in {4,...,7} {
+        \fill[red] (\y,8-\y) circle (2pt);
+    }
+
+    % Draw the lines
+    \draw (0,8) -- (7,8);
+    \draw (1,7) -- (6,8);
+    \draw (2,6) -- (5,8);
+    \draw (3,5) -- (4,8);
+    \draw (4,4) -- (5,8);
+    \draw (5,3) -- (6,8);
+    \draw (6,2) -- (7,8);
+\end{tikzpicture}
+
+\end{document}

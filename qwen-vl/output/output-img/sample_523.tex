@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Axes
+    \draw[->] (0,0) -- (4,0) node[right] {$-\sigma_{3}$};
+    \draw[->] (0,0) -- (0,4) node[above] {$\sigma_{1}$};
+
+    % Lines
+    \draw[thick, fill=blue!30] (0,0) -- (3,3) -- (4,0) -- cycle;
+    \draw[thick, fill=orange!30] (0,0) -- (4,0) -- (1,1) -- cycle;
+
+    % Labels
+    \node at (3.5, 2.5) {$X$};
+    \node at (1.5, 1.5) {$|z_{\Delta S=1}|$};
+    \node at (0.5, 0.5) {$|z_{\Delta C=1}|$};
+    \node at (0.5, -0.5) {$c_{I}\sigma_{2} \sim \hat{A}_{d} \times \hat{A}_{u}$};
+    \node at (3.5, -0.5) {$\hat{A}_{d}$};
+    \node at (1.5, 3.5) {$\hat{A}_{u}$};
+    \node at (2.5, 1.5) {$c_{R}$};
+    \node at (1.5, 0.5) {$2\theta_{c}$};
+    \node at (0.5, 0.5) {$\theta_{d}$};
+
+    % Arrows
+    \draw[->, thick] (0,0) -- (3,3);
+    \draw[->, thick] (0,0) -- (4,0);
+
+    % Circle
+    \draw[fill=white] (0,0) circle (0.05);
+
+    % Angles
+    \pic [draw, angle radius=1cm, "$\theta_{d}$"] {angle = 0--4--0};
+    \pic [draw, angle radius=1.5cm, "$2\theta_{c}$"] {angle = 0--1--4};
+    \pic [draw, angle radius=1.5cm, "$\theta_{d}$"] {angle = 0--1--4};
+
+\end{tikzpicture}
+
+\end{document}

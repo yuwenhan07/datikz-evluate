@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{intersections} % Required for intersection handling
+
+\begin{document}
+
+\begin{tikzpicture}
+  % Load intersections library (for handling circle intersections)
+  \usetikzlibrary{intersections}
+  
+  % 1. Draw a dashed circle (centered at origin, radius 2cm)
+  \draw[dashed] (0,0) circle (2cm);
+  
+  % 2. Draw a dashed horizontal line (x-axis from -3 to 3)
+  \draw[dashed] (-3,0) -- (3,0);
+  
+  % 3. Draw a trigonometric curve (sine wave, domain -3.14 to 3.14)
+  \draw[domain=-3.14:3.14, samples=100] plot (\x, {sin(\x r)});
+  
+  % 4. Draw two overlapping circles (dashed) with white intersection
+  % Circle 1: centered at (0,0), radius 1.5cm (dashed)
+  \draw[dashed] (0,0) circle (1.5cm);
+  % Circle 2: centered at (2,0), radius 1.5cm (dashed)
+  \draw[dashed] (2,0) circle (1.5cm);
+  
+  % 5. Fill the intersection of the two circles with white
+  \path[fill=white, intersection segments={of=(0,0) circle(1.5cm) and (2,0) circle(1.5cm)}];
+\end{tikzpicture}
+
+\end{document}

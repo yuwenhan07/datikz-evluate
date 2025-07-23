@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{array}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Year & Value \\
+        \hline
+        2000 & 10 \\
+        2001 & 15 \\
+        2002 & 20 \\
+        2003 & 25 \\
+        2004 & 30 \\
+        \hline
+    \end{tabular}
+    \caption{Example Table with Connections}
+    \label{tab:example_table}
+\end{table}
+
+\begin{tikzpicture}[overlay, remember picture]
+    \draw[red, thick] (pic cs:Year-2000) -- (pic cs:Value-10);
+    \draw[red, thick] (pic cs:Year-2001) -- (pic cs:Value-15);
+    \draw[red, thick] (pic cs:Year-2002) -- (pic cs:Value-20);
+    \draw[red, thick] (pic cs:Year-2003) -- (pic cs:Value-25);
+    \draw[red, thick] (pic cs:Year-2004) -- (pic cs:Value-30);
+\end{tikzpicture}
+
+\end{document}

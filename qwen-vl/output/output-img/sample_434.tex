@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the circle
+    \draw (0,0) circle (1);
+    
+    % Draw the horizontal line
+    \draw[->] (-1.5,0) -- (3.5,0);
+    
+    % Mark points on the horizontal line
+    \filldraw[black] (-1,0) circle (1pt) node[below] {$a_1$};
+    \filldraw[black] (0,0) circle (1pt) node[below] {$c_1$};
+    \filldraw[black] (1,0) circle (1pt) node[below] {$c_2$};
+    \filldraw[black] (2,0) circle (1pt) node[below] {$b_1$};
+    \filldraw[black] (3,0) circle (1pt) node[below] {$b_2$};
+    
+    % Draw the vertical line
+    \draw[->] (0,-1.5) -- (0,1.5);
+    
+    % Mark points on the vertical line
+    \filldraw[black] (0,1) circle (1pt) node[left] {};
+    \filldraw[black] (0,0) circle (1pt) node[left] {};
+    \filldraw[black] (0,-1) circle (1pt) node[left] {};
+    
+    % Draw the horizontal lines with shading
+    \draw[thick, densely dotted] (-1,0) -- (0,0);
+    \draw[thick, densely dotted] (0,0) -- (1,0);
+    \draw[thick, densely dotted] (2,0) -- (3,0);
+    
+    % Draw the arrow on the circle
+    \draw[->] (0,0) -- (0.866,0.5);
+\end{tikzpicture}
+
+\end{document}

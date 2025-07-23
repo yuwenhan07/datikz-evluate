@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define colors
+    \definecolor{orange1}{RGB}{255, 165, 0}
+    \definecolor{blue1}{RGB}{0, 0, 255}
+    
+    % Draw the first rectangle (orange)
+    \fill[orange1] (-4,0) rectangle (0,2);
+    \draw[orange1, rounded corners=10pt] (-4,0) rectangle (0,2);
+    
+    % Draw the second rectangle (blue)
+    \fill[blue1] (0,0) rectangle (4,2);
+    \draw[blue1, rounded corners=10pt] (0,0) rectangle (4,2);
+    
+    % Draw the intersection area (overlap)
+    \fill[orange1!50!blue1] (-2,0) rectangle (2,2);
+    \draw[orange1!50!blue1, rounded corners=10pt] (-2,0) rectangle (2,2);
+    
+    % Draw the labels
+    \node at (-2,2.5) {\textbf{C}};
+    \node at (2,2.5) {\textbf{\(\neg C\)}};
+    
+    % Draw the background
+    \fill[white] (-5,-1) rectangle (5,3);
+\end{tikzpicture}
+
+\end{document}

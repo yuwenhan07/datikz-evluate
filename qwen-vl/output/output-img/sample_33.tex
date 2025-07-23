@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.7]
+    % Define the number of layers
+    \def\nLayers{5}
+    
+    % Draw the first layer
+    \foreach \i in {1,...,\nLayers} {
+        \draw[fill] (0,-\i) circle (0.1);
+    }
+    
+    % Draw the connections between layers
+    \foreach \i [evaluate=\i as \j using int(\i+1)] in {1,...,\nLayers-1} {
+        \foreach \j [evaluate=\j as \k using int(\j+1)] in {\i,...,\nLayers} {
+            \draw (0,-\i) -- (\j,-\k);
+        }
+    }
+    
+    % Add some decorative elements
+    \draw[decorate,decoration={brace,amplitude=10pt,mirror},xshift=-4pt,yshift=0pt]
+        (0,-\nLayers) -- node[left=6pt] {} (0,0);
+    \draw[decorate,decoration={brace,amplitude=10pt,mirror},xshift=4pt,yshift=0pt]
+        (0,0) -- node[right=6pt] {} (0,-\nLayers);
+    
+    % Add some additional decorations
+    \foreach \i in {1,...,\nLayers} {
+        \draw[decorate,decoration={snake,segment length=5mm,amplitude=1mm}] 
+            (0,-\i) -- ++(1,0);
+    }
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{lipsum} % For generating placeholder text
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=0pt]
+    \node (n1) [draw, minimum width=15cm, minimum height=3cm] {\lipsum[1]};
+    
+    \node (n2) [draw, fill=blue, minimum width=5cm, minimum height=4cm, right=of n1] {\textbf{Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna, vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt urna. Nulla ullamcorper vestibulum turpis. Pellentesque cursus luctus mauris.}};
+    
+    \node (n3) [draw, fill=red, minimum width=5cm, minimum height=4cm, right=of n2] {scope 2, node 1};
+    
+    \node (n4) [draw, fill=green, minimum width=2cm, minimum height=2cm, below=of n1] {scope 1, node 2};
+    
+    \node (n5) [draw, fill=red, minimum width=8cm, minimum height=2cm, below=of n4] {scope 1, node 3 that includes longer text to be broken into lines};
+    
+    \node (n6) [draw, fill=green, minimum width=2cm, minimum height=2cm, below=of n2] {scope 2, node 2};
+    
+    \node (n7) [draw, fill=red, minimum width=8cm, minimum height=2cm, below=of n6] {scope 2, node 3 that includes longer text to be broken into lines; can be longer than the West corresponding node};
+\end{tikzpicture}
+
+\end{document}

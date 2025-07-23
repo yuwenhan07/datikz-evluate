@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}[node distance=10pt, auto]
+    % Define styles for boxes
+    \tikzstyle{gate} = [rectangle, draw, minimum width=2cm, minimum height=0.8cm]
+    \tikzstyle{input} = [draw, minimum width=1cm, minimum height=0.5cm]
+    \tikzstyle{output} = [draw, minimum width=1.5cm, minimum height=0.8cm]
+    \tikzstyle{arrow} = [thick,->,>=stealth]
+
+    % Draw the GRU cell box
+    \node (gru_cell) [draw, rectangle, minimum width=4cm, minimum height=6cm, rounded corners] {GRU Cell};
+
+    % Input nodes
+    \node (input_x) [input, left of=gru_cell, node distance=2cm] {x_t};
+    \node (input_ht_1) [input, above left=of input_x, node distance=1.5cm] {h_{t-1}};
+
+    % Reset gate
+    \node (reset_gate) [gate, below right=of input_x, node distance=1.5cm] {Reset Gate \\ r_t};
+    \draw [arrow] (input_x) -- node[above] {W_rx} (reset_gate);
+    \draw [arrow] (input_ht_1) -- node[left] {W_rh} (reset_gate);
+
+    % Update gate
+    \node (update_gate) [gate, above right=of reset_gate, node distance=1cm] {Update Gate \\ z_t};
+    \draw [arrow] (input_x) -- node[above] {W_zx} (update_gate);
+    \draw [arrow] (input_ht_1) -- node[left] {W_zh} (update_gate);
+
+    % Candidate activation
+    \node (candidate) [gate, below right=of update_gate, node distance=1.5cm] {Candidate \\ h_t~};
+    \draw [arrow] (input_x) -- node[above] {W_hx} (candidate);
+    \draw [arrow] (reset_gate) -- node[right] {r_t} (candidate);
+    \draw [arrow] (input_ht_1) -- node[left] {W_hh} (candidate);
+
+    % New hidden state
+    \node (ht) [output, right=of candidate, node distance=2cm] {h_t};
+    \draw [arrow] (update_gate) -- node[above] {z_t} (ht);
+    \draw [arrow] (input_ht_1) -- node[left] {1 - z_t} (ht);
+    \draw [arrow] (candidate) -- node[right] {z_t} (ht);
+
+    % Connect reset gate to candidate
+    \draw [arrow] (reset_gate) -- (candidate);
+
+    % Add labels for the modulated h_t-1
+    \node at ($(reset_gate)!0.5!(candidate)$) [above] {r_t * h_{t-1}};
+
+    % Add some spacing
+    \draw [arrow] (gru_cell) -- (input_x);
+    \draw [arrow] (gru_cell) -- (input_ht_1);
+    \draw [arrow] (gru_cell) -- (reset_gate);
+    \draw [arrow] (gru_cell) -- (update_gate);
+    \draw [arrow] (gru_cell) -- (candidate);
+    \draw [arrow] (gru_cell) -- (ht);
+
+\end{tikzpicture}
+
+\end{document}

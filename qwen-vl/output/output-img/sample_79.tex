@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the axes
+    \draw[->] (0,0) -- (4,0) node[right] {$T$};
+    \draw[->] (0,0) -- (0,3) node[above] {$u$};
+
+    % Draw the dashed lines
+    \draw[dashed] (0,2) -- (1,2) node[left] {$A$};
+    \draw[dashed] (0,1) -- (1,1) node[left] {$\varepsilon$};
+
+    % Draw the arrows
+    \draw[->, thick] (1,2) -- (3,2) node[midway, above] {$\Gamma_2$};
+    \draw[->, thick] (3,2) -- (3,1) node[midway, right] {$\Gamma_1$};
+    \draw[->, thick] (3,1) -- (1,1) node[midway, below] {$\Gamma_4$};
+    \draw[->, thick] (1,1) -- (1,2) node[midway, left] {$\Gamma_3$};
+
+    % Label the points
+    \node at (1,0) [below] {$1$};
+    \node at (3,0) [below] {$T_0$};
+\end{tikzpicture}
+
+\end{document}

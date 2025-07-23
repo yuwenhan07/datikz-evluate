@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=center,
+        xlabel=$x_1$,
+        ylabel=$x_3$,
+        xmin=-8, xmax=8,
+        ymin=-8, ymax=8,
+        xtick={-8,-6,...,8},
+        ytick={-8,-6,...,8},
+        ticklabel style={font=\tiny},
+        enlargelimits=false,
+        domain=-pi/2:pi/2,
+        samples=100,
+        no markers,
+        thick,
+        dotted,
+        smooth,
+        clip=false,
+    ]
+        \addplot[green!50!black] ({4*cos(deg(x))},{4*sin(deg(x))});
+        
+        \draw[red, very thick] (0, 2) -- (0, 4);
+        \node at (0, 3) [above right] {$a(t_{\text{max}})$};
+        \node at (0, 2) [below right] {$a(t_{\text{min}})$};
+        
+        \node at (5, 3) [right] {$x_3 = 3$};
+        \node at (5, 1.5 - 1.5*sqrt(11)/4) [right] {$x_3 = \frac{3-\sqrt{33}}{2}$};
+    \end{axis}
+\end{tikzpicture}
+\end{document}

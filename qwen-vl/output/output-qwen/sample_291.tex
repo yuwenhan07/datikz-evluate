@@ -1,0 +1,49 @@
+python
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense
+from sklearn.preprocessing import MinMaxScaler
+
+# Assume X_train and y_train are your training data
+X_train, y_train = load_data()  # Load your training data
+
+# Normalize the data
+scaler = MinMaxScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+y_train_scaled = scaler.fit_transform(y_train)
+
+# Reshape the data for LSTM
+def create_dataset(data, look_back=1):
+    X, y = [], []
+    for i in range(len(data) - look_back):
+        a = data[i:(i + look_back), :]
+        X.append(a)
+        y.append(data[i + look_back, :])
+    return np.array(X), np.array(y)
+
+look_back = 1
+X_train, y_train = create_dataset(X_train_scaled, look_back)
+
+# Build the LSTM model
+model = Sequential()
+model.add(LSTM(50, return_sequences=True, input_shape=(look_back, X_train.shape[2])))
+model.add(LSTM(50))
+model.add(Dense(1))
+
+model.compile(loss='mean_squared_error', optimizer='adam')
+
+# Train the model
+history = model.fit(X_train, y_train, epochs=100, batch_size=32, validation_split=0.2, verbose=1)
+
+# Plot the MSE as a function of training steps
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.plot(history.history['loss'], label='Training Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.title('Model Loss Over Training Steps')
+plt.xlabel('Training Steps')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()

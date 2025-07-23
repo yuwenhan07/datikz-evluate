@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+        % States
+        \node[state,initial] (init) {Init};
+        \node[state] (read_LC_on) [right=of init] {read\_LC\_on};
+        \node[state] (check_LC_on_count) [below right=of read_LC_on] {check LC\_on count};
+        \node[state] (read_LC_off) [below right=of check_LC_on_count] {read\_LC\_off};
+        \node[state] (check_LC_off_count) [below right=of read_LC_off] {check LC\_off count};
+        \node[state] (read_data) [below left=of check_LC_off_count] {read\_data};
+        \node[state] (check_data) [left=of read_data] {check\_data};
+
+        % Edges
+        \path[->]
+            (init) edge node {pos\_edge} (read_LC_on)
+            (init) edge node {data\_counter = 31} (check\_data)
+            (init) edge[bend left] node {LC\_on counter out of range} (check\_LC_on_count)
+            (read_LC_on) edge node {data=0} (check_LC_on_count)
+            (check_LC_on_count) edge node {LC\_on counter in range} (read_LC_off)
+            (read_LC_off) edge node {pos\_edge} (check_LC_off_count)
+            (check_LC_off_count) edge node {LC\_off counter in range} (read_data)
+            (read_data) edge node {pos\_edge} (check\_data)
+            (check_data) edge node {data\_counter /= 31} (read_data)
+            (check_data) edge[bend left] node {LC\_off counter out of range} (read_LC_on);
+    \end{tikzpicture}
+    \caption{State Diagram for the Remote Controller}
+    \label{fig:state_diagram}
+\end{figure}
+
+\end{document}

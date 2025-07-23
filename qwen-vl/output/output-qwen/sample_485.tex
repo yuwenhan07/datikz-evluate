@@ -1,0 +1,28 @@
+python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define the coordinates for each section of the shape
+sections = [
+    ((0, 0), (1, 0), (1, 1), (0, 1)),  # First section
+    ((0.2, 0.2), (0.8, 0.2), (0.8, 0.8), (0.2, 0.8)),  # Second section
+    ((0.4, 0.4), (0.6, 0.4), (0.6, 0.6), (0.4, 0.6))   # Third section
+]
+
+# Define the opacity values for each section
+opacities = [0.5, 0.7, 0.9]  # Adjust these values to change the transparency
+
+# Create a figure and axis
+fig, ax = plt.subplots()
+
+# Draw each section with its corresponding opacity
+for i, (x1, y1, x2, y2) in enumerate(sections):
+    rect = plt.Rectangle((x1, y1), x2 - x1, y2 - y1, alpha=opacities[i])
+    ax.add_patch(rect)
+
+# Set the limits of the plot
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 1)
+
+# Show the plot
+plt.show()

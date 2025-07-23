@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (1,0);
+    \coordinate (B) at (0,1);
+
+    % Define the radius as 80% of x1
+    \pgfmathsetmacro{\radius}{0.8 * (A - O).x}
+
+    % Apply xy-shift
+    \begin{scope}[shift={(O)}]
+        % Draw the circle using the let command
+        \draw[fill=white] (O) circle [radius=\radius];
+    \end{scope}
+
+    % Draw the triangle
+    \draw (O) -- (A) -- (B) -- cycle;
+\end{tikzpicture}
+\end{document}

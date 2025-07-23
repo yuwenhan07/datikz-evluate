@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel=$\gamma$,
+        ylabel=Approximation Guarantee,
+        xmin=0, xmax=1,
+        ymin=0, ymax=1,
+        xtick={0,0.1,...,1},
+        ytick={0,0.2,...,1},
+        legend pos=north west,
+        legend cell align=left,
+        legend style={draw=none},
+        grid=major,
+        width=\textwidth,
+        height=0.5\textheight,
+        every axis plot/.append style={
+            line width=1pt,
+            mark size=1pt,
+            mark options={solid}
+        }
+    ]
+    
+    % ResidualRandomGreedy [?]
+    \addplot[mark=*, dotted] coordinates {
+        (0, 0)
+        (0.1, 0.05)
+        (0.2, 0.1)
+        (0.3, 0.15)
+        (0.4, 0.2)
+        (0.5, 0.25)
+        (0.6, 0.3)
+        (0.7, 0.35)
+        (0.8, 0.4)
+        (0.9, 0.45)
+        (1, 0.5)
+    };
+    \addlegendentry{RESIDUALRANDOMGREEDY [?]}
+
+    % RESIDUALRANDOMGREEDY (Section ??)
+    \addplot[mark=+, solid] coordinates {
+        (0, 0)
+        (0.1, 0.05)
+        (0.2, 0.1)
+        (0.3, 0.15)
+        (0.4, 0.2)
+        (0.5, 0.25)
+        (0.6, 0.3)
+        (0.7, 0.35)
+        (0.8, 0.4)
+        (0.9, 0.45)
+        (1, 0.5)
+    };
+    \addlegendentry{RESIDUALRANDOMGREEDY (Section ??)}
+
+    % DISTORTEDLOCALSEARCH (Section ??)
+    \addplot[dashed] coordinates {
+        (0, 0)
+        (0.1, 0.05)
+        (0.2, 0.1)
+        (0.3, 0.15)
+        (0.4, 0.2)
+        (0.5, 0.25)
+        (0.6, 0.3)
+        (0.7, 0.35)
+        (0.8, 0.4)
+        (0.9, 0.45)
+        (1, 0.5)
+    };
+    \addlegendentry{DISTORTEDLOCALSEARCH (Section ??)}
+
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

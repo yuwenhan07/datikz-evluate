@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \matrix (m) [matrix of nodes, row sep=0em, column sep=0em] {
+        & & & & \\
+        & A & B & C & \\
+        & D & E & & \\
+        & & & & \\
+    };
+    \draw[->] (m-2-2) -- (m-2-3);
+    \draw[->] (m-2-3) -- (m-2-4);
+    \draw[->] (m-2-4) -- (m-2-5);
+    \draw[->] (m-3-2) -- (m-3-3);
+    \draw[->] (m-3-3) -- (m-3-4);
+    
+    \node at (m-1-1) {xx:};
+    \node at (m-1-5) {xx:};
+    \node at (m-2-1) {yy:};
+    \node at (m-2-2) {A};
+    \node at (m-2-3) {B};
+    \node at (m-2-4) {C};
+    \node at (m-2-5) {E};
+    \node at (m-3-2) {D};
+    \node at (m-3-3) {something};
+\end{tikzpicture}
+
+\end{document}

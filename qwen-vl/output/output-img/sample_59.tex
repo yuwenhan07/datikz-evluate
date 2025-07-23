@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Draw the horizontal line with dots
+    \draw (0,0) -- (8,0);
+    
+    % Draw the vertical lines and labels
+    \foreach \x in {0,...,7} {
+        \draw (\x,0) -- (\x,-0.2) node[below] {$\Gamma_{\x}$};
+    }
+    
+    % Draw the black dots
+    \foreach \x in {0,...,7} {
+        \filldraw (\x,0) circle (2pt);
+    }
+    
+    % Label the first point on the left
+    \node at (-0.3,0) {$\Gamma^{+}_{0}$};
+    
+    % Add the ellipsis
+    \node at (8.3,0) {$\dots$};
+\end{tikzpicture}
+
+\end{document}

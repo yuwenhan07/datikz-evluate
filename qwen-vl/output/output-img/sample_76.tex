@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->] (-0.5, 0) -- (8, 0) node[right] {$r_S(E) \sim \left( Eg_S^2 l_S^{D-2} \right)^{1/[D-3]}$};
+    \draw[->] (0, -0.5) -- (0, 8) node[above] {$b$};
+
+    % Boundaries
+    \draw[dashed] (0, 4) -- (4, 4) node[midway, above] {Boundary I};
+    \draw[dashed] (4, 4) -- (8, 8) node[midway, above] {Boundary II};
+    \draw[dashed] (0, 0) -- (4, 4);
+
+    % Labels
+    \node at (2, 3) {Perturbative};
+    \node at (2, 2) {regime};
+    \node at (6, 3) {Non-perturbative};
+    \node at (6, 2) {regime};
+    \node at (4, 6) {$b \sim R(E)$};
+    \node at (4, 0) {$l_s$};
+    \node at (0, 4) {$l_s$};
+
+    % Equation
+    \node at (6, 1) {$a(s,b) \sim \exp(-cS_{BH})$};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,64 @@
+The space \(S^3_0\) typically refers to a cubic B-spline space with degree 3 and a uniform knot vector. The knot vector you provided is:
+
+\[ \{0, 0, h, 7h, 1, 1\} \]
+
+This knot vector indicates that the spline has a degree of 3 (since the number of knots minus one equals the degree), and it is uniform because all the interior knots are spaced equally.
+
+For a cubic B-spline basis function \(N_i(t)\) in a uniform knot vector, the basis functions are defined recursively using the Cox-de Boor recursion formula. The basis functions for a cubic B-spline (degree 3) are defined as follows:
+
+- For \(i = 0\):
+  \[ N_{0}(t) = \begin{cases} 
+  	\frac{t}{h} & \text{if } 0 \leq t < h \\
+  	\frac{2-h-t}{h} & \text{if } h \leq t < 2h \\
+  	0 & \text{otherwise}
+  	\end{cases} \]
+
+- For \(i = 1\):
+  \[ N_{1}(t) = \begin{cases} 
+  	\frac{t-h}{h} & \text{if } h \leq t < 2h \\
+  	\frac{3-2h-t}{h} & \text{if } 2h \leq t < 3h \\
+  	0 & \text{otherwise}
+  	\end{cases} \]
+
+- For \(i = 2\):
+  \[ N_{2}(t) = \begin{cases} 
+  	\frac{t-2h}{h} & \text{if } 2h \leq t < 3h \\
+  	\frac{4-3h-t}{h} & \text{if } 3h \leq t < 4h \\
+  	0 & \text{otherwise}
+  	\end{cases} \]
+
+- For \(i = 3\):
+  \[ N_{3}(t) = \begin{cases} 
+  	\frac{t-3h}{h} & \text{if } 3h \leq t < 4h \\
+  	\frac{5-4h-t}{h} & \text{if } 4h \leq t < 5h \\
+  	0 & \text{otherwise}
+  	\end{cases} \]
+
+- For \(i = 4\):
+  \[ N_{4}(t) = \begin{cases} 
+  	\frac{t-4h}{h} & \text{if } 4h \leq t < 5h \\
+  	\frac{6-5h-t}{h} & \text{if } 5h \leq t < 6h \\
+  	0 & \text{otherwise}
+  	\end{cases} \]
+
+- For \(i = 5\):
+  \[ N_{5}(t) = \begin{cases} 
+  	\frac{t-5h}{h} & \text{if } 5h \leq t < 6h \\
+  	\frac{7-6h-t}{h} & \text{if } 6h \leq t < 7h \\
+  	0 & \text{otherwise}
+  	\end{cases} \]
+
+- For \(i = 6\):
+  \[ N_{6}(t) = \begin{cases} 
+  	\frac{t-6h}{h} & \text{if } 6h \leq t < 7h \\
+  	\frac{8-7h-t}{h} & \text{if } 7h \leq t < 8h \\
+  	0 & \text{otherwise}
+  	\end{cases} \]
+
+- For \(i = 7\):
+  \[ N_{7}(t) = \begin{cases} 
+  	\frac{t-7h}{h} & \text{if } 7h \leq t < 8h \\
+  	0 & \text{otherwise}
+  	\end{cases} \]
+
+These basis functions form a complete set of basis functions for the cubic B-spline space \(S^3_0\). Each basis function \(N_i(t)\) is non-zero only over an interval of length \(h\), and they sum up to 1 at any point \(t\) within their support intervals.

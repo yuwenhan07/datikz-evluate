@@ -1,0 +1,14 @@
+python
+import pandas as pd
+
+# Reading data
+data = pd.read_csv('input.csv')
+
+# Cleaning data
+cleaned_data = data.dropna()
+
+# Transforming data
+transformed_data = cleaned_data.transform(lambda x: x * 2)
+
+# Writing data
+transformed_data.to_csv('output.csv', index=False)

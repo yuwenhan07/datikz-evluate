@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=west] at (current page.text area.west) {%
+        \begin{minipage}{0.8\textwidth} % Adjust the width as needed
+            \centering
+            \textbf{Text Here:} \\
+            Some text here.
+        \end{minipage}
+    };
+    \node[anchor=west, xshift=-10pt] at (current page.text area.west) {%
+        \includegraphics[width=0.2\textwidth]{example-image} % Adjust the width as needed
+    };
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix, arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    \matrix (m) [matrix of nodes, row sep=0.5cm, column sep=1.5cm] {
+        \node[ellipse, draw, text width=4em, align=center] (scft) {SCFT[$\mathcal{Q}$]}; & & \\
+        & \node[ellipse, draw, text width=10em, align=center] (decoupled) {SCFT[$\mathcal{Q}_1$]$\oplus$SCFT[$\mathcal{Q}_2$] \\ $\oplus$ decoupled}; & \\
+        \node[rectangle, draw, text width=8em, align=center] (gauge) {Gauge theory [$\mathcal{Q}$]}; & & \\
+        & \node[rectangle, draw, text width=16em, align=center] (decoupled_gauge) {Gauge theory [$\mathcal{Q}_1$] $\oplus$ Gauge theory [$\mathcal{Q}_2$] \\ $\oplus$ decoupled}; & \\
+        \node[rectangle, draw, text width=8em, align=center] (gauge_decoupled) {$\left\{1/g_{j}^{\text{YM}}\right\}$}; & & \\
+        & \node[rectangle, draw, text width=16em, align=center] (decoupled_gauge_decoupled) {$\left\{1/g_{1,j}^{\text{YM}}\right\}\cup\left\{1/g_{2,j}^{\text{YM}}\right\}$}; & \\
+    };
+    
+    \draw[-Latex] (scft) -- node[above] {$m$} (decoupled);
+    \draw[-Latex] (gauge) -- (gauge_decoupled);
+    \draw[-Latex] (decoupled) -- (decoupled_gauge);
+    \draw[-Latex] (decoupled_gauge_decoupled) -- (decoupled_gauge);
+\end{tikzpicture}
+
+\end{document}

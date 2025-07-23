@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{caption}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm]
+        \node (solidity) [draw] {Solidity Libraries \\ .sol};
+        \node (supported) [draw, below of=solidity] {Supported Libraries \\ .sol};
+        \draw[->] (solidity) -- (supported);
+    \end{tikzpicture}
+    \caption{Code Generation Process}
+    \label{fig:code_generation_process}
+\end{figure}
+
+\end{document}

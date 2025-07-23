@@ -1,0 +1,35 @@
+When training models with reduced amounts of data, it's important to understand how the performance changes as the dataset size decreases. Here’s a summary of what you might expect based on the results you've described:
+
+### Key Points:
+1. **Dataset Sizes**:
+   - **Multi-News**: Full set size = 44,972
+   - **SamSUM**: Full set size = 14,732
+   - **CNN/DM**: Full set size = 287,113
+
+2. **Reduced Data Sizes**:
+   - 512
+   - 1024
+   - 2048
+   - 4096
+   - 8192
+
+### Expected Outcomes:
+1. **Training Time**:
+   - As the dataset size decreases, the training time will generally decrease because there is less data to process.
+
+2. **Model Performance**:
+   - **Overfitting**: With smaller datasets, there is a higher risk of overfitting, where the model learns the noise in the training data rather than the underlying patterns.
+   - **Generalization**: The model may perform worse on unseen data (generalization) due to insufficient training examples.
+   - **Accuracy**: The accuracy of the model is likely to decrease as the dataset size decreases, especially if the model is not sufficiently complex or if the dataset is not representative enough.
+
+3. **Resource Utilization**:
+   - Smaller datasets require fewer computational resources, which can be beneficial for training on limited hardware or for preliminary experiments.
+
+### Recommendations:
+- **Validation**: Use cross-validation to ensure that the model generalizes well to unseen data.
+- **Regularization**: Consider using techniques like dropout, L1/L2 regularization, or early stopping to prevent overfitting.
+- **Complexity**: If possible, use more complex models or add more layers to capture more features from the data.
+- **Data Augmentation**: If the dataset is small, consider data augmentation techniques to artificially increase the size and diversity of the training data.
+
+### Conclusion:
+Reducing the dataset size can significantly impact the performance of your model, particularly in terms of accuracy and generalization. It's crucial to balance the need for faster training times against the risk of overfitting and poor generalization. For critical applications, it's often necessary to use larger datasets or employ advanced techniques to mitigate these risks.

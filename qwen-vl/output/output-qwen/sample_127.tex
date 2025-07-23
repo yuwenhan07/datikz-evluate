@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=0.5cm]
+    \node (n1) {n1};
+    \node (n2) [below=of n1] {n2};
+    \node (n3) [below=of n2] {n3};
+
+    % Aligning the labels "x" and "y" below the nodes with their baselines
+    \node[anchor=base] at (n1.south) {x};
+    \node[anchor=base] at (n2.south) {y};
+    \node[anchor=base] at (n3.south) {x};
+
+    % Adding dots in different positions
+    \filldraw (n1.south) circle (1pt);
+    \filldraw (n2.south) circle (1pt);
+    \filldraw (n3.south) circle (1pt);
+
+    % Adding dots in the middle of the labels
+    \filldraw (n1.south -| 0.5*n1.south -| n1.south) circle (1pt);
+    \filldraw (n2.south -| 0.5*n2.south -| n2.south) circle (1pt);
+    \filldraw (n3.south -| 0.5*n3.south -| n3.south) circle (1pt);
+
+    % Adding dots at the beginning of the labels
+    \filldraw (n1.south -| 0.25*n1.south -| n1.south) circle (1pt);
+    \filldraw (n2.south -| 0.25*n2.south -| n2.south) circle (1pt);
+    \filldraw (n3.south -| 0.25*n3.south -| n3.south) circle (1pt);
+
+    % Adding dots at the end of the labels
+    \filldraw (n1.south -| 0.75*n1.south -| n1.south) circle (1pt);
+    \filldraw (n2.south -| 0.75*n2.south -| n2.south) circle (1pt);
+    \filldraw (n3.south -| 0.75*n3.south -| n3.south) circle (1pt);
+\end{tikzpicture}
+\end{document}

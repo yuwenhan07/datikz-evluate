@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=10cm,
+        height=6cm,
+        xlabel={Grade},
+        ylabel={Frequency},
+        xmin=0, xmax=100,
+        ymin=0, ymax=100,
+        xtick={0,20,...,100},
+        ytick={0,20,...,100},
+        xticklabels={0,20,...,100},
+        yticklabels={0,20,...,100},
+        axis lines=left,
+        grid=none,
+        tick style={draw=black, thick}, % This makes the ticks solid black lines
+        % Alternatively, if you want to remove the ticks completely:
+        % tick style={draw=none},
+    ]
+    % Add your data here
+    \addplot coordinates {(0,5) (20,10) (40,15) (60,20) (80,25) (100,30)};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

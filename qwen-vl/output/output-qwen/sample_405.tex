@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+\begin{document}
+
+The regret minimization formula can be written as:
+\[ R(n) = \sum_{i=1}^{n} \left( \tikzmark{start} r_i - \min_{j=1}^{m} r_j \right) \]
+
+Now, let's add some annotations using TikZ:
+
+\begin{tikzpicture}[overlay, remember picture]
+    \draw[->, thick, red] (start.north) -- ++(0, 0.5cm) node[right] {Start of the sum};
+    \draw[->, thick, blue] (start.south) -- ++(0,-0.5cm) node[right] {End of the sum};
+    \draw[->, thick, green] (start.east) -- ++(0.5cm, 0) node[above] {Summand};
+\end{tikzpicture}
+
+\end{document}

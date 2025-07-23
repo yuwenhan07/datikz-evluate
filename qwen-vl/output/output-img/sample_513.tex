@@ -1,0 +1,71 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Static sparsity percentage \% ($s_f$)},
+        ylabel={MAE},
+        xmin=45, xmax=90,
+        ymin=8, ymax=11,
+        xtick={50, 75, 87.5},
+        ytick={8, 9, 10, 11},
+        legend pos=north west,
+        ymajorgrids=true,
+        grid style=dashed,
+        width=12cm,
+        height=12cm,
+        every axis plot/.append style={
+            mark options={mark size=3pt, mark options={fill=white}}
+        },
+        legend style={at={(0.5,-0.1)}, anchor=north,legend columns=-1}
+    ]
+    
+    % MAE line
+    \addplot [
+        color=magenta,
+        solid,
+        thick,
+        mark=*,
+        mark options={solid, magenta}
+    ] coordinates {
+        (50, 10.5)
+        (75, 9.5)
+        (87.5, 9.1)
+    };
+    
+    % Model size line
+    \addplot [
+        color=brown,
+        dashed,
+        thick,
+        mark=x,
+        mark options={solid, brown}
+    ] coordinates {
+        (50, 20)
+        (75, 15)
+        (87.5, 10)
+    };
+    
+    % Green line
+    \addplot [
+        color=green,
+        solid,
+        thick,
+        mark=square,
+        mark options={solid, green}
+    ] coordinates {
+        (50, 8.5)
+        (75, 8.3)
+        (87.5, 8.2)
+    };
+    
+    % Legend
+    \legend{MAE, Model size (MB), Other metric}
+    
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define the vertices of the large triangle
+    \coordinate (A) at (0, 0);
+    \coordinate (B) at (12, 0);
+    \coordinate (C) at (6, 10.39);
+
+    % Draw the large triangle
+    \draw (A) -- (B) -- (C) -- cycle;
+
+    % Define the vertices of the smaller triangles
+    \foreach \i in {0, ..., 4} {
+        \foreach \j in {0, ..., \i} {
+            \coordinate (P\i\j) at ({(12/5)*(\i-\j)}, {(10.39/5)*(\i+\j)});
+        }
+    }
+
+    % Draw the smaller triangles
+    \foreach \i in {0, ..., 4} {
+        \foreach \j in {0, ..., \i} {
+            \draw (P\i\j) -- (P\i{\j+1}) -- (P{\i+1}\j) -- cycle;
+        }
+    }
+
+    % Place the labels inside the triangles
+    \foreach \i in {0, ..., 4} {
+        \foreach \j in {0, ..., \i} {
+            \node at (P\i\j) {\small $\alpha\beta\gamma$};
+        }
+    }
+
+    % Draw the small triangles on the left side
+    \draw (A) -- ++(0, 2) -- ++(2, 0) -- cycle;
+    \draw (A) -- ++(0, 4) -- ++(2, 0) -- cycle;
+    \draw (A) -- ++(0, 6) -- ++(2, 0) -- cycle;
+
+    % Place the labels inside the small triangles on the left side
+    \node at (0, 2) {\small $\varepsilon$};
+    \node at (0, 4) {\small $\varepsilon$};
+    \node at (0, 6) {\small $\varepsilon$};
+
+    % Draw the small triangles on the right side
+    \draw (B) -- ++(-2, 0) -- ++(0, 2) -- cycle;
+    \draw (B) -- ++(-2, 0) -- ++(0, 4) -- cycle;
+    \draw (B) -- ++(-2, 0) -- ++(0, 6) -- cycle;
+
+    % Place the labels inside the small triangles on the right side
+    \node at (12, 2) {\small $\delta\delta\delta$};
+    \node at (12, 4) {\small $\delta\delta\delta$};
+    \node at (12, 6) {\small $\delta\delta\delta$};
+
+    % Draw the medium triangles on the right side
+    \draw (C) -- ++(-6, 0) -- ++(0, 2) -- cycle;
+    \draw (C) -- ++(-6, 0) -- ++(0, 4) -- cycle;
+    \draw (C) -- ++(-6, 0) -- ++(0, 6) -- cycle;
+
+    % Place the labels inside the medium triangles on the right side
+    \node at (6, 2) {\small $\gamma\gamma\gamma$};
+    \node at (6, 4) {\small $\gamma\gamma\gamma$};
+    \node at (6, 6) {\small $\gamma\gamma\gamma$};
+
+    % Draw the large triangle on the right side
+    \draw (C) -- ++(-6, 0) -- ++(0, 10.39) -- cycle;
+
+    % Place the labels inside the large triangle on the right side
+    \node at (0, 10.39) {\small $\delta\delta\delta$};
+\end{tikzpicture}
+
+\end{document}

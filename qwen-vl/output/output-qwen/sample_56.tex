@@ -1,0 +1,26 @@
+It sounds like you're describing an advanced natural language processing (NLP) system designed for sequential decision-making tasks, possibly in the context of reinforcement learning or interactive systems. Here's a breakdown of your approach:
+
+1. **Transformer Decoder (TD)**:
+   - This component is responsible for generating a sequence of actions \(a^Q_1, \ldots, a^Q_m\) based on a query instruction \(I^Q\).
+   - It is a modified version of a seq2seq model, which typically involves a decoder that generates a sequence of outputs from an encoded input.
+
+2. **Context from Demonstrations**:
+   - The context for the TD comes from demonstrations provided by a generative model. These demonstrations consist of pairs \((I_k, A_k)\), where \(I_k\) is an instruction and \(A_k\) is the corresponding action taken.
+   - These demonstrations are used to train the TD to understand how to generate appropriate actions given a query instruction.
+
+3. **Transformer Encoder-Decoder (T)**:
+   - This component encodes both the instructions \(I^Q\) and the state \(S\) into a representation that can be understood by the decoder.
+   - The encoder-decoder architecture is commonly used in NLP tasks to translate between different languages or to generate sequences of text.
+
+4. **Transformer Encoder (TE)**:
+   - This component encodes the actions \(A_k\) into a representation that can be used for further processing.
+   - The TE is likely used to capture the characteristics of the actions that have been demonstrated, which can then be used to inform the generation of new actions.
+
+5. **Processing Instructions with State**:
+   - The transformers that process instructions (pink blocks) receive the state \(S\) as input to the encoder.
+   - This suggests that the state information is important for understanding the context in which the instructions are being given, which could be crucial for making informed decisions.
+
+### Summary:
+Your approach combines elements of transformer models to handle both the encoding and decoding of sequences, leveraging demonstrations to improve the performance of the action generation process. The inclusion of the state \(S\) in the instruction encoder suggests a focus on context-awareness, which is essential for many real-world applications where the environment state plays a significant role in decision-making.
+
+If you need further clarification or have specific questions about any part of this setup, feel free to ask!

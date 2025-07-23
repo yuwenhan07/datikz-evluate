@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphdrawing, shapes.geometric, arrows.meta}
+\usegdlibrary{kiviatikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \node[ellipse, draw] (input) {Input tensor};
+    \node[rectangle, below of=input, minimum width=8cm, minimum height=1cm, draw] (conv1) {$7\times 7$ convolution layer};
+    \node[rectangle, below of=conv1, minimum width=8cm, minimum height=1cm, draw] (bn) {Batch normalisation};
+    \node[rectangle, below of=bn, minimum width=8cm, minimum height=1cm, draw] (relu) {ReLU};
+    \node[rectangle, below of=relu, minimum width=8cm, minimum height=1cm, draw] (resblock1) {ResBlock $\times 2$};
+    \node[rectangle, below of=resblock1, minimum width=8cm, minimum height=1cm, draw] (resblock2) {ResBlock $\times 2$};
+    \node[rectangle, below of=resblock2, minimum width=8cm, minimum height=1cm, draw] (resblock3) {ResBlock $\times 2$};
+    \node[rectangle, below of=resblock3, minimum width=8cm, minimum height=1cm, draw] (pooling) {Global average pooling};
+    \node[rectangle, below of=pooling, minimum width=8cm, minimum height=1cm, draw] (fc) {Fully connected layer};
+    \node[rectangle, below of=fc, minimum width=8cm, minimum height=1cm, draw] (softmax) {Softmax};
+
+    \draw[-Latex] (input) -- node[left] {$5\times 44\times 44$} (conv1);
+    \draw[-Latex] (conv1) -- (bn);
+    \draw[-Latex] (bn) -- (relu);
+    \draw[-Latex] (relu) -- (resblock1);
+    \draw[-Latex] (resblock1) -- (resblock2);
+    \draw[-Latex] (resblock2) -- (resblock3);
+    \draw[-Latex] (resblock3) -- (pooling);
+    \draw[-Latex] (pooling) -- (fc);
+    \draw[-Latex] (fc) -- node[right] {$3$} (softmax);
+
+    % Add the "S = 2" labels
+    \node at (-3, -6) {$S = 2$};
+    \node at (-3, -9) {$S = 2$};
+    \node at (-3, -12) {$S = 2$};
+
+    % Add the output dimensions
+    \node at (10, -1.5) {$64\times 22\times 22$};
+    \node at (10, -4.5) {$64\times 22\times 22$};
+    \node at (10, -7.5) {$64\times 22\times 22$};
+    \node at (10, -10.5) {$128\times 11\times 11$};
+    \node at (10, -13.5) {$256\times 6\times 6$};
+    \node at (10, -16.5) {$256\times 1\times 1$};
+\end{tikzpicture}
+
+\end{document}

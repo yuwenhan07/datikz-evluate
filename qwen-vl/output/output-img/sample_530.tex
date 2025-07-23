@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the horizontal line at y=0
+    \draw (0,0) -- (4,0);
+    
+    % Draw the vertical line at x=2
+    \draw (2,-0.5) -- (2,1.5);
+    
+    % Draw the text box
+    \node[draw, align=center] at (2,1) {centered text at (0/2)};
+    
+    % Draw the dashed lines
+    \foreach \y in {0.5, 1.0} {
+        \draw[dashed] (2,\y) -- ++(0,-0.5);
+    }
+    
+    % Draw the "L" and "R" labels
+    \draw (1.9, -0.3) node[below] {$\mathsf{L}$};
+    \draw (2.1, -0.3) node[below] {$\mathsf{R}$};
+\end{tikzpicture}
+
+\end{document}

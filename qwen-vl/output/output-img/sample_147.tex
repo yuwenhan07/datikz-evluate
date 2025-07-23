@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz-cd}
+
+\begin{document}
+
+\begin{tikzcd}[column sep=scriptsize]
+ & \{a,b,c\} \arrow[rd,"g(b,\{a,b,c\})"] \arrow[ld,"g(c,\{a,b,c\})"] \\
+\{a,b\} \arrow[rd,"g(a,\{a,b\})"] \arrow[dd,"g(b,\{a,b\})"] & & \{a,c\} \arrow[ld,"g(c,\{a,c\})"] \arrow[rd,"g(a,\{a,c\})"] \\
+ & & & \{b,c\} \arrow[ld,"g(c,\{b,c\})"] \arrow[dd,"g(b,\{b,c\})"] \\
+\{a\} \arrow[rd,"g(a,\{a\})"] & & \{b\} \arrow[ld,"g(b,\{b\})"] \arrow[dd,"g(c,\{c\})"] \\
+ & & & \emptyset \\
+\end{tikzcd}
+
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->] (0,0) -- (6,0) node[right] {$t$};
+    \draw[->] (0,0) -- (0,4) node[above] {$p_A$};
+    
+    % Horizontal lines
+    \draw (0,2) -- (6,2) node[below] {$p_C$};
+    \draw (0,1) -- (6,1) node[below] {$p_B$};
+    
+    % Curves
+    \draw[blue, thick] plot coordinates {(0,2) (1,2.2) (2,2.4) (3,2.6) (4,2.8) (5,3)};
+    \draw[red, thick] plot coordinates {(0,1) (1,1.2) (2,1.4) (3,1.6) (4,1.8) (5,2)};
+    
+    % Labels
+    \node at (0,-0.5) [below] {$S$};
+    \node at (6,-0.5) [below] {$T_1$};
+    \node at (6,3.5) [right] {Interest};
+    
+    % Invest and divest labels
+    \node at (0,-1.5) [below] {\texttt{invest()}};
+    \node at (6,-1.5) [below] {\texttt{divest()}};
+    
+    % Grid
+    \draw[gray, thin, dashed] (0,0) grid (6,4);
+\end{tikzpicture}
+
+\end{document}

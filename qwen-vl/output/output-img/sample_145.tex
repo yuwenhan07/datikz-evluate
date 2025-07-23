@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=left,
+        xlabel={X axis},
+        ylabel={Y axis},
+        xtick={1,2,3,4,5},
+        ytick={A,B,C},
+        ymin=0,
+        ymax=4,
+        xmin=0,
+        xmax=5,
+        width=10cm,
+        height=10cm,
+        grid=major,
+        every axis plot/.append style={ultra thick},
+        nodes near coords,
+        point meta=explicit symbolic,
+        visualization depends on={y \as \myy}
+    ]
+        \addplot[only marks] coordinates {
+            (1,A) [1]
+            (2,A) [2]
+            (3,A) [3]
+            (1,B) [1]
+            (2,B) [2]
+            (3,B) [3]
+            (1,C) [1]
+            (2,C) [2]
+            (3,C) [3]
+        };
+    \end{axis}
+\end{tikzpicture}
+\end{document}

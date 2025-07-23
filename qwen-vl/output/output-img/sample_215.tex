@@ -1,0 +1,144 @@
+\documentclass[border=5pt]{standalone}
+\usepackage{pgfplots}
+    \pgfplotsset{
+        % define a style for the error bars
+        error bar style={
+            /pgfplots/error bars/error bar style={
+                line width=0.4pt,
+                draw=black,
+                fill=none,
+            },
+        },
+        % define a style for the shaded areas
+        shaded area/.style={
+            /pgfplots/error bars/draw error bar/.code 2 args={
+                \draw [##1] plot coordinates {
+                    (axis direction cs:\pgfkeysvalueof{/data point/x},0)
+                    (axis direction cs:\pgfkeysvalueof{/data point/x},##2)
+                };
+            },
+        },
+    }
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=\textwidth,
+        height=\textheight,
+        xlabel={wavelength [nm]},
+        ylabel={Normalized reflectance},
+        xmin=545,
+        xmax=816,
+        ymin=0,
+        ymax=1,
+        grid=major,
+        legend pos=north west,
+        legend cell align=left,
+        legend style={
+            font=\footnotesize,
+            draw=none,
+            fill=none,
+        },
+        % define the styles for the different lines
+        every axis plot post/.append style={
+            thick,
+        },
+        % define the styles for the shaded areas
+        every shaded area/.append style={
+            draw=none,
+            fill opacity=0.5,
+        },
+        % define the styles for the error bars
+        every error bar/.append style={
+            thick,
+        },
+        % define the styles for the legend entries
+        legend entries={
+            $2$ std. dev.\ $\sigma$,
+            Scab,
+            $2$ std. dev.\ $\sigma$,
+            Leaves,
+        },
+        % define the styles for the different lines
+        line style={
+            thick,
+        },
+        % define the styles for the shaded areas
+        shaded area,
+        % define the styles for the error bars
+        error bar style={
+            thick,
+        },
+        % define the styles for the legend entries
+        legend style={
+            font=\footnotesize,
+            draw=none,
+            fill=none,
+        },
+    ]
+        % plot the data for "Scab"
+        \addplot [
+            color=blue,
+            mark=none,
+            error bars/.cd,
+            y dir=both,
+            y explicit,
+        ] coordinates {
+            (545, 0.3) +-(0, 0.1)
+            (579, 0.3) +-(0, 0.1)
+            (622, 0.3) +-(0, 0.1)
+            (658, 0.35) +-(0, 0.1)
+            (701, 0.4) +-(0, 0.1)
+            (737, 0.45) +-(0, 0.1)
+            (779, 0.45) +-(0, 0.1)
+            (816, 0.45) +-(0, 0.1)
+        };
+        % plot the data for "Leaves"
+        \addplot [
+            color=black,
+            mark=none,
+            error bars/.cd,
+            y dir=both,
+            y explicit,
+        ] coordinates {
+            (545, 0.35) +-(0, 0.1)
+            (579, 0.4) +-(0, 0.1)
+            (622, 0.4) +-(0, 0.1)
+            (658, 0.45) +-(0, 0.1)
+            (701, 0.5) +-(0, 0.1)
+            (737, 0.6) +-(0, 0.1)
+            (779, 0.65) +-(0, 0.1)
+            (816, 0.65) +-(0, 0.1)
+        };
+        % plot the shaded area for "Scab"
+        \addplot [
+            color=blue,
+            fill=blue!20,
+            forget plot,
+        ] coordinates {
+            (545, 0.3) +-(0, 0.1)
+            (579, 0.3) +-(0, 0.1)
+            (622, 0.3) +-(0, 0.1)
+            (658, 0.35) +-(0, 0.1)
+            (701, 0.4) +-(0, 0.1)
+            (737, 0.45) +-(0, 0.1)
+            (779, 0.45) +-(0, 0.1)
+            (816, 0.45) +-(0, 0.1)
+        } \closedcycle;
+        % plot the shaded area for "Leaves"
+        \addplot [
+            color=black,
+            fill=black!20,
+            forget plot,
+        ] coordinates {
+            (545, 0.35) +-(0, 0.1)
+            (579, 0.4) +-(0, 0.1)
+            (622, 0.4) +-(0, 0.1)
+            (658, 0.45) +-(0, 0.1)
+            (701, 0.5) +-(0, 0.1)
+            (737, 0.6) +-(0, 0.1)
+            (779, 0.65) +-(0, 0.1)
+            (816, 0.65) +-(0, 0.1)
+        } \closedcycle;
+    \end{axis}
+\end{tikzpicture}
+\end{document}

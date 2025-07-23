@@ -1,0 +1,125 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+
+        % Define the number of petals
+        \def\n{2}
+        \def\r{2}
+        
+        % Draw the first petal
+        \draw[rotate=180*\n/(\n+1)] plot[domain=0:360,variable=\t] ({\r*cos(\t)},{\r*sin(\t)});
+        
+        % Draw the remaining petals
+        \foreach \i in {2,...,\n}{
+            \pgfmathsetmacro{\angle}{180*\i/(\n+1)}
+            \draw[rotate=\angle] plot[domain=0:360,variable=\t] ({\r*cos(\t)},{\r*sin(\t)});
+        }
+        
+        % Label the angle
+        \draw[->] (0,0) -- (\angle:\r+0.5) node[right] {$\lambda_{\n}$};
+        
+        % Label the number of petals
+        \node at (0,4) {$n = \n$};
+        
+    \end{tikzpicture}
+    
+    \begin{tikzpicture}[scale=0.7]
+
+        % Define the number of petals
+        \def\n{3}
+        \def\r{2}
+        
+        % Draw the first petal
+        \draw[rotate=180*\n/(\n+1)] plot[domain=0:360,variable=\t] ({\r*cos(\t)},{\r*sin(\t)});
+        
+        % Draw the remaining petals
+        \foreach \i in {2,...,\n}{
+            \pgfmathsetmacro{\angle}{180*\i/(\n+1)}
+            \draw[rotate=\angle] plot[domain=0:360,variable=\t] ({\r*cos(\t)},{\r*sin(\t)});
+        }
+        
+        % Label the angle
+        \draw[->] (0,0) -- (\angle:\r+0.5) node[right] {$\lambda_{\n}$};
+        
+        % Label the number of petals
+        \node at (0,4) {$n = \n$};
+        
+    \end{tikzpicture}
+    
+    \begin{tikzpicture}[scale=0.7]
+
+        % Define the number of petals
+        \def\n{4}
+        \def\r{2}
+        
+        % Draw the first petal
+        \draw[rotate=180*\n/(\n+1)] plot[domain=0:360,variable=\t] ({\r*cos(\t)},{\r*sin(\t)});
+        
+        % Draw the remaining petals
+        \foreach \i in {2,...,\n}{
+            \pgfmathsetmacro{\angle}{180*\i/(\n+1)}
+            \draw[rotate=\angle] plot[domain=0:360,variable=\t] ({\r*cos(\t)},{\r*sin(\t)});
+        }
+        
+        % Label the angle
+        \draw[->] (0,0) -- (\angle:\r+0.5) node[right] {$\lambda_{\n}$};
+        
+        % Label the number of petals
+        \node at (0,4) {$n = \n$};
+        
+    \end{tikzpicture}
+    
+    \begin{tikzpicture}[scale=0.7]
+
+        % Define the number of petals
+        \def\n{5}
+        \def\r{2}
+        
+        % Draw the first petal
+        \draw[rotate=180*\n/(\n+1)] plot[domain=0:360,variable=\t] ({\r*cos(\t)},{\r*sin(\t)});
+        
+        % Draw the remaining petals
+        \foreach \i in {2,...,\n}{
+            \pgfmathsetmacro{\angle}{180*\i/(\n+1)}
+            \draw[rotate=\angle] plot[domain=0:360,variable=\t] ({\r*cos(\t)},{\r*sin(\t)});
+        }
+        
+        % Label the angle
+        \draw[->] (0,0) -- (\angle:\r+0.5) node[right] {$\lambda_{\n}$};
+        
+        % Label the number of petals
+        \node at (0,4) {$n = \n$};
+        
+    \end{tikzpicture}
+    
+    \begin{tikzpicture}[scale=0.7]
+
+        % Define the number of petals
+        \def\n{6}
+        \def\r{2}
+        
+        % Draw the first petal
+        \draw[rotate=180*\n/(\n+1)] plot[domain=0:360,variable=\t] ({\r*cos(\t)},{\r*sin(\t)});
+        
+        % Draw the remaining petals
+        \foreach \i in {2,...,\n}{
+            \pgfmathsetmacro{\angle}{180*\i/(\n+1)}
+            \draw[rotate=\angle] plot[domain=0:360,variable=\t] ({\r*cos(\t)},{\r*sin(\t)});
+        }
+        
+        % Label the angle
+        \draw[->] (0,0) -- (\angle:\r+0.5) node[right] {$\lambda_{\n}$};
+        
+        % Label the number of petals
+        \node at (0,4) {$n = \n$};
+        
+    \end{tikzpicture}
+    
+\end{figure}
+
+\end{document}

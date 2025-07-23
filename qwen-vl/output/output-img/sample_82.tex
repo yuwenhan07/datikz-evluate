@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{venndiagram}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{venndiagram3sets}[setsize=4cm]
+        \fillOnlyA;
+        \fillOnlyB;
+        \fillOnlyC;
+        \fill[red] \intersectionBC;
+        \fill[blue] \intersectionAC;
+        \fill[green] \intersectionAB;
+    \end{venndiagram3sets}
+    
+    % Labels
+    \node at (0, 0) {$S_1$};
+    \node at (5, 0) {$S_2$};
+    \node at (-2, -3) {$S_3$};
+    \node at (3, -3) {$S_4$};
+\end{tikzpicture}
+
+\end{document}

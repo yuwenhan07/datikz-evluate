@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm, auto]
+    \tikzstyle{every state}=[draw=black!50, thick, minimum size=4mm]
+
+    % States
+    \node[state] (s11) {$s^{(1)}_{1}$};
+    \node[state] (s12) [right of=s11] {$s^{(1)}_{2}$};
+    \node[state] (s21) [below of=s11] {$s^{(2)}_{1}$};
+    \node[state] (s22) [right of=s21] {$s^{(2)}_{2}$};
+    \node[state] (sW1) [below of=s21] {$s^{(W)}_{1}$};
+    \node[state] (sW2) [right of=sW1] {$s^{(W)}_{2}$};
+
+    \node[state] (sT1) [right of=s22, xshift=3cm] {$s^{(1)}_{T-1}$};
+    \node[state] (sTW1) [below of=sT1] {$s^{(2)}_{T-1}$};
+    \node[state] (sWT1) [below of=sTW1] {$s^{(W)}_{T-1}$};
+    \node[state] (empty) [right of=sTW1, xshift=1cm] {$\emptyset$};
+
+    % Edges
+    \path[->,thick]
+        (s11) edge node {} (s12)
+        (s11) edge node {} (s22)
+        (s11) edge node {} (sW2)
+        (s12) edge node {} (s22)
+        (s12) edge node {} (sW2)
+        (s21) edge node {} (s22)
+        (s21) edge node {} (sW2)
+        (sW1) edge node {} (sW2)
+        (s11) edge node {} (sT1)
+        (s12) edge node {} (sT1)
+        (s21) edge node {} (sT1)
+        (s22) edge node {} (sT1)
+        (sW1) edge node {} (sT1)
+        (sW2) edge node {} (sT1)
+        (sT1) edge node {} (sTW1)
+        (sTW1) edge node {} (sWT1)
+        (sWT1) edge node {} (empty);
+\end{tikzpicture}
+
+\end{document}

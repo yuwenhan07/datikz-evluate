@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw the circle
+    \draw (0,0) circle (1);
+    
+    % Define the labels and their positions
+    \foreach \angle/\label in {0/label 1, 45/label 2, 90/label 3, 135/label 4, 180/label 5, 225/label 6, 270/label 7, 315/label 8} {
+        \draw (\angle:1) -- ++(\angle:.5) node [pos=1] {\label};
+    }
+\end{tikzpicture}
+\end{document}

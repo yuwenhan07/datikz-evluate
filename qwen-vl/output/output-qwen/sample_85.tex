@@ -1,0 +1,49 @@
+It seems like you're referring to a specific scenario involving Markov Decision Processes (MDPs) and utility functions, which are often used in reinforcement learning and decision-making processes. The flowchart you mentioned likely outlines a step-by-step approach for solving a problem using MDPs, focusing on the utility function during the execution phase.
+
+Here's a general overview of what such a flowchart might look like:
+
+### Flowchart Title: MDP - Algo - Single solution - Utility function - Execution phase
+
+#### 1. **Initialization**
+   - **Start**: Begin the process.
+   - **Define State Space**: Identify all possible states the system can be in.
+   - **Define Action Space**: Identify all possible actions that can be taken from each state.
+   - **Define Reward Function**: Define how rewards are assigned based on the state-action pairs.
+   - **Initialize Policy**: Decide the initial policy (a mapping from states to actions).
+
+#### 2. **Utility Function Calculation**
+   - **Calculate Utility**: For each state-action pair, calculate the expected utility by considering the immediate reward and the future rewards through the transition probabilities.
+   - **Update Utility**: Update the utility values based on the calculated utilities.
+
+#### 3. **Policy Improvement**
+   - **Evaluate Policy**: Evaluate the current policy by checking if it maximizes the expected utility.
+   - **Policy Iteration**: If the policy is not optimal, update the policy to one that maximizes the expected utility.
+   - **Repeat Evaluation**: Repeat the evaluation until the policy converges to an optimal one.
+
+#### 4. **Execution Phase**
+   - **Execute Optimal Policy**: Use the optimal policy to make decisions in the real-world scenario.
+   - **Monitor Performance**: Monitor the performance of the system under the optimal policy.
+   - **Adjust Parameters**: If necessary, adjust parameters such as the discount factor or other hyperparameters to improve performance.
+   - **End**: Conclude the process.
+
+### Example Steps in the Flowchart:
+1. **Initialization**:
+   - Define States: \( S = \{S_1, S_2, ..., S_n\} \)
+   - Define Actions: \( A = \{A_1, A_2, ..., A_m\} \)
+   - Define Reward Function: \( R(s, a) \)
+   - Initialize Policy: \( \pi(s) \)
+
+2. **Utility Function Calculation**:
+   - Calculate Utility: \( U(s, a) = R(s, a) + \gamma \sum_{s'} P(s'|s, a) U(s', \pi(s')) \)
+   - Update Utility: \( U(s, a) \leftarrow U(s, a) + \alpha [R(s, a) + \gamma \sum_{s'} P(s'|s, a) U(s', \pi(s')) - U(s, a)] \)
+
+3. **Policy Improvement**:
+   - Evaluate Policy: \( V(s) = \max_a U(s, a) \)
+   - Policy Iteration: \( \pi(s) \leftarrow \arg\max_a U(s, a) \)
+
+4. **Execution Phase**:
+   - Execute Optimal Policy: \( \pi^*(s) \)
+   - Monitor Performance: \( \text{Performance} = \sum_t R(s_t, a_t) \)
+   - Adjust Parameters: \( \gamma, \alpha \)
+
+This flowchart provides a structured approach to solving problems using MDPs, focusing on the utility function during the execution phase. The exact details will depend on the specific problem at hand and the chosen algorithm for solving the MDP.

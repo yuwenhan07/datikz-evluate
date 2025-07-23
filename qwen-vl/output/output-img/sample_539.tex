@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define coordinates for points e0 to e12 and f0 to f12
+    \coordinate (e0) at (0, 4);
+    \coordinate (f0) at (4, 0);
+    
+    \foreach \i in {1,...,12} {
+        \pgfmathtruncatemacro{\j}{\i-1}
+        \coordinate (e\i) at ($(e\j)!0.5!(f\i)$);
+        \coordinate (f\i) at ($(f\j)!0.5!(e\i)$);
+    }
+    
+    % Draw lines and labels
+    \draw (e0) -- (f0);
+    \foreach \i in {1,...,12} {
+        \draw (e\i) -- (f\i);
+        \node at (e\i) [above] {$e_{\i}$};
+        \node at (f\i) [right] {$f_{\i}$};
+    }
+\end{tikzpicture}
+
+\end{document}

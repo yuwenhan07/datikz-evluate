@@ -1,0 +1,13 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+This is some text: \textcolor{red}{foo}.
+\begin{tikzpicture}[remember picture, overlay]
+    \draw[red, line width=3pt, ->] (current page.text area.south west) -- ++(0.5, 0.5);
+\end{tikzpicture}
+And this is some text in between that the filling partially covers.
+And this is another node: \textcolor{red}{bar}.
+
+\end{document}

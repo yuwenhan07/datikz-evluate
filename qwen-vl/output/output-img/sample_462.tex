@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    \node (input) {$u^k$};
+    \node [below left=of input] (system) {$G$};
+    \node [above right=of system] (output) {$\hat{y}^k$};
+    \node [above=of system] (z) {$z^k$};
+    \node [above=of z] (s) {$\mathcal{S}$};
+    \node [right=of system] (w) {$w^k$};
+    \node [above=of w] (psi) {$\psi(\cdot)$};
+
+    \draw[->] (input) -- (system);
+    \draw[->] (system) -- (output);
+    \draw[->] (system) -- (z);
+    \draw[->] (z) -- (psi);
+    \draw[->] (psi) -- (w);
+    \draw[->] (w) -- (system);
+\end{tikzpicture}
+
+\end{document}

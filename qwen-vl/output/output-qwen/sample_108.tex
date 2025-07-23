@@ -1,0 +1,33 @@
+The Warburg impedance is a complex electrical property that arises in certain types of electrochemical systems, particularly those involving diffusion processes. It is often modeled using a fractional-order capacitor, which can be represented by a frequency-dependent impedance.
+
+The normalized discrete-time impulse response of the Warburg impedance can be derived from its continuous-time counterpart. In the continuous-time domain, the Warburg impedance \( Z_W(s) \) is given by:
+
+\[ Z_W(s) = \frac{1}{\sqrt{\pi s}} e^{-s} \]
+
+where \( s \) is the complex frequency variable. To find the impulse response \( h(t) \), we need to take the inverse Laplace transform of \( Z_W(s) \):
+
+\[ h(t) = \mathcal{L}^{-1}\left\{ \frac{1}{\sqrt{\pi s}} e^{-s} \right\} \]
+
+Using properties of the Laplace transform, specifically the convolution theorem and the fact that the inverse Laplace transform of \( \frac{1}{\sqrt{\pi s}} \) is \( \frac{1}{\sqrt{\pi t}} \), we get:
+
+\[ h(t) = \frac{1}{\sqrt{\pi t}} e^{-t} \]
+
+This is the impulse response of the Warburg impedance in the continuous-time domain. If we want to represent this as a discrete-time impulse response, we would typically use a numerical method such as the trapezoidal rule or Simpson's rule to approximate the integral involved in the inverse Laplace transform for specific sampling times.
+
+However, if we assume a discrete-time approximation where the sampling period is \( T \), the discrete-time impulse response \( h[n] \) can be approximated by evaluating the continuous-time impulse response at discrete points:
+
+\[ h[nT] = \frac{1}{\sqrt{\pi (nT)}} e^{-(nT)} \]
+
+For simplicity, let's denote \( \Delta = nT \). Then the discrete-time impulse response becomes:
+
+\[ h[\Delta] = \frac{1}{\sqrt{\pi \Delta}} e^{-\Delta} \]
+
+This equation represents the value of the impulse response at each discrete time step \( \Delta \).
+
+In terms of the image you described, the blue curve could represent the values of \( h[\Delta] \) plotted against \( \Delta \). The curve would start at \( \Delta = 0 \) with a value of \( h[0] = 1 \) (since \( \frac{1}{\sqrt{\pi \cdot 0}} \) is undefined but approaches infinity, practically starting at a high value), and decrease exponentially as \( \Delta \) increases.
+
+Thus, the normalized discrete-time impulse response of the Warburg impedance can be summarized as:
+
+\[ h[\Delta] = \frac{1}{\sqrt{\pi \Delta}} e^{-\Delta} \]
+
+for \( \Delta > 0 \).

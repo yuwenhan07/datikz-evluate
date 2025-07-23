@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=10cm,
+        height=6cm,
+        xlabel=$x$,
+        ylabel=$y$,
+        domain=0:4*pi,
+        samples=100,
+        no markers,
+        smooth,
+        thick,
+        grid=major,
+        grid style={dashed, gray!30},
+        xmin=0, xmax=4*pi,
+        ymin=-1.5, ymax=1.5,
+        xtick={0,pi/2,...,4*pi},
+        ytick={-1,0,1},
+        xticklabels={$0$, $\frac{\pi}{2}$, $\pi$, $\frac{3\pi}{2}$, $2\pi$, $\frac{5\pi}{2}$, $3\pi$, $\frac{7\pi}{2}$, $4\pi$},
+        yticklabels={$-1$, $0$, $1$},
+        axis lines=middle,
+        title=Sine Wave
+    ]
+        \foreach \i in {0,0.1,...,4}{
+            \addplot[blue!\i!red] {sin(\i*x r)};
+        }
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

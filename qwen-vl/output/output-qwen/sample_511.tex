@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        view={0}{90},
+        width=12cm,
+        height=12cm,
+        xlabel=$x$,
+        ylabel=$y$,
+        zlabel=$z$,
+        domain=-3:3,
+        y domain=-3:3,
+        samples=50,
+        colorbar,
+        colorbar style={
+            at={(rel axis cs:0,0)},
+            anchor=north west,
+            width=6cm,
+            height=4cm,
+            title={$z$}
+        },
+        colorbar sampled,
+        colorbar style={
+            at={(rel axis cs:0,0)},
+            anchor=north west,
+            width=6cm,
+            height=4cm,
+            title={$z$}
+        },
+        colorbar sampled,
+        colorbar style={
+            at={(rel axis cs:0,0)},
+            anchor=north west,
+            width=6cm,
+            height=4cm,
+            title={$z$}
+        }
+    ]
+        \addplot3 [surf, shader=interp, streamplot, quiver={u=1,v=1}, -stealth] {x^2 + y^2};
+    \end{axis}
+\end{tikzpicture}
+\end{document}

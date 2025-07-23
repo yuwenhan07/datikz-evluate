@@ -1,0 +1,28 @@
+The images you've described seem to be related to a Motion Collision Resolution (MCR) problem, which is a common challenge in robotics and autonomous systems. Here's a breakdown of what these images might represent:
+
+### (a) An Instance of MCR with 4 Obstacles
+
+In this part of the image:
+- **Start and Goal Locations**: These are typically represented by specific points or areas in the environment where the robot or vehicle begins its journey and where it needs to reach, respectively.
+- **Obstacles**: There are four distinct obstacles depicted, which are likely to be static objects that the robot must navigate around without colliding.
+
+### (b) The MCR Problem Transformed into a Graph
+
+This part of the image shows how the MCR problem can be abstracted into a graph for easier analysis and solution:
+- **Vertices (Nodes)**: Each vertex represents a set of possible configurations of the robot's path relative to the obstacles. These configurations are constrained by the presence of the obstacles and are often referred to as "obstacle sets."
+- **Edges**: The edges between vertices indicate transitions from one configuration to another, which are feasible given the constraints imposed by the obstacles.
+- **Connected Regions**: The vertices are organized into 2D connected regions, meaning that there exists a path within each region that avoids all obstacles. This helps in breaking down the problem into smaller, more manageable sub-problems.
+
+### Key Concepts:
+
+1. **Obstacle Sets**: A set of configurations where the robot does not collide with any of the obstacles. Each vertex in the graph corresponds to such an obstacle set.
+2. **Graph Representation**: The graph helps in visualizing the different paths the robot can take while avoiding collisions. It simplifies the problem by reducing it to finding a path in a graph rather than directly solving the collision avoidance problem in a continuous space.
+3. **Partitioning**: The partitioning along the obstacle boundaries ensures that each vertex in the graph represents a unique set of configurations that avoid the same set of obstacles.
+
+### Solving the MCR Problem:
+
+To solve the MCR problem using the graph representation:
+- **Path Finding Algorithm**: One could use algorithms like Dijkstra’s algorithm, A* search, or other graph traversal techniques to find the shortest path (or a valid path) from the start vertex to the goal vertex.
+- **Feasibility Check**: Ensure that the path found in the graph translates back to a collision-free path in the original 2D space.
+
+This approach is particularly useful when dealing with complex environments with multiple obstacles, as it breaks down the problem into simpler, discrete steps.

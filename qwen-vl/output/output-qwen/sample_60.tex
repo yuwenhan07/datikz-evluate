@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+    \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+    % Define nodes
+    \node[state] (A) {A};
+    \node[state] (B) [right of=A] {B};
+    \node[state] (C) [below right of=B] {C};
+    \node[state] (D) [below left of=C] {D};
+    \node[state] (E) [above left of=D] {E};
+    \node[state] (F) [below left of=E] {F};
+    \node[state] (G) [below right of=F] {G};
+    \node[state] (H) [below right of=G] {H};
+
+    % Draw edges with labels
+    \path[->,thick,dashed]
+        (A) edge node[above] {Feasible} (B)
+        (B) edge node[above] {Infeasible} (C)
+        (C) edge node[above] {Feasible} (D)
+        (D) edge node[above] {Feasible} (E)
+        (E) edge node[above] {Feasible} (F)
+        (F) edge node[above] {Feasible} (G)
+        (G) edge node[above] {Feasible} (H)
+        (H) edge node[above] {Feasible} (A);
+
+    % Add more nodes and edges as needed
+    % For example:
+    % \node[state] (I) [below right of=G] {I};
+    % \path[->,thick,dashed]
+    %     (G) edge node[above] {Feasible} (I);
+    % \path[->,thick,dashed]
+    %     (I) edge node[above] {Feasible} (A);
+
+\end{tikzpicture}
+
+\end{document}

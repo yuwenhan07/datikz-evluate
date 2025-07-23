@@ -1,0 +1,49 @@
+python
+import numpy as np
+
+# Define the binary matrix representing the polyomino
+matrix = np.array([
+    [0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 0],
+    [0, 1, 0, 1, 0],
+    [0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0]
+])
+
+# Function to draw a line with a given thickness
+def draw_line(x1, y1, x2, y2, thickness):
+    # Simplified drawing function for demonstration purposes
+    print(f"Drawing line from ({x1}, {y1}) to ({x2}, {y2}) with thickness {thickness}")
+
+# Function to find the boundary of the polyomino
+def find_boundary(matrix):
+    rows, cols = matrix.shape
+    boundary = []
+    
+    for i in range(rows):
+        for j in range(cols):
+            if matrix[i][j] == 1:
+                # Check top, bottom, left, right neighbors
+                if (i > 0 and matrix[i-1][j] == 0) or \
+                   (i < rows - 1 and matrix[i+1][j] == 0) or \
+                   (j > 0 and matrix[i][j-1] == 0) or \
+                   (j < cols - 1 and matrix[i][j+1] == 0):
+                    boundary.append((i, j))
+    
+    return boundary
+
+# Find the boundary of the polyomino
+boundary_points = find_boundary(matrix)
+
+# Draw the grid lines
+for i in range(matrix.shape[0]):
+    draw_line(0, i, matrix.shape[1], i, 1)
+for j in range(matrix.shape[1]):
+    draw_line(j, 0, j, matrix.shape[0], 1)
+
+# Draw the boundary lines with a thicker line thickness
+for point in boundary_points:
+    draw_line(point[1], point[0], point[1], point[0], 3)
+
+# Print the boundary points for verification
+print("Boundary Points:", boundary_points)

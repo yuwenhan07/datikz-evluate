@@ -1,0 +1,67 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = $x$,
+        ylabel = {$y$},
+        ymin=0, ymax=5,
+        xmin=0, xmax=5,
+        xtick={1,xp},
+        ytick={1},
+        extra x ticks={xp},
+        extra x tick labels={$x_p(\theta)$},
+        extra y ticks={1},
+        extra y tick labels={$1$},
+        domain=0.1:4,
+        samples=100,
+        no markers,
+        smooth,
+        clip=false,
+        every axis plot post/.append style={
+            thick,
+            black,
+            mark options={fill=white}
+        }
+    ]
+    
+    % Plot the curve y = y_p(x)
+    \addplot [name path=A] {1/x};
+    
+    % Plot the line y = x * tan(theta)
+    \addplot [name path=B] {x*tan(30)};
+    
+    % Find the intersection point
+    \path [name intersections={of=A and B, by=C}];
+    
+    % Draw the shaded region
+    \fill [gray!30, opacity=0.5] (0,0) -- (C) -- (C |- 1,0) -- cycle;
+    
+    % Draw the angle theta
+    \draw (C) -- ++(-1,0) arc (-90:-60:1) node[midway,below] {$\theta$};
+    
+    % Labels for the curves
+    \node at (2,3) {$y=y_p(x)$};
+    \node at (2,1.5) {$y=x\tan\theta$};
+    \node at (3.5,0.5) {$C_{p,\theta}$};
+    
+    % Dotted lines
+    \draw[dotted] (1,0) -- (1,1);
+    \draw[dotted] (1,1) -- (1,0);
+    \draw[dotted] (1,0) -- (1,5);
+    \draw[dotted] (1,1) -- (1,5);
+    
+    % Tick marks
+    \draw[thick] (1,0) -- (1,-0.1);
+    \draw[thick] (1,1) -- (1,-0.1);
+    \draw[thick] (1,0) -- (1,0.1);
+    \draw[thick] (1,1) -- (1,0.1);
+    
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

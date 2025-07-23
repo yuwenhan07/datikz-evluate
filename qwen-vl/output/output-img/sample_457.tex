@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define the center of the circle
+    \coordinate (O) at (0,0);
+    
+    % Draw the circle with radius 0.5
+    \draw (O) circle (0.5);
+    
+    % Define the angles
+    \def\angA{30}
+    \def\angB{90}
+    \def\angC{150}
+    \def\angD{210}
+    
+    % Draw the vectors
+    \draw[->] (O) -- ++(\angA:1) node[above right] {$\mathbf{t}_1$};
+    \draw[->] (O) -- ++(\angB:1) node[above left] {$\mathbf{t}_2$};
+    \draw[->] (O) -- ++(\angC:1) node[below left] {$\mathbf{t}_3$};
+    \draw[->] (O) -- ++(\angD:1) node[below right] {$\mathbf{t}_4$};
+    
+    % Draw the angles
+    \pic [draw, angle radius=0.5cm, "$\theta_1$"] {angle = O--\angA--\angB};
+    \pic [draw, angle radius=0.5cm, "$\theta_2$"] {angle = O--\angB--\angC};
+    \pic [draw, angle radius=0.5cm, "$\theta_3$"] {angle = O--\angC--\angD};
+    \pic [draw, angle radius=0.5cm, "$\theta_4$"] {angle = O--\angD--\angA};
+    
+    % Draw the point z
+    \fill (O) circle (0.05) node[above] {$\mathbf{z}$};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        view={60}{30},
+        axis lines=none,
+        enlargelimits=false,
+        samples=20,
+        domain=-1:1,
+        y domain=0:2*pi,
+        z buffer=sort,
+        colormap/hot,
+    ]
+        \addplot3 [surf] ({x*cos(y)}, {x*sin(y)}, {x});
+    \end{axis}
+\end{tikzpicture}
+\end{document}

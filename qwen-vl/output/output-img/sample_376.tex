@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define coordinates for nodes
+    \node (v11) at (-2,0) [circle, draw, fill=white] {};
+    \node (v12) at (-1,0) [circle, draw, fill=black] {};
+    \node (v13) at (0,0) [circle, draw, fill=white] {};
+    \node (v14) at (1,0) [circle, draw, fill=black] {};
+    \node (v15) at (2,0) [circle, draw, fill=white] {};
+    \node (v16) at (3,0) [circle, draw, fill=black] {};
+    \node (v17) at (4,0) [circle, draw, fill=white] {};
+    \node (v18) at (5,0) [circle, draw, fill=black] {};
+    \node (v19) at (6,0) [circle, draw, fill=white] {};
+    \node (v110) at (7,0) [circle, draw, fill=black] {};
+    
+    \node (v21) at (-2,-1) [circle, draw, fill=black] {};
+    \node (v22) at (-1,-1) [circle, draw, fill=black] {};
+    \node (v23) at (0,-1) [circle, draw, fill=white] {};
+    \node (v24) at (1,-1) [circle, draw, fill=black] {};
+    \node (v25) at (2,-1) [circle, draw, fill=black] {};
+    \node (v26) at (3,-1) [circle, draw, fill=white] {};
+    \node (v27) at (4,-1) [circle, draw, fill=black] {};
+    \node (v28) at (5,-1) [circle, draw, fill=white] {};
+    \node (v29) at (6,-1) [circle, draw, fill=black] {};
+    \node (v210) at (7,-1) [circle, draw, fill=black] {};
+    
+    \node (v31) at (-2,-2) [circle, draw, fill=black] {};
+    \node (v32) at (-1,-2) [circle, draw, fill=black] {};
+    \node (v33) at (0,-2) [circle, draw, fill=black] {};
+    \node (v34) at (1,-2) [circle, draw, fill=white] {};
+    \node (v35) at (2,-2) [circle, draw, fill=black] {};
+    \node (v36) at (3,-2) [circle, draw, fill=white] {};
+    \node (v37) at (4,-2) [circle, draw, fill=black] {};
+    \node (v38) at (5,-2) [circle, draw, fill=white] {};
+    \node (v39) at (6,-2) [circle, draw, fill=black] {};
+    \node (v310) at (7,-2) [circle, draw, fill=white] {};
+    
+    \node (v41) at (-2,-3) [circle, draw, fill=black] {};
+    \node (v42) at (-1,-3) [circle, draw, fill=black] {};
+    \node (v43) at (0,-3) [circle, draw, fill=black] {};
+    \node (v44) at (1,-3) [circle, draw, fill=black] {};
+    \node (v45) at (2,-3) [circle, draw, fill=black] {};
+    \node (v46) at (3,-3) [circle, draw, fill=black] {};
+    \node (v47) at (4,-3) [circle, draw, fill=black] {};
+    \node (v48) at (5,-3) [circle, draw, fill=black] {};
+    \node (v49) at (6,-3) [circle, draw, fill=black] {};
+    \node (v410) at (7,-3) [circle, draw, fill=black] {};
+    
+    \node (v51) at (0,-4) [circle, draw, fill=white] {};
+    
+    % Draw edges
+    \draw[thick, ->] (v11) -- (v12);
+    \draw[thick, ->] (v12) -- (v13);
+    \draw[thick, ->] (v13) -- (v14);
+    \draw[thick, ->] (v14) -- (v15);
+    \draw[thick, ->] (v15) -- (v16);
+    \draw[thick, ->] (v16) -- (v17);
+    \draw[thick, ->] (v17) -- (v18);
+    \draw[thick, ->] (v18) -- (v19);
+    \draw[thick, ->] (v19) -- (v110);
+    
+    \draw[thick, ->] (v21) -- (v22);
+    \draw[thick, ->] (v22) -- (v23);
+    \draw[thick, ->] (v23) -- (v24);
+    \draw[thick, ->] (v24) -- (v25);
+    \draw[thick, ->] (v25) -- (v26);
+    \draw[thick, ->] (v26) -- (v27);
+    \draw[thick, ->] (v27) -- (v28);
+    \draw[thick, ->] (v28) -- (v29);
+    \draw[thick, ->] (v29) -- (v210);
+    
+    \draw[thick, ->] (v31) -- (v32);
+    \draw[thick, ->] (v32) -- (v33);
+    \draw[thick, ->] (v33) -- (v34);
+    \draw[thick, ->] (v34) -- (v35);
+    \draw[thick, ->] (v35) -- (v36);
+    \draw[thick, ->] (v36) -- (v37);
+    \draw[thick, ->] (v37) -- (v38);
+    \draw[thick, ->] (v38) -- (v39);
+    \draw[thick, ->] (v39) -- (v310);
+    
+    \draw[thick, ->] (v41) -- (v42);
+    \draw[thick, ->] (v42) -- (v43);
+    \draw[thick, ->] (v43) -- (v44);
+    \draw[thick, ->] (v44) -- (v45);
+    \draw[thick, ->] (v45) -- (v46);
+    \draw[thick, ->] (v46) -- (v47);
+    \draw[thick, ->] (v47) -- (v48);
+    \draw[thick, ->] (v48) -- (v49);
+    \draw[thick, ->] (v49) -- (v410);
+    
+    \draw[thick, ->] (v51) -- (v41);
+    
+    % Highlighted nodes
+    \node[circle, draw, fill=orange!50, thick, minimum size=0.5cm] at (2.5,-1) {};
+    \node[circle, draw, fill=blue!50, thick, minimum size=0.5cm] at (2.5,-2) {};
+    \node[circle, draw, fill=orange!50, thick, minimum size=0.5cm] at (2.5,-3) {};
+    \node[circle, draw, fill=blue!50, thick, minimum size=0.5cm] at (2.5,-4) {};
+    
+    \node at (2.5,-1.5) {$\widetilde{v}$};
+    
+    % Labels
+    \node at (-2.5,-0.5) {$v_{1,1}$};
+    \node at (-1.5,-0.5) {$v_{1,2}$};
+    \node at (-0.5,-0.5) {$v_{1,3}$};
+    \node at (0.5,-0.5) {$v_{1,4}$};
+    \node at (1.5,-0.5) {$v_{1,5}$};
+    \node at (2.5,-0.5) {$v_{1,6}$};
+    \node at (3.5,-0.5) {$v_{1,7}$};
+    \node at (-2.5,-1.5) {$v_{2,1}$};
+    \node at (-1.5,-1.5) {$v_{2,2}$};
+    \node at (-0.5,-1.5) {$v_{2,3}$};
+    \node at (0.5,-1.5) {$v_{2,4}$};
+    \node at (1.5,-1.5) {$v_{2,5} = \widetilde{v}$};
+    \node at (2.5,-1.5) {$v_{2,6}$};
+    \node at (3.5,-1.5) {$v_{2,7}$};
+    \node at (-2.5,-2.5) {$v_{3,1}$};
+    \node at (-1.5,-2.5) {$v_{3,2}$};
+    \node at (-0.5,-2.5) {$v_{3,3}$};
+    \node at (0.5,-2.5) {$v_{3,4}$};
+    \node at (1.5,-2.5) {$v_{3,5}$};
+    \node at (2.5,-2.5) {$v_{3,6}$};
+    \node at (3.5,-2.5) {$v_{3,7}$};
+    \node at (-2.5,-3.5) {$v_{4,1}$};
+    \node at (-1.5,-3.5) {$v_{4,2}$};
+    \node at (-0.5,-3.5) {$v_{4,3}$};
+    \node at (0.5,-3.5) {$v_{4,4}$};
+    \node at (1.5,-3.5) {$v_{4,5}$};
+    \node at (2.5,-3.5) {$v_{4,6}$};
+    \node at (3.5,-3.5) {$v_{4,7}$};
+    \node at (0,-4.5) {$v_{5,1}$};
+    
+    % Annotations
+    \node at (3.5,-0.5) {$T[f_1]$};
+    \node at (6.5,-0.5) {$T[f_2]$};
+\end{tikzpicture}
+
+\end{document}

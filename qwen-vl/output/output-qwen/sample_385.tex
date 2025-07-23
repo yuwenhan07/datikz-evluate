@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis equal,
+        axis lines=middle,
+        xmin=-0.5, xmax=4.5,
+        ymin=-0.5, ymax=4.5,
+        xtick={-0.5,0,...,4.5},
+        ytick={-0.5,0,...,4.5},
+        grid=major,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        minor tick num=1,
+        minor grid style={line width=.1pt,draw=gray!50},
+        enlargelimits=false,
+        clip=false,
+        axis on top,
+        ]
+        % Draw the grid lines
+        \draw[help lines] (axis cs:-0.5,-0.5) grid (axis cs:4.5,4.5);
+        
+        % Add the numbers to the grid
+        \foreach \x in {0,...,4} {
+            \foreach \y in {0,...,4} {
+                \node at (axis cs:\x,\y) {\x};
+            }
+        }
+    \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{3d}
+
+\begin{document}
+\begin{tikzpicture}[scale=2, transform shape]
+    \def\n{45} % Angle of incline
+
+    % Define the coordinates of the airplane
+    \coordinate (A) at (1, 1, 1);
+    \coordinate (B) at (1 + cos(\n), 1 + sin(\n), 1);
+
+    % Draw the airplane
+    \draw[fill=white] (A) -- ++(0, 0, -0.2) -- ++(-0.2, 0, 0) -- ++(0, 0.2, 0) -- cycle;
+    \draw[fill=white] (A) -- ++(0.2, 0, 0) -- ++(0, 0.2, 0) -- ++(-0.2, 0, 0) -- cycle;
+    \draw[fill=white] (A) -- ++(0.2, 0, 0) -- ++(0, -0.2, 0) -- ++(-0.2, 0, 0) -- cycle;
+
+    % Draw the incline line
+    \draw[thick] (A) -- (B);
+
+    % Label the angle
+    \tdplotsetmaincoords{70}{110}
+    \tdplotdrawarc{(A)}{0.5}{0}{\n}{anchor=south west}{$\theta$}
+
+    % Draw the coordinates of the airplane
+    \node at (A) [circle, fill, inner sep=1pt] {};
+    \node at (B) [circle, fill, inner sep=1pt] {};
+
+    % Label the coordinates
+    \node at (A) [below left] {$(1, 1, 1)$};
+    \node at (B) [above right] {$(1 + \cos(\n), 1 + \sin(\n), 1)$};
+
+\end{tikzpicture}
+\end{document}

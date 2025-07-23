@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    \foreach \x in {0,1,...,360} {
+        \draw[domain=0:1, samples=100, variable=\y, color=blue!50] plot ({\x + 0.1*cos(4*\x)},{\y + 0.1*sin(4*\x)});
+    }
+    \foreach \x in {0,1,...,360} {
+        \draw[domain=0:1, samples=100, variable=\y, color=red!50] plot ({\x - 0.1*cos(4*\x)},{\y - 0.1*sin(4*\x)});
+    }
+    \foreach \x in {0,1,...,360} {
+        \draw[domain=0:1, samples=100, variable=\y, color=green!50] plot ({\x + 0.1*cos(2*\x)},{\y + 0.1*sin(2*\x)});
+    }
+    \foreach \x in {0,1,...,360} {
+        \draw[domain=0:1, samples=100, variable=\y, color=orange!50] plot ({\x - 0.1*cos(2*\x)},{\y - 0.1*sin(2*\x)});
+    }
+\end{tikzpicture}
+
+\end{document}

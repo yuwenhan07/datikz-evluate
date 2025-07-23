@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define the functions
+    \def\f(#1){#1^2} % Example: f(x) = x^2
+    \def\g(#1){#1+1} % Example: g(x) = x + 1
+
+    % Find the intersection points
+    \pgfmathsetmacro{\xstart}{0}
+    \pgfmathsetmacro{\xend}{2}
+    \pgfmathsetmacro{\ymin}{min(\f(\xstart), \g(\xstart))}
+    \pgfmathsetmacro{\ymax}{max(\f(\xend), \g(\xend))}
+
+    % Plot the functions
+    \draw[red] plot[domain=\xstart:\xend, samples=100] (\x,{\f(\x)});
+    \draw[blue] plot[domain=\xstart:\xend, samples=100] (\x,{\g(\x)});
+
+    % Fill the area between the functions
+    \fill[white, opacity=0.8] plot[domain=\xstart:\xend, samples=100] (\x,{\f(\x)}) -- plot[domain=\xend:\xstart, samples=100] (\x,{\g(\x)}) -- cycle;
+
+    % Draw the axes
+    \draw[->] (-1,0) -- (3,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,3) node[above] {$y$};
+
+    % Labels
+    \node at (2.5,2.5) {White Area};
+    \node at (2.5,2) {Blue Area};
+\end{tikzpicture}
+\end{document}

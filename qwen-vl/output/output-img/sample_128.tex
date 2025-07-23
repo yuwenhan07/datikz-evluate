@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    % Define nodes
+    \node[obs] (X1) {$X_{1}$};
+    \node[latent, right=of X1] (H1) {$H_{1}$};
+    \node[latent, above=of H1] (U2) {$U_{2}$};
+    \node[obs, below=of H1] (O1) {$O_{1}$};
+    \node[obs, right=of O1] (X2) {$X_{2}$};
+    \node[latent, above=of X2] (H2) {$H_{2}$};
+    \node[latent, above=of H2] (UT) {$U_{T}$};
+    \node[obs, below=of H2] (OT) {$O_{T}$};
+    \node[latent, right=of OT] (HT) {$H_{T}$};
+
+    % Connect nodes
+    \edge {X1} {H1};
+    \edge {H1} {O1};
+    \edge {U2} {H2};
+    \edge {H2} {O1};
+    \edge {H2} {O2};
+    \edge {X2} {H2};
+    \edge {H2} {O2};
+    \edge {UT} {HT};
+    \edge {HT} {OT};
+    \edge {OT} {V_T};
+    \edge {V_T} {X_T};
+    \edge {V1} {O1};
+    \edge {V2} {O2};
+    \edge {V_T} {OT};
+\end{tikzpicture}
+
+\end{document}

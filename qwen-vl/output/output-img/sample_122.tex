@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+
+% Draw the main shapes
+\draw[thick] (0,0) -- (4,0) -- (6,4) -- (2,4) -- cycle;
+\draw[thick] (0,0) -- (4,0) -- (6,-4) -- (2,-4) -- cycle;
+
+% Draw the zigzag lines
+\draw[thick, densely zigzag] (0,0) -- (4,0);
+\draw[thick, densely zigzag] (0,0) -- (2,-4);
+
+% Draw the curved lines
+\draw[thick, magenta] (0,0) .. controls (2,2) and (4,2) .. (6,0);
+\draw[thick, blue] (4,0) .. controls (5,3) and (6,3) .. (7,0);
+
+% Mark the points
+\filldraw[red] (5,0) circle (2pt) node[right] {$R$};
+\filldraw[black] (2,0) circle (2pt) node[below] {$\pi$};
+\filldraw[red] (4,-2) circle (2pt) node[right] {$0$};
+
+% Draw the dashed lines
+\draw[dashed] (0,0) -- (0,4);
+\draw[dashed] (4,0) -- (4,4);
+\draw[dashed] (6,0) -- (6,4);
+\draw[dashed] (2,0) -- (2,4);
+
+\end{tikzpicture}
+
+\end{document}

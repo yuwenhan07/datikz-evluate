@@ -1,0 +1,33 @@
+The evolution of the average Signal-to-Interference-plus-Noise Ratio (SINR) per episode during the training of agents for tilt control can provide insights into the performance of different reinforcement learning algorithms. Here, we compare three approaches: GQN (Graph Neural Network), GQN with Graph Attention Network (GQN(GAT)), a standard Deep Q-Network (DQN), and GAQ (a state-of-the-art algorithm developed for antenna tilt control).
+
+### Key Points:
+
+1. **GQN (Graph Neural Network)**:
+   - GQN is a type of neural network that can process graph-structured data.
+   - It might be particularly useful in scenarios where the environment has a complex structure or relationships between different nodes (e.g., nodes representing different antennas or cells).
+   - The SINR improvement over time would depend on how well GQN can learn the underlying graph structure and make optimal decisions.
+
+2. **GQN(GAT) (Graph Neural Network with Graph Attention Network)**:
+   - GAT enhances GQN by incorporating attention mechanisms.
+   - This allows the model to focus on the most relevant parts of the graph at each step, potentially leading to better performance.
+   - The SINR improvement should be more pronounced compared to plain GQN due to the enhanced ability to attend to important features.
+
+3. **Standard DQN (Deep Q-Network)**:
+   - DQN is a classic reinforcement learning algorithm that uses a neural network to approximate the value function.
+   - It is simpler than GQN and GQN(GAT) but may not capture as much context or long-term dependencies.
+   - The SINR improvement will likely be less steep compared to the more sophisticated models like GQN and GQN(GAT).
+
+4. **GAQ (Graph Attention Q-Learning)**:
+   - GAQ is specifically designed for antenna tilt control and leverages graph attention mechanisms.
+   - It is tailored to the problem domain and might have a more efficient way of learning the optimal policy.
+   - The SINR improvement should be significant, as it is a state-of-the-art method in this specific application.
+
+### Expected Trends:
+
+- **Initial Phase**: All methods might start with low SINR values as they explore the environment and learn the optimal actions.
+- **Mid-Phase**: GQN(GAT) and GAQ should show faster convergence towards higher SINR values due to their ability to handle complex graph structures and learn more efficiently.
+- **Late-Phase**: GQN(GAT) and GAQ should maintain high SINR values, while DQN might plateau or show slower improvements.
+
+### Conclusion:
+
+The comparison of these methods will help identify which approach is most effective for antenna tilt control. GQN(GAT) and GAQ are expected to outperform DQN due to their ability to handle graph-structured environments and learn more efficiently. However, the exact performance will depend on the specific characteristics of the environment and the complexity of the task.

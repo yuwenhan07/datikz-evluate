@@ -1,0 +1,21 @@
+The number of nonlinear iterations required by the Preconditioned Projected Gradient Descent (PPGD) method can vary significantly depending on several factors, including the specific problem being solved, the choice of preconditioner, the initial guess, and the number of degrees of freedom (DOF). For problems involving partial differential equations (PDEs), the number of DOF is often related to the spatial discretization of the domain.
+
+Here's a general overview of how the number of nonlinear iterations might change as the number of DOF increases from 3K to 3.2M:
+
+1. **Problem Complexity**: The complexity of the PDE system increases with the number of DOF. This means that the linear systems that need to be solved at each iteration become larger and more computationally intensive.
+
+2. **Preconditioning**: The effectiveness of the preconditioner also plays a crucial role. A good preconditioner can significantly reduce the number of nonlinear iterations needed. However, as the size of the problem increases, the design and implementation of an effective preconditioner can become more challenging.
+
+3. **Convergence Rate**: Generally, the convergence rate of the PPGD method depends on the condition number of the linear systems and the quality of the preconditioner. As the number of DOF increases, the condition number of these systems tends to increase, which can slow down convergence unless an effective preconditioner is used.
+
+4. **Implementation Details**: The specific implementation details, such as the choice of solver for the linear systems (e.g., Krylov subspace methods like GMRES or CG), the tolerance settings, and the stopping criteria, can also influence the number of nonlinear iterations.
+
+### Example Scenario:
+- **Small Problem (3K DOF)**: In this case, the linear systems are relatively small, and a well-designed preconditioner can lead to a reasonable number of nonlinear iterations (e.g., 5-10).
+- **Medium Problem (100K DOF)**: Here, the linear systems are larger, and the number of nonlinear iterations might increase to around 20-30.
+- **Large Problem (3.2M DOF)**: With such a large number of DOF, the linear systems are very large, and the number of nonlinear iterations could be in the range of 50-100 or even higher, depending on the effectiveness of the preconditioner and other factors.
+
+### Conclusion:
+Without specific numerical results or detailed information about the problem and the implementation, it's difficult to provide exact numbers. However, based on typical behavior observed in similar problems, one might expect the number of nonlinear iterations to increase as the number of DOF increases. The key is to use an effective preconditioner and possibly adapt the solver parameters to handle the increased computational load efficiently.
+
+For precise results, you would need to run the PPGD method on your specific problem and observe the number of nonlinear iterations directly.

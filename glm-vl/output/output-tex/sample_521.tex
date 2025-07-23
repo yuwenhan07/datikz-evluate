@@ -1,0 +1,42 @@
+\begin{tikzpicture}
+  % Left shape: modified curve with circular ends
+  % Define the path: start at (0,0), draw a circular arc to (1,0), then a curved path to (4,0), then another circular arc to (5,0) (assuming coordinates)
+  % Wait, maybe better to use a more precise approach. Let's say the left shape is a shape with two semicircles (radius 1cm) connected by a curve. So the path would be:
+  \draw[blue, thick] (0,0) arc (0:180:1cm) to[bend left=30] (3,0) arc (180:0:1cm);
+  % Wait, but that's a closed shape? Wait, arc (0:180:1cm) is a semicircle from (1,0) to (-1,0), then to (3,0) with a bend, then arc (180:0:1cm) which is another semicircle. Wait, maybe the left shape is a sort of "circular curve" with two circular ends. Alternatively, use a combination of `circle` and `path` operations. Wait, maybe the left shape is a shape that looks like a circle with a curve in the middle, but modified. Alternatively, use the `plot` command for a custom curve. 
+
+Wait, maybe the left shape is a shape defined by a path that has two circular arcs (each with radius r) connected by a smooth curve. Let's try:
+
+\draw[blue, thick] (0,0) arc (0:180:1cm) to[bend left] (2,0) arc (180:0:1cm);
+Wait, but that's a closed shape? Wait, starting at (0,0), drawing an arc from 0 to 180 degrees (so a semicircle up to (0,1) then to (-1,0)), then to (2,0) with a bend, then an arc from 180 to 0 degrees (so a semicircle down to (2,0) then to (3,0)). Hmm, maybe the left shape is a sort of "circular curve" with two circular ends. Alternatively, maybe the left shape is a shape that's like a circle with a curve, but I need to make sure it's a modified curve with circular ends. 
+
+For the right shape: mix of curves and lines, cut-out circle. Let's say the right shape has some curved parts, some straight lines, and a circle in the center that's cut out. So the outer shape could be a combination of arcs and lines, then a circle in the center with `fill=white` (so it's a hole). For example:
+
+\draw[blue, thick] (6,0) arc (0:90:1cm) -- (8,0) arc (0:90:1cm) -- (8,2) arc (90:180:1cm) -- (6,2) arc (180:270:1cm) -- cycle;
+% Then, add a cut-out circle in the center. So the circle is at (7,1), radius 0.5cm, filled white.
+\fill[white] (7,1) circle (0.5cm);
+\draw[blue, thick] (6,0) arc (0:90:1cm) -- (8,0) arc (0:90:1cm) -- (8,2) arc (90:180:1cm) -- (6,2) arc (180:270:1cm) -- cycle;
+Wait, but maybe the right shape is more like a combination of curves and lines. Let's think of the right shape as having a curve from (6,0) to (7,1), then a line to (8,1), then a curve to (8,2), then a line to (7,1.5), then a curve back to (6,2), then a line back to (6,0). But this is getting complicated. Maybe use a more structured approach. 
+
+Alternatively, use the `path` command for the right shape, which includes curves, lines, and a cut-out. For example:
+
+\draw[blue, thick] (6,0) to[out=0, in=180] (7,1) to[out=0, in=180] (8,2) to[out=0, in=180] (6,2) to[out=0, in=180] cycle;
+% Then, add a cut-out circle. So the circle is at (7,1), radius 0.5cm, filled white.
+\fill[white] (7,1) circle (0.5cm);
+
+Wait, but the right shape is described as "a mix of curves and lines, with a cut-out circle in the center". So maybe the outer shape has curves and lines, and the center has a circle that's cut out (so the circle is a hole). So the code would be:
+
+\draw[blue, thick] (6,0) to[bend left] (7,1) -- (8,1) to[bend left] (8,2) -- (6,2) to[bend left] (6,0);
+\fill[white] (7,1) circle (0.5cm);
+
+But need to make sure the coordinates are correct. Alternatively, use relative coordinates. Let's try to define the shapes with specific coordinates. Let's assume the left shape is from x=0 to x=5, and the right shape from x=6 to x=9. 
+
+Putting it all together, the TikZ code would look something like:
+
+\begin{tikzpicture}
+  % Left shape: modified curve with circular ends
+  \draw[blue, thick] (0,0) arc (0:180:1cm) to[bend left] (3,0) arc (180:0:1cm);
+  % Right shape: mix of curves and lines with cut-out circle
+  \draw[blue, thick] (6,0) to[bend left] (7,1) -- (8,1) to[bend left] (8,2) -- (6,2) to[bend left] (6,0);
+  \fill[white] (7,1) circle (0.5cm);
+\end{tikzpicture}

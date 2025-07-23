@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphs.standard, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \graph [simple] {
+        "Questioner" -> ["aqSendEdge"] "Answerer",
+        "Answerer" -> ["qaSendEdge"] "Questioner",
+        "Questioner" -> ["qUserGetEdge", "qUserSendEdge"] "Other Users",
+        "Other Users" -> ["aUserSendEdge", "aUserGetEdge"] "Answerer"
+    };
+\end{tikzpicture}
+
+\end{document}

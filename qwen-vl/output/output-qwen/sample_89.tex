@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=0.85\textwidth,
+        height=0.6\textwidth,
+        xlabel={X-axis},
+        ylabel={Y-axis},
+        title={Graph Title},
+        title style={at={(0.5,1)}, anchor=north west},
+        xmin=-10, xmax=10,
+        ymin=-10, ymax=10,
+        xtick={-10,-8,...,10},
+        ytick={-10,-8,...,10},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        minor tick num=4,
+        legend pos=south east,
+        legend cell align=left,
+        legend columns=3,
+        every axis plot/.append style={ultra thick},
+        ]
+        \addplot[blue] {x};
+        \addplot[red] {x^2};
+        \addplot[green] {x^3};
+        \addplot[orange] {x^4};
+        \addplot[purple] {x^5};
+        \addplot[brown] {x^6};
+    \end{axis}
+    
+    % Add a grid box to the right of the graph
+    \draw[help lines, step=1cm, color=gray!30] (current axis.south east) grid (current axis.north west);
+    
+    % Align headings at the same x-coordinate
+    \node[anchor=west] at (current axis.north west) {\textbf{X-axis}};
+    \node[anchor=west] at (current axis.north east) {\textbf{Y-axis}};
+    \node[anchor=west] at (current axis.north) {\textbf{Graph Title}};
+    
+    % Add a legend
+    \legend{y=x, y=x^2, y=x^3, y=x^4, y=x^5, y=x^6};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,12 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    \node[draw] (box1) {First line\\Second line};
+    \node[draw, right of=box1] (box2) {First line\\Second line};
+    \draw[red] (box1.east) -- (box2.west);
+\end{tikzpicture}
+
+\end{document}

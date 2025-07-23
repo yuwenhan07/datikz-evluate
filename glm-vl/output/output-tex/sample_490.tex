@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{array} % For better control over tabular cells
+
+\begin{document}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Year} & \textbf{Header} \\
+\hline
+2000 & A \\
+\hline
+2001 & B \\
+\hline
+\end{tabular}
+\begin{tikzpicture}[remember picture, overlay] % 'remember picture' and 'overlay' ensure TikZ interacts with the table
+  % Draw lines between corresponding cells (loop over rows)
+  \foreach \i in {2,3} { % Rows 2 and 3 (1-based index for cells)
+    \draw (\i-1-1) -- (\i-1-2); % Connect first column cell (\i-1-1) to second column cell (\i-1-2)
+  }
+\end{tikzpicture}
+\end{table}
+
+\end{document}

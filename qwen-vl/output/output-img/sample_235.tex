@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the outer circle
+    \draw (0,0) circle (1);
+    
+    % Draw the inner circle
+    \draw (0,0) circle (0.8);
+    
+    % Draw the labels for the outer circle
+    \foreach \angle/\label in {0/B_{1}, 45/B_{2}, 90/B_{3}, 135/B_{4}, 180/B_{5}, 225/B_{6}, 270/B_{7}, 315/B_{8}, 360/B_{9}, 405/B_{10}, 450/B_{11}, 495/B_{12}}
+    {
+        \draw (\angle:1) -- (\angle:1.2) node [above] {\label};
+    }
+    
+    % Draw the labels for the inner circle
+    \foreach \angle/\label in {0/B_{1}, 45/B_{2}, 90/B_{3}, 135/B_{4}, 180/B_{5}, 225/B_{6}, 270/B_{7}, 315/B_{8}, 360/B_{9}, 405/B_{10}, 450/B_{11}, 495/B_{12}}
+    {
+        \draw (\angle:0.8) -- (\angle:1) node [above] {\label};
+    }
+\end{tikzpicture}
+
+\end{document}

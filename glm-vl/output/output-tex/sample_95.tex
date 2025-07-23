@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[
+  % Custom styles for consistency
+  state/.style={draw, rectangle, minimum width=3cm, minimum height=1cm, align=center},
+  transition/.style={->, thick, draw},
+  every node/.style={font=\small} % Optional: set font size
+]
+
+% States (LC State Machine, LC Counter, etc.)
+\node[state] (lc_state) {LC State Machine \\ (16-bit Counter)};
+\node[state, right=of lc_state] (lc_counter) {LC Counter \\ (Counts Transitions)};
+\node[state, below=of lc_state] (idle) {Idle State};
+\node[state, below=of lc_counter] (reset) {Reset State};
+
+% Transitions with rotated/aligned labels
+\path[transition]
+  (lc_state) edge[rotate=90, auto] node {Transition 1} (lc_counter) % Rotate 90° (vertical)
+  (lc_state) edge node {Transition 2} (idle) % No rotation (horizontal)
+  (lc_counter) edge[rotate=45, left] node {Transition 3} (reset); % Rotate 45° (diagonal)
+
+% Additional state with long text (wrapped)
+\node[state, below right=of lc_state] (power) {Power State \\ (Battery Check \\ & Signal \\ Monitoring)};
+\path[transition] (lc_state) edge node {Transition 4} (power);
+
+\end{tikzpicture}
+
+\end{document}

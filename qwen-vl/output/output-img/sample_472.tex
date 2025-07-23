@@ -1,0 +1,12 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    \foreach \i in {0,1,...,100} {
+        \pgfmathsetmacro{\angle}{\i*72}
+        \pgfmathsetmacro{\radius}{\i/10}
+        \draw[blue!80!cyan, line width=0.5mm] (\angle:\radius) -- (\angle+72:\radius);
+    }
+\end{tikzpicture}
+\end{document}

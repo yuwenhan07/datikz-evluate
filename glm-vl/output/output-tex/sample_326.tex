@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+\node[fill=transparent, draw, minimum size=2cm] (n) at (0,0) {Some content};
+\begin{scope}[on background layer]
+    % Clip to the complement of the node's bounding box
+    \clip[clip, path=($(n.south west)!0.5!(n.north east)$) -| (n.east) -| (n.north west) -| cycle] (current bounding box.south west) rectangle (current bounding box.north east);
+    % Draw the content outside the bounding box
+    \draw[red] (n) ++(1,1) circle (0.5);
+\end{scope}
+\end{tikzpicture}

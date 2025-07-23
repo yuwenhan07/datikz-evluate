@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define the circles
+    \draw (0,0) circle (1cm);
+    \draw (5,0) circle (1cm);
+
+    % Label the circles
+    \node at (0,-1.2) {$S(V)\mathbin{\parallel\!\!/} G$};
+    \node at (5,-1.2) {$S(W)$};
+
+    % Draw the dashed lines
+    \draw[dashed] (-0.8,0) -- (-0.8,1.2);
+    \draw[dashed] (4.2,0) -- (4.2,1.2);
+
+    % Label the points
+    \filldraw[black] (-0.8,0) circle (1pt) node[anchor=north] {$[u]$};
+    \filldraw[black] (4.2,0) circle (1pt) node[anchor=north] {$f([u])$};
+
+    % Arrow for the function f
+    \draw[-{Stealth[scale=1.5]}] (2.5,0) arc (0:90:1.5);
+    \node at (3.5,0.75) {$f$};
+
+    % Equation on the left
+    \node at (-1.5,1.5) {$[x] = [cu]$};
+
+    % Equation on the right
+    \node at (6.5,1.5) {$f^*( [x] ) = cf([u])$};
+\end{tikzpicture}
+
+\end{document}

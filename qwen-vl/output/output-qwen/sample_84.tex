@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={X},
+        ylabel={Y},
+        title={Dataset and Function Plot},
+        domain=-10:10,
+        samples=100,
+        no markers,
+        smooth,
+        legend pos=north west,
+        grid=major,
+    ]
+        % Plot the dataset (assuming it's in a file named 'data.txt')
+        \addplot table [x index=0, y index=1] {data.txt};
+        
+        % Define and plot the function (e.g., y = x^2)
+        \addplot [orange, thick] {x^2};
+        
+        % Add a legend
+        \legend{Data, Function};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

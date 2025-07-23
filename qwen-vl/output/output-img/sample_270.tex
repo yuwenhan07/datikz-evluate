@@ -1,0 +1,47 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the circle
+    \draw (0,0) circle (1);
+    
+    % Draw the axes
+    \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
+    \draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};
+    
+    % Label the origin
+    \fill (0,0) circle (1pt) node[below left] {$O$};
+    
+    % Label the point P
+    \coordinate (P) at (60:1);
+    \fill (P) circle (1pt) node[above right] {$P(x,y)$};
+    
+    % Draw the radius and label it
+    \draw (0,0) -- (P) node[midway, below] {$1$};
+    
+    % Draw the vertical line from P to the x-axis
+    \draw[dotted] (P) -- (P|-0,0) coordinate (Q);
+    
+    % Label the coordinates of Q
+    \fill (Q) circle (1pt) node[below] {$Q$};
+    
+    % Draw the horizontal line from P to the y-axis
+    \draw[dotted] (P) -- (P-|0,0);
+    
+    % Label the coordinates of P
+    \fill (P) circle (1pt) node[above right] {$P(x,y)$};
+    
+    % Draw the angle and label it
+    \pic [draw, ->, "$\phi$", angle eccentricity=1.5] {angle = O--P--Q};
+    
+    % Label the x-coordinate as cos(phi)
+    \draw (P|-0,0) -- ++(0.2,0) node[below] {$x=\cos\phi$};
+    
+    % Label the y-coordinate as sin(phi)
+    \draw (P-|0,0) -- ++(0,0.2) node[right] {$y=\sin\phi$};
+\end{tikzpicture}
+
+\end{document}

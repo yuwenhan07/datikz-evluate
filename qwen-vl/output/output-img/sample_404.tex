@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.5]
+    % Draw the horizontal line with marks
+    \draw (0,0) -- (6,0);
+    
+    % Mark the positions
+    \foreach \x/\y in {0/0m, 3/100m, 6/200m} {
+        \draw (\x, -0.5) -- (\x, 0.5) node [below] {\y};
+    }
+\end{tikzpicture}
+
+\end{document}

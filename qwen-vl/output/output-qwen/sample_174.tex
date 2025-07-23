@@ -1,0 +1,59 @@
+To understand the graph \( G_{100} = K_1,3 P_2 + \{\{4,5\},\{4,6\}\} \), let's break it down step by step.
+
+1. **Understanding \( K_1,3 \)**:
+   - \( K_1,3 \) is a complete bipartite graph with one vertex in one part and three vertices in the other part.
+   - This means there is one isolated vertex (degree 0) and three vertices that are all connected to each other (degree 2).
+
+2. **Understanding \( P_2 \)**:
+   - \( P_2 \) is a path graph with two vertices, which is simply an edge connecting two vertices (degree 1 for both vertices).
+
+3. **Combining \( K_1,3 \) and \( P_2 \)**:
+   - We take the graph \( K_1,3 \) and add the path graph \( P_2 \).
+   - The isolated vertex from \( K_1,3 \) will be connected to one of the vertices in the path \( P_2 \).
+   - The remaining two vertices in \( K_1,3 \) will form a triangle with the two vertices of \( P_2 \).
+
+4. **Adding the additional edges**:
+   - We then add two more edges: \(\{4,5\}\) and \(\{4,6\}\).
+
+Let's visualize this step-by-step:
+
+- Start with the graph \( K_1,3 \):
+  - One isolated vertex (let's call it \( v_1 \)).
+  - Three vertices (\( v_2, v_3, v_4 \)) that are all connected to each other.
+
+- Add the path \( P_2 \):
+  - Two vertices (\( u_1, u_2 \)) connected by an edge (\( u_1u_2 \)).
+
+- Connect the isolated vertex \( v_1 \) to one of the vertices in the path \( P_2 \). Let's say \( v_1 \) is connected to \( u_1 \).
+
+- The remaining two vertices in \( K_1,3 \) (\( v_2 \) and \( v_3 \)) form a triangle with the two vertices of \( P_2 \):
+  - \( v_2u_1 \)
+  - \( v_2u_2 \)
+  - \( v_3u_1 \)
+  - \( v_3u_2 \)
+
+- Finally, add the two additional edges \(\{4,5\}\) and \(\{4,6\}\).
+
+So, the final graph \( G_{100} \) has the following structure:
+- One isolated vertex \( v_1 \).
+- Three vertices \( v_2, v_3, v_4 \) forming a triangle with \( u_1 \) and \( u_2 \).
+- Two additional edges \(\{4,5\}\) and \(\{4,6\}\).
+
+The vertices can be labeled as follows:
+- Isolated vertex: \( v_1 \)
+- Vertices forming the triangle: \( v_2, v_3, v_4 \)
+- Path vertices: \( u_1, u_2 \)
+- Additional vertices: \( 4, 5, 6 \)
+
+The edges are:
+- \( v_1u_1 \)
+- \( v_2u_1 \)
+- \( v_2u_2 \)
+- \( v_3u_1 \)
+- \( v_3u_2 \)
+- \( v_4u_1 \)
+- \( v_4u_2 \)
+- \( \{4,5\} \)
+- \( \{4,6\} \)
+
+Thus, the graph \( G_{100} \) is a specific configuration of vertices and edges as described above.

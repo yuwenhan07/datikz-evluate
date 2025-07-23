@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (000) {000};
+  \node[state] (010) [below left of=000] {010};
+  \node[state] (100) [below right of=000] {100};
+
+  \path (000) edge [loop above] node {} (000);
+  \path (000) edge node {} (010);
+  \path (000) edge node {} (100);
+
+  \node[state] (001) [right of=000] {001};
+  \node[state] (011) [below left of=001] {011};
+  \node[state] (110) [below right of=001] {110};
+  \node[state] (111) [below right of=110] {111};
+  \node[state] (101) [below left of=001] {101};
+
+  \path (001) edge node {} (011);
+  \path (001) edge node {} (110);
+  \path (001) edge node {} (101);
+
+  \path (011) edge node {} (101);
+  \path (011) edge node {} (110);
+  \path (011) edge node {} (001);
+
+  \path (110) edge node {} (111);
+  \path (110) edge node {} (101);
+  \path (110) edge node {} (001);
+
+  \path (101) edge node {} (111);
+  \path (101) edge node {} (110);
+  \path (101) edge node {} (001);
+\end{tikzpicture}
+
+\end{document}

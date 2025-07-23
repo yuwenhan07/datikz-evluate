@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel=$\tau$,
+        ylabel={},
+        xmin=0, xmax=3.5,
+        ymin=-6, ymax=3,
+        xtick={1,2,3},
+        ytick={-6,-5,...,3},
+        legend pos=north east,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    
+    % Conjecture 1, κ^{(0)}_{2,3}
+    \addplot[black, thick] coordinates {
+        (0, 2)
+        (1, 1)
+        (2, 0)
+        (3, -1)
+        (4, -2)
+    };
+    \addlegendentry{Conj. ??, κ^{(0)}_{2,3}}
+    
+    % Conjecture 2 (W [?]), κ^{\sharp}_{2,3}
+    \addplot[dotted] coordinates {
+        (0, 2)
+        (1, 1)
+        (2, 0)
+        (3, -1)
+        (4, -2)
+    };
+    \addlegendentry{Conj. ?? (W [?]), κ^{\sharp}_{2,3}}
+    
+    % D-L [?], κ^{(0)}_{2,3}
+    \addplot[dashed] coordinates {
+        (0, 2)
+        (1, 1)
+        (2, 0)
+        (3, -1)
+        (4, -2)
+    };
+    \addlegendentry{D–L [?], κ^{(0)}_{2,3}}
+    
+    % Corollary ??, κ^{(0)}_{2,3}
+    \addplot[dotted, domain=0:4, samples=100] {2 - x};
+    \addlegendentry{Cor. ??, κ^{(0)}_{2,3}}
+    
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

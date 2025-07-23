@@ -1,0 +1,32 @@
+The influence of the standard deviation of Gaussian utilities on the average convergence time can be analyzed by examining how changes in the standard deviation affect the likelihood of convergence within a specified time limit (in this case, 100,000 steps).
+
+From the provided data:
+
+- For resentful agents:
+  - Standard deviation = 60: Converged in all 23 games.
+  - Standard deviation = 70: Converged in 16 games out of 23.
+  - Standard deviation = 80: Converged in 15 games out of 23.
+  - Standard deviation = 90: Converged in 10 games out of 23.
+  - Standard deviation = 100: Converged in 8 games out of 23.
+
+- For appreciative agents and resentful-appreciative agents:
+  - Convergence was always achieved regardless of the standard deviation.
+
+### Observations:
+1. **Convergence Probability Decreases with Increasing Standard Deviation**:
+   - As the standard deviation increases from 60 to 100, the number of games where the dynamics converge decreases. This suggests that higher variability in agent utilities makes it more difficult for the dynamics to converge within the given time limit.
+
+2. **Impact on Convergence Time**:
+   - The standard deviation affects not just the probability of convergence but also the time it takes to converge. Higher standard deviations likely lead to longer convergence times because the dynamics need to explore a wider range of utility values before reaching a stable state.
+
+3. **Threshold for Convergence**:
+   - There appears to be a threshold effect around a standard deviation of 70. Beyond this point, the convergence rate drops significantly. This could indicate that the dynamics become too sensitive to the noise introduced by high standard deviations, leading to oscillatory behavior or failure to settle into a stable state within the allowed time frame.
+
+### Recommendations:
+- **Modeling Considerations**: When using Gaussian utilities with high standard deviations, it might be necessary to either reduce the standard deviation to ensure convergence within the desired time frame or to implement additional mechanisms to stabilize the dynamics, such as regularization techniques or adaptive learning rates.
+  
+- **Time Limit Adjustments**: If the standard deviation is high and convergence is not guaranteed within the 100,000-step limit, consider extending the time limit or implementing early stopping criteria based on some measure of stability (e.g., variance of utilities below a certain threshold).
+
+- **Agent Utility Distribution**: Analyze the distribution of utilities further to understand why the dynamics fail to converge for certain standard deviations. This could provide insights into how to better model agent preferences or adjust the utility function itself.
+
+By understanding these patterns, you can better design experiments and models that account for the variability in agent utilities while ensuring that the dynamics reach a stable state within a reasonable timeframe.

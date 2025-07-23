@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define the vertices
+    \foreach \i in {0,...,5} {
+        \foreach \j in {0,...,2} {
+            \pgfmathsetmacro{\x}{\i/2 - 2 + 2*cos(60*\j)}
+            \pgfmathsetmacro{\y}{\j/2 - 1 + 2*sin(60*\j)}
+            \node[circle,fill=black!20] (v\i\j) at (\x,\y) {};
+        }
+    }
+
+    % Draw the edges
+    \foreach \i in {0,...,5} {
+        \foreach \j in {0,...,2} {
+            \pgfmathsetmacro{\x}{(\i+1)/2 - 2 + 2*cos(60*\j)}
+            \pgfmathsetmacro{\y}{\j/2 - 1 + 2*sin(60*\j)}
+            \draw (v\i\j) -- (v\x\y);
+        }
+    }
+
+    % Draw the central vertices
+    \foreach \i in {0,...,5} {
+        \pgfmathsetmacro{\x}{\i/2 - 2 + 2*cos(60*3)}
+        \pgfmathsetmacro{\y}{3/2 - 1 + 2*sin(60*3)}
+        \node[circle,fill=black!20] (c\i) at (\x,\y) {};
+    }
+
+    % Draw the edges connecting the central vertices to the outer vertices
+    \foreach \i in {0,...,5} {
+        \pgfmathsetmacro{\x}{\i/2 - 2 + 2*cos(60*3)}
+        \pgfmathsetmacro{\y}{3/2 - 1 + 2*sin(60*3)}
+        \draw (c\i) -- (v\i0);
+        \draw (c\i) -- (v\i1);
+        \draw (c\i) -- (v\i2);
+    }
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}
+    % Set the background to white
+    \fill[white] (-0.5, -0.5) rectangle (2.5, 2.5);
+    
+    % Draw black axes
+    \draw[black] (-0.5, 0) -- (2.5, 0); % x-axis
+    \draw[black] (0, -0.5) -- (0, 2.5); % y-axis
+    
+    % Define the functions
+    \def\upper{x^2}
+    \def\lower{x}
+    % Define the interval (from x=0 to x=2)
+    \def\start{0}
+    \def\end{2}
+    
+    % Plot the upper curve (red)
+    \draw[red, thick] plot[domain=\start:\end] (\x, {\upper});
+    % Plot the lower curve (blue)
+    \draw[blue, thick] plot[domain=\start:\end] (\x, {\lower});
+    
+    % Fill the area between the curves (white, matching the graph's base)
+    \fill[white] 
+        plot[domain=\start:\end] (\x, {\upper}) % Upper curve from start to end
+        -- plot[domain=\end:\start] reverse (\x, {\lower}) % Lower curve from end to start (reverse direction)
+        -- cycle; % Close the path back to the start
+\end{tikzpicture}
+
+\end{document}

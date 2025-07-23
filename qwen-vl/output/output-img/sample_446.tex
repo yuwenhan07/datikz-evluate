@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Define the nodes
+    \foreach \y in {0,...,9} {
+        \node[circle, fill=black] (n\y) at (\y,\y) {};
+    }
+    
+    % Draw the edges
+    \draw (n0) -- (n2);
+    \draw (n0) -- (n4);
+    \draw (n2) -- (n6);
+    \draw (n4) -- (n8);
+    \draw (n6) -- (n8);
+    \draw (n8) -- (n9);
+\end{tikzpicture}
+
+\end{document}

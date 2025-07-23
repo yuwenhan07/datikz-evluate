@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (00) {$00$};
+  \node[state] (01) [above left of=00] {$01$};
+  \node[state] (10) [right of=00] {$10$};
+  \node[state] (11) [above right of=00] {$11$};
+
+  \path (00) edge node {$\theta_{2,1}$} (10)
+        (00) edge node {$\theta_{1,2}$} (01)
+        (01) edge node {} (11)
+        (11) edge node {} (10)
+        (10) edge [loop below] node {} (10);
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (FP) at (4,0) {FP(10)};
+\end{tikzpicture}
+
+\end{document}

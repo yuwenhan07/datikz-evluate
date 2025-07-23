@@ -1,0 +1,44 @@
+To understand the composition of transformations that maps \( v_3^{(B)} \) to \( v_3^{(A)} \) through two intermediate bases using integrals over the principal series and involving 6j symbols, let's break down the process step by step.
+
+### Step 1: Understanding the Principal Series and 6j Symbols
+The principal series representations in quantum mechanics and group theory often involve integrals over the group manifold. The 6j symbols (or Clebsch-Gordan coefficients) play a crucial role in these integrals as they describe the coupling of angular momenta.
+
+### Step 2: Transformation Through Intermediate Bases
+Let's denote the initial state \( v_3^{(B)} \) in basis \( B \), the intermediate states in basis \( C \) and \( D \), and the final state \( v_3^{(A)} \) in basis \( A \).
+
+#### Transformation from \( B \) to \( C \):
+We start with the state \( v_3^{(B)} \) in basis \( B \). To transform this state into an intermediate state in basis \( C \), we use an integral over the principal series with a kernel proportional to a 6j symbol. This can be written as:
+\[
+v_3^{(C)} = \int_{\text{group manifold}} K_{BC}(g) v_3^{(B)}(g^{-1}) \, dg
+\]
+where \( K_{BC}(g) \) is the kernel proportional to the 6j symbol.
+
+#### Transformation from \( C \) to \( D \):
+Next, we transform the state \( v_3^{(C)} \) in basis \( C \) into another intermediate state in basis \( D \) using a similar integral:
+\[
+v_3^{(D)} = \int_{\text{group manifold}} K_{CD}(h) v_3^{(C)}(h^{-1}) \, dh
+\]
+where \( K_{CD}(h) \) is the kernel proportional to the 6j symbol.
+
+#### Transformation from \( D \) to \( A \):
+Finally, we transform the state \( v_3^{(D)} \) in basis \( D \) into the desired state \( v_3^{(A)} \) in basis \( A \) using one more integral:
+\[
+v_3^{(A)} = \int_{\text{group manifold}} K_{DA}(k) v_3^{(D)}(k^{-1}) \, dk
+\]
+where \( K_{DA}(k) \) is the kernel proportional to the 6j symbol.
+
+### Step 3: Composition of Transformations
+The overall transformation from \( v_3^{(B)} \) to \( v_3^{(A)} \) is the composition of these three integrals:
+\[
+v_3^{(A)} = \int_{\text{group manifold}} \left( \int_{\text{group manifold}} \left( \int_{\text{group manifold}} K_{DA}(k) K_{CD}(h) K_{BC}(g) v_3^{(B)}(g^{-1} h^{-1} k^{-1}) \, dg \right) dh \right) \, dk
+\]
+
+### Step 4: Simplification Using 6j Symbols
+The 6j symbols are known to satisfy certain orthogonality and normalization conditions. These properties allow us to simplify the expression above. Specifically, the 6j symbols are normalized such that:
+\[
+\sum_{m_1, m_2, m_3} \langle j_1 j_2 j_3 | j_4 j_5 j_6 \rangle \langle j_7 j_8 j_9 | j_{10} j_{11} j_{12} \rangle = \delta_{j_1 j_{10}} \delta_{j_2 j_{11}} \delta_{j_3 j_{12}}
+\]
+This orthogonality property ensures that the integrals can be simplified, leading to a non-zero result only when the angular momenta match appropriately.
+
+### Conclusion
+The composition of transformations that maps \( v_3^{(B)} \) to \( v_3^{(A)} \) through two intermediate bases involves integrals over the principal series with kernels proportional to 6j symbols. The specific form of the integrals depends on the group and the angular momenta involved, but the orthogonality and normalization properties of the 6j symbols ensure that the transformation is well-defined and leads to a valid state in the target basis \( A \).

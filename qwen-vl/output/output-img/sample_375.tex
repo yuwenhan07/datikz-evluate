@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    \node[draw,circle] (1) {1};
+    \node[draw,circle] (2) [right of=1] {2};
+    \node[draw,circle] (3) [right of=2] {3};
+    \node[draw,circle] (4) [right of=3] {4};
+    \node[draw,circle] (5) [right of=4] {5};
+    \node[draw,circle] (6) [right of=5] {6};
+
+    \path[->,thick]
+        (1) edge[bend left] node[below] {$d$} (2)
+        (2) edge[bend left] node[below] {$d+q_1$} (1)
+        (2) edge[bend left] node[above] {$d$} (3)
+        (3) edge[bend left] node[below] {$d+q_2$} (2)
+        (3) edge[bend left] node[above] {$d$} (4)
+        (4) edge[bend left] node[below] {$d+q_3$} (3)
+        (4) edge[bend left] node[above] {$d$} (5)
+        (5) edge[bend left] node[below] {$d+q_4$} (4)
+        (5) edge[bend left] node[above] {$d$} (6)
+        (6) edge[bend left] node[below] {$d+q_5$} (5)
+        (6) edge[->,thick] node[above] {$q_6$} (7);
+\end{tikzpicture}
+
+\end{document}

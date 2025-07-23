@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+
+\begin{document}
+
+This is some text. \tikz[remember picture, overlay]{\fill[red!50] (0,0) rectangle (1,1);}
+
+This is more text. \tikz[remember picture, overlay]{\fill[blue!50] (0,0) rectangle (1,1);}
+
+\begin{tikzpicture}[remember picture, overlay]
+    \fill[green!50] (-1,-1) rectangle (0,0);
+\end{tikzpicture}
+
+\end{document}

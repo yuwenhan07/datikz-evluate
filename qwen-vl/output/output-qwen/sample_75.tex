@@ -1,0 +1,13 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    \foreach \r in {0.1,0.2,...,1.0} {
+        \draw[fill=blue!\r*100!white] (0,\r) circle (\r);
+    }
+    \foreach \r in {0.1,0.2,...,1.0} {
+        \draw[fill=red!\r*100!white] (0,-\r) circle (\r);
+    }
+\end{tikzpicture}
+\end{document}

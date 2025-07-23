@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.5]
+            \draw[dotted] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+            \filldraw[black] (2,2) circle (0.1);
+            \foreach \x in {0,1,2,3,4} {
+                \foreach \y in {0,1,2,3,4} {
+                    \filldraw[white] (\x,\y) circle (0.1);
+                }
+            }
+        \end{tikzpicture}
+        \caption{The square grid}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.5]
+            \draw[dotted] (0,0) rectangle (4,4);
+            \filldraw[black] (2,2) circle (0.1);
+            \foreach \x in {0,1,2,3,4} {
+                \foreach \y in {0,1,2,3,4} {
+                    \filldraw[white] (\x,\y) circle (0.1);
+                }
+            }
+        \end{tikzpicture}
+        \caption{The king grid}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.5]
+            \draw[dotted] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+            \filldraw[black] (2,2) circle (0.1);
+            \foreach \x in {0,1,2,3,4} {
+                \foreach \y in {0,1,2,3,4} {
+                    \filldraw[white] (\x,\y) circle (0.1);
+                }
+            }
+        \end{tikzpicture}
+        \caption{The triangular grid}
+    \end{subfigure}
+\end{figure}
+
+\end{document}

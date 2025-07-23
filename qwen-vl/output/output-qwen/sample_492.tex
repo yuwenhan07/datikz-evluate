@@ -1,0 +1,53 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.5]
+
+% Define the coordinates for the arches
+\def\archradius{10}
+\def\archheight{8}
+\def\archwidth{20}
+\def\waterlevel{3}
+
+% Draw the left arch
+\draw[fill=gray!50] (0,0) arc (180:0:\archradius) -- (\archwidth,\archheight) -- cycle;
+\draw[fill=gray!50] (0,0) arc (180:0:\archradius) -- (\archwidth,\archheight) -- cycle;
+
+% Draw the right arch
+\draw[fill=gray!50] (40,0) arc (0:-180:\archradius) -- (-\archwidth,\archheight) -- cycle;
+\draw[fill=gray!50] (40,0) arc (0:-180:\archradius) -- (-\archwidth,\archheight) -- cycle;
+
+% Draw the bridge deck
+\draw[thick, gray!70] (0,0) arc (180:0:\archradius) -- (\archwidth,\archheight) -- (40,0) arc (0:-180:\archradius) -- (-\archwidth,\archheight) -- cycle;
+
+% Draw the water level
+\draw[gray!50] (0,-\waterlevel) -- (40,-\waterlevel);
+
+% Add some details to the arches
+\foreach \x in {0,1,...,10} {
+    \draw[gray!50] ({\archradius*cos(\x*360/10)}, {\archradius*sin(\x*360/10)}) circle (0.5);
+}
+
+% Add some details to the bridge deck
+\foreach \x in {0,1,...,10} {
+    \draw[gray!50] ({\archwidth*cos(\x*360/10)}, {\archheight*sin(\x*360/10)}) circle (0.5);
+}
+
+% Add some details to the right arch
+\foreach \x in {0,1,...,10} {
+    \draw[gray!50] ({40+\archradius*cos(\x*360/10)}, {\archradius*sin(\x*360/10)}) circle (0.5);
+}
+
+% Add some details to the left arch
+\foreach \x in {0,1,...,10} {
+    \draw[gray!50] ({-40-\archradius*cos(\x*360/10)}, {\archradius*sin(\x*360/10)}) circle (0.5);
+}
+
+% Add some details to the water
+\foreach \y in {-\waterlevel,-\waterlevel+0.5,...,0} {
+    \draw[gray!50] (0,\y) -- (40,\y);
+}
+
+\end{tikzpicture}
+\end{document}

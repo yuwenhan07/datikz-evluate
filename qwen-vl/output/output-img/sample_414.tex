@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \matrix (m) [matrix of nodes, row sep=0em, column sep=0em] {
+            \node[draw] (ghz) {GHZ \\ GHZ = $\langle 000| + \langle 111|$ \\ all $r=2$, all $R$ contain two \\ independent simple vectors}; \\
+            & \node[draw] (w) {$\hat{\text{W}}$ \\ W = $\langle 001| + \langle 010| + \langle 100|$ \\ all $r=2$, all $R$ contain exactly one simple vector}; \\
+            \node[draw] (abc) {$A - BC$ \\ $\langle 0| \otimes (\langle 00| + \langle 11|)$ \\ $r(\rho_A) = 1, r(\rho_B) = r(\rho_C) = 2$}; \\
+            \node[draw] (bac) {$B - AC$ \\ $\langle 000| + \langle 101|$ \\ $r(\rho_B) = 1, r(\rho_A) = r(\rho_C) = 2$}; \\
+            \node[draw] (cab) {$C - AB$ \\ $\langle 000| + \langle 110|$ \\ $r(\rho_C) = 1, r(\rho_A) = r(\rho_B) = 2$}; \\
+            & \node[draw] (abcde) {$A - B - C$ \\ $\langle 000|$ \\ $r(\rho_A) = r(\rho_B) = r(\rho_C) = 1$}; \\
+        };
+        \draw[->] (ghz) -- (abc);
+        \draw[->] (ghz) -- (bac);
+        \draw[->] (ghz) -- (cab);
+        \draw[->] (w) -- (abc);
+        \draw[->] (w) -- (bac);
+        \draw[->] (w) -- (cab);
+        \draw[->] (abc) -- (abcde);
+        \draw[->] (bac) -- (abcde);
+        \draw[->] (cab) -- (abcde);
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[level distance=1.5cm,
+  level 1/.style={sibling distance=3.5cm},
+  level 2/.style={sibling distance=2cm},
+  level 3/.style={sibling distance=1.5cm},
+  edge from parent/.style={draw,-latex}]
+
+\node {1}
+    child {node {$6n+8$}
+        child {node {$6n+5, 6n+2, \ldots, 2, 1$}}
+    }
+    child {node {2}
+        child {node {$2n+2$}
+            child {node {2}}
+            child {node {1}}
+        }
+    };
+
+\node [below] at (current bounding box.south) {\textit{Contraction}};
+
+\node [below] at ([yshift=-2cm]current bounding box.south) {\textit{Modification}};
+
+\begin{scope}[xshift=4cm]
+\node {1}
+    child {node {$2n+2$}
+        child {node {2}}
+        child {node {2}}
+    }
+    child {node {1}
+        child {node {1}}
+        child {node {1}}
+    };
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}

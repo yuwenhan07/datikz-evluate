@@ -1,0 +1,48 @@
+It sounds like you're describing the architecture of a neural network model, specifically for processing images, where `encoder.H` and `encoder.W` denote the height and width of the input image, and `C_i`, for `i = 0..5`, represents the number of channels at different stages.
+
+Here’s a breakdown of the architecture based on your description:
+
+### Encoder Architecture
+
+1. **Input Image Dimensions**:
+   - `encoder.H`: Height of the input image.
+   - `encoder.W`: Width of the input image.
+
+2. **Stage 0 to Stage 2**:
+   - These stages use ConvNext (CN) blocks with a filter size of `(7, 7)`.
+   - Each stage has a specific number of channels (`C_0`, `C_1`, `C_2`).
+
+3. **Stage 3 to Stage 5**:
+   - These stages use Swin Transformer blocks with different attention window sizes.
+   - The attention window sizes are specified as follows:
+     - Stage 3: `(5, 40)`
+     - Stage 4: `(5, 20)`
+     - Stage 5: `(10, 10)`
+
+### Example Configuration
+
+Let's assume the following configuration for clarity:
+
+- `encoder.H = 224`
+- `encoder.W = 224`
+- `C_0 = 64`
+- `C_1 = 128`
+- `C_2 = 256`
+- `C_3 = 512`
+- `C_4 = 1024`
+- `C_5 = 2048`
+
+### Summary
+
+- **ConvNext Blocks**: Used in the first three stages (Stages 0 to 2).
+  - Filter size: `(7, 7)`
+  - Number of channels: `C_0`, `C_1`, `C_2`
+
+- **Swin Transformer Blocks**: Used in the last three stages (Stages 3 to 5).
+  - Attention window sizes:
+    - Stage 3: `(5, 40)`
+    - Stage 4: `(5, 20)`
+    - Stage 5: `(10, 10)`
+  - Number of channels: `C_3`, `C_4`, `C_5`
+
+This architecture is designed to progressively reduce the spatial dimensions of the input while increasing the number of channels, which helps in capturing more complex features at each stage. The Swin Transformer blocks, especially with varying window sizes, allow for efficient multi-scale feature extraction, which can be crucial for tasks such as image classification or object detection.

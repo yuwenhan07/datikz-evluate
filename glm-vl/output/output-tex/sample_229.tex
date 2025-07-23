@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\begin{document}
+
+\begin{tikzpicture}
+    % Define the plot with coordinate system
+    \begin{axis}[
+        width=5cm,
+        height=5cm,
+        xmin=0, xmax=10,
+        ymin=0, ymax=10,
+    ]
+    % Draw boxes using axis cs (inherited coordinate system)
+    \draw[draw=black] (axis cs:2,2) rectangle (axis cs:4,4);  % First box
+    \draw[draw=black] (axis cs:6,2) rectangle (axis cs:8,4);  % Second box (aligned horizontally)
+    
+    % Loop example (aligned boxes)
+    \foreach \x in {0,2,...,8} {
+        \draw[draw=black] (axis cs:\x,\x) rectangle (axis cs:\x+2,\x+2);  % Looped boxes
+    }
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

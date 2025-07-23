@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphdrawing,arrows.meta,positioning}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzset{every state/.style={minimum size=0pt}}
+  \node[state] (0) {$0$};
+  \node[state] (1) [above right=of 0] {$\frac{1}{1}$};
+  \node[state] (2) [below right=of 1] {$\frac{2}{1}$};
+  \node[state] (3) [below right=of 2] {$\frac{3}{1}$};
+  \node[state] (4) [below right=of 3] {$\frac{4}{1}$};
+  \node[state] (5) [below right=of 4] {$\frac{5}{1}$};
+  \node[state] (6) [below right=of 5] {$\frac{6}{1}$};
+  \node[state] (B1) [right=of 6] {$B_{1}$};
+  \node[state] (F1) [right=of B1] {$F_{1}$};
+
+  \node[state] (7) [below right=of 0] {$\frac{1}{2}$};
+  \node[state] (8) [below right=of 7] {$\frac{2}{2}$};
+  \node[state] (9) [below right=of 8] {$\frac{3}{2}$};
+  \node[state] (10) [below right=of 9] {$\frac{4}{2}$};
+  \node[state] (11) [below right=of 10] {$\frac{5}{2}$};
+  \node[state] (12) [below right=of 11] {$\frac{6}{2}$};
+  \node[state] (B2) [right=of 12] {$B_{2}$};
+  \node[state] (F2) [right=of B2] {$F_{2}$};
+
+  \node[state] (13) [below right=of 0] {$\frac{1}{3}$};
+  \node[state] (14) [below right=of 13] {$\frac{2}{3}$};
+  \node[state] (15) [below right=of 14] {$\frac{3}{3}$};
+  \node[state] (16) [below right=of 15] {$\frac{4}{3}$};
+  \node[state] (17) [below right=of 16] {$\frac{5}{3}$};
+  \node[state] (18) [below right=of 17] {$\frac{6}{3}$};
+  \node[state] (B3) [right=of 18] {$B_{3}$};
+  \node[state] (F3) [right=of B3] {$F_{3}$};
+
+  \node[state] (19) [below right=of 0] {$\frac{1}{4}$};
+  \node[state] (20) [below right=of 19] {$\frac{2}{4}$};
+  \node[state] (21) [below right=of 20] {$\frac{3}{4}$};
+  \node[state] (22) [below right=of 21] {$\frac{4}{4}$};
+  \node[state] (23) [below right=of 22] {$\frac{5}{4}$};
+  \node[state] (24) [below right=of 23] {$\frac{6}{4}$};
+  \node[state] (B4) [right=of 24] {$B_{4}$};
+  \node[state] (F4) [right=of B4] {$F_{4}$};
+
+  \node[state] (25) [below right=of 0] {$\frac{1}{5}$};
+  \node[state] (26) [below right=of 25] {$\frac{2}{5}$};
+  \node[state] (27) [below right=of 26] {$\frac{3}{5}$};
+  \node[state] (28) [below right=of 27] {$\frac{4}{5}$};
+  \node[state] (29) [below right=of 28] {$\frac{5}{5}$};
+  \node[state] (30) [below right=of 29] {$\frac{6}{5}$};
+  \node[state] (B5) [right=of 30] {$B_{5}$};
+  \node[state] (F5) [right=of B5] {$F_{5}$};
+
+  \node[state] (31) [below right=of 0] {$\frac{1}{6}$};
+  \node[state] (32) [below right=of 31] {$\frac{2}{6}$};
+  \node[state] (33) [below right=of 32] {$\frac{3}{6}$};
+  \node[state] (34) [below right=of 33] {$\frac{4}{6}$};
+  \node[state] (35) [below right=of 34] {$\frac{5}{6}$};
+  \node[state] (36) [below right=of 35] {$\frac{6}{6}$};
+  \node[state] (B6) [right=of 36] {$B_{6}$};
+  \node[state] (F6) [right=of B6] {$F_{6}$};
+
+  \path[->]
+    (0) edge node {$0$} (1)
+        edge node {$0$} (7)
+        edge node {$0$} (13)
+        edge node {$0$} (19)
+        edge node {$0$} (25)
+        edge node {$0$} (31)
+    (1) edge node {$1$} (2)
+    (2) edge node {$3$} (3)
+    (3) edge node {$6$} (4)
+    (4) edge node {$7$} (5)
+    (5) edge node {$3$} (6)
+    (6) edge node {$6$} (B1)
+    (B1) edge node {$-33$} (F1)
+    (7) edge node {$8$} (8)
+    (8) edge node {$5$} (9)
+    (9) edge node {$10$} (10)
+    (10) edge node {$10$} (11)
+    (11) edge node {$10$} (12)
+    (12) edge node {$4$} (B2)
+    (B2) edge node {$-61$} (F2)
+    (13) edge node {$5$} (14)
+    (14) edge node {$4$} (15)
+    (15) edge node {$8$} (16)
+    (16) edge node {$9$} (17)
+    (17) edge node {$1$} (18)
+    (18) edge node {$7$} (B3)
+    (B3) edge node {$-44$} (F3)
+    (19) edge node {$5$} (20)
+    (20) edge node {$5$} (21)
+    (21) edge node {$5$} (22)
+    (22) edge node {$3$} (23)
+    (23) edge node {$8$} (24)
+    (24) edge node {$9$} (B4)
+    (B4) edge node {$-45$} (F4)
+    (25) edge node {$5$} (26)
+    (26) edge node {$3$} (27)
+    (27) edge node {$5$} (28)
+    (28) edge node {$4$} (29)
+    (29) edge node {$3$} (30)
+    (30) edge node {$1$} (B5)
+    (B5) edge node {$-32$} (F5)
+    (31) edge node {$3$} (32)
+    (32) edge node {$3$} (33)
+    (33) edge node {$9$} (34)
+    (34) edge node {$10$} (35)
+    (35) edge node {$4$} (36)
+    (36) edge node {$1$} (B6)
+    (B6) edge node {$-39$} (F6)
+    (F1) edge[bend left=45] node {$0$} (0)
+    (F2) edge[bend left=45] node {$0$} (0)
+    (F3) edge[bend left=45] node {$0$} (0)
+    (F4) edge[bend left=45] node {$0$} (0)
+    (F5) edge[bend left=45] node {$0$} (0)
+    (F6) edge[bend left=45] node {$0$} (0);
+\end{tikzpicture}
+
+\end{document}

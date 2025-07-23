@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[level distance=1.5cm,
+  level 1/.style={sibling distance=3.5cm},
+  level 2/.style={sibling distance=2.5cm},
+  level 3/.style={sibling distance=2cm}]
+
+  \node (root) {$\overline{11}$}
+    child {node {$\overline{10}$}
+      child {node {$\overline{9}$}
+        child {node {$\overline{7}$}
+          child {node {$\overline{3}$}}
+          child {node {$\overline{2}$}}
+        }
+        child {node {$8$}}
+        child {node {$5$}}
+      }
+      child {node {$6$}}
+    }
+    child {node {$4$}};
+\end{tikzpicture}
+
+\end{document}

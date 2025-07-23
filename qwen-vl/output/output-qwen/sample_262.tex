@@ -1,0 +1,21 @@
+The scenario you described involves a fluid dynamics problem where a velocity field \( \mathbf{u} = [-y, x]^T \) is applied to a domain \( D = \{ x \in \mathbb{R}^2 ; \|x\| < 1 \} \), which is a unit disk centered at the origin. The velocity field is divergence-free (since \( \nabla \cdot \mathbf{u} = -\frac{\partial y}{\partial x} + \frac{\partial x}{\partial y} = 0 \)), and it has zero normal component on the boundary of the domain (\( \mathbf{u} \cdot \mathbf{n} = 0 \) on \( \partial D \)).
+
+Despite these properties, the blue edge of the triangulation is being transported out of the domain to the green edge. This behavior can be explained by examining the flow lines or streamlines of the velocity field. Let's analyze this step-by-step:
+
+### Velocity Field Analysis
+The velocity field \( \mathbf{u} = [-y, x]^T \) describes a counterclockwise rotation in the plane. To understand how points move under this field, we can consider the streamline equations:
+\[ \frac{dx}{dt} = -y, \quad \frac{dy}{dt} = x. \]
+
+These equations describe a circular motion around the origin. Specifically, if we start at a point \( (x_0, y_0) \), the coordinates evolve over time as:
+\[ x(t) = x_0 \cos(t) - y_0 \sin(t), \]
+\[ y(t) = x_0 \sin(t) + y_0 \cos(t). \]
+
+This shows that any point in the domain will trace out a circle centered at the origin as time progresses. Since the domain is a disk of radius 1, points inside the disk will remain within the disk, but points on the boundary will move along the boundary.
+
+### Transport of the Edge
+The key observation here is that the velocity field is not just rotating the points but also moving them along the boundary. This is because the velocity field is tangential to the boundary of the disk. As a result, points on the boundary of the disk will move along the boundary, and since the velocity field is tangential, they will move from one part of the boundary to another.
+
+In your specific case, the blue edge is being transported along the boundary of the disk, and due to the tangential nature of the velocity field, it moves from the blue edge to the green edge. This is consistent with the fact that the velocity field is tangential to the boundary and does not have a normal component that would push points out of the domain.
+
+### Conclusion
+The transport of the blue edge to the green edge is a consequence of the tangential nature of the velocity field on the boundary of the disk. The velocity field rotates points around the origin, and since the velocity is tangential to the boundary, points on the boundary move along the boundary, effectively transporting the blue edge to the green edge. This behavior is consistent with the properties of the velocity field and the geometry of the domain.

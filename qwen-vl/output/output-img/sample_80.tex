@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        axis equal,
+        xmin=-4, xmax=4,
+        ymin=-4, ymax=4,
+        xlabel=$x$,
+        ylabel=$y$,
+        domain=-pi/2:pi/2,
+        samples=100,
+        no markers,
+        smooth,
+        thick,
+        every axis plot/.append style={blue!80!black},
+        every axis plot post/.append style={ultra thick},
+        ]
+        \addplot [magenta] ({cos(deg(x))}, {sin(deg(x))});
+        \addplot [magenta] ({-cos(deg(x))}, {-sin(deg(x))});
+        \addplot [magenta] ({cos(deg(x))}, {-sin(deg(x))});
+        \addplot [magenta] ({-cos(deg(x))}, {sin(deg(x))});
+    \end{axis}
+\end{tikzpicture}
+\end{document}

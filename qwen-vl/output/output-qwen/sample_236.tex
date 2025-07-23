@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[dot/.style={circle, fill=green, minimum size=5pt, inner sep=0pt}]
+
+    % Define the size of the square
+    \def\squareSize{3cm}
+
+    % Draw the black background
+    \fill[black] (0,0) rectangle (\squareSize,\squareSize);
+
+    % Draw the white square with green dots
+    \draw[white, line width=\squareSize/4] (0,0) rectangle (\squareSize,\squareSize);
+    
+    % Draw the dots using the dot style
+    \foreach \x in {0,...,\squareSize}{
+        \foreach \y in {0,...,\squareSize}{
+            \node [dot] at (\x cm,\y cm) {};
+        }
+    }
+
+\end{tikzpicture}
+
+\end{document}

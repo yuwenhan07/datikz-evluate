@@ -1,0 +1,30 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        width=0.8\textwidth,
+        height=0.2\textwidth,
+        colorbar,
+        colorbar style={
+            at={(0.05,0.5)},
+            anchor=south west,
+            width=0.4\textwidth,
+            height=0.05\textwidth,
+            xtick={0,200,...,1000},
+            ytick=\empty,
+            ylabel={},
+            ylabel style={rotate=-90},
+        },
+        colorbar sampled,
+        colorbar sampled colormap={viridis}{%
+            color(0cm)=(blue);
+            color(1cm)=(green!50!black);
+            color(2cm)=(yellow);
+            color(3cm)=(red)
+        },
+        colorbar style={
+            samples=4,
+            point meta min=0,
+            point meta max=1000,
+        },
+    ]
+    \end{axis}
+\end{tikzpicture}

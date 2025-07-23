@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{groupplot}[
+            group style={group size=1 by 3, vertical sep=0.5cm},
+            width=0.9\textwidth,
+            height=0.7\textwidth,
+            xlabel near ticks,
+            ylabel near ticks,
+            xlabel={Device},
+            ylabel={Execution time (ms)},
+            yticklabel pos=right,
+            ymajorgrids=true,
+            grid style=dashed,
+            ymin=0,
+            ymax=0.5,
+            xmin=0,
+            xmax=4,
+            xtick={1,2,3},
+            xticklabels={CPU, GPU, FPGA},
+            ytick={0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5},
+            yticklabels={0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5},
+            legend style={at={(0.95,0.95)}, anchor=north east, draw=none, fill=white},
+            title style={at={(0.5,-0.1)}, anchor=north, draw=none, fill=white},
+            title={Execution time (ms)},
+            ]
+            \nextgroupplot[
+                title={CPU},
+                ymajorgrids=true,
+                grid style=dashed,
+                ymin=0,
+                ymax=0.5,
+                xmin=0,
+                xmax=4,
+                xtick={1,2,3},
+                xticklabels={Baseline, Datatype, Downsampling},
+                ytick={0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5},
+                yticklabels={0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5},
+                ]
+                \addplot[blue, mark=*, mark options={solid}, line width=1pt] coordinates {(1,0.37) (2,0.32) (3,0.38)};
+                \addplot[red, mark=*, mark options={solid}, line width=1pt] coordinates {(1,0.43) (2,0.35) (3,0.39)};
+                \addplot[pink, mark=square*, mark options={solid}, line width=1pt] coordinates {(1,0.33) (2,0.25) (3,0.28)};
+                \addplot[black, mark=+, mark options={solid}, line width=1pt] coordinates {(1,0.25) (2,0.22) (3,0.24)};
+                \legend{MobileNetV2, Resnet18, Baseline, Datatype, Downsampling}
+            \end{groupplot}
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

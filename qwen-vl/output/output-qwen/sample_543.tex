@@ -1,0 +1,16 @@
+The figure you've described is illustrating a numerical method for solving partial differential equations (PDEs), particularly one involving the finite difference method or a similar technique. Here's a breakdown of the components:
+
+1. **Uniform Grid**: The grid represents the spatial domain over which the PDE is solved. Each point on the grid corresponds to a specific value of the variable \( S \) (stock price in financial contexts, for instance).
+
+2. **Boundaries**:
+   - **Brown Highlighted Line (\( S = 0 \))**: This line marks the boundary condition where the solution is known or specified.
+   - **Yellow Line (\( S = S_{\text{max}} \))**: This line represents another boundary condition, often the maximum stock price or some other upper limit.
+   - **Green Line (\( q = 0 \))**: This line indicates another boundary condition, possibly related to the quantity \( q \) (which could represent a quantity like the number of shares or some other parameter).
+
+3. **Blue Dots**: These dots represent known values at certain points on the grid. These values are typically obtained from initial conditions or boundary conditions.
+
+4. **Red Dots**: These dots represent unknown values that need to be computed. The goal is to find these values simultaneously at each step through the variable \( q \).
+
+5. **Tridiagonal System Equation**: The equation mentioned, `eq:tridiagonal`, refers to a tridiagonal matrix equation. Tridiagonal systems arise when solving PDEs using finite difference methods, especially in one-dimensional problems. The tridiagonal system is a system of linear equations where each equation has at most three non-zero coefficients. It can be efficiently solved using algorithms such as Thomas' algorithm.
+
+In summary, this figure is showing a numerical scheme where the solution to a PDE is approximated on a grid. Known values are used to solve for unknown values within the grid, and the tridiagonal system equation is used to do so efficiently. This method is commonly used in computational finance, physics, and engineering to solve various types of PDEs.

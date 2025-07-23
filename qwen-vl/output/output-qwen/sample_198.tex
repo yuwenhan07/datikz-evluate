@@ -1,0 +1,37 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Dimensions</title>
+    <style>
+        .box {
+            border: 1px solid black;
+            padding: 20px;
+            margin: 10px;
+        }
+        .dollar-sign {
+            font-size: 50px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <div id="node00" class="box">
+        <span class="dollar-sign">$</span>
+    </div>
+    <div id="node01" class="box"></div>
+
+    <script>
+        const node00 = document.getElementById('node00');
+        const node01 = document.getElementById('node01');
+
+        // Get the dimensions of node00
+        const { width, height } = node00.getBoundingClientRect();
+
+        // Set the dimensions of node01
+        node01.style.width = `${width}px`;
+        node01.style.height = `${height}px`;
+    </script>
+</body>
+</html>

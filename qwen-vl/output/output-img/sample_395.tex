@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the horizontal line
+    \draw[thick] (-3,0) -- (3,0);
+    
+    % Define coordinates for the points
+    \coordinate (A) at (-1,0);
+    \coordinate (B) at (1,0);
+    \coordinate (C) at (2,0);
+    
+    % Draw the arcs
+    \draw[gray, thick] (A) arc (180:90:1);
+    \draw[blue, thick] (B) arc (0:90:1);
+    
+    % Label the radius of the gray arc
+    \node at (-0.7,0.5) {$R$};
+    
+    % Label the radius of the blue arc
+    \node at (1.5,1.5) {$r_H$};
+    
+    % Label the angle alpha
+    \draw (B) -- (1.5,0) -- (C);
+    \node at (1.2,0.2) {$\alpha$};
+    
+    % Mark the points with dots
+    \fill (A) circle (1pt);
+    \fill (B) circle (1pt);
+    \fill (C) circle (1pt);
+    
+    % Label the x-coordinates
+    \node at (-1,-0.2) {$x=0$};
+    \node at (2,-0.2) {$x=L$};
+\end{tikzpicture}
+
+\end{document}

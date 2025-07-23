@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Title}} \\
+        \hline
+        \textbf{Column 1} & \textbf{Column 2} \\
+        \hline
+        Text 1 & Text 2 \\
+        \hline
+        Text 3 & Text 4 \\
+        \hline
+        \multicolumn{2}{|c|}{\begin{tikzpicture}[baseline=(current bounding box.center)]
+            % Draw your TikZ picture here
+            \node at (0,0) {TikZ Picture};
+        \end{tikzpicture}} \\
+        \hline
+    \end{tabularx}
+    \caption{Caption for the table}
+\end{table}
+
+\end{document}
