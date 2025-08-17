@@ -1,0 +1,96 @@
+\documentclass[runningheads]{llncs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage[colorlinks=True, linkcolor=red, anchorcolor=blue, citecolor=blue]{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.5]
+
+  \definecolor{darkgray176}{RGB}{176,176,176}
+  \definecolor{darkorange25512714}{RGB}{255,127,14}
+  \definecolor{lightgray204}{RGB}{204,204,204}
+  \definecolor{steelblue31119180}{RGB}{31,119,180}
+
+  \begin{axis}[
+      legend cell align={left},
+      legend style={
+          fill opacity=0.8,
+          draw opacity=1,
+          text opacity=1,
+          at={(0.03,0.97)},
+          anchor=north west,
+          draw=lightgray204
+        },
+      tick align=outside,
+      tick pos=left,
+      title={R-IGD},
+      x grid style={darkgray176},
+      xlabel={\(\displaystyle \gamma\)},
+      xmajorgrids,
+      xmin=-4.2349485002168, xmax=0.93391850455282,
+      xtick style={color=black},
+      xtick={-4,-3,-1.30102999566398,0,0.698970004336019},
+      xticklabels={1e-04,1e-03,5e-02,1e+00,5e+00},
+      y grid style={darkgray176},
+      ylabel={R-IGD},
+      ymajorgrids,
+      ymin=0.0860836308706898, ymax=0.302695178030354,
+      ytick style={color=black}
+    ]
+    \path [fill=steelblue31119180, fill opacity=0.2]
+    (axis cs:-4,0.120077000703284)
+    --(axis cs:-4,0.103183642796716)
+    --(axis cs:-3,0.102899318071116)
+    --(axis cs:-1.30102999566398,0.107833959805449)
+    --(axis cs:0,0.146458011796783)
+    --(axis cs:0.698970004336019,0.173192196047475)
+    --(axis cs:0.698970004336019,0.190759374952525)
+    --(axis cs:0.698970004336019,0.190759374952525)
+    --(axis cs:0,0.189046762703217)
+    --(axis cs:-1.30102999566398,0.131306252694551)
+    --(axis cs:-3,0.126083403428884)
+    --(axis cs:-4,0.120077000703284)
+    --cycle;
+
+    \path [fill=darkorange25512714, fill opacity=0.2]
+    (axis cs:-4,0.112429759212962)
+    --(axis cs:-4,0.0959296102870382)
+    --(axis cs:-3,0.097670649857858)
+    --(axis cs:-1.30102999566398,0.107409460721411)
+    --(axis cs:0,0.166921812983846)
+    --(axis cs:0.698970004336019,0.268900061385994)
+    --(axis cs:0.698970004336019,0.292849198614006)
+    --(axis cs:0.698970004336019,0.292849198614006)
+    --(axis cs:0,0.214319354016154)
+    --(axis cs:-1.30102999566398,0.136793684778589)
+    --(axis cs:-3,0.123808705642142)
+    --(axis cs:-4,0.112429759212962)
+    --cycle;
+
+    \addplot [semithick, steelblue31119180, mark=x, mark size=3, mark options={solid}]
+    table {%
+        -4 0.11163032175
+        -3 0.11449136075
+        -1.30102999566398 0.11957010625
+        0 0.16775238725
+        0.698970004336019 0.1819757855
+      };
+    \addlegendentry{R-IGD(pop)}
+    \addplot [semithick, darkorange25512714, mark=triangle*, mark size=3, mark options={solid}]
+    table {%
+        -4 0.10417968475
+        -3 0.11073967775
+        -1.30102999566398 0.12210157275
+        0 0.1906205835
+        0.698970004336019 0.28087463
+      };
+    \addlegendentry{R-IGD(pred)}
+  \end{axis}
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{snakes,arrows,shapes}
+\usepackage[pagebackref,colorlinks=true,citecolor=blue,linkcolor=red]{hyperref}
+
+\begin{document}
+
+\begin{tikzpicture}[>=latex',line join=bevel,very thick,scale=0.7]
+\node (h) at (18.0bp,72.0bp) [draw,circle] {$h$};
+  \node (phi) at (99.0bp,45.0bp) [draw,fill=yellow,trapezium,shape border rotate=270] {$f_\phi$};
+  \node (z) at (180.0bp,95.0bp) [draw,circle] {$z$};
+  \node (Q) at (261.0bp,95.0bp) [draw,fill=lightgray,rectangle] {$Q_\omega,\pi_\nu$};
+  \node (P) at (261.0bp,41.0bp) [draw,fill=lightgray,rectangle] {$g_\theta$};
+  \node (a) at (180.0bp,41.0bp) [draw,circle] {$a$};
+  \node (r) at (342.0bp,95.0bp) [draw,circle] {$r$};
+  \node (next_h) at (18.0bp,18.0bp) [draw,circle] {$h'$};
+  \node (next_z) at (342.0bp,18.0bp) [draw,circle] {$z'$};
+  \draw [->] (h) ..controls (43.105bp,63.632bp) and (52.841bp,60.386bp)  .. (phi);
+  \draw [->] (z) ..controls (205.9bp,95.0bp) and (214.88bp,95.0bp)  .. (Q);
+  \draw [->] (z) ..controls (203.77bp,79.154bp) and (214.8bp,71.803bp)  .. (P);
+  \draw [->] (a) ..controls (203.77bp,56.846bp) and (214.8bp,64.197bp)  .. (Q);
+  \draw [->] (a) ..controls (205.9bp,41.0bp) and (214.88bp,41.0bp)  .. (P);
+  \draw [->] (next_h) ..controls (43.105bp,26.368bp) and (52.841bp,29.614bp)  .. (phi);
+  \draw [->] (phi) ..controls (135.92bp,67.792bp) and (146.5bp,74.321bp)  .. (z);
+  \draw [->,dashed] (phi) ..controls (136.94bp,22.528bp) and (149.65bp,16.873bp)  .. (162.0bp,14.0bp) .. controls (214.56bp,1.769bp) and (278.09bp,7.8538bp)  .. (next_z);
+  \draw [] (Q) ..controls (299.99bp,95.0bp) and (313.15bp,95.0bp)  .. (r);
+  \draw [] (P) ..controls (300.36bp,29.825bp) and (313.99bp,25.955bp)  .. (next_z);
+\end{tikzpicture}
+
+\end{document}

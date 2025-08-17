@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usetikzlibrary{automata,positioning,arrows,calc,decorations.shapes,decorations.markings,quotes,shapes.misc}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{backgrounds}
+\usepgfplotslibrary{patchplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{
+     layers/standard/.define layer set={
+         background,axis background,axis grid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis foreground
+     }{
+         grid style={/pgfplots/on layer=axis grid},
+         tick style={/pgfplots/on layer=axis ticks},
+         axis line style={/pgfplots/on layer=axis lines},
+         label style={/pgfplots/on layer=axis descriptions},
+         legend style={/pgfplots/on layer=axis descriptions},
+         title style={/pgfplots/on layer=axis descriptions},
+         colorbar style={/pgfplots/on layer=axis descriptions},
+         ticklabel style={/pgfplots/on layer=axis tick labels},
+         axis background@ style={/pgfplots/on layer=axis background},
+         3d box foreground style={/pgfplots/on layer=axis foreground},
+     },
+ }
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={circle,inner sep=1pt,thick,draw,scale=1.2},
+	                        every edge/.style={very thick,draw},every edge quotes/.append style = {auto, font=\footnotesize, inner sep=2pt}
+]
+
+            \node (2) at (0,0){};
+            \node (1) at (4,0){};
+            \node (3) at (2,-2){};
+
+            \begin{scope}[very thick,decoration={
+                            markings,
+                            mark=at position 0.5 with {\arrow{>}}}] 
+                \draw[postaction={decorate}] (1) -- (2);
+                \draw[postaction={decorate}] (2) -- (3);
+                \draw[postaction={decorate}] (3) -- (1);
+            \end{scope}
+
+            \node[very thick,label={\large $z_2 = \psi_{(v_1,v_2)}(z_1) =  e^{\iota \frac{\pi}{4}} \cdot z_1$},scale=0.001,color=white] (4) at (2,3){};
+
+            \node[very thick,label={\large $z_3 = \psi_{(v_2,v_3)}({z_2}) = e^{\iota \frac{\pi}{4}} \cdot {z_2}$},scale=0.001,color=white] (4) at (-4,-4){};
+
+            \node[very thick,label={\large $\textcolor{blue}{z_1'} = \psi_{(v_3,v_1)}(z_3) = e^{\iota \frac{\pi}{4}} \cdot z_3$},scale=0.001,color=white] (4) at (8,-4){};
+            
+            \draw[dashed] (4,0) -- (6,6);
+            \draw[dashed] (4,0) -- (10,2);
+            \draw[very thick,dotted] (6,6) rectangle (10,2);
+            \filldraw (6,2) circle (0pt) node[scale=0.001,label={below: \Large $\mathbf{C}_{v_1}$}]{};
+            \node[very thick,fill] (c1) at (8,4){};
+            \draw[very thick] (c1) -> (9,5) node[midway,label={above:$z_1 \ $},scale=0.001]{};
+            \path (c1) edge[->] (9,5);
+            \draw[very thick,dashed] (c1) -> (9,3) node[midway,label={above: $\large \ \textcolor{blue}{z_1'}$},scale=0.001]{};
+            \path (c1) edge[color=blue,dashed,->] (9,3);
+
+            \draw[dashed] (0,0) -- (-6,2);
+            \draw[dashed] (0,0) -- (-2,6);
+            \draw[very thick,dotted] (-6,6) rectangle (-2,2);
+            \filldraw (-2,2) circle (0pt) node[scale=0.001,label={below: \Large $\mathbf{C}_{v_2}$}]{};
+            \node[very thick,fill] (c2) at (-4,4){};
+            \draw[very thick,dashed] (c2) -> (-5,5) node[midway,label={above: $
+            \ {z_2}$},scale=0.001]{};
+            \path (c2) edge[dashed,->] (-5,5);
+
+            \draw[dashed] (3) -- (4,-4);
+            \draw[dashed] (3) -- (0,-4);
+            \draw[very thick,dotted] (4,-4) rectangle (0,-8);
+            \draw[ultra thin,dotted] (0,-4) -- (4,-4) node[scale=0.001,midway,label={above:\Large $\mathbf{C}_{v_3}$}]{};
+            \node[very thick,fill] (c3) at (2,-6){};
+            \draw[very thick,dashed] (c3) -> (1,-7) node[midway,label={above:$z_3 \ $},scale=0.001]{};
+            \path (c3) edge[dashed,->] (1,-7);
+
+            \node[label={above: \large $ \ \ v_2$},fill=white] (2) at (0,0){};
+            \node[label={above: \large $v_1 \ \ $},fill=white] (1) at (4,0){};
+            \node[label={below: $v_3$},fill=white] (3) at (2,-2){};
+
+            \draw[very thick] (-7,4) edge[->,bend right=60]  (-1,-6);
+            \node[label=\Large $\psi_{v_2,v_3}\ \ \ $,scale=0.0001,color=white] (4) at (-8.5,-1){};
+
+            \draw[very thick] (5,-6) edge[->,bend right=60]  (11,4);
+            \node[label=\Large $\ \ \ \psi_{v_3,v_1} $,scale=0.0001,color=white] (4) at (12.5,-1){};
+
+            \draw[very thick] (-1,6) edge[bend left=15,<-] (5,6);
+            \node[label={\vspace{0.1cm} \Large $\psi_{v_1,v_2}$},scale=0.0001,color=white] (4) at (2,6.2){};
+
+            
+            
+    \end{tikzpicture}
+
+\end{document}

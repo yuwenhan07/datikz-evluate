@@ -1,0 +1,36 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \begin{scope}
+        \node[shape=circle,draw=black] (0) at (0,0) {$0$};
+        \node[shape=circle,draw=black] (1) at (5,0) {$1$};
+        \node[shape=circle,draw=black] (2) at (10,0) {$2$};
+        \node[shape=circle,draw=black] (3) at (15,0) {$3$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={fill=white}]
+        \path [->, solid] (0) edge[bend left=0] node {$r_{1} D^{01}_{j}$} (1);
+        \path [->, dotted] (0) edge[bend left=20] node {$r_{2} D^{01}_{j}$} (1);
+
+        \path [->, dotted] (0) edge[bend left=30] node {$r_{1} D^{02}_{j}$} (2);
+        \path [->, dotted] (0) edge[bend left=50] node {$r_{2} D^{02}_{j}$} (2);
+
+        \path [->, dotted] (0) edge[bend right=10] node {$0$} (3);
+
+        \path [->, solid] (1) edge[bend left=0] node {$r_{1} D^{12}_{j}$} (2);
+        \path [->, dotted] (1) edge[bend left=20] node {$r_{2} D^{12}_{j}$} (2);
+
+        \path [->, dotted] (1) edge[bend left=30] node {$0$} (3);
+
+        \path [->, solid] (2) edge[bend left=0] node {$0$} (3);
+    \end{scope}
+
+\end{tikzpicture}
+
+\end{document}

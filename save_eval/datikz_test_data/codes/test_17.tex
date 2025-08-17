@@ -1,0 +1,28 @@
+\documentclass[a4paper, 11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}      % Uses 'T1' font encoding.
+\usepackage{mathtools}        % Extension of 'amsmath' which fixes some bugs.
+\usepackage{amssymb}          % Extra symbols and fonts.
+\usepackage{tikz}             % Language to create graphics programmatically.
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.6]
+\foreach \i/\j in
+{1/2,2/2,3/2,4/2,5/2,6/2, 6/1,7/1,8/1,8/0,8/-1,4/3,4/4,4/5,4/6}
+\draw (\i,\j) -- (\i+1,\j) -- (\i+1,\j+1) -- (\i,\j+1) -- cycle;
+\draw[color=black] (1.35,2.55) node {$v'$};
+\draw [fill=black] (1.6,2.3) circle (2pt);
+\draw[color=black] (8.55,-0.55) node {$v$};
+\draw [fill=black] (8.2,-0.4) circle (2pt);
+\draw (1.6,2.3) -- (8.2,-0.4) ;
+\draw (3,8) -- (3,6) -- (10,6);
+\draw[color=black] (7,7) node {$Q_{2r}$};
+\draw[color=black] (1.5,1.7) node {$q_t$};
+\draw[color=black] (4.5,7.4) node {$q'_{t'}$};
+\draw[color=black] (8.5,-1.3) node {$q_0$};
+\draw[color=black] (4.5,1.7) node {$q_{i^*}$};
+\end{tikzpicture}
+
+\end{document}

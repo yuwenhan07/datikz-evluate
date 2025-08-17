@@ -1,0 +1,16 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,tikz,hyperref}
+\usetikzlibrary{arrows,automata,positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>= latex,node distance=2.3 cm,semithick]
+\node [ state ] (g3) {$g_3$};
+\node [ state ] (g4) [ right = 1.5 cm of g3] {$g_4$};
+\path (g3) edge [loop left] node{-2} ()
+           (g3) edge[bend left,above] node {-2,0} (g4)
+           (g4) edge[loop right] node {3} ()
+           (g4) edge[bend left,below] node {1,3} (g3);
+\end{tikzpicture}
+
+\end{document}

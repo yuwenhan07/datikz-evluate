@@ -1,0 +1,47 @@
+\documentclass[sigconf, nonacm]{acmart}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[baseline={(current bounding box.south)}]
+  [column 1/.style={anchor=base},
+   column 2/.style={anchor=base},
+   column 3/.style={anchor=base}]
+   
+  \matrix (left_matrix)
+   [nodes={minimum size=6mm,anchor=center}]
+  {
+    \node (left_matrix_1){}; & \node{$x_1$}; & \node {$y$}; \\ \hline
+    \node {$x_1$}; & \node[color=red]{$w_h$}; & \node {$w_l$}; \\
+    \node (left_matrix_7){$y$}; & \node[color=red]{$w_h$}; & \node {$w_l$}; \\
+  };
+    \draw (left_matrix_1.north east) -- (left_matrix_7.south east);
+    \node[below=0.9cm of left_matrix,font=\small] {(a)};
+    
+    \matrix (mid_matrix) [right=0.1cm of left_matrix,nodes={minimum size=6mm,anchor=center}]
+  {
+   \node (mid_matrix_1){}; & \node{$x_1$}; & \node{$x_2$} ; & \node {$y$}; \\ \hline
+    \node {$x_1$}; & \node{$w_{l}$}; & \node[color=red]{$w_{h}$}; & \node {$w_{l}$}; \\
+     \node {$x_2$}; & \node[color=red]{$w_h$}; & \node{$w_l$}; & \node {$w_l$}; \\
+    \node (mid_matrix_7){$y$}; & \node[color=red]{$w_h$}; & \node{$w_l$}; & \node {$w_l$}; \\
+  };
+  \draw (mid_matrix_1.north east) -- (mid_matrix_7.south east);
+  \node[below=0.6cm of mid_matrix,font=\small] {(b)};
+  
+  \matrix (right_matrix) [right=0.1cm of mid_matrix,nodes={minimum size=6mm,anchor=center}]
+  {
+   \node (right_matrix_1)[minimum width=8mm]{}; & \node{$x_1$}; & \node{$x_2$}; & \node{$x_3$}; & \node {$y$}; \\ \hline
+    \node [minimum width=8mm]{$x_1, x_1$}; & \node{$w_l$}; & \node[color=red]{$w_h$}; & \node{$w_l$}; & \node {$w_l$}; \\
+    \node [minimum width=8mm]{$x_1, x_2$}; & \node{$w_l$}; & \node{$w_l$}; & \node[color=red]{$w_h$}; & \node {$w_l$}; \\
+    \node [minimum width=8mm]{$x_1, x_3$}; & \node[color=red]{$w_h$}; & \node{$w_l$}; & \node{$w_l$}; & \node {$w_l$}; \\
+    \node (right_matrix_7)[minimum width=8mm]{$x_1, y$}; & \node[color=red]{$w_h$}; & \node{$w_l$}; & \node{$w_l$}; & \node {$w_l$}; \\
+  };
+  \draw (right_matrix_1.north east) -- (right_matrix_7.south east);
+  \node[below=-0.4cm of right_matrix,font=\small] {$\vdots$};
+  \node[below=0.3cm of right_matrix,font=\small] {(c)};
+\end{tikzpicture}
+
+\end{document}

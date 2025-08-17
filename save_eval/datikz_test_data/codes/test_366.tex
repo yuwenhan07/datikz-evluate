@@ -1,0 +1,29 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.7, transform shape,]
+  \foreach \i in {1,2,3} {
+    \node[circle, draw] (L\i) at (0, -2*\i) {$e_\i^{t-1}$};
+  }
+  \foreach \i in {1,2,3} {
+    \node[circle, draw] (R\i) at (4,- 2*\i) {$e_\i^{t}$};
+  }
+  \draw[-] (L1) -- (R1);
+  \draw[-] (L1) -- (R2);
+  \draw[-] (L1) -- (R3);
+  \draw[-] (L2) -- (R1);
+  \draw[-] (L2) -- (R2);
+  \draw[-] (L2) -- (R3);
+  \draw[-] (L3) -- (R1);
+  \draw[-] (L3) -- (R2);
+  \draw[-] (L3) -- (R3);
+  \node[] at (2, -1.55) {$d(e^{t-1}, e^{t})$};
+\end{tikzpicture}
+
+\end{document}

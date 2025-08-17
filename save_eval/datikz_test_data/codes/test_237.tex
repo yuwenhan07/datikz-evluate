@@ -1,0 +1,144 @@
+\documentclass[runningheads]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx, mdframed, subcaption, amsmath, multirow, tikz}
+\usetikzlibrary{tikzmark}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.3,
+blacknode/.style={circle, draw=black!, fill=black!, thick, minimum size= 2mm, scale=0.5},
+whitenode/.style={circle, draw=black!, fill=white!, thick, minimum size= 2mm, scale=0.5},
+]
+
+\node[whitenode] (1) at (0,0) {}; \node at (0,0.8) {$v_1$};
+\node[blacknode] (2) at (2,0) {}; \node at (2,0.8) {$v_2$};
+\node[blacknode] (3) at (4,0) {}; \node at (4,0.8) {$v_3$};
+\node[blacknode] (4) at (6,0) {}; \node at (6,0.8) {$v_4$};
+\node[blacknode] (5) at (8,0) {}; \node at (8,0.8) {$v_5$};
+\node[whitenode] (6) at (10,0) {}; \node at (10,0.8) {$v_6$};
+\node[whitenode] (7) at (12,0) {}; \node at (12,0.8) {$v_7$};
+\node[blacknode] (8) at (14,0) {}; \node at (14,0.8) {$v_8$};
+\node[blacknode] (9) at (16,0) {}; \node at (16,0.8) {$v_9$};
+\node[blacknode] (10) at (18,0) {}; \node at (18,0.8) {$v_{10}$};
+\node[blacknode] (11) at (20,0) {}; \node at (20,0.8) {$v_{11}$};
+\node[whitenode] (12) at (22,0) {}; \node at (22,0.8) {$v_{12}$};
+
+\node at (36,0) {$P_{12}$: $r=0$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\node[blacknode] (11') at (20,-2) {}; \node at (20,-1.2) {$v_{11}$};
+\node[blacknode] (12') at (22,-2) {}; \node at (22,-1.2) {$v_{12}$};
+\node[whitenode] (13') at (24,-2) {}; \node at (24,-1.2) {$v_{13}$};
+
+\node at (36,-2) {$P_{13}$: $r=1$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\node[blacknode] (11'') at (20,-4) {}; \node at (20,-3.2) {$v_{11}$};
+\node[blacknode] (12'') at (22,-4) {}; \node at (22,-3.2) {$v_{12}$};
+\node[blacknode] (13'') at (24,-4) {}; \node at (24,-3.2) {$v_{13}$};
+\node[whitenode] (14'') at (26,-4) {}; \node at (26,-3.2) {$v_{14}$};
+
+\node at (36,-4) {$P_{14}$: $r=2$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\node[blacknode] (11''') at (20,-6) {}; \node at (20,-5.2) {$v_{11}$};
+\node[blacknode] (12''') at (22,-6) {}; \node at (22,-5.2) {$v_{12}$};
+\node[blacknode] (13''') at (24,-6) {}; \node at (24,-5.2) {$v_{13}$};
+\node[blacknode] (14''') at (26,-6) {}; \node at (26,-5.2) {$v_{14}$};
+\node[whitenode] (15''') at (28,-6) {}; \node at (28,-5.2) {$v_{15}$};
+
+\node at (36,-6) {$P_{15}$: $r=3$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\node[blacknode] (11*) at (20,-8) {}; \node at (20,-7.2) {$v_{11}$};
+\node[blacknode] (12*) at (22,-8) {}; \node at (22,-7.2) {$v_{12}$};
+\node[blacknode] (13*) at (24,-8) {}; \node at (24,-7.2) {$v_{13}$};
+\node[blacknode] (14*) at (26,-8) {}; \node at (26,-7.2) {$v_{14}$};
+\node[blacknode] (15*) at (28,-8) {}; \node at (28,-7.2) {$v_{15}$};
+\node[whitenode] (16*) at (30,-8) {}; \node at (30,-7.2) {$v_{16}$};
+
+\node at (36,-8) {$P_{16}$: $r=4$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\node[blacknode] (11**) at (20,-10) {}; \node at (20,-9.2) {$v_{11}$};
+\node[whitenode] (12**) at (22,-10) {}; \node at (22,-9.2) {$v_{12}$};
+\node[blacknode] (13**) at (24,-10) {}; \node at (24,-9.2) {$v_{13}$};
+\node[blacknode] (14**) at (26,-10) {}; \node at (26,-9.2) {$v_{14}$};
+\node[blacknode] (15**) at (28,-10) {}; \node at (28,-9.2) {$v_{15}$};
+\node[blacknode] (16**) at (30,-10) {}; \node at (30,-9.2) {$v_{16}$};
+\node[whitenode] (17**) at (32,-10) {}; \node at (32,-9.2) {$v_{17}$};
+
+\node at (36,-10) {$P_{17}$: $r=5$};
+
+%Lines
+
+\draw[-, thick, black!] (1) -- (2);
+\draw[-, thick, black!] (2) -- (3);
+\draw[-, thick, black!] (3) -- (4);
+\draw[-, thick, black!] (4) -- (5);
+\draw[-, thick, black!] (5) -- (6);
+\draw[-, thick, black!] (6) -- (7);
+\draw[-, thick, black!] (7) -- (8);
+\draw[-, thick, black!] (8) -- (9);
+\draw[-, thick, black!] (9) -- (10);
+\draw[-, thick, black!] (10) -- (11);
+\draw[-, thick, black!] (11) -- (12);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\draw[-, thick, black!] (11') -- (12');
+\draw[-, thick, black!] (12') -- (13');
+
+\draw[dashed, thick, black!] (14,-2) -- (19,-2);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\draw[-, thick, black!] (11'') -- (12'');
+\draw[-, thick, black!] (12'') -- (13'');
+\draw[-, thick, black!] (13'') -- (14'');
+
+\draw[dashed, thick, black!] (14,-4) -- (19,-4);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\draw[-, thick, black!] (11''') -- (12''');
+\draw[-, thick, black!] (12''') -- (13''');
+\draw[-, thick, black!] (13''') -- (14''');
+\draw[-, thick, black!] (14''') -- (15''');
+
+\draw[dashed, thick, black!] (14,-6) -- (19,-6);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\draw[-, thick, black!] (11*) -- (12*);
+\draw[-, thick, black!] (12*) -- (13*);
+\draw[-, thick, black!] (13*) -- (14*);
+\draw[-, thick, black!] (14*) -- (15*);
+\draw[-, thick, black!] (15*) -- (16*);
+
+\draw[dashed, thick, black!] (14,-8) -- (19,-8);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\draw[-, thick, black!] (11**) -- (12**);
+\draw[-, thick, black!] (12**) -- (13**);
+\draw[-, thick, black!] (13**) -- (14**);
+\draw[-, thick, black!] (14**) -- (15**);
+\draw[-, thick, black!] (15**) -- (16**);
+\draw[-, thick, black!] (16**) -- (17**);
+
+\draw[dashed, thick, black!] (14,-10) -- (19,-10);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\draw[dotted, thick, black!] (11,1) -- (11,-11);
+\draw[dotted, thick, black!] (23,1) -- (23,-11);
+
+\end{tikzpicture}
+
+\end{document}

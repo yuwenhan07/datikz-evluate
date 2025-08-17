@@ -1,0 +1,57 @@
+\documentclass[]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+	\begin{scope}[shift=({0,0}), y={(5mm, 3mm)}, z={(0cm,1cm)}]
+		\draw
+		(0,0,0) node[below left] {$u$} -- (1,0,0) node[below] {$u_i$} -- (1,1,0) node[right] {$u_{ij}$};
+        \draw[dashed] (1,1,0) -- (0,1,0) node[above left] {$u_j$} -- (0,0,0);
+        \draw[dashed]  (0,1,0) -- (0,1,1) node[above] {$u_{jk}$};
+        \draw (0,1,1) -- (0,0,1) node[left] {$u_k$} -- (0,0,0) 
+        (1,1,1) node[above] {$u_{ijk}$} -- (0,1,1);
+        \draw (1,1,0) -- (1,1,1);
+        \node at (0,0,0) {$\bullet$};
+        \node at (1,0,0) {$\bullet$};
+        \node at (0,1,0) {$\bullet$};
+        \node at (0,0,1) {$\bullet$};
+        \node[gray] at (1,1,0) {$\bullet$};
+        \node[gray] at (0,1,1) {$\bullet$};
+        \node[gray!50] at (1,1,1) {$\bullet$};
+	\end{scope}
+    \begin{scope}[shift=({2.5,0}), y={(5mm, 3mm)}, z={(0cm,1cm)}]
+		\draw (0,0,0) node[below left] {$u$} -- (1,0,0) node[below] {$u_i$} -- (1,1,0) node[right] {$u_{ij}$};
+        \draw[dashed] (1,1,0) -- (0,1,0) node[above] {$u_j$} -- (0,0,0);
+        \draw (0,0,0) -- (0,0,1) node[left] {$u_k$} -- (1,0,1) node[below right] {$u_{ki}$} -- (1,0,0) -- (0,0,0)
+        (1,1,1) node[above] {$u_{ijk}$} -- (1,0,1) -- (1,0,0) -- (1,1,0) -- (1,1,1) ;
+        \node at (0,0,0) {$\bullet$};
+        \node at (1,0,0) {$\bullet$};
+        \node at (0,1,0) {$\bullet$};
+        \node at (0,0,1) {$\bullet$};
+        \node[gray] at (1,1,0) {$\bullet$};
+        \node[gray] at (1,0,1) {$\bullet$};
+        \node[gray!50] at (1,1,1) {$\bullet$};
+	\end{scope}	
+    \begin{scope}[shift=({5,0}), y={(5mm, 3mm)}, z={(0cm,1cm)}]
+		\draw[dashed] (0,0,0) node[below left] {$u$} -- (0,1,0) node[above left] {$u_j$} -- (0,1,1) node[above] {$u_{jk}$};
+        \draw (0,1,1) -- (0,0,1) node[left] {$u_k$} -- (0,0,0) 
+        (0,0,0) -- (0,0,1) -- (1,0,1) node[below right] {$u_{ki}$} -- (1,0,0) node[below] {$u_i$} -- (0,0,0)
+        (1,1,1) node[above] {$u_{ijk}$} -- (1,0,1) -- (0,0,1) -- (0,1,1) -- (1,1,1) ;
+        \node at (0,0,0) {$\bullet$};
+        \node at (1,0,0) {$\bullet$};
+        \node at (0,1,0) {$\bullet$};
+        \node at (0,0,1) {$\bullet$};
+        \node[gray] at (1,0,1) {$\bullet$};
+        \node[gray] at (0,1,1) {$\bullet$};
+        \node[gray!50] at (1,1,1) {$\bullet$};
+	\end{scope}	
+\end{tikzpicture}
+
+\end{document}

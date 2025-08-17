@@ -1,0 +1,72 @@
+\documentclass{amsart}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+
+\begin{tikzpicture}
+\def\R{3};
+\def\p{(-2)};
+\def\q{1};
+
+
+\fill[orange!20] (-2,0) -- (0,0) -- (0,1) -- (-2,{1+2/\R});
+\fill[orange!20] (0,-2) -- (0,0) -- (\R,0) -- ({\R+2/\R},-2);
+\fill[orange!20] (-2,-2) -- (0,-2) -- (0,0) -- (-2,0);
+\fill[orange!20] (0,0) -- plot[variable=\t,domain=0:1,smooth]	(	{(1-\t)*\R/((\R^(-\q) + 1 - (\R - \t*(\R-1))^(-\q))^(-1/\q))},
+												{\t*\R/((\R^(-\q) + 1 - (\R - \t*(\R-1))^(-\q))^(-1/\q))}	);
+
+
+\draw[-Latex,thick] (-2,0) -- ({\R+1},0);
+\draw[-Latex,thick] (0,-2) -- (0,{\R+1});
+
+
+\draw[red,dotted] (\R,0) -- (0,1);
+\draw[blue,dotted] (0,\R) -- (1,0);
+
+
+\draw[blue,thick] (1,0) -- ({1+2/\R},-2);
+\draw[blue,thick] (0,\R) -- (-2,{\R+2/\R});
+
+
+\draw[dashdotted,thick] ({((\R^\q+1)/2)^(1/\q)},0) -- (0,{((\R^\q+1)/2)^(1/\q)});
+
+
+\draw[orange,thick] (0,1) -- (-2,{1+2/\R});
+\draw[orange,thick] (\R,0) -- ({\R+2/\R},-2);
+\draw[orange,thick,variable=\t,domain=0:1,smooth] plot	(	{(1-\t)*\R/((\R^(-\q) + 1 - (\R - \t*(\R-1))^(-\q))^(-1/\q))},
+												{\t*\R/((\R^(-\q) + 1 - (\R - \t*(\R-1))^(-\q))^(-1/\q))}	);
+
+
+\draw[dashdotted,thick] ({\R+1},-1) -- (-1,{\R+1});
+
+
+\draw[dashed,red,thick] ({\R+1},{-1/(1 + (\R-1)/(\R^(\q+1)))}) -- ({\R - (\R + 1) * (1 + (\R-1)/(\R^(\q+1))))},{\R+1});
+\draw[dashed,blue,thick] ({- (1 + (\R-1)/(\R^(\q+1)))},{\R+1}) -- ({\R+1},{((\R-1)/(\R^\q) - 1)/(1 + (\R-1)/(\R^(\q+1)))});
+
+
+\draw[-Latex] ({\R-1},1) -- (\R,2);
+\node[anchor=west] at (\R,2) {$a$};
+
+
+\draw[-Latex,red] (1,{(\R-1)/(1 + (\R-1)/\R^(\q+1))}) -- (2,{(\R-1)/(1 + (\R-1)/\R^(\q+1)) + 1 + (\R-1)/(\R^(\q+1))});
+\node[anchor=west] at (2,{(\R-1)/(1 + (\R-1)/\R^(\q+1)) + 1 + (\R-1)/(\R^(\q+1))}) {$a_q$};
+
+
+\fill (\R,0) circle [radius=1.5pt] node[anchor=south west] {$v$};
+\fill ({((\R^\q+1)/2)^(1/\q)},0) circle [radius=1.5pt] node[anchor=north] {$\frac{v}{m_{-q}(R_0^{\max},1)}$};
+\fill (1,0) circle [radius=1.5pt] node[anchor=north east] {$\frac{v}{R_0^{\max}}$};
+
+
+\fill (0,\R) circle [radius=1.5pt] node[anchor=south west] {$w$};
+\fill (0,{((\R^\q+1)/2)^(1/\q)}) circle [radius=1.5pt] node[anchor=east] {$\frac{w}{m_{-q}(R_0^{\max},1)}$};
+\fill (0,1) circle [radius=1.5pt] node[anchor=north east] {$\frac{w}{R_0^{\max}}$};
+
+
+\fill ({\R/2},{\R/2}) circle [radius=1.5pt] node[anchor=south west] {$x$};
+\end{tikzpicture}
+
+\end{document}

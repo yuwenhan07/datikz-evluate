@@ -1,0 +1,54 @@
+\documentclass[12pt,reqno]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphics,color}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.0] % Scale the entire drawing
+    % Define dimensions
+    \def\stripWidth{1.5} % Width of the strip
+    \def\stripHeight{3.75} % Height of the strip
+    \def\semiCircleRadius{\stripWidth / 2} % Radius of the semi-circle
+    \def\foldDepth{1.4} % Depth of the fold, horizontal displacement
+
+    % Function to draw the strip with half-disk
+    \newcommand{\drawStripWithHalfDisk}[2]{
+        % Draw the vertical rectangular strip without the bottom edge
+        \draw (#1, #2 + \stripHeight) -- (#1, #2); % Left edge
+        \draw (#1 + \stripWidth, #2) -- (#1 + \stripWidth, #2 + \stripHeight); % Right edge
+        \draw (#1, #2 + \stripHeight) -- (#1 + \stripWidth, #2 + \stripHeight); % Top edge
+
+        % Draw the half-disk at the bottom of the strip
+        \draw (#1, #2) arc (180:360:\semiCircleRadius);
+
+        % Add a dot at the geometric center of the semi-circle
+        \filldraw [black] (#1 + \semiCircleRadius, #2) circle (2pt);
+    }
+
+    % Function to draw the folded strip
+    \newcommand{\drawFoldedStrip}[2]{
+        % Draw the main vertical rectangular part of the strip
+        \draw (#1, #2) rectangle (#1 + \stripWidth/2, #2 + \stripHeight);
+
+        % Coordinates for parallelogram (fold)
+        \coordinate (A) at (#1, #2);
+        \coordinate (B) at (#1 + \stripWidth/2, #2 + \stripHeight);
+        \coordinate (C) at (#1 + \stripWidth/2 - \foldDepth/2, #2 + \stripHeight - \foldDepth/10); 
+        \coordinate (D) at (#1, #2); 
+
+        % Draw the parallelogram (fold)
+        \draw (B) -- (C) -- (D) -- (A);
+    }
+
+    % Draw the folded strip
+    \drawFoldedStrip{0}{0}
+
+    % Draw the strip with half-disk to the right of the folded strip
+    \drawStripWithHalfDisk{2.5}{0} % Adjusted position
+
+\end{tikzpicture}
+
+\end{document}

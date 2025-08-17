@@ -1,0 +1,26 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[colorlinks,citecolor=red,pagebackref,hypertexnames=false]{hyperref}
+\usepackage{pgf}
+\usepackage{pgf,tikz} %tikz: dibuixos i esquemes, com el cercle
+\usepackage{xcolor}
+
+\newcommand{\wt}[1]{{\widetilde{#1}}}
+
+\begin{document}
+
+\begin{tikzpicture}[radius=30mm,line width=0.7pt]
+\draw (0,0) -- (29.961mm,0);
+\draw[densely dotted] (29.961mm,0) -- (40mm,0);
+\draw[densely dotted] (40mm,0) -- (48.017mm,6.041mm);
+\draw (48.017mm,6.041mm) -- (71.945mm,24.073mm);
+  \draw (29.961mm,0)  arc[start angle=270, end angle=307]; 
+  \fill (29.961mm,0) circle (0.45mm);
+  \fill (48.017mm,6.041mm) circle (0.45mm);
+  \draw (15mm,4mm) node {$\wt T_i$};
+  \draw (55mm,17mm) node {$\wt T_{i+1}$};
+  \draw (38mm,5mm) node {$C_i$};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+\filldraw[fill=gray!30](0,3) .. controls (2.75,0.5) and (3.25,0.5) .. (6,3) .. controls (3.5,1.75) and (2.5,1.75)  .. cycle;
+\draw (0,3) -- (3,0);
+\draw (3,0) -- (6,3);
+\draw[dashed] (0,3) .. controls (2.5,2.5) and (3.5,2.5) .. (6,3);
+\filldraw  (3,0) circle (0.035cm);
+
+\draw (3,1.1) node[below]{$\Sigma_{r_0}$};
+\draw (0,3) .. controls (2.5,1.75) and (3.5,1.75) .. (6,3);
+\draw[->] (3,2.125) -- (3,2.55);
+\draw[->] (2.2,2.25) -- (2.2,2.6);
+\draw[->] (3.75,2.25) -- (3.75,2.6);
+\draw (2.5,1.9) node{$\Sigma_R$};
+\draw (3,2.8) node{$\Sigma^+$};
+\filldraw[fill=white] (0,3) circle (0.035cm);
+\filldraw[fill=white] (6,3) circle (0.035cm);
+\end{tikzpicture}
+
+\end{document}

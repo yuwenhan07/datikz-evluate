@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx,amsmath,fullpage,mathptmx,helvet}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{pgfplots}
+\usetikzlibrary{shapes.geometric}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    [level distance=10mm,
+    level 1/.style={sibling distance=60mm},
+    level 2/.style={sibling distance=30mm},
+    level 3/.style={sibling distance=15mm},
+    level 4/.style={sibling distance=7mm}]
+    \node [draw, diamond]{}
+    child  {
+        node [fill, circle] {}
+        child  {
+            node [draw, diamond] {}
+            child  {
+                node [fill, circle] {}
+                child  {
+                    node [draw, rectangle] {2}
+                    edge from parent node[left] {S}
+                }
+                child  {
+                    node [draw, rectangle] {-2}
+                    edge from parent node[right] {C}
+                }
+                edge from parent node[left] {S}
+            }
+            child  {
+                node [fill, circle] {}
+                child  {
+                    node [draw, rectangle] {0}
+                    edge from parent node[left] {S}
+                }
+                child  {
+                    node [draw, rectangle] {2}
+                    edge from parent node[right] {C}
+                }
+                edge from parent node[right] {C}
+            }
+            edge from parent node[left] {S}
+        }
+        child  {
+            node [draw, diamond] {}
+            child  {
+                node [fill, circle] {}
+                child  {
+                    node [draw, rectangle] {-1}
+                    edge from parent node[left] {S}
+                }
+                child  {
+                    node [draw, rectangle] {-4}
+                    edge from parent node[right] {C}
+                }
+                edge from parent node[left] {S}
+            }
+            child  {
+                node [fill, circle] {}
+                child  {
+                    node [draw, rectangle] {-3}
+                    edge from parent node[left] {S}
+                }
+                child  {
+                    node [draw, rectangle] {-1}
+                    edge from parent node[right] {C}
+                }
+                edge from parent node[right] {C}
+            }
+            edge from parent node[right] {C}
+        }
+      edge from parent
+        node[above left] {S}
+    }
+    child  {
+        node [fill, circle] {}
+        child  {
+            node [draw, diamond] {}
+            child  {
+                node [fill, circle] {}
+                child  {
+                    node [draw, rectangle] {0}
+                    edge from parent node[left] {S}
+                }
+                child  {
+                    node [draw, rectangle] {-4}
+                    edge from parent node[right] {C}
+                }
+                edge from parent node[left] {S}
+            }
+            child  {
+                node [fill, circle] {}
+                child  {
+                    node [draw, rectangle] {-2}
+                    edge from parent node[left] {S}
+                }
+                child  {
+                    node [draw, rectangle] {0}
+                    edge from parent node[right] {C}
+                }
+                edge from parent node[right] {C}
+            }
+            edge from parent node[left] {S}
+        }
+        child  {
+            node [draw, diamond] {}
+            child  {
+                node [fill, circle] {}
+                child  {
+                    node [draw, rectangle] {2}
+                    edge from parent node[left] {S}
+                }
+                child  {
+                    node [draw, rectangle] {-1}
+                    edge from parent node[right] {C}
+                }
+                edge from parent node[left] {S}
+            }
+            child  {
+                node [fill, circle] {}
+                child  {
+                    node [draw, rectangle] {0}
+                    edge from parent node[left] {S}
+                }
+                child  {
+                    node [draw, rectangle] {2}
+                    edge from parent node[right] {C}
+                }
+                edge from parent node[right] {C}
+            }
+            edge from parent node[right] {C}
+        }
+      edge from parent
+        node[above right] {C}
+    }
+    ;
+\end{tikzpicture}
+
+\end{document}

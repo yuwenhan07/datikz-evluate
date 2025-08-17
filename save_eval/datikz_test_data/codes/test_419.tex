@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[table]{xcolor} %color of tables
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \draw(-4/3-1,{-sqrt(3)})--(-4/3-1,{-4/3-sqrt(3)})--(8/3+1/2,{-4/3+1/2*sqrt(3)})--(8/3+1/2,{4+1/2*sqrt(3)})--cycle--(-4/3+1/2,{1/2*sqrt(3)})--(8/3+1/2,{4+1/2*sqrt(3)});
+    \draw[dashed](-4/3-1,{-4/3-sqrt(3)})--(-4/3+1/2,{-4/3+1/2*sqrt(3)})--(8/3+1/2,{-4/3+1/2*sqrt(3)});
+    \draw[dashed](-4/3+1/2,{-4/3+1/2*sqrt(3)})--(-4/3+1/2,{1/2*sqrt(3)});
+    \draw[gray,dashed](0,4/3)--(0,0)--(4/3,0);
+    \draw[gray,->](4/3,0)--(4.5,0)node[below]{$u_1$};
+    \draw[gray,->](0,4/3)--(0,4)node[left]{$h$};
+    \draw[gray,dashed](0,0)--(-1/2,{-1/2*sqrt(3)});
+    \draw[gray,->](-1/2,{-1/2*sqrt(3)})--(-2.25,{-2.25*sqrt(3)})node[right]{$u_2$};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass[12pt]{amsart}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+
+\begin{document}
+
+        \begin{tikzpicture}[node distance={15mm}, thick, main/.style = {draw, circle}] 
+
+\node[main][fill= black] (0) at (0,4) {};
+    \node[fill=none] at (-1,4) (nodes) {$u$};
+\node[main][fill= black] (1) at (1,0) {}; 
+\node[main][fill= black] (2) at (5,0) {}; 
+\node[main][fill= black] (3) at (6,4) {}; 
+\node[main][fill= black] (4) at (3,6) {}; 
+    \node[fill=none] at (3,7) (nodes) {$v$};
+
+\node[main][fill= black] (5) at (2,3) {}; 
+\node[main][fill= black] (6) at (2.5,1.5) {}; 
+\node[main][fill= black] (7) at (3.5,1.5) {};
+\node[main][fill= black] (8) at (4,3) {}; 
+\node[main][fill= black] (9) at (3,4) {}; 
+
+\draw [->,cyan, ultra thick, densely dotted] (4) -- (0);
+\draw [->,ultra thick, dashed, red] (0) to [out = 90, in = 180] (4);
+\draw [->,green!50!black, dotted] (4) -- (3);
+\draw [->,blue] (3) to [out = 90, in = 0] (4);
+\draw [->,ultra thick, dashed, red] (9) -- (4);
+
+\draw [->,green!50!black, dotted] (7) -- (5);
+\draw [->,blue] (6) -- (9);
+\draw [->,ultra thick, dashed, red] (7) -- (9);
+\draw [->,blue] (5) -- (0);
+\draw [->,blue] (8) -- (3);
+
+\draw [->,ultra thick, dashed, red] (1) -- (0);
+\draw [->,green!50!black, dotted] (1) -- (2);
+\draw [->,cyan, ultra thick, densely dotted] (1) -- (6);
+
+\draw [->,green!50!black, dotted] (2) to [out = -135, in = -45] (1);
+\draw [->,blue] (2) -- (3);
+\draw [->,cyan, ultra thick, densely dotted] (2) -- (7);
+
+\draw [->,ultra thick, dashed, red] (5) -- (8);
+\draw [->,cyan, ultra thick, densely dotted] (8) -- (6);
+
+\draw [->,cyan, ultra thick, densely dotted] (3) to [out = -45, in = 45] (2);
+\draw [->,cyan, ultra thick, densely dotted] (9) to [out = 45, in = -45] (4);
+
+        \end{tikzpicture}
+
+\end{document}

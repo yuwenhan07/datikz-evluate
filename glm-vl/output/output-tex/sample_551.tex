@@ -1,0 +1,26 @@
+python
+def LoopGame(G, l_0, l_End):
+    visited = {}  # Maps node to its parent (to detect cycles)
+    stack = [l_0]
+    visited[l_0] = None  # Start node has no parent
+    
+    while stack:
+        current = stack.pop()
+        if current == l_End:
+            return reconstruct_path(visited, l_0, l_End)
+        
+        neighbors = G[current]
+        for neighbor in neighbors:
+            if neighbor not in visited or visited[neighbor] != current:
+                visited[neighbor] = current
+                stack.append(neighbor)
+    return None  # No path or loop found
+
+def reconstruct_path(visited, start, end):
+    path = []
+    current = end
+    while current is not None:
+        path.append(current)
+        current = visited[current]
+    path.reverse()
+    return path

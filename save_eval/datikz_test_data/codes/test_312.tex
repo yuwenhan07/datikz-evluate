@@ -1,0 +1,110 @@
+\documentclass[runningheads]{llncs}
+\usepackage{amsmath}
+\usepackage[breaklinks,colorlinks,citecolor=cvprblue]{hyperref}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.8}
+
+\begin{document}
+
+\begin{tikzpicture}[font=\footnotesize]
+\begin{axis}[
+legend columns=1, 
+legend style={at={(0.8,0.6)},anchor=north, font=\tiny, draw=gray!20}, legend cell align={left},
+y label style={at={(-0.1,0.5)}},
+ylabel={mAP}, xlabel={Inference Time (ms)}, ymajorgrids=true,
+extra y ticks={59.0},
+tick style={draw=none},
+y label style={font=\footnotesize},
+height=8cm,
+width=9.5cm,
+axis lines = left,
+every outer y axis line/.style={draw=gray!40},
+every outer x axis line/.style={draw=gray!40},
+grid style={line width=.1pt, draw=gray!20},
+xmin=0, ymax=59.0, ymin=36.5]
+
+\addplot[line width=1.0pt, mark size=1.5pt, mark=diamond, draw=red, draw opacity=0.8]
+table
+{
+X Y
+2.0 42.6
+2.9 48.0
+5.6 52.5
+8.8 56.1
+19.1 58.3
+};
+
+\addplot[line width=1.0pt, mark size=1.5pt, mark=x, draw=black!80!white, draw opacity=0.8]
+table
+{
+X Y
+2.9 47.3
+5.7 51.1
+7.6 51.9
+};
+
+\addplot[line width=1.0pt, mark size=1.5pt, mark=x, draw=blue!80!white, draw opacity=0.8]
+table
+{
+X Y
+1.6 37.5
+2.7 45.1
+6.0 50.4
+9.4 53.0
+15.0 54.1
+};
+
+\addplot[line width=1.0pt, mark size=1.5pt, mark=x, draw=green!80!white, draw opacity=0.8]
+table
+{
+X Y
+2.4 41.5
+2.9 44.7
+6.5 49.5
+10.5 52.2
+18.8 53.5
+};
+
+\addplot[line width=1.0pt, mark size=1.5pt, mark=x, draw=black!30!white, draw opacity=0.8]
+table
+{
+X Y
+4.7 47.6
+7.8 51.6
+8.8 52.3
+};
+
+\addplot[line width=1.0pt, mark size=1.5pt, mark=x, draw=blue!30!white, draw opacity=0.5]
+table
+{
+X Y
+6.2 37.6
+7.0 45.2
+10.1 50.6
+13.2 53.3
+19.1 54.5
+};
+
+\addplot[line width=1.0pt, mark size=1.5pt, mark=x, draw=green!30!white, draw opacity=0.8]
+table
+{
+X Y
+7.4 41.7
+7.9 44.9
+10.8 49.7
+14.9 52.4
+22.8 54.0
+};
+
+\addlegendentry{LW-DETR} 
+\addlegendentry{YOLO-NAS*} 
+\addlegendentry{YOLOv8*} 
+\addlegendentry{RTMDet*}  
+\addlegendentry{YOLO-NAS} 
+\addlegendentry{YOLOv8} 
+\addlegendentry{RTMDet}
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

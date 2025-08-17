@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}
+    % Define the axes
+    % X-axis from 0 to 30, Y-axis from 500 to 7500
+    \draw[->] (0,0) -- (33,0) node[right] {Years};
+    \draw[->] (0,0) -- (0,8050) node[above] {Amount of Money ($)};
+    
+    % Draw grid (optional, for better visualization)
+    \draw[very thin, gray] (0,500) grid[step=5] (30,7500);
+    
+    % Plot the first line: decreasing from (0,500) to (30,250)
+    \draw[thick, red] (0,500) -- (30,250);
+    % Label the start and end of first line
+    \node[above left] at (0,500) {Payment 1 Start};
+    \node[below right] at (30,250) {Payment 1 End};
+    
+    % Plot the second line: increasing from (0,250) to (30,500)
+    \draw[thick, blue] (0,250) -- (30,500);
+    % Label the start and end of second line
+    \node[below left] at (0,250) {Payment 2 Start};
+    \node[above right] at (30,500) {Payment 2 End};
+    
+    % Find intersection point
+    % The intersection of red and blue lines is at (15, 375) as calculated
+    \draw[fill=black] (15,375) circle (2pt);
+    \node[above] at (15,375) {Intersection Point};
+\end{tikzpicture}
+
+\end{document}

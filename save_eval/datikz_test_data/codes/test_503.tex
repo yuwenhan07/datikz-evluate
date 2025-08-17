@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsmath,xypic}
+\usepackage{graphicx,color,xcolor,subfigure}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,dsfont}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\begin{document}
+
+ \begin{tikzpicture}
+
+
+\draw (0,2.4) node[above] {\textbf{GM}};
+
+\draw (0.2,1) node[right] {$\phi_3$};
+
+\draw (0,-0.5) node[below] {\textbf{IIA}};
+
+\draw (2.2,-0.5) node[above] {\textbf{T}};
+\draw (2.2,-1) node[below] {ATD $\phi_1$};
+
+\draw (4.5,-0.5) node[below] {\textbf{IIB}};
+
+\draw (6.7,-0.5) node[above] {\textbf{S}};
+\draw (6.7,-1) node[below] { $\phi_2\rightarrow \phi_2+\gamma\phi_1$};
+
+\draw (9,-0.5) node[below] {\textbf{IIB}};
+
+\draw (11.2,-0.5) node[above] {\textbf{T}};
+\draw (11.2,-1) node[below] {ATD $\phi_1$};
+
+\draw (13.5,-0.5) node[below] {\textbf{IIA}};
+
+\draw (13.5,2.4) node[above] {\textbf{TST deformed GM} };
+
+
+\begin{scope}[ every node/.style={sloped,allow upside down}]
+
+ \draw ((0,2)-- node {\midarrow} (0,0);
+  \draw ((0.75,-0.75)-- node {\midarrow} (3.75,-0.75);
+     \draw ((5.25,-0.75)-- node {\midarrow} (8.25,-0.75);
+          \draw ((9.75,-0.75)-- node {\midarrow} (12.75,-0.75);
+
+           \draw ((13.5,0)-- node {\midarrow} (13.5,2);
+           \draw (13.3,1) node[left] {$\phi_3$};
+
+
+\end{scope}
+
+
+
+\end{tikzpicture}
+
+\end{document}

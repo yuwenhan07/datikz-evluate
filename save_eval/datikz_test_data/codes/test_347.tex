@@ -1,0 +1,49 @@
+\documentclass[a4paper]{llncs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,calc,positioning}
+
+\newcommand{\Sscr}{\mathcal{S}}
+
+\begin{document}
+
+\begin{tikzpicture}
+  % Nodes in the top trace
+  \node (tau) at (-1,0) {$\tau~:$};
+  \node (S0) at (0,0) {$\Sscr_0$};
+  \node (dots1) at (1.5,0) {$\hdots$};
+  \node (Si) at (3,0) {$\Sscr_i$};
+  \node (dots2) at (4.5,0) {$\hdots$};
+  \node (Sk) at (6,0) {$\textcolor{teal}{\Sscr_k}$};
+
+  % Arrows in the top trace
+  \draw[->,blue] (S0) -- (dots1);
+  \draw[->,blue] (dots1) -- (Si);
+  \draw[->,blue] (Si) -- (dots2);
+  \draw[->,blue] (dots2) -- (Sk);
+
+  % Nodes in the reaction trace
+  \node (tau') at (2,-1.5) {$\tau'~:$};
+  \node (Si1) at (3,-1.5) {$\Sscr'_{i+1}$};
+  \node (dots3) at (4.5,-1.5) {$\hdots$};
+  \node (Sp) at (6,-1.5) {$\textcolor{teal}{\Sscr'}$};
+  \node (r) at (3.2,-0.75) {$r$};
+
+  % Draw the arrows in the reaction trace
+  \draw[->,red] (Si) -- (Si1);
+  \draw[->,blue] (Si1) -- (dots3);
+  \draw[->,blue] (dots3) -- (Sp);
+
+  % Top brace
+  \draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=4pt},yshift=0pt]
+    (Si.north) -- (S0.north) node [black,midway,xshift=5pt,yshift=17pt] {$d_i ~~(\leq a)$};
+
+  % Bottom brace
+  \draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=4pt},yshift=0pt]
+    (Si1.south) -- (Sp.south) node [black,midway,xshift=0pt,yshift=-17pt] {$\leq a - d_i + b$};
+\end{tikzpicture}
+
+\end{document}

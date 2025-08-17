@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{calc,intersections,arrows.meta}
+\usepgfplotslibrary{fillbetween}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.4\textwidth,
+height=0.3\textwidth,
+at={(0.947in,0.582in)},
+scale only axis,
+xmin=0,
+xmax=450,
+xlabel style={font=\color{white!15!black}},
+xlabel={Reference Distance $D$ (m)},
+ymin=30,
+ymax=110,
+ylabel style={font=\color{white!15!black}},
+ylabel={Mean Sum Rate (bpcu)},
+axis background/.style={fill=white},
+xmajorgrids,
+ymajorgrids,
+legend style={at={(0.2,0.02)}, anchor=south west, legend cell align=left, align=left, draw=white!15!black, legend columns=3}
+]
+\addplot [color=black, line width=1.5pt]
+table[row sep=crcr]{%
+	10	64.0214440316585\\
+	50	69.702935802092\\
+	100	79.4636868025725\\
+	150	90.8100037674485\\
+	200	94.2896462252917\\
+	250	97.2084175938696\\
+	300	97.9856276784136\\
+	350	100.470147355189\\
+	400	100.192337783287\\
+	450	99.9844595413397\\
+	500	100.067585678245\\
+};
+\addlegendentry{$L=20$}
+
+\addplot [color=blue, line width=1.5pt]
+table[row sep=crcr]{%
+	10	52.513295277994\\
+	50	54.1002237334148\\
+	100	60.3801560129256\\
+	150	66.4867168271942\\
+	200	71.7060216392172\\
+	250	75.6205647934834\\
+	300	78.3872463956013\\
+	350	79.8329635142321\\
+	400	81.4104154316921\\
+	450	81.4424039673196\\
+	500	81.3596196646584\\
+};
+\addlegendentry{$L=10$}
+
+\addplot [color=red, line width=1.5pt]
+table[row sep=crcr]{%
+	10	39.0834459632426\\
+	50	39.7720374626186\\
+	100	40.9114479054366\\
+	150	44.9112856474276\\
+	200	46.4774516930839\\
+	250	50.2184459727402\\
+	300	52.0758545217496\\
+	350	55.0909826363283\\
+	400	55.2747116862167\\
+	450	56.7211196788814\\
+	500	55.5150188674473\\
+};
+\addlegendentry{$L=5$}
+
+\addplot [color=black, dashed, forget plot]
+  table[row sep=crcr]{%
+0	100.527176814894\\
+500	100.527176814894\\
+};
+\addplot [color=blue, dashed, forget plot]
+  table[row sep=crcr]{%
+0	81.4293808230746\\
+500	81.4293808230746\\
+};
+\addplot [color=red, dashed, forget plot]
+  table[row sep=crcr]{%
+0	56.6258327885455\\
+500	56.6258327885455\\
+};
+
+
+\end{axis}
+
+\end{tikzpicture}
+
+\end{document}

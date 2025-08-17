@@ -1,0 +1,79 @@
+\documentclass[11pt]{amsart}
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepgflibrary{patterns}
+\usepgflibrary[patterns]
+\usetikzlibrary{patterns}
+\usetikzlibrary[patterns]
+\usepackage{color}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.6, every node/.style={scale=0.8}]
+    % Prima parte
+    \draw[black, very thick] (-12,0) -- (-6,0);
+    \draw[blue,very thick] (-11,-4) -- (-8,-4);
+    \draw[blue,very thick] (-11,4) -- (-8,4);
+    \draw[blue,very thick] (-8,-4) -- (-8,4);
+    \draw (-11,1) -- (-8,1);
+    \draw (-11,-1) -- (-8,-1);
+
+    % Shading della prima parte
+    \fill[orange, opacity=0.2]
+        (-11,1) -- (-8,4) --(-8,-4)-- (-11,-1) --cycle;
+    \fill[green!70!black, opacity=0.2]
+        (-11,1) -- (-11,4) --(-8,4)--cycle;
+    \fill[green!70!black, opacity=0.2]
+        (-11,-1) -- (-11,-4) --(-8,-4)--cycle;
+
+    % Etichette della prima parte
+    \draw [black,very thick] (-10,-3.2) node{$T_4$};
+    \draw [black,very thick] (-9,-1.8) node{$T_3$};
+    \draw [black,very thick] (-10,3.2) node{$T_1$};
+    \draw [black,very thick] (-9,1.8) node{$T_2$};
+    \draw [black,very thick] (-9.5,0.35) node{$H$};
+    \draw [blue,very thick] (-7.7,-4.3) node{$\partial R$};
+
+    % Frecce e etichette
+    \draw [<->] (-7.7,-4) -- (-7.7,4);
+    \draw (-7.3,1) node{$b$};
+    \draw [<->] (-11.6,-1) -- (-11.6,1);
+    \draw (-12.7,0.5) node{$b-2x$};
+    \draw [<->] (-11,4.5) -- (-8,4.5);
+    \draw (-9.5,4.8) node{$x$};
+
+    % Seconda parte
+    \draw[blue,very thick] (0,-4) -- (6,-4);
+    \draw[blue,very thick] (6,-4) -- (6,4);
+    \draw[blue,very thick] (0,4) -- (6,4);
+    \draw[black,very thick] (-1,0) -- (7,0);
+    \draw (2,4)--(2,-4);
+
+    % Shading della seconda parte
+    \fill[orange, opacity=0.2]
+        (6,-4) -- (6,4) --(2,0) --cycle;
+    \fill[green!70!black, opacity=0.2]
+        (2,0)--(6,4) -- (0,4)--(0,-4) -- (6,-4)--cycle;
+
+    % Etichette della seconda parte
+    \draw [black,very thick] (1,0.4) node{$\tilde{H}$};
+    \draw [black,very thick] (2.7,3) node{$\tilde{T}_1$};
+    \draw [black,very thick] (2.7,-3) node{$\tilde{T}_3$};
+    \draw [black,very thick] (4.3,1) node{$\tilde{T}_2$};
+    \draw [black,very thick] (4.3,-1) node{$\tilde{T}_4$};
+
+    % Frecce e etichette
+    \draw [<->] (0,4.5) -- (6,4.5);
+    \draw (3,4.8) node{$x$};
+    \draw [<->] (6.3,4) -- (6.3,-4);
+    \draw (6.7,1) node{$b$};
+    \draw [<->] (-0.3,4) -- (-0.3,0);
+    \draw (-0.7,2) node{$\displaystyle\frac{b}{2}$};
+    \draw [<->] (0,-2.8) -- (2,-2.8);
+    \draw (1,-2) node{$x-\displaystyle\frac{b}{2}$};
+    \draw [blue,very thick] (6.3,-4.3) node{$\partial R$};
+\end{tikzpicture}
+
+\end{document}

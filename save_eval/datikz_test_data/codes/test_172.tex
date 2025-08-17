@@ -1,0 +1,45 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor,color}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,positioning,decorations.pathreplacing,decorations.pathmorphing,patterns,decorations.markings}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.1]
+
+\coordinate (A) at (-2,2.8) ;
+\coordinate (B) at (-1.4,3.4);
+\fill[fill=gray!60] (A)node[left]{\color{black}$\tau$\,}--(B)--(-2,4);
+\draw (-2,2.8)--(-1.4,3.4);
+\draw[gray!90!black!80] (-1.4,3.4)--(-0.8,4);
+%
+\draw[thick,blue %,-<
+](-2,0) node[left]{\color{black}$-\tau_0$}--++(0,2.2);
+\draw[thick,blue] (-2,2) node[right]{$\ P$}
+--++(0,2) node[left]{\color{black}$\tau_0$};
+\draw[thick,red %, ->
+](1.5,0.5) node[right]{\color{black}$\tau_0\ng-\ng\pi$}--++(0,1.5);\draw[thick,red] (1.5,2) node[left]{%
+$P'\ $}
+--++(0,1.5) node[right]{\color{black}$\pi\ng -\ng\tau_0$};
+\draw (1.5,3.5)--++(0,0.5);
+\draw (1.5,0)--++(0,0.5);
+\draw (-2,0)--++(3.5,3.5);
+\draw (+1.5,0.5)--++(-3.5,3.5);
+\draw (-2,0) node[below]{$\phantom{\,}0$}--++(3.5,0) node[below]{$\phantom{\,}\pi$};%--++(-2,2);
+\draw (-2,4)--++(3.5,0);
+\draw[thick,blue %,-<
+](5,0) node[left]{\color{black}$-\tau_0$}--++(0,2.2);
+\draw[thick,blue] (5,2.2) node[right]{$\ P$}
+--++(0,2.2) node[left]{\color{black}$\tau_0$};
+%--++(0,0.2);
+%--++(0,0.4);
+\draw (7,0)--++(0,2) node[right]{\color{black}$\pi\ng -\ng\tau_0$}--++(0,0.4) node[right]{\color{black}$\tau_0\ng-\ng\pi$}--++(0,2);
+\draw (5,0)--++(2,2);
+\draw (5,4.4)--++(2,-2);
+\draw (5,0)  node[below]{$\phantom{\,}0$}--++(2,0)  node[below]{$\phantom{\,}\pi$};%--++(-2,2);
+\draw (5,4.4)--++(2,0);
+\end{tikzpicture}
+
+\end{document}

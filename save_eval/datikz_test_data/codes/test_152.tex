@@ -1,0 +1,38 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    2d-arr/.style={matrix of nodes, row sep=-\pgflinewidth, column sep=-\pgflinewidth, nodes={draw}}
+  ]
+
+  \matrix (azx) [2d-arr] {
+  |[fill=yellow!50]|3 & |[fill=yellow!50]|1 &|[fill=yellow!50]| 1 &|[fill=yellow!50]| 1 & 0 & |[fill=yellow!50]|2 & 0 \\
+  |[fill=yellow!50]|2 & 0 &|[fill=yellow!50]| 1 &|[fill=yellow!50]| 1 &|[fill=yellow!50]| 1 & 0 & 0 \\
+  |[fill=yellow!50]|1 & |[fill=yellow!50]|2 & 0 &|[fill=yellow!50]| 1 &|[fill=yellow!50]| 1 &|[fill=yellow!50]| 1 & |[fill=yellow!50]|1\\
+  |[fill=yellow!50]|4 & |[fill=yellow!50]|3 & 0 &|[fill=yellow!50]| 1 & |[fill=yellow!50]|1 & 0 & 0\\
+  |[fill=yellow!50]|3 & 0 & |[fill=yellow!50]|1 & |[fill=yellow!50]|1 & 0 & |[fill=yellow!50]|2 &|[fill=yellow!50]| 4\\
+  0 &|[fill=yellow!50]| 1 & |[fill=yellow!50]|1 & 0 &|[fill=yellow!50]| 4 & 0 &|[fill=yellow!50]| 5\\
+  |[fill=yellow!50]|1 &|[fill=yellow!50]| 1 & 0 & 0 &|[fill=yellow!50]| 5 & 0 & 0\\
+  };
+
+  \node[below=of azx-5-4] {2D dense matrix};
+
+  \matrix (mtr) [2d-arr,  right=3em of azx] {
+  0 & |[fill=yellow!50]|1 & 0 & |[fill=yellow!50]|1 & 0 & 0 & 0 \\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+  0 & 0 & 0 & 0 & 0 & |[fill=yellow!50]|1 & |[fill=yellow!50]|1\\
+  0 & 0 & 0 & 0 &|[fill=yellow!50]| 1 & 0 & 0\\
+  0 & 0 & |[fill=yellow!50]|1 & 0 & 0 & 0 & 0\\
+  0 & 0 & |[fill=yellow!50]|1 & 0 & 0 & 0 & 0\\
+  |[fill=yellow!50]|1 & |[fill=yellow!50]|1 & 0 & 0 & 0 & 0 & 0\\
+  };
+
+  \node[below=of mtr-5-4] {2D sparse matrix};
+\end{tikzpicture}
+
+\end{document}

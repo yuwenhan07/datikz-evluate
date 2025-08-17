@@ -1,0 +1,115 @@
+\documentclass[final]{amsart}
+\usepackage{amssymb,amsthm}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage[notcite,notref,color]{showkeys}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[xscale=1.45,yscale=.05,every node/.style={circle,minimum size=4ex,inner sep=1pt},font=\small]
+    \node[circle,draw] (1)    at (0,0) {$1$};
+
+    \node[circle] (a)    at (1,10) {$\lambda^{-1}$};   
+    \node[circle,draw] (b)    at (1,-10) {$\lambda^{-2}$};
+
+    \node[circle,draw] (aa)   at (2,20) {$\lambda^{-3}$};   
+    \node[circle] (ab)   at (2,0) {$\lambda^{-2}$};
+    \node[circle] (ba)   at (2,-20) {$\lambda^{-2}$};
+
+    \node[circle,draw] (aab)  at (3,30) {$\lambda^{-3}$};   
+    \node[circle,draw] (aba)  at (3,10) {$\lambda^{-2}$};
+    \node[circle,draw] (baa)  at (3,-10) {$\lambda^{-3}$};   
+    \node[circle] (bab)  at (3,-30) {$\lambda^{-4}$};
+
+    \node[circle] (aaba) at (4,40) {$\lambda^{-3}$};   
+    \node[circle] (abaa) at (4,20) {$\lambda^{-3}$};
+    \node[circle,draw] (abab) at (4,0) {$\lambda^{-4}$};
+    \node[circle,draw] (baab) at (4,-20) {$\lambda^{-3}$};   
+    \node[circle,draw] (baba) at (4,-40) {$\lambda^{-4}$};
+
+    \node[circle,draw] (aabaa) at (5,50) {$\lambda^{-5}$};   
+    \node[circle] (aabab) at (5,30) {$\lambda^{-4}$};   
+    \node[circle] (abaab) at (5,10) {$\lambda^{-3}$};
+    \node[circle] (ababa) at (5,-10) {$\lambda^{-4}$};
+    \node[circle] (baaba) at (5,-30) {$\lambda^{-3}$};   
+    \node[circle] (babaa) at (5,-50) {$\lambda^{-4}$};
+
+    \node[circle,draw] (aabaab) at (6,60) {$\lambda^{-5}$};   
+    \node[circle,draw] (aababa) at (6,40) {$\lambda^{-4}$};   
+    \node[circle,draw] (abaaba) at (6,20) {$\lambda^{-3}$};
+    \node[circle,draw] (ababaa) at (6,0) {$\lambda^{-4}$};
+    \node[circle,draw] (baabaa) at (6,-20) {$\lambda^{-5}$};   
+    \node[circle] (baabab) at (6,-40) {$\lambda^{-4}$};   
+    \node[circle] (babaab) at (6,-60) {$\lambda^{-4}$};
+
+    \node[circle] (aabaaba) at (7,70) {$\lambda^{-5}$};   
+    \node[circle] (aababaa) at (7,50) {$\lambda^{-4}$};   
+    \node[circle] (abaabaa) at (7,30) {$\lambda^{-5}$};
+    \node[circle,draw] (abaabab) at (7,10) {$\lambda^{-4}$};
+    \node[circle,draw] (ababaab) at (7,-10) {$\lambda^{-4}$};
+    \node[circle,draw] (baabaab) at (7,-30) {$\lambda^{-5}$};   
+    \node[circle,draw] (baababa) at (7,-50) {$\lambda^{-4}$};   
+    \node[circle,draw] (babaaba) at (7,-70) {$\lambda^{-4}$};
+
+    \node[circle] (aabaabab) at (8,80) {$\lambda^{-5}$};   
+    \node[circle] (aababaab) at (8,60) {$\lambda^{-4}$};   
+    \node[circle] (abaabaab) at (8,40) {$\lambda^{-5}$};
+    \node[circle] (abaababa) at (8,20) {$\lambda^{-4}$};
+    \node[circle] (ababaaba) at (8,0) {$\lambda^{-4}$};
+    \node[circle] (baabaaba) at (8,-20) {$\lambda^{-5}$};   
+    \node[circle] (baababaa) at (8,-40) {$\lambda^{-4}$};   
+    \node[circle] (babaabaa) at (8,-60) {$\lambda^{-5}$};
+    \node[circle,draw] (babaabab) at (8,-80) {$\lambda^{-6}$};
+
+    \draw[above,node font=\small] (1)   edge node{$a$} (a);
+    \draw[below,node font=\small] (1)   edge node{$b$} (b);
+    \draw[above,node font=\small] (a)   edge node{$a$} (aa);
+    \draw[below,node font=\small] (a)   edge node{$b$} (ab);
+    \draw[below,node font=\small] (b)   edge node{$a$} (ba);
+    \draw[above,node font=\small] (aa)  edge node{$b$} (aab);
+    \draw[above,node font=\small] (ab)  edge node{$a$} (aba);
+    \draw[above,node font=\small] (ba)  edge node{$a$} (baa);
+    \draw[below,node font=\small] (ba)  edge node{$b$} (bab);
+    \draw[above,node font=\small] (aab) edge node{$a$} (aaba);
+    \draw[above,node font=\small] (aba) edge node{$a$} (abaa);
+    \draw[below,node font=\small] (aba) edge node{$b$} (abab);
+    \draw[below,node font=\small] (baa) edge node{$b$} (baab);
+    \draw[below,node font=\small] (bab) edge node{$a$} (baba);
+
+    \draw[above,node font=\small] (aaba) edge node{$a$} (aabaa);   
+    \draw[below,node font=\small] (aaba) edge node{$b$} (aabab);   
+    \draw[below,node font=\small] (abaa) edge node{$b$} (abaab);
+    \draw[below,node font=\small] (abab) edge node{$a$} (ababa);
+    \draw[below,node font=\small] (baab) edge node{$a$} (baaba);   
+    \draw[below,node font=\small] (baba) edge node{$a$} (babaa);
+
+    \draw[above,node font=\small] (aabaa) edge node{$b$} (aabaab);   
+    \draw[above,node font=\small] (aabab) edge node{$a$} (aababa);   
+    \draw[above,node font=\small] (abaab) edge node{$a$} (abaaba);
+    \draw[above,node font=\small] (ababa) edge node{$a$} (ababaa);
+    \draw[above,node font=\small] (baaba) edge node{$a$} (baabaa);   
+    \draw[below,node font=\small] (baaba) edge node{$b$} (baabab);   
+    \draw[below,node font=\small] (babaa) edge node{$b$} (babaab);
+
+    \draw[above,node font=\small] (aabaab) edge node{$a$} (aabaaba) ;   
+    \draw[above,node font=\small] (aababa) edge node{$a$} (aababaa) ;   
+    \draw[above,node font=\small] (abaaba) edge node{$a$} (abaabaa) ;
+    \draw[below,node font=\small] (abaaba) edge node{$b$} (abaabab) ;
+    \draw[below,node font=\small] (ababaa) edge node{$b$} (ababaab) ;
+    \draw[below,node font=\small] (baabaa) edge node{$b$} (baabaab) ;   
+    \draw[below,node font=\small] (baabab) edge node{$a$} (baababa) ;   
+    \draw[below,node font=\small] (babaab) edge node{$a$} (babaaba) ;
+                                                      $ $
+    \draw[above,node font=\small] (aabaaba) edge node{$b$} (aabaabab);   
+    \draw[above,node font=\small] (aababaa) edge node{$b$} (aababaab);   
+    \draw[above,node font=\small] (abaabaa) edge node{$b$} (abaabaab);
+    \draw[above,node font=\small] (abaabab) edge node{$a$} (abaababa);
+    \draw[above,node font=\small] (ababaab) edge node{$a$} (ababaaba);
+    \draw[above,node font=\small] (baabaab) edge node{$a$} (baabaaba);   
+    \draw[above,node font=\small] (baababa) edge node{$a$} (baababaa);   
+    \draw[above,node font=\small] (babaaba) edge node{$a$} (babaabaa);
+    \draw[below,node font=\small] (babaaba) edge node{$b$} (babaabab);
+\end{tikzpicture}
+
+\end{document}

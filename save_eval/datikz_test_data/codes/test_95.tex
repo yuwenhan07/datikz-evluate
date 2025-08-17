@@ -1,0 +1,75 @@
+\documentclass[runningheads]{llncs}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots,dateplot}
+\usetikzlibrary{patterns,shapes.arrows}
+\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usetikzlibrary{patterns}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \definecolor{color0}{HTML}{DC5C52} %RED
+    \definecolor{color1}{HTML}{ddbea9} %Orange
+    
+    \definecolor{grid_color}{HTML}{e2e2e2} %grey
+    \pgfplotsset{grid style={densely dashed, grid_color}}
+    
+    
+    \begin{groupplot}[group style={group name = MoMP of Different datasets, group size=2 by 1,horizontal sep = 1.5cm}, height=4cm,width=6cm ]
+
+
+        \nextgroupplot[xlabel={Tasks}, ylabel={ACS}, 
+                   x label style={at={(axis description cs:0.5,0.05)},anchor=north},
+                   y label style={at={(axis description cs:0.05,0.5)},anchor=north},
+                   xmin=0, xmax=5.25, xtick={1,2,3,4,5}, 
+                   xticklabels={1,2,3,4,5,6,7,8,9,10}, 
+                   ymin=0.5, ymax=1.1, ytick={0.6,0.7,0.8,0.9,1}, 
+                   title={a.) CIFAR10},
+                   title style={anchor=north, yshift=2.5ex},
+                   grid=major,]
+
+            \addplot[densely dashed, color= color1, mark=*, mark options={solid}, mark size =2.3]  coordinates {
+                        (1, 0.9863)
+                        (2, 0.8642)
+                        (3, 0.81)
+                        (4, 0.83)
+                        (5, 0.64)
+                    };
+
+
+        \nextgroupplot[xlabel={Tasks}, ylabel={ACS}, 
+                   x label style={at={(axis description cs:0.5,0.05)},anchor=north},
+                   y label style={at={(axis description cs:0.05,0.5)},anchor=north},
+                   xmin=0, xmax=10.5, xtick={2,4,6,8,10}, 
+                   xticklabels={2,4,6,8,10}, 
+                   ymin=0.5, ymax=1.1, ytick={0.6,0.7,0.8,0.9,1}, 
+                   title={b.) CIFAR100},
+                   title style={anchor=north, yshift=2.5ex},
+                   grid=major]
+
+                    \addplot[densely dashed, color= color1, mark=*, mark options={solid}, mark size =2.3]  coordinates {
+                        (1, 0.9406)
+                        (2, 0.80)
+                        (3, 0.81)
+                        (4, 0.78)
+                        (5, 0.75)
+                        (6, 0.67)
+                        (7, 0.7)
+                        (8, 0.69)
+                        (9, 0.72)
+                        (10, 0.62)
+                    };
+
+
+    
+    \end{groupplot}
+\end{tikzpicture}
+
+\end{document}

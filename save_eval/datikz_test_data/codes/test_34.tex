@@ -1,0 +1,41 @@
+\documentclass[11pt]{amsart}
+\usepackage{hyperref,mathtools,amsmath,amsthm,amssymb,amscd,amsfonts,color,tikz-cd,pgfplots,diagbox,dsfont}
+\usetikzlibrary{arrows}
+
+\begin{document}
+
+\begin{tikzpicture}[-,>=stealth',shorten >=1.5pt,auto,node distance=3.5cm,
+                    thick,main node/.style={draw,font=\sffamily\normalsize}]
+
+  \node (empty) {$\emptyset$};
+  \node (62) [above right of=empty] {$\{2,6\}$};
+  \node (65) [right of=62] {$\{5,6\}$};
+  \node (21) [above left of=empty] {$\{1,2\}$};
+  \node (61) [left of=21] {$\{1,6\}$};
+  \node (6542) [above of=62] {$\{2,4,5,6\}$};
+  \node (6543) [above of=65] {$\{3,4,5,6\}$};
+  \node (6541) [above of=61] {$\{1,4,5,6\}$};
+  \node (6521) [above of=21] {$\{1,2,5,6\}$};
+  \node (654321) [above right of=6521] {$\{1,2,3,4,5,6\}$};
+
+  \path[every node/.style={font=\sffamily\footnotesize}]
+    (empty) edge node [below right,pos=0.3] {$(6,(6,5))$} (65)
+     edge node [left, pos=0.6] {$(6,(6,2))$} (62)
+     edge node [below left , pos=0.4] {$(6,(6,1))$} (61)
+     edge node [left, pos=0.8] {$(2,(2,1))$} (21)
+    (61) edge node [left] {$(6,(5,4))$} (6541)
+    edge node [left, pos=0.6] {$(6,(5,2))$} (6521)
+    (65) edge node [right, pos= 0.7] {$(6,(4,2))$} (6542)
+    edge node [right] {$(6,(4,3))$} (6543)
+    edge node [below, pos=0.65] {$(6,(4,1))$} (6541)
+    edge node [above right, pos=0.86] {$(6,(2,1))$} (6521)
+    (21) edge node [left, pos=0.2] {$(6,(6,5))$} (6521)
+    (62) edge node [below left , pos=0.2] {$(6,(5,1))$} (6521)
+    edge node [left, pos=0.86] {$(6,(5,4))$} (6542)
+    (6542) edge node [right, pos=0.3] {$(6,(3,1))$} (654321)
+    (6543) edge node [above right] {$(6,(2,1))$} (654321)
+    (6541) edge node [left] {$(6,(3,2))$} (654321)
+    (6521) edge node [right] {$(6,(4,3))$} (654321);
+\end{tikzpicture}
+
+\end{document}

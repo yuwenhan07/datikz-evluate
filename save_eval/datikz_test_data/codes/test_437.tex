@@ -1,0 +1,33 @@
+\documentclass[a4paper,reqno]{amsart}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,latexsym,mathrsfs,enumerate,pgfplots,tikz-cd,tkz-graph,multirow,booktabs,mathtools}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=red,urlcolor=violet,bookmarksdepth=subsection,final]{hyperref}
+\usetikzlibrary{decorations.markings,automata,arrows,positioning,calc}
+
+\begin{document}
+
+\begin{tikzpicture} 
+\begin{scope}[every node/.style={coordinate,draw}]
+    \node (A) at (canvas polar cs: angle=18, radius=2cm) {$v_1$};
+    \node (B) at (canvas polar cs: angle=90, radius=2cm) {$v_2$};
+    \node (C) at (canvas polar cs: angle=162, radius=2cm) {$v_3$};
+    \node (D) at (canvas polar cs: angle=234, radius=2cm) {$v_4$};
+    \node (E) at (canvas polar cs: angle=306, radius=2cm) {$v_5$};
+\end{scope}
+
+\begin{scope}[>={Stealth[black]},
+              every node/.style={fill=white,circle},
+              every edge/.style={draw=black, thick}]
+    \path [->] (A) edge node {$m_2$} (B);
+    \path [->] (B) edge node {$m_3$} (C);
+    \path [->] (C) edge node {$m_4$} (D);
+    \path [->] (D) edge node {$m_5$} (E);
+    \path [->] (E) edge node {$m_1$} (A);
+    \path [->, every loop/.style={min distance=2cm, in=-18,out=72}] (A) edge[loop] (A);
+    \path [->, every loop/.style={min distance=2cm, in=54,out=144}] (B) edge[loop left] (B); 
+    \path [->, every loop/.style={min distance=2cm, in=126,out=216}] (C) edge[loop right] (C); 
+    \path [->, every loop/.style={min distance=2cm, in=198,out=288}] (D) edge[loop below] (D); 
+    \path [->, every loop/.style={min distance=2cm, in=270,out=360}] (E) edge[loop right] (E); 
+\end{scope}
+\end{tikzpicture}
+
+\end{document}

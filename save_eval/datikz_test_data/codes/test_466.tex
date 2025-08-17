@@ -1,0 +1,27 @@
+\documentclass[11pt]{amsart}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{patterns}
+\usepackage{tikzscale}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    \draw[thick, smooth, domain=-4:4, variable=\x] plot({\x},{1-\x*\x/16});
+    \filldraw (0,1) circle(1pt) node[above]{$Q$};
+    \filldraw (0,0.7) circle(1pt) node[right]{$z$};
+    \filldraw (0,-0.5) circle(1pt) node[right]{$y$};
+    \filldraw (-0.3,-0.7) circle(1pt) node[above]{$y'$};
+    \draw[dashed] (0,-0.5) circle(0.5);
+    \draw[dashed] (0,-0.5) circle(0.75);
+    \draw (3.5,0.25) arc (-20:-160.5:3.64);
+    \draw (2,0.7) node[above right] {$\partial D$};
+    \draw (-2,0.2) node {$D\cap B(Q,3\delta_D(y))$};
+\end{tikzpicture}
+
+\end{document}

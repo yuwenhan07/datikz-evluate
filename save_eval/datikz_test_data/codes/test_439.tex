@@ -1,0 +1,62 @@
+\documentclass[12pt]{amsart}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\begin{tikzpicture}[scale =1.2]
+
+\newcommand {\oo} {.44}
+
+\draw[mark=*] plot coordinates{(1.5,1.5)};
+
+% South
+\draw[fill=black] (1.2,-.7)--(1.2,-.1)--(1.4,-.1)--(1.4,-.7);
+\draw[-] (1.4,-.7)--(1.4,-.1)--(1.6,-.1)--(1.6,-.7)--(1.4,-.7);
+\draw[fill=black] (1.6,-.7)--(1.6,-.1)--(1.8,-.1)--(1.8,-.7);
+
+% North
+\draw[-] (1.2,3.1)--(1.2,3.7)--(1.4,3.7)--(1.4,3.1)--(1.2,3.1);
+\draw[fill=black] (1.4,3.1)--(1.4,3.7)--(1.6,3.7)--(1.6,3.1);
+\draw[-] (1.6,3.1)--(1.6,3.7)--(1.8,3.7)--(1.8,3.1)--(1.6,3.1);
+
+% West
+\draw[fill=black] (-.7,1.2)--(-.7,1.4)--(-.1,1.4)--(-.1,1.2);
+\draw[-] (-.7,1.4)--(-.7,1.6)--(-.1,1.6)--(-.1,1.4)--(-.7,1.4);
+\draw[fill=black] (-.7,1.6)--(-.7,1.8)--(-.1,1.8)--(-.1,1.6);
+
+% East
+\draw[-] (3.7,1.2)--(3.7,1.4)--(3.1,1.4)--(3.1,1.2)--(3.7,1.2);
+\draw[fill=black] (3.7,1.4)--(3.7,1.6)--(3.1,1.6)--(3.1,1.4)--(3.7,1.4);
+\draw[-] (3.7,1.6)--(3.7,1.8)--(3.1,1.8)--(3.1,1.6)--(3.7,1.6);
+
+% NW
+\draw[-] (-.7+\oo,3.1-\oo)--(-.7+\oo,3.7-\oo)--(-.1+\oo,3.7-\oo)--(-.1+\oo,3.1-\oo)--(-.7+\oo,3.1-\oo);
+\draw[fill=black] (-.7+\oo,3.1-\oo)--(-.4+\oo,3.4-\oo)--(-.1+\oo,3.1-\oo)--(-.7+\oo,3.1-\oo);
+\draw[fill=black] (-.7+\oo,3.7-\oo)--(-.4+\oo,3.4-\oo)--(-.1+\oo,3.7-\oo)--(-.7+\oo,3.7-\oo);
+
+% SE
+\draw[-] (3.1-\oo,-.7+\oo)--(3.1-\oo,-.1+\oo)--(3.7-\oo,-.1+\oo)--(3.7-\oo,-.7+\oo)--(3.1-\oo,-.7+\oo);
+\draw[fill=black] (3.1-\oo,-.7+\oo)--(3.4-\oo,-.4+\oo)--(3.1-\oo,-.1+\oo);
+\draw[fill=black] (3.7-\oo,-.7+\oo)--(3.4-\oo,-.4+\oo)--(3.7-\oo,-.1+\oo);
+
+% NE
+\draw[-] (3.1-\oo,3.1-\oo)--(3.1-\oo,3.7-\oo)--(3.7-\oo,3.7-\oo)--(3.7-\oo,3.1-\oo)--(3.1-\oo,3.1-\oo);
+\node at (3.4-\oo,3.4-\oo)   [circle,minimum size=.3cm,fill,draw,thick] {};
+
+% SW
+\draw[fill=black] (-.7+\oo,-.7+\oo)--(-.1+\oo,-.7+\oo)--(-.1+\oo,-.1+\oo)--(-.7+\oo,-.1+\oo)--(-.7+\oo,-.7+\oo);
+\node at (-.4+\oo,-.4+\oo)   [circle,minimum size=.3cm,fill, color=white,draw,thick] {};
+
+\draw [dotted] (.44,.44) -- (2.56,2.56 );
+\draw [-] (2.56,.44 ) -- (.44,2.56 );
+\draw [dashed] (1.5,0 ) -- (1.5,1.5 );
+\draw [dashed] (1.5,1.5 ) -- (1.5,3 );
+\draw [dashed] (3,1.5 ) -- (1.5,1.5 );
+\draw [dashed] (0,1.5 ) -- (1.5,1.5 );
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,71 @@
+\documentclass[final,5p,times,twocolumn,authoryear,nopreprintline]{elsarticle}
+\usepackage{amssymb}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{amsmath, bm}
+\usepackage{amssymb}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \begin{axis}[
+    width=0.5\textwidth,
+    xlabel={Speed (FPS)},
+    ylabel={Top-1 Accuracy (\%)},
+    xmin=0, xmax=30,
+    ymin=35, ymax=65,
+    % grid=both,
+    ]
+    \addplot[
+      scatter,
+      only marks,
+      scatter src=explicit,
+      scatter/use mapped color={draw opacity=0,fill=mapped color},
+      scatter/@pre marker code/.append style={
+        /tikz/mark size=\pgfplotspointmetatransformed/40
+      },
+      nodes near coords align={below},
+      nodes near coords style={
+        font=\footnotesize,
+      },
+    ] table[x=Speed, y=Accuracy, meta=Parameters] {
+      Speed Accuracy Parameters
+      % 12 44.64 609.4
+      % 13 38.68 137.3
+      % 15 49.91 32.7
+      % 17 51.05 228.2
+      % 22 53.05 11.1
+      % 22 60.45 11.1
+      % MVit
+      5.84 44.64 609.4
+      % EfficientFormer
+      10.49 38.68 137.3
+      % EfficientNet-b0
+      22.67 49.91 100
+      % EfficientNet-b5
+      14.13 51.05 228.2
+      % ShuffleNetV2
+      26.72 53.05 50
+      % Ours
+      26.72 60.45 50
+      % No
+      26.72 60.45 3.11
+    };
+
+  \node at (axis cs:11,44.64) {MVit};
+  \node at (axis cs:16,38.68) {EfficientFormer};
+  \node at (axis cs:22.67,47.91) {EfficientNet-b0};
+  \node at (axis cs:14.13,54.05) {EfficientNet-b5};
+  \node at (axis cs:24.72,54.55) {ShuffleNetV2};
+  \node at (axis cs:26.72,61.95) {\textbf{Ours}};
+
+  \node at (axis cs:18.5,64) {\textcolor{red}{\textbf{Better}}};
+  \draw[->, line width=2pt, red] (axis cs:17,59) -- ++(0.7cm,0.7cm);
+
+  \end{axis}
+\end{tikzpicture}
+
+\end{document}

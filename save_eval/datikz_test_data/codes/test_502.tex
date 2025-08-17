@@ -1,0 +1,20 @@
+\documentclass[11pt]{amsart}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{amssymb,bm}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=.75,yscale=.75]
+  \draw[domain=-6:8, smooth, variable=\x, blue, thick] plot ({\x}, {32 + 16/(1+exp(-1*\x))}) node[right] {$\mu_0(\alpha)$};
+  \draw[domain=-6:8, smooth, variable=\x, red, thick] plot ({\x}, {32 + 22/(1+exp(-1*\x))}) node[right] {$\mu_2(\alpha)$};
+  \draw[domain=-6:8, smooth, variable=\x, green, thick] plot ({\x}, {32 + 20/(1+exp(-1*\x))}) node[right] {$\mu_3(\alpha)$};
+  \draw[dashed, thick] (-6, 57.583) node[left] {$s_{14} = 57.583$} -| (8, 57.583) ;
+  \draw[dashed, thick] (-6, 40.706) node[left] {$s_{13} = 40.706$} -| (8, 40.706) ;
+  \draw[dashed, thick] (-6, 49.218) node[left] {$s_{21} = 49.218$} -| (8, 49.218) ;
+  \draw[dashed, thick] (-6, 30.471) node[left] {$s_{20} = 30.471$} -| (8, 30.471) ;
+\end{tikzpicture}
+
+\end{document}

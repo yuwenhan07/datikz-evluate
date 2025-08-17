@@ -1,0 +1,74 @@
+\documentclass[runningheads]{llncs}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath, mathtools}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \node at (-0.5,1.6) {$M_1$};
+  \node at (-0.5,0.5) {$M_2$};
+  \node at (-0.5,-0.6) {$M_3$};
+  \node at (-0.5,-2.4) {$M_k$};
+  \draw [fill=black] (0,1.1) rectangle (1,2.1) node[pos=.5] {\color{white}$1,2$};
+   \draw [fill=black] (1.1,1.1) rectangle (2.1,2.1)node[pos=.5] {\color{white}$1,3$};
+    \draw  (2.2,1.1) rectangle (3.2,2.1)node[pos=.5] {$2,3$};            
+    \draw [fill=black] (0,0) rectangle (1,1)node[pos=.5] {\color{white}$2,3$};
+   \draw  (1.1,0) rectangle (2.1,1)node[pos=.5] {$1,2$};
+    \draw  (2.2,0) rectangle (3.2,1)node[pos=.5] {$1,3$};
+   \draw [fill=gray] (0,-0.1) rectangle (1,-1.1) node[pos=.5] {$1,2,3$};
+   \draw [fill=gray] (1.1,-0.1) rectangle (2.1,-1.1)node[pos=.5] {$1,2,3$};
+    \node at (1.6,-1.4) {\vdots};
+\node at (0.5,-1.4) {\vdots};
+  \draw [fill=gray] (0,-1.9) rectangle (1,-2.9) node[pos=.5] {$1,2,3$};
+   \draw [fill=gray] (1.1,-1.9) rectangle (2.1,-2.9)node[pos=.5] {$1,2,3$};
+
+  \node at (4.5,1.5) {$M_1$};
+  \node at (4.5,0.5) {$M_2$};
+  \node at (4.5,-0.5) {$M_3$};
+  \node at (4.5,-2.4) {$M_k$};
+
+
+  \draw (5,0) rectangle (6,1)node[pos=.5] {$1,2$};
+  \draw [fill=black] (5,1) rectangle (6,2)node[pos=.5] {\color{white}$1,2$};
+   \draw  (6,0) rectangle (7,1)node[pos=.5] {$1,3$};
+    \draw [fill=black] (6,1) rectangle (7,2)node[pos=.5] {\color{white}$1,3$};
+   \draw [fill=gray] (5,0) rectangle (6,-1) node[pos=.5] {$1,2,3$};
+   \draw [fill=gray] (6,0) rectangle (7,-1)node[pos=.5] {$1,2,3$};
+       \node at (5.5,-1.4) {\vdots};
+  \node at (6.5,-1.4) {\vdots}; 
+  \draw [fill=gray] (5,-1.9) rectangle (6,-2.9) node[pos=.5] {$1,2,3$};
+   \draw [fill=gray] (6,-1.9) rectangle (7,-2.9)node[pos=.5] {$1,2,3$};
+
+        \draw [fill=black] (7.5,0) rectangle (8.5,1)node[pos=.5] {\color{white}$2,3$};
+  \draw [fill=black] (7.5,1) rectangle (8.5,2)node[pos=.5] {\color{white}$1,2$};
+   \draw (8.5,0) rectangle (9.5,1)node[pos=.5] {$1,2$};
+    \draw (8.5,1) rectangle (9.5,2)node[pos=.5] {$2,3$};
+   \draw [fill=gray] (7.5,0) rectangle (8.5,-1) node[pos=.5] {$1,2,3$};
+   \draw [fill=gray] (8.5,0) rectangle (9.5,-1)node[pos=.5] {$1,2,3$};
+  \node at (8,-1.4) {\vdots};
+  \node at (9,-1.4) {\vdots};              
+  \draw [fill=gray] (7.5,-1.9) rectangle (8.5,-2.9) node[pos=.5] {$1,2,3$};
+   \draw [fill=gray] (8.5,-1.9) rectangle (9.5,-2.9)node[pos=.5] {$1,2,3$};
+
+
+  \draw [fill=black] (10,0) rectangle (11,1)node[pos=.5] {\color{white}$2,3$};
+  \draw [fill=black] (10,1) rectangle (11,2)node[pos=.5] {\color{white}$1,3$};
+   \draw (11,0) rectangle (12,1)node[pos=.5] {$1,3$};
+    \draw (11,1) rectangle (12,2)node[pos=.5] {$2,3$};
+  \draw [fill=gray] (10,0) rectangle (11,-1) node[pos=.5] {$1,2,3$};
+   \draw [fill=gray] (11,0) rectangle (12,-1)node[pos=.5] {$1,2,3$};
+   \node at (10.5,-1.4) {\vdots};
+  \node at (11.5,-1.4) {\vdots}; 
+  \draw [fill=gray] (10,-1.9) rectangle (11,-2.9) node[pos=.5] {$1,2,3$};
+   \draw [fill=gray] (11,-1.9) rectangle (12,-2.9)node[pos=.5] {$1,2,3$};
+
+   \node at (6,-3.5) {$S_1$};   
+  \node at (8.5,-3.5) {$S_2$};   
+  \node at (11,-3.5) {$S_3$};   
+  \end{tikzpicture}
+
+\end{document}

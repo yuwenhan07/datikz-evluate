@@ -1,0 +1,30 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}
+\node(o) at (12.5,0){};
+\node (i) at (14,0) {ID};
+\node(gcd) at (15.5,0) {GCDD};
+\node (uf) at (18.5,0.85) [draw,minimum width=4.5cm,minimum height=0.5cm]{UFD};
+\node(b) at (17,0)  {BD};
+\node(ed) at (18.55, 0) {EDD};
+\node(ad) at (20, 0) {AD};
+\node(pi) at (21.5, 0) {PID};
+\node(e) at  (23,0) {ED};
+\node(f) at (24.5, 0) {Fields};
+\node at($(i)!0.45!(gcd)$) {$\supset$};
+\node at (16,0.45){\rotatebox{45}{$\supset$}};
+\node at ($(gcd)!0.6!(b)$) {$\supset$}; 
+\node at ($(b)!0.45!(ed)$) {$\supseteq$};
+\node at ($(ed) !0.45!(ad)$){$\supset$};
+\node at (21,0.45) {\rotatebox{315}{$\supset$}};
+\node at ($(ad)!0.45!(pi)$) {$\supset$};
+\node at ($(pi)!0.45!(e)$) {$\supset$};
+\node at ($(e)!0.45!(f)$) {$\supset$};
+\end{tikzpicture}
+
+\end{document}

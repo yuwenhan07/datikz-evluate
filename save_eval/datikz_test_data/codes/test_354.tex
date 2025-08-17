@@ -1,0 +1,49 @@
+\documentclass[runningheads]{llncs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\tikzset{
+circ/.style={draw,circle,minimum height=3em},
+}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,node distance=5cm,thick,node/.style={circle,draw}]
+  \node[node] at (3,2.5) (00) {$\substack{0\\0}$};
+  \node[node] at (4,4.5) (01) {$\substack{0\\1}$};
+  \node[node] at (5,2.5) (11) {$\substack{1\\1}$};
+  \node[node] at (1.5,0.5) (02) {$\substack{0\\2}$};
+  \node[node] at (6.5,0.5) (12) {$\substack{1\\2}$};
+  \node[node] at (4,0.7) (22) {$\substack{2\\2}$};
+  \path
+    (00) edge node [left]  {} (01)
+         edge node [right] {} (02)
+         edge [bend right=5] node {} (12)
+    (11) edge node [left]  {} (12)
+         edge node [right] {} (01)
+         edge [bend right=5] node {} (02)
+    (22) edge node [left]  {} (02)
+         edge node [right] {} (12)
+         edge [bend right=5] node {} (01)
+    (01) edge [loop above] node {$\substack{0\\1}$\,$\substack{\\\\,}$\,$\substack{1\\0}$} (01)
+         edge node [left] {} (11)     
+         edge [bend left=5] node {} (22)     
+         edge [bend right=50] node {$\substack{0\\2}$\,$\substack{\\\\,}$\,$\substack{2\\0}$} (02)     
+         edge [bend left=90] node {$\substack{1\\2}$\,$\substack{\\\\,}$\,$\substack{2\\1}$} (12)     
+         edge node [below] {} (00) 
+    (12) edge [loop right] node {$\substack{1\\2}$\,$\substack{\\\\,}$\,$\substack{2\\1}$} (12)
+         edge node [left]  {} (22)     
+         edge [bend left=5] node {} (00) 
+         edge [bend right=50] node {$\substack{0\\1}$\,$\substack{\\\\,}$\,$\substack{1\\0}$} (01)     
+         edge [bend left=90] node {$\substack{0\\2}$\,$\substack{\\\\,}$\,$\substack{2\\0}$} (02)     
+         edge node [below] {} (11) 
+    (02) edge [loop left] node {$\substack{0\\2}$\,$\substack{\\\\,}$\,$\substack{2\\0}$} (02)
+         edge node [left] {} (00)     
+         edge [bend left=5] node {} (11)     
+         edge [bend right=50] node {$\substack{1\\2}$\,$\substack{\\\\,}$\,$\substack{2\\1}$} (12)     
+         edge [bend left=90] node {$\substack{0\\1}$\,$\substack{\\\\,}$\,$\substack{1\\0}$} (01)     
+         edge node [below] {} (22); 
+\end{tikzpicture}
+
+\end{document}

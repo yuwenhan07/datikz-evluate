@@ -1,0 +1,27 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-1.2,0) -- (6,0) node[right] {$x$};
+    \draw[->] (0,-0.5) -- (0,6) node[right] {$f(x)$};
+    \draw[dotted] (0.5,0) -- (0.5,6);
+    \draw[dotted] (1,0) -- (1,6);
+    \draw[dotted] (-0.5,0) -- (-0.5,6);
+    \draw[]
+        node[below, scale=0.8] at (-0.5,0) {$-\frac{\eta}{2}$}
+        node[below, scale=0.8] at (0.5,0) {$\frac{\eta}{2}$}
+        node[below, scale=0.8] at (1,0) {$\eta$}
+        node[below, scale=0.9] at (5,0) {$a$}
+        node[left, scale=0.8] at (0,4) {$\frac{1}{2}$};
+    \draw[line width=1pt, color=red] (-0.5,6) -- (0.5,2);
+    \draw[line width=1pt, color=blue] (1,1.5) -- (5,0);
+    \draw[line width=1pt, color=green] (0.5,2) to[out=-70, in=160] (1,1.5);
+\end{tikzpicture}
+
+\end{document}

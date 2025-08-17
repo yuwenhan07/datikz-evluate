@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{amssymb}
+
+\begin{document}
+
+\begin{tikzpicture}
+  % Nodes
+  \node (H1) at (0,0) {$A_1\ | \ \{a_{1i} | i <= D\}$};
+  \node (H2) at (5,0) {$\dots$};
+  \node (H3) at (10,0) {$A_N\ | \ \{a_{Ni} | i <= D\}$};
+  \node (H1H2) at (0,1.5) {$A_1 \cap A_2 \ | \ \{ a_{1i}  \cap a_{2j}| i,j \leq D\}$};
+  \node (H2H3) at (5,1.5) {$\dots$};
+  \node (H1H3) at (10,1.5) {$A_1 \cap A_N \ | \  \{ a_{1i}  \cap a_{Nj}| i,j \leq D\}$};
+  \node (R2) at (5,-1.5) {$\mathbb{R}^R$};
+  \node (END) at (5, 2) {$\vdots$};
+  \node (END2) at (0, 2) {$\vdots$};
+  \node (END3) at (10, 2) {$\vdots$};
+  \node (FEND1) at (5, 2.5) {$\bigcap_{k=1}^R A_k\ | \  \{ \bigcap_{k} a_{kd_k} | d_1,\dots, d_k \leq D\} $};
+  \node (FEND2) at (0, 2.5) {$\dots$};
+  \node (FEND3) at (10, 2.5) {$\dots$};
+
+  % Lines
+  \draw (H1) -- (H1H2);
+  \draw (H2) -- (H1H2);
+  \draw (H2) -- (H2H3);
+  \draw (H3) -- (H2H3);
+  \draw (H1) -- (H1H3);
+  \draw (H3) -- (H1H3);
+
+  % Lines connecting to R^2
+  \draw (H1) -- (R2);
+  \draw (H2) -- (R2);
+  \draw (H3) -- (R2);
+\end{tikzpicture}
+
+\end{document}

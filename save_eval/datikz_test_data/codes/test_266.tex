@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing,arrows}
+
+\newcommand{\x}{\boldsymbol{x}}
+
+\newcommand{\y}{\boldsymbol{y}}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{scope}[very thick]
+\foreach \x in {1,2,3}
+{\draw[] (\x,0.5) -- (\x,3.5);}
+\foreach \y in {1,2,3}
+{\draw[] (0.5,\y) -- (3.5,\y);}
+\draw[dotted] (0.5,2.5) -- (1.5,3.5);
+\draw[dotted] (0.5,1.5) -- (2.5,3.5);
+\draw[dotted] (0.5,0.5) -- (3.5,3.5);
+\draw[dotted] (1.5,0.5) -- (3.5,2.5);
+\draw[dotted] (2.5,0.5) -- (3.5,1.5);
+\begin{scope}[xshift=4cm,xscale=-1]
+\draw[dotted] (0.5,2.5) -- (1.5,3.5);
+\draw[dotted] (0.5,1.5) -- (2.5,3.5);
+\draw[dotted] (0.5,0.5) -- (3.5,3.5);
+\draw[dotted] (1.5,0.5) -- (3.5,2.5);
+\draw[dotted] (2.5,0.5) -- (3.5,1.5);
+\end{scope}
+\end{scope}
+\begin{scope}[xshift = 5cm,yshift=1cm]
+	\draw (0,1) -- (2,1);
+	\draw (1,0) -- (1,2);
+	\draw[dotted] (0,0) -- (2,2);
+	\draw[dotted] (2,0) -- (0,2);
+	\draw[line width=2pt,black!50!white,opacity=0.5] (1,1) -- (2,1);
+	\draw[line width=2pt,black!50!white,opacity=0.5,dotted] (1,1) -- (2,2);
+	\draw[line width=2pt,black!50!white,opacity=0.5,dotted] (1,1) -- (2,0);
+\begin{scope}[xshift = 3.5cm]
+	\draw (0,1) -- (2,1);
+	\draw (1,0) -- (1,2);
+	\draw[dotted] (0,0) -- (2,2);
+	\draw[dotted] (2,0) -- (0,2);
+	\draw[line width=2pt,black!50!white,opacity=0.5] (1,1) -- (1,2);
+	\draw[line width=2pt,black!50!white,opacity=0.5,dotted] (1,1) -- (2,2);
+	\draw[line width=2pt,black!50!white,opacity=0.5,dotted] (1,1) -- (0,2);
+\begin{scope}[xshift = 3.5cm]
+	\draw (0,1) -- (2,1);
+	\draw (1,0) -- (1,2);
+	\draw[dotted] (0,0) -- (2,2);
+	\draw[dotted] (2,0) -- (0,2);
+	\draw[line width=2pt,black!50!white,opacity=0.5] (1,1) -- (0,1);
+	\draw[line width=2pt,black!50!white,opacity=0.5,dotted] (1,1) -- (0,2);
+	\draw[line width=2pt,black!50!white,opacity=0.5,dotted] (1,1) -- (0,0);
+\begin{scope}[xshift = 3.5cm]
+	\draw (0,1) -- (2,1);
+	\draw (1,0) -- (1,2);
+	\draw[dotted] (0,0) -- (2,2);
+	\draw[dotted] (2,0) -- (0,2);
+	\draw[line width=2pt,black!50!white,opacity=0.5] (1,1) -- (1,0);
+	\draw[line width=2pt,black!50!white,opacity=0.5,dotted] (1,1) -- (2,0);
+	\draw[line width=2pt,black!50!white,opacity=0.5,dotted] (1,1) -- (0,0);
+\end{scope}\end{scope}
+\end{scope}
+\end{scope}
+\end{tikzpicture}
+
+\end{document}

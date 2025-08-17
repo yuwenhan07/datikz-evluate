@@ -1,0 +1,56 @@
+\documentclass[final]{amsart}
+\usepackage{amssymb,amsthm}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage[notcite,notref,color]{showkeys}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node/.style={draw,rectangle},font=\small]
+    \node[node,label=above:{\small$0$}] (abbabaa) at (0,5) {$abbabaa$};
+    \node[node,label=right:{\small$0$}] (baabbaa) at (6,3.5) {$baabbaa$};
+    \node[node,label=right:{\small$0$}] (aabbaab) at (6,2.5) {$aabbaab$};
+    \node[node,label=below:{\small$0$}] (bbaabab) at (4,1) {$bbaabab$};
+    \node[node,label=below:{\small$0$}] (baababb) at (2,1) {$baababb$};
+    \node[node,label=below:{\small$0$}] (aababba) at (0,1) {$aababba$};
+    \node[node,label=left: {\small$0$}] (babbaba) at (0,3.6) {$babbaba$};
+    \node[node,label=left: {\small$0$}] (babbaab) at (-4,1.5) {$babbaab$};
+    \node[node,label=left: {\small$0$}] (abbaabb) at (-4,2.5) {$abbaabb$};
+    \node[node,label=above:{\small$1$}] (bbabaab) at (2,5) {$bbabaab$};
+    \node[node,label=above:{\small$1$}] (babaabb) at (4,5) {$babaabb$};
+    \node[node,label=right:{\small$1$}] (babaaba) at (2,3.6) {$babaaba$};
+    \node[node,label=right:{\small$1$}] (abaabba) at (6,4.5) {$abaabba$};
+    \node[node,label=right:{\small$1$}] (abbaaba) at (6,1.5) {$abbaaba$};
+    \node[node,label=right:{\small$1$}] (abaabab) at (2,2.3) {$abaabab$};
+    \node[node,label=left: {\small$1$}] (ababbab) at (0,2.3) {$ababbab$};
+    \node[node,label=below:{\small$1$}] (ababbaa) at (-2,1) {$ababbaa$};
+    \node[node,label=left: {\small$1$}] (bbaabba) at (-4,3.5) {$bbaabba$};
+    \node[node,label=left: {\small$1$}] (baabbab) at (-4,4.5) {$baabbab$};
+    \node[node,label=above:{\small$1$}] (aabbaba) at (-2,5) {$aabbaba$};
+
+    \draw[->,above] (abbabaa) edge node {$a$} (bbabaab);
+    \draw[->,above] (bbabaab) edge node {$b$} (babaabb);
+    \draw[->,right] (bbabaab) edge node {$b$} (babaaba);
+    \draw[->,above,bend left=15] (babaabb) edge node {$b$} (abaabba);
+    \draw[->,right] (abaabba) edge node {$a$} (baabbaa);
+    \draw[->,right] (baabbaa) edge node {$b$} (aabbaab);
+    \draw[->,right] (aabbaab) edge node {$a$} (abbaaba);
+    \draw[->,above,bend left=15] (abbaaba) edge node {$a$} (bbaabab);
+    \draw[->,above] (bbaabab) edge node {$b$} (baababb);
+    \draw[->,right] (babaaba) edge node {$b$} (abaabab);
+    \draw[->,right] (abaabab) edge node {$a$} (baababb);
+    \draw[->,above] (baababb) edge node {$b$} (aababba);
+    \draw[->,right] (aababba) edge node {$a$} (ababbab);
+    \draw[->,right] (ababbab) edge node {$a$} (babbaba);
+    \draw[->,right] (babbaba) edge node {$b$} (abbabaa);
+    \draw[->,above] (aababba) edge node {$a$} (ababbaa);
+    \draw[->,above,bend left=15] (ababbaa) edge node {$a$} (babbaab);
+    \draw[->,right] (babbaab) edge node {$b$} (abbaabb);
+    \draw[->,right] (abbaabb) edge node {$a$} (bbaabba);
+    \draw[->,right] (bbaabba) edge node {$b$} (baabbab);
+    \draw[->,above,bend left=15] (baabbab) edge node {$b$} (aabbaba);
+    \draw[->,above] (aabbaba) edge node {$a$} (abbabaa);
+\end{tikzpicture}
+
+\end{document}

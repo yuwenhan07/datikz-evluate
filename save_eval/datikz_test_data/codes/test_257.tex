@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\tikzset{
+  horizontal center at origin/.style={
+    execute at end picture={
+      \path let \p1=(current bounding box.west),\p2=(current bounding box.east)
+      in ({-max(-1*\x1,\x2)},\y1) ({max(-1*\x1,\x2)},\y1);
+    }
+  },
+  dots/.style args={#1 per #2}{
+    line cap=round,
+    dash pattern=on 0 off #2/#1
+  }
+}
+
+\begin{document}
+
+\begin{tikzpicture}[
+  line width=0.175mm,
+  horizontal center at origin,
+  every node/.style={inner sep=2pt}
+  ]
+  \begin{scope}[rotate=45]
+    \node (gA) at (0, 5.5) {$g(A)$};
+    \coordinate (D1') at (0, 4.5);
+    \coordinate (D1) at ($(D1') + (0:1)$);
+    \coordinate (D2') at (0, 3.5);
+    \coordinate (D2) at ($(D2') + (0:1)$);
+    \coordinate (s) at ($(D2') + (0, -0.35)$);
+    \coordinate (D3') at (0, 2);
+    \coordinate (t) at ($(D3') + (0, 0.35)$);
+    \coordinate (D3) at ($(D3') + (0:1)$);
+    \node (A') at (0, 1) {$A'$};
+  \end{scope}
+
+  \draw (gA) edge (D1') (D1') edge (D2') (D3') edge (A');
+  \draw (D2') -- (s);
+  \draw[dots=10 per 1cm, line width=0.3mm, shorten <=(1cm/10)] (s) -- (t);
+  \draw (t) -- (D3');
+  \draw (D1') -- (D1);
+  \draw (D2') -- (D2);
+  \draw (D3') -- (D3);
+
+  \begin{scope}[rotate=-45, xscale=-1]
+    \node (gB) at (0, 5.5) {$g(B)$};
+    \coordinate (E1') at (0, 4.5);
+    \coordinate (E1) at ($(E1') + (0:1)$);
+    \coordinate (E2') at (0, 3.5);
+    \coordinate (E2) at ($(E2') + (0:1)$);
+    \coordinate (u) at ($(E2') + (0, -0.35)$);
+    \coordinate (E3') at (0, 2);
+    \coordinate (v) at ($(E3') + (0, 0.35)$);
+    \coordinate (E3) at ($(E3') + (0:1)$);
+    \node (B') at (0, 1) {$B'$};
+  \end{scope}
+
+  \draw (gB) edge (E1') (E1') edge (E2') (E3') edge (B');
+  \draw (E2') -- (u);
+  \draw[dots=10 per 1cm, line width=0.3mm, shorten <=(1cm/10)] (u) -- (v);
+  \draw (v) -- (E3');
+  \draw (E1') -- (E1);
+  \draw (E2') -- (E2);
+  \draw (E3') -- (E3);
+
+  \node (gC) at (0, 0) {$g(C)$};
+
+  \draw (B') -- (gC);
+  \draw (A') -- (gC);
+\end{tikzpicture}
+
+\end{document}

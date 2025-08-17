@@ -1,0 +1,56 @@
+\documentclass[12pt, oneside]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns}
+\usetikzlibrary{graphs}
+\usetikzlibrary{graphs.standard}
+\usetikzlibrary{decorations.markings,shapes.geometric,positioning}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+\node at (2,2) (a) [circle,draw=black,fill=none,scale=0.7]{};
+\node at (2*.866,1+2) (b) [circle,draw=black,fill=none,scale=0.7]{};
+\node at (1,2*.866+2) (c)[circle,draw=black,fill=none,scale=0.7]{};
+\node at (0,4) (d) [circle,draw=black,fill=none,scale=0.7]{};
+\node at (-1,2*.866+2) (e) [circle,draw=black,fill=none,scale=0.7]{};
+\node at (-2*.866,1+2) (f)[circle,draw=black,fill=none,scale=0.7]{};
+\node at (-2,2) (g) [circle,draw=black,fill=none,scale=0.7]{};
+\node at (-2*.866,1) (h) [circle,draw=black,fill=none,scale=0.7]{};
+\node at (-1,-2*.866+2) (i) [circle,draw=black,fill=none,scale=0.7]{};
+\node at (0,0) (j) [circle,draw=black,fill=none,scale=0.7]{};
+\node at (1, 2-2*.866) (k) [circle,draw=black,fill=none,scale=0.7]{};
+\node at (2*.866,1) (l) [circle,draw=black,fill=none,scale=0.7]{};
+\draw (a) -- (b) -- (c) -- (d) -- (e) -- (f) -- (g) -- (h) -- (i) -- (j) -- (k) -- (l) -- (a);
+\draw (c) .. controls (0,3.5) .. (e);
+\draw (g) .. controls(-1.2,1.2) .. (i);
+\draw (a) .. controls(1.2,1.2) .. (k);
+
+\node at (7,4-.2) (s) [circle,draw=black,fill=none,scale=0.7]{};
+\node at (8,4-.2) (t) [circle,draw=black,fill=none,scale=0.7]{};
+\node at ( 7.5, 3.3-.2 ) (r) [circle,draw=black,fill=none,scale=0.7]{};
+\node at ( 6.1 , 1-.5 ) (v) [circle,draw=black,fill=none,scale=0.7]{};
+\node at ( 5.6 , 1.7 -.5) (w) [circle,draw=black,fill=none,scale=0.7]{};
+\node at ( 6.5 , 1.8-.5) (u) [circle,draw=black,fill=none,scale=0.7]{};
+\node at ( 8.9 , 1-.5) (y) [circle,draw=black,fill=none,scale=0.7]{};
+\node at ( 9.5 , 1.7-.5) (z) [circle,draw=black,fill=none,scale=0.7]{};
+\node at ( 8.6 , 1.8-.5) (x) [circle,draw=black,fill=none,scale=0.7]{};
+\node at ( 7.5, 2.1-.5) (c') [circle,draw=black,fill=none,scale=0.7]{};
+\node at ( 7.5, 1-.5) (b') [circle,draw=black,fill=none,scale=0.7]{};
+\node at ( 7.5, 2.7-.35) (h') [circle,draw=black,fill=none,scale=0.7]{};
+\draw (s) -- (t) -- (r) -- (s);
+\draw (v) -- (w) -- (u) -- (v);
+\draw (x) -- (y) -- (z) -- (x);
+\draw (s) -- (w);
+\draw (t) -- (z);
+\draw (y) -- (b') -- (v);
+\draw (r) -- (h') -- (c') -- (u);
+\draw (x) -- (c');
+\end{tikzpicture}
+
+\end{document}

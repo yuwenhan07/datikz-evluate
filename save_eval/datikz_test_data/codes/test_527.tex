@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage[tbtags]{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{pict2e,color}
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows,shapes,chains}
+\usepackage{tikz-cd}
+
+\begin{document}
+
+\begin{tikzpicture}[thin][node distance=1cm,on grid]
+	\node[circle,inner sep=0.5mm,draw=black,fill=black](v)at(0,0) [label=left:
+	$k$] {};
+	\node[circle,inner sep=0.5mm,draw=black,fill=black](u1)at(4,2) [label=right:$v_1:$] {};
+	\node[circle,inner sep=0.5mm,draw=black,fill=black](u2)at(4,0.8) [label=right:$v_2:$] {};
+	\node[circle,inner sep=0.5mm,draw=black,fill=black](us)at(4,-2.22) [label=right:$v_s:$] {};
+	\node[circle,inner sep=0.15mm,draw=black,fill=black](i1)at(4,-0.5) {};
+	\node[circle,inner sep=0.15mm,draw=black,fill=black](i2)at(4,-0.72){};
+	\node[circle,inner sep=0.15mm,draw=black,fill=black](i3)at(4,-0.94) {};
+	
+	\draw[thick,color=blue] (4,2) arc(102.53:130.60:9.220);
+	\draw[thick,color=blue] (4,0.8) arc(90:112.62:10.4);
+	\draw[thick,color=blue] (0,0) arc(270:292.62:10.4);
+	\draw[thick,color=blue] (4,-2.22) arc(42.51:79.38:7.236);
+	\draw[thick,color=blue] (0,0) arc(222.51:259.38:7.236);
+	\draw[thick,color = blue](v)to(us);
+	\draw[thick,<->,black] (2.34,1.21) arc(27.31:38.73:2.637);
+	\draw(2.1,1.9)node {$\alpha_1$};
+	\draw[thick,<->,black] (2.6,0) arc(0:22.62:2.6);
+	\draw(2.75,1)node {$\alpha_2$};
+	\draw[thick,<->,black] (2,-1.7) arc(319.64:342.26:2.625);
+	\draw(2.6,-0.6)node {$\alpha_s$};
+	
+	\draw(-1.55,-0.03)node {$u:d_H(u)=$};
+	\draw(6.08,2.03)node {$d_H(v_1)=\ell_1$};
+	\draw(6.08,0.83)node {$d_H(v_2)=\ell_2$};
+	\draw(6.08,-2.19)node {$d_H(v_s)=\ell_s$};
+\end{tikzpicture}
+
+\end{document}

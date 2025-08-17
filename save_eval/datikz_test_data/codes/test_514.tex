@@ -1,0 +1,37 @@
+\documentclass[aps,prd,reprint,twocolumn,preprintnumbers,floatfix,nofootinbib]{revtex4-1}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor,soul}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[baseline={(current bounding box.center)},style={scale=1, transform shape}]
+\begin{feynman}
+\vertex(a1){\(\rm \gamma,Z,W^{\pm}\)};
+\vertex[below right = 1cm and 1.5cm of a1] (a2);
+\vertex[right = 1.5cm of a2] (a3);
+\vertex[above right = 1cm and 1cm of a3] (a4){\(\chi\)};
+\vertex[below = 3.5cm of a1] (b1){\(\rm \gamma,Z,W^{\pm}\)};
+\vertex[above right = 1cm and 1.5cm of b1] (b2);
+\vertex[right = 1.5cm of b2] (b3);
+\vertex[below right = 1cm and 1cm of b3] (b4){\(\chi\)};
+\diagram*{
+(a1) -- [ boson, arrow size=0.7pt,edge label={\(\rm \)},style=black] (a2),
+(a3) -- [ fermion, arrow size=0.7pt,edge label'={\(\rm{\color{black} \Psi} \)},style=gray!75] (a2), 
+(a4) -- [ fermion, arrow size=0.7pt,edge label={\(\rm \)},style=red] (a3),
+(b1) -- [ boson, arrow size=0.7pt,edge label={\(\rm \)},style=black] (b2),
+(b2) -- [ fermion, arrow size=0.7pt,edge label'={\(\rm {\color{black} \Psi} \)},style=gray!75] (b3), 
+(b3) -- [ fermion, arrow size=0.7pt,edge label={\(\rm \)},style=red] (b4),
+(a2) -- [ fermion, arrow size=0.7pt,edge label'={\(\rm {\color{black} \Psi} \)},style=gray!75]  (b2), 
+(a3) -- [ scalar, arrow size=0.7pt,edge label={\(\rm {\color{black} S} \)},style=gray!75]  (b3)
+};
+\end{feynman}
+\end{tikzpicture}
+
+\end{document}

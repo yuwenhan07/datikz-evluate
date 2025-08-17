@@ -1,0 +1,35 @@
+\documentclass{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{amssymb, amsthm, amsmath}
+\usepackage{tikz}
+\usetikzlibrary{intersections, decorations.markings, arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.85]
+    \draw[-{Latex}, gray] (-2.6,0) -- (2.6,0) node[right] {$\rho$};
+    \draw[-{Latex}, gray] (0,-0.3) -- (0,4.7) node[above] {$\theta$};
+    \draw[dashed, gray] (-2,0.05) -- (-2,4.7);
+    \draw[dashed, gray] (2,0.05) -- (2,4.7);
+    \draw (-2.1,0.05) -- (-2.1,-0.05) node[below] {$-\rho^\star$};
+    \draw (2,0.05) -- (2,-0.05) node[below] {$\rho^\star$};
+    \filldraw (0,1.5) circle (0.7pt) node[left, xshift=0.3mm] {$b_i$};
+    \filldraw (0,3.5) circle (0.7pt) node[left, xshift=0.4mm] {$b_{i+1}$};
+    \draw[densely dotted, black, name path=ellipse1] (0,1.5) ellipse (0.8 and 0.4) node[left, xshift=-14.6mm] {$C_i$};
+    \draw[densely dotted, black, name path=ellipse2] (0,3.5) ellipse (1.2 and 0.7) node[left, xshift=-21.6mm] {$C_{i+1}$};
+    \draw[black, name path=orbit1, postaction={decorate}, decoration={markings, mark= at position 0.3 with {\arrow{Classical TikZ Rightarrow}}, mark= at position 0.6 with {\arrow{Classical TikZ Rightarrow}}}] (0,1.5) .. controls (2.2,2.8) and (0,2.3) .. (0,3.5) node[right, xshift=17.8mm, yshift=-21.4mm]{$G_i$};
+    \draw[black, name path=orbit2, postaction={decorate}, decoration={markings, mark= at position 0.35 with {\arrowreversed{Classical TikZ Rightarrow}}}] (0,3.5) .. controls (0,4) and (0.5,4.4) .. (0.5,4.4) node[right, xshift=-0.4mm, yshift=-0.1mm]{$G_{i+1}$};
+    \draw[black, name path=orbit3, postaction={decorate}, decoration={markings, mark= at position 0.7 with {\arrow{Classical TikZ Rightarrow}}}] (0,1.5) .. controls (1,2.05) and (0.2,0.15) .. (0.2,0.15) node[right, xshift=0.6mm, yshift=1.6mm]{$G_{i-1}$};
+    \draw[black, name path=orbit4, postaction={decorate}, decoration={markings, mark= at position 0.5 with {\arrowreversed{Classical TikZ Rightarrow}}}] (0,3.5) .. controls (0,2.7) and (1.2,3.8) .. (1.7,3.6) node[right, xshift=-3.7mm, yshift=2.9mm]{$\hat{\Gamma}_{i+1}$};
+    \draw[black, name path=orbit5, postaction={decorate}, decoration={markings, mark= at position 0.7 with {\arrow{Classical TikZ Rightarrow}}}] (0,1.5) .. controls (1,2.1) and (0.8,0.9) .. (1.7,1.3) node[right, xshift=-1.7mm, yshift=2.8mm]{$\hat{\Gamma}_i$};
+    \draw[postaction={decorate}, decoration={markings, mark= at position 0.35 with {\arrow{Classical TikZ Rightarrow}}}] (0,1.5) -- (0,3.5) node[left, xshift=0.6mm, yshift=-18mm] {$\Xi_i$};
+    \fill[name intersections={of=orbit1 and ellipse1, by={intersection}}] (intersection) circle (0.7pt) node[above, xshift=-1.6mm, yshift=0.1mm]{$\hat{E}_{i,1}$};
+    \fill[name intersections={of=orbit1 and ellipse2, by={intersection}}] (intersection) circle (0.7pt) node[below, xshift=-0.1mm, yshift=0.1mm]{$\hat{E}_{i,2}$};
+    \fill[name intersections={of=orbit2 and ellipse2, by={intersection}}] (intersection) circle (0.7pt) node[below, xshift=3.3mm, yshift=-0.4mm]{$\hat{E}_{i+1,1}$};
+    \fill[name intersections={of=orbit3 and ellipse1, by={intersection}}] (intersection) circle (0.7pt) node[right, xshift=-0.7mm, yshift=-2.3mm]{$\hat{E}_{i-1,2}$};
+    \fill[name intersections={of=orbit4 and ellipse2, by={intersection}}] (intersection) circle (0.7pt) node[right, xshift=-0.4mm, yshift=-1.9mm]{$\hat{p}_{i+1}$};
+    \fill[name intersections={of=orbit5 and ellipse1, by={intersection}}] (intersection) circle (0.7pt) node[above, xshift=2.1mm, yshift=-0.3mm]{$\hat{p}_i$};
+ \end{tikzpicture}
+
+\end{document}

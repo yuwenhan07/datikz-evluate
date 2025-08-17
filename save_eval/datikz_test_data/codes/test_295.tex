@@ -1,0 +1,61 @@
+\documentclass[12pt, oneside]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns}
+\usetikzlibrary{graphs}
+\usetikzlibrary{graphs.standard}
+\usetikzlibrary{decorations.markings,shapes.geometric,positioning}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.3]
+\node at (1,5) (a) [circle,draw=black,fill=none,scale=0.7]{$x_1$};
+\node at (.6,5) {\small$1$};
+\node at (2.75,5) (b) [circle,draw=black,fill=none,scale=0.7]{$x_3$};
+\node at (3.2,5) {\small$2_1$};
+\node at (3.5,3.5) (c)[circle,draw=black,fill=none,scale=0.7]{$x_6$};
+\node at (3.9,3.5) {\small$1$};
+\node at (2.75,2) (d) [circle,draw=black,fill=none,scale=0.7]{$x_4$};
+\node at (3.2,2) {\small$2_2$};
+\node at (1,2) (e) [circle,draw=black,fill=none,scale=0.7]{$x_5$};
+\node at (.6,2) {\small$1$};
+\node at (.25,3.5) (f)[circle,draw=black,fill=none,scale=0.7]{$x_2$};
+\node at (-.2,3.5) {\small$2_3$};
+\node at (2.5,3.7) (g) [circle,draw=black,fill=none,scale=0.7]{$y_1$};\node at (2.5,4.1) {\small$2_4$};
+\node at (1.3,3.7) (h) [circle,draw=black,fill=none,scale=0.7]{$y_3$};\node at (1.3,4.1) {\small$2_4$};
+\node at (1.9,2.8) (i) [circle,draw=black,fill=none,scale=0.7]{$y_2$};\node at (1.9,2.4) {\small$2_4$};
+\draw (a) -- (b) -- (c) -- (d) -- (e) -- (f) -- (a);
+\draw (a) -- (g) -- (d);
+\draw (b) -- (h) -- (e);
+\draw (c) -- (i) -- (f);
+
+\node at (7,5.2) (a) [circle,draw=black,fill=none,scale=0.7]{$x_1$}; \node at (7.4,5.2) {\small$1$};
+\node at (5.5,4.1) (g) [circle,draw=black,fill=none,scale=0.7]{$y_1$};\node at (5.9,4) {\small$2_1$};
+\node at (7,4.1) (h) [circle,draw=black,fill=none,scale=0.7]{$y_2$};\node at (7.4,4) {\small$2_2$};
+\node at (9,4.1) (i) [circle,draw=black,fill=none,scale=0.7]{$y_3$};\node at (9.4,4) {\small$2_3$};
+\node at (5.5,2.8) (b)[circle,draw=black,fill=none,scale=0.7]{$x_2$}; \node at (5.9,3) {\small$2_2$};
+\node at (6.5,2.8) (c) [circle,draw=black,fill=none,scale=0.7]{$x_3$}; \node at (6.8,3) {\small$1$};
+\node at (7.5,2.8) (d) [circle,draw=black,fill=none,scale=0.7]{$x_4$}; \node at (7.9,3) {\small$2_3$};
+\node at (8.5,2.8) (e) [circle,draw=black,fill=none,scale=0.7]{$x_5$}; \node at (8.9,3) {\small$2_4$};
+\node at (9.5,2.8) (f)[circle,draw=black,fill=none,scale=0.7]{$x_6$}; \node at (9.8,3) {\small$1$};
+\node at (7,1.5) (j) [circle,draw=black,fill=none,scale=0.7]{}; \node at (6.8,1.3) {\small$2_4$};
+\node at (6,1.5) (k) [circle,draw=black,fill=none,scale=0.7]{}; \node at (5.8,1.3) {\small$1$};
+\node at (8,1.5) (l) [circle,draw=black,fill=none,scale=0.7]{}; \node at (7.8,1.3) {\small$2_1$};
+\node at (9,1.5) (m)[circle,draw=black,fill=none,scale=0.7]{}; \node at (8.8,1.3) {\small$2_1$};
+\draw (g) -- (a) -- (h);
+\draw (a) -- (i);
+\draw (g) -- (b);
+\draw (c) -- (h) -- (d);
+\draw (f) -- (i) -- (e);
+\draw (b) -- (j) -- (c); \draw (j) -- (f);
+\draw (b) -- (k) -- (d); \draw (k) -- (e);
+\draw (c) -- (l) -- (e);
+\draw (d) -- (m) -- (f);
+\end{tikzpicture}
+
+\end{document}

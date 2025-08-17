@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={Response length, in tokens.},
+    ylabel={Hidden payload length, in bits.},
+    xmin=0, xmax=120,
+    ymin=0, ymax=25,
+    xtick={20,40,60,80,100},
+    ytick={0,5,10,15,20},
+    ymajorgrids=true,
+    grid style=dashed,
+    nodes near coords,
+    nodes near coords align={vertical},
+    every node near coord/.append style={anchor=south, xshift=-8pt},
+]
+
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates{
+    (20,4.19)(40,8.01)(60,11.65)(80,14.75)(100,17.87)
+    };
+    
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

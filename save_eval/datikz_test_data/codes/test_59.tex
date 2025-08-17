@@ -1,0 +1,38 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[pagebackref,breaklinks,colorlinks,citecolor=cvprblue]{hyperref}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.7}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[legend pos=south east, 
+    ymajorgrids=true,
+    width=.4\textwidth,
+    grid=major,
+    xlabel= memory (GB),ylabel=$\mathcal{J}$\&$\mathcal{F}$]
+    \addplot[
+        scatter,only marks,scatter src=explicit symbolic,
+        scatter/classes={
+            a={mark=square*,blue},
+            b={mark=triangle*,red},
+            c={mark=o,draw=black,fill=black},
+            e={mark=o,draw=red},
+            f={mark=square*,red}
+        }
+    ]
+    table[x=memory,y=avg,meta=label]{
+        memory    avg    label
+        8.86	65.5	a
+        1.42	50.3	b
+        16.95	72.1	c
+        % 1.73	73.4	d
+        23      74.50   e
+        1.26	72.75	f
+    };
+    \legend{MAST~\cite{lai2020mast},CorrFlow~\cite{Lai19},LIIR~\cite{li2022locality},  UnifiedMask~\cite{li2023unified}, Ours} 
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

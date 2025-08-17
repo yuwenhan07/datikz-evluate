@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+%First figure
+\draw[<-][dotted] (0,0.5)--(2,0.5);
+\draw[->][dotted] (2,0.5)--(3,0.5);
+\node at (1.4,0.8) {\tiny{0 (mod 3)}};
+
+\draw[<-][dotted] (3.1,0.5)--(6,0.5);
+\draw[->][dotted] (6,0.5)--(7,0.5);
+\node at (5.4,0.8){\tiny{1 (mod 3)}};
+ 
+\node [right] at (3.3,-1.2) {$x_{0}$};
+\node[above] at (6,2.8) {$u_{1}$};
+\node[above] at (6.5,0.8) {$u_{2}$};
+\node[below] at (5.3,-2.8) {$u_{k}$};
+
+
+
+\draw (0,0)--(7,0); \draw (9,0)--(16,0);
+\draw (0,0)--(-0.3,-1);\draw (0,0)--(0.3,-1);\draw (-0.3,-1)--(-0.3,-1.8); \draw (0.3,-1)--(0.3,-1.8);
+\draw (3,0)--(2.7,-1);\draw (3,0)--(3.3,-1);\draw (2.7,-1)--(2.7,-1.8); \draw (3.3,-1)--(3.3,-1.8);
+\draw (7,0)--(6.7,-1);\draw (7,0)--(7.3,-1);
+\draw (6,0)--(6.4,.8);
+\draw (3,0)--(6.5,2.3);\draw (6.5,2.3)--(6.2,1.5);\draw (6.5,2.3)--(6.8,1.5);\draw (5.8,1.85)--(5.9,2.7);
+\draw (3,0)--(6.5,-2.3);\draw (6.5,-2.3)--(6.2,-3.1);\draw (6.5,-2.3)--(6.8,-3.1);\draw (5.8,-1.85)--(5.3,-2.7);
+
+\draw  [fill=black](0,0) circle [radius=0.08];\draw  [fill=black](1,0) circle [radius=0.08];\draw  [fill=black](2,0) circle [radius=0.08];\draw  [fill=black](5,0) circle [radius=0.08];\draw  [fill=black](4,0) circle [radius=0.08]; \draw  [fill=blue](-0.3,-1) circle [radius=0.08];\draw  [fill=black](0.3,-1) circle [radius=0.08]; \draw  [fill=red](-0.3,-1.8) circle [radius=0.08]; \draw  [fill=black](0.3,-1.8) circle [radius=0.08];\draw  [fill=blue](3,0) circle [radius=0.08];\draw  [fill=blue](2.7,-1) circle [radius=0.08];\draw  [fill=black](3.3,-1) circle [radius=0.08];\draw  [fill=red](2.7,-1.8) circle [radius=0.08];\draw  [fill=black](3.3,-1.8) circle [radius=0.08];\draw  [fill=blue](7,0) circle [radius=0.08];\draw  [fill=black](7.3,-1) circle [radius=0.08];\draw  [fill=red](6.7,-1) circle [radius=0.08];\draw  [fill=black](6,0) circle [radius=0.08];\draw  [fill=black](6.4,.8) circle [radius=0.08];\draw  [fill=blue](6.5,2.3) circle [radius=0.08];\draw  [fill=red](6.2,1.5) circle [radius=0.08];\draw  [fill=black](6.8,1.5) circle [radius=0.08];
+\draw  [fill=black](5.8,1.85) circle [radius=0.08];\draw  [fill=black](5.9,2.7) circle [radius=0.08];\draw  [fill=black](4,0.66) circle [radius=0.08];\draw  [fill=black](5,1.32) circle [radius=0.08]; \draw  [fill=black](5.8,-1.85) circle [radius=0.08];
+\draw  [fill=black](5.3,-2.7) circle [radius=0.08]; \draw  [fill=black](4,-0.66) circle [radius=0.08];\draw  [fill=black](5,-1.32) circle [radius=0.08];
+\draw  [fill=blue](6.5,-2.3) circle [radius=0.08];\draw  [fill=red](6.2,-3.1) circle [radius=0.08];\draw  [fill=black](6.8,-3.1) circle [radius=0.08];
+
+\draw [dashed](6,-.5)--(6,-1.3);
+
+\draw (9,0)--(8.7,-1);\draw (9,0)--(9.3,-1);\draw (8.7,-1)--(8.7,-1.8); \draw (9.3,-1)--(9.3,-1.8);
+\draw (12,0)--(11.7,-1);\draw (12,0)--(12.3,-1);\draw (11.7,-1)--(11.7,-1.8); \draw (12.3,-1)--(12.3,-1.8);
+\draw (16,0)--(15.7,-1);\draw (16,0)--(16.3,-1);
+\draw (15,0)--(15.4,.8);
+\draw (12,0)--(15,2.3);\draw (15,2.3)--(14.7,1.5);\draw (15,2.3)--(15.3,1.5);\draw (15,2.3)--(15.9,1.9);\draw (14,1.53)--(14.2,2.5);
+\draw (12,0)--(15,-2.3);\draw (15,-2.3)--(14.7,-3.1);\draw (15,-2.3)--(15.3,-3.1);\draw (14,-1.53)--(13.7,-2.5);
+
+\draw  [fill=black](9,0) circle [radius=0.08]; \draw  [fill=blue](8.7,-1) circle [radius=0.08];\draw  [fill=black](9.3,-1) circle [radius=0.08]; \draw  [fill=red](8.7,-1.8) circle [radius=0.08]; \draw  [fill=black](9.3,-1.8) circle [radius=0.08];\draw  [fill=black](10,0) circle [radius=0.08];\draw  [fill=black](11,0) circle [radius=0.08];\draw  [fill=blue](12,0) circle [radius=0.08];\draw  [fill=black](12.3,-1) circle [radius=0.08];\draw  [fill=blue](11.7,-1) circle [radius=0.08];\draw  [fill=red](11.7,-1.8) circle [radius=0.08];\draw  [fill=black](12.3,-1.8) circle [radius=0.08];\draw  [fill=black](13,0) circle [radius=0.08];\draw  [fill=black](14,0) circle [radius=0.08];\draw  [fill=black](15,0) circle [radius=0.08];\draw  [fill=black](15.4,.8) circle [radius=0.08];
+\draw  [fill=blue](16,0) circle [radius=0.08]; \draw  [fill=black](16.3,-1) circle [radius=0.08];\draw  [fill=red](15.7,-1) circle [radius=0.08];
+
+\draw  [fill=blue](15,2.3) circle [radius=0.08];\draw  [fill=red](14.7,1.5) circle [radius=0.08];\draw  [fill=red](15.3,1.5) circle [radius=0.08];\draw  [fill=black](14.2,2.5) circle [radius=0.08];\draw  [fill=black](15.9,1.9) circle [radius=0.08];\draw  [fill=black](14,1.5) circle [radius=0.08]; \draw  [fill=black](13.3,1) circle [radius=0.08];\draw  [fill=black](12.6,.46) circle [radius=0.08];
+
+\draw  [fill=blue](15,-2.3) circle [radius=0.08];\draw  [fill=red](14.7,-3.1) circle [radius=0.08];\draw  [fill=black](15.3,-3.1) circle [radius=0.08];\draw  [fill=black](14,-1.5) circle [radius=0.08]; \draw  [fill=black](13.7,-2.5) circle [radius=0.08]; \draw  [fill=black](13.3,-1) circle [radius=0.08];\draw  [fill=black](12.6,-.46) circle [radius=0.08];
+
+\draw [dashed](15,-.5)--(15,-1.3);
+
+
+\node [above] at (0,0) {$v_1$};\node [above] at (3,0) {$v_{0}$};\node [right] at (6.5,2.3) {$w_{1}$};\node [right] at (7,0) {$w_{2}$};\node [right] at (6.5,-2.3) {$w_{k}$};
+\node [above] at (9,0) {$v_1$};\node [above] at (12,0) {$v_{0}$};\node [above] at (15,2.3) {$w_{1}$};\node [right] at (16,0) {$w_{2}$};\node [right] at (15,-2.3) {$w_{k}$};
+
+\draw[<-][dotted] (9,0.5)--(11,0.5);
+\draw[->][dotted] (11,0.5)--(12,0.5);
+\node at (10.4,0.8) {\tiny{0 (mod 3)}};
+
+
+\draw[<-][dotted] (12.1,0.5)--(13,0.5);
+\draw[->][dotted] (13,0.5)--(16,0.5);
+\node at (14.3,0.8){\tiny{1 (mod 3)}};
+ \node [right] at (12.3,-1.2) {$x_{0}$};
+
+\node[above] at (14.1,2.6) {$u_{1}$};
+\node[above] at (15.5,0.8) {$u_{2}$};
+\node[below] at (13.5,-2.6) {$u_{k}$};
+
+\end{tikzpicture}
+
+\end{document}

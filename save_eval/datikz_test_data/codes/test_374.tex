@@ -1,0 +1,83 @@
+\documentclass{amsart}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{positioning, quotes, decorations}
+\tikzset{
+every loop/.style={},
+path/.style={line width=2.2pt, red},
+tadpole/.style={loop, min distance=15mm, in=-40, out=40},
+bdry/.style={shape=circle, draw, inner sep=2pt,fill=black!40},
+bulk/.style={shape=circle, draw, inner sep=2pt,fill=black},
+bubu/.style={black,ultra thick},
+bubu1/.style={black},
+bubo/.style={decorate,decoration=snake,red},
+bobo/.style={decorate,decoration={coil,amplitude=0.1cm, aspect=1.2,segment length=0.2cm},purple},
+bobo2/.style={densely dashed, decorate, decoration={snake,amplitude=0.1cm},blue},
+bobo3/.style={decorate, decoration={zigzag,amplitude=0.1cm},green}
+}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing,shapes}
+
+\begin{document}
+
+   \begin{tikzpicture}
+   \node[bulk] (b1) at (-2,-1) {}; 
+   \node[bulk] (b2) at (-1.5,1) {};
+   \node[coordinate, label={$x$}] at (b1.west) {};
+    \node[coordinate, label={$y$}] at (b2.west) {};
+ \node[coordinate, label={$\gamma$}] at (0,-2.5) {};
+  \node[coordinate, label={$M_1$}] at (-.5,1.7) {};
+  \node[coordinate, label={$M_2$}] at (.5,1.7) {};
+   \draw[bubu] (b1) -- (b2) node[midway,right] {$t$};
+    \draw (0,2) -- (0,-2);
+    \node at (1,0) {=};
+    \begin{scope}[xshift = 5cm]
+    \node[bulk] (b1a) at (-2,-1) {};
+   \node[bulk] (b2a) at (-1.5,1) {};
+   \node[coordinate, label={$x$}] at (b1a.west) {};
+    \node[coordinate, label={$y$}] at (b2a.west) {};
+      \node[coordinate, label={$M_1$}] at (-.5,1.7) {};
+  \node[coordinate, label={$M_2$}] at (.5,1.7) {};
+   \draw[bubu1] (b1a) -- (b2a) node[midway,right] {$t$};
+    \draw (0,2) -- (0,-2);
+     \node[coordinate, label={$\gamma$}] at (0,-2.5) {};
+
+    \node at (1,0) {$+\sum_{k\geq 0}$};
+     \begin{scope}[xshift = 4cm]
+     \node[bulk] (b1b) at (-2,-1) {};
+   \node[bulk] (b2b) at (-1.5,1) {};
+   \node[coordinate, label={$x$}] at (b1b.west) {};
+    \node[coordinate, label={$y$}] at (b2b.west) {};
+    \node[coordinate, label={$M_1$}] at (-.5,3.3) {};
+  \node[coordinate, label={$M_2$}] at (.5,3.3) {};
+   \node[bdry] (b3b) at (0,-3) {};
+   \node[bdry] (b5b) at (0,-2) {};
+   \node[bdry] (b6b) at (0,-1) {};
+   \node[bdry] (b7b) at (0,0) {};
+   \node[bdry] (b8b) at (0,1) {}; 
+   \node[bdry] (b9b) at (0,2) {};
+   \node[bdry] (b4b) at (0,3) {}; 
+    \node[coordinate, label=right:{$u_0$}] at (b3b.east) {};
+        \node[coordinate, label=right:{$u_1$}] at (b5b.east) {};
+    \node[coordinate, label=right:{$u_2$}] at (b6b.east) {};
+    \node[coordinate, label=right:{$u_3$}] at (b7b.east) {};
+    \node[coordinate, label=right:{$u_{i}$}] at (b8b.east) {};
+    \node[coordinate, label=right:{$u_{2k}$}] at (b9b.east) {};
+    \node[coordinate, label=right:{$u_{2k+1}$}] at (b4b.east) {};
+           \draw[bubo] (b1b) -- (b3b) node[midway,above] {$t_0$};
+           \draw[bobo2](b3b) -- (b5b)node[midway,right] {$t_1$}; 
+            \draw[bobo3](b5b) -- (b6b)node[midway,right] {$t_2$}; 
+            \draw[bobo2](b6b) -- (b7b)node[midway,right] {$t_3$};
+\draw[dotted] (b7b) to[dashed, bend left=60] (b8b) {};
+\draw[dotted] (b8b) to[dashed, bend right=60] (b9b) {};
+\draw[bobo2] (b9b) -- (b4b)node[midway,right] {$t_{2k+1}$};
+           \draw[bubo](b4b) -- (b2b) node[midway,above] {$t_{2k+2}$};
+    \draw (0,3.3) -- (0,-3.3);
+     \node[coordinate, label={$\gamma$}] at (0,-3.7) {};
+    \end{scope}
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}

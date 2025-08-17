@@ -1,0 +1,83 @@
+\documentclass[twoside,11pt]{article}
+\usepackage{amsfonts, amsmath}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, backgrounds}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1.5cm, auto]
+
+% First diagram
+{
+\node at (-3.5,1) {$T=1$};
+
+% Nodes
+\node[draw, rectangle, fill=white, dotted] (c20) {$c_{2,0}$};
+\node[draw, rectangle, fill=white, right=of c20] (c21) {$c_{2,1}$};
+
+\node[draw, rectangle, fill=white, below=of c21] (d11) {$d_{1,1}$};
+
+\node[draw, rectangle, fill=white, below=of d11] (c11) {$c_{1,1}$};
+\node[draw, rectangle, fill=white, left=of c11, dotted] (c10) {$c_{1,0}$};
+\node[draw, rectangle, fill=white, left=of c10, dotted] (c1-1) {$c_{1,-1}$};
+
+\node[draw, rectangle, fill=white, below=of c11] (d01) {$d_{0,1}$};
+
+\node[draw, rectangle, fill=white, below=of d01] (c01) {$c_{0,1}$};
+
+% Arrows
+\begin{pgfonlayer}{background}  % Draw arrows on background layer
+\draw[->, dashed] (c20) -- (d11);
+\draw[->, dashed] (c21) -- (d11);
+\draw[->, ] (c20) -- (c11);
+\draw[->, ] (c21) to[bend left=30] (c11); % Curved arrow
+
+\draw[->, dashed] (c1-1) -- (d01);
+\draw[->, dashed] (c11) -- (d01);
+\draw[->, ] (c1-1) -- (c01);
+\draw[->, ] (c11) to[bend left=30] (c01);
+\end{pgfonlayer}
+}
+
+% Dotted line between the two diagrams
+\draw[dotted] (3.5,1.5) -- (3.5,-9);
+
+% Second diagram, shifted to the right
+\begin{scope}[shift={(8,0)}]
+\node at (-3.5,1) {$T=2$};
+
+% Nodes
+\node[draw, rectangle, fill=white] (c21) {$c_{2,1}$};
+\node[draw, rectangle, fill=white, right=of c21] (c22) {$c_{2,2}$};
+
+\node[draw, rectangle, fill=white, below=of c21] (d11) {$d_{1,1}$};
+\node[draw, rectangle, fill=white, right=of d11] (d12) {$d_{1,2}$};
+
+\node[draw, rectangle, fill=white, below=of d11] (c11) {$c_{1,1}$};
+\node[draw, rectangle, fill=white, left=of c11, dotted] (c10) {$c_{1,0}$};
+\node[draw, rectangle, fill=white, right=of c11] (c12) {$c_{1,2}$};
+
+\node[draw, rectangle, fill=white, below=of c11] (d01) {$d_{0,1}$};
+\node[draw, rectangle, fill=white, right=of d01] (d02) {$d_{0,2}$};
+
+\node[draw, rectangle, fill=white, below=of d01] (c01) {$c_{0,1}$};
+\node[draw, rectangle, fill=white, right=of c01] (c02) {$c_{0,2}$};
+
+% Arrows
+\begin{pgfonlayer}{background}  % Draw arrows on background layer
+\draw[->, dashed] (c21) -- (d12);
+\draw[->, dashed] (c22) -- (d12);
+\draw[->, ] (c21) -- (c12);
+\draw[->, ] (c22) to[bend left=30] (c12); % Curved arrow
+
+\draw[->, dashed] (c10) -- (d02);
+\draw[->, dashed] (c12) -- (d02);
+\draw[->, ] (c10) -- (c02);
+\draw[->, ] (c12) to[bend left=30] (c02);
+\end{pgfonlayer}
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}
