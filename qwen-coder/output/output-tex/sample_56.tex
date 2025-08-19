@@ -1,44 +1,39 @@
-Certainly! Below is a TikZ LaTeX code snippet that represents your described architecture:
+To generate four search trees on \( K_4 \) and their images through the permutation \(\pi\) on \(\textnormal{SPK}_{2,2}\), we need to follow these steps:
+
+1. **Define \( K_4 \)**: The complete graph \( K_4 \) has 4 vertices, which we can label as \( A, B, C, D \).
+
+2. **Define the Permutation \(\pi\)**: We need to define a permutation \(\pi\) on the set \(\{A, B, C, D\}\). For simplicity, let's use the permutation \(\pi = (A \ B)(C \ D)\).
+
+3. **Generate Search Trees on \( K_4 \)**: We will create four different search trees on \( K_4 \).
+
+4. **Compute the Image of Each Tree under \(\pi\)**: Apply the permutation \(\pi\) to each vertex in the search tree.
+
+5. **Draw the Original and Transformed Trees**: Use TikZ to draw both the original and transformed trees side by side for comparison.
+
+Here is the TikZ LaTeX code to achieve this:
 
 ```latex
-\documentclass{article}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta}
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{trees}
 
 \tikzset{
-    block/.style = {rectangle, draw=black, fill=white!30, 
-        text width=5em, text centered, rounded corners, minimum height=4em},
-    line/.style = {draw, thick, ->, >=stealth'}
+    mynode/.style={circle,draw,fill=blue!20,minimum size=6mm},
+    myedge/.style={thick,-stealth}
 }
 
 \begin{document}
 
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[node distance=2cm]
-
-        % Nodes for Transformer Decoder (TD)
-        \node[block] (TD) at (0,0) {Transformer Decoder};
-        \node[block, below of=TD] (TD_output) {Output: $a^Q_1, \ldots, a^Q_m$};
-
-        % Nodes for Context (demonstrations)
-        \node[block, right of=TD, xshift=6cm] (Context) {Context: $(I_k, A_k)$};
-        
-        % Nodes for Transformer Encoder-Decoder (T)
-        \node[block, left of=TD, yshift=-2cm] (TE_decoder) {Transformer Encoder-Decoder};
-        \node[block, above of=TE_decoder, yshift=2cm] (TE_encoder) {Transformer Encoder};
-        
-        % Nodes for State S
-        \node[block, below of=TE_decoder, yshift=-2cm] (State_S) {State: $S$};
-        
-        % Nodes for Instructions (pink blocks)
-        \node[block, pink, above of=TE_encoder, yshift=2cm] (Instructions) {Instructions};
-        
-        % Arrows between nodes
-        \path [line] (TD) -- node[above] {$I^Q$} (TE_decoder);
-        \path [line] (TE_decoder) -- node[right] {$S$} (TE_encoder);
-        \path [line] (TE_encoder) -- node[right] {$A_k$} (Context);
-        \path [line] (Context) -- node[below] {$I_k$} (TE_decoder);
-        \path [line] (TE_decoder) -- node[below] {$a^Q_1, \ldots, a^Q_m$} (TD_output);
-
-    \
+\begin{tikzpicture}[level distance=1.5cm]
+    % Original Tree 1
+    \node[mynode] (A1) at (0,0) {A};
+    \node[mynode] (B1) at (-1,-1) {B};
+    \node[mynode] (C1) at (1,-1) {C};
+    \node[mynode] (D1) at (0,-2) {D};
+    
+    \path[myedge] (A1) -- (B1);
+    \path[myedge] (A1) -- (C1);
+    \path[myedge] (A1) -- (D1);
+    
+    % Transformed Tree 1
+    \node[mynode] (A2) at (3,0) {\pi(A)};
+    \node[mynode] (B2) at (2,-

@@ -1,25 +1,35 @@
-\documentclass[tikz,border=3mm]{standalone}
-\usetikzlibrary{shapes.geometric, positioning}
+Certainly! Below is a TikZ LaTeX code to visualize the Newsvendor Pricing Game scenario you described. This diagram will help illustrate the interaction between the supplier (leader) and the retailer (follower).
+
+```latex
+\documentclass[tikz,border=2cm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  decision/.style={diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt},
+  block/.style={rectangle, draw, fill=orange!30, text width=10em, text centered, rounded corners, minimum height=4em},
+  line/.style={draw, thick, -Stealth},
+  cloud/.style={cloud, draw, fill=red!20, text width=6em, text centered, aspect=2},
+}
 
 \begin{document}
-\begin{tikzpicture}[node distance=2cm]
-    % Define nodes for each problem
-    \node[rectangle, draw, fill=gray!20] (pmedian) {p-Median};
-    \node[rectangle, draw, fill=gray!40, below=of pmedian] (penvy) {p-Envy};
-    \node[rectangle, draw, fill=gray!60, below=of penvy] (pintraenvy) {p-Intra-Envy};
-
-    % Draw connections between nodes
-    \draw[-stealth] (pmedian) -- node[midway, above] {Solve} (penvy);
-    \draw[-stealth] (penvy) -- node[midway, above] {Optimize} (pintraenvy);
-
-    % Add dots and dashes as symbols
-    \foreach \i in {1,...,5} {
-        \node[circle, draw, fill=black, inner sep=1pt, below=of pintraenvy.south west, xshift=-2cm-\i*0.5cm] {};
-        \node[dash line, below=of pintraenvy.south east, xshift=\i*0.5cm] {};
-    }
-
-    % Add labels for the dots and dashes
-    \node[left] at (-2.5,-1) {Dots};
-    \node[right] at (2.5,-1) {Dashes};
-\end{tikzpicture}
-\end{document}
+\begin{tikzpicture}[node distance = 2cm]
+    % Nodes
+    \node [block] (supplier) {Supplier};
+    \node [decision, below of=supplier] (retailer) {Retailer};
+    
+    % Lines
+    \path [line] (supplier) -- node[anchor=east] {Wholesale Price: $a$} (retailer);
+    \path [line] (retailer) -- node[anchor=south] {Purchase Quantity: $b$} ++(0,-1);
+    \path [line] (retailer) -- node[anchor=north] {Retail Price: $p$} ++(0,1);
+    
+    % Arrows for interactions
+    \draw [<->, dashed, thick] (supplier.east) -- node[midway, above] {Utility Function} ++(2,0);
+    \draw [<->, dashed, thick] (retailer.west) -- node[midway, above] {Utility Function} ++(-2,0);
+    
+    % Clouds to represent uncertainty
+    \node [cloud, left of=supplier, xshift=-3cm] (demand) {Demand};
+    \node [cloud, right of=retailer, xshift=3cm] (market) {Market};
+    
+    % Labels
+    \node [below of=demand, yshift=-1cm] {Uncertain Demand};
+    \node [above of=market, yshift=1

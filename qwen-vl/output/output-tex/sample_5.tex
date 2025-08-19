@@ -1,0 +1,45 @@
+python
+import tensorflow as tf
+from tensorflow.keras.applications import AlexNet
+from tensorflow.keras.layers import Dense, Flatten
+from tensorflow.keras.models import Model
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.datasets import cifar10
+from tensorflow.keras.regularizers import l1
+
+# Load CIFAR-10 dataset
+(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+# Original AlexNet
+base_model = AlexNet(weights='imagenet', include_top=False, input_shape=(32, 32, 3))
+x = base_model.output
+x = Flatten()(x)
+predictions = Dense(10, activation='softmax')(x)
+original_model = Model(inputs=base_model.input, outputs=predictions)
+
+# Compile the model
+original_model.compile(optimizer=Adam(), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+# Train the original model
+original_model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test))
+
+# Prune the model
+pruned_model = tf.keras.models.clone_model(original_model)
+pruned_model.set_weights(original_model.get_weights())
+
+# Apply L1 regularization for pruning
+for layer in pruned_model.layers:
+    if isinstance(layer, Dense):
+        layer.kernel_regularizer = l1(0.01)
+
+# Train the pruned model
+pruned_model.compile(optimizer=Adam(), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+pruned_model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test))
+
+# Evaluate the models
+original_acc = original_model.evaluate(x_test, y_test)[1]
+pruned_acc = pruned_model.evaluate(x_test, y_test)[1]
+
+print(f"Original Test Accuracy: {original_acc:.4f}")
+print(f"Pruned Test Accuracy: {pruned_acc:.4f}")

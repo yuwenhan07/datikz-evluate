@@ -1,0 +1,47 @@
+Certainly! Below is a TikZ LaTeX code that generates a diagram illustrating the differences between two forests, `tw S_N` and `tw S_M`, as described in your prompt. The key aspects include:
+
+1. The radius doubling with each decrementing layer, except for the specific step.
+2. The left circles representing `tw S_N`.
+3. The right circles representing `tw S_M`.
+4. The grey set representing the estimated forest `w_N` (lower layers of `tw S_M`) being subtracted from `tw S_N`.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Define the positions and sizes of the circles
+    \def\R{2} % Radius of the first circle
+    \def\n{5} % Number of layers
+
+    % Draw the left circles (new tower tw S_N)
+    \foreach \k in {0,...,\n}{
+        \draw[fill=blue] (0, -\R*\k) circle (\R);
+    }
+
+    % Draw the right circles (old tower tw S_M)
+    \foreach \k in {0,...,\n}{
+        \ifnum\k=\n-1
+            \draw[fill=green] (5, -\R*2*\k) circle (2*\R); % Quadruple radius for the special case
+        \else
+            \draw[fill=green] (5, -\R*\k) circle (\R);
+        \fi
+    }
+
+    % Draw the grey set (estimated forest w_N)
+    \foreach \k in {0,...,\n-2}{
+        \draw[fill=gray] (2.5, -\R*\k) circle (\R);
+    }
+    
+    % Draw labels
+    \node at (-2, 0) [left] {tw S_N};
+    \node at (7, 0) [right] {tw S_M};
+    \node at (2.5, -\R*(\n)) [below] {$w_N$};
+
+    % Draw lines connecting corresponding points
+    \foreach \k in {0,...,\n}{
+        \draw[-stealth] (0, -\R*\k) -- (5, -\R*\k);
+    }
+\end{tikzpicture}
+\end{document

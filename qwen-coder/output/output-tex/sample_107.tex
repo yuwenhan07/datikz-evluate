@@ -3,31 +3,27 @@
 
 \begin{document}
 
-\begin{tikzpicture}[scale=0.8]
-    % Define colors
-    \definecolor{orange}{RGB}{255,165,0}
-    \definecolor{blue}{RGB}{0,0,255}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (glycogen) [circle, draw, fill=gray!30] {Glycogen};
+    \node (glucose) [rectangle, draw, fill=blue!30] at (4,0) {Glucose};
+    \node (insulin) [rectangle, draw, fill=green!30] at (8,0) {Insulin};
+    \node (glucagon) [rectangle, draw, fill=red!30] at (12,0) {Glucagon};
 
-    % Background rectangle
-    \fill[white] (0,0) rectangle (10,2);
+    % Feeding state
+    \draw[->, thick] (glycogen) -- node[above] {Synthesis} (glucose);
+    \draw[->, thick] (glucose) -- node[below] {Absorption} (glycogen);
+    \draw[->, thick] (glucose) -- node[above] {Glycolysis} (glycogen);
+    \draw[->, thick] (insulin) -- node[right] {Inhibit Glucagon} (glucagon);
 
-    % Ruler line
-    \draw[thick, orange] (0,1) -- (10,1);
-    
-    % Numbers along the ruler
-    \foreach \x in {0, 1, ..., 9} {
-        \pgfmathparse{\x*0.1} % Convert index to number
-        \node at (\x, 1.2) [font=\small, blue] {\pgfmathresult};
-        
-        % Scientific notation for larger numbers
-        \ifnum\x>4
-            \pgfmathparse{\x*0.1} % Convert index to number
-            \node at (\x, 0.8) [font=\scriptsize, orange] {$1\times10^{\pgfmathresult}$};
-        \fi
-    }
+    % Fasting state
+    \draw[->, thick] (glycogen) -- node[above] {Breakdown} (glucose);
+    \draw[->, thick] (glucagon) -- node[right] {Stimulate Glycogenesis} (glycogen);
+    \draw[->, thick] (glucose) -- node[above] {Secretion} (glucose);
 
-    % Title
-    \node at (5, 2.3) [font=\large, bold, black] {Spectral Diagram of $|T|$ AN(H)};
+    % Labels
+    \node at (6,-2) {\textbf{Feeding}};
+    \node at (10,-2) {\textbf{Fasting}};
 \end{tikzpicture}
 
 \end{document}

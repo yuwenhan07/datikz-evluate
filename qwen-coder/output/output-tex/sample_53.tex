@@ -1,20 +1,31 @@
-\documentclass{standalone}
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
+Certainly! Below is a TikZ LaTeX code that generates a diagram representing the implied prior \( R^2 \) for an AR model with 12 lags. The code includes the top plot showing the prior \( R^2 \) for different priors and the bottom plot showing the prior means of the relative contributions to the \( R^2 \) of the regression coefficients.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{xcolor}
+\usetikzlibrary{positioning, decorations.markings}
+
+% Define colors
+\definecolor{arr2flatcolour}{RGB}{0,0,255} % Blue
+\definecolor{minnesotacolour}{RGB}{255,215,0} % Yellow
+\definecolor{gaussiancolour}{RGB}{0,255,0} % Green
+\definecolor{rhscolour}{RGB}{148,0,211} % Purple
+\definecolor{arr2minncolour}{RGB}{255,69,0} % Red
+\definecolor{arr2bumpcolour}{RGB}{173,216,230} % Light Blue
 
 \begin{document}
-\begin{tikzpicture}
-    \begin{axis}[
-        ybar,
-        symbolic x coords={Feature A, Feature B, Feature C, Feature D, Feature E, Feature F},
-        xtick=data,
-        nodes near coords,
-        nodes near coords align={vertical},
-        ylabel={Correlation Score},
-        title={Top 6 Most Correlated Features with Gender Flip}
-    ]
-        \addplot coordinates {(Feature A, 0.75) (Feature B, 0.65) (Feature C, 0.60) (Feature D, 0.55) (Feature E, 0.50) (Feature F, 0.45)};
-    \end{axis}
-\end{tikzpicture}
-\end{document}
+\begin{tikzpicture}[scale=0.8]
+
+% Top Plot: Prior R^2
+\node at (0,0) [draw,thick,inner sep=10pt] (topplot) {
+    \begin{scope}[yshift=-2cm]
+        \node[anchor=north west] {Top Plot};
+        \draw[->] (0,-0.5) -- (0,-2);
+        \draw[->] (-1.5,0) -- (2,0);
+        \filldraw[arr2flatcolour] (0,-1) circle (0.05);
+        \filldraw[minnesotacolour] (0,-1.5) circle (0.05);
+        \filldraw[gaussiancolour] (0,-2) circle (0.05);
+        \filldraw[rhscolour] (0,-2.5) circle (0.05);
+        \node[arr2flatcolour] at (0,-1) {ARR2 flat};
+        \node[minnesotacolour] at (0,-1.5) {Minnesota-type};
+       

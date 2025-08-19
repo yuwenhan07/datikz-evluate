@@ -2,33 +2,25 @@
 \usepackage{tikz}
 
 \begin{document}
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
+    % Define styles for nodes and edges
+    \tikzset{
+        mass/.style={circle, draw, fill=blue!20, minimum size=1cm},
+        spring/.style={thick, ->, >=stealth}
+    }
 
-% Define the coordinates of the vertices
-\coordinate (A) at (-1, 0);
-\coordinate (B) at (1, 0);
-\coordinate (C) at (0, 1.732);
-\coordinate (D) at (0, -1.732);
+    % Position the masses
+    \node[mass] (M) at (0,0) {M};
+    \node[mass] (m) at (4,0) {$m \ll M$};
 
-% Draw the edges of the tetrahedron
-\draw[thick] (A) -- (B) -- (C) -- cycle;
-\draw[thick] (A) -- (B) -- (D) -- cycle;
-\draw[thick] (A) -- (C) -- (D) -- cycle;
-\draw[thick] (B) -- (C) -- (D) -- cycle;
+    % Draw the springs
+    \draw[spring, bend left=45] (M.east) to node[midway, above] {$K$} (m.west);
+    \draw[spring, bend right=45] (M.west) to node[midway, below] {$k$} (m.east);
 
-% Draw the red lines
-\draw[red, thick] (A) -- (C);
-\draw[red, thick] (B) -- (D);
-
-% Draw the blue lines
-\draw[blue, thick] (A) -- (D);
-\draw[blue, thick] (B) -- (C);
-
-% Label the vertices
-\node at (A) [below left] {A};
-\node at (B) [below right] {B};
-\node at (C) [above] {C};
-\node at (D) [below] {D};
-
+    % Add labels
+    \node[above=2pt] at (M.north) {Mass $M$};
+    \node[above=2pt] at (m.north) {Mass $m \ll M$};
+    \node[left=2pt] at (M.west) {Spring $K$};
+    \node[right=2pt] at (m.east) {Spring $k$};
 \end{tikzpicture}
 \end{document}

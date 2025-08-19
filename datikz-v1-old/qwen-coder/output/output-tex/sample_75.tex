@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define the center point
+    \coordinate (center) at (0,0);
+
+    % Draw the outermost half-sphere
+    \fill[gray!30] (center) circle[radius=1.5cm];
+    \draw[thick] (center) circle[radius=1.5cm];
+
+    % Draw the middle half-sphere
+    \fill[gray!40] (center) circle[radius=1cm];
+    \draw[thick] (center) circle[radius=1cm];
+
+    % Draw the innermost half-sphere
+    \fill[gray!50] (center) circle[radius=0.5cm];
+    \draw[thick] (center) circle[radius=0.5cm];
+\end{tikzpicture}
+
+\end{document}

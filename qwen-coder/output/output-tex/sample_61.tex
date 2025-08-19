@@ -1,29 +1,42 @@
-\documentclass{article}
-\usepackage{tikz}
-\usetikzlibrary{calc}
+To represent the given combinatorial problem instance using TikZ in LaTeX, we can create a diagram that includes value-vertices, variable-vertices, constraint-vertices, and model-vertex. Below is the TikZ code to generate this diagram:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    value/.style={draw, fill=green!30, circle, minimum size=1em},
+    variable/.style={draw, fill=red!30, rectangle, minimum size=1em},
+    constraint/.style={draw, fill=blue!30, ellipse, minimum size=1.5em},
+    model/.style={draw, fill=yellow!30, diamond, minimum size=1.5em},
+    operator/.style={draw, fill=orange!30, circle, inner sep=1pt},
+    edge/.style={->, thick}
+}
 
 \begin{document}
+\begin{tikzpicture}[node distance=2cm]
 
-\begin{tikzpicture}
-    % Define the center of the circle and its radius
-    \def\center{(0,0)}
-    \def\radius{2cm}
+    % Value vertices
+    \node[value] (v1) at (0,0) {1};
+    \node[value] (v2) at (2,0) {2};
 
-    % Draw the circle
-    \draw[thick] (0,0) circle (\radius);
+    % Variable vertices
+    \node[variable] (x1) at (-1,-1) {$x_1$};
+    \node[variable] (x2) at (1,-1) {$x_2$};
 
-    % Rotate angle
-    \def\angle{30}
+    % Constraint vertices
+    \node[constraint] (c1) at (0,-2) {$\leq$};
+    \node[constraint] (c2) at (2,-2) {\texttt{ext}};
 
-    % Calculate new point after rotation using calc library
-    \coordinate (newpoint) at ($(center)!1!\angle:(center)$);
+    % Model vertex
+    \node[model] (m) at (0,-3) {};
 
-    % Draw the radius line
-    \draw[->, thick] (center) -- (newpoint) node[midway, above right] {$r$};
+    % Operators
+    \node[operator] (op1) at (-1,-2.5) {$\times$};
+    \node[operator] (op2) at (1,-2.5) {$\times$};
 
-    % Draw the angle label
-    \node at ($(center) + (\angle:1cm)$) [anchor=south west] {\(\theta = 30^\circ\)};
-
-\end{tikzpicture}
-
-\end{document}
+    % Edges
+    \draw[edge] (v1) -- node[left] {1} (x1);
+    \draw[edge] (v2) -- node[right] {2} (x1);
+    \draw[edge] (x2) -- node[right] {2} (op2);
+    \draw[edge] (op1

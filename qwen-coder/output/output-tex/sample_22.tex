@@ -1,37 +1,46 @@
-Certainly! Below is an example of how you can create a visually appealing diagram using TikZ and TikZ-cd that includes overlapping circles in various sizes and colors.
+Certainly! Below is the TikZ LaTeX code for the two diagrams you described:
 
 ```latex
-\documentclass{standalone}
-\usepackage{tikz-cd}
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    node style/.style={draw, circle, minimum size=1cm},
+    arrow style/.style={->, thick, >=Stealth[length=6pt]}
+}
 
 \begin{document}
 
-\begin{tikzpicture}[overlay, remember picture]
-    % Define colors
-    \definecolor{red}{RGB}{255,0,0}
-    \definecolor{blue}{RGB}{0,0,255}
-    \definecolor{green}{RGB}{0,255,0}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes for the left diagram
+    \node[node style] (S) {S};
+    \node[node style, below=of S] (Nx) {$N[x]$};
+    \node[node style, right=of Nx] (Ny) {$N[y]$};
+    \node[node style, below=of Ny, xshift=-1cm] (Z) {$Z$};
 
-    % Draw circles
-    \draw[fill=red] (0,0) circle (1cm);
-    \draw[fill=blue] (-2,-2) circle (1.5cm);
-    \draw[fill=green] (3,-1) circle (1cm);
-    \draw[fill=red] (1,2) circle (0.7cm);
-    \draw[fill=blue] (-1,1) circle (1cm);
-    \draw[fill=green] (2,-4) circle (1.2cm);
+    % Arrows for the left diagram
+    \draw[arrow style] (S) -- (Nx);
+    \draw[arrow style] (S) -- (Ny);
+    \draw[arrow style] (Nx) -- (Z);
+    \draw[arrow style] (Ny) -- (Z);
 
-    % Add labels if needed
-    \node at (0,0) [above right] {A};
-    \node at (-2,-2) [below left] {B};
-    \node at (3,-1) [above left] {C};
-    \node at (1,2) [below right] {D};
-    \node at (-1,1) [above] {E};
-    \node at (2,-4) [below] {F};
+    % Labels for the left diagram
+    \node[above=0.5cm of Nx] {S $\nsubseteq$ $N[x]$ \cup $N[y]$};
+    \node[right=0.5cm of Z] {$|Z| \ge 5$};
 
-    % Connect circles with arrows for a sequence
-    \draw[-stealth] (0,0) -- node[midway, above] {$f_1$} (-2,-2);
-    \draw[-stealth] (-2,-2) -- node[midway, below] {$f_2$} (3,-1);
-    \draw[-stealth] (3,-1) -- node[midway, above left] {$f_3$} (1,2);
-    \draw[-stealth] (1,2) -- node[midway, below right] {$f_4$} (-1,1);
-    \draw[-stealth] (-1,1) -- node[midway, above] {$f_5$} (2,-4);
-    \draw
+    % Nodes for the right diagram
+    \node[node style, at={(4,0)}] (xi) {$x_i$};
+    \node[node style, above=of xi] (Y) {$Y$};
+    \node[node style, below=of xi] (Ni) {$N(x_i)$};
+
+    % Arrows for the right diagram
+    \draw[arrow style] (xi) -- (Ni);
+    \draw[arrow style] (Ni) -- (Y);
+
+    % Labels for the right diagram
+    \node[above=0.5cm of Ni] {Suppose, to the contrary,};
+    \node[left=0.5cm of Yi] {there exists $x_i$};
+    \node[right=0.5cm of Yi] {such that $|N(x_i) \cap Y| \ge 5$};
+\end{tikzpicture}
+
+\end{document}

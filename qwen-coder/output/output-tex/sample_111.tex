@@ -1,29 +1,45 @@
-\documentclass{standalone}
-\usepackage{tikz}
+Certainly! Below is a TikZ LaTeX code that generates a diagram illustrating the relationship between a bipartite graph for the \textsc{Bipartite Crossing Number} problem and its corresponding instance of \panelcrossmin.
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{shapes,arrows.meta}
+
+\tikzset{
+    node distance=2cm,
+    vertex/.style={circle, draw, fill=blue!20},
+    edge/.style={thick,->,>=Stealth},
+    panel/.style={rectangle, draw, fill=green!20, minimum width=4cm, minimum height=3cm},
+}
 
 \begin{document}
 
-\begin{tikzpicture}[scale=2]
-    % Define the positions of the boxes
-    \foreach \i in {0,1,2,3,4,5} {
-        \node (box\i) at ({cos(60*\i)}, {sin(60*\i)}) {};
-        \draw (box\i) rectangle ++(-0.2,-0.2);
-        \node at (box\i) {\textbf{\i}};
-    }
+\begin{tikzpicture}[scale=0.8]
 
-    % Draw the circle connecting the boxes
-    \draw[thick] (box0.center) -- (box1.center) -- (box2.center) -- (box3.center) -- (box4.center) -- (box5.center) -- cycle;
+% Bipartite Graph for Bipartite Crossing Number
+\node (v1) at (-3,2) [vertex] {v1};
+\node (v2) at (-3,0) [vertex] {v2};
+\node (v3) at (-1,2) [vertex] {v3};
+\node (v4) at (-1,0) [vertex] {v4};
+\node (v5) at (1,2) [vertex] {v5};
+\node (v6) at (1,0) [vertex] {v6};
 
-    % Indicate the cutting points
-    \filldraw[red] (box2.center) circle (0.05);
-    \filldraw[blue] (box4.center) circle (0.05);
+\draw[edge] (v1) -- (v3);
+\draw[edge] (v1) -- (v5);
+\draw[edge] (v2) -- (v4);
+\draw[edge] (v2) -- (v6);
+\draw[edge] (v3) -- (v5);
+\draw[edge] (v4) -- (v6);
 
-    % Add labels for clarity
-    \node[left] at (box0.north) {Set: $\{0, 1, 2, 3, 4, 5\}$};
-    \node[right] at (box5.south) {Cutting Points};
-    \node[below left] at (box2.west) {Point 1};
-    \node[below right] at (box4.east) {Point 2};
+\node[above=of v1] {$\tau_1$:};
+\node[below=of v2] {$\tau_2$:};
+\node[left=of v3] {$v_3$};
+\node[right=of v5] {$v_5$};
+\node[left=of v4] {$v_4$};
+\node[right=of v6] {$v_6$};
 
-\end{tikzpicture}
+% Panel for \panelcrossmin
+\node (panel) at (4,-0.5) [panel] {};
+\node[above=of panel] {\panelcrossmin{}:};
+\node[below=of panel] {$\sigma$:};
 
-\end{document}
+%

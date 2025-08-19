@@ -1,35 +1,25 @@
-\documentclass[tikz]{standalone}
+\documentclass{standalone}
 \usepackage{tikz}
 
 \begin{document}
 
-\begin{tikzpicture}[scale=2]
-    % Define the vertices
-    \node (A) at (-1, 0) [circle, fill=black] {};
-    \node (B) at (1, 0) [circle, fill=black] {};
-    \node (C) at (-2, -1) [circle, fill=black] {};
-    \node (D) at (2, -1) [circle, fill=black] {};
-    \node (E) at (-1, -2) [circle, fill=black] {};
-    \node (F) at (1, -2) [circle, fill=black] {};
+\begin{tikzpicture}[scale=1.5]
 
-    % Draw the edges
-    \draw (A) -- (B);
-    \draw (A) -- (C);
-    \draw (A) -- (E);
-    \draw (B) -- (D);
-    \draw (B) -- (F);
-    \draw (C) -- (D);
-    \draw (D) -- (E);
-    \draw (E) -- (F);
-    \draw (F) -- (C);
+% Define coordinates for V(a_n, b_{n+j}, M_l)
+\coordinate (V) at (3, 4, 0);
 
-    % Add labels if needed
-    % \node at (A) {A};
-    % \node at (B) {B};
-    % \node at (C) {C};
-    % \node at (D) {D};
-    % \node at (E) {E};
-    % \node at (F) {F};
+% Draw the curve nu_2 passing twice through V
+\draw[thick, smooth] plot[domain=0:6, samples=100] (\x, {0.5*\x^2 - 2*\x + 4});
+\draw[thick, smooth, dashed] plot[domain=0:6, samples=100] (\x, {0.5*\x^2 - 2*\x + 4});
+
+% Mark the point V
+\node[circle, fill, inner sep=2pt] at (V) {};
+\node[above right] at (V) {$V(a_n, b_{n+j}, M_l)$};
+
+% Label axes if needed
+\draw[->] (0,0,0) -- (7,0,0) node[right] {$x$};
+\draw[->] (0,0,0) -- (0,8,0) node[above] {$y$};
+\draw[->] (0,0,0) -- (0,0,8) node[left] {$z$};
 
 \end{tikzpicture}
 

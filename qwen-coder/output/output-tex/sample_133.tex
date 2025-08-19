@@ -1,36 +1,38 @@
-To create a TikZ LaTeX diagram that represents the composition of transformations mapping \( v_3^B \) to \( v_3^A \) through two intermediate bases \( B \), \( C \), and \( A \), we need to visualize the steps involved in this process. Each step will involve an integral over the principal series with a kernel proportional to a 6j symbol.
-
-Here is a possible TikZ code to represent this scenario:
+Certainly! Below is a TikZ LaTeX code snippet that represents a Deterministic Finite Automaton (DFA) \( T_i \) for computing the sequence-to-sequence language \( g(w', p) = I_{L_{\texttt{swap}(p,i)}}(w') \) where \( i = 3 \). The symbols \(\sigma\) and \(\sigma'\) refer to any symbol in \(\Sigma\) and \(\Sigma_{\#}\), respectively.
 
 ```latex
-\documentclass{standalone}
+\documentclass{article}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta}
-
-\tikzset{
-    block/.style={rectangle, draw=black, fill=white!20, text width=5em, text centered, rounded corners, minimum height=4em},
-    line/.style={draw, thick, -Stealth, shorten >=1pt},
-    decision/.style={diamond, draw=black, fill=white!20, text width=5em, text badly centered, node distance=3cm, inner sep=0pt},
-    cloud/.style={cloud, draw=black, fill=white!20, text width=7em, text badly centered, aspect=2},
-}
+\usetikzlibrary{automata, positioning}
 
 \begin{document}
 
-\begin{tikzpicture}[node distance=2cm]
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm, auto]
+        % Nodes
+        \node[state] (q0) [initial, initial text={}] {$q_0$};
+        \node[state] (q1) [below left of=q0] {$q_1$};
+        \node[state] (q2) [below right of=q0] {$q_2$};
+        \node[state] (q3) [below left of=q1] {$q_3$};
+        \node[state] (q4) [below right of=q1] {$q_4$};
+        \node[state] (q5) [below left of=q2] {$q_5$};
+        \node[state] (q6) [below right of=q2] {$q_6$};
 
-\node (v3_B) [block] {\( v_3^B \)};
-\node (v3_C) [block, below of=v3_B] {\( v_3^C \)};
-\node (v3_A) [block, below of=v3_C] {\( v_3^A \)};
+        % Edges
+        \path[->]
+            (q0) edge node[left] {\(\sigma\)} (q1)
+                 edge node[right] {\(\sigma'\)} (q2)
+            (q1) edge node[left] {\(\sigma\)} (q3)
+                 edge node[right] {\(\sigma'\)} (q4)
+            (q2) edge node[left] {\(\sigma\)} (q5)
+                 edge node[right] {\(\sigma'\)} (q6);
 
-\node (integral1) [decision, left of=v3_C, xshift=-3cm] {Integral};
-\node (integral2) [decision, right of=v3_C, xshift=3cm] {Integral};
+        % Accept states
+        \node[state, accepting] (q7) [right of=q6] {$q_7$};
 
-\node (kernel1) [cloud, above of=integral1, yshift=2cm] {Kernel \\ Proportional to 6j Symbol};
-\node (kernel2) [cloud, below of=integral2, yshift=-2cm] {Kernel \\ Proportional to 6j Symbol};
-
-% Draw lines
-\draw [line] (v3_B) -- (v3_C);
-\draw [line] (v3_C) -- (v3_A);
-
-\draw [line] (v3_C) |- (integral1);
-\draw [
+        % Edges to accept state
+        \path[->]
+            (q3) edge node[above] {accept} (q7)
+            (q5) edge node[above] {accept} (q7);
+    \end{tikzpicture}

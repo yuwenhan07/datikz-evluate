@@ -1,21 +1,31 @@
-\documentclass{standalone}
-\usepackage{tikz}
+Certainly! Below is a TikZ LaTeX code that visualizes the connections between states by the factorization operators of the supersymmetric ladder of Hamiltonians \(\{H_0, H_1, H_2, H_3, H_4\}\) for calculating the eigenstates up to \(|4\rangle_0\) of the anharmonic oscillator Hamiltonian \(H_0\).
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{arrows.meta, positioning}
+
+\tikzset{
+    node distance=2cm,
+    base/.style={circle, draw, fill=blue!30, minimum size=1em},
+    arrow/.style={->, thick, >=Stealth[length=8pt]}
+}
 
 \begin{document}
+\begin{tikzpicture}[auto]
+    % Nodes representing states
+    \node (H0) [base] at (0,0) {$|0\rangle_0$};
+    \node (H1) [base, below=of H0] {$|1\rangle_0$};
+    \node (H2) [base, below=of H1] {$|2\rangle_0$};
+    \node (H3) [base, below=of H2] {$|3\rangle_0$};
+    \node (H4) [base, below=of H3] {$|4\rangle_0$};
 
-\begin{figure}[h]
-    \centering
-    % Normal Website
-    \begin{tikzpicture}
-        \fill[white] (0,0) rectangle (2,2);
-        \node at (1,1) {Normal Website};
-    \end{tikzpicture}%
-    % Broken Website
-    \begin{tikzpicture}
-        \fill[white] (4,0) rectangle (6,2);
-        \draw[red, thick] (4,0) rectangle (6,2);
-        \node at (5,1) {Broken Website};
-    \end{tikzpicture}%
-\end{figure}
+    % Factorization operators connecting states
+    \draw[arrow] (H0) -- node[above, midway] {$_{F_1}$} (H1);
+    \draw[arrow] (H1) -- node[above, midway] {$_{F_2}$} (H2);
+    \draw[arrow] (H2) -- node[above, midway] {$_{F_3}$} (H3);
+    \draw[arrow] (H3) -- node[above, midway] {$_{F_4}$} (H4);
 
-\end{document}
+    % Labels for Hamiltonians
+    \node (label_H0) [below=of H0, yshift=-1.5cm] {$H_0$};
+    \node (label_H1) [below=of H1, yshift=-1.5cm] {$H_1$};
+    \node (label_H2) [below=of

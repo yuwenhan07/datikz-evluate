@@ -1,0 +1,37 @@
+Certainly! Below is a TikZ LaTeX code that generates a disjunctive graph to demonstrate job-shop scheduling problems. This example includes nodes representing tasks and thin dashed arrows indicating feasible or infeasible paths.
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  node distance=2cm,
+  startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30},
+  process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+  decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
+  arrow/.style={thick,->,>=stealth}
+}
+
+\begin{document}
+\begin{tikzpicture}[auto]
+
+\node (start) [startstop] {Start};
+\node (process1) [process, below of=start] {Process 1};
+\node (decision1) [decision, below of=process1, yshift=-1cm] {Decision};
+\node (process2) [process, left of=decision1, xshift=-3cm] {Process 2};
+\node (process3) [process, right of=decision1, xshift=3cm] {Process 3};
+\node (process4) [process, below of=decision1, yshift=-3cm] {Process 4};
+\node (end) [startstop, below of=process4, yshift=-2cm] {End};
+
+% Dashed arrows for feasible paths
+\draw[arrow,dashed] (start) -- (process1);
+\draw[arrow,dashed] (process1) -- (decision1);
+\draw[arrow,dashed] (process2) -- (decision1);
+\draw[arrow,dashed] (decision1) -- (process3);
+\draw[arrow,dashed] (decision1) -- (process4);
+\draw[arrow,dashed] (process4) -- (end);
+
+% Solid arrows for infeasible paths
+\draw[arrow] (process3) -- (process2);
+\draw[arrow] (process4) -- (process3);
+

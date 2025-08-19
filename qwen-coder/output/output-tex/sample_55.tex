@@ -1,27 +1,30 @@
-\documentclass{standalone}
-\usepackage{tikz}
-\usetikzlibrary{matrix}
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta}
 
 \begin{document}
-\begin{tikzpicture}
-    \matrix (eqs) [
-        matrix of math nodes,
-        column sep=1cm,
-        row sep=2cm,
-        align=center,
-        text height=1.5ex,
-        text depth=0.25ex,
-        every odd row/.style={nodes={anchor=south}},
-        every even row/.style={nodes={anchor=north}}
-    ] {
-        1 & = & 2 \\
-        3 & = & 4 \\
-        5 & = & 6 \\
-        7 & = & 8 \\
-    };
 
-    % Draw lines to connect the equals signs
-    \draw[dashed] (eqs-1-2.north) -- (eqs-2-2.south);
-    \draw[dashed] (eqs-3-2.north) -- (eqs-4-2.south);
+\tikzset{
+    solid/.style={thick,black},
+    dashed/.style={dashed,blue},
+    dotted-dashed/.style={dash pattern=on 4pt off 4pt,red}
+}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (A) {A};
+    \node (B) [right of=A] {B};
+    \node (C) [below of=B] {C};
+
+    % Paths
+    \draw[solid] (A) -- node[above] {Path 1} (B);
+    \draw[dashed] (B) -- node[right] {Path 2} (C);
+    \draw[dotted-dashed] (A) -- node[left] {Path 3} (C);
+    \draw[dotted-dashed] (B) -- node[below] {Path 4} (A);
+
+    % Labels
+    \node[below left=of A.south west] {Assumption \ref{cond:irre1}};
+    \node[below right=of B.south east] {Assumption \ref{cond:irre2}};
+    \node[above left=of C.north west] {All black solid paths are permissible};
 \end{tikzpicture}
+
 \end{document}

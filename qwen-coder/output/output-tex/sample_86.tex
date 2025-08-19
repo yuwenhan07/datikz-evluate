@@ -1,26 +1,30 @@
-\documentclass{standalone}
+\documentclass[border=5mm]{standalone}
 \usepackage{tikz}
 
 \begin{document}
 
 \begin{tikzpicture}[scale=2]
-    % Draw the circle
-    \draw (0,0) circle (1);
 
-    % Define the points on the circle
-    \foreach \i in {0, 90, 180, 270} {
-        \node[fill=black,circle,scale=0.5] at (\i:1) {};
-        \coordinate (P\i) at (\i:1);
-    }
+    % Define coordinates
+    \coordinate (u_i) at (-3,0);
+    \coordinate (u_prime_i) at (3,0);
+    \coordinate (delta_M) at (0,-1.5);
+    \coordinate (delta_prime_M) at (0,-3);
 
-    % Draw the arrows
-    \draw[-stealth, thick] (P0) -- node[midway, above] {} (P90);
-    \draw[-stealth, thick] (P90) -- node[midway, right] {} (P180);
-    \draw[-stealth, thick] (P180) -- node[midway, below] {} (P270);
-    \draw[-stealth, thick] (P270) -- node[midway, left] {} (P0);
+    % Draw lines
+    \draw[-stealth] (u_i) -- node[midway,below] {$u_i$} ++(6,0);
+    \draw[-stealth] (u_prime_i) -- node[midway,below] {$u'_i$} ++(-6,0);
+    \draw[dashed,-stealth] (delta_M) -- node[midway,below] {$\delta_M$} ++(0,-3);
+    \draw[dashed,-stealth] (delta_prime_M) -- node[midway,below] {$\delta'_M$} ++(0,-3);
 
-    % Connect the last point back to the first for completeness
-    \draw[-stealth, thick] (P270) -- (P0);
+    % Add annotations
+    \node at (0,1) {DISC};
+    \node at (0,-4) {$\delta_M + \mathbf{p}_i(1) \geq \delta'^{\prime}_M \geq \delta_M$};
+
+    % Draw arrows showing relationships
+    \draw[-stealth] (u_i) -- node[midway,right] {$\geq$} (delta_prime_M);
+    \draw[-stealth] (delta_prime_M) -- node[midway,right] {$\geq$} (delta_M);
+
 \end{tikzpicture}
 
 \end{document}

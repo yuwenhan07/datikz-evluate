@@ -2,33 +2,34 @@
 \usepackage{tikz}
 
 \begin{document}
+\begin{tikzpicture}[node distance=2cm, auto]
 
-\begin{tikzpicture}[x=1cm, y=1cm]
-
-% Background
-\fill[white] (0,0) rectangle (6,4);
-
-% Red blocks
-\draw[red] (0.5,3) -- (2.5,3);
-\draw[red] (1,2) -- (3,2);
-\draw[red] (1.5,1) -- (3.5,1);
-
-% Blue blocks
-\draw[blue] (4.5,3) -- (6.5,3);
-\draw[blue] (5,2) -- (7,2);
-\draw[blue] (5.5,1) -- (7.5,1);
-
-% Black blocks
-\draw[black] (2,0) -- (4,0);
-\draw[black] (2.5,-1) -- (4.5,-1);
-
-% Adding some visual interest
-\foreach \x in {0, 1, 2, 3, 4, 5, 6} {
-    \foreach \y in {0, 1, 2, 3} {
-        \fill[gray!20] (\x, \y) circle (0.05);
-    }
-}
-
+    % Define nodes
+    \node (A) at (0,0) {Set \( A \)};
+    \node (B) at (3,0) {Set \( B \)};
+    \node (C) at (6,0) {Set \( A \cap B \)};
+    
+    % Draw sets
+    \draw[thick] (A.west) rectangle (A.east |- C.south);
+    \draw[thick] (B.west) rectangle (B.east |- C.south);
+    \draw[dashed, thick] (C.west) rectangle (C.east |- A.north);
+    
+    % Define points
+    \node (zk) at (0,-2) {$z_k$};
+    \node (zkh) at (3,-2) {$\hat{z}_k$};
+    \node (zkplusone) at (6,-2) {$z_{k+1}$};
+    
+    % Draw points
+    \filldraw (zk) circle (2pt) node[below]{$0$};
+    \filldraw (zkh) circle (2pt) node[below]{$1$};
+    \filldraw (zkplusone) circle (2pt) node[below]{?};
+    
+    % Draw arrows
+    \draw[-stealth] (zk) -- (zkplusone);
+    \draw[-stealth] (zkplusone) ++(0,1) -- (zkplusone|-C.north);
+    
+    % Add labels
+    \node at (3,-4) {Condition: \( f_i(z_{k+1} + 1) \notin A \cap B \)};
+    
 \end{tikzpicture}
-
 \end{document}

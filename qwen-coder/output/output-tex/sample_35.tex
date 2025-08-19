@@ -2,16 +2,31 @@
 \usepackage{tikz}
 
 \begin{document}
-\begin{tikzpicture}[scale=2]
-    % Set the background color to white
-    \fill[white] (0,0) rectangle (\paperwidth,\paperheight);
-    
-    % Define the spiral parameters
-    \def\radius{1cm}
-    \def\angleincrement{3}
-    \def\maxangle{360}
-    
-    % Draw the spiral
-    \draw[blue, thick] plot[variable=\t, domain=0:\maxangle, samples=1000] ({\radius*cos(\t*\angleincrement)}, {\radius*sin(\t*\angleincrement)});
+
+\begin{tikzpicture}[node distance=2cm, auto]
+
+% Define styles for nodes and edges
+\tikzstyle{vertex} = [circle, draw, fill=blue!20]
+\tikzstyle{edge} = [-stealth, thick]
+\tikzstyle{weight} = [font=\small]
+
+% Initial unweighted graph H (blue)
+\node[vertex] (A) {A};
+\node[vertex] (B) [right of=A] {B};
+\node[vertex] (C) [below of=A] {C};
+\node[vertex] (D) [below of=B] {D};
+
+\draw[edge] (A) -- node[weight] {} (B);
+\draw[edge] (A) -- node[weight] {} (C);
+\draw[edge] (B) -- node[weight] {} (D);
+
+% Additional vertices and edges with weight |U| (red)
+\node[vertex, right of=D] (E) {E};
+\node[vertex, below of=E] (F) {F};
+\draw[edge, color=red] (D) -- node[weight, color=red] {$|U|$} (E);
+\draw[edge, color=red] (E) -- node[weight, color=red] {$|U|$} (F);
+\draw[edge, color=red] (F) -- node[weight, color=red] {$|U|$} (D);
+
 \end{tikzpicture}
+
 \end{document}

@@ -1,36 +1,26 @@
 \documentclass{standalone}
 \usepackage{tikz}
+\usetikzlibrary{matrix}
 
 \begin{document}
-\begin{tikzpicture}[scale=2]
-    % Background
-    \fill[white] (-2,-2) rectangle (2,2);
 
-    % Complex Formula
-    \node at (0,0) [font=\large] {
-        $z = f(\theta)$
-    };
+% Define styles
+\tikzset{
+    mathstyle/.style={font=\scriptsize},
+    brace/.style={thick,decorate,decoration={brace,amplitude=5pt}},
+}
 
-    % Black Dot
-    \fill[black] (0,0) circle (0.05);
+\begin{tikzpicture}[node distance=1cm]
 
-    % Path and Foliation
-    \draw[thick] (-1.5,-1.5) -- (1.5,1.5);
-    \foreach \x in {-1.5,-1,-0.5,0.5,1.5} {
-        \foreach \y in {-1.5,-1,-0.5,0.5,1.5} {
-            \ifthenelse{\abs{x}+\abs{y}<1.5}{
-                \fill[red] (\x,\y) circle (0.03);
-            }{}
-        }
-    }
+    % Node for E(P_hat_B_2_4)
+    \node (EP_hat_B_2_4) {$\mathbf{E}\left(\widehat{\mathcal{P}}_{\mathcal{B}_{2,4}}\right)$};
 
-    % Waves
-    \draw[blue,domain=-2:2,samples=100] plot ({\x},{sin(\x r)}); % Sine Wave
+    % Node for mu_B_2_4
+    \node[below=of EP_hat_B_2_4] (mu_B_2_4) {$\mu_{\mathcal{B}_{2,4}}$};
 
-    % Arrows
-    \draw[-stealth] (0,-1.5) -- (0,-0.5);
-    \draw[-stealth] (0,0.5) -- (0,1.5);
-    \draw[-stealth] (-1.5,0) -- (-0.5,0);
-    \draw[-stealth] (0.5,0) -- (1.5,0);
+    % Braces connecting nodes
+    \draw[brace] ([yshift=-0.5ex]EP_hat_B_2_4.south west) -- node[midway,yshift=-3ex] {Brace} ([yshift=-0.5ex]mu_B_2_4.south east);
+
 \end{tikzpicture}
+
 \end{document}

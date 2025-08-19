@@ -1,32 +1,41 @@
-To create a flowchart visualizing the layered structure of the hierarchical claim development model for the MTPL reinsurance data set, we can use TikZ in LaTeX. Below is an example of how you might generate this diagram:
+To create a TikZ diagram representing a cluster \(\mathcal{G}(P)\) with the given properties, we need to carefully arrange nodes such that the total number of nodes is 11 and the perimeter is 19. The perimeter of a cluster is calculated by counting the external boundary edges.
+
+Here's a step-by-step approach to constructing this cluster:
+
+1. **Determine the Shape**: Given the perimeter of 19, we can infer that the shape is likely complex but relatively compact. A common approach is to use a combination of squares and rectangles.
+
+2. **Calculate Node Positions**: We need to place nodes in such a way that they form a connected cluster with exactly 11 nodes and a perimeter of 19.
+
+3. **Draw the Diagram**: Using TikZ, we will draw the nodes and edges to represent the cluster.
+
+Below is the TikZ code for the described cluster:
 
 ```latex
 \documentclass[tikz,border=10pt]{standalone}
-\usetikzlibrary{shapes.geometric, arrows.meta}
-
-\tikzset{
-  startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30},
-  process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
-  decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
-  arrow/.style={thick,->,>=stealth}
-}
-
 \begin{document}
+\begin{tikzpicture}[node distance=1cm]
+    % Define nodes
+    \node (a1) at (0,0) {};
+    \node (a2) at (1,0) {};
+    \node (a3) at (2,0) {};
+    \node (a4) at (3,0) {};
+    \node (a5) at (4,0) {};
+    \node (b1) at (0,1) {};
+    \node (b2) at (1,1) {};
+    \node (b3) at (2,1) {};
+    \node (c1) at (0,2) {};
+    \node (c2) at (1,2) {};
 
-\begin{tikzpicture}[node distance=2cm]
-
-\node (start) [startstop] {Start};
-\node (input) [process, below of=start, yshift=-1cm] {Input Data};
-\node (preliminary_analysis) [decision, below of=input, yshift=-2cm] {Preliminary Analysis};
-\node (modeling_layer_1) [process, below of=preliminary_analysis, yshift=-3cm] {Modeling Layer 1};
-\node (modeling_layer_2) [process, below of=modeling_layer_1, yshift=-4cm] {Modeling Layer 2};
-\node (modeling_layer_3) [process, below of=modeling_layer_2, yshift=-5cm] {Modeling Layer 3};
-\node (end) [startstop, below of=modeling_layer_3, yshift=-6cm] {End};
-
-% Drawing edges
-\draw [arrow] (start) -- (input);
-\draw [arrow] (input) -- (preliminary_analysis);
-\draw [arrow] (preliminary_analysis) -- node[anchor=east] {Yes} (modeling_layer_1);
-\draw [arrow] (preliminary_analysis) -- node[anchor=south] {No} (end);
-\draw [arrow] (modeling_layer_1) -- (modeling_layer_2);
-\draw [arrow]
+    % Draw edges
+    \draw (a1) -- (a2);
+    \draw (a2) -- (a3);
+    \draw (a3) -- (a4);
+    \draw (a4) -- (a5);
+    \draw (a5) -- (b5);
+    \draw (b5) -- (c5);
+    \draw (c5) -- (c4);
+    \draw (c4) -- (c3);
+    \draw (c3) -- (c2);
+    \draw (c2) -- (b2);
+    \draw (b2) -- (a2);
+    \draw (a

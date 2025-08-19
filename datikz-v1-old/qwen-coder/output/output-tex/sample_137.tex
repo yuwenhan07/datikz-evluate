@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    % Define the rectangle dimensions
+    \def\rectWidth{5}
+    \def\rectHeight{40}
+    
+    % Draw the rectangle
+    \draw[fill=blue!30] (0,0) rectangle (\rectWidth,\rectHeight);
+    
+    % Define the starting point for the arc
+    \coordinate (startPoint) at (2,0);
+    
+    % Define the end point for the arc
+    \coordinate (endPoint) at (2,\rectHeight);
+    
+    % Draw the arc
+    \draw[thick,->,red] (startPoint) .. controls +(1,-5) and +(1,5) .. (endPoint);
+    
+    % Define the positions for the numbers
+    \foreach \y in {0,5,...,40} {
+        \node[below left, font=\small, text=white] at (0,\y) {\pgfmathparse{\y/5}\pgfmathresult};
+    }
+    
+    % Add labels for the numbers
+    \node[above right, font=\small, text=black] at (5,0) {$5$};
+    \node[above right, font=\small, text=black] at (5,40) {$9.8$};
+    
+    % Add a title or description if needed
+    \node[above center, font=\large, text=black] at (2.5,45) {Number Sequence};
+\end{tikzpicture}
+\end{document}

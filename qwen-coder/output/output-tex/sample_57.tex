@@ -1,47 +1,28 @@
-Certainly! Below is a LaTeX code using TikZ to create a visual representation of the described k-supertile pattern. This pattern consists of equilateral triangles of varying sizes, starting from the smallest at the center and increasing in size towards the edges.
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
 
-```latex
-\documentclass{standalone}
-\usepackage{tikz}
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white!20, text width=6em, text centered, rounded corners, minimum height=3em},
+    line/.style = {draw=black, thick, ->, >=stealth'}
+}
 
 \begin{document}
+\begin{tikzpicture}[node distance=2cm]
 
-\begin{tikzpicture}[scale=1.5]
-    % Define colors
-    \definecolor{background}{RGB}{255,255,255} % White background
+    % Nodes for AdS/CFT correspondence
+    \node (AdSCFT) [block] at (0,2) {Relativistic AdS$_5$/CFT$_4$};
 
-    % Set up the coordinate system
-    \newcommand{\tileSize}[1]{#1}
-    \newcommand{\centerTileSize}{2cm}
+    % Nodes for Non-Relativistic Correspondence
+    \node (NonRel) [block, below=of AdSCFT] {New Non-Relativistic Correspondence};
 
-    % Draw the central tile (k=0)
-    \fill[background] (-1, -1) rectangle (1, 1);
+    % Arrows to indicate limits
+    \path [line] 
+        node[anchor=east] {$\alpha' \to 0$} -- (AdSCFT.west)
+        node[anchor=south] {$c \to \infty$} -- (NonRel.south);
     
-    % Function to draw a triangle at given coordinates
-    \newcommand{\drawTriangle}[4]{
-        \fill[#2] (#1-\tileSize{#3}, #1+\tileSize{#3}/sqrt(3)) -- 
-                  (#1, #1-\tileSize{#3}) -- 
-                  (#1+\tileSize{#3}, #1+\tileSize{#3}/sqrt(3));
-    }
+    % Commutativity arrow
+    \path [line, dashed]
+        (AdSCFT.east) -- ++(1,0) -| (NonRel.north);
 
-    % Draw the outermost tiles (k=3)
-    \foreach \x in {-3,-2,-1,0,1,2,3}{
-        \foreach \y in {-3,-2,-1,0,1,2,3}{
-            \ifnum\x<2 \ifnum\x>-2 \ifnum\y<2 \ifnum\y>-2
-                \drawTriangle{\x}{background}{#3}
-            \fi\fi\fi\fi
-        }
-    }
-
-    % Draw the inner tiles (k=2)
-    \foreach \x in {-2,-1,0,1,2}{
-        \foreach \y in {-2,-1,0,1,2}{
-            \ifnum\x<1 \ifnum\x>-1 \ifnum\y<1 \ifnum\y>-1
-                \drawTriangle{\x}{background}{#3}
-            \fi\fi\fi\fi
-        }
-    }
-
-    % Draw the middle tiles (k=1)
-    \foreach \x in {-1,0,1}{
-        \foreach \y in {-1
+\end{tikzpicture}
+\end{document}

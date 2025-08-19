@@ -1,40 +1,30 @@
-Certainly! Below is a TikZ LaTeX code that represents the process of extracting the tuple \((P, X, s, Y)\) and the injective word \(a\) from a given blob diagram. The blocks in \(P\), and the labelings of \(Y\) are indicated at their lowermost nodes.
-
-```latex
-\documentclass[tikz,border=10pt]{standalone}
-\usetikzlibrary{shapes.geometric, arrows.meta}
-
-\tikzset{
-    block/.style={rectangle, draw=black, fill=white!30, text width=4em, text centered, rounded corners, minimum height=2em},
-    line/.style={->, thick, >=stealth'}
-}
+\documentclass{standalone}
+\usepackage{tikz}
 
 \begin{document}
-\begin{tikzpicture}[node distance=2cm]
 
-    % Nodes for P
-    \node [block] (P1) {Block 1};
-    \node [block, below=of P1] (P2) {Block 2};
-    \node [block, below=of P2] (P3) {Block 3};
+\begin{tikzpicture}[node distance=2cm, auto]
 
-    % Nodes for X
-    \node [block, right=of P1, xshift=3cm] (X1) {Block A};
-    \node [block, below=of X1] (X2) {Block B};
-    \node [block, below=of X2] (X3) {Block C};
+    % Nodes
+    \node (Operator) {Operator};
+    \node (Task) [below of=Operator] {Task};
+    \node (PickPoint) [below of=Task] {Pick Point};
+    \node (PlacePoint) [below of=PickPoint] {Place Point};
+    \node (Object) [below of=PlacePoint] {Object};
+    \node (ArmPosition) [right of=PickPoint, xshift=3cm] {Arm Position};
+    \node (GripperState) [right of=PlacePoint, xshift=3cm] {Gripper State};
 
-    % Node for s
-    \node [block, above=of P1, yshift=3cm] (s) {State S};
+    % Edges
+    \draw[->] (Operator) -- node[above] {Start} (Task);
+    \draw[->] (Task) -- node[above] {Define} (PickPoint);
+    \draw[->] (Task) -- node[above] {Define} (PlacePoint);
+    \draw[->] (PickPoint) -- node[above] {Select} (Object);
+    \draw[->] (Object) -- node[above] {Move Arm To} (ArmPosition);
+    \draw[->] (ArmPosition) -- node[above] {Execute Pick} (Object);
+    \draw[->] (Object) -- node[above] {Move Arm To} (PlacePoint);
+    \draw[->] (PlacePoint) -- node[above] {Release Object} (Object);
+    \draw[->] (Object) -- node[above] {Update Gripper State} (GripperState);
 
-    % Nodes for Y
-    \node [block, left=of P1, xshift=-3cm] (Y1) {Label 1};
-    \node [block, below=of Y1] (Y2) {Label 2};
-    \node [block, below=of Y2] (Y3) {Label 3};
+\end{tikzpicture}
 
-    % Arrows
-    \draw [line] (P1) -- (P2);
-    \draw [line] (P2) -- (P3);
-    \draw [line] (X1) -- (X2);
-    \draw [line] (X2) -- (X3);
-    \draw [line] (s) -- (P1);
-    \draw [line] (Y1) -- (Y2);
-    \draw [line]
+\end{document}

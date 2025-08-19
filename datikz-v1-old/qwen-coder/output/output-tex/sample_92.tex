@@ -1,0 +1,39 @@
+Certainly! Below is an example of how you might represent a Layered Markov Reward Process (LMRP) with width \(W\) and horizon \(T\) in TikZ LaTeX. The transitions are chosen randomly, and the rewards are uniformly distributed between \([r(s, s') - 1; r(s, s') + 1]\), where \(r(s, s')\) itself is uniformly distributed between \([-1, 1]\).
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta, positioning}
+
+\begin{document}
+
+\tikzset{
+    node distance=2cm,
+    state/.style={circle, draw=black, fill=blue!20, minimum size=1cm},
+    action/.style={rectangle, draw=black, fill=red!20, minimum size=1cm},
+    reward/.style={ellipse, draw=black, fill=green!20, minimum size=1cm},
+    transition/.style={->, thick, >=Stealth[length=5pt]}
+}
+
+\begin{tikzpicture}[scale=0.8]
+
+% Define states, actions, and rewards
+\foreach \i in {1,...,4} {
+    \node[state] (state-\i) at (\i*2,0) {$s_\i$};
+    \node[action] (action-\i) at (\i*2,-2) {$a_\i$};
+    \node[reward] (reward-\i) at (\i*2,-4) {$R_\i$};
+}
+
+% Draw transitions
+\draw[transition] (state-1) -- (state-2);
+\draw[transition] (state-2) -- (state-3);
+\draw[transition] (state-3) -- (state-4);
+
+% Draw actions
+\draw[transition] (state-1.east) -- (action-1.west);
+\draw[transition] (state-2.east) -- (action-2.west);
+\draw[transition] (state-3.east) -- (action-3.west);
+\draw[transition] (state-4.east) -- (action-4.west);
+
+% Draw rewards
+\draw[transition] (action-1.south) -- (reward-1.north);
+\draw[transition] (action-2.south) -- (

@@ -1,40 +1,41 @@
-Certainly! Below is the modified TikZ code that includes a curly brace to label \( MEB \) and replaces the orange line with a curly brace for better readability.
+To create a TikZ LaTeX diagram representing a \( k \)-strong semicomplete multipartite digraph \( D' \) with partite sets \( V_1, V_2, \ldots, V_c \) where \( |V_i| = k+1 \) for \( i \in [c-1] \) and \( |V_c| = k \), all arcs between different \( V_i \)'s are directed from left to right, we can use the following code:
 
 ```latex
 \documentclass{standalone}
 \usepackage{tikz}
 
 \begin{document}
-\begin{tikzpicture}[scale=1]
-    % Define points
-    \coordinate (A) at (0,3);
-    \coordinate (B) at (2,1);
-    \coordinate (C) at (4,3);
-    \coordinate (D) at (6,1);
-    \coordinate (E) at (8,3);
-    \coordinate (F) at (10,1);
 
-    % Draw axes
-    \draw[->] (-1,0) -- (11,0) node[right] {Price};
-    \draw[->] (0,-1) -- (0,4) node[above] {Cost};
+\begin{tikzpicture}[node distance=2cm]
 
-    % Draw graph elements
-    \draw[thick, blue] (A) -- (B) -- (C) -- (D) -- (E) -- (F); % Green triangle
-    \filldraw[green] (B) circle (2pt);
-    \node at (B) [left] {Green Triangle};
-    
-    \node at (A) [above left] {Price};
-    \node at (B) [below right] {Cost};
-    \node at (C) [above right] {Price};
-    \node at (D) [below right] {Cost};
-    \node at (E) [above right] {Price};
-    \node at (F) [below right] {Cost};
+% Define the number of parts (c) and the size of each part (k)
+\def\c{4} % Number of parts
+\def\k{3} % Size of each part except the last one
 
-    % Draw lines and labels
-    \draw[dashed] (B) -- (B |- 0,0) node[left] {Price};
-    \draw[dashed] (D) -- (D |- 0,0) node[left] {Price};
-    \draw[dashed] (F) -- (F |- 0,0) node[left] {Price};
-    
-    \draw[dashed] (B -| 0,0) -- (B) node[below] {Cost};
-    \draw[dashed] (D -| 0,0) -- (D) node[below] {Cost};
-    \draw[dashed] (F -| 0,0) -- (F) node[below] {
+% Draw nodes
+\node[circle, draw, fill=blue!20] (v11) at (0,0) {};
+\node[circle, draw, fill=blue!20] (v12) at (-1,-1) {};
+\node[circle, draw, fill=blue!20] (v13) at (1,-1) {};
+
+\node[circle, draw, fill=red!20] (v21) at (0,-2) {};
+\node[circle, draw, fill=red!20] (v22) at (-1,-3) {};
+\node[circle, draw, fill=red!20] (v23) at (1,-3) {};
+
+\node[circle, draw, fill=green!20] (v31) at (0,-4) {};
+\node[circle, draw, fill=green!20] (v32) at (-1,-5) {};
+
+\node[circle, draw, fill=yellow!20] (v41) at (0,-6) {};
+
+% Draw edges
+\foreach \i in {1,...,\c}{
+    \foreach \j in {1,...,\k}{
+        \foreach \l in {1,...,\k}{
+            \ifnum\i>\j\relax
+                \draw[->] (\i\j) -- (\i\l);
+            \fi
+        }
+    }
+}
+
+\end{tikzpicture}
+

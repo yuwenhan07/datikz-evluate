@@ -1,26 +1,42 @@
-\documentclass{standalone}
-\usepackage{tikz}
-\usepackage{amsmath}
+Certainly! Below is a TikZ LaTeX code that illustrates the described passageway environment:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric}
+
+\tikzset{
+    agent/.style={circle, fill=blue},
+    wall/.style={rectangle, fill=black},
+    switch/.style={circle, draw=red, thick},
+    door/.style={rectangle, draw=gray, thick},
+    goal/.style={circle, fill=green}
+}
 
 \begin{document}
+\begin{tikzpicture}[node distance=2cm]
 
-\begin{tikzpicture}[scale=1]
-    % Set up the axis
-    \draw[thick,->] (0,0) -- (8,0) node[right] {$n$}; % Time axis
-    \draw[thick,->] (0,0) -- (0,5) node[above] {$h[n]$}; % Response axis
+    % Walls
+    \node[wall] (W1) at (0, 4);
+    \node[wall] (W2) at (0, 3);
+    \node[wall] (W3) at (0, 2);
+    \node[wall] (W4) at (0, 1);
+    \node[wall] (W5) at (0, 0);
     
-    % Draw the impulse response curve
-    \draw[blue, thick, domain=0:8,samples=100] plot (\x,{(exp(-\x/2))/sqrt(\pi*2)});
+    \node[wall] (W6) at (1, 4);
+    \node[wall] (W7) at (2, 4);
+    \node[wall] (W8) at (3, 4);
+    \node[wall] (W9) at (4, 4);
+    \node[wall] (W10) at (5, 4);
+    \node[wall] (W11) at (6, 4);
+    \node[wall] (W12) at (7, 4);
+    \node[wall] (W13) at (8, 4);
+    \node[wall] (W14) at (9, 4);
+    \node[wall] (W15) at (10, 4);
     
-    % Add grid lines
-    \draw[dashed,gray] (0,1) -- (8,1);
-    \draw[dashed,gray] (0,2) -- (8,2);
-    \draw[dashed,gray] (0,3) -- (8,3);
-    \draw[dashed,gray] (0,4) -- (8,4);
-    
-    % Add labels
-    \node at (0,-0.5) [below] {Time};
-    \node at (-0.5,0) [left] {Impulse Response};
-\end{tikzpicture}
-
-\end{document}
+    \node[wall] (W16) at (1, 3);
+    \node[wall] (W17) at (2, 3);
+    \node[wall] (W18) at (3, 3);
+    \node[wall] (W19) at (4, 3);
+    \node[wall] (W20) at (5, 3);
+    \node[wall] (W21) at (6, 3);
+    \node[wall] (W22)

@@ -1,0 +1,253 @@
+To generate LaTeX code for the given U-Net architecture with the specified annotations, you can use TikZ to draw the diagram. Below is the LaTeX code that creates the image:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=0.5cm]
+    % Define styles for different types of connections
+    \tikzset{
+        conv/.style={draw, minimum width=1cm, minimum height=2cm},
+        skip/.style={->, bend left=45},
+        skip2/.style={->, bend right=45},
+        conv2/.style={draw, minimum width=1cm, minimum height=2cm, dashed},
+        conv3/.style={draw, minimum width=1cm, minimum height=2cm, double},
+        conv4/.style={draw, minimum width=1cm, minimum height=2cm, double, dashed},
+        skip3/.style={->, bend left=45, dashed},
+        skip4/.style={->, bend right=45, dashed},
+    }
+
+    % Draw the first row of convolutions
+    \node[conv] (c1) {};
+    \node[conv, right=of c1] (c2) {};
+    \node[skip, above=of c1] (sk1) {$w_1$};
+    \node[conv2, below=of c1] (c3) {};
+    \node[conv2, right=of c3] (c4) {};
+    \node[conv2, below=of c4] (c5) {};
+    \node[conv2, right=of c5] (c6) {};
+    \node[conv2, below=of c6] (c7) {};
+    \node[conv2, right=of c7] (c8) {};
+
+    % Draw the second row of convolutions
+    \node[conv3, below=of c3] (c9) {};
+    \node[conv3, right=of c9] (c10) {};
+    \node[skip3, above=of c9] (sk2) {$\widetilde{w}_2$};
+    \node[conv4, below=of c9] (c11) {};
+    \node[conv4, right=of c11] (c12) {};
+    \node[conv4, below=of c12] (c13) {};
+    \node[conv4, right=of c13] (c14) {};
+    \node[conv4, below=of c14] (c15) {};
+    \node[conv4, right=of c15] (c16) {};
+
+    % Draw the third row of convolutions
+    \node[conv, below=of c11] (c17) {};
+    \node[conv, right=of c17] (c18) {};
+    \node[skip4, above=of c17] (sk3) {$w_1$};
+    \node[conv, below=of c17] (c19) {};
+    \node[conv, right=of c19] (c20) {};
+    \node[conv, below=of c20] (c21) {};
+    \node[conv, right=of c21] (c22) {};
+    \node[conv, below=of c22] (c23) {};
+    \node[conv, right=of c23] (c24) {};
+
+    % Draw the top-level skip connection
+    \node[skip, above=of c1, anchor=south west, xshift=-0.5cm] (sk4) {$\widetilde{w}_1$};
+    \node[skip, above=of c24, anchor=south east, xshift=0.5cm] (sk5) {$\widetilde{w}_1$};
+
+    % Draw the bottom-level skip connection
+    \node[skip, above=of c19, anchor=south west, xshift=-0.5cm] (sk6) {$\widetilde{w}_2$};
+    \node[skip, above=of c20, anchor=south east, xshift=0.5cm] (sk7) {$\widetilde{w}_2$};
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk1) to (sk2);
+    \draw[->, bend left=45] (sk3) to (sk4);
+    \draw[->, bend left=45] (sk5) to (sk6);
+    \draw[->, bend left=45] (sk7) to (sk8);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk2) to (sk3);
+    \draw[->, bend left=45] (sk4) to (sk5);
+    \draw[->, bend left=45] (sk6) to (sk7);
+    \draw[->, bend left=45] (sk8) to (sk9);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk3) to (sk4);
+    \draw[->, bend left=45] (sk5) to (sk6);
+    \draw[->, bend left=45] (sk7) to (sk8);
+    \draw[->, bend left=45] (sk9) to (sk10);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk4) to (sk5);
+    \draw[->, bend left=45] (sk6) to (sk7);
+    \draw[->, bend left=45] (sk8) to (sk9);
+    \draw[->, bend left=45] (sk10) to (sk11);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk5) to (sk6);
+    \draw[->, bend left=45] (sk7) to (sk8);
+    \draw[->, bend left=45] (sk9) to (sk10);
+    \draw[->, bend left=45] (sk11) to (sk12);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk6) to (sk7);
+    \draw[->, bend left=45] (sk8) to (sk9);
+    \draw[->, bend left=45] (sk10) to (sk11);
+    \draw[->, bend left=45] (sk12) to (sk13);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk7) to (sk8);
+    \draw[->, bend left=45] (sk9) to (sk10);
+    \draw[->, bend left=45] (sk11) to (sk12);
+    \draw[->, bend left=45] (sk13) to (sk14);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk8) to (sk9);
+    \draw[->, bend left=45] (sk10) to (sk11);
+    \draw[->, bend left=45] (sk12) to (sk13);
+    \draw[->, bend left=45] (sk14) to (sk15);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk9) to (sk10);
+    \draw[->, bend left=45] (sk11) to (sk12);
+    \draw[->, bend left=45] (sk13) to (sk14);
+    \draw[->, bend left=45] (sk15) to (sk16);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk10) to (sk11);
+    \draw[->, bend left=45] (sk12) to (sk13);
+    \draw[->, bend left=45] (sk14) to (sk15);
+    \draw[->, bend left=45] (sk16) to (sk17);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk11) to (sk12);
+    \draw[->, bend left=45] (sk13) to (sk14);
+    \draw[->, bend left=45] (sk15) to (sk16);
+    \draw[->, bend left=45] (sk17) to (sk18);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk12) to (sk13);
+    \draw[->, bend left=45] (sk14) to (sk15);
+    \draw[->, bend left=45] (sk16) to (sk17);
+    \draw[->, bend left=45] (sk18) to (sk19);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk13) to (sk14);
+    \draw[->, bend left=45] (sk15) to (sk16);
+    \draw[->, bend left=45] (sk17) to (sk18);
+    \draw[->, bend left=45] (sk19) to (sk20);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk14) to (sk15);
+    \draw[->, bend left=45] (sk16) to (sk17);
+    \draw[->, bend left=45] (sk18) to (sk19);
+    \draw[->, bend left=45] (sk20) to (sk21);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk15) to (sk16);
+    \draw[->, bend left=45] (sk17) to (sk18);
+    \draw[->, bend left=45] (sk19) to (sk20);
+    \draw[->, bend left=45] (sk21) to (sk22);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk16) to (sk17);
+    \draw[->, bend left=45] (sk18) to (sk19);
+    \draw[->, bend left=45] (sk20) to (sk21);
+    \draw[->, bend left=45] (sk22) to (sk23);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk17) to (sk18);
+    \draw[->, bend left=45] (sk19) to (sk20);
+    \draw[->, bend left=45] (sk21) to (sk22);
+    \draw[->, bend left=45] (sk23) to (sk24);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk18) to (sk19);
+    \draw[->, bend left=45] (sk20) to (sk21);
+    \draw[->, bend left=45] (sk22) to (sk23);
+    \draw[->, bend left=45] (sk24) to (sk25);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk19) to (sk20);
+    \draw[->, bend left=45] (sk21) to (sk22);
+    \draw[->, bend left=45] (sk23) to (sk24);
+    \draw[->, bend left=45] (sk25) to (sk26);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk20) to (sk21);
+    \draw[->, bend left=45] (sk22) to (sk23);
+    \draw[->, bend left=45] (sk24) to (sk25);
+    \draw[->, bend left=45] (sk26) to (sk27);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk21) to (sk22);
+    \draw[->, bend left=45] (sk23) to (sk24);
+    \draw[->, bend left=45] (sk25) to (sk26);
+    \draw[->, bend left=45] (sk27) to (sk28);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk22) to (sk23);
+    \draw[->, bend left=45] (sk24) to (sk25);
+    \draw[->, bend left=45] (sk26) to (sk27);
+    \draw[->, bend left=45] (sk28) to (sk29);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk23) to (sk24);
+    \draw[->, bend left=45] (sk25) to (sk26);
+    \draw[->, bend left=45] (sk27) to (sk28);
+    \draw[->, bend left=45] (sk29) to (sk30);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk24) to (sk25);
+    \draw[->, bend left=45] (sk26) to (sk27);
+    \draw[->, bend left=45] (sk28) to (sk29);
+    \draw[->, bend left=45] (sk30) to (sk31);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk25) to (sk26);
+    \draw[->, bend left=45] (sk27) to (sk28);
+    \draw[->, bend left=45] (sk29) to (sk30);
+    \draw[->, bend left=45] (sk31) to (sk32);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk26) to (sk27);
+    \draw[->, bend left=45] (sk28) to (sk29);
+    \draw[->, bend left=45] (sk30) to (sk31);
+    \draw[->, bend left=45] (sk32) to (sk33);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk27) to (sk28);
+    \draw[->, bend left=45] (sk29) to (sk30);
+    \draw[->, bend left=45] (sk31) to (sk32);
+    \draw[->, bend left=45] (sk33) to (sk34);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk28) to (sk29);
+    \draw[->, bend left=45] (sk30) to (sk31);
+    \draw[->, bend left=45] (sk32) to (sk33);
+    \draw[->, bend left=45] (sk34) to (sk35);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk29) to (sk30);
+    \draw[->, bend left=45] (sk31) to (sk32);
+    \draw[->, bend left=45] (sk33) to (sk34);
+    \draw[->, bend left=45] (sk35) to (sk36);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk30) to (sk31);
+    \draw[->, bend left=45] (sk32) to (sk33);
+    \draw[->, bend left=45] (sk34) to (sk35);
+    \draw[->, bend left=45] (sk36) to (sk37);
+
+    % Draw the horizontal skip connections
+    \draw[->, bend left=45] (sk31) to (sk32);
+    \draw[->, bend left=45] (sk33) to (sk34);
+    \draw[->, bend left=45] (sk35) to (sk36);
+    \draw[->, bend left=45] (sk37) to (sk38);
+
+    % Draw the vertical skip connections
+    \draw[->, bend left=45] (sk32) to (sk33);
+    \draw[->, bend left=45] (sk34) to (sk35);
+    \draw[->, bend left=

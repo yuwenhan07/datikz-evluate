@@ -1,13 +1,20 @@
-\documentclass{article}
+\documentclass{standalone}
 \usepackage{tikz}
 
 \begin{document}
 
-\begin{center}
-    \begin{tikzpicture}[scale=2]
-        % Draw a triangle
-        \draw[black] (0,0) -- (1,0) -- (0.5,0.866) -- cycle;
-    \end{tikzpicture}
-\end{center}
+\begin{tikzpicture}[node distance=2cm]
+    % Define nodes
+    \node (input) [rectangle, rounded corners, fill=blue!30, text centered, minimum width=4cm, minimum height=1cm] {Inputs};
+    \node (machine) [rectangle, rounded corners, fill=green!30, text centered, minimum width=6cm, minimum height=2cm, below of=input] {Computing Machine \\ $M$};
+    \node (output) [rectangle, rounded corners, fill=red!30, text centered, minimum width=4cm, minimum height=1cm, below of=machine] {Outputs};
+
+    % Draw arrows between nodes
+    \draw[->, thick] (input.south) -- node[midway, above] {$|{\bf f}\rangle$} (machine.north);
+    \draw[->, thick] (machine.south) -- node[midway, above] {{\bf L}|{\bf f}\rangle} (output.north);
+
+    % Add labels for the differential operator
+    \node (operator) [text centered, below of=machine, yshift=-1cm] {{\bf L}};
+\end{tikzpicture}
 
 \end{document}

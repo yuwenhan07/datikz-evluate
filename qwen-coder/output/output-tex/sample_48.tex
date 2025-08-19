@@ -1,36 +1,35 @@
-\documentclass{standalone}
-\usepackage{tikz}
+\documentclass[tikz,border=10pt]{standalone}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16}
 
 \begin{document}
 \begin{tikzpicture}
     \begin{axis}[
-        xlabel={Positioning Error},
-        ylabel={ECDF},
-        legend pos=north west,
-        grid=major,
+        title={Comparison of Codebook Size vs. Sequence Length},
+        xlabel={Codebook Size},
+        ylabel={Sequence Length ($n$)},
         ymin=0,
-        ymax=1,
-        xmin=-5,
-        xmax=5,
-        xtick distance=2,
-        ytick distance=0.25,
-        width=8cm,
+        ymax=50,
+        xmin=1,
+        xmax=10,
+        xtick={1,2,3,4,5,6,7,8,9,10},
+        ytick={0,10,20,30,40,50},
+        grid=major,
+        width=10cm,
         height=6cm,
-        samples=100,
-        ]
+        legend style={at={(0.5,-0.1)}, anchor=north,legend columns=-1}
+    ]
         
-        % Lower Bound Line
-        \addplot[black, thick] {min(0.5*x + 0.2, 1)};
-        \addlegendentry{Lower Bound}
+        % Your approach data
+        \addplot[blue, mark=square] coordinates {(1, 10) (2, 20) (3, 30) (4, 40) (5, 50)};
+        \addlegendentry{Your Approach};
         
-        % Estimator Lines
-        \addplot[red, thick] {max(-0.5*x - 0.2, 0)};
-        \addlegendentry{Estimator 1}
+        % State-of-the-art data
+        \addplot[red, mark=triangle] coordinates {(1, 13) (2, 26) (3, 39) (4, 52) (5, 65)};
+        \addlegendentry{State-of-the-Art};
         
-        \addplot[blue, thick] {max(0.2*x^2 - 1, 0)};
-        \addlegendentry{Estimator 2}
+        % State-of-the-art formula
+        \draw[dashed, red] (axis cs:1, 13) -- node[pos=0.5, above right] {$10\log(n) + 3\log(4) + 11$} (axis cs:5, 65);
         
     \end{axis}
 \end{tikzpicture}

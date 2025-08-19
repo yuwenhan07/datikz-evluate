@@ -1,34 +1,23 @@
-\documentclass{standalone}
-\usepackage{tikz}
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  block/.style={rectangle, draw, text width=5em, text centered, minimum height=4em},
+  line/.style={->, thick, >=stealth'},
+}
 
 \begin{document}
+\begin{tikzpicture}[node distance=2cm]
 
-\begin{tikzpicture}[scale=2]
-    % Draw the boundary
-    \draw[thick] (-3,0) -- (3,0);
-    
-    % Fill the entanglement wedge with gray color
-    \fill[gray!50] (-1.5,-0.5) rectangle (1.5,0.5);
-    
-    % Label the boundary
-    \node at (0,1.2) {Boundary};
-    
-    % Label the entanglement wedge
-    \node at (0,-1.2) {Entanglement Wedge};
-    
-    % Draw the operator x outside the entanglement wedge
-    \draw[dashed] (4,0) circle (0.3);
-    \node at (4,0.5) {$x$};
-    
-    % Draw the operator x inside the entanglement wedge
-    \draw[dashed] (-4,0) circle (0.3);
-    \node at (-4,0.5) {$x$};
-    
-    % Label the action of the boundary global symmetry
-    \node at (0,0.8) {Action of Boundary Global Symmetry};
-    
-    % Label the fact that the operator x is not acted upon
-    \node at (0,-0.8) {Operator $x$ Not Acted Upon};
+% Nodes for the partitions
+\node (R) [block] {\(\mathcal{R}\)};
+\node (S) [block, below right of=R, xshift=3cm] {\(\mathcal{S}\)};
+\node (RS) [block, above right of=S, yshift=-2cm] {\(\mathcal{R} \cap \mathcal{S}\)};
+
+% Lines connecting the nodes
+\draw [line] (R) -- node[anchor=south west] {Refinement} (S);
+\draw [line] (S) -- node[anchor=north west] {Refinement} (RS);
+\draw [line] (R) -- node[anchor=east] {Partition} (RS);
+
 \end{tikzpicture}
-
 \end{document}

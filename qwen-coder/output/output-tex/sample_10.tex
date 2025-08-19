@@ -1,38 +1,32 @@
 \documentclass{standalone}
 \usepackage{tikz}
-\usetikzlibrary{plotmarks}
 
 \begin{document}
+\begin{tikzpicture}[scale=0.8]
+    \def\numQubits{4} % Number of qubits
+    \def\layerHeight{1.5cm} % Height of each layer
+    \def\gateWidth{0.7cm} % Width of each gate
 
-\begin{tikzpicture}[scale=1.5]
-    % Define the data points for performance metrics and sentence length
-    \def\dataPointsPM{{(2, 4), (3, 6), (4, 8), (5, 10), (6, 12)}}
-    \def\dataPointsSL{{(2, 3), (3, 4), (4, 5), (5, 6), (6, 7)}}
-
-    % Draw the axes
-    \draw[->] (-1, 0) -- (7, 0) node[right] {Sentence Length};
-    \draw[->] (0, -1) -- (0, 13) node[above] {Performance Metrics};
-
-    % Plot the performance metrics line (blue)
-    \draw[blue, thick] plot coordinates \dataPointsPM;
-
-    % Plot the sentence length line (red)
-    \draw[red, thick] plot coordinates \dataPointsSL;
-
-    % Add markers at the data points
-    \foreach \point in \dataPointsPM {
-        \fill[blue] \point circle (2pt);
-    }
-    \foreach \point in \dataPointsSL {
-        \fill[red] \point circle (2pt);
+    % Draw qubits
+    \foreach \q in {1,...,\numQubits}{
+        \node[draw, circle, minimum size=\gateWidth] at (\q*1.2cm, 0) {};
     }
 
-    % Label the lines
-    \node at (3.5, 10) [above] {Performance Metrics};
-    \node at (3.5, 4) [below] {Sentence Length};
+    % Draw R_y gates
+    \foreach \q in {1,...,\numQubits}{
+        \node[draw, rectangle, minimum width=\gateWidth, minimum height=\layerHeight/2, align=center] at (\q*1.2cm, \layerHeight/4) {$R_y(\theta_{\q})$};
+    }
 
-    % Add grid
-    \draw[dashed] (0,0) grid (7,13);
+    % Draw entanglers
+    \foreach \q in {1,...,\numQubits-1}{
+        \draw[dashed, ->] (\q*1.2cm+\gateWidth/2, 0) -- (\q*1.2cm+\gateWidth/2, -\layerHeight);
+    }
+
+    % Draw dashed box for repeating layers
+    \draw[dashed, thick] (\numQubits*1.2cm+0.2cm, \layerHeight) rectangle (\numQubits*1.2cm+2cm, -\layerHeight);
+
+    % Label the dashed box
+    \node[above right] at (\numQubits*1.2cm+1.6cm, \layerHeight) {$D$};
+
 \end{tikzpicture}
-
 \end{document}

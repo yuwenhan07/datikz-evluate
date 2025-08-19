@@ -1,12 +1,25 @@
-\documentclass{article}
-\usepackage{tikz}
+\documentclass[tikz]{standalone}
+\usetikzlibrary{trees}
 
 \begin{document}
 
-\begin{tikzpicture}[level/.style={sibling distance=5cm/#1}]
-  \node {Root}
-    child { node {Left} }
-    child { node {Right} };
+\tikzset{
+  level distance=2cm,
+  sibling distance=3cm,
+  every node/.style={circle, draw, align=center},
+  leaf/.style={fill=gray!20}
+}
+
+\begin{tikzpicture}[font=\small]
+  \node {a}
+    child {node {a}
+      child {node[leaf] {c}}
+      child {node[leaf] {c}}
+    }
+    child {node {a}
+      child {node[leaf] {c}}
+      child {node[leaf] {c}}
+    };
 \end{tikzpicture}
 
 \end{document}

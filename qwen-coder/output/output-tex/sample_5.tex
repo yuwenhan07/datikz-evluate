@@ -1,34 +1,31 @@
-\documentclass[tikz, border=10pt]{standalone}
+\documentclass{standalone}
 \usepackage{tikz}
+\usetikzlibrary{positioning}
 
 \begin{document}
-\begin{tikzpicture}[scale=2]
-    % Define the points for the triangle
-    \coordinate (A) at (0,0);
-    \coordinate (B) at (3,0);
-    \coordinate (C) at (1.5,2.6);
 
-    % Draw the main triangle
-    \draw[thick, black] (A) -- (B) -- (C) -- cycle;
+\begin{tikzpicture}[scale=0.8]
+    \def\xshift{2cm} % Adjust this value to change the horizontal shift between bars
 
-    % Label the vertices
-    \node at (A) [below left] {$F_0$};
-    \node at (B) [below right] {$F_1$};
-    \node at (C) [above] {$F_2$};
+    % Define colors
+    \definecolor{blue}{RGB}{0, 74, 156}
+    \definecolor{red}{RGB}{215, 85, 85}
 
-    % Draw the lines representing the filtration stages
-    \draw[dashed, thin, gray] (A) -- (B);
-    \draw[dashed, thin, gray] (B) -- (C);
-    \draw[dashed, thin, gray] (C) -- (A);
+    % Nodes for the bars
+    \node (bar1) at (0,0) [rectangle, draw=black, fill=blue, minimum width=2cm, minimum height=3cm] {Time: 2 hours};
+    \node (bar2) at (\xshift,0) [rectangle, draw=black, fill=red, minimum width=2cm, minimum height=2.5cm] {Time: 3 hours};
 
-    % Draw the lines representing the cofiltration stages
-    \draw[dotted, thin, red] (A) -- (C);
-    \draw[dotted, thin, red] (B) -- (C);
-    \draw[dotted, thin, red] (A) -- (B);
+    % Labels for the bars
+    \node (label1) at (0,-1.5) [below] {AlexNet Sparse Network};
+    \node (label2) at (\xshift,-1.5) [below] {AlexNet Sparse Network (Pruned)};
 
-    % Label the cofiltration stages
-    \node at (A) [left] {$G_0$};
-    \node at (B) [right] {$G_1$};
-    \node at (C) [above] {$G_2$};
+    % Test accuracies
+    \node (acc1) at (0,-3) [below] {Test Accuracy: 85.2\%};
+    \node (acc2) at (\xshift,-3) [below] {Test Accuracy: 88.7\%};
+
+    % X-axis labels
+    \node (xlabel1) at (-\xshift/2,-4) [below] {Early Pruning Method};
+    \node (xlabel2) at (\xshift/2,-4) [below] {};
 \end{tikzpicture}
+
 \end{document}

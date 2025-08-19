@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define coordinates for the cross
+    \coordinate (center) at (0, 0);
+    \coordinate (top) at (0, 1);
+    \coordinate (bottom) at (0, -1);
+    \coordinate (left) at (-1, 0);
+    \coordinate (right) at (1, 0);
+
+    % Draw the lines with labels
+    \draw[thick] (center) -- (top) node[midway, above] {BIV};
+    \draw[thick] (center) -- (bottom) node[midway, below] {RIV};
+    \draw[thick] (center) -- (left) node[midway, left] {T};
+    \draw[thick] (center) -- (right) node[midway, right] {X};
+
+    % Fill the background with white
+    \fill[white] (current bounding box.south west) rectangle (current bounding box.north east);
+\end{tikzpicture}
+\end{document}

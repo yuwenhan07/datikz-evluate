@@ -1,15 +1,37 @@
-\documentclass{standalone}
+\documentclass{article}
 \usepackage{tikz}
 
 \begin{document}
-\begin{tikzpicture}
-    % Draw the background image (black and white)
-    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{background_image_bw}};
-    
-    % Draw the red circle
-    \draw[red] (4,2) circle (1cm);
-    
-    % Overlay the alt text
-    \node[above right] at (4,3) {the alt};
-\end{tikzpicture}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm,
+        decision/.style={diamond, draw, fill=blue!30, text width=4em, text badly centered, node distance=3cm, inner sep=0pt},
+        action/.style={circle, draw, fill=red!30, text width=3em, text centered, minimum size=1em}]
+        
+        % Nodes
+        \node [decision] (A) {Algorithm};
+        \node [action, below left of=A] (AS) {S};
+        \node [action, below right of=A] (AC) {C};
+        
+        % Edges with labels
+        \draw [->] (A) -- node[anchor=east] {$-5$} (AS);
+        \draw [->] (A) -- node[anchor=west] {$-2$} (AC);
+        
+        % Adversary nodes
+        \node [action, below left of=AS] (SS) {S};
+        \node [action, below right of=AS] (SC) {C};
+        \node [action, below left of=AC] (CS) {S};
+        \node [action, below right of=AC] (CC) {C};
+        
+        % Edge labels
+        \draw [->] (AS) -- node[anchor=north] {$2$} (SS);
+        \draw [->] (AS) -- node[anchor=south] {$1$} (SC);
+        \draw [->] (AC) -- node[anchor=north] {$3$} (CS);
+        \draw [->] (AC) -- node[anchor=south] {$0$} (CC);
+    \end{tikzpicture}
+    \caption{Two-Player Zero-Sum Game Example}
+    \label{fig:zero_sum_game}
+\end{figure}
+
 \end{document}

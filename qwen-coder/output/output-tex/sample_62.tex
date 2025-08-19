@@ -1,27 +1,25 @@
-\documentclass{standalone}
-\usepackage{tikz}
-\usepackage{musixtex}
+Certainly! Below is an example of how you can create two side-by-side diagrams using TikZ in LaTeX to represent the change of observables over time and the convergence of the $\ell_2$ error of $u$ at $t = 1$ computed by different methods.
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing, backgrounds, fit, petri}
 
 \begin{document}
 
-% Set up the page with a white background
-\pagecolor{white}
-
-% Create a black cat's eye
-\begin{center}
-  \begin{tikzpicture}[scale=2]
-    % Draw the outline of the cat's eye
-    \draw (0,0) circle (1);
-    
-    % Fill the cat's eye with black
-    \fill[black] (0,0) circle (0.8);
-    
-    % Add a small dot for the iris
-    \fill[white] (0,0.5) circle (0.1);
-    
-    % Add a small dot for the pupil
-    \fill[black] (0,0.4) circle (0.05);
-  \end{tikzpicture}
-\end{center}
-
-\end{document}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.7]
+            \draw[->] (0,0) -- (6,0) node[right] {Time};
+            \draw[->] (0,-1) -- (0,3) node[above] {Observable Value};
+            \foreach \x in {0,1,...,6} {
+                \draw (\x,-0.1) -- (\x,0.1);
+                \node at (\x,-0.3) {\x};
+            }
+            \foreach \y in {-1,-0.5,0,0.5,1} {
+                \draw (-0.1,\y) -- (0.1,\y);
+                \node at (-0.3,\y) {\y};
+            }
+            \draw[thick,blue] (0,1) to[out=-45,in=135] (1,2) to[out=-45,in=135] (2,1) to[out=-45,in=135] (3,2) to[out=-45,in=135] (4,1) to[out=-45,in=135] (5,2) to[out=-45,in=135] (6,1);
+            \draw[dashed,red] (0,-0.5) to[out=-45,in=135] (1,-0.25) to[out=-45,in=135] (2,-0.5) to[out=-45,in=135] (3,-0.25) to[out=-45,in=135] (4,-0.5) to[out=-45,in=135

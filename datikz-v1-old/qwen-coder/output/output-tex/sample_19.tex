@@ -1,0 +1,39 @@
+Certainly! Below is a TikZ code that draws a Gated Recurrent Unit (GRU) cell with the reset gate, update gate, and output gate clearly labeled and annotated.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+
+\tikzset{
+    block/.style={rectangle, draw=black, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style={draw, thick, ->, >=stealth'},
+    input/.style={coordinate},
+    output/.style={coordinate}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+    % Input
+    \node[input] (input) {};
+    
+    % Reset Gate
+    \node[block, below left=of input] (resetGate) {Reset Gate};
+    \draw[line] (input) -- node[above] {$h_{t-1}$} (resetGate);
+    \draw[line] (input) -- node[left] {$x_t$} (resetGate);
+    
+    % Update Gate
+    \node[block, below right=of input] (updateGate) {Update Gate};
+    \draw[line] (input) -- node[above] {$h_{t-1}$} (updateGate);
+    \draw[line] (input) -- node[right] {$x_t$} (updateGate);
+    
+    % Candidate State
+    \node[block, below=of resetGate, below=of updateGate] (candidateState) {Candidate State};
+    \draw[line] (resetGate.east) |- node[below] {$r \odot h_{t-1}$} (candidateState.west);
+    \draw[line] (updateGate.east) |- node[below] {(1-r) \odot h_{t-1}} (candidateState.west);
+    \draw[line] (input) -- node[right] {$x_t$} (candidateState);
+    
+    % Output Gate
+    \node[block, below=of candidateState] (outputGate) {Output Gate};
+    \draw[line] (outputGate.west) |- node[below] {$z \odot \tilde{h}_t$} (candidateState.east);
+    \draw[line] (outputGate.west) |- node[

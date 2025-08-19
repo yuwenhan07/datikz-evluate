@@ -1,25 +1,29 @@
 \documentclass{standalone}
 \usepackage{tikz}
 
+\tikzset{
+    chunk/.style={rectangle, draw=black, minimum width=2cm, minimum height=1cm},
+    free_chunk/.style={chunk, fill=gray!30},
+    in_use_chunk/.style={chunk, fill=blue!30},
+    p_flag/.style={circle, draw=red, fill=white, inner sep=1pt, node distance=2mm, right=of #1.east}
+}
+
 \begin{document}
-\begin{tikzpicture}[x=1cm, y=1cm]
-    % Define the number of layers and spacing between them
-    \def\numLayers{4}
-    \def\spacing{0.5} % Spacing between each layer
+\begin{tikzpicture}[node distance=3mm]
 
-    % Draw the vertical lines
-    \foreach \i in {0,...,\numLayers}{
-        \draw[red, very thin] (\i*\spacing, -2) -- (\i*\spacing, 2);
-        \draw[blue, very thin] (-(\i*\spacing), -2) -- (-(\i*\spacing), 2);
-    }
+% Free chunks
+\node[free_chunk] (f1) {Free Chunk};
+\node[free_chunk, below=of f1] (f2) {Free Chunk};
+\node[free_chunk, below=of f2] (f3) {Free Chunk};
 
-    % Add some labels for clarity
-    \node at (0, 2.2) {Layer 1};
-    \node at (0, -2.2) {Layer 3};
-    \node at (-2.2, 2.2) {Layer 2};
-    \node at (-2.2, -2.2) {Layer 4};
+% In-use chunks
+\node[in_use_chunk, below=of f3] (i1) {In-Use Chunk};
+\node[in_use_chunk, below=of i1] (i2) {In-Use Chunk};
+\node[in_use_chunk, below=of i2] (i3) {In-Use Chunk};
 
-    % Set the background color to white
-    \fill[white] (-3, -3) rectangle (3, 3);
+% P flags
+\node[p_flag=f1] {};
+\node[p_flag=i1] {};
+
 \end{tikzpicture}
 \end{document}

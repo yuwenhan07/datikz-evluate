@@ -3,19 +3,40 @@
 
 \begin{document}
 
-\begin{tikzpicture}[scale=2]
-    % Draw the outer circle
-    \draw (0,0) circle (2cm);
-    
-    % Place the numbers 1, 2, and 3 in three equal parts of the circle
-    \node at (2,0) {1};
-    \node at (-1,-1.732) {2}; % -sqrt(3)/2
-    \node at (1,-1.732) {3}; % sqrt(3)/2
-    
-    % Draw lines from the center to each number
-    \draw[->] (0,0) -- (2,0);
-    \draw[->] (0,0) -- (-1,-1.732);
-    \draw[->] (0,0) -- (1,-1.732);
+\begin{tikzpicture}[scale=0.8]
+    % Define colors
+    \colorlet{top1}{blue}
+    \colorlet{top5}{red}
+
+    % Define data points
+    \def\data{
+        (1, 90), (2, 85), (3, 88), (4, 92), (5, 87),
+        (6, 83), (7, 89), (8, 91), (9, 86), (10, 84)
+    }
+
+    % Draw axes
+    \draw[->] (-1, 0) -- (11, 0) node[right] {Beam};
+    \draw[->] (0, -5) -- (0, 100) node[above] {Accuracy};
+
+    % Plot data points
+    \foreach \x/\y in \data {
+        \ifnum\x<6
+            \fill[top1] (\x, \y) circle (2pt);
+        \else
+            \fill[top5] (\x, \y) circle (2pt);
+        \fi
+    }
+
+    % Add labels
+    \foreach \x/\y in \data {
+        \node at (\x+0.1, \y-0.1) {\x};
+    }
+
+    % Add legend
+    \node[below left] at (0, 105) {Legend};
+    \node[below left, fill=top1] at (0, 100) {Top-1 Accuracy};
+    \node[below left, fill=top5] at (0, 95) {Top-5 Accuracy};
+
 \end{tikzpicture}
 
 \end{document}

@@ -1,32 +1,29 @@
-\documentclass[tikz]{standalone}
-\usetikzlibrary{shapes.geometric, calc}
-
-\tikzset{
-    smallhex/.style={
-        regular polygon,
-        regular polygon sides=6,
-        inner sep=0pt,
-        minimum size=1cm,
-        draw=green,
-        fill=green
-    }
-}
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
 
 \begin{document}
-\begin{tikzpicture}[scale=2]
-    % Draw the outer hexagon
-    \node[regular polygon, regular polygon sides=6, inner sep=0pt, minimum size=4cm, draw=black] (outer) {};
-
-    % Draw the inner hexagons
-    \foreach \i in {0, 1, ..., 5} {
-        \foreach \j in {0, 1, ..., 5} {
-            \pgfmathsetmacro{\x}{\i*sqrt(3)/2 + (\j mod 2)*sqrt(3)}
-            \pgfmathsetmacro{\y}{\j/2 + \i}
-            \node at (\x, \y) [smallhex] {};
-        }
-    }
-
-    % Fill the outer hexagon
-    \fill[white] ([xshift=-2cm,yshift=-2cm]outer.center) rectangle ++(4,4);
+\begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        symbolic x coords={Step 1, Step 2, Step 3, Step 4, Step 5},
+        xtick=data,
+        nodes near coords,
+        ylabel={Accuracy (in thousands)},
+        title={UCI-121 Test Set Accuracy},
+        ymin=80,
+        ymax=90,
+        enlarge x limits=0.2,
+        legend style={at={(0.5,-0.1)}, anchor=north}
+    ]
+        \addplot coordinates {(Step 1, 82) (Step 2, 84) (Step 3, 86) (Step 4, 87) (Step 5, 88)};
+        \legend{SVE};
+        
+        \addplot coordinates {(Step 1, 83) (Step 2, 85) (Step 3, 87) (Step 4, 88) (Step 5, 89)};
+        \legend{ENT};
+        
+        \addplot coordinates {(Step 1, 84) (Step 2, 86) (Step 3, 88) (Step 4, 89) (Step 5, 90)};
+        \legend{SR};
+    \end{axis}
 \end{tikzpicture}
 \end{document}

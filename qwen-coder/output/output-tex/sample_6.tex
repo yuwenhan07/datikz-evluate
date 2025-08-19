@@ -1,33 +1,40 @@
+To generate the Sierpiński product graph \( K_6 \otimes_f K_9 \) in TikZ, we need to understand that this graph is constructed by taking the Cartesian product of two complete graphs \( K_6 \) and \( K_9 \), with the edge set modified according to the function \( f \). The function \( f \) maps each vertex \( i \) of \( K_6 \) to a distinct vertex \( x_i \) of \( K_9 \).
+
+Here's a step-by-step guide to creating this graph in TikZ:
+
+1. **Define the vertices**: We need 54 vertices (since \( 6 \times 9 = 54 \)).
+2. **Draw the edges**: Each vertex in \( K_6 \) will be connected to all vertices in \( K_9 \) corresponding to its mapped vertex.
+
+Below is the TikZ code to draw the Sierpiński product graph \( K_6 \otimes_f K_9 \):
+
+```latex
 \documentclass{standalone}
 \usepackage{tikz}
 
 \begin{document}
+
 \begin{tikzpicture}[scale=0.8]
-    % Define the coordinates for each data point
-    \coordinate (VerySmall) at (1, 25);
-    \coordinate (Small) at (3, 40);
-    \coordinate (Medium) at (5, 60);
-    \coordinate (Large) at (7, 80);
-
-    % Draw the axes
-    \draw[->] (0,0) -- (8,0) node[right] {Model Size (in millions)};
-    \draw[->] (0,0) -- (0,90) node[above] {Accuracy (\%)};
-
-    % Plot the lines
-    \draw[red, thick] plot coordinates {(1,25)} node[below right] {Very Small};
-    \draw[green, thick] plot coordinates {(3,40)} node[below right] {Small};
-    \draw[blue, thick] plot coordinates {(5,60)} node[below right] {Medium};
-    \draw[orange, thick] plot coordinates {(7,80)} node[below right] {Large};
-
-    % Add labels for clarity
-    \foreach \x in {1,3,5,7} {
-        \node at (\x,-0.5) {\x};
+    % Define the number of nodes in each component graph
+    \def\nodeCountA{6}
+    \def\nodeCountB{9}
+    
+    % Define the positions for the nodes in the first graph
+    \foreach \i in {0,...,\nodeCountA-1} {
+        \node[circle, fill=blue!30] (A-\i) at (\i*2,0) {};
     }
-    \foreach \y in {25,40,60,80} {
-        \node at (-0.5,\y) {\y};
+    
+    % Define the positions for the nodes in the second graph
+    \foreach \j in {0,...,\nodeCountB-1} {
+        \node[circle, fill=red!30] (B-\j) at (0,-(\j+1)*1.5) {};
     }
-
-    % Title
-    \node[above left] at (0,90) {Model Size vs. Gain to Summarization Accuracy};
-\end{tikzpicture}
-\end{document}
+    
+    % Draw the edges between the nodes
+    \foreach \i in {0,...,\nodeCountA-1} {
+        \foreach \j in {0,...,\nodeCountB-1} {
+            \draw[-] (A-\i) -- (B-\j);
+        }
+    }
+    
+    % Add labels if needed
+    \foreach \i in {0,...,\nodeCountA-1} {
+        \node at (A-\i.south west) {\small A-\i

@@ -1,30 +1,44 @@
-To create a TikZ LaTeX diagram that meets your description, we need to generate a 3D representation of a cube with specific color coding for the pairings. Below is a sample TikZ code that creates a cube with the specified coloring scheme:
+Certainly! Below is a TikZ LaTeX code that represents an infinite decision tree with branches corresponding to the elements \( \{a, b, c\} \). The tree is colored in blue to indicate its role as part of a balancer.
 
 ```latex
-\documentclass{standalone}
-\usepackage{tikz-3dplot}
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    decision/.style={isosceles triangle, isosceles triangle apex angle=60, draw=blue, fill=blue!20},
+    line/.style={draw, thick, ->, >=stealth'},
+    level distance=1.5cm,
+    level 1/.style={sibling distance=4cm},
+    level 2/.style={sibling distance=2cm},
+    level 3/.style={sibling distance=1cm}
+}
 
 \begin{document}
-\tdplotsetmaincoords{70}{120} % Set the main coordinates for the 3D view
-
-\begin{tikzpicture}[scale=4]
-    \draw[thick] (0,0,0) -- (1,0,0) -- (1,1,0) -- (0,1,0) -- cycle;
-    \draw[thick] (0,0,0) -- (0,0,1);
-    \draw[thick] (1,0,0) -- (1,0,1);
-    \draw[thick] (0,1,0) -- (0,1,1);
-
-    \fill[black] (0,0,0) rectangle (1,0,1); % Bottom face
-    \fill[red] (0,0,1) rectangle (1,0,1); % Front face
-    \fill[red] (0,1,0) rectangle (0,1,1); % Left face
-    \fill[red] (1,0,0) rectangle (1,0,1); % Right face
-    \fill[red] (0,0,0) rectangle (0,1,0); % Back face
-
-    % Draw the top face
-    \draw[thick] (0,1,0) -- (1,1,0) -- (1,1,1) -- (0,1,1) -- cycle;
-
-    % Draw the edges connecting the bottom and top faces
-    \draw[thick] (0,0,1) -- (0,1,1);
-    \draw[thick] (1,0,1) -- (1,1,1);
-    \draw[thick] (0,0,0) -- (0,0,1);
-    \draw[thick] (1,0,0) -- (1,0,1);
-    \draw[thick] (0,1,0) -- (0
+\begin{tikzpicture}[scale=0.8]
+    % Root node
+    \node[decision] (root) {Root};
+    
+    % Level 1 nodes
+    \node[decision, below left of=root] (left) {a};
+    \node[decision, below right of=root] (right) {b};
+    \node[decision, below of=root] (middle) {c};
+    
+    % Level 2 nodes
+    \node[decision, below left of=left] (left-left) {a};
+    \node[decision, below right of=left] (left-right) {b};
+    \node[decision, below of=left] (left-middle) {c};
+    
+    \node[decision, below left of=right] (right-left) {a};
+    \node[decision, below right of=right] (right-right) {b};
+    \node[decision, below of=right] (right-middle) {c};
+    
+    \node[decision, below left of=middle] (middle-left) {a};
+    \node[decision, below right of=middle] (middle-right) {b};
+    \node[decision, below of=middle] (middle-middle) {c};
+    
+    % Draw lines between nodes
+    \path [line] (root) -- (left);
+    \path [line] (root) -- (right);
+    \path [line] (root) -- (middle);
+    
+    \path [line] (left) -- (left

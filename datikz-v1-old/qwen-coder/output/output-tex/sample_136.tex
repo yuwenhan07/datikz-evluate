@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Define styles for nodes and arrows
+    \tikzset{
+        startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30},
+        process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+        decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
+        arrow/.style={thick,->,>=stealth}
+    }
+
+    % Nodes
+    \node (start) [startstop] {Start};
+    \node (processA) [process, below of=start] {Process A};
+    \node (decisionB) [decision, below of=processA] {Decision B};
+    \node (processC) [process, below left of=decisionB] {Process C};
+    \node (processD) [process, below right of=decisionB] {Process D};
+    \node (end) [startstop, below of=decisionB, yshift=-1cm] {End};
+
+    % Arrows
+    \draw [arrow] (start) -- (processA);
+    \draw [arrow] (processA) -- (decisionB);
+    \draw [arrow] (decisionB) -| node[anchor=east] {Yes} (processC);
+    \draw [arrow] (decisionB) -| node[anchor=west] {No} (processD);
+    \draw [arrow] (processC) -- (end);
+    \draw [arrow] (processD) -- (end);
+
+\end{tikzpicture}
+
+\end{document}

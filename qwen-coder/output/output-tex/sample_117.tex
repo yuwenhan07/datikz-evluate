@@ -1,37 +1,29 @@
-To create a TikZ LaTeX diagram that represents the update functions of a Boolean network and its uncontrolled synchronous dynamics, we can use a combination of nodes and edges to form the binary trees. Here's an example code snippet:
-```
-\documentclass{article}
+\documentclass{standalone}
 \usepackage{tikz}
+
 \begin{document}
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[level distance=2cm,
-        level 1/.style={sibling distance=4cm},
-        level 2/.style={sibling distance=2cm}]
-        % Left tree for update functions
-        \node {Update Functions}
-            child {node {000}}
-            child {node {001}}
-            child {node {010}}
-            child {node {011}}
-            child {node {100}}
-            child {node {101}}
-            child {node {110}}
-            child {node {111}};
-        % Right tree for uncontrolled synchronous dynamics
-        \node[right=3cm] {Uncontrolled Synchronous Dynamics}
-            child {node {000}}
-            child {node {001}}
-            child {node {010}}
-            child {node {011}}
-            child {node {100}}
-            child {node {101}}
-            child {node {110}}
-            child {node {111}};
-    \end{tikzpicture}
-    \caption{Update functions of the Boolean network and its uncontrolled synchronous dynamics}
-    \label{fig:boolean-network-update-functions}
-\end{figure}
-```
-This code creates two binary trees side by side, one representing the update functions and the other representing the uncontrolled synchronous dynamics. Each tree has eight nodes, corresponding to the possible combinations of three binary digits. The `level distance` option controls the vertical spacing between levels of the tree, while the `sibling distance` option controls the horizontal spacing between sibling nodes.
-You can customize this code further to add labels, arrows, and other elements to better illustrate the hierarchical structure and flow of the Boolean network.
+
+\begin{tikzpicture}[scale=2]
+
+% Define the coordinates for T_i, T_{i+1}, and the center of the arc C_i
+\coordinate (T_i) at (0, 0);
+\coordinate (T_ip1) at (3, 0);
+\coordinate (C_i_center) at (1.5, 1);
+
+% Draw the dotted segments T_i to T_{i+1} and T_{i+1} to T_i (reversed)
+\draw[dotted] (T_i) -- node[midway, below] {$\widetilde{T}_i$} (T_ip1);
+\draw[dotted] (T_ip1) -- node[midway, above] {$\widetilde{T}_{i+1}$} (T_i);
+
+% Calculate the length of each dotted segment
+\pgfmathsetmacro{\segmentLength}{a_{n+1}/100}
+
+% Draw the arc C_i joining T_i and T_{i+1}
+\draw[thick] (C_i_center) .. controls +(45:0.5) and +(-45:0.5) .. node[midway, above right] {$C_i$} (T_i |- C_i_center) to[out=-45,in=45] (T_ip1 |- C_i_center) .. controls +(-45:0.5) and +(45:0.5) .. (T_ip1);
+
+% Label the length of the dotted segments
+\node at ($(T_i)!0.5!(T_ip1)$) [below] {\tiny $\frac{a_{n+1}}{100}$};
+\node at ($(T_ip1)!0.5!(T_i)$) [above] {\tiny $\frac{a_{n+1}}{100}$};
+
+\end{tikzpicture}
+
+\end{document}

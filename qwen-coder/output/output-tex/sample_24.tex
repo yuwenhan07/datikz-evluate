@@ -1,19 +1,36 @@
-\documentclass{standalone}
-\usepackage{tikz}
+Certainly! Below is the TikZ LaTeX code to illustrate the online NDWT (Non-Decimated Wavelet Transform) pyramid algorithm for \( J = 3 \) and \( W = 2 \). The input time series is shown in the top row, and the coefficients with dotted borders indicate those obtained through constant-end extension. Dashed arrows represent filtering operations with \( \mathcal{G} \), and solid arrows represent filtering operations with \( \mathcal{H} \).
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{matrix,shapes.geometric,arrows.meta}
+
+\tikzset{
+    mybox/.style={draw, rectangle, minimum width=2cm, minimum height=1cm},
+    myarrow/.style={->, thick},
+    dottedarrow/.style={->, dashed, thick},
+    constantendextension/.style={dotted, draw}
+}
 
 \begin{document}
-\begin{tikzpicture}[scale=1]
-    % Define colors
-    \definecolor{white}{RGB}{255,255,255}
-    \definecolor{blue}{RGB}{0,0,255}
+\begin{tikzpicture}[node distance=1.5cm]
 
-    % Set background color
-    \fill[white] (-3,-3) rectangle (3,3);
+% Time series input
+\node[mybox] (input) {Input Time Series};
+\node[mybox, below=of input] (level1) {};
+\node[mybox, below=of level1] (level2) {};
+\node[mybox, below=of level2] (level3) {};
 
-    % Draw the white triangle
-    \draw[white, thick] (0,0) -- (2,0) -- (1,2) -- cycle;
+% Level 1
+\node[mybox, right=of input] (h1) {H};
+\node[mybox, above=of h1, yshift=-0.5cm] (g1) {G};
+\node[dottedarrow, from=g1.west, to=h1.west] {};
+\node[dottedarrow, from=g1.east, to=h1.east] {};
+\node[dottedarrow, from=g1.south, to=h1.south] {};
+\node[dottedarrow, from=g1.north, to=h1.north] {};
+\node[dottedarrow, from=h1.west, to=input.west] {};
+\node[dottedarrow, from=h1.east, to=input.east] {};
 
-    % Draw the blue line
-    \draw[blue, thick] (0,0) -- (2,2);
-\end{tikzpicture}
-\end{document}
+% Level 2
+\node[mybox, right=of h1] (h2) {H};
+\node[mybox, above=of h2, yshift=-0.5cm] (g2) {G};
+\node[dottedarrow, from=g2.west, to=h

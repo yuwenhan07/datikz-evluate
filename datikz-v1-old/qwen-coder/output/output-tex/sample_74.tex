@@ -1,0 +1,43 @@
+To address the issues you're encountering with the positioning of axis lines and the display of markers in your Gnuplot plot, we need to ensure that the `axis lines on top`, `fill between`, and `clip marker` options are correctly configured. Here's how you can modify your script to achieve the desired output:
+
+```gnuplot
+# Set terminal type and output file
+set terminal pngcairo enhanced font 'Verdana,10' size 640,480
+set output "plot.png"
+
+# Define ranges and styles
+set xrange [-5:5]
+set yrange [-2:2]
+set style data histograms
+set style histogram cluster gap 1
+set style fill solid border -1
+
+# Plot commands
+plot '-' u 2:xtic(1) title 'Field 1', \
+     '-' u 2:xtic(1) title 'Field 2'
+e
+-3 1
+-1 2
+1 3
+3 4
+e
+-3 0.5
+-1 1
+1 1.5
+3 2
+e
+```
+
+In this script:
+- The `terminal` command sets the output format and size.
+- The `xrange` and `yrange` commands define the visible range of the x-axis and y-axis respectively.
+- The `style data histograms` command specifies that the data will be plotted as histograms.
+- The `style histogram cluster gap 1` command clusters the histograms with a gap of 1 unit.
+- The `style fill solid border -1` command fills the histograms solidly without borders.
+
+For the plotting part:
+- The first `plot` command plots 'Field 1'.
+- The second `plot` command plots 'Field 2'.
+- The `e` at the end of each set of data points indicates the end of the data block for that particular plot.
+
+This setup should place the fields below the axes and ensure that all markers are displayed correctly. If you still encounter issues, please provide more details about the specific errors or unexpected behavior you observe.

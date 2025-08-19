@@ -1,38 +1,37 @@
-Certainly! Below is a TikZ LaTeX code that generates a Venn diagram for optimality and stability notions as described. The diagram includes the specified sections labeled and colored appropriately.
+To create a TikZ LaTeX diagram that visually represents the trees \( T_i \) for \( 1 \leq i \leq 5 \) and their corresponding sets of red vertices \( S_i \), while highlighting the pair \( u, v \) such that \( d_T(u, v) = i \) where condition \( i \) fails, we can follow these steps:
+
+1. **Define the Trees**: Create five different trees with increasing distances between specific pairs of vertices.
+2. **Highlight the Pair**: Mark the vertices \( u \) and \( v \) at the specified distance in each tree.
+3. **Color Red Vertices**: Identify and color the vertices that form the set \( S_i \).
+
+Here is a sample TikZ code to achieve this:
 
 ```latex
-\documentclass{standalone}
+\documentclass{article}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, positioning}
 
 \begin{document}
 
-\begin{tikzpicture}[node distance=2cm]
-    % Define colors
-    \colorlet{stable}{blue!50!black}
-    \colorlet{optimal}{red!50!black}
-    \colorlet{swc}{green!50!black}
-    \colorlet{ls}{yellow!50!black}
-    
-    % Draw the main circle (white)
-    \draw[thick] (0,0) circle (3cm);
-    
-    % Draw the inner circles for stability and optimality
-    \draw[thick, stable] (0,0) circle (2.4cm);
-    \draw[thick, optimal] (0,0) circle (2cm);
-    
-    % Label the sections
-    \node at (0,-1.8) [text width=6em, align=center, fill=white, rounded corners] {Stable CTC Optimal CEO};
-    \node at (-1.2,-0.5) [text width=4em, align=center, fill=white, rounded corners] {Stable C P O};
-    \node at (1.2,-0.5) [text width=4em, align=center, fill=white, rounded corners] {SWC};
-    \node at (0,1.2) [text width=4em, align=center, fill=white, rounded corners] {LS};
-    
-    % Add shadows to the sections
-    \fill[gray!30] (0,-1.8) rectangle (6,-3);
-    \fill[gray!30] (-2,-1) rectangle (2,-2);
-    \fill[gray!30] (2,-1) rectangle (6,-2);
-    \fill[gray!30] (0,1.2) rectangle (4,1.8);
-    
-    % Add labels for the sections
-    \node at (3,-2.5) [below right] {IC};
-    \node at (3,-3.5) [below right] {IR
+\begin{figure}[h]
+    \centering
+    \begin{tabular}{c c c c c}
+        \begin{tikzpicture}[scale=0.8]
+            \node[draw, circle] (A) at (0,0) {};
+            \node[draw, circle] (B) at (2,0) {};
+            \node[draw, circle] (C) at (1,-2) {};
+            \draw (A) -- (B);
+            \draw (A) -- (C);
+            \draw (B) -- (C);
+            \node[red] at (A) {R};
+            \node[red] at (B) {R};
+            \node at (C) {};
+            \path (A) -- node[midway, above] {$d_1 = 1$} (B);
+            \path (A) -- node[midway, below] {$d_1 = 2$} (C);
+            \path (B) -- node[midway, below] {$d_1 = 2$} (C);
+        \end{tikzpicture}
+        &
+        \begin{tikzpicture}[scale=0.8]
+            \node[draw, circle] (A) at (0,0) {};
+            \node[draw, circle] (B) at (2,0) {};
+            \node[draw, circle] (C) at (4,0) {};
+            \node[draw, circle] (D) at (2,-2

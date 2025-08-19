@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+
+\begin{document}
+
+\begin{tikzpicture}[thick]
+    % Define the radius of the circle
+    \def\radius{3cm}
+    
+    % Draw the circular path
+    \draw[postaction={decorate,decoration={markings,
+        mark=at position 0.25 with {\arrow[scale=1]{>}},
+        mark=at position 0.5 with {\arrow[scale=1]{>}},
+        mark=at position 0.75 with {\arrow[scale=1]{>}
+    }}}] (0,0) circle (\radius);
+\end{tikzpicture}
+
+\end{document}

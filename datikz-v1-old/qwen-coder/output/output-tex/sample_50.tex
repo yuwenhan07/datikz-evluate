@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin::tikzpicture}[node distance=2cm]
+    % Nodes representing body parts
+    \node (head) at (0,3) {H};
+    \node (neck) at (0,2) {N};
+    \node (chest) at (0,1) {C};
+    \node (leftArm) at (-1,0) {LA};
+    \node (rightArm) at (1,0) {RA};
+    \node (leftLeg) at (-1,-1) {LL};
+    \node (rightLeg) at (1,-1) {RL};
+
+    % Edges connecting body parts
+    \draw[->] (head) -- (neck);
+    \draw[->] (neck) -- (chest);
+    \draw[->] (chest) -- (leftArm);
+    \draw[->] (chest) -- (rightArm);
+    \draw[->] (chest) -- (leftLeg);
+    \draw[->] (chest) -- (rightLeg);
+
+    % Additional connections to create a more natural pose
+    \draw[->] (leftArm) -- ++(-1,-1);
+    \draw[->] (rightArm) -- ++(1,-1);
+    \draw[->] (leftLeg) -- ++(-1,-1);
+    \draw[->] (rightLeg) -- ++(1,-1);
+\end{tikzpicture}

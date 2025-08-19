@@ -1,29 +1,42 @@
 \documentclass{standalone}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta}
-
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
-\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
-\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
-\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
-\tikzstyle{arrow} = [thick,->,>=stealth]
 
 \begin{document}
 
-\begin{tikzpicture}[node distance=2cm]
+\begin{tikzpicture}[scale=1.5, every node/.style={circle, draw, inner sep=2pt}]
 
-\node (init) [startstop] {Initialize};
-\node (learn) [process, below of=init] {Learn Utility Function};
-\node (optimize) [process, below of=learn] {Optimize Policy};
-\node (evaluate) [decision, below of=optimize] {Evaluate Performance?};
-\node (end) [startstop, below of=evaluate, yshift=-1cm] {End};
+    % Define coordinates for the points
+    \coordinate (A1) at (-2, 2);
+    \coordinate (A2) at (-1, 3);
+    \coordinate (A3) at (0, 1);
+    
+    \coordinate (B1) at (1, 2);
+    \coordinate (B2) at (2, 3);
+    \coordinate (B3) at (3, 1);
+    
+    \coordinate (C1) at (0, 0);
+    \coordinate (C2) at (1, 1);
 
-% Drawing edges
-\draw [arrow] (init) -- (learn);
-\draw [arrow] (learn) -- (optimize);
-\draw [arrow] (optimize) -- (evaluate);
-\draw [arrow] (evaluate) -- node[anchor=east] {No} (end);
-\draw [arrow] (evaluate) -- node[anchor=south] {Yes} ++(0,-2) |- (optimize);
+    % Draw the sets A, B, and C
+    \node[red] at (A1) {A};
+    \node[red] at (A2) {};
+    \node[red] at (A3) {};
+
+    \node[blue] at (B1) {};
+    \node[blue] at (B2) {B};
+    \node[blue] at (B3) {};
+
+    \node[violet] at (C1) {A $\cap$ B};
+    \node[violet] at (C2) {};
+
+    % Draw the semi-coarse space X
+    \draw[dashed, thick] (A1) -- (B1) -- (C1) -- cycle;
+    \draw[dashed, thick] (A2) -- (B2) -- (C2) -- cycle;
+
+    % Add labels
+    \node[below left] at (A1) {$A - B$};
+    \node[above right] at (B2) {$B - A$};
+    \node[left] at (C1) {$A \cap B$};
 
 \end{tikzpicture}
 

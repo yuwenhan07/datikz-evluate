@@ -1,37 +1,33 @@
-To create a minimal poset with the given multiset of maximal chain cardinalities using TikZ in LaTeX, we can construct a series of chains where each chain has a length corresponding to one of the numbers in the set \{3, 4, 5, 6, 7, 8, 9, 10\}. We will then combine these chains into an ordinal sum, ensuring that each color represents a different poset.
-
-Here's the TikZ code to generate this poset:
+Certainly! Below is a TikZ LaTeX code that illustrates a call to the `SkewTranspose` procedure, showing how pointers `col[i]` and `buc[j]` advance during the process.
 
 ```latex
-\documentclass[tikz,border=1cm]{standalone}
-\usetikzlibrary{positioning}
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
 
 \tikzset{
-    node style/.style={circle, draw, fill=blue!20, minimum size=10pt},
-    label style/.style={font=\footnotesize}
+    block/.style={rectangle, draw=black, fill=white, text width=5em, text centered, rounded corners, minimum height=3em},
+    line/.style={draw=black, thick, ->, >=stealth'}
 }
 
 \begin{document}
-\begin{tikzpicture}[node distance=1cm]
 
-% First poset (length 3)
-\node[node style] (a) at (0,0) [label=label style:1];
-\node[node style] (b) at (1,0) [label=label style:2];
-\node[node style] (c) at (2,0) [label=label style:3];
+\begin{tikzpicture}[node distance=2cm]
 
-% Second poset (length 4)
-\node[node style] (d) at (3,-1) [label=label style:4];
-\node[node style] (e) at (4,-1) [label=label style:5];
-\node[node style] (f) at (5,-1) [label=label style:6];
-\node[node style] (g) at (6,-1) [label=label style:7];
+\node (start) [block] {Start};
+\node (initialize) [block, below of=start] {Initialize};
+\node (whileLoop) [block, below of=initialize] {While $i < n$};
+\node (assignCol) [block, below of=whileLoop, yshift=-1cm] {$col[i] \gets \text{some value}$};
+\node (incrementI) [block, right of=assignCol, xshift=4cm] {$i \gets i + 1$};
+\node (advanceBuc) [block, below of=assignCol, yshift=-2cm] {$buc[j] \gets \text{some value}$};
+\node (incrementJ) [block, right of=advanceBuc, xshift=4cm] {$j \gets j + 1$};
+\node (endWhile) [block, below of=incrementI, yshift=-1cm] {End While};
+\node (end) [block, below of=endWhile] {End};
 
-% Third poset (length 5)
-\node[node style] (h) at (7,-2) [label=label style:8];
-\node[node style] (i) at (8,-2) [label=label style:9];
-\node[node style] (j) at (9,-2) [label=label style:10];
-\node[node style] (k) at (10,-2);
-\node[node style] (l) at (11,-2);
-
-% Fourth poset (length 6)
-\node[node style] (m) at (12,-3) [label=label style:11];
-\node[node style] (n) at (13,-3) [label=label style:
+% Drawing lines
+\draw [line] (start) -- (initialize);
+\draw [line] (initialize) -- (whileLoop);
+\draw [line] (whileLoop) -- node[anchor=east] {True} (assignCol);
+\draw [line] (assignCol.east) |- node[anchor=north] {} (incrementI.west);
+\draw [line] (incrementI) |- node[anchor=north] {} (advanceBuc.west);
+\draw [line] (advanceBuc.east) |- node[anchor=north] {} (incrementJ.west);
+\draw [line] (incrementJ) |- node[anchor=n

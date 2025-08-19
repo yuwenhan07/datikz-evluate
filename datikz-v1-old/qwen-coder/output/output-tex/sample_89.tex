@@ -1,0 +1,36 @@
+Certainly! Below is an example of how you can improve your TikZ graphics by addressing the three issues you mentioned: aligning headings, adding a legend with six entries, and inserting a grid box to the right of the graph.
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        % Define styles for the plots
+        \def\plotstyleA{blue, thick}
+        \def\plotstyleB{red, dashed, thick}
+        \def\plotstyleC{green, dotted, thick}
+        \def\plotstyleD{purple, ultra thick}
+        \def\plotstyleE{orange, very thick}
+        \def\plotstyleF{cyan, dashed, thick}
+
+        % Draw the axes
+        \draw[->] (0,0) -- (6,0) node[right] {$x$};
+        \draw[->] (0,0) -- (0,4) node[above] {$y$};
+
+        % Plot the functions
+        \draw[\plotstyleA] plot[domain=0:5,samples=100] (\x,{sin(\x r)});
+        \draw[\plotstyleB] plot[domain=0:5,samples=100] (\x,{cos(\x r)});
+        \draw[\plotstyleC] plot[domain=0:5,samples=100] (\x,{tan(\x r)});
+        \draw[\plotstyleD] plot[domain=0:5,samples=100] (\x,{exp(-\x)});
+        \draw[\plotstyleE] plot[domain=0:5,samples=100] (\x,{log2(\x+1)});
+        \draw[\plotstyleF] plot[domain=0:5,samples=100] (\x,{sqrt(\x)});
+
+        % Add legend
+        \node at (7,3.5) [anchor=north west, draw, fill=white, inner sep=2pt] {
+            \textcolor{blue}{\rule{1em}{0.4pt} $\sin(x)$} \\
+            \textcolor{red}{\rule{1em}{0.4pt} $\cos(x)$} \\
+            \textcolor{green}{\rule

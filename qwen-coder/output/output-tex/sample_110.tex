@@ -1,44 +1,37 @@
-Here is the TikZ LaTeX code for generating the 1-neighborhoods of the black vertex in the three grids you described:
+To visualize the concept of sticky snapping out Brownian motion as described, we can create a TikZ diagram that illustrates the behavior of the process on multiple copies of \([0, \infty]\). Each copy will represent a different dimension where the process can jump from one point to another.
+
+Here's a sample TikZ code to create this visualization:
 
 ```latex
-\documentclass{standalone}
+\documentclass[tikz]{standalone}
 \usepackage{tikz}
 
+\tikzset{
+    state/.style={circle, draw=black, fill=white, inner sep=2pt},
+    jump/.style={->, thick},
+    line/.style={-stealth, thin}
+}
+
 \begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define states for each dimension
+    \node[state] (S1) at (0, 0) {};
+    \node[state] (S2) at (4, 0) {};
+    \node[state] (S3) at (8, 0) {};
 
-% Define colors
-\definecolor{black}{rgb}{0,0,0}
-\definecolor{white}{rgb}{1,1,1}
+    % Draw lines between states within each dimension
+    \draw[line] (S1.east) -- node[midway, above] {$c_1$} ++(4, 0);
+    \draw[line] (S2.east) -- node[midway, above] {$c_2$} ++(4, 0);
+    \draw[line] (S3.east) -- node[midway, above] {$c_3$} ++(4, 0);
 
-% Draw the square grid
-\begin{tikzpicture}[scale=2]
-    \draw[thick] (0,0) rectangle (3,3);
-    \draw[thick] (1,0) -- (1,3);
-    \draw[thick] (2,0) -- (2,3);
-    \draw[thick] (0,1) -- (3,1);
-    \draw[thick] (0,2) -- (3,2);
+    % Draw arrows between states in different dimensions
+    \draw[jump] (S1.south) -- node[midway, below] {$a_1/b_1$} ++(0, -2);
+    \draw[jump] (S2.south) -- node[midway, below] {$a_2/b_2$} ++(0, -2);
+    \draw[jump] (S3.south) -- node[midway, below] {$a_3/b_3$} ++(0, -2);
 
-    % Label the vertices
-    \node at (0.5,2.5) {1};
-    \node at (1.5,2.5) {2};
-    \node at (2.5,2.5) {3};
-    \node at (0.5,1.5) {4};
-    \node at (1.5,1.5) {5};
-    \node at (2.5,1.5) {6};
-    \node at (0.5,0.5) {7};
-    \node at (1.5,0.5) {8};
-    \node at (2.5,0.5) {9};
+    \node[state] (T1) at (0, -2) {};
+    \node[state] (T2) at (4, -2) {};
+    \node[state] (T3) at (8, -2) {};
 
-    % Highlight the 1-neighborhood of the black vertex (let's say it's vertex 5)
-    \foreach \x in {4,6,8} {
-        \fill[black] (\x/3,\x/3) circle (0.1);
-    }
-\end{tikzpicture}
-
-% Draw the king grid
-\begin{tikzpicture}[scale=2]
-    \draw[thick] (0,0) rectangle (3,3);
-    \draw[thick] (1,0) -- (1,3);
-    \draw[thick] (2,0) -- (2,3);
-    \draw[thick] (0,1) -- (3,1);
-    \draw[thick] (0,2) -- (
+    % Draw lines between states within each dimension after jumping
+    \draw[line] (T1.east) -- node[mid

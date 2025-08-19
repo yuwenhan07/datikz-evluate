@@ -9,6 +9,7 @@ from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor
 from qwen_vl_utils import process_vision_info
 import re
 import os
+import json
 from datasets import load_dataset
 from tqdm import tqdm
 from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
@@ -24,7 +25,7 @@ model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
 # processor = AutoProcessor.from_pretrained("/mnt/data/model/Qwen2.5-VL-32B-Instruct")
 processor = AutoProcessor.from_pretrained("/mnt/data/model/Qwen2.5-VL-7B-Instruct")
 
-ds = load_dataset("nllg/datikz", split="test")
+ds = load_dataset("nllg/datikz-v3", split="test")
 
 for i in tqdm(range(len(ds))):
     example = ds[i]
@@ -77,6 +78,21 @@ for i in tqdm(range(len(ds))):
 
     latex_code = match.group(1).strip() if match else output_text.strip()
 
-    os.makedirs("output/output-qwen", exist_ok=True)
-    with open(f"output/output-qwen/sample_{i}.tex", "w", encoding="utf-8") as tex_file:
+
+    result = {
+        "prompt": prompt,
+        "response": output_text,
+        "latex_code": latex_code,
+        "ground_truth": example["code"],
+    }
+    # * 保存结果到文件
+    os.makedirs("output/output-tex", exist_ok=True)
+    os.makedirs("output/original-output", exist_ok=True)
+
+    with open(f"output/original-output/sample_{i}.json", "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+        print(f"success write original json into sample_{i}.json")
+
+    with open(f"output/output-tex/sample_{i}.tex", "w", encoding="utf-8") as tex_file:
         tex_file.write(latex_code)
+        print(f"success write tex into sample_{i}.tex")

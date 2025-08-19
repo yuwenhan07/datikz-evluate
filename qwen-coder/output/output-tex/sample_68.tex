@@ -1,38 +1,25 @@
 \documentclass[tikz]{standalone}
-\usetikzlibrary{shapes.geometric, decorations.markings}
-
-\tikzset{
-    mystar/.style={
-        star,
-        star points=6,
-        inner sep=0pt,
-        outer sep=0pt,
-        minimum size=2cm,
-        draw=black,
-        fill=white
-    }
-}
+\usetikzlibrary{graphs, graphdrawing, shapes.geometric}
 
 \begin{document}
-\begin{tikzpicture}[scale=1]
-    % Draw the large circle at the center
-    \draw[thick] (0,0) circle (3cm);
+\begin{tikzpicture}[>=stealth]
 
-    % Draw six smaller circles surrounding the large circle
-    \foreach \i in {0, 60, 120, 180, 240, 300} {
-        \node[mystar] at (\i:3cm) {};
-    }
+% Initial Graph
+\node (v1) at (0,0) [circle, draw] {$v_1$};
+\node (v2) at (2,0) [circle, draw] {$v_2$};
+\node (v3) at (4,0) [circle, draw] {$v_3$};
+\draw[->] (v1) -- node[midway, above] {green} (v2);
+\draw[->] (v2) -- node[midway, above] {blue} (v3);
 
-    % Draw additional triangles around the large circle
-    \foreach \i in {0, 60, 120, 180, 240, 300} {
-        \draw[dashed, thick] (\i:3cm) -- (\i+90:2cm);
-        \draw[dashed, thick] (\i:3cm) -- (\i-90:2cm);
-    }
+% First Morphism: Contract Green Edge
+\node (v1a) at (0,-2) [circle, draw] {$v_1'$};
+\node (v3a) at (4,-2) [circle, draw] {$v_3'$};
+\draw[->] (v1a) -- node[midway, above] {red} (v3a);
 
-    % Draw scattered triangles throughout the design
-    \draw[dashed, thick] (-1.5, -1.5) -- (0, 2.5);
-    \draw[dashed, thick] (1.5, -1.5) -- (0, 2.5);
-    \draw[dashed, thick] (-2.5, 0) -- (2.5, 0);
-    \draw[dashed, thick] (0, -2.5) -- (0, 2.5);
+% Second Morphism: Contract Blue Edge
+\node (v1b) at (0,-4) [circle, draw] {$v_1''$};
+\node (v3b) at (4,-4) [circle, draw] {$v_3''$};
+\draw[->] (v1b) -- node[midway, above] {purple} (v3b);
+
 \end{tikzpicture}
 \end{document}

@@ -1,40 +1,32 @@
-\documentclass{standalone}
+To create a TikZ LaTeX diagram representing the parking outcome for the given preference list \((7, 5, 3, 3, 2)\), we need to simulate the process of cars trying to park in their preferred spots and if they can't, moving to the next available spot.
+
+Here’s how you can do it:
+
+```latex
+\documentclass{article}
 \usepackage{tikz}
 
 \begin{document}
 
-\begin{tikzpicture}[scale=3]
+\begin{tikzpicture}[node distance=1cm]
+    % Define nodes for parking spaces
+    \foreach \i in {1,...,8} {
+        \node (space\i) at (\i,0) [draw, rectangle, minimum width=2cm, minimum height=1cm] {};
+    }
 
-% Define coordinates
-\coordinate (a1) at (-2, 0);
-\coordinate (a2) at (2, 0);
-\coordinate (b1) at (-1, -1);
-\coordinate (b2) at (1, -1);
-\coordinate (c1) at (-1, 1);
-\coordinate (c2) at (1, 1);
-\coordinate (d1) at (-1, 0);
-\coordinate (d2) at (1, 0);
+    % Define nodes for cars
+    \node (car7) at (1,-1) [circle, draw, fill=blue!20, inner sep=2pt] {7};
+    \node (car5) at (2,-1) [circle, draw, fill=red!20, inner sep=2pt] {5};
+    \node (car3a) at (3,-1) [circle, draw, fill=green!20, inner sep=2pt] {3};
+    \node (car3b) at (4,-1) [circle, draw, fill=green!20, inner sep=2pt] {3};
+    \node (car2) at (5,-1) [circle, draw, fill=yellow!20, inner sep=2pt] {2};
 
-% Draw poles
-\node[circle, fill=blue, inner sep=2pt] at (a1) {};
-\node[circle, fill=blue, inner sep=2pt] at (a2) {};
-\node[circle, fill=red, inner sep=2pt] at (b1) {};
-\node[circle, fill=red, inner sep=2pt] at (b2) {};
+    % Connect cars to their preferred parking spots
+    \draw[->] (car7) -- node[above] {7} (space7);
+    \draw[->] (car5) -- node[above] {5} (space5);
+    \draw[->] (car3a) -- node[above] {3} (space6); % Car 3a parks in space 6
+    \draw[->] (car3b) -- node[above] {3} (space7); % Car 3b parks in space 7
+    \draw[->] (car2) -- node[above] {2} (space8);
 
-% Draw branch cuts
-\draw[dashed, thick] (c1) -- (c2);
-\draw[dashed, thick] (d1) -- (d2);
-
-% Label points
-\node[below right] at (a1) {$a_1$};
-\node[above right] at (a2) {$a_2$};
-\node[below left] at (b1) {$b_1$};
-\node[below right] at (b2) {$b_2$};
-\node[above left] at (c1) {$c_1$};
-\node[above right] at (c2) {$c_2$};
-\node[above left] at (d1) {$d_1$};
-\node[above right] at (d2) {$d_2$};
-
-\end{tikzpicture}
-
-\end{document}
+    % Highlight the final parking spots
+    \fill[green!20] (space6.west) rectangle (space6.east

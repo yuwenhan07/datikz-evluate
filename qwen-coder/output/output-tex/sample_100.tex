@@ -1,47 +1,29 @@
-Certainly! Below is a TikZ LaTeX code that generates a diagram illustrating the differences between two forests, `tw S_N` and `tw S_M`, as described in your prompt. The key aspects include:
-
-1. The radius doubling with each decrementing layer, except for the specific step.
-2. The left circles representing `tw S_N`.
-3. The right circles representing `tw S_M`.
-4. The grey set representing the estimated forest `w_N` (lower layers of `tw S_M`) being subtracted from `tw S_N`.
+To create a TikZ diagram that summarizes the variation of constraints as described, we can use nodes to represent different levels and arrows to show the flow of constraints and the effects of boosts. Below is a sample TikZ code that represents this information:
 
 ```latex
-\documentclass{standalone}
-\usepackage{tikz}
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30},
+    process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+    decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
+    arrow/.style={thick,->,>=stealth}
+}
 
 \begin{document}
-\begin{tikzpicture}[scale=0.8]
-    % Define the positions and sizes of the circles
-    \def\R{2} % Radius of the first circle
-    \def\n{5} % Number of layers
+\begin{tikzpicture}[node distance=2cm]
 
-    % Draw the left circles (new tower tw S_N)
-    \foreach \k in {0,...,\n}{
-        \draw[fill=blue] (0, -\R*\k) circle (\R);
-    }
+\node (start) [startstop] {Initial Constraints};
+\node (process1) [process, below of=start] {Level 1: $\hat{T}_{ab}{}^A = 0$};
+\node (process2) [process, below of=process1] {Level 2: $\hat{T}_a{}^{\{AB\}} = 0$};
+\node (process3) [process, below of=process2] {Level 3: $\hat{f}_{abcd} = 0$};
+\node (process4) [process, below of=process3] {Level 4: $\hat{f}_{Aabc} = 0$};
+\node (process5) [process, below of=process4] {Level 5: Additional Constraints};
+\node (process6) [process, below of=process5] {Level 6: Tower Terminates};
 
-    % Draw the right circles (old tower tw S_M)
-    \foreach \k in {0,...,\n}{
-        \ifnum\k=\n-1
-            \draw[fill=green] (5, -\R*2*\k) circle (2*\R); % Quadruple radius for the special case
-        \else
-            \draw[fill=green] (5, -\R*\k) circle (\R);
-        \fi
-    }
-
-    % Draw the grey set (estimated forest w_N)
-    \foreach \k in {0,...,\n-2}{
-        \draw[fill=gray] (2.5, -\R*\k) circle (\R);
-    }
-    
-    % Draw labels
-    \node at (-2, 0) [left] {tw S_N};
-    \node at (7, 0) [right] {tw S_M};
-    \node at (2.5, -\R*(\n)) [below] {$w_N$};
-
-    % Draw lines connecting corresponding points
-    \foreach \k in {0,...,\n}{
-        \draw[-stealth] (0, -\R*\k) -- (5, -\R*\k);
-    }
-\end{tikzpicture}
-\end{document
+\node (boost1) [decision, right of=process1, xshift=3cm] {Boosts Act Vertically};
+\node (boost2) [decision, right of=process2, xshift=3cm] {};
+\node (boost3) [decision, right of=process3, xshift=3cm] {};
+\node (boost4) [decision, right of=process4, xshift=3cm] {};
+\node (boost5) [decision

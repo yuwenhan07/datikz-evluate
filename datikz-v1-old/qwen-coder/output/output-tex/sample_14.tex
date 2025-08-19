@@ -1,0 +1,34 @@
+To create a TikZ diagram that joins the vertices of a pentagon (5-gon) with a decagon (10-gon) using black color, where each vertex of the pentagon is connected to the opposite vertex of the decagon, we need to ensure that the connections are correctly made. Let's assume the vertices of the pentagon are labeled \(A_1, A_2, A_3, A_4, A_5\) in clockwise order, and the vertices of the decagon are labeled \(B_1, B_2, \ldots, B_{10}\) in clockwise order.
+
+The opposite vertices of the decagon can be identified as follows:
+- \(B_1\) is opposite \(B_6\)
+- \(B_2\) is opposite \(B_7\)
+- \(B_3\) is opposite \(B_8\)
+- \(B_4\) is opposite \(B_9\)
+- \(B_5\) is opposite \(B_{10}\)
+
+Now, let's write the TikZ code to draw this diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw the pentagon
+    \foreach \i [count=\j from 1] in {1,2,3,4,5} {
+        \node (P\i) at ({cos(72*\i)}, {sin(72*\i)}) {};
+        \draw[black] (P\i) -- node[midway, above] {$A_\i$} cycle;
+    }
+
+    % Draw the decagon
+    \foreach \i [count=\j from 1] in {1,2,...,10} {
+        \node (D\i) at ({cos(36*\i)}, {sin(36*\i)}) {};
+        \draw[black] (D\i) -- node[midway, below] {$B_\i$} cycle;
+    }
+
+    % Connect the vertices of the pentagon to the opposite vertices of the decagon
+    \draw[black] (P1) -- (D6);
+    \draw[black] (P2) -- (D7);
+    \draw[black] (P3) -- (D8);
+    \draw[black] (P4) -- (D9

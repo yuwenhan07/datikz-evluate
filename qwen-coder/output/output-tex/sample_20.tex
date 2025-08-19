@@ -1,26 +1,38 @@
-Certainly! Below is the TikZ LaTeX code for generating a hexagonal trapezohedron with the specified characteristics:
+Certainly! Below is a TikZ LaTeX code that visualizes the scenario you've described:
 
 ```latex
-\documentclass{standalone}
-\usepackage{tikz}
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
 
 \begin{document}
-
 \begin{tikzpicture}[scale=2]
-    % Define colors
-    \definecolor{customblue}{RGB}{0, 153, 255} % Blue component increased
-    \definecolor{customgreen}{RGB}{0, 255, 153} % Green component increased
-
-    % Draw the main hexagon
-    \draw[fill=customblue] (0,0) -- (1,0.866) -- (2,0) -- (1,-0.866) -- (0,0);
-    \draw[fill=customgreen] (1,0.866) -- (2,1.732) -- (3,0.866) -- (2,0) -- (1,0.866);
-
-    % Draw the top hexagon
-    \draw[fill=white] (-1,0) -- (0,0.866) -- (1,0) -- (0,-0.866) -- (-1,0);
-    \draw[fill=white] (0,0.866) -- (1,1.732) -- (2,0.866) -- (1,0) -- (0,0.866);
-
-    % Connect the hexagons
-    \draw[thick] (0,0) -- (1,0.866) -- (2,0) -- (1,-0.866) -- (0,0);
-    \draw[thick] (1,0.866) -- (2,1.732) -- (3,0.866) -- (2,0) -- (1,0.866);
-    \draw[thick] (-1,0) -- (0,0.866) -- (1,0) -- (0,-0.866) -- (-1,0);
-    \draw[thick] (0,0.866) -- (1,1.732) -- (2,0
+    % Draw the y-axis
+    \draw[->] (0,-2) -- (0,2) node[above right] {$y$};
+    
+    % Draw the x-axis
+    \draw[->] (-4,0) -- (4,0) node[below right] {$x$};
+    
+    % Shaded red area
+    \fill[red!30] (-2,-2) rectangle (2,2);
+    
+    % Blue rectangles
+    \draw[blue, thick] (-1.5, 1.5) rectangle (-0.5, -1.5); % First layer
+    \draw[blue, thick] (0.5, 1.5) rectangle (1.5, -1.5);   % Second layer
+    
+    % Activation regions
+    \draw[dashed, blue] (-1.5, 1.5) -- (1.5, 1.5); % Horizontal line for first layer
+    \draw[dashed, blue] (-1.5, -1.5) -- (1.5, -1.5); % Horizontal line for second layer
+    
+    % Vertices of cones
+    \draw[green, fill=green] (-1, 0) circle (0.05); % Vertex of cone for first layer
+    \draw[green, fill=green] (1, 0) circle (0.05);  % Vertex of cone for second layer
+    
+    % Labels
+    \node at (-1.75, 1.5) [left] {Blue Site};
+    \node at (1.75, 1.5) [right] {Blue Site};
+    \node at (-1.75, -1.5) [left] {Blue Line};
+    \node at (1.75, -1.5) [right] {Blue Line};
+    \node at (-1, 0) [below left] {Vertex of Cone};
+    \node at (1, 0) [below right] {Vertex of Cone};
+    
+    % Distance indicators

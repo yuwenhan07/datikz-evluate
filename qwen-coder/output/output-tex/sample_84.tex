@@ -1,50 +1,24 @@
-\documentclass[12pt]{article}
+\documentclass{standalone}
 \usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.16}
 
 \begin{document}
 
-% Define the data from the CSV file
-\pgfplotstableread[col sep=comma]{data.csv}\datatable
+\begin{tikzpicture}[scale=1.5]
+    % Define the vertices
+    \node (v1) at (0,0) {1};
+    \node (v2) at (2,0) {2};
+    \node (v3) at (3,1.732) {3};
+    \node (v4) at (1,1.732) {4};
 
-\begin{figure}[h]
-    \centering
-    % Create the plot with both dataset and function
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Data and Function Plot},
-            xlabel={$x$-value},
-            ylabel={$y$-value},
-            legend pos=north west,
-            grid=major,
-            ymin=-0.5,
-            ymax=3.5,
-            xmin=-0.5,
-            xmax=1.5,
-            axis lines*=left,
-            ytick=\empty,
-            xtick=data,
-            nodes near coords,
-            every node near coord/.style={
-                anchor=south east,
-                rotate=45,
-                font=\small,
-            },
-        ]
-        
-        % Plot the dataset
-        \addplot table[x=x,y=y] {\datatable};
-        \legend{Dataset}
-        
-        % Plot the function
-        \addplot+[domain=-0.5:1.5,samples=100] {x^2 + 0.5*x - 0.25};
-        \legend{Function}
-        
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Plot showing the dataset and the function $y = x^2 + 0.5x - 0.25$.}
-    \label{fig:data-function}
-\end{figure}
+    % Draw the edges
+    \draw[thick] (v1) -- node[midway, above right] {2} (v2);
+    \draw[thick] (v2) -- node[midway, below right] {2} (v3);
+    \draw[thick] (v3) -- node[midway, above left] {2} (v4);
+    \draw[thick] (v4) -- node[midway, below left] {2} (v1);
+
+    % Draw additional edges for the ring structure
+    \draw[thick] (v1) -- node[midway, above] {1} (v3);
+    \draw[thick] (v2) -- node[midway, below] {1} (v4);
+\end{tikzpicture}
 
 \end{document}

@@ -1,39 +1,47 @@
-Certainly! Below is a TikZ LaTeX diagram that visually represents the results of training models on reduced amounts of data. The diagram includes bars for each dataset (Multi-News, SamSUM, and CNN/DM) showing the performance across different reduced dataset sizes.
+Certainly! Below is a TikZ LaTeX code that represents a U-Net architecture with two layers following your specifications:
 
 ```latex
-\documentclass{standalone}
+\documentclass{article}
 \usepackage{tikz}
-\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white!20, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style = {draw, thick, ->, >=stealth'},
+    smooth/.style = {draw, thick, ->, >=stealth', double distance between line centers=2pt},
+    transpose/.style = {draw, thick, ->, >=stealth', densely dashed},
+    skip/.style = {draw, thick, ->, >=stealth', rounded corners, bend right=30}
+}
 
 \begin{document}
-\begin{tikzpicture}[scale=0.8]
-    % Define colors
-    \colorlet{multi-news-color}{blue}
-    \colorlet{samsum-color}{red}
-    \colorlet{cnn-dm-color}{green}
 
-    % Draw axes
-    \draw[->] (0,0) -- (8,0) node[right] {Reduced Dataset Size};
-    \draw[->] (0,0) -- (0,6) node[above] {Performance};
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=2cm]
 
-    % X-axis labels
-    \foreach \x in {0,1,2,3,4,5} {
-        \node at (\x*1.5+0.75,0) {\footnotesize $2^{2+\x}$};
-    }
+% Level 1: Input
+\node[block] (input) {Input};
 
-    % Y-axis labels
-    \foreach \y in {0,1,2,3,4,5} {
-        \node at (0,\y) {\footnotesize $\y$};
-    }
+% Level 2: Contracting Path
+\node[smooth, below of=input] (conv1_1) {Conv};
+\node[smooth, below of=conv1_1] (conv1_2) {Conv};
+\node[skip, below of=conv1_2] (skip1) {Skip};
 
-    % Data points
-    \node[circle, fill=multi-news-color, inner sep=2pt] at (0.75,1) {};
-    \node[circle, fill=samsum-color, inner sep=2pt] at (0.75,3) {};
-    \node[circle, fill=cnn-dm-color, inner sep=2pt] at (0.75,5) {};
+% Level 3: Bottleneck
+\node[smooth, below of=skip1] (bottleneck) {Bottleneck};
 
-    \node[circle, fill=multi-news-color, inner sep=2pt] at (3.75,2) {};
-    \node[circle, fill=samsum-color, inner sep=2pt] at (3.75,4) {};
-    \node[circle, fill=cnn-dm-color, inner sep=2pt] at (3.75,6) {};
+% Level 4: Expanding Path
+\node[transpose, below of=bottleneck] (trans1) {Transpose};
+\node[smooth, below of=trans1] (conv2_1) {Conv};
+\node[smooth, below of=conv2_1] (conv2_2) {Conv};
 
-    \node[circle, fill=multi-news-color, inner sep=2pt] at (6.75,3) {};
-    \node[circle, fill=samsum-color, inner
+% Level 5: Output
+\node[block, below of=conv2_2] (output) {Output};
+
+% Connections
+\path [line] (input) -- (conv1_1);
+\path [line] (conv1_1) -- (conv1_2);
+\path [skip] (conv1_2) -- (skip1);
+\path [line] (skip1) -- (bottleneck);
+\path [transpose] (bottleneck) -- (trans1);
+\path [line] (trans1) --

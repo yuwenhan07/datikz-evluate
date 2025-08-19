@@ -1,36 +1,33 @@
-Certainly! Below is a TikZ LaTeX code that represents the relaxation system in the 1-to-1 coupling case on the discretized real line. This code includes various lines and mathematical symbols, similar to what you might see on a whiteboard.
+To create an illustration of the contour $\Gamma_\lambda$ defined in equation \cref{eq:contour}, we need to understand that this contour encloses the region $D_\lambda$ which is specified in assumption \cref{assu:Filter}. Additionally, the dashed interval $[0,\kappa^2]$ contains the spectra of both $T$ and $T_X$.
+
+Here's how you can generate the TikZ LaTeX code for this illustration:
 
 ```latex
-\documentclass[tikz,border=2mm]{standalone}
-\usetikzlibrary{arrows.meta,calc}
-
-\tikzset{
-    mynode/.style={draw, rectangle, minimum width=3em, minimum height=2em, align=center},
-    myarrow/.style={->, thick, >=Stealth[length=5pt]},
-    eqnode/.style={mynode, fill=yellow!30}
-}
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{arrows.meta}
 
 \begin{document}
-\begin{tikzpicture}[x=2cm,y=1cm]
-
-% Nodes
-\node[eqnode] (eq1) at (0,0) {$m_1 \ddot{x}_1 = -k(x_1 - x_2)$};
-\node[eqnode] (eq2) at (0,-2) {$m_2 \ddot{x}_2 = k(x_1 - x_2)$};
-
-% Equations
-\node[mynode, right=of eq1] (eq3) {Equation 1: $m_1 \ddot{x}_1 = -k(x_1 - x_2)$};
-\node[mynode, right=of eq2] (eq4) {Equation 2: $m_2 \ddot{x}_2 = k(x_1 - x_2)$};
-
-% Arrows between nodes
-\draw[myarrow] (eq1.east) -- node[above] {$+$} (eq3.west);
-\draw[myarrow] (eq2.east) -- node[below] {$-$} (eq4.west);
-
-% Lines connecting nodes
-\draw[dashed, thick] ($(eq1.south) + (-1,0)$) -- ($(eq2.north) + (-1,0)$);
-\draw[dashed, thick] ($(eq1.south) + (1,0)$) -- ($(eq2.north) + (1,0)$);
-
-% Labels
-\node[left=of eq1] (label1) {Object 1};
-\node[left=of eq2] (label2) {Object 2};
-
-\end{tikzpicture
+\begin{tikzpicture}[scale=3]
+    % Draw the real axis
+    \draw[-Stealth] (-1,0) -- (4,0) node[right] {$\Re$};
+    
+    % Draw the imaginary axis
+    \draw[-Stealth] (0,-1) -- (0,2) node[above] {$\Im$};
+    
+    % Draw the contour Gamma_lambda
+    \draw[dashed, thick] (0,0) to[out=-90,in=90] (1.5,0.75)
+                         to[out=-90,in=90] (3,0)
+                         to[out=-90,in=90] (3,-0.75)
+                         to[out=-90,in=90] cycle;
+    \node at (1.5,0.75) [circle, fill=black, inner sep=1pt] {};
+    \node at (3,-0.75) [circle, fill=black, inner sep=1pt] {};
+    \node at (1.5,-0.75) [circle, fill=white, inner sep=1pt] {};
+    \node at (3,0.75) [circle, fill=white, inner sep=1pt] {};
+    \node at (2,0) [below] {$\Gamma_\lambda$};
+    
+    % Draw the dashed interval [0, kappa^2]
+    \draw[dashed, thick] (0,0) -- (2,0);
+    \node at (1,0) [below] {$[0, \kappa^2]$};
+    
+    % Label the points on the real axis
+    \foreach \x in {0, 1.5, 3}

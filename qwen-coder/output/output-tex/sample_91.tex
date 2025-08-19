@@ -1,48 +1,23 @@
-To create a TikZ LaTeX diagram that shows the number of nonlinear iterations incurred by the preconditioned projected gradient descent (PPGD) with first and second finite elements for varying number of degrees of freedom (from 3K to 3.2M), you can use the following code:
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
 
-```latex
-\documentclass{standalone}
-\usepackage{tikz}
-\usetikzlibrary{pgfplots}
-\pgfplotsset{compat=1.16}
+\tikzset{
+    node distance=2cm,
+    block/.style={rectangle, draw, fill=blue!30, text width=6em, text centered, rounded corners, minimum height=4em},
+    line/.style={->, thick, >=stealth'}
+}
 
 \begin{document}
+\begin{tikzpicture}[auto]
 
-\begin{tikzpicture}
-    \begin{axis}[
-        width=10cm,
-        height=6cm,
-        xlabel={Degrees of Freedom},
-        ylabel={Nonlinear Iterations},
-        legend pos=north west,
-        ymin=0,
-        ymax=5000,
-        xmin=3e3,
-        xmax=3.2e6,
-        xmode=log,
-        log ticks with fixed point,
-        ytick=data,
-        grid=major
-    ]
-        \addplot[blue, mark=square] coordinates {
-            (3e3, 120)
-            (1e4, 280)
-            (3e4, 750)
-            (1e5, 1800)
-            (3e5, 4200)
-            (1e6, 9500)
-            (3e6, 20000)
-            (1e7, 45000)
-            (3e7, 100000)
-            (1e8, 200000)
-            (3e8, 450000)
-            (1e9, 1000000)
-            (3e9, 2000000)
-            (1e10, 4500000)
-            (3e10, 10000000)
-            (1e11, 20000000)
-            (3e11, 45000000)
-            (1e12, 100000000)
-            (3e12, 200000000)
-            (1e13, 450000000)
-            (3e
+    % Nodes
+    \node [block] (bulk1) {CFT$_{\text{I}}$};
+    \node [block, below of=bulk1] (interface) {Interface Brane $Q$};
+    \node [block, below of=interface] (bulk2) {CFT$_{\text{II}}$};
+
+    % Arrows
+    \draw [line] (bulk1.south) -- (interface.north);
+    \draw [line] (interface.south) -- (bulk2.north);
+
+\end{tikzpicture}
+\end{document}

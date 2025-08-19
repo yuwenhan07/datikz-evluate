@@ -1,0 +1,41 @@
+Certainly! Below is a TikZ LaTeX code that generates an isosceles triangle with the specified divisions and numbering:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{calc}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define the vertices of the isosceles triangle
+    \coordinate (A) at (-2,0);
+    \coordinate (B) at (2,0);
+    \coordinate (C) at (0,3);
+
+    % Draw the isosceles triangle
+    \draw[black] (A) -- (B) -- (C) -- cycle;
+
+    % Label the sides of the triangle
+    \node at ($(A)!0.5!(B)$) [below] {1};
+    \node at ($(A)!0.66!(C)$) [left] {4};
+    \node at ($(B)!0.66!(C)$) [right] {5};
+
+    % Divide the triangle into smaller triangles and label them
+    % First level division
+    \coordinate (D) at ($(A)!.5!(C)$);
+    \coordinate (E) at ($(B)!.5!(C)$);
+    \draw[black] (A) -- (D) -- (E) -- (B);
+    \node at ($(D)!0.5!(E)$) [above] {2};
+
+    % Second level division
+    \coordinate (F) at ($(A)!.33!(D)$);
+    \coordinate (G) at ($(A)!.67!(D)$);
+    \coordinate (H) at ($(B)!.33!(E)$);
+    \coordinate (I) at ($(B)!.67!(E)$);
+    \draw[black] (A) -- (F) -- (G) -- (D);
+    \draw[black] (B) -- (H) -- (I) -- (E);
+    \node at ($(F)!0.5!(G)$) [above left] {3};
+    \node at ($(H)!0.5!(I)$) [above right] {3};
+
+    % Fill the smaller triangles with black and white
+    \fill[white] (A) -- (F) -- (G) -- (D);
+    \fill[black] (F) -- (G) -- (H) -- (

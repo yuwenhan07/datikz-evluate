@@ -1,16 +1,42 @@
-To create an axis with fractional units in TikZ, you can use the `xtick` option to specify the tick positions and labels. Here's an example code that draws an axis with fractional units:
-```
+Certainly! Below is a TikZ LaTeX code that illustrates the reflection-extension process with a splitting point \( u \). The last part of the original walk is drawn in gray, and the modified walk is drawn in black.
+
+```latex
 \documentclass{standalone}
 \usepackage{tikz}
+
 \begin{document}
-\begin{tikzpicture}
-    \draw[->] (-1,0) -- (5,0) node[right] {$x$};
-    \foreach \x in {0, 1/20, 2/20, ..., 5} {
-        \draw (\x,0.1) -- (\x,-0.1);
-        \node at (\x, -0.2) {\pgfmathparse{\x*20}\pgfmathresult};
-    }
-\end{tikzpicture}
-\end{document}
-```
-In this code, we first draw the x-axis from -1 to 5. Then, we loop through each tick position from 0 to 5 with a step size of 1/20. For each tick position, we draw a small vertical line and label it with its corresponding fractional value.
-Note that we use the `\pgfmathparse` command to convert the fractional value to an integer by multiplying it by 20. This is because we want to display the fractional values as integers (e.g., 3/20 should be displayed as 6).
+
+\begin{tikzpicture}[scale=2]
+    % Define points
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (1,1);
+    \coordinate (C) at (2,0);
+    \coordinate (D) at (3,1);
+    \coordinate (E) at (4,0);
+    \coordinate (F) at (5,1);
+    \coordinate (G) at (6,0);
+    \coordinate (H) at (7,1);
+    \coordinate (I) at (8,0);
+    \coordinate (J) at (9,1);
+
+    % Draw original walk
+    \draw[gray] (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- (G) -- (H) -- (I) -- (J);
+
+    % Splitting point u
+    \node[circle, fill=black, inner sep=2pt] (u) at (4,0) {};
+
+    % Reflection extension
+    \coordinate (u_prime) at (6,-1);
+    \coordinate (g_u_prime) at (6,1);
+    \draw (u) to[bend right=45] node[midway, above] {$g_u(u)$} (u_prime);
+    \draw (u_prime) -- (g_u_prime);
+    \draw (g_u_prime) to[bend left=45] node[midway, below] {$g_u(u')$} (u);
+
+    % Modified walk
+    \draw[thick, black] (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- (G) -- (H) -- (I) -- (u_prime) -- (g_u_prime) -- (u) -- (A);
+
+    % Labels
+    \node[above] at (A) {A};
+    \node[above] at (B) {B};
+    \node[above] at (C) {C};
+    \node[above]

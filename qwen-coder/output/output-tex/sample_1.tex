@@ -1,12 +1,27 @@
-\documentclass{standalone}
-\usepackage{tikz-cd}
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
 
 \begin{document}
 
-\begin{tikzcd}[row sep=1cm, column sep=1.5cm]
-    & V_2 \arrow[r, "f_{24}"] & V_4 \arrow[r, "f_{45}"] & V_5 \\
-    & V_6 \arrow[u, "g_{64}"] \arrow[r, "f_{64}"] & V_4 \arrow[u, "g_{45}"] \arrow[r, "f_{45}"] & V_5 \\
-    V_1 \arrow[ru, "h_{12}"] \arrow[rd, "h_{16}"] & & & V_3 \arrow[lu, "h_{32}"] \arrow[ld, "h_{36}"]
-\end{tikzcd}
+\begin{tikzpicture}[scale=1.5]
+
+% Define coordinates
+(0,0) node[below left] {0} -- (6,0) node[right] {$Q$};
+(0,0) -- (0,6) node[above left] {$C$};
+
+% Initial production function curve
+\draw[thick, blue] plot coordinates {(1,1) (2,2) (3,3) (4,4) (5,5)};
+node at (2.5,2.5) [circle, fill=blue, inner sep=1pt];
+
+% New production function curve after agglomeration
+\draw[thick, red] plot coordinates {(1,1.5) (2,3) (3,4.5) (4,6) (5,7.5)};
+node at (2.5,3.5) [circle, fill=red, inner sep=1pt];
+
+% Labeling
+\node at (3,-0.5) [below] {Initial Production Function};
+\node at (3,6.5) [above] {New Production Function};
+\node at (8,3) [right] {City Size Increase ($N \to N'$)};
+
+\end{tikzpicture}
 
 \end{document}

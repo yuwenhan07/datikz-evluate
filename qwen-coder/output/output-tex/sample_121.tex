@@ -1,43 +1,28 @@
 \documentclass{standalone}
 \usepackage{tikz}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
+\pgfplotsset{compat=1.16}
 
 \begin{document}
 \begin{tikzpicture}
     \begin{axis}[
-        width=10cm,
-        height=6cm,
-        xlabel={\textit{log }$z$},
-        ylabel={\textit{a.v.t}},
-        ymin=0, ymax=100,
-        xmin=-2, xmax=2,
-        log ticks with fixed point,
-        ytick distance=20,
-        xtick distance=1,
-        grid=major,
+        ybar,
+        symbolic x coords={Pygmalion 6B, Model A, Model B, Model C, Model D},
+        xtick=data,
+        nodes near coords,
+        nodes near coords align={vertical},
+        ylabel={Improvement (in percentage)},
+        title={Retention and Engagement Improvement Comparison},
+        ymin=0,
+        ymax=20,
+        bar width=20pt,
         legend style={at={(0.5,-0.1)}, anchor=north,legend columns=-1},
-        ]
+    ]
+        \addplot coordinates {(Pygmalion 6B, 0) (Model A, 5) (Model B, 8) (Model C, 12) (Model D, 7)};
+        \addlegendentry{RetentionPolicy}
         
-        % Warburg Impedance (Blue)
-        \addplot[blue, thick] coordinates {
-            (-2, 1)
-            (-1, 3)
-            (0, 7)
-            (1, 15)
-            (2, 31)
-        };
-        \addlegendentry{Warburg Impedance}
-        
-        % Continuous-Time Rational Approximation (Red)
-        \addplot[red, thick] coordinates {
-            (-2, 5)
-            (-1, 10)
-            (0, 20)
-            (1, 40)
-            (2, 80)
-        };
-        \addlegendentry{Continuous-Time Rational Approximation}
+        \addplot coordinates {(Pygmalion 6B, 0) (Model A, 4) (Model B, 6) (Model C, 9) (Model D, 5)};
+        \addlegendentry{EngagementPolicy}
     \end{axis}
 \end{tikzpicture}
 \end{document}

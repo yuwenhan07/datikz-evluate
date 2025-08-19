@@ -1,0 +1,24 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style={rectangle, draw=black, fill=gray!20, text width=4em, text centered, rounded corners},
+    line/.style={draw, thick, -Stealth, >=stealth'},
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes representing support values and blocks
+    \node[block] (Bv0) {B^v_0};
+    \node[block, right of=Bv0] (Bv1) {B^v_1};
+    \node[block, right of=Bv1] (Bv2) {B^v_2};
+    \node[block, below of=Bv1] (G3) {Game G_3};
+
+    % Arrows connecting nodes
+    \path [line] (Bv0) -- node[anchor=south] {Empty} (Bv1);
+    \path [line] (Bv1) -- (Bv2);
+    \path [line] (Bv2) |- (G3);
+
+\end{tikzpicture}
+\end{document}

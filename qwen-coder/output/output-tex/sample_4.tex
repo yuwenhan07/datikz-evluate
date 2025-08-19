@@ -1,35 +1,25 @@
-Certainly! Below is a TikZ LaTeX code that creates a diagram illustrating the theoretical approximations for \(E^N_2\) on the left, the speed of selection \(\nu_N\) on the right, along with simulated values (black circles). The parameters include \(N = 10^6\), \(c = \frac{1}{2}\), and different regimes of selection strength.
-
-```latex
-\documentclass[tikz,border=5mm]{standalone}
-\usetikzlibrary{arrows.meta, decorations.markings}
+\documentclass{standalone}
+\usepackage{tikz}
 
 \begin{document}
-\begin{tikzpicture}[scale=0.8]
+\begin{tikzpicture}[node distance=2cm, auto]
 
-% Left Panel: E^N_2 vs Parameter
-\draw[thick,->] (-3,0) -- (4,0) node[right] {$\text{Parameter}$};
-\draw[thick,->] (-3,0) -- (-3,4) node[above] {$E^N_2$};
+    % Define nodes
+    \node (consumer) [rectangle, draw] {Consumer};
+    \node (preferences) [ellipse, draw, below of=consumer, yshift=-1cm] {Preferences};
+    \node (distributions) [rectangle, draw, below of=preferences, yshift=-1cm] {Distributions};
+    \node (mixing_distributions) [rectangle, draw, left of=distributions, xshift=-3cm] {Constituent Mixing Distributions};
+    \node (logit_models) [rectangle, draw, right of=distributions, xshift=3cm] {Mixed Logit Models};
+    \node (havan_model) [rectangle, draw, below of=logit_models, yshift=-1cm] {HAVAN Model};
+    \node (aggregate_preferences) [ellipse, draw, below of=havan_model, yshift=-1cm] {Aggregate Preferences};
 
-% Right Panel: Speed of Selection vs Parameter
-\draw[thick,->] (4,0) -- (10,0) node[right] {$\text{Parameter}$};
-\draw[thick,->] (4,0) -- (4,4) node[above] {$\nu_N$};
+    % Draw arrows
+    \draw[->] (consumer) -- node[anchor=east] {Selects Preferences} (preferences);
+    \draw[->] (preferences) -- node[anchor=north] {Estimates Parameters} (distributions);
+    \draw[->] (mixing_distributions) -- node[anchor=south] {Contributes} (distributions);
+    \draw[->] (distributions) -- node[anchor=west] {Mixed Logit Models Estimate} (logit_models);
+    \draw[->] (logit_models) -- node[anchor=north] {Predict Distribution Parameters} (havan_model);
+    \draw[->] (havan_model) -- node[anchor=south] {Predicts Aggregate Preferences} (aggregate_preferences);
 
-% Simulated Values (Black Circles)
-\foreach \x/\y in {0/2, 1/3, 2/4, 3/5, 4/6} {
-    \fill (\x-3, \y) circle[radius=2pt];
-}
-\foreach \x/\y in {5/1, 6/2, 7/3, 8/4, 9/5} {
-    \fill (\x-3, \y) circle[radius=2pt];
-}
-
-% Labels
-\node at (-3,-0.5) [below] {\textbf{Left Panel}};
-\node at (4,-0.5) [below] {\textbf{Right Panel}};
-
-% Legends
-\node at (-3,4.5) [left] {\textcolor{black}{$E^N_2$}};
-\node at (4,4.5) [right] {\textcolor{black}{$\nu_N$}};
-\node at (-3,4.2) [left] {\textcolor{black}{Simulated Values}};
-
-\end{t
+\end{tikzpicture}
+\end{document}

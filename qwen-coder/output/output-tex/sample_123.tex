@@ -1,4 +1,4 @@
-To create a TikZ LaTeX diagram that represents a non-redundant PMTD as an example for Online Yannakakis, we can use the following code:
+Certainly! Below is a TikZ LaTeX code that illustrates the proof of Proposition \ref{pro: LWconv}. The code includes two parts: one showing balls in \( G_{k,n} \) for \( r < \lfloor n/2 \rfloor \), and another showing balls in \( G_{k,n} \) for \( r \geq 1 \).
 
 ```latex
 \documentclass{standalone}
@@ -6,26 +6,38 @@ To create a TikZ LaTeX diagram that represents a non-redundant PMTD as an exampl
 \usetikzlibrary{shapes.geometric, arrows.meta}
 
 \tikzset{
-    decision/.style={diamond, draw, fill=blue!20, text width=4em, text badly centered, node distance=3cm, inner sep=0pt},
-    block/.style={rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em, node distance=3cm, inner sep=0pt},
-    line/.style={draw, thick, -Stealth},
-    cloud/.style={draw, ellipse,fill=red!20, node distance=3cm, minimum height=2em},
-    view/.style={rectangle, draw, fill=green!20, text width=5em, text centered, rounded corners, minimum height=4em, node distance=3cm, inner sep=0pt}
+    vertex/.style={circle, draw=black, fill=white, inner sep=2pt},
+    edge/.style={->, thick}
 }
 
 \begin{document}
-\begin{tikzpicture}[node distance = 2cm, auto]
-    % Nodes
-    \node [block] (init) {Init};
-    \node [decision, below of=init] (dec1) {Decision};
-    \node [view, left of=dec1, xshift=-2cm] (S1) {S-View};
-    \node [view, right of=dec1, xshift=2cm] (S2) {S-View};
-    \node [block, below of=dec1, yshift=-2cm] (action) {Action};
-    \node [decision, below of=action] (dec2) {Decision};
-    \node [view, left of=dec2, xshift=-2cm] (S3) {S-View};
-    \node [view, right of=dec2, xshift=2cm] (S4) {S-View};
-    \node [block, below of=dec2, yshift=-2cm] (final) {Final};
 
-    % Edges
-    \path [line] (init) -- (dec1);
-    \path [line] (dec1) -- node[anchor=east] {Yes} (
+\begin{tikzpicture}[scale=0.8]
+
+% Part 1: Balls in G_{k,n} for r < floor(n/2)
+\draw[dotted] (-3,-3) rectangle (3,3);
+\node[vertex] at (0,0) {0};
+\foreach \i in {-2,-1,1,2}{
+    \node[vertex] at (\i,0) {};
+    \node[vertex] at (0,\i) {};
+    \node[vertex] at (0,-\i) {};
+    \node[vertex] at (\i,\i) {};
+    \node[vertex] at (\i,-\i) {};
+    \node[vertex] at (-\i,\i) {};
+    \node[vertex] at (-\i,-\i) {};
+}
+
+% Part 2: Balls in G_{k,n} for r >= 1
+\draw[dashed] (5,-3) rectangle (9,3);
+\node[vertex] at (6,0) {0};
+\foreach \i in {1,...,4}{
+    \node[vertex] at (6+\i,0) {};
+    \node[vertex] at (6-\i,0) {};
+    \node[vertex] at (6,0+\i) {};
+    \node[vertex] at (6,0-\i) {};
+    \node[vertex] at (6+\i,\i) {};
+    \node[vertex] at (6+\i,-\i) {};
+    \node[vertex] at (6-\i,\i) {};
+    \node[vertex] at (6-\i,-\i) {};
+    \node[vertex] at (6+\i,0+\i) {};
+    \node[vertex] at

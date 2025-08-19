@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}
+    % Define the center of the circle and its radius
+    \def\center{(0,0)}
+    \def\radius{2cm}
+
+    % Draw the circle
+    \draw[thick] (0,0) circle (\radius);
+
+    % Rotate angle
+    \def\angle{30}
+
+    % Calculate new point after rotation using calc library
+    \coordinate (newpoint) at ($(center)!1!\angle:(center)$);
+
+    % Draw the radius line
+    \draw[->, thick] (center) -- (newpoint) node[midway, above right] {$r$};
+
+    % Draw the angle label
+    \node at ($(center) + (\angle:1cm)$) [anchor=south west] {\(\theta = 30^\circ\)};
+
+\end{tikzpicture}
+
+\end{document}

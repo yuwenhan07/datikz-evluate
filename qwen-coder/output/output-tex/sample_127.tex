@@ -2,19 +2,27 @@
 \usepackage{tikz}
 
 \begin{document}
-\begin{tikzpicture}[node distance=2cm]
-  \foreach \i in {1,...,5} {
-    % Create nodes for numbers and dots
-    \node (number-\i) at (0,-\i*1.5) {\ifnum\i=1 x\else y\fi};
-    \node (dot-begin-\i) at (-0.5,-\i*1.5) {.};
-    \node (dot-middle-\i) at (0,-\i*1.5) {.};
-    \node (dot-end-\i) at (0.5,-\i*1.5) {.;
-    
-    % Add labels below the nodes
-    \node[below=0.1cm, anchor=north] at (number-\i.south) {Label \i};
-    \node[below=0.1cm, anchor=north] at (dot-begin-\i.south) {Dot Begin \i};
-    \node[below=0.1cm, anchor=north] at (dot-middle-\i.south) {Dot Middle \i};
-    \node[below=0.1cm, anchor=north] at (dot-end-\i.south) {Dot End \i};
-  }
+\begin{tikzpicture}[scale=1.5]
+
+% Define nodes
+\node (v1) at (0, 2) [circle, draw, fill=blue] {};
+\node (v2) at (1, 1) [circle, draw, fill=blue] {};
+\node (v3) at (1, -1) [circle, draw, fill=red!30, dashed] {};
+\node (v4) at (0, -2) [circle, draw, fill=red!30, dashed] {};
+\node (v5) at (-1, -1) [circle, draw, fill=blue] {};
+\node (v6) at (-1, 1) [circle, draw, fill=blue] {};
+
+% Draw edges
+\draw (v1) -- (v2);
+\draw (v2) -- (v3);
+\draw (v3) -- (v4);
+\draw (v4) -- (v5);
+\draw (v5) -- (v6);
+\draw (v6) -- (v1);
+
+% Draw additional edges to form the diamond shape
+\draw (v2) -- (v5);
+\draw (v3) -- (v6);
+
 \end{tikzpicture}
 \end{document}

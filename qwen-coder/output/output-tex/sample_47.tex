@@ -1,30 +1,34 @@
-\documentclass[tikz]{standalone}
-\usetikzlibrary{shapes.geometric, arrows.meta}
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 
 \begin{document}
-
-\tikzstyle{cell} = [draw=black, thick, rectangle, minimum size=2cm]
-\tikzstyle{line} = [draw=blue, thick]
-\tikzstyle{dot} = [fill=black, circle, radius=1pt]
-
-\begin{tikzpicture}[node distance=1cm]
-    % Draw the cell
-    \node (cell) [cell] {Cell};
-
-    % Place the blue lines
-    \draw[line] ([xshift=-0.5cm,yshift=0.5cm]cell.north west) -- ++(1,0);
-    \draw[line] ([xshift=-0.5cm,yshift=-0.5cm]cell.south west) -- ++(1,0);
-    \draw[line] ([yshift=0cm,xshift=0.5cm]cell.east) -- ++(0,-1);
-
-    % Place the black dots
-    \node[dot] at ([xshift=-0.3cm,yshift=0.4cm]cell.north west) {};
-    \node[dot] at ([xshift=0.3cm,yshift=-0.4cm]cell.south east) {};
-
-    % Add labels
-    \node[below left] at (cell.west) {Left};
-    \node[above right] at (cell.east) {Right};
-    \node[left] at (cell.north west) {Top};
-    \node[right] at (cell.south east) {Bottom};
+\begin{tikzpicture}[scale=0.8]
+    % Define axis limits and ticks
+    \def\xmin{0.5}
+    \def\xmax{3}
+    \def\ymin{2}
+    \def\ymax{4}
+    
+    % Draw axes
+    \draw[->] (\xmin, 0) -- node[below left] {$\beta$ (Approximation Ratio)} (\xmax, 0);
+    \draw[->] (0, \ymin) -- node[below right] {$d$ (Base of Exponent)} (\xcoord, \ymax);
+    
+    % Draw grid
+    \foreach \x in {\xmin,1,...,\xmax} \draw[dashed] (\x,0) -- (\x,\ymax);
+    \foreach \y in {\ymin,1,...,\ymax} \draw[dashed] (0,\y) -- (\xmax,\y);
+    
+    % Plot points
+    \filldraw[blue] (1, 2) circle[radius=2pt] node[anchor=north east] {(1, 2)};
+    \filldraw[red] (1.5, 3) circle[radius=2pt] node[anchor=south west] {(1.5, 3)};
+    \filldraw[green] (2, 2.5) circle[radius=2pt] node[anchor=north west] {(2, 2.5)};
+    
+    % Add labels to points
+    \node at (1.1, 1.9) {Point 1};
+    \node at (1.6, 3.1) {Point 2};
+    \node at (2.1, 2.4) {Point 3};
+    
+    % Add title
+    \node[above left] at (2, 3.7) {Running Time of Algorithm $\vcmaxdegthree$};
 \end{tikzpicture}
-
 \end{document}

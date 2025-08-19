@@ -1,0 +1,26 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{angles,quotes}
+
+\tikzset{
+    string/.style={thick},
+    vertical/.style={string,dashed},
+    horizontal/.style={string,dotted}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw a vertical string from bottom to top
+    \draw[vertical] (-0.5,-1) -- node[midway,left]{$\psi$} (-0.5,1);
+    
+    % Draw a horizontal string from left to right
+    \draw[horizontal] (-1,0) -- node[midway,below]{$\psi$} (1,0);
+    
+    % Labeling the strings
+    \node at (-0.7,1.2) {Vertical String};
+    \node at (1.2,-0.8) {Horizontal String};
+    
+    % Adding arrows to indicate the direction of the strings
+    \draw[-stealth] (-0.4,1.1) -- (-0.6,1.3);
+    \draw[-stealth] (0.9,0.1) -- (1.1,0.3);
+\end{tikzpicture}
+\end{document}

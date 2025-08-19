@@ -1,22 +1,40 @@
-\documentclass{beamer}
-\usepackage[english]{babel} % Ensure English language for labels
-\usepackage{tikz}
-\usepackage{smartdiagram}
+To create a TikZ LaTeX diagram that accurately represents the described geometric objects and their relationships, we can use the following code:
+
+```latex
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{amsmath}
+
+\tikzset{
+    mycircle/.style={draw,circle},
+    myrectangle/.style={draw,rectangle},
+    mypoint/.style={fill,circle,inner sep=1pt}
+}
 
 \begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw K and -K
+    \draw[thick,black] (-1,0) circle (1);
+    \draw[dashed,thick,black] (1,0) circle (1);
 
-\begin{frame}{Smart Diagram Animation}
-    \begin{center}
-        \smartdiagramanimated[bubble diagram:clockwise direction, bubbles fill=blue!50, bubble content width=2cm, text font=\small]{
-            Item 1,
-            Item 2,
-            Item 3,
-            Item 4,
-            Item 5,
-            Item 6,
-            Item 7
-        }
-    \end{center}
-\end{frame}
-
-\end{document}
+    % Draw M_0(K, -K)
+    \draw[orange,thick] plot[smooth cycle,tension=0.75] coordinates {(-1,0) (-0.5,1) (0.5,1) (1,0)};
+    
+    % Draw M_1(K, -K)
+    \draw[blue,thick] plot[smooth cycle,tension=0.75] coordinates {(-1,0) (-0.5,1) (0.5,1) (1,0)};
+    
+    % Draw M_3(K, -K)
+    \draw[red,thick] plot[smooth cycle,tension=0.75] coordinates {(-1,0) (-0.5,1) (0.5,1) (1,0)};
+    
+    % Draw M_infinity(K, -K)
+    \draw[dashdotted,thick,blue] plot[smooth cycle,tension=0.75] coordinates {(-1,0) (-0.5,1) (0.5,1) (1,0)};
+    
+    % Mark common boundary points
+    \node[mycircle,fill=white] at (0,0) {};
+    
+    % Mark vertices of M_1(K, -K)
+    \node[mypoint,fill=white] at (-0.5,1) {};
+    \node[mypoint,fill=white] at (0.5,1) {};
+    
+    % Label the objects
+    \node[above left] at (-1,0) {$K$};
+    \node[below right] at (1,0)

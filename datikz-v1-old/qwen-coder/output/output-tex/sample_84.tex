@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+% Define the data from the CSV file
+\pgfplotstableread[col sep=comma]{data.csv}\datatable
+
+\begin{figure}[h]
+    \centering
+    % Create the plot with both dataset and function
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Data and Function Plot},
+            xlabel={$x$-value},
+            ylabel={$y$-value},
+            legend pos=north west,
+            grid=major,
+            ymin=-0.5,
+            ymax=3.5,
+            xmin=-0.5,
+            xmax=1.5,
+            axis lines*=left,
+            ytick=\empty,
+            xtick=data,
+            nodes near coords,
+            every node near coord/.style={
+                anchor=south east,
+                rotate=45,
+                font=\small,
+            },
+        ]
+        
+        % Plot the dataset
+        \addplot table[x=x,y=y] {\datatable};
+        \legend{Dataset}
+        
+        % Plot the function
+        \addplot+[domain=-0.5:1.5,samples=100] {x^2 + 0.5*x - 0.25};
+        \legend{Function}
+        
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Plot showing the dataset and the function $y = x^2 + 0.5x - 0.25$.}
+    \label{fig:data-function}
+\end{figure}
+
+\end{document}

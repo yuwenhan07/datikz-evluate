@@ -1,32 +1,31 @@
-\documentclass{standalone}
-\usepackage{tikz}
+To establish the \( N \)-extendibility of the thermal-noise channel, we need to demonstrate that the channel can be extended to an \( N \)-mode channel by amplifying and splitting the initial state into \( N \) modes using a beam splitter. Here's a step-by-step strategy to achieve this:
 
-\begin{document}
-\begin{tikzpicture}[scale=2]
-    % Axes
-    \draw[->] (-1.5,0) -- (4,0) node[right] {$x$};
-    \draw[->] (0,-1.5) -- (0,3) node[above] {$y$};
+1. **Define the Initial State**: Start with an initial quantum state \(\rho\) in a single mode.
 
-    % Function R
-    \draw[thick, red] (0,2) to[out=-90,in=180] (1,2);
-    \draw[thick, red] (1,2) to[out=0,in=-90] (2,0);
-    \fill[red] (1,2) circle (2pt); % Discontinuity at x=1
+2. **Amplify the State**: Use a linear optical amplifier to amplify the initial state. This transforms the state from \(\rho\) to \(A\rho A^\dagger\), where \(A\) is the amplitude gain operator.
 
-    % Flipped Function R
-    \draw[thick, blue] (3,2) to[out=90,in=180] (4,2);
-    \draw[thick, blue] (4,2) to[out=0,in=90] (3,0);
-    \fill[blue] (3,2) circle (2pt); % Discontinuity at x=3
+3. **Split the Amplified State**: Use a beam splitter to split the amplified state into \(N\) modes. The beam splitter operation can be represented as:
+   \[
+   \mathcal{B} = \begin{pmatrix}
+   1 & 0 \\
+   0 & e^{i\phi}
+   \end{pmatrix}
+   \]
+   For \(N\) modes, the beam splitter can be generalized to:
+   \[
+   \mathcal{B}_N = \begin{pmatrix}
+   I_{(N-1)/2} & 0 & 0 & 0 \\
+   0 & \frac{1}{\sqrt{2}} & \frac{e^{i\phi/2}}{\sqrt{2}} & 0 \\
+   0 & \frac{e^{i\phi/2}}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+   0 & 0 & 0 & I_{(N-1)/2}
+   \end{pmatrix}
+   \]
+   where \(I_{(N-1)/2}\) is the identity matrix of size \((N-1)/2\).
 
-    % Maximum Function R
-    \draw[dashed, thick, green] (0,1) -- (2,1);
+4. **Combine Operations**: Apply the beam splitter to the amplified state. The resulting state after applying the beam splitter will be:
+   \[
+   \mathcal{B}_N(A\rho A^\dagger)\mathcal{B}_N^\dagger
+   \]
 
-    % Minimum Function B'
-    \draw[dashed, thick, orange] (1,0) -- (3,0);
+5. **Verify Extendibility**: To verify that the channel is \(N\)-extendible, you need to show that the output state has the desired properties for an \(N\)-mode channel. This typically involves checking the entanglement structure, noise characteristics, and other relevant physical properties.
 
-    % Labels
-    \node at (0.5,2.2) [right] {R};
-    \node at (3.5,2.2) [left] {B'};
-    \node at (0.5,1.2) [right] {Max};
-    \node at (3.5,0.2) [left] {Min};
-\end{tikzpicture}
-\end{document}

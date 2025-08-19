@@ -1,48 +1,47 @@
-Certainly! Below is a TikZ LaTeX code that generates a visual representation of a bipartite graph \( G \) with no proper edge coloring respecting certain forbidden colors. The code includes several black and white triangles of various sizes and positions, oriented differently to create an abstract and visually interesting scene.
+Certainly! Below is a TikZ LaTeX code that visualizes the partial and whole spherical linkage described in your prompt. The code includes labels for the angles and gaps as specified.
 
 ```latex
-\documentclass{standalone}
-\usepackage{tikz}
+\documentclass[tikz,border=3mm]{standalone}
+\usepackage{tikz-3dplot}
 
 \begin{document}
-\begin{tikzpicture}[scale=0.8]
 
-% Define styles for nodes and edges
 \tikzset{
-    node/.style={draw, circle, minimum size=1cm},
-    edge/.style={thick, ->},
-    triangle/.style={fill=black, draw=black, shape=triangle, minimum size=1cm},
-    whiteTriangle/.style={fill=white, draw=black, shape=triangle, minimum size=1cm}
+    dot/.style={circle,fill,inner sep=1pt},
+    line/.style={thick}
 }
 
-% Draw nodes
-\node[node] (A) at (0,2) {};
-\node[node] (B) at (2,2) {};
-\node[node] (C) at (4,2) {};
-\node[node] (D) at (0,0) {};
-\node[node] (E) at (2,0) {};
-\node[node] (F) at (4,0) {};
+\tdplotsetmaincoords{70}{45} % Set the main coordinates
 
-% Draw triangles
-\node[triangle] (T1) at (-1,1) {};
-\node[triangle] (T2) at (3,1) {};
-\node[triangle] (T3) at (-1,-1) {};
-\node[triangle] (T4) at (3,-1) {};
+\begin{tikzpicture}[tdplot_main_coords]
+    
+    % Define points
+    \coordinate (O) at (0,0,0);
+    \coordinate (A) at (2,0,0);
+    \coordinate (B) at (2,2,0);
+    \coordinate (C) at (0,2,0);
+    \coordinate (D) at (0,0,-2);
+    \coordinate (E) at (2,0,-2);
+    \coordinate (F) at (2,2,-2);
+    \coordinate (G) at (0,2,-2);
 
-\node[whiteTriangle] (WT1) at (1,1) {};
-\node[whiteTriangle] (WT2) at (5,1) {};
-\node[whiteTriangle] (WT3) at (1,-1) {};
-\node[whiteTriangle] (WT4) at (5,-1) {};
+    % Draw lines
+    \draw[line] (O) -- (A) -- (B) -- (C) -- cycle;
+    \draw[line] (O) -- (D) -- (E) -- (F) -- cycle;
+    \draw[line] (A) -- (E);
+    \draw[line] (B) -- (F);
+    \draw[line] (C) -- (G);
+    \draw[line] (D) -- (A);
+    \draw[line] (D) -- (B);
+    \draw[line] (D) -- (C);
+    \draw[line] (E) -- (F);
+    \draw[line] (E) -- (G);
+    \draw[line] (F) -- (G);
 
-% Draw edges between nodes
-\draw[edge] (A) -- (D);
-\draw[edge] (A) -- (E);
-\draw[edge] (B) -- (D);
-\draw[edge] (B) -- (F);
-\draw[edge] (C) -- (E);
-\draw[edge] (C) -- (F);
+    % Draw angles and labels
+    \node[dot,label=below left:$\lambda_i$] at (1,0,0) {};
+    \node[dot,label=above right:$\gamma_i$] at (2,1,0) {};
+    \node[dot,label=below right:$\mu_i$] at (1,2,0) {};
+    \node[dot,label=above left:$\delta_i$] at (0,1,0) {};
 
-% Draw edges within triangles
-\draw[edge] (T1) -- (WT1);
-\draw[edge] (T1) -- (WT2);
-\draw
+   

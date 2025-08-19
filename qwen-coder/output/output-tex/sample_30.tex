@@ -1,22 +1,37 @@
-\documentclass[tikz,border=10pt]{standalone}
-\usetikzlibrary{arrows.meta}
+Certainly! Below is a TikZ LaTeX code that depicts the transformation of the domain of the colored S6V model. This code includes nodes labeled with \( z_i \) to represent the spectral parameters for the colored S6V weights on each row.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
 
 \begin{document}
-\begin{tikzpicture}[scale=2]
-    % Axes
-    \draw[->] (-1,0) -- (3,0) node[right] {Farkas' Lemma};
-    \draw[->] (0,-1) -- (0,3) node[above] {Neural ISMs};
 
-    % Lines
-    \draw[dashed] (0,0) -- (3,3); % Line y = x
+\begin{tikzpicture}[node distance=2cm, auto]
+    % Nodes representing rows and columns
+    \node (row1) at (0, 3) {Row 1};
+    \node (row2) at (0, 1) {Row 2};
+    \node (row3) at (0, -1) {Row 3};
 
-    % Points
-    \filldraw[blue] (0.5,1) circle[radius=2pt] node[left] {Program-Agnostic};
-    \filldraw[green] (1.5,2) circle[radius=2pt] node[right] {Program-Aware};
-    \filldraw[red] (2.5,1.5) circle[radius=2pt] node[right] {Farkas' Lemma};
+    \node (col1) at (-4, 2) {Column 1};
+    \node (col2) at (-4, 0) {Column 2};
+    \node (col3) at (-4, -2) {Column 3};
+    \node (col4) at (-4, -4) {Column 4};
+    \node (col5) at (-4, -6) {Column 5};
+    \node (col6) at (-4, -8) {Column 6};
 
-    % Labels
-    \node at (0.5,-0.5) [below] {Below the line};
-    \node at (2.5,-0.5) [below] {Above the line};
-\end{tikzpicture}
-\end{document}
+    % Drawing arrows between nodes
+    \draw[->] (row1.south) -- (col1.north);
+    \draw[->] (row1.south) -- (col2.north);
+    \draw[->] (row1.south) -- (col3.north);
+    \draw[->] (row1.south) -- (col4.north);
+    \draw[->] (row1.south) -- (col5.north);
+    \draw[->] (row1.south) -- (col6.north);
+
+    \draw[->] (row2.south) -- (col1.north);
+    \draw[->] (row2.south) -- (col2.north);
+    \draw[->] (row2.south) -- (col3.north);
+    \draw[->] (row2.south) -- (col4.north);
+    \draw[->] (row2.south) -- (col5.north);
+    \draw[->] (row2.south) -- (col6.north);
+
+    \draw[->] (row

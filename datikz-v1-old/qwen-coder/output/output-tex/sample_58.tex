@@ -1,0 +1,21 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+% White Background
+\node[draw=white, fill=white, minimum size=10cm] (background) {};
+
+% Yellow Boxes
+\node[draw=yellow, fill=yellow, rectangle, rounded corners, align=center, inner sep=5pt] (boxA) at (0,3) {A};
+\node[draw=yellow, fill=yellow, rectangle, rounded corners, align=center, inner sep=5pt] (boxB) at (0,1) {B};
+\node[draw=yellow, fill=yellow, rectangle, rounded corners, align=center, inner sep=5pt] (boxC) at (0,-1) {C};
+
+% Decorations above the nodes
+\node[above=5pt of boxA, draw=blue, circle, fill=blue!30, inner sep=2pt] {};
+\node[above=5pt of boxB, draw=red, diamond, fill=red!30, inner sep=2pt] {};
+\node[above=5pt of boxC, draw=green, triangle, fill=green!30, inner sep=2pt] {};
+
+\end{tikzpicture}
+\end{document}

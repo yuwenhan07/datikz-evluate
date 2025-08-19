@@ -1,41 +1,33 @@
-Certainly! Below is a TikZ LaTeX code that generates an isosceles triangle with the specified divisions and numbering:
+To create a TikZ LaTeX diagram that visualizes the number of steps taken by an RBQL (Randomized Backtracking with Learning) agent in a \(50 \times 50\) grid world maze, we can use the following code. This example will include a histogram to represent the distribution of steps, with the light green area representing the range of the highest and lowest step counts (excluding the top and bottom outliers), and a green line indicating the average performance.
 
 ```latex
-\documentclass[tikz]{standalone}
-\usetikzlibrary{calc}
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc, decorations.pathmorphing}
 
 \begin{document}
-\begin{tikzpicture}[scale=2]
-    % Define the vertices of the isosceles triangle
-    \coordinate (A) at (-2,0);
-    \coordinate (B) at (2,0);
-    \coordinate (C) at (0,3);
+\begin{tikzpicture}[scale=1]
+    % Define colors
+    \definecolor{lightgreen}{rgb}{0.6, 1, 0.6}
+    \definecolor{darkgreen}{rgb}{0, 0.75, 0}
 
-    % Draw the isosceles triangle
-    \draw[black] (A) -- (B) -- (C) -- cycle;
+    % Data points for the histogram
+    \def\data{{300, 320, 340, 360, 380, 400, 420, 440, 460, 480}}
+    
+    % Calculate minimum, maximum, and average
+    \pgfmathsetmacro{\minVal}{min(\data)}
+    \pgfmathsetmacro{\maxVal}{max(\data)}
+    \pgfmathsetmacro{\avgVal}{mean(\data)}
 
-    % Label the sides of the triangle
-    \node at ($(A)!0.5!(B)$) [below] {1};
-    \node at ($(A)!0.66!(C)$) [left] {4};
-    \node at ($(B)!0.66!(C)$) [right] {5};
+    % Define the width of each bar
+    \def\barWidth{15pt}
+    \def\barHeightFactor{0.005} % Adjust this factor to control the height of the bars
 
-    % Divide the triangle into smaller triangles and label them
-    % First level division
-    \coordinate (D) at ($(A)!.5!(C)$);
-    \coordinate (E) at ($(B)!.5!(C)$);
-    \draw[black] (A) -- (D) -- (E) -- (B);
-    \node at ($(D)!0.5!(E)$) [above] {2};
+    % Draw the histogram
+    \foreach \step [count=\i] in \data {
+        \draw[fill=darkgreen!50!white] (\i*\barWidth-7.5pt,0) rectangle ++(\barWidth,-\step*\barHeightFactor);
+    }
 
-    % Second level division
-    \coordinate (F) at ($(A)!.33!(D)$);
-    \coordinate (G) at ($(A)!.67!(D)$);
-    \coordinate (H) at ($(B)!.33!(E)$);
-    \coordinate (I) at ($(B)!.67!(E)$);
-    \draw[black] (A) -- (F) -- (G) -- (D);
-    \draw[black] (B) -- (H) -- (I) -- (E);
-    \node at ($(F)!0.5!(G)$) [above left] {3};
-    \node at ($(H)!0.5!(I)$) [above right] {3};
-
-    % Fill the smaller triangles with black and white
-    \fill[white] (A) -- (F) -- (G) -- (D);
-    \fill[black] (F) -- (G) -- (H) -- (
+    % Highlight the range of the highest and lowest step counts (excluding the top and bottom outliers)
+    \draw[fill=lightgreen!50!white] (1*\barWidth-7.5pt,0) rectangle ++(9*\barWidth,-\minVal*\barHeightFactor);
+    \draw[fill=lightgreen!50!white] (1*\barWidth-7.5pt,0) rectangle ++(9*\

@@ -1,0 +1,31 @@
+To create a TikZ LaTeX diagram that represents a non-redundant PMTD as an example for Online Yannakakis, we can use the following code:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    decision/.style={diamond, draw, fill=blue!20, text width=4em, text badly centered, node distance=3cm, inner sep=0pt},
+    block/.style={rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em, node distance=3cm, inner sep=0pt},
+    line/.style={draw, thick, -Stealth},
+    cloud/.style={draw, ellipse,fill=red!20, node distance=3cm, minimum height=2em},
+    view/.style={rectangle, draw, fill=green!20, text width=5em, text centered, rounded corners, minimum height=4em, node distance=3cm, inner sep=0pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Nodes
+    \node [block] (init) {Init};
+    \node [decision, below of=init] (dec1) {Decision};
+    \node [view, left of=dec1, xshift=-2cm] (S1) {S-View};
+    \node [view, right of=dec1, xshift=2cm] (S2) {S-View};
+    \node [block, below of=dec1, yshift=-2cm] (action) {Action};
+    \node [decision, below of=action] (dec2) {Decision};
+    \node [view, left of=dec2, xshift=-2cm] (S3) {S-View};
+    \node [view, right of=dec2, xshift=2cm] (S4) {S-View};
+    \node [block, below of=dec2, yshift=-2cm] (final) {Final};
+
+    % Edges
+    \path [line] (init) -- (dec1);
+    \path [line] (dec1) -- node[anchor=east] {Yes} (

@@ -1,51 +1,9 @@
-To shrink the interval \([5, 499]\) in the \(x\)-axis while preserving the positive slope on the left and the negative slope on the right, you can use a transformation that compresses the \(x\)-values. One way to achieve this is by using a logarithmic transformation for the \(x\)-axis. This will help in visualizing the data more effectively while keeping the slopes preserved.
-
-Here's an example of how you can create such a plot using TikZ:
-
-```latex
 \documentclass{standalone}
-\usepackage{tikz}
-\usetikzlibrary{plotmarks}
+\usepackage{tikz-cd}
 
 \begin{document}
-\begin{tikzpicture}[scale=1]
-    % Define the axis limits
-    \def\xmin{5}
-    \def\xmax{499}
-    \def\ymin{-20}
-    \def\ymax{20}
-
-    % Define the number of divisions
-    \def\nxdivisions{10}
-    \def\nydivisions{10}
-
-    % Draw the axes
-    \draw[->] (\xmin,0) -- (\xmax,0) node[right] {$x$};
-    \draw[->] (0,\ymin) -- (0,\ymax) node[above] {$y$};
-
-    % Draw grid lines
-    \foreach \x in {\xmin,...,\xmax} {
-        \draw[dashed] (\x,0) -- (\x,-0.1);
-    }
-    \foreach \y in {\ymin,...,\ymax} {
-        \draw[dashed] (0,\y) -- (-0.1,\y);
-    }
-
-    % Plot the data points
-    \foreach \x/\y in {%
-        5/10,
-        10/15,
-        20/5,
-        30/18,
-        50/7,
-        100/12,
-        200/6,
-        400/9
-    } {
-        \fill[red] plot coordinates {(\x,\y)};
-    }
-
-    % Add labels to the data points
-    \node at (5,10) [below right] {(5, 10)};
-    \node at (10,15) [below right] {(10, 15)};
-    \node at (20,
+\begin{tikzcd}[column sep=large]
+    & \text{pi}\mathfrak{su} \\
+    \text{pi}SU \arrow[ur, "e"] \arrow[r, "\text{SWAP inv}"] & SU
+\end{tikzcd}
+\end{document}

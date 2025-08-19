@@ -1,19 +1,45 @@
-\documentclass{article}
+Certainly! Below is a TikZ LaTeX code that illustrates the \( X \)-gadgets for all sets \( X \) which are relevant by Proposition~\ref{chemin2}. In this example, the vertices in \( Z \) are marked by squares and the remaining vertices by disks.
+
+```latex
+\documentclass{standalone}
 \usepackage{tikz}
-\usetikzlibrary{decorations.markings}
+
+\tikzset{
+    vertex/.style={circle, draw=black, fill=white},
+    squarevertex/.style={rectangle, draw=black, fill=white}
+}
 
 \begin{document}
 
-\begin{tikzpicture}[thick]
-    % Define the radius of the circle
-    \def\radius{3cm}
-    
-    % Draw the circular path
-    \draw[postaction={decorate,decoration={markings,
-        mark=at position 0.25 with {\arrow[scale=1]{>}},
-        mark=at position 0.5 with {\arrow[scale=1]{>}},
-        mark=at position 0.75 with {\arrow[scale=1]{>}
-    }}}] (0,0) circle (\radius);
-\end{tikzpicture}
+\begin{tikzpicture}[scale=1.5]
+    % Vertices in Z (squares)
+    \node[squarevertex] (Z1) at (-3, 0) {};
+    \node[squarevertex] (Z2) at (-1, 0) {};
+    \node[squarevertex] (Z3) at (1, 0) {};
+    \node[squarevertex] (Z4) at (3, 0) {};
 
-\end{document}
+    % Remaining vertices (disks)
+    \node[vertex] (V1) at (-4, -2) {};
+    \node[vertex] (V2) at (-2, -2) {};
+    \node[vertex] (V3) at (0, -2) {};
+    \node[vertex] (V4) at (2, -2) {};
+    \node[vertex] (V5) at (4, -2) {};
+
+    % Edges between vertices
+    \draw (Z1) -- (V1);
+    \draw (Z1) -- (V2);
+    \draw (Z2) -- (V2);
+    \draw (Z2) -- (V3);
+    \draw (Z3) -- (V3);
+    \draw (Z3) -- (V4);
+    \draw (Z4) -- (V4);
+    \draw (Z4) -- (V5);
+
+    \draw (V1) -- (V2);
+    \draw (V2) -- (V3);
+    \draw (V3) -- (V4);
+    \draw (V4) -- (V5);
+    \draw (V5) -- (V1);
+
+    % Labels
+    \node at (-3, -2.5) {$X = \{Z_1, Z_2, Z_3, Z_

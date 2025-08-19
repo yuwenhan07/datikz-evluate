@@ -1,0 +1,40 @@
+Certainly! Below is a TikZ LaTeX code that visually represents the influence of the standard deviation of Gaussian utilities on the average convergence time. The x-axis represents the standard deviation, and the y-axis represents the number of games where the dynamics did not converge within the given time limit.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Influence of Standard Deviation on Convergence Time},
+        xlabel={Standard Deviation},
+        ylabel={Number of Games Not Converged},
+        ymin=0,
+        ymax=10,
+        xmin=60,
+        xmax=100,
+        xtick={60, 70, 80, 90, 100},
+        ytick={0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+        grid=major,
+        width=10cm,
+        height=6cm,
+        legend style={at={(0.5,-0.1)}, anchor=north,legend columns=-1}
+    ]
+        
+        % Data points for resentful agents
+        \addplot[mark=square*, color=blue] coordinates {(60, 7) (70, 23) (80, 48) (90, 63) (100, 75)};
+        \addlegendentry{Resentful Agents}
+        
+        % Data points for appreciative agents
+        \addplot[mark=triangle*, color=red] coordinates {(60, 0) (70, 0) (80, 0) (90, 0) (100, 0)};
+        \addlegendentry{Appreciative Agents}
+        
+        % Data points for resentful-appreciative agents
+        \addplot[mark=diamond*, color=green] coordinates {(60, 0) (70, 0) (80, 0) (90, 0) (100, 0)};
+        \addlegendentry{Resentful-Appreciative Agents}
+    \end{axis}
+\end{tikzpicture

@@ -1,25 +1,33 @@
-\documentclass{standalone}
-\usepackage{tikz}
+To create a TikZ diagram that illustrates this parallel reconstruction process, we can use various shapes and arrows to represent the different stages and interactions. Below is an example of how you might write the TikZ code for this scenario:
+
+```latex
+\documentclass[tikz,border=2cm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  block/.style={rectangle, draw, text width=5em, text centered, minimum height=4em},
+  line/.style={draw, -Stealth', thick},
+  decision/.style={diamond, draw, text width=5em, text badly centered, node distance=3cm, inner sep=0pt},
+  cloud/.style={cloud, draw, aspect=2, text width=6em, align=center}
+}
 
 \begin{document}
+\begin{tikzpicture}[node distance=2cm]
 
-\begin{tikzpicture}[scale=1.5]
+\node (init) [startstop] {Init};
+\node (deconvolve1) [block, below of=init] {Deconvolve Residuals};
+\node (lowres1) [block, below of=deconvolve1] {$i_{\mathcal{L}_1}$};
+\node (highres1) [block, right of=lowres1, xshift=3cm] {$i_{\mathcal{H}_1}$};
 
-% Non-gravitational case
-\node[draw, rectangle, fill=blue!20] (non_grav) at (0,0) {Non-gravitational};
-\node[below left of=non_grav, draw, circle, fill=red!20] (point) {Point};
+\node (mc1) [decision, below of=highres1, yshift=-1cm] {MC};
+\node (lowres2) [block, below of=mc1, yshift=-1cm] {$i_{{\text{V}_\mathcal{L}}_n}$};
+\node (highres2) [block, right of=lowres2, xshift=3cm] {$i_{{\text{V}_\mathcal{H}}_n}$};
 
-% Wick-rotated case
-\node[draw, rectangle, fill=green!20, right=4cm of non_grav] (wick_rotated) {Wick-rotated};
-\node[below right of=wick_rotated, draw, circle, fill=blue!20] (loop) {Loop};
+\node (combine) [decision, below of=highres2, yshift=-1cm] {Combine};
+\node (final) [block, below of=combine, yshift=-1cm] {$\hat{\imath}$};
 
-% Arrows and labels
-\draw[-stealth] (non_grav.south west) -- node[below] {Topology} ++(-3,-1);
-\draw[-stealth] (wick_rotated.south east) -- node[below] {Topology} ++(3,-1);
-
-\draw[-stealth] (point.west) -- node[left] {Contribution} ++(-1,-1);
-\draw[-stealth] (loop.east) -- node[right] {Contribution} ++(1,-1);
-
-\end{tikzpicture}
-
-\end{document}
+% Drawing lines
+\path [line] (init) -- (deconvolve1);
+\path [line] (deconvolve1) -- (lowres1);
+\path [line] (deconvolve1) -- (highres1);
+\path [line] (highres

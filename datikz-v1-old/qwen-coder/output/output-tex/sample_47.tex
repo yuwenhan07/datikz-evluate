@@ -1,0 +1,30 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+
+\tikzstyle{cell} = [draw=black, thick, rectangle, minimum size=2cm]
+\tikzstyle{line} = [draw=blue, thick]
+\tikzstyle{dot} = [fill=black, circle, radius=1pt]
+
+\begin{tikzpicture}[node distance=1cm]
+    % Draw the cell
+    \node (cell) [cell] {Cell};
+
+    % Place the blue lines
+    \draw[line] ([xshift=-0.5cm,yshift=0.5cm]cell.north west) -- ++(1,0);
+    \draw[line] ([xshift=-0.5cm,yshift=-0.5cm]cell.south west) -- ++(1,0);
+    \draw[line] ([yshift=0cm,xshift=0.5cm]cell.east) -- ++(0,-1);
+
+    % Place the black dots
+    \node[dot] at ([xshift=-0.3cm,yshift=0.4cm]cell.north west) {};
+    \node[dot] at ([xshift=0.3cm,yshift=-0.4cm]cell.south east) {};
+
+    % Add labels
+    \node[below left] at (cell.west) {Left};
+    \node[above right] at (cell.east) {Right};
+    \node[left] at (cell.north west) {Top};
+    \node[right] at (cell.south east) {Bottom};
+\end{tikzpicture}
+
+\end{document}

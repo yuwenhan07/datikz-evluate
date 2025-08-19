@@ -1,22 +1,9 @@
-Certainly! Below is a TikZ LaTeX code to generate a truncated dodecahedron with a blue diamond in the center, surrounded by red and blue triangles arranged in a circular pattern.
-
-```latex
-\documentclass{standalone}
-\usepackage{tikz}
-\usetikzlibrary{3d}
-
+\documentclass[tikz,border=2mm]{standalone}
 \begin{document}
-\begin{tikzpicture}[scale=2, x={(1,-0.5,0)}, y={(0,1,-0.5)}, z={(0,0,1)}]
-    % Define the vertices of the truncated dodecahedron
-    \def\dodecahedron{
-        (0, 0, 0),
-        (0.850650808, -0.425359478, -0.262865486),
-        (-0.850650808, -0.425359478, -0.262865486),
-        (-0.850650808, 0.425359478, -0.262865486),
-        (0.850650808, 0.425359478, -0.262865486),
-        (0, 0.850650808, -0.262865486),
-        (0, -0.850650808, -0.262865486),
-        (0.425359478, 0.850650808, -0.262865486),
-        (-0.425359478, 0.850650808, -0.262865486),
-        (-0.425359478, -0.850650808, -0.262865486),
-        (0.425359478, -0.850650808, -
+
+\begin{tikzpicture}[node distance=0.5cm]
+    \foreach \i in {1,...,6}{\node (n\i) at (\i,0) {$1$};}
+    \node (n7) at (7,0) {$7$};
+\end{tikzpicture}
+
+\end{document}

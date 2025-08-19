@@ -3,20 +3,32 @@
 
 \begin{document}
 
-\begin{tikzpicture}[scale=2]
-    % Central point
-    \node (center) at (0,0) {};
+\begin{tikzpicture}[node distance=2cm, auto]
 
-    % Circles
-    \foreach \radius/\color in {3/black, 2/red, 1/blue} {
-        \draw (\radius,0) circle (\radius);
-        \fill (\radius,0) circle (0.1); % Dots inside circles
-    }
+    % Define styles for nodes
+    \tikzstyle{vertex}=[circle, draw, fill=white, text centered]
+    \tikzstyle{message}=[rectangle, draw, fill=yellow!50, text centered]
 
-    % Lines connecting points
-    \foreach \angle in {0,45,90,135,180,225,270,315}{
-        \draw[thick] (0,0) -- ({cos(\angle)*2},{sin(\angle)*2});
-    }
+    % Nodes
+    \node[vertex] (v1) at (0, 0) {\( v_1 \)};
+    \node[vertex] (v2) at (-2, -2) {\( v_2 \)};
+    \node[vertex] (v3) at (2, -2) {\( v_3 \)};
+
+    % Messages
+    \node[message] (msg1) at (1, -1) {\(+\)};
+    \node[message] (msg2) at (-1, -1) {\(-\)};
+
+    % Edges and labels
+    \draw[-stealth] (v1) -- (msg1);
+    \draw[-stealth] (v2) -- (msg2);
+    \draw[-stealth] (msg1) -- (v3);
+    \draw[-stealth] (msg2) -- (v3);
+
+    % Labels for messages
+    \node[above left=of msg1] {Message from \( v_1 \)};
+    \node[above right=of msg2] {Message from \( v_2 \)};
+    \node[below=of v3] {New sign: \( ? \)};
+
 \end{tikzpicture}
 
 \end{document}

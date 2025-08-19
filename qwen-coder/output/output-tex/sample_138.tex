@@ -1,37 +1,46 @@
-Certainly! Below is a TikZ LaTeX code that creates a diagram to represent the transmission, amplification/reflection, and reception timeline for the proposed relay/IRS model. This diagram includes various equations and symbols to illustrate the flow of information and energy waves.
+Certainly! Below is a TikZ LaTeX code that generates the diagrams you described:
 
 ```latex
 \documentclass[tikz,border=10pt]{standalone}
-\usepackage{amsmath}
-\usetikzlibrary{arrows.meta, positioning, decorations.pathreplacing}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
 
 \tikzset{
-    block/.style={rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em},
-    line/.style={draw, thick, -Stealth, shorten >=2pt},
-    equation/.style={node distance=2cm, align=center}
+    block/.style={rectangle, draw=black, fill=white, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style={draw, thick, -Stealth},
+    node distance=3cm,
+    >=Stealth
 }
 
 \begin{document}
-
-\begin{tikzpicture}[node distance=2cm]
-
-    % Nodes
-    \node (transmit) [block] {Transmission};
-    \node (amp_reflect) [block, below=of transmit] {Amplification/Reflection};
-    \node (receive) [block, below=of amp_reflect] {Reception};
-
-    % Equations
-    \node[below left=of transmit, equation] {$I(t) = A \sin(\omega t + \phi)$};
-    \node[above right=of receive, equation] {$R(t) = B \cos(\omega t + \theta)$};
-
-    % Lines
-    \path [line] (transmit.east) -- node[midway, above] {$E_1$} ++(3,0);
-    \path [line] (transmit.west) -- node[midway, below] {$E_2$} ++(-3,0);
-    \path [line] (amp_reflect.east) -- node[midway, above] {$A_1$} ++(3,0);
-    \path [line] (amp_reflect.west) -- node[midway, below] {$A_2$} ++(-3,0);
-    \path [line] (receive.east) -- node[midway, above] {$E_3$} ++(3,0);
-
-    % Energy Waveforms
-    \draw[dashed, thick] (-6,-2) -- (6,-2);
-    \draw[dashed, thick] (-6,2) -- (6,2);
-   
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \begin{tikzpicture}[node distance=2cm]
+            % Nodes
+            \node (Tp) [block] {Transfer Entropy};
+            \node (TM) [block, below of=Tp] {Maximized Transfer Entropy ($T_M$)};
+            \node (Tm) [block, below of=TM] {Minimized Transfer Entropy ($T_m$)};
+            
+            % Arrows
+            \draw [line] (Tp) -- (TM);
+            \draw [line] (Tp) -- (Tm);
+            
+            % Redundant and Synergistic Influences
+            \draw [red, thick, ->] (Tp.north) ++(0,-1) -- ++(0,-1);
+            \draw [blue, thick, ->] (Tp.south) ++(0,1) -- ++(0,1);
+        \end{tikzpicture}
+        \caption*{\textbf{Left}}
+    \end{minipage}
+    \hspace{0.1\textwidth}
+    \begin{minipage}{0.45\textwidth}
+        \begin{tikzpicture}[node distance=2cm]
+            % Nodes
+            \node (A) [block] {Node A};
+            \node (B) [block, right of=A] {Node B};
+            \node (C) [block, below of=A] {Node C};
+            \node (D) [block, below of=B] {Node D};
+            
+            % Simulated Couplings
+            \draw [dashed, gray, thick, ->] (A) -- (B);
+            \draw [dashed,

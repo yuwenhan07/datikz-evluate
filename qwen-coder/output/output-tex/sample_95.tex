@@ -1,33 +1,34 @@
-To align and rotate text in a TikZ state diagram for better readability and visual appeal, you can use the `node` command with options like `align`, `rotate`, and `anchor`. Below is an example of how you might modify your existing code to achieve this:
+Certainly! Below is a TikZ LaTeX code that illustrates the Average Confidence Score (ACS) for unlabeled data across tasks. This code will create a plot showing the decaying trend of the ACS, highlighting the issue with using a fixed high threshold.
 
 ```latex
-\documentclass{article}
+\documentclass{standalone}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
-
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
-\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
-\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
-\tikzstyle{arrow} = [thick,->,>=stealth]
+\usetikzlibrary{plotmarks}
 
 \begin{document}
-
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[node distance=2cm]
-        % Nodes
-        \node (init) [startstop] {Init};
-        \node (lc_state_machine) [process, below of=init, yshift=-1cm] {LC State Machine};
-        \node (lc_counter) [process, below of=lc_state_machine, yshift=-1cm] {LC Counter};
-        \node (bit_counter) [process, below of=lc_counter, yshift=-1cm] {Bit Counter};
-        \node (end) [startstop, below of=bit_counter, yshift=-1cm] {End};
-
-        % Arrows
-        \draw [arrow] (init) -- (lc_state_machine);
-        \draw [arrow] (lc_state_machine) -- (lc_counter);
-        \draw [arrow] (lc_counter) -- (bit_counter);
-        \draw [arrow] (bit_counter) -- (end);
-
-        % Adding rotated and aligned labels
-        \node at ([yshift=-1.5cm,xshift=-1cm]lc_state_machine.south) [below, align=center, rotate=90] {LC State\\Machine};
-        \node at ([yshift=-1.5cm,xshift=1cm]lc_counter.south) [below, align=center
+\begin{tikzpicture}[scale=1]
+    \draw[thick,->] (0,0) -- (6,0) node[right] {Number of Tasks};
+    \draw[thick,->] (0,0) -- (0,4) node[above] {Average Confidence Score (ACS)};
+    
+    % Data points
+    \coordinate (task1) at (1,3);
+    \coordinate (task2) at (2,2.5);
+    \coordinate (task3) at (3,2);
+    \coordinate (task4) at (4,1.5);
+    \coordinate (task5) at (5,1);
+    
+    % Plotting the data points
+    \filldraw[blue, mark=*] (task1) circle (2pt) node[anchor=north east] {Task 1};
+    \filldraw[blue, mark=*] (task2) circle (2pt) node[anchor=north east] {Task 2};
+    \filldraw[blue, mark=*] (task3) circle (2pt) node[anchor=north east] {Task 3};
+    \filldraw[blue, mark=*] (task4) circle (2pt) node[anchor=north east] {Task 4};
+    \filldraw[blue, mark=*] (task5) circle (2pt) node[anchor=north east] {Task 5};
+    
+    % Connecting the data points with lines
+    \draw[blue, thick] (task1) -- (task2) -- (task3) -- (task4) -- (task5);
+    
+    % Adding labels and annotations
+    \node[below left] at (0,0) {(0,0)};
+    \node[below right] at (6,0) {(5,0)};
+    \node[left] at (0,4) {(0,4)};
+    \node[right] at (6,-0.5) {Decaying Trend};

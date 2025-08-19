@@ -1,51 +1,36 @@
-To achieve the desired outcome, we need to modify the original code by removing the spiral-like layers of arcs and replacing them with three concentric circles, each containing two labeled arcs. Here's an example of how you can do this using TikZ:
-```
-\documentclass{article}
+Certainly! Below is a TikZ LaTeX code snippet that generates a diagram illustrating the definition of \( x_p^{\pm} \) and \( y_p^{\pm} \) values for a pixel \( p \) in a poorly textured region, with orange points indicating potential errors in estimating \( \Delta x_p \) and \( \Delta y_p \).
+
+```latex
+\documentclass{standalone}
 \usepackage{tikz}
+
 \begin{document}
-\begin{tikzpicture}
-  % Define the radius of the innermost circle
-  \def\radius{0.5cm}
-  
-  % Draw the innermost circle
-  \draw (0,0) circle (\radius);
-  
-  % Label the first arc on the innermost circle
-  \node at (90:\radius) [anchor=south] {$B_1$};
-  
-  % Label the second arc on the innermost circle
-  \node at (210:\radius) [anchor=north] {$B_2$};
-  
-  % Define the radius of the middle circle
-  \def\radius{1cm}
-  
-  % Draw the middle circle
-  \draw (0,0) circle (\radius);
-  
-  % Label the third arc on the middle circle
-  \node at (330:\radius) [anchor=east] {$B_3$};
-  
-  % Label the fourth arc on the middle circle
-  \node at (150:\radius) [anchor=west] {$B_4$};
-  
-  % Define the radius of the outermost circle
-  \def\radius{1.5cm}
-  
-  % Draw the outermost circle
-  \draw (0,0) circle (\radius);
-  
-  % Label the fifth arc on the outermost circle
-  \node at (30:\radius) [anchor=north east] {$B_5$};
-  
-  % Label the sixth arc on the outermost circle
-  \node at (150:\radius) [anchor=south west] {$B_6$};
-  
-  % Label the seventh arc on the outermost circle
-  \node at (270:\radius) [anchor=north west] {$B_7$};
-  
-  % Label the eighth arc on the outermost circle
-  \node at (90:\radius) [anchor=south east] {$B_8$};
-\end{tikzpicture}
-\end{document}
-```
-This code will produce a circle with three layers of arcs,
+
+\begin{tikzpicture}[scale=2]
+    % Define the center point
+    \coordinate (p) at (0, 0);
+    
+    % Draw the central pixel
+    \filldraw[black] (p) circle (0.1) node[below right] {$p$};
+    
+    % Define the ± values
+    \coordinate (xp_plus) at (1, 0);
+    \coordinate (xp_minus) at (-1, 0);
+    \coordinate (yp_plus) at (0, 1);
+    \coordinate (yp_minus) at (0, -1);
+    
+    % Draw the ± lines
+    \draw[->] (p) -- (xp_plus) node[midway, above] {$x_p^+$};
+    \draw[->] (p) -- (xp_minus) node[midway, below] {$x_p^-$};
+    \draw[->] (p) -- (yp_plus) node[midway, left] {$y_p^+$};
+    \draw[->] (p) -- (yp_minus) node[midway, right] {$y_p^-$};
+    
+    % Orange points indicating potential errors
+    \filldraw[orange] (0.8, 0.1) circle (0.05) node[right] {Error};
+    \filldraw[orange] (0.3, -0.1) circle (0.05) node[right] {Error};
+    \filldraw[orange] (-0.8, -0.1) circle (0.05) node[left] {Error};
+    \filldraw[orange] (-0.3, 0.1) circle (0.05) node[left] {Error};
+    
+    % Labels
+    \node[above right] at (1.2, 0) {\(\Delta x_p\)};
+    \node[below right] at (-1.2, 0) {\

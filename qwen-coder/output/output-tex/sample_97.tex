@@ -1,35 +1,41 @@
-\documentclass{standalone}
-\usepackage{tikz}
+To create a TikZ LaTeX diagram for the monoid \( M = \langle a, b \mid ba = aa \rangle \) with its upho lattice and core \( M_2 \), we need to follow these steps:
+
+1. **Understand the Monoid Structure**: The monoid \( M \) is defined by the generators \( a \) and \( b \) with the relation \( ba = aa \).
+
+2. **Identify the Upho Lattice**: An upho lattice (upper half-order) is a partially ordered set where every pair of elements has a unique least upper bound.
+
+3. **Determine the Core \( M_2 \)**: The core of a monoid is the intersection of all maximal subgroups of the monoid. For this specific monoid, the core \( M_2 \) can be determined by analyzing the structure of the monoid.
+
+4. **Construct the Diagram**:
+   - Draw nodes representing elements of the monoid.
+   - Connect nodes with edges to represent the partial order.
+   - Highlight the core \( M_2 \) in a distinct manner.
+
+Here is the TikZ LaTeX code to generate the desired diagram:
+
+```latex
+\documentclass[tikz,border=5]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  element/.style={circle, draw, fill=blue!20, inner sep=5pt},
+  core/.style={element, fill=red!20}
+}
 
 \begin{document}
-\begin{tikzpicture}[scale=2]
-    % Define colors for the quandle elements
-    \colorlet{a}{red!50!black}
-    \colorlet{b}{green!50!black}
-    \colorlet{c}{blue!50!black}
+\begin{tikzpicture}[node distance=2cm]
 
-    % Draw the trefoil knot
-    \draw[thick] (0,1) .. controls (0.5,-0.3) and (-0.5,-0.3) .. (0,-1);
-    \draw[thick, a] (0,1) -- (0.5,0.5);
-    \draw[thick, b] (0.5,0.5) -- (1,1);
-    \draw[thick, c] (1,1) -- (1,-1);
-    \draw[thick, b] (1,-1) -- (0.5,-0.5);
-    \draw[thick, a] (0.5,-0.5) -- (0,1);
+% Nodes
+\node[element] (e1) at (0,0) {e};
+\node[element] (a) at (-2,-2) {a};
+\node[element] (b) at (2,-2) {b};
+\node[element] (ab) at (0,-4) {ab};
+\node[core] (a2) at (-2,-6) {a^2};
+\node[core] (b2) at (2,-6) {b^2};
 
-    % Add labels for clarity
-    \node at (0,1.2) {a};
-    \node at (1.2,1) {b};
-    \node at (1.2,-1) {c};
-    \node at (0,-1.2) {a};
-
-    % Fill the regions between the loops
-    \fill[a] (0,1) rectangle (0.5,0.5);
-    \fill[b] (0.5,0.5) rectangle (1,1);
-    \fill[c] (1,1) rectangle (1,-1);
-    \fill[a] (1,-1) rectangle (0.5,-0.5);
-    \fill[b] (0.5,-0.5) rectangle (0,1);
-
-    % Set the background color to white
-    \path[fill=white] (-1,-1) rectangle (2,2);
-\end{tikzpicture}
-\end{document}
+% Edges
+\draw[-Stealth] (e1) -- (a);
+\draw[-Stealth] (e1) -- (b);
+\draw[-Stealth] (a) -- (ab);
+\draw[-Stealth] (b) -- (ab);
+\draw[-Stealth] (a2) --

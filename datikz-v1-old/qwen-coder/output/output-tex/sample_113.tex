@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Set up the axis
+    \draw[->] (-1,0) -- (4,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,1) node[above] {$y$};
+    
+    % Draw the sine wave using foreach loop
+    \foreach \x in {0,0.05,...,3.95} {
+        \pgfmathsetmacro{\y}{sin(\x r)}
+        \ifnum\x=0
+            \coordinate (start) at (\x,\y);
+        \else
+            \draw[line width=0.8pt] plot[smooth] coordinates {(start) (\x,\y)};
+            \coordinate (start) at (\x,\y);
+        \fi
+    }
+    
+    % Mark key points on the x-axis
+    \foreach \x in {0,1,2,3} {
+        \draw[dashed] (\x,0) -- ++(0,-0.1);
+        \node at (\x,-0.15) {\x};
+    }
+\end{tikzpicture}
+\end{document}

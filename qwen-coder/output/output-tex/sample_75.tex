@@ -1,23 +1,34 @@
+Certainly! Below is a simplified TikZ LaTeX code that represents a two-layer transformer architecture processing the phrase "The cat is on the":
+
+```latex
 \documentclass{standalone}
 \usepackage{tikz}
 
 \begin{document}
 
-\begin{tikzpicture}[scale=2]
-    % Define the center point
-    \coordinate (center) at (0,0);
+\begin{tikzpicture}[node distance=2cm, auto]
+    % Define nodes
+    \node (input1) [rectangle] {The};
+    \node (input2) [rectangle, below of=input1] {cat};
+    \node (input3) [rectangle, below of=input2] {is};
+    \node (input4) [rectangle, below of=input3] {on};
+    \node (input5) [rectangle, below of=input4] {the};
 
-    % Draw the outermost half-sphere
-    \fill[gray!30] (center) circle[radius=1.5cm];
-    \draw[thick] (center) circle[radius=1.5cm];
+    % Embedding layer
+    \node (embedding1) [rectangle, right of=input1, xshift=3cm] {Embedding};
+    \node (embedding2) [rectangle, right of=input2, xshift=3cm] {Embedding};
+    \node (embedding3) [rectangle, right of=input3, xshift=3cm] {Embedding};
+    \node (embedding4) [rectangle, right of=input4, xshift=3cm] {Embedding};
+    \node (embedding5) [rectangle, right of=input5, xshift=3cm] {Embedding};
 
-    % Draw the middle half-sphere
-    \fill[gray!40] (center) circle[radius=1cm];
-    \draw[thick] (center) circle[radius=1cm];
+    % First Transformer Layer
+    \node (att1_1) [rectangle, below of=embedding1, yshift=-1cm] {Self-Attention};
+    \node (mlp1_1) [rectangle, below of=att1_1, yshift=-1cm] {MLP};
+    \node (contextual1) [rectangle, below of=mlp1_1, yshift=-1cm] {Contextual Embedding};
 
-    % Draw the innermost half-sphere
-    \fill[gray!50] (center) circle[radius=0.5cm];
-    \draw[thick] (center) circle[radius=0.5cm];
-\end{tikzpicture}
+    \node (att1_2) [rectangle, below of=embedding2, yshift=-1cm] {Self-Attention};
+    \node (mlp1_2) [rectangle, below of=att1_2, yshift=-1cm] {MLP};
+    \node (contextual2) [rectangle, below of=mlp1_2, yshift=-1cm] {Contextual Embedding};
 
-\end{document}
+    \node (att1_3) [rectangle, below of=embedding3, yshift=-1cm] {Self-Attention};
+    \node (mlp

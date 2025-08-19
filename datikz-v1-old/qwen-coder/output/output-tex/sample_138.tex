@@ -1,0 +1,37 @@
+Certainly! Below is a TikZ LaTeX code that creates a diagram to represent the transmission, amplification/reflection, and reception timeline for the proposed relay/IRS model. This diagram includes various equations and symbols to illustrate the flow of information and energy waves.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta, positioning, decorations.pathreplacing}
+
+\tikzset{
+    block/.style={rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style={draw, thick, -Stealth, shorten >=2pt},
+    equation/.style={node distance=2cm, align=center}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes
+    \node (transmit) [block] {Transmission};
+    \node (amp_reflect) [block, below=of transmit] {Amplification/Reflection};
+    \node (receive) [block, below=of amp_reflect] {Reception};
+
+    % Equations
+    \node[below left=of transmit, equation] {$I(t) = A \sin(\omega t + \phi)$};
+    \node[above right=of receive, equation] {$R(t) = B \cos(\omega t + \theta)$};
+
+    % Lines
+    \path [line] (transmit.east) -- node[midway, above] {$E_1$} ++(3,0);
+    \path [line] (transmit.west) -- node[midway, below] {$E_2$} ++(-3,0);
+    \path [line] (amp_reflect.east) -- node[midway, above] {$A_1$} ++(3,0);
+    \path [line] (amp_reflect.west) -- node[midway, below] {$A_2$} ++(-3,0);
+    \path [line] (receive.east) -- node[midway, above] {$E_3$} ++(3,0);
+
+    % Energy Waveforms
+    \draw[dashed, thick] (-6,-2) -- (6,-2);
+    \draw[dashed, thick] (-6,2) -- (6,2);
+   

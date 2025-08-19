@@ -1,45 +1,41 @@
-Certainly! Below is a sample TikZ LaTeX code that generates a graph similar to the one you described. This code includes a vertical axis representing accuracy values and horizontal bars for different voice recognition models or settings.
+Certainly! To create a TikZ diagram representing the curves \( K_t = K^+_t \cup L_t \cup K^-_t \), we need to define three parts: \( K^+_t \), \( L_t \), and \( K^-_t \). These can be visualized as three interconnected curves.
+
+Here is a sample TikZ code that you can use:
 
 ```latex
 \documentclass{standalone}
 \usepackage{tikz}
-\usetikzlibrary{calc}
 
 \begin{document}
 
-\begin{tikzpicture}[scale=1]
-    % Define colors
-    \colorlet{blueModel}{blue!70!black}
-    \colorlet{whiteModel}{white!70!black}
+\begin{tikzpicture}[scale=2]
 
-    % Define dimensions
-    \def\graphWidth{8cm}
-    \def\graphHeight{6cm}
-    \def\barWidth{0.5cm}
-    \def\axisXStart{-1}
-    \def\axisYStart{0}
-    \def\axisXEnd{4}
-    \def\axisYEnd{100}
+% Define points for K^+_t
+\coordinate (A) at (-1, 0);
+\coordinate (B) at (0, 1);
+\coordinate (C) at (1, 0);
 
-    % Draw background grid
-    \draw[step=20, thin, gray] (\axisXStart,\axisYStart) grid (\axisXEnd,\axisYEnd);
+% Draw K^+_t
+\draw[thick, red] (A) .. controls (0, -1) and (2, 1) .. (B);
+\draw[thick, red] (B) .. controls (2, -1) and (0, 3) .. (C);
+\draw[thick, red] (C) .. controls (-2, -1) and (0, -3) .. (A);
 
-    % Draw axes
-    \draw[-stealth] (\axisXStart,\axisYStart) -- (\axisXEnd,\axisYStart) node[right] {Voice Recognition Models};
-    \draw[-stealth] (\axisXStart,\axisYStart) -- (\axisXStart,\axisYEnd) node[above] {Accuracy};
+% Define points for L_t
+\coordinate (D) at (-1, -1);
+\coordinate (E) at (0, -2);
+\coordinate (F) at (1, -1);
 
-    % Draw data bars
-    \node at (0,30) [rectangle, fill=blueModel, minimum width=\barWidth, minimum height=30pt] {};
-    \node at (1,60) [rectangle, fill=whiteModel, minimum width=\barWidth, minimum height=60pt] {};
+% Draw L_t
+\draw[thick, blue] (D) .. controls (0, 1) and (2, -1) .. (E);
+\draw[thick, blue] (E) .. controls (2, 1) and (0, -3) .. (F);
+\draw[thick, blue] (F) .. controls (-2, 1) and (0, 3) .. (D);
 
-    % Add labels for data bars
-    \node at (-1.5, 30) [anchor=east] {Model A};
-    \node at (-1.5, 60) [anchor=east] {Model B};
+% Define points for K^-_t
+\coordinate (G) at (-1, 1);
+\coordinate (H) at (0, 2);
+\coordinate (I) at (1, 1);
 
-    % Draw tick marks and labels on the Y-axis
-    \foreach \y in {0,20,...,100} {
-        \draw (\axisXStart, \y) -- ++(-0.1, 0);
-        \node at (\axisXStart - 0.3, \y) {\y\%};
-    }
-
-    % Draw tick marks and labels
+% Draw K^-_t
+\draw[thick, green] (G) .. controls (0, -1) and (-2, 1) .. (H);
+\draw[thick, green] (H) .. controls (-2, -1) and (0, -3) .. (I);
+\draw[thick

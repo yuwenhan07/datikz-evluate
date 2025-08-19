@@ -1,0 +1,25 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, positioning}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Define nodes for each problem
+    \node[rectangle, draw, fill=gray!20] (pmedian) {p-Median};
+    \node[rectangle, draw, fill=gray!40, below=of pmedian] (penvy) {p-Envy};
+    \node[rectangle, draw, fill=gray!60, below=of penvy] (pintraenvy) {p-Intra-Envy};
+
+    % Draw connections between nodes
+    \draw[-stealth] (pmedian) -- node[midway, above] {Solve} (penvy);
+    \draw[-stealth] (penvy) -- node[midway, above] {Optimize} (pintraenvy);
+
+    % Add dots and dashes as symbols
+    \foreach \i in {1,...,5} {
+        \node[circle, draw, fill=black, inner sep=1pt, below=of pintraenvy.south west, xshift=-2cm-\i*0.5cm] {};
+        \node[dash line, below=of pintraenvy.south east, xshift=\i*0.5cm] {};
+    }
+
+    % Add labels for the dots and dashes
+    \node[left] at (-2.5,-1) {Dots};
+    \node[right] at (2.5,-1) {Dashes};
+\end{tikzpicture}
+\end{document}

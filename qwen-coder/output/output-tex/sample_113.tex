@@ -1,27 +1,40 @@
+Certainly! Below is an example of how you can create a TikZ LaTeX diagram to visualize the training evolution of the policy for the stochastic cart-pole experiment, including the estimation of the Expected Improvement Gain (EIG) after each training epoch.
+
+```latex
 \documentclass{standalone}
 \usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
 
 \begin{document}
-\begin{tikzpicture}[scale=2]
-    % Set up the axis
-    \draw[->] (-1,0) -- (4,0) node[right] {$x$};
-    \draw[->] (0,-1) -- (0,1) node[above] {$y$};
-    
-    % Draw the sine wave using foreach loop
-    \foreach \x in {0,0.05,...,3.95} {
-        \pgfmathsetmacro{\y}{sin(\x r)}
-        \ifnum\x=0
-            \coordinate (start) at (\x,\y);
-        \else
-            \draw[line width=0.8pt] plot[smooth] coordinates {(start) (\x,\y)};
-            \coordinate (start) at (\x,\y);
-        \fi
-    }
-    
-    % Mark key points on the x-axis
-    \foreach \x in {0,1,2,3} {
-        \draw[dashed] (\x,0) -- ++(0,-0.1);
-        \node at (\x,-0.15) {\x};
-    }
-\end{tikzpicture}
-\end{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=0.8\textwidth,
+        height=0.6\textwidth,
+        xlabel={Epoch},
+        ylabel={Expected Improvement Gain (EIG)},
+        legend pos=north west,
+        ybar interval=0.7,
+        ymin=0,
+        ymax=100,
+        xtick=data,
+        symbolic x coords={1,2,3,4,5,6,7,8,9,10},
+        nodes near coords,
+        nodes near coords align={vertical},
+        bar width=15pt,
+        ]
+        
+        % Data for the first seed
+        \addplot coordinates {(1, 20) (2, 25) (3, 30) (4, 35) (5, 40) (6, 45) (7, 50) (8, 55) (9, 60) (10, 65)};
+        \addlegendentry{Seed 1}
+        
+        % Data for the second seed
+        \addplot coordinates {(1, 22) (2, 27) (3, 32) (4, 37) (5, 42) (6, 47) (7, 52) (8, 57) (9, 62) (10, 67)};
+        \addlegendentry{Seed 2}
+        
+        % Data for the third seed
+        \addplot coordinates {(1, 24) (2, 29) (3, 34) (4, 39) (5, 44) (6, 49) (7, 54) (8, 59) (9, 64) (10, 69)};
+        \addlegendentry{Seed 3}
+        
+       

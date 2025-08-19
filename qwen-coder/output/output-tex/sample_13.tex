@@ -1,39 +1,42 @@
+Certainly! Below is a TikZ LaTeX code that generates a visual representation of the described scenario. This includes both the labels for the arrow configuration at a vertex \( v \) and a sample configuration of the colored stochastic six-vertex model with \( N=2 \) and the packed boundary condition.
+
+```latex
 \documentclass{standalone}
 \usepackage{tikz}
 
+\tikzset{
+    vertex/.style={circle, draw, fill=white, inner sep=5pt},
+    edge/.style={->, thick},
+    label/.style={below right, font=\tiny}
+}
+
 \begin{document}
+
+% Left: Arrow configuration at a vertex v
 \begin{tikzpicture}[scale=1.5]
-    % Axis setup
-    \draw[->] (0,0) -- (6,0) node[right] {Score};
-    \draw[->] (0,0) -- (0,4) node[above] {Frequency};
-
-    % Draw the histogram bars
-    \fill[blue] (1,0) rectangle (2,3);
-    \fill[white] (2,0) rectangle (3,2);
-    \fill[blue] (3,0) rectangle (4,1);
-    \fill[white] (4,0) rectangle (5,2);
-    \fill[blue] (5,0) rectangle (6,3);
-
-    % Red dot at a specific score
-    \fill[red] (4,2) circle (2pt) node[anchor=south west] {Specific Score};
-
-    % Labels for each bar
-    \node at (1.5,3.5) {80-90};
-    \node at (2.5,2.5) {70-80};
-    \node at (3.5,1.5) {60-70};
-    \node at (4.5,2.5) {50-60};
-    \node at (5.5,3.5) {40-50};
-
-    % X-axis tick marks and labels
-    \foreach \x in {1,2,3,4,5,6} {
-        \draw (\x,0) -- ++(0,-0.1);
-        \node at (\x,-0.3) {\x};
-    }
-
-    % Y-axis tick marks and labels
-    \foreach \y in {1,2,3,4} {
-        \draw (0,\y) -- ++(-0.1,0);
-        \node at (-0.3,\y) {\y};
-    }
+    % Vertex
+    \node[vertex] (v) at (0,0) {v};
+    
+    % Edges and labels
+    \draw[edge] (v.south) -- node[label] {$-\infty$} (v.west);
+    \draw[edge] (v.south) -- node[label] {$-\infty$} (v.east);
+    \draw[edge] (v.north) -- node[label] {$-\infty$} (v.west);
+    \draw[edge] (v.north) -- node[label] {$-\infty$} (v.east);
+    \draw[edge] (v.west) -- node[label] {$1$} (v.north west);
+    \draw[edge] (v.west) -- node[label] {$2$} (v.south west);
+    \draw[edge] (v.east) -- node[label] {$3$} (v.north east);
+    \draw[edge] (v.east) -- node[label] {$4$} (v.south east);
 \end{tikzpicture}
-\end{document}
+
+\hfill
+
+% Right: Sample configuration of the colored stochastic six-vertex model with N=2 and packed boundary condition
+\begin{tikzpicture}[scale=1.5]
+    % Boundary conditions
+    \foreach \x in {-2,-1,0,1,2} {
+        \node[anchor=north, text width=2cm, align=center] at (\x,2.5) {\(\sigma(\x) = \x\)};
+    }
+    
+    % Vertices
+    \foreach \y in {0,...,3} {
+        \foreach \x in

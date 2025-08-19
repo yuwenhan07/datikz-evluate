@@ -1,36 +1,37 @@
-\documentclass{standalone}
-\usepackage{tikz}
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
 
 \begin{document}
-
 \begin{tikzpicture}[scale=2]
-    % Define the points for the curve
-    \coordinate (A) at (0,1);
-    \coordinate (B) at (1,0.75);
-    \coordinate (C) at (2,0.5);
-    \coordinate (D) at (3,0.25);
 
-    % Draw the curve
-    \draw[thick, smooth, red] plot coordinates {(A) (B) (C) (D)};
-    \draw[thick, smooth, blue] plot coordinates {(A) (B) (C) (D)};
+% Observers
+\node[circle, draw, fill=blue, inner sep=3pt] (L) at (-1,0) {};
+\node[circle, draw, fill=blue, inner sep=3pt] (R) at (1,0) {};
 
-    % Fill the area under the curve
-    \fill[red!30] plot coordinates {(A) (B) (C) (D)} -- cycle;
-    \fill[blue!30] plot coordinates {(A) (B) (C) (D)} -- cycle;
+% Antipodal Trajectories
+\draw[thick, ->] (-2,-1) -- (2,-1);
+\draw[thick, ->] (-2,1) -- (2,1);
 
-    % Add labels
-    \node at (A) [above right] {Train};
-    \node at (B) [below right] {Test};
-    \node at (C) [below left] {Test};
-    \node at (D) [above left] {Train};
+% Cosmological Horizons
+\draw[dashed, thick] (-1,-1) -- (1,-1); % H_L
+\draw[dashed, thick] (-1,1) -- (1,1);  % H_R
 
-    % Add legend
-    \node at (4,1.2) [right] {\textcolor{red}{Training Set}};
-    \node at (4,1) [right] {\textcolor{blue}{Test Set}};
+% Static Patches
+\fill[blue!30] (-1,-1) rectangle (1,-1); % P_L
+\fill[blue!30] (-1,1) rectangle (1,1);  % P_R
 
-    % Axis
-    \draw[->] (0,0) -- (4,1.5) node[right] {Value};
-    \draw[->] (0,0) -- (4,-0.5) node[below] {Sample Number};
+% Global Spacelike Slice
+\draw[dashed, thick] (0,-2) -- (0,2);
+
+% Sphere A
+\node[circle, draw, fill=black, inner sep=3pt] (A) at (0,0) {};
+
+% Red Segment
+\draw[red, thick, -Stealth] (A) -- (0,1);
+
+% Future Lightsheet
+\draw[dotted, thick] (0,1) arc[start angle=90, end angle=45, radius=1];
+\draw[dotted, thick] (0,1) arc[start angle=90, end angle=135, radius=1];
+
 \end{tikzpicture}
-
 \end{document}

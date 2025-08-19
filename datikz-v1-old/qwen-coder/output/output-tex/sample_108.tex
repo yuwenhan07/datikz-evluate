@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Set up the axis
+    \draw[thick,->] (0,0) -- (8,0) node[right] {$n$}; % Time axis
+    \draw[thick,->] (0,0) -- (0,5) node[above] {$h[n]$}; % Response axis
+    
+    % Draw the impulse response curve
+    \draw[blue, thick, domain=0:8,samples=100] plot (\x,{(exp(-\x/2))/sqrt(\pi*2)});
+    
+    % Add grid lines
+    \draw[dashed,gray] (0,1) -- (8,1);
+    \draw[dashed,gray] (0,2) -- (8,2);
+    \draw[dashed,gray] (0,3) -- (8,3);
+    \draw[dashed,gray] (0,4) -- (8,4);
+    
+    % Add labels
+    \node at (0,-0.5) [below] {Time};
+    \node at (-0.5,0) [left] {Impulse Response};
+\end{tikzpicture}
+
+\end{document}

@@ -1,35 +1,28 @@
-Certainly! Below is a TikZ LaTeX code that generates a schematic representation of possible New Physics (NP) contributions to scalar ($S=1$) and charge-changing ($C=-1$) flavor-changing neutral current (FCNC) semileptonic processes within the two-generation limit of the Standard Model (SM). The code includes both CP-conserving and CP-violating contributions.
-
-```latex
-\documentclass[tikz,border=2mm]{standalone}
-\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
-
-\tikzset{
-    block/.style={rectangle, draw=black, fill=white, text centered, minimum width=3cm, minimum height=1cm},
-    line/.style={->, thick, >=stealth'}
-}
+\documentclass{standalone}
+\usepackage{tikz}
 
 \begin{document}
-\begin{tikzpicture}[node distance=2cm]
-    
-    % Nodes for the different processes
-    \node (scalar_process) [block] {Scalar Process};
-    \node (charge_change_process) [block, below=of scalar_process] {Charge-Change Process};
 
-    % Nodes for the CP-conserving contributions
-    \node (cp_conserve_scalar) [block, left=of scalar_process] {$|z_{C=1}|$};
-    \node (cp_conserve_charge) [block, left=of charge_change_process] {$|z_{S=1}|$};
+\begin{tikzpicture}[scale=2, every node/.style={draw, fill=white, inner sep=1pt}]
 
-    % Nodes for the CP-violating contributions
-    \node (cp_violate_scalar) [block, right=of scalar_process] {$c_I$};
-    \node (cp_violate_charge) [block, right=of charge_change_process] {$c_I$};
+% Define patch size and number of bits/blocks per row/column
+\def\n{3} % Patch size (number of bits/block per row/column)
 
-    % Arrows connecting nodes
-    \draw [line] (cp_conserve_scalar) -- node[above] {CP Conserving} (scalar_process);
-    \draw [line] (cp_conserve_charge) -- node[above] {CP Conserving} (charge_change_process);
-    \draw [line] (cp_violate_scalar) -- node[below] {CP Violating} (scalar_process);
-    \draw [line] (cp_violate_charge) -- node[below] {CP Violating} (charge_change_process);
+% Draw the grid
+\foreach \i in {0,...,\n-1} {
+  \foreach \j in {0,...,\n-1} {
+    \node at (\i, -\j) {};
+  }
+}
 
-    % Alignment angle node
-    \node (alignment_angle) [block, above=2cm, xshift=-4cm] {_d};
-    \draw [->, dashed, thick, >=stealth'] (alignment_angle
+% Label the nodes with b_i or B_n^i
+\foreach \i in {0,...,\n-1} {
+  \foreach \j in {0,...,\n-1} {
+    \pgfmathsetmacro{\bit}{(\i*\n)+\j+1}
+    \node[below right] at (\i, -\j) {$b_{\bit}$};
+  }
+}
+
+\end{tikzpicture}
+
+\end{document}

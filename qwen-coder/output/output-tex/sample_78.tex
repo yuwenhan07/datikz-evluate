@@ -1,28 +1,33 @@
-\documentclass{standalone}
+\documentclass[tikz,border=10pt]{standalone}
 \usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
 
 \begin{document}
-\begin{tikzpicture}[scale=1.5]
-    % Define the dimensions of the cylinder
-    \def\cylinderheight{3cm}
-    \def\cylinderradius{1cm}
 
-    % Draw the cylinder
-    \draw[thick] (0,-\cylinderheight/2) -- (0,\cylinderheight/2);
-    \draw[thick] (\cylinderradius,-\cylinderheight/2) arc[start angle=-90,end angle=90,radius=\cylinderradius];
-    \draw[thick] (-\cylinderradius,-\cylinderheight/2) arc[start angle=90,end angle=-90,radius=\cylinderradius];
+\tikzset{
+    process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30},
+    arrow/.style={thick,->,>=stealth}
+}
 
-    % Label the cylinder
-    \node[below left] at (0,-\cylinderheight/2-0.1) {q};
-    \node[above right] at (0,\cylinderheight/2+0.1) {r};
+\begin{tikzpicture}[node distance=2cm]
 
-    % Draw the lines
-    \draw[-stealth] (0,0) -- ++(4,0) node[right] {p};
-    \draw[dashed,thick] (0,0) -- ++(0,3) node[above] {U};
-    \draw[dashed,thick] (0,0) -- ++(-3,0);
+    % Define the first distribution
+    \draw[domain=-5:5,samples=400] plot (\x,{1/sqrt(2*pi*0.5^2)*exp(-0.5*\x^2/0.5^2)}) node[right] {$\mu_{\alpha, \beta_1}$};
 
-    % Add additional details if needed
-    % For example, you could add labels or annotations to the lines and shapes
+    % Define the second distribution
+    \draw[domain=-5:5,samples=400] plot (\x,{1/sqrt(2*pi*1^2)*exp(-0.5*\x^2/1^2)}) node[right] at (6,0) {$\mu_{\alpha, \beta_2}$};
+
+    % Draw the means
+    \draw[dashed] (0,-0.1) -- (0,0.1);
+    \draw[dashed] (6,-0.1) -- (6,0.1);
+
+    % Label the means
+    \node at (0,-0.3) {\(\mu_{\alpha, \beta_1}\)};
+    \node at (6,-0.3) {\(\mu_{\alpha, \beta_2}\)};
+
+    % Draw the inequality sign
+    \node at (3,-1) {<};
 
 \end{tikzpicture}
+
 \end{document}

@@ -1,24 +1,31 @@
-\documentclass[tikz,border=10pt]{standalone}
-\usetikzlibrary{shapes.geometric, arrows.meta}
-
-\tikzset{
-    block/.style={rectangle, draw=black, fill=gray!20, text width=4em, text centered, rounded corners},
-    line/.style={draw, thick, -Stealth, >=stealth'},
-}
+\documentclass{standalone}
+\usepackage{tikz}
 
 \begin{document}
-\begin{tikzpicture}[node distance=2cm]
 
-    % Nodes representing support values and blocks
-    \node[block] (Bv0) {B^v_0};
-    \node[block, right of=Bv0] (Bv1) {B^v_1};
-    \node[block, right of=Bv1] (Bv2) {B^v_2};
-    \node[block, below of=Bv1] (G3) {Game G_3};
+\begin{tikzpicture}[scale=0.8]
+    % Define the lattice points
+    \foreach \i in {1,...,5} {
+        \draw[gray!30] (\i,0) -- (\i,2);
+    }
 
-    % Arrows connecting nodes
-    \path [line] (Bv0) -- node[anchor=south] {Empty} (Bv1);
-    \path [line] (Bv1) -- (Bv2);
-    \path [line] (Bv2) |- (G3);
+    % Draw the initial interface at t=0
+    \foreach \i in {1,...,5} {
+        \draw[thick, blue] (\i,0) -- (\i,\i);
+    }
+    \node[below left] at (1,0) {t=0};
 
+    % Draw the intermediate interface at t=1
+    \foreach \i in {1,...,5} {
+        \draw[thick, red] (\i,0) -- (\i,2-\i);
+    }
+    \node[below left] at (1,0) {t=1};
+
+    % Draw the final interface at t=2
+    \foreach \i in {1,...,5} {
+        \draw[thick, green] (\i,0) -- (\i,\i-1);
+    }
+    \node[below left] at (1,0) {t=2};
 \end{tikzpicture}
+
 \end{document}

@@ -1,0 +1,32 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style = {draw=black, thick, ->, >=stealth'}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (prediction) [block] {Prediction};
+    \node (training) [block, below=of prediction] {Training};
+    \node (update) [block, below=of training] {Update};
+    
+    % Arrows
+    \path [line] (prediction) -- node[anchor=east] {Predict $u$ and $\hat{\theta}$} (training);
+    \path [line] (training) -- node[anchor=north] {Compute gradients of $L$} (update);
+    \path [line] (update) -- node[anchor=south] {Update $A_u(\mathbf{u})$ and $A_{\hat{\theta}}(\hat{\theta})$} (prediction);
+    
+    % Additional nodes for clarity
+    \node (wavefield) [block, left=of prediction, xshift=-3cm] {Wavefield $u$};
+    \node (indicator) [block, right=of prediction, xshift=3cm] {Indicator $\hat{\theta}$};
+    \node (cost_function) [block, below=of training, yshift=-2cm] {Cost Function $L$};
+    
+    % Connecting additional nodes
+    \path [line] (wavefield) -- (prediction.west);
+    \path [line] (indicator) -- (prediction.east);
+    \path [line] (training.south) |- (cost_function.north);
+    \path [line] (update.south) |- (cost_function.north);
+\end{tikzpicture}
+\end{document}

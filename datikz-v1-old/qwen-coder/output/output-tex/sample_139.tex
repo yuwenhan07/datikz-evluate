@@ -1,0 +1,41 @@
+To create a TikZ LaTeX diagram that captures both the black and white and colorful representations of a pentagon with vertices labeled 0 and 1, you can use the following code:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define the vertices of the pentagon
+\coordinate (A) at (0,0);
+\coordinate (B) at (2,0);
+\coordinate (C) at (3,1.732);
+\coordinate (D) at (1,2.464);
+\coordinate (E) at (-1,1.732);
+
+% Black and White Pentagon
+\begin{scope}[xshift=3cm]
+    \draw[black] (A) -- (B) -- (C) -- (D) -- (E) -- cycle;
+    \fill[white] (A) circle[radius=0.05];
+    \node at (A) [below left] {0};
+    \fill[black] (B) circle[radius=0.05];
+    \node at (B) [below right] {1};
+    \fill[white] (C) circle[radius=0.05];
+    \node at (C) [above right] {0};
+    \fill[black] (D) circle[radius=0.05];
+    \node at (D) [above left] {1};
+    \fill[white] (E) circle[radius=0.05];
+    \node at (E) [below] {0};
+\end{scope}
+
+% Colorful Pentagon
+\begin{scope}[xshift=6cm]
+    \draw[red] (A) -- (B) -- (C) -- (D) -- (E) -- cycle;
+    \fill[yellow] (A) circle[radius=0.05];
+    \node at (A) [below left] {0};
+    \fill[green] (B) circle[radius=0.05];
+    \node at (B) [below right] {1};
+    \fill[blue] (C) circle[radius=0.05];
+    \node at (C) [above right] {0};
+    \fill[magenta] (D) circle[radius=0.05];
+    \node at (D) [above

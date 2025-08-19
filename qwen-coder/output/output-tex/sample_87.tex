@@ -1,31 +1,20 @@
 \documentclass{standalone}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta}
-
-\tikzset{
-    node distance=2cm,
-    start chain/.style={start chain=going right,node distance=1cm},
-    box/.style={draw, rectangle, rounded corners, minimum width=1cm, minimum height=0.8cm, on chain},
-    dot/.style={circle, draw, inner sep=1pt}
-}
 
 \begin{document}
-\begin{tikzpicture}[auto]
 
-% Define layers
-\node[dot, red] (A) {A};
-\node[dot, blue] (B) [below left=of A] {B};
-\node[dot, red] (C) [below right=of A] {C};
-\node[dot, blue] (D) [below left=of C] {D};
-\node[dot, red] (E) [below right=of C] {E};
-\node[dot, blue] (F) [below left=of E] {F};
+\begin{tikzpicture}[node distance=2cm, auto]
 
-% Draw edges
-\draw[-Stealth, thick] (A) -- (B);
-\draw[-Stealth, thick] (A) -- (C);
-\draw[-Stealth, thick] (C) -- (D);
-\draw[-Stealth, thick] (C) -- (E);
-\draw[-Stealth, thick] (E) -- (F);
+    % Define nodes
+    \node (c0) [circle, draw] {\( c_0 \)};
+    \node (c1) [circle, draw, right of=c0] {\( c_1 \)};
+    \node (c2) [circle, draw, right of=c1] {\( c_2 \)};
+
+    % Draw edges with labels
+    \draw[-stealth] (c2) -- node[above] {$\left[\begin{array}{c} 0 \\ 0.3 \\ 0 \end{array}\right]$} (c0);
+    \draw[-stealth] (c0) -- node[below] {$p_{01}$} (c1);
+    \draw[-stealth] (c1) -- node[above] {$p_{12}$} (c2);
 
 \end{tikzpicture}
+
 \end{document}

@@ -1,37 +1,39 @@
-Certainly! Below is a TikZ LaTeX code that generates a diagram representing the partition of an enlarged annulus \(PQu\) into \(P\), \(Q_1\), \(A(PQ_1)\), \(B\), and \(C\). The diagram includes interconnected circles and arrows labeled accordingly.
-
-```latex
 \documentclass{standalone}
 \usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
 
 \begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Sample Size},
+        ylabel={Estimator Value},
+        legend pos=north west,
+        ymin=-2,
+        ymax=4,
+        xmin=0,
+        xmax=100,
+        ytick={-2,-1,0,1,2,3,4},
+        xtick={0,20,40,60,80,100},
+        grid=major,
+        width=10cm,
+        height=6cm
+    ]
+        % True distribution (red line)
+        \addplot[domain=0:100, samples=100, thick, red] {sin(x/20)};
+        \addlegendentry{True Distribution}
 
-\begin{tikzpicture}[scale=2]
-    % Define coordinates for the circles
-    \coordinate (P) at (-3, 0);
-    \coordinate (Q1) at (0, 0);
-    \coordinate (APQ1) at (3, 0);
-    \coordinate (B) at (0, -2);
-    \coordinate (C) at (0, 2);
+        % Mean (blue line)
+        \addplot[domain=0:100, samples=100, thick, blue] {x/20};
+        \addlegendentry{Mean}
 
-    % Draw the circles
-    \draw[thick, fill=white] (P) circle (1cm);
-    \draw[thick, fill=white] (Q1) circle (1cm);
-    \draw[thick, fill=white] (APQ1) circle (1cm);
-    \draw[thick, fill=white] (B) circle (1cm);
-    \draw[thick, fill=white] (C) circle (1cm);
+        % 5th Percentile (blue dashed line)
+        \addplot[domain=0:100, samples=100, thick, blue!50!white, dashed] {0.05*x/20};
+        \addlegendentry{5th Percentile}
 
-    % Label the circles
-    \node at (P) [above left] {P};
-    \node at (Q1) [above] {Q};
-    \node at (APQ1) [above right] {A(PQ)};
-    \node at (B) [below] {B};
-    \node at (C) [above] {C};
-
-    % Draw arrows between the circles
-    \draw[->, thick] (P) -- node[midway, above] {$\rightarrow$} (Q1);
-    \draw[->, thick] (Q1) -- node[midway, above] {$\rightarrow$} (APQ1);
-    \draw[->, thick] (APQ1) -- node[midway, above] {$\rightarrow$} (B);
-    \draw[->, thick] (APQ1) -- node[midway, below] {$\rightarrow$} (C);
-    \draw[->, thick] (B) -- node[midway, left] {$\rightarrow$} (P);
-    \draw[->, thick] (C
+        % 95th Percentile (blue dashed line)
+        \addplot[domain=0:100, samples=100, thick, blue!50!white, dashed] {0.95*x/20};
+        \addlegendentry{95th Percentile}
+    \end{axis}
+\end{tikzpicture}
+\end{document}

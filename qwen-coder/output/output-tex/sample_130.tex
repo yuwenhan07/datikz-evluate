@@ -1,26 +1,30 @@
-\documentclass[tikz,border=10pt]{standalone}
-\usetikzlibrary{shapes.geometric, arrows.meta}
+Certainly! Below is a TikZ LaTeX code that depicts a Bernoulli path \( h_0 \) and the associated particle configuration \( \eta_{h_0} \). The dashed portions of the path illustrate the definition of the new height function, under the corresponding displayed particle movements.
 
-\tikzset{
-  decision/.style={diamond, draw, fill=blue!20, text width=4em, text badly centered, node distance=3cm, inner sep=0pt},
-  block/.style={rectangle, draw, fill=orange!20, text width=5em, text centered, rounded corners, minimum height=4em},
-  line/.style={draw, thick, ->, >=stealth}
-}
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
 
 \begin{document}
-\begin::tikzpicture}[node distance=2cm]
 
-\node (start) [decision] {Climate Change};
-\node (costs) [block, below of=start] {Costs};
-\node (benefits) [block, below of=costs] {Benefits};
-\node (impact) [block, left of=costs, xshift=-3cm] {Impact};
-\node (solutions) [block, right of=benefits, xshift=3cm] {Solutions};
-
-% Drawing lines
-\draw [line] (start) -- (costs);
-\draw [line] (start) -- (benefits);
-\draw [line] (costs) -- (impact);
-\draw [line] (benefits) -- (solutions);
-
-\end{tikzpicture}
-\end{document}
+\begin{tikzpicture}[scale=2]
+    % Define the grid
+    \draw[step=1cm,gray!30] (-4,-2) grid (4,2);
+    
+    % Draw the Bernoulli path h_0
+    \draw[-stealth, thick] (-4,0) -- (4,0) node[right] {$x$};
+    \draw[-stealth, thick] (0,-2) -- (0,2) node[above] {$h_0(x)$};
+    \foreach \x in {-3,-2,-1,0,1,2,3} {
+        \draw[dashed] (\x,-2) -- (\x,2);
+    }
+    
+    % Particle configuration η_h_0
+    \filldraw[blue] (-3,-2) circle (2pt) node[left] {$\eta_{h_0}(-3) = 0$};
+    \filldraw[red] (-2,-1) circle (2pt) node[left] {$\eta_{h_0}(-2) = -1$};
+    \filldraw[green] (-1,0) circle (2pt) node[left] {$\eta_{h_0}(-1) = 0$};
+    \filldraw[yellow] (0,1) circle (2pt) node[left] {$\eta_{h_0}(0) = 1$};
+    \filldraw[cyan] (1,0) circle (2pt) node[left] {$\eta_{h_0}(1) = 0$};
+    \filldraw[magenta] (2,-1) circle (2pt) node[left] {$\eta_{h_0}(2) = -1$};
+    \filldraw[brown] (3,-2) circle (2pt) node[left] {$\eta_{h_0}(3) = 0$};
+    
+    % Highlight the dashed portions
+    \draw[dashed, blue]

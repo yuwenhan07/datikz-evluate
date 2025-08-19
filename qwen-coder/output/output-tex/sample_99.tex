@@ -1,33 +1,36 @@
-\documentclass{standalone}
-\usepackage{tikz}
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{positioning}
 
 \begin{document}
 
-\begin{tikzpicture}[scale=2]
-    % Define points
-    \coordinate (A) at (0, 1);
-    \coordinate (B) at (-1, -0.5);
-    \coordinate (C) at (1, -0.5);
-    \coordinate (D) at (0, -1);
+% Define styles for nodes
+\tikzset{
+    vertex/.style={circle, draw, inner sep=2pt},
+    line/.style={->, thick}
+}
 
-    % Draw edges
-    \draw[thick, red] (A) -- (B) -- (D) -- cycle; % Bottom face (red)
-    \draw[thick, blue] (A) -- (C) -- (D) -- cycle; % Top face (blue)
-    \draw[thick, blue] (A) -- (B) -- (C) -- cycle; % Side face (blue)
-    \draw[thick, blue] (B) -- (C) -- (D) -- cycle; % Side face (blue)
+% Create the initial configuration (assuming it's already defined as 'fg3')
+\node[vertex] (initial) at (0,0) {Initial};
+\node[vertex] (vertex1) at (-2,-2) {};
+\node[vertex] (vertex2) at (0,-2) {};
+\node[vertex] (vertex3) at (2,-2) {};
 
-    % Fill faces with colors
-    \fill[red] (A) -- (B) -- (D) -- cycle;
-    \fill[blue] (A) -- (C) -- (D) -- cycle;
-    \fill[blue] (A) -- (B) -- (C) -- cycle;
-    \fill[blue] (B) -- (C) -- (D) -- cycle;
+% Draw lines connecting vertices
+\draw[line] (initial) -- (vertex1);
+\draw[line] (initial) -- (vertex2);
+\draw[line] (initial) -- (vertex3);
 
-    % Add labels (optional)
-    \node at (A) [above left] {A};
-    \node at (B) [below left] {B};
-    \node at (C) [below right] {C};
-    \node at (D) [above right] {D};
+% Apply the Yang--Baxter equation to move the cross to the right of Z_<0 x [1,M+N]
+\node[vertex] (vertex4) at (0,2) {};
+\node[vertex] (vertex5) at (2,2) {};
+\draw[line] (vertex2) -- (vertex4);
+\draw[line] (vertex3) -- (vertex5);
 
-\end{tikzpicture}
+% Connect the new vertices with the initial configuration
+\draw[line] (vertex1) -- (vertex4);
+\draw[line] (vertex1) -- (vertex5);
+
+% Label the diagram
+\node[above] at (0,3) {Yang--Baxter Equation Applied};
 
 \end{document}

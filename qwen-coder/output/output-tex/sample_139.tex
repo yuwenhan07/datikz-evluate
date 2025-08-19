@@ -1,41 +1,27 @@
-To create a TikZ LaTeX diagram that captures both the black and white and colorful representations of a pentagon with vertices labeled 0 and 1, you can use the following code:
-
-```latex
-\documentclass{standalone}
-\usepackage{tikz}
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{amsmath}
 
 \begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Define styles for nodes
+    \tikzset{
+        mynode/.style={circle, draw, fill=blue!30, text width=4em, align=center},
+        arrow/.style={->, thick, >=stealth}
+    }
 
-% Define the vertices of the pentagon
-\coordinate (A) at (0,0);
-\coordinate (B) at (2,0);
-\coordinate (C) at (3,1.732);
-\coordinate (D) at (1,2.464);
-\coordinate (E) at (-1,1.732);
+    % Nodes representing the functions and variables
+    \node (F0) at (0,0) {$\widetilde{F}_0$};
+    \node (Fpi) at (2,0) {$\widetilde{F}_\pi$};
+    \node (c1) at (-1,-1) {$c_1$};
+    \node (c2) at (1,-1) {$c_2$};
 
-% Black and White Pentagon
-\begin{scope}[xshift=3cm]
-    \draw[black] (A) -- (B) -- (C) -- (D) -- (E) -- cycle;
-    \fill[white] (A) circle[radius=0.05];
-    \node at (A) [below left] {0};
-    \fill[black] (B) circle[radius=0.05];
-    \node at (B) [below right] {1};
-    \fill[white] (C) circle[radius=0.05];
-    \node at (C) [above right] {0};
-    \fill[black] (D) circle[radius=0.05];
-    \node at (D) [above left] {1};
-    \fill[white] (E) circle[radius=0.05];
-    \node at (E) [below] {0};
-\end{scope}
+    % Arrows representing the arguments and equality
+    \draw[arrow] (F0) -- node[above]{$(c_1, c_2)$} (c1);
+    \draw[arrow] (F0) -- node[right]{$(c_1, c_2)$} (c2);
+    \draw[arrow] (Fpi) -- node[above]{$(c_2, c_1)$} (c2);
+    \draw[arrow] (Fpi) -- node[left]{$(c_2, c_1)$} (c1);
 
-% Colorful Pentagon
-\begin{scope}[xshift=6cm]
-    \draw[red] (A) -- (B) -- (C) -- (D) -- (E) -- cycle;
-    \fill[yellow] (A) circle[radius=0.05];
-    \node at (A) [below left] {0};
-    \fill[green] (B) circle[radius=0.05];
-    \node at (B) [below right] {1};
-    \fill[blue] (C) circle[radius=0.05];
-    \node at (C) [above right] {0};
-    \fill[magenta] (D) circle[radius=0.05];
-    \node at (D) [above
+    % Equality symbol
+    \node (eq) at (1,-2) {=$=$};
+\end{tikzpicture}
+\end{document}

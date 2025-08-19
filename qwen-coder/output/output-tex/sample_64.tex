@@ -1,22 +1,31 @@
-\documentclass{standalone}
-\usepackage{tikz}
+To create a TikZ diagram representing the SIRV compartmental model for COVID-19 disease dynamics, we need to visually represent the five compartments: Susceptible ($S$), Exposed ($E$), Quarantined ($U$), Recovered ($R$), and Vaccinated ($V$). Additionally, we can include arrows to show the flow between these compartments.
+
+Here's a sample TikZ code that you can use:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric,arrows.meta}
+
+\tikzset{
+    node style/.style={rectangle, draw=black, thick, minimum width=2cm, minimum height=1cm},
+    arrow style/.style={->, >=Stealth', shorten <=2pt, shorten >=2pt}
+}
 
 \begin{document}
-\begin{tikzpicture}[scale=2]
-    % Define coordinates
-    \coordinate (chord_center) at (0,0);
-    \coordinate (anchor_point) at (3,1);
+\begin{tikzpicture}[scale=1]
+    % Nodes
+    \node[node style] (S) at (0,4) {Susceptible};
+    \node[node style] (E) at (0,2) {Exposed};
+    \node[node style] (U) at (-3,0) {Quarantined};
+    \node[node style] (R) at (3,0) {Recovered};
+    \node[node style] (V1) at (0,-2) {Vaccinated (1st dose)};
+    \node[node style] (V2) at (0,-4) {Vaccinated (2nd dose)};
+    \node[node style] (V3) at (0,-6) {Vaccinated (3rd dose)};
 
-    % Draw the semicircle
-    \draw[thick, blue] (chord_center) circle[radius=1cm] arc[start angle=0, end angle=180];
-
-    % Draw lines from the chord center to the anchor point
-    \draw[-stealth, red] (chord_center) -- (anchor_point);
-    \draw[-stealth, green] (anchor_point) -- (chord_center);
-
-    % Label the points
-    \node[above left] at (chord_center) {Chord Center};
-    \node[above right] at (anchor_point) {Anchor Point};
-
-\end{tikzpicture}
-\end{document}
+    % Arrows
+    \draw[arrow style] (S) -- node[midway, above] {$\beta$} (E);
+    \draw[arrow style] (E) -- node[midway, above] {$\delta$} (R);
+    \draw[arrow style] (S) -- node[midway, right] {$\alpha_1$} (V1);
+    \draw[arrow style] (V1) -- node[midway, right] {$\alpha_2$} (V2);
+    \draw[arrow style] (V2) -- node[midway, right] {$\alpha_3$} (V3);
+    \draw[arrow style] (V1) -- node[midway, left] {$\phi

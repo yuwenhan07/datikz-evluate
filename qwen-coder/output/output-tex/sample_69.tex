@@ -1,36 +1,45 @@
-To create a TikZ LaTeX diagram that visualizes the publication year distribution of 386 corpus papers based on their origin (preliminary manual search or digital library), you can use a bar chart. Below is an example of how you might generate this diagram:
+To create a visually appealing and semantically accurate TikZ LaTeX diagram for the described scenario, you can use the following code:
 
 ```latex
-\documentclass{standalone}
-\usepackage{tikz}
-\usetikzlibrary{calc, positioning}
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{booktabs}
+\usepackage{array}
+
+\tikzset{
+    mybox/.style={draw=black, thick, rectangle, rounded corners, minimum width=4cm, minimum height=3cm},
+    myarrow/.style={->,thick}
+}
 
 \begin{document}
 
-\begin{tikzpicture}[scale=0.8]
-    % Define colors for each category
-    \colorlet{manual}{blue!70!black}
-    \colorlet{digital}{red!70!black}
+\begin{tikzpicture}[node distance=2cm]
 
-    % Publication years range
-    \def\startYear{2015}
-    \def\endYear{2024}
-    \pgfmathsetmacro{\numYears}{\endYear - \startYear + 1}
+\node (table) at (0,0) {
+    \begin{tabular}{@{}lccccc@{}}
+        \toprule
+        & \multicolumn{2}{c}{English} & \multicolumn{2}{c}{Turkish} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+        Model & Zero-shot & Few-shot & Zero-shot & Few-shot \\
+        \midrule
+        Mistral 7B & 80 & 90 & 75 & 85 \\
+        GPT2-xl & 75 & 85 & 65 & 75 \\
+        Hamza$_{\scriptsize Mistral}$ & 70 & 80 & 80 & 90 \\
+        Hamza$_{\scriptsize GPT2-xl}$ & 65 & 75 & 70 & 80 \\
+        \bottomrule
+    \end{tabular}
+};
 
-    % Create x-axis
-    \draw[->] (-1,0) -- (\numYears+1,0) node[right] {Year};
-    \foreach \year in {\startYear,...,\endYear} {
-        \draw (\year-0.5,0) -- (\year-0.5,-0.1);
-        \node at (\year-0.5,-0.3) {\year};
-    }
+\node (fig) at (4,-4) {
+    \begin{tikzpicture}
+        \draw[mybox] (-2,0) rectangle (2,-2);
+        \node[anchor=north west] at (-2,0) {Mistral Model};
+        
+        \draw[myarrow] (-2,-2) -- node[midway, below] {Turkish} (2,-2);
+        \draw[myarrow] (-2,-4) -- node[midway, below] {English} (2,-4);
+        
+        \draw[thick, ->] (0,-2) -- (0,-4);
+        \node[anchor=south] at (0,-2.5) {Pre-training Corpus Size};
+    \end{tikzpicture}
+};
 
-    % Create y-axis
-    \draw[->] (0,-1) -- (0,40) node[above] {Number of Papers};
-
-    % Data for manual and digital categories
-    % Replace these with your actual data
-    \def\manualPapersPerYear{%
-        2015=5, 2016=7, 2017=9, 2018=12, 2019=15, 2020=18, 2021=22, 2022=25, 2023=28, 2024=31%
-    }
-    \def\digitalPapersPerYear{%
-        2015=3, 2016=5, 2017=7, 2018=10, 2019=13, 2020=16, 2021=19, 2022=22
+\end{tikzpicture

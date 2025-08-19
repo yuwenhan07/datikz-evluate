@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm, y=1cm]
+    % Define the number of layers and spacing between them
+    \def\numLayers{4}
+    \def\spacing{0.5} % Spacing between each layer
+
+    % Draw the vertical lines
+    \foreach \i in {0,...,\numLayers}{
+        \draw[red, very thin] (\i*\spacing, -2) -- (\i*\spacing, 2);
+        \draw[blue, very thin] (-(\i*\spacing), -2) -- (-(\i*\spacing), 2);
+    }
+
+    % Add some labels for clarity
+    \node at (0, 2.2) {Layer 1};
+    \node at (0, -2.2) {Layer 3};
+    \node at (-2.2, 2.2) {Layer 2};
+    \node at (-2.2, -2.2) {Layer 4};
+
+    % Set the background color to white
+    \fill[white] (-3, -3) rectangle (3, 3);
+\end{tikzpicture}
+\end{document}

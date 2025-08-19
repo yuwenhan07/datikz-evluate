@@ -1,36 +1,49 @@
-Certainly! Below is an example of how you can improve your TikZ graphics by addressing the three issues you mentioned: aligning headings, adding a legend with six entries, and inserting a grid box to the right of the graph.
+Certainly! Below is a TikZ LaTeX code snippet that illustrates the concept of saddle moves and twist moves for converting 2-component links into knots. The code includes comments to explain each part of the diagram.
 
 ```latex
-\documentclass{article}
-\usepackage{tikz}
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{topaths}
+
+\tikzset{
+    link/.style={thick, draw},
+    twist/.style={purple, thick, ->},
+    cross/.style={red, thick, ->},
+    knot/.style={blue, thick, <->}
+}
 
 \begin{document}
 
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}
-        % Define styles for the plots
-        \def\plotstyleA{blue, thick}
-        \def\plotstyleB{red, dashed, thick}
-        \def\plotstyleC{green, dotted, thick}
-        \def\plotstyleD{purple, ultra thick}
-        \def\plotstyleE{orange, very thick}
-        \def\plotstyleF{cyan, dashed, thick}
+\begin{tikzpicture}[scale=1]
+    % Draw the initial 2-component link
+    \draw[link] (0,0) -- (2,2);
+    \draw[link] (2,-2) -- (0,0);
 
-        % Draw the axes
-        \draw[->] (0,0) -- (6,0) node[right] {$x$};
-        \draw[->] (0,0) -- (0,4) node[above] {$y$};
+    % Highlight the crossings
+    \fill[red] (1,1) circle (2pt);
+    \fill[red] (1,-1) circle (2pt);
 
-        % Plot the functions
-        \draw[\plotstyleA] plot[domain=0:5,samples=100] (\x,{sin(\x r)});
-        \draw[\plotstyleB] plot[domain=0:5,samples=100] (\x,{cos(\x r)});
-        \draw[\plotstyleC] plot[domain=0:5,samples=100] (\x,{tan(\x r)});
-        \draw[\plotstyleD] plot[domain=0:5,samples=100] (\x,{exp(-\x)});
-        \draw[\plotstyleE] plot[domain=0:5,samples=100] (\x,{log2(\x+1)});
-        \draw[\plotstyleF] plot[domain=0:5,samples=100] (\x,{sqrt(\x)});
+    % Indicate the twist move with a purple arrow
+    \draw[twist] (1,1) .. controls (1.5,1.5) and (1.5,-1.5) .. (1,-1);
 
-        % Add legend
-        \node at (7,3.5) [anchor=north west, draw, fill=white, inner sep=2pt] {
-            \textcolor{blue}{\rule{1em}{0.4pt} $\sin(x)$} \\
-            \textcolor{red}{\rule{1em}{0.4pt} $\cos(x)$} \\
-            \textcolor{green}{\rule
+    % Perform the twist move
+    \draw[link] (1,1) -- (1,-1);
+    \draw[link] (1,1) -- (1,-1);
+
+    % Highlight the new crossings after the twist move
+    \fill[red] (1,1) circle (2pt);
+    \fill[red] (1,-1) circle (2pt);
+
+    % Indicate the crossing change with a red arrow
+    \draw[cross] (1,1) .. controls (1.5,1.5) and (1.5,-1.5) .. (1,-1);
+
+    % Perform the crossing change
+    \draw[knot] (1,1) -- (1,-1);
+    \draw[knot] (1,1) -- (1,-1);
+
+    % Finalize the knot
+    \draw[link] (1,1) -- (1,-1);
+    \draw[link] (1,1) -- (1,-1);
+
+    % Labeling the steps
+    \node at (4,2) {Initial Link};
+    \node at (4,-2)

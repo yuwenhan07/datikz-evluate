@@ -1,0 +1,40 @@
+Certainly! Below is the modified TikZ code that includes a curly brace to label \( MEB \) and replaces the orange line with a curly brace for better readability.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    % Define points
+    \coordinate (A) at (0,3);
+    \coordinate (B) at (2,1);
+    \coordinate (C) at (4,3);
+    \coordinate (D) at (6,1);
+    \coordinate (E) at (8,3);
+    \coordinate (F) at (10,1);
+
+    % Draw axes
+    \draw[->] (-1,0) -- (11,0) node[right] {Price};
+    \draw[->] (0,-1) -- (0,4) node[above] {Cost};
+
+    % Draw graph elements
+    \draw[thick, blue] (A) -- (B) -- (C) -- (D) -- (E) -- (F); % Green triangle
+    \filldraw[green] (B) circle (2pt);
+    \node at (B) [left] {Green Triangle};
+    
+    \node at (A) [above left] {Price};
+    \node at (B) [below right] {Cost};
+    \node at (C) [above right] {Price};
+    \node at (D) [below right] {Cost};
+    \node at (E) [above right] {Price};
+    \node at (F) [below right] {Cost};
+
+    % Draw lines and labels
+    \draw[dashed] (B) -- (B |- 0,0) node[left] {Price};
+    \draw[dashed] (D) -- (D |- 0,0) node[left] {Price};
+    \draw[dashed] (F) -- (F |- 0,0) node[left] {Price};
+    
+    \draw[dashed] (B -| 0,0) -- (B) node[below] {Cost};
+    \draw[dashed] (D -| 0,0) -- (D) node[below] {Cost};
+    \draw[dashed] (F -| 0,0) -- (F) node[below] {

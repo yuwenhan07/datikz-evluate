@@ -1,27 +1,30 @@
-\documentclass{article}
+To illustrate multidimensional consistency in a TikZ LaTeX diagram, we can create a visual representation of the three different routes to calculate \( u_{ijk} \) from initial values \( u, u_i, u_j, u_k \). Each route will be represented by an arrow leading to the final value \( u_{ijk} \).
+
+Here is the TikZ LaTeX code to generate this diagram:
+
+```latex
+\documentclass{standalone}
 \usepackage{tikz}
 
-\begin::tikzpicture}[node distance=2cm]
-    % Nodes representing body parts
-    \node (head) at (0,3) {H};
-    \node (neck) at (0,2) {N};
-    \node (chest) at (0,1) {C};
-    \node (leftArm) at (-1,0) {LA};
-    \node (rightArm) at (1,0) {RA};
-    \node (leftLeg) at (-1,-1) {LL};
-    \node (rightLeg) at (1,-1) {RL};
+\begin{document}
 
-    % Edges connecting body parts
-    \draw[->] (head) -- (neck);
-    \draw[->] (neck) -- (chest);
-    \draw[->] (chest) -- (leftArm);
-    \draw[->] (chest) -- (rightArm);
-    \draw[->] (chest) -- (leftLeg);
-    \draw[->] (chest) -- (rightLeg);
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (initial) [circle, draw, fill=blue!30, label=left:$u$] {};
+    \node (i) [circle, draw, fill=red!30, right of=initial, xshift=1cm, label=right:$u_i$] {};
+    \node (j) [circle, draw, fill=green!30, below of=i, yshift=-1cm, label=below:$u_j$] {};
+    \node (k) [circle, draw, fill=purple!30, above of=j, yshift=1cm, label=above:$u_k$] {};
+    \node (ijk) [circle, draw, fill=orange!30, right of=j, xshift=2cm, label=right:$u_{ijk}$] {};
 
-    % Additional connections to create a more natural pose
-    \draw[->] (leftArm) -- ++(-1,-1);
-    \draw[->] (rightArm) -- ++(1,-1);
-    \draw[->] (leftLeg) -- ++(-1,-1);
-    \draw[->] (rightLeg) -- ++(1,-1);
-\end{tikzpicture}
+    % Arrows for the first route: u -> i -> j -> k -> u_ijk
+    \draw[->, thick] (initial) -- node[midway, above] {Route 1} (i);
+    \draw[->, thick] (i) -- node[midway, above] {} (j);
+    \draw[->, thick] (j) -- node[midway, above] {} (k);
+    \draw[->, thick] (k) -- node[midway, above] {} (ijk);
+
+    % Arrows for the second route: u -> j -> k -> u_ijk
+    \draw[->, thick, dashed] (initial) -- node[midway, below] {Route 2} (j);
+    \draw[->, thick, dashed] (j) -- node[midway, below] {} (k);
+    \draw[->, thick, dashed] (k) -- node[midway, below] {} (ijk);
+
+    % Arrows for the third

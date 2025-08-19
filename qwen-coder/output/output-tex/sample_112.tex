@@ -1,23 +1,36 @@
 \documentclass{standalone}
 \usepackage{tikz}
 
+\tikzset{
+    state/.style={circle, draw=black, fill=white, inner sep=5pt},
+    accept/.style={state, fill=green!20},
+    reject/.style={state, fill=red!20},
+    transition/.style={->, >=stealth', thick},
+    dashed/.style={dash pattern=on 3pt off 3pt},
+    solid/.style={}
+}
+
 \begin{document}
-\begin{tikzpicture}[scale=1.5]
-    % Define colors
-    \definecolor{blue}{RGB}{0,0,255}
-    \definecolor{red}{RGB}{255,0,0}
-    
-    % Draw blue squares
-    \fill[blue] (0,0) rectangle (1,1);
-    \fill[blue] (1,1) rectangle (2,2);
-    \fill[blue] (2,2) rectangle (3,3);
-    
-    % Draw red squares
-    \fill[red] (3,0) rectangle (4,1);
-    \fill[red] (4,1) rectangle (5,2);
-    \fill[red] (5,2) rectangle (6,3);
-    
-    % Draw white background
-    \draw[white] (-0.5,-0.5) rectangle (7,4);
+\begin{tikzpicture}[node distance=2cm]
+
+    % States
+    \node[state] (q0) {0};
+    \node[state, below left of=q0] (q1) {1};
+    \node[state, below right of=q0] (q2) {2};
+
+    % Accepting and rejecting states
+    \node[accept, above left of=q1] (qa1) {};
+    \node[reject, above right of=q2] (qr2) {};
+
+    % Transitions
+    \draw[transition, dashed] (q0) -- node[left] {$r$} (q1);
+    \draw[transition, solid] (q0) -- node[right] {$b$} (q2);
+
+    \draw[transition, dashed] (q1) -- node[left] {$r$} (q1);
+    \draw[transition, solid] (q1) -- node[right] {$b$} (q2);
+
+    \draw[transition, dashed] (q2) -- node[left] {$r$} (q1);
+    \draw[transition, solid] (q2) -- node[right] {$b$} (q2);
+
 \end{tikzpicture}
 \end{document}

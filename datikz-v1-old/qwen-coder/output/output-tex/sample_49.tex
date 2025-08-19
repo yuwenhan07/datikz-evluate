@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=3]
+
+% Define coordinates
+\coordinate (a1) at (-2, 0);
+\coordinate (a2) at (2, 0);
+\coordinate (b1) at (-1, -1);
+\coordinate (b2) at (1, -1);
+\coordinate (c1) at (-1, 1);
+\coordinate (c2) at (1, 1);
+\coordinate (d1) at (-1, 0);
+\coordinate (d2) at (1, 0);
+
+% Draw poles
+\node[circle, fill=blue, inner sep=2pt] at (a1) {};
+\node[circle, fill=blue, inner sep=2pt] at (a2) {};
+\node[circle, fill=red, inner sep=2pt] at (b1) {};
+\node[circle, fill=red, inner sep=2pt] at (b2) {};
+
+% Draw branch cuts
+\draw[dashed, thick] (c1) -- (c2);
+\draw[dashed, thick] (d1) -- (d2);
+
+% Label points
+\node[below right] at (a1) {$a_1$};
+\node[above right] at (a2) {$a_2$};
+\node[below left] at (b1) {$b_1$};
+\node[below right] at (b2) {$b_2$};
+\node[above left] at (c1) {$c_1$};
+\node[above right] at (c2) {$c_2$};
+\node[above left] at (d1) {$d_1$};
+\node[above right] at (d2) {$d_2$};
+
+\end{tikzpicture}
+
+\end{document}

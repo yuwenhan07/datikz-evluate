@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Central point
+    \node (center) at (0,0) {};
+
+    % Circles
+    \foreach \radius/\color in {3/black, 2/red, 1/blue} {
+        \draw (\radius,0) circle (\radius);
+        \fill (\radius,0) circle (0.1); % Dots inside circles
+    }
+
+    % Lines connecting points
+    \foreach \angle in {0,45,90,135,180,225,270,315}{
+        \draw[thick] (0,0) -- ({cos(\angle)*2},{sin(\angle)*2});
+    }
+\end{tikzpicture}
+
+\end{document}

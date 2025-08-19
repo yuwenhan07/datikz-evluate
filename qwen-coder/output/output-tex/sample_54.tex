@@ -1,30 +1,32 @@
-\documentclass{standalone}
-\usepackage{tikz}
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{arrows.meta, positioning}
+
+\tikzset{
+    block/.style={rectangle, draw, minimum width=3cm, minimum height=1cm, text centered},
+    line/.style={draw, thick, -Stealth}
+}
 
 \begin{document}
 \begin{tikzpicture}[node distance=2cm]
     % Nodes
-    \node (A) at (0,0) [circle, draw] {};
-    \node (B) at (2,0) [circle, draw] {};
-    \node (C) at (4,0) [circle, draw] {};
-    \node (D) at (6,0) [circle, draw] {};
-    \node (E) at (8,0) [circle, draw] {};
+    \node (small_buffer) [block] {Small Buffer (\(256 \times 256\))};
+    \node (medium_buffer) [block, below=of small_buffer] {Medium Buffer (\(512 \times 512\))};
+    \node (large_buffer) [block, below=of medium_buffer] {Large Buffer (\(1024 \times 1024\))};
 
-    % Edges for D_{i-1} (dashed)
-    \draw[dashed] (A) -- (B);
-    \draw[dashed] (B) -- (C);
-    \draw[dashed] (C) -- (D);
+    % Memory Usage Labels
+    \node (memory_small) [below=of small_buffer, yshift=-1.5cm] {Memory: 4.5 MB};
+    \node (memory_medium) [below=of medium_buffer, yshift=-1.5cm] {Memory: 9.0 MB};
+    \node (memory_large) [below=of large_buffer, yshift=-1.5cm] {Memory: 18.0 MB};
 
-    % Path P_i (solid)
-    \draw[thick] (D) -- (E);
+    % Lines connecting nodes
+    \draw [line] (small_buffer) -- node[above] {Blending Algorithm} (medium_buffer);
+    \draw [line] (medium_buffer) -- node[above] {Blending Algorithm} (large_buffer);
 
-    % Color labels
-    \node at (1,-0.5) [below] {1};
-    \node at (3,-0.5) [below] {2};
-    \node at (5,-0.5) [below] {3};
-
-    % Additional nodes and edges to illustrate more complex structure if needed
-    % \node (F) at (10,0) [circle, draw] {};
-    % \draw (D) -- (F);
+    % Explanation Text
+    \node (explanation) [right=of large_buffer, xshift=2cm, yshift=-2cm] {
+        \textbf{Buffer Memory Usage Comparison} \\
+        \textbf{Under \(256 \times 256\)}: One transparent object buffer causes around 4.5 MB of memory. \\
+        \textbf{Our Blending Algorithm}: Summation-based and does not require space to store each transparency buffer.
+    };
 \end{tikzpicture}
 \end{document}

@@ -1,4 +1,6 @@
-
+"""
+使用 qwen 运行
+"""
 # * 用于生成 TikZ LaTeX 代码的脚本，测试对应的模型
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import os
@@ -18,10 +20,9 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-ds = load_dataset("nllg/datikz", split="test")
-save = []
+ds = load_dataset("nllg/datikz-v3", split="test")
 
-for i in tqdm(range(312, len(ds))):
+for i in tqdm(range(len(ds))):
     example = ds[i]
     prompt = example["caption"]
     messages = [
@@ -44,26 +45,25 @@ for i in tqdm(range(312, len(ds))):
     ]
 
     response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
-
+    
+    # * 提取代码块
+    match = re.search(r"```latex\s*(.*?)\s*```", response, re.DOTALL)
+    latex_code = match.group(1) if match else response
     result = {
         "prompt": prompt,
         "response": response,
+        "latex_code": latex_code,
         "ground_truth": example["code"],
     }
 
+    # * 保存结果到文件
     os.makedirs("output/output-tex", exist_ok=True)
-    os.makedirs("output/groundtruth-tex", exist_ok=True)
+    os.makedirs("output/original-output", exist_ok=True)
 
+    with open(f"output/original-output/sample_{i}.json", "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+        print(f"success write original json into sample_{i}.json")
 
-    # 提取代码块
-    match = re.search(r"```latex\s*(.*?)\s*```", response, re.DOTALL)
-    latex_code = match.group(1) if match else response
-
-    tex_path = f"output/output-tex/sample_{i}.tex"
-    with open(tex_path, "w", encoding="utf-8") as tex_file:
+    with open(f"output/output-tex/sample_{i}.tex", "w", encoding="utf-8") as tex_file:
         tex_file.write(latex_code)
-    print(f"success write tex into sample_{i}.tex")
-
-    # 保存 Ground Truth
-    with open(f"output/groundtruth-tex/sample_{i}.tex", "w", encoding="utf-8") as tex_file:
-        tex_file.write(example["code"])
+        print(f"success write tex into sample_{i}.tex")
