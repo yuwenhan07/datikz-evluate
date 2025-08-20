@@ -1,0 +1,24 @@
+Certainly! Below is a TikZ LaTeX code snippet that visualizes the described construction, including red boxes for the parts of the ground set, green ellipses for the 2-element sets defining \(\mathcal{T}_i\), and blue vertices \(y\) and sets \(H_y^i\) defining \(\mathcal{HM}_y^i\).
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+% Ground Set Elements
+\node (A) [rectangle, draw, fill=red!30, text width=4em, align=center] {Part A (5)};
+\node (B) [rectangle, draw, fill=red!30, text width=4em, align=center, below of=A] {Part B (7)};
+\node (C) [rectangle, draw, fill=red!30, text width=4em, align=center, below of=B] {Part C (6)};
+
+% 2-Element Sets Defining \(\mathcal{T}_i\)
+\node (T1) [ellipse, draw, fill=green!30, text width=3em, align=center, right of=A, xshift=3cm] {$\{a_1, b_1\}$};
+\node (T2) [ellipse, draw, fill=green!30, text width=3em, align=center, right of=B, xshift=3cm] {$\{b_1, c_1\}$};
+\node (T3) [ellipse, draw, fill=green!30, text width=3em, align=center, right of=C, xshift=3cm] {$\{c_1, a_1\}$};
+
+% Blue Vertex y and Set H_y^i
+\node (y) [circle, draw, fill=blue!30, text width=2em, align=center, below of=T1, xshift=-1cm] {$y$};
+\node (Hy1) [rectangle, draw, fill=blue!30, text width=4em, align=center, below of=y, xshift=-1cm] {$H_y^1 = \{x_1, x_2\}$};
+
+\node

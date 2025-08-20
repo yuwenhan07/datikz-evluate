@@ -1,0 +1,27 @@
+The illustration and explanation of the quasi-interpolation operator \( Q \) involves several key concepts from numerical analysis and approximation theory. Let's break down the components step by step:
+
+### 1. **B-Coefficients**:
+   - The B-coefficients \( c_\xi(f) \) are defined as \( c_\xi(f) = \gamma_\xi(F_{d,\tau_\xi} f) \). Here, \( F_{d,\tau_\xi} f \) represents the averaged Taylor polynomial of degree \( d \) associated with the triangle \( \tau_\xi \).
+   - The averaged Taylor polynomial \( F_{d,\tau_\xi} f \) is constructed using the function \( f \) over the triangle \( \tau_\xi \). This polynomial approximates the behavior of \( f \) within the triangle \( \tau_\xi \).
+
+### 2. **Averaged Taylor Polynomial**:
+   - The averaged Taylor polynomial \( F_{d,\tau_\xi} f \) is obtained by averaging the Taylor polynomials of degree \( d \) over the triangle \( \tau_\xi \). This averaging process helps in reducing the oscillations and improving the stability of the approximation.
+
+### 3. **Quasi-Interpolation Operator**:
+   - The quasi-interpolation operator \( Q \) is a linear operator that maps a function \( f \) to an approximation \( Qf \). This approximation is constructed using the B-coefficients \( c_\xi(f) \).
+   - Specifically, \( Qf \) can be expressed as a linear combination of the B-coefficients \( c_\xi(f) \), where the coefficients are determined based on the structure of the triangulation and the properties of the triangles involved.
+
+### 4. **Linear Combination of B-Coefficients**:
+   - The B-coefficients \( c_\xi(f) \) are combined linearly to form the quasi-interpolation operator \( Qf \). The combination is done such that the resulting approximation \( Qf \) is smooth and well-behaved.
+   - The set \( \mathcal{M}_\eta \) represents the set of triangles that contain the point \( \eta \). The B-coefficients \( c_\eta(f) \) are then formed as a linear combination of the B-coefficients \( c_\xi(f) \) for all \( \xi \in \mathcal{M}_\eta \).
+
+### 5. **Triangulation and Star Operation**:
+   - The star operation \( \text{star}^\curlywedge(\tau_\eta) \) refers to the set of triangles that share at least one vertex with the triangle \( \tau_\eta \). This operation is used to determine the set \( \mathcal{M}_\eta \), which is crucial for constructing the linear combination of B-coefficients.
+
+### Illustration:
+To illustrate this concept, consider a two-dimensional domain divided into a triangulation. Each triangle \( \tau_\xi \) has its own B-coefficient \( c_\xi(f) \) computed from the averaged Taylor polynomial \( F_{d,\tau_\xi} f \). The quasi-interpolation operator \( Qf \) is then constructed by combining these B-coefficients according to the structure of the triangulation.
+
+For example, if we have a point \( \eta \) and the triangles \( \tau_\xi \) that contain \( \eta \), the B-coefficients \( c_\eta(f) \) are calculated as a weighted sum of the B-coefficients \( c_\xi(f) \) for those triangles. The weights are determined by the relative contributions of each triangle to the approximation around the point \( \eta \).
+
+### Conclusion:
+The quasi-interpolation operator \( Q \) provides a way to approximate a function \( f \) using a linear combination of B-coefficients, which are derived from the averaged Taylor polynomials over the triangles of the triangulation. This method ensures that the approximation is smooth and well-behaved, making it useful in various applications such as numerical solutions of partial differential equations and data interpolation.

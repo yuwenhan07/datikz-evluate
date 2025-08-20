@@ -1,0 +1,42 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=10cm,
+        height=7cm,
+        xlabel=$X$,
+        ylabel=$Y$,
+        xmin=0, xmax=3,
+        ymin=0, ymax=1.1,
+        xtick={0,1,2,3},
+        ytick={0,0.5,1},
+        legend pos=north east,
+        legend cell align=left,
+        legend style={nodes={right}},
+        axis lines=middle,
+        domain=0:3,
+        samples=100,
+        no markers,
+        smooth,
+        every axis plot/.append style={
+            thick,
+            mark options={mark size=1pt}
+        }
+    ]
+    
+    \addplot [black,->] {exp(-x^2)} node [pos=0.9, anchor=south west] {$y = e^{-x^2}$};
+    \addplot [red,dashed,->] {exp(-x^4)} node [pos=0.9, anchor=south west] {$y = e^{-x^4}$};
+    \addplot [blue,dotted,->] {exp(-x^6)} node [pos=0.9, anchor=south west] {$y = e^{-x^6}$};
+    
+    \node at (axis cs:1,0.3) [circle,fill,inner sep=1.5pt,label=below:{$(1,1/e)$}] {};
+    
+    \legend{}
+    
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

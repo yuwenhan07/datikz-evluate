@@ -1,0 +1,29 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+
+\tikzset{
+  block/.style={rectangle, draw=black, fill=white, text width=5em, text centered, rounded corners, minimum height=4em},
+  line/.style={draw, thick, ->, >=stealth'}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+\node (input) [block] {Input};
+\node (network) [block, below left of=input] {Neural Network};
+\node (output) [block, below right of=input] {$\mu_K^\text{bnd}$};
+\node (stats) [block, below of=network, xshift=-2cm] {Extract Stats};
+\node (evaluations) [block, below of=network, xshift=2cm] {Evaluations};
+
+% Connections
+\draw [line] (input) -- node[anchor=east] {Mesh Elements} (network);
+\draw [line] (network) -- node[anchor=south] {$U_i^n$} (evaluations);
+\draw [line] (network) -- node[anchor=south] {\texttt{stats}} (stats);
+\draw [line] (stats) -- node[anchor=north] {Min} (network.west |- stats.south);
+\draw [line] (stats) -- node[anchor=north] {Max} (network.west |- stats.south);
+\draw [line] (stats) -- node[anchor=north] {Mean} (network.west |- stats.south);
+\draw [line] (stats) -- node[anchor=north] {Std Dev} (network.west |- stats.south);
+\draw [line] (evaluations) -- node[anchor=north] {$\mu_K^\text{bnd}$} (output);
+
+\end{tikzpicture}
+\end{document}

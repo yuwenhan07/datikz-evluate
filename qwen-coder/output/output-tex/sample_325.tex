@@ -1,0 +1,44 @@
+Certainly! Below is an example of how you might create a TikZ diagram to represent a Partially Directed Acyclic Graph (PDAG) or Probability Assessment Framework (PAF) decomposition, along with partial tables for computing $P^{\mathit{ext}}_{com}(\{a, c, e\})$.
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+
+\tikzset{
+  decision/.style={diamond, draw, fill=blue!20, text width=4em, text badly centered, node distance=3cm, inner sep=0pt},
+  block/.style={rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em},
+  line/.style={draw, thick, ->, >=stealth},
+  cloud/.style={cloud, draw, aspect=2, fill=red!20, text width=6em, text centered, rounded corners, minimum height=7em}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+  \node [decision] (A) {A};
+  \node [block, below of=A] (B) {B};
+  \node [block, right of=B] (C) {C};
+  \node [block, left of=B] (D) {D};
+  \node [block, below of=C] (E) {E};
+
+  \path [line] (A) -- (B);
+  \path [line] (B) -- (C);
+  \path [line] (B) -- (D);
+  \path [line] (D) -- (E);
+  \path [line] (C) -- (E);
+
+  % Tables
+  \node [cloud, below of=D, xshift=-3cm] (Table1) {
+    \begin{tabular}{|c|c|}
+      \hline
+      A & B \\
+      \hline
+      T & F \\
+      \hline
+      F & T \\
+      \hline
+    \end{tabular}
+  };
+  \node [cloud, below of=E, xshift=3cm] (Table2) {
+    \begin{tabular}{|c|c|c|}
+      \hline
+      C & D &

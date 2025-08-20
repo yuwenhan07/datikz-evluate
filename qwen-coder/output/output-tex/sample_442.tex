@@ -1,0 +1,37 @@
+To generate a TikZ LaTeX diagram for the graph \( G_\mathcal{F} \) corresponding to the Boolean formula \(\mathcal{F} = (X_1 \vee X_3) \wedge (X_2 \vee X_3 \vee X_5) \wedge (X_4 \vee X_5)\), we need to represent each variable as a node and each logical operation as an edge or a gate.
+
+Here is the step-by-step process to create the TikZ code:
+
+1. **Identify the variables**: The variables in the formula are \(X_1, X_2, X_3, X_4,\) and \(X_5\).
+
+2. **Represent the OR operations**: Each OR operation will be represented by a diamond-shaped gate.
+3. **Represent the AND operations**: The AND operations are implicit in the structure of the formula and will be represented by the edges connecting the gates.
+
+Let's write the TikZ code to draw this graph:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Define nodes for variables
+    \node (X1) at (0, 4) {$X_1$};
+    \node (X2) at (2, 4) {$X_2$};
+    \node (X3) at (4, 4) {$X_3$};
+    \node (X4) at (6, 4) {$X_4$};
+    \node (X5) at (8, 4) {$X_5$};
+
+    % Define nodes for OR gates
+    \node (OR1) at (2, 2) {OR};
+    \node (OR2) at (4, 2) {OR};
+    \node (OR3) at (6, 2) {OR};
+
+    % Draw edges for OR gates
+    \draw[->] (X1) -- (OR1);
+    \draw[->] (X3) -- (OR1);
+    \draw[->] (X2) -- (OR2);
+    \draw[->] (X3) -- (OR2);
+    \draw[->] (X5) -- (OR2);
+    \draw[->] (X4) -- (

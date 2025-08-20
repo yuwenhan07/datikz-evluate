@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        % Draw the grid
+        \draw[help lines] (0,0) grid (4,4);
+        
+        % Draw the diagonal pattern
+        \foreach \x in {0,...,3} {
+            \foreach \y in {0,...,3} {
+                \ifnum\x=\y
+                    \draw (\x,\y) -- ++(1,1) -- ++(-1,-1);
+                \else
+                    \draw (\x,\y) -- ++(1,-1) -- ++(-1,1);
+                \fi
+            }
+        }
+        
+        % Draw the second row of patterns
+        \foreach \x in {0,...,4} {
+            \node at (\x*1.5, -2) {\includegraphics[width=1cm]{example-image-x}};
+        }
+    \end{tikzpicture}
+    
+    \caption{The diagonal transformation that is part of Pinsky's combinatorial theorem. The choice of the next step being among \(\{(0,1),(1,0),(-1,0),(0,-1)\}\) is equivalent to a diagonal version of the encoding being in the set \(\{(+1,+1),(+1,-1),(-1,-1),(-1,+1)\}\) as shown.}
+    \label{fig:diagonal_transformation}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm, auto]
+        % Define styles for nodes
+        \tikzset{
+            factor/.style={draw, rectangle},
+            variable/.style={draw, circle},
+            arrow/.style={->, >=stealth'}
+        }
+        
+        % Draw the nodes
+        \node[factor] (f1) {$f_1$};
+        \node[factor, right=of f1] (f2) {$f_2$};
+        \node[variable, below=of f1] (t1) {$t_1$};
+        \node[variable, right=of t1] (t2) {$t_2$};
+        \node[variable, below=of f2] (t3) {$t_3$};
+        \node[variable, below=of t2] (t4) {$t_4$};
+        \node[variable, below=of t3] (ti) {$t_i$};
+        \node[variable, below=of ti] (tj) {$t_j$};
+        \node[variable, right=of tj] (tn) {$t_n$};
+        \node[factor, right=of tn] (fm) {$f_m$};
+        \node[factor, above=of fm] (mf) {$\mathbf{m}_{\mathbf{f}_m}$};
+        
+        % Draw the arrows
+        \draw[arrow] (f1) -- (t1);
+        \draw[arrow] (f1) -- (t2);
+        \draw[arrow] (f2) -- (t2);
+        \draw[arrow] (f2) -- (t3);
+        \draw[arrow] (f1) -- (t4);
+        \draw[arrow] (f2) -- (t4);
+        \draw[arrow] (f1) -- (ti);
+        \draw[arrow] (f2) -- (ti);
+        \draw[arrow] (fm) -- (tn);
+        \draw[arrow] (fm) -- (tj);
+        \draw[arrow] (fm) -- (mf);
+        \draw[arrow] (mf) -- (fm);
+        
+        % Add labels for the factors
+        \node[left=0.5cm of f1] (label_f1) {$\mathbf{m}_{\mathbf{f}_1}$};
+        \node[above=0.5cm of label_f1] (label_t1) {$\mathbf{t}_1$};
+        
+        % Add labels for the variable nodes
+        \node[below=0.5cm of t1] (label_t1) {$t_1$};
+        \node[below=0.5cm of t2] (label_t2) {$t_2$};
+        \node[below=0.5cm of t3] (label_t3) {$t_3$};
+        \node[below=0.5cm of ti] (label_ti) {$t_i$};
+        \node[below=0.5cm of tj] (label_tj) {$t_j$};
+        \node[below=0.5cm of tn] (label_tn) {$t_n$};
+        
+        % Add labels for the factors
+        \node[above=0.5cm of f1] (label_f1) {$f_1$};
+        \node[above=0.5cm of f2] (label_f2) {$f_2$};
+        \node[above=0.5cm of fm] (label_fm) {$f_m$};
+        \node[above=0.5cm of mf] (label_mf) {$\mathbf{m}_{\mathbf{f}_m}$};
+        
+        % Add dots to indicate more nodes
+        \node[above=0.5cm of f2] (dots1) {$\ldots$};
+        \node[above=0.5cm of fm] (dots2) {$\ldots$};
+        \node[above=0.5cm of ti] (dots3) {$\ldots$};
+        
+        % Add labels for the dots
+        \node[above=0.5cm of dots1] (dots_label1) {$\ldots$};
+        \node[above=0.5cm of dots2] (dots_label2) {$\ldots$};
+        \node[above=0.5cm of dots3] (dots_label3) {$\ldots$};
+    \end{tikzpicture}
+    
+    \caption{Random variables (circles) represent each of the $N$ patients tested. Each factor node (squares) represents the compatibility of the test/measurement $\mu$ with the relevant patient variable values. The degree of the factors nodes is $K$ and of the variable nodes is $L$.}
+    \label{fig:factor_graph}
+\end{figure}
+
+\end{document}

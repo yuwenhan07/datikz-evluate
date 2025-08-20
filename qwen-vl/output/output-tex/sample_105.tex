@@ -1,0 +1,19 @@
+The hierarchical decomposition of divergence in terms of orthogonal projections with respect to a partition \(\mathcal{R}\) and its refinement \(\mathcal{S}\) is a concept that arises in the field of information theory, particularly in the context of source coding and data compression. This decomposition helps in understanding how the mutual information (or divergence) between two random variables can be broken down into simpler components.
+
+Let's break this down step by step:
+
+1. **Partition \(\mathcal{R}\)**: This is a coarse partition of the sample space \(X\). It divides the space into disjoint subsets \(R_1, R_2, \ldots, R_m\).
+
+2. **Refinement \(\mathcal{S}\)**: This is a finer partition of the sample space \(X\) obtained from \(\mathcal{R}\). The partition \(\mathcal{S}\) is such that each subset in \(\mathcal{S}\) is a subset of some subset in \(\mathcal{R}\). Formally, if \(S_i \in \mathcal{S}\), then there exists an \(R_j \in \mathcal{R}\) such that \(S_i \subseteq R_j\).
+
+3. **Orthogonal Projections**: In the context of information theory, the orthogonal projection of a random variable \(X\) onto a partition \(\mathcal{P}\) is the random variable that takes on values based on which subset of \(\mathcal{P}\) the value of \(X\) falls into. For example, if \(\mathcal{P} = \{\{x_1\}, \{x_2, x_3\}\}\), the orthogonal projection of \(X\) onto \(\mathcal{P}\) would be a random variable that takes the value 1 if \(X = x_1\) and the value 2 if \(X = x_2\) or \(X = x_3\).
+
+4. **Divergence Decomposition**: The divergence between two random variables \(X\) and \(Y\) can be decomposed using these orthogonal projections. Specifically, the mutual information \(I(X; Y)\) can be expressed as a sum of conditional mutual informations, which are related to the orthogonal projections of \(X\) and \(Y\) onto the partitions \(\mathcal{R}\) and \(\mathcal{S}\).
+
+The hierarchical decomposition can be written as:
+\[ I(X; Y) = \sum_{i=1}^m \sum_{j=1}^{n_i} I(X; Y | X \in R_i, Y \in S_j) \]
+where \(n_i\) is the number of subsets in \(\mathcal{S}\) that are subsets of \(R_i\).
+
+This decomposition allows us to understand how the mutual information between \(X\) and \(Y\) can be broken down into contributions from different levels of the partition hierarchy. Each term in the sum represents the mutual information between \(X\) and \(Y\) given that \(X\) is in a specific subset of \(\mathcal{R}\) and \(Y\) is in a specific subset of \(\mathcal{S}\).
+
+In summary, the hierarchical decomposition of divergence in terms of orthogonal projections with respect to a partition \(\mathcal{R}\) and its refinement \(\mathcal{S}\) provides a way to analyze and quantify the relationships between random variables at different levels of granularity, which is useful in various applications such as data compression and source coding.

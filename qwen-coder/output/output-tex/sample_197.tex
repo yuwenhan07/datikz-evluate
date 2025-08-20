@@ -1,0 +1,39 @@
+To generate a TikZ LaTeX diagram for the semigroup \( U_2 \) with the posets of \(\mathcal{L}\)-classes, \(\mathcal{R}\)-classes, \(\mathcal{J}\)-classes, and \(\mathcal{H}\)-classes, we need to first understand the structure of these classes in the semigroup \( U_2 \).
+
+The semigroup \( U_2 \) consists of all 2x2 upper triangular matrices with non-negative integer entries. The equivalence relations \(\mathcal{L}\), \(\mathcal{R}\), \(\mathcal{J}\), and \(\mathcal{H}\) partition this semigroup into different classes.
+
+Here is the TikZ LaTeX code to create the diagram:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm, every node/.style={circle, draw}]
+        % L-classes
+        \node (l1) at (0,4) {$L_1$};
+        \node (l2) at (-3,2) {$L_2$};
+        \node (l3) at (3,2) {$L_3$};
+
+        % R-classes
+        \node (r1) at (0,0) {$R_1$};
+        \node (r2) at (-3,-2) {$R_2$};
+        \node (r3) at (3,-2) {$R_3$};
+
+        % J-classes
+        \node (j1) at (0,2) {$J_1$};
+        \node (j2) at (-3,0) {$J_2$};
+        \node (j3) at (3,0) {$J_3$};
+
+        % H-classes
+        \node (h1) at (0,-2) {$H_1$};
+        \node (h2) at (-3,-4) {$H_2$};
+        \node (h3) at (3,-4) {$H_3$};
+
+        % Draw edges between nodes
+        \draw[->] (l1) -- (l2);
+        \draw[->] (l1) -- (l3);
+       

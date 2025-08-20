@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[level distance=2cm,
+    level 1/.style={sibling distance=4cm},
+    level 2/.style={sibling distance=2cm}]
+    
+    % Nodes
+    \node[root](r){\( \text{LSA}(X) \)};
+    \node[left=of r](a){\( a \)};
+    \node[right=of r](b){\( b \)};
+    
+    % Edges
+    \draw[->] (r) -- (a);
+    \draw[->] (r) -- (b);
+\end{tikzpicture}
+\end{document}

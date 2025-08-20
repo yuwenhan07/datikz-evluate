@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the left part of the diagram
+        \draw[thick, blue] (-2,0) arc (180:360:2);
+        \draw[thick, red] (2,0) arc (0:-180:2);
+        \draw[thick, dashed] (-2,-2) -- (-2,2);
+        \draw[thick, dashed] (2,-2) -- (2,2);
+        \draw[thick, dashed] (-2,0) -- (2,0);
+        
+        % Draw the vertical lines
+        \draw[thick, blue] (-2,0) -- (-2,2);
+        \draw[thick, red] (2,0) -- (2,-2);
+        
+        % Mark the points
+        \filldraw[black] (-2,0) circle (1pt) node[left] {$t_l$};
+        \filldraw[black] (2,0) circle (1pt) node[right] {$t_r$};
+        
+        % Draw the wavy lines
+        \draw[thick, blue, densely dotted] (-2,2) -- (-1.5,2.5);
+        \draw[thick, blue, densely dotted] (-2,-2) -- (-1.5,-2.5);
+        \draw[thick, red, densely dotted] (2,2) -- (1.5,2.5);
+        \draw[thick, red, densely dotted] (2,-2) -- (1.5,-2.5);
+        
+        % Draw the right part of the diagram
+        \begin{scope}[shift={(6,0)}]
+            \draw[thick, blue] (0,0) circle (2);
+            \draw[thick, red] (0,0) circle (2);
+            \filldraw[black] (0,0) circle (1pt);
+            \filldraw[black] (0,0) circle (1pt) node[below] {};
+        \end{scope}
+    \end{tikzpicture}
+    
+    \caption{\small On the left, we depict the lower half of the Euclidean geometry combined with the subsequent Lorentzian evolution. The former of the Euclidean geometry is used to generate the deformed thermofield initial state. The right figure illustrates the full Euclidean evolution which may be used to compute the normalization factor \( Z \) or the thermal expectation value (vev) of operators with an appropriate insertion of operator \( O(t) \).}
+\end{figure}
+
+\end{document}

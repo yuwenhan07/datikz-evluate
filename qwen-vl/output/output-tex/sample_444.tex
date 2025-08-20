@@ -1,0 +1,41 @@
+The notation \( W_t^i \) in this context refers to a specific type of random variable that is often encountered in the study of stochastic processes, particularly in the context of random walks or diffusion processes. Here's a detailed explanation:
+
+### Definition and Context
+
+1. **Random Walks and Gaussian Variables:**
+   - \( W_t^i \) represents a random variable at time \( t \) for a specific index \( i \).
+   - Each \( W_t^i \) is constructed by summing independent and identically distributed (i.i.d.) Gaussian random variables \( \xi_{t'}^i \) along a path from an initial point \( W_0^i \).
+
+2. **Path Construction:**
+   - The path is defined as a sequence of times \( t' \) such that \( t' \in \mathcal{S}(t) \cup \{t\} \setminus \{0\} \). This means that the path includes the current time \( t \), all previous times up to \( t-1 \), and the initial time 0.
+   - Specifically, \( \mathcal{S}(t) \) denotes the set of times before \( t \) where transitions occur.
+
+3. **Summation:**
+   - The value of \( W_t^i \) is obtained by summing the Gaussian variables \( \xi_{t'}^i \) for all \( t' \) in the path described above:
+     \[
+     W_t^i = \sum_{t' \in \mathcal{S}(t) \cup \{t\} \setminus \{0\}} \xi_{t'}^i
+     \]
+   - For example, if we consider \( t = 7 \) and \( i \in [K] \), then:
+     \[
+     W_7^i = \xi_4^i + \xi_6^i + \xi_7^i
+     \]
+
+### Interpretation
+
+- **Gaussian Variables (\( \xi_{t'}^i \)):**
+  - These are i.i.d. Gaussian random variables with mean 0 and variance \( \sigma^2 \). They represent the increments or jumps in the process at each time step.
+  
+- **Path Dependence:**
+  - The value of \( W_t^i \) depends on the path taken through the times \( t' \) from the initial time 0 to the current time \( t \). This path can be thought of as a sequence of steps or jumps that the process takes.
+
+### Example
+
+Consider a simple random walk on a line where each step is either +1 or -1 with equal probability. If we denote the position at time \( t \) by \( X_t \), then:
+- \( X_t = \sum_{t' \in \mathcal{S}(t) \cup \{t\} \setminus \{0\}} \xi_{t'} \)
+- Here, \( \xi_{t'} \) could be +1 or -1 depending on whether the walk moves right or left at time \( t' \).
+
+In the context of \( W_t^i \), the \( \xi_{t'}^i \) would be Gaussian variables with mean 0 and variance \( \sigma^2 \), but the interpretation remains similar: they represent the cumulative effect of these Gaussian increments along the path from the initial state \( W_0^i \) to the current time \( t \).
+
+### Conclusion
+
+The expression \( W_t^i \) encapsulates the cumulative effect of Gaussian increments along a specific path from the initial state to the current time. This concept is fundamental in various fields such as finance, physics, and engineering, where stochastic processes are used to model complex systems with random behavior.

@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{groupplot}[
+            group style={
+                group size=2 by 1,
+                horizontal sep=0pt,
+                vertical sep=0pt,
+                x descriptions at=edge bottom,
+                y descriptions at=edge left
+            },
+            width=0.45\textwidth,
+            height=0.3\textwidth,
+            ymin=0, ymax=1,
+            xmin=1995, xmax=2017,
+            xtick={1995,2000,...,2017},
+            x tick label style={rotate=45,anchor=east},
+            ytick={0,0.2,...,1},
+            yticklabels={},
+            grid=major,
+            grid style={line width=.1pt, draw=gray!10},
+            major grid style={line width=.2pt,draw=gray!50},
+            minor tick num=4,
+            minor grid style={line width=.1pt,draw=gray!50},
+            enlarge x limits=false,
+            enlarge y limits=false,
+            nodes near coords,
+            point meta=explicit symbolic,
+            visualization depends on=y \as \myy,
+            every node near coord/.append style={
+                anchor=north west,
+                rotate=90,
+                yshift=-\myy cm
+            }
+        ]
+        \nextgroupplot[
+            title={Estimated partitions over time based on the independent CRP model},
+            yticklabels={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100},
+            nodes near coords align={vertical},
+            visualization depends on={value \thisrow{label} \as \label},
+            every node near coord/.append style={
+                anchor=\label
+            }
+        ]
+        \addplot[fill=red] table [meta=label] {
+            x y label
+            1995 0.1 red
+            1996 0.2 red
+            1997 0.3 red
+            1998 0.4 red
+            1999 0.5 red
+            2000 0.6 red
+            2001 0.7 red
+            2002 0.8 red
+            2003 0.9 red
+            2004 1.0 red
+            2005 0.1 red
+            2006 0.2 red
+            2007 0.3 red
+            2008 0.4 red
+            2009 0.5 red
+            2010 0.6 red
+            2011 0.7 red
+            2012 0.8 red
+            2013 0.9 red
+            2014 1.0 red
+            2015 0.1 red
+            2016 0.2 red
+            2017 0.3 red
+        };
+        
+        \nextgroupplot[
+            title={Estimated partitions over time based on our temporally-dependent random partitions model},
+            yticklabels={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100},
+            nodes near coords align={vertical},
+            visualization depends on={value \thisrow{label} \as \label},
+            every node near coord/.append style={
+                anchor=\label
+            }
+        ]
+        \addplot[fill=orange] table [meta=label] {
+            x y label
+            1995 0.1 orange
+            1996 0.2 orange
+            1997 0.3 orange
+            1998 0.4 orange
+            1999 0.5 orange
+            2000 0.6 orange
+            2001 0.7 orange
+            2002 0.8 orange
+            2003 0.9 orange
+            2004 1.0 orange
+            2005 0.1 orange
+            2006 0.2 orange
+            2007 0.3 orange
+            2008 0.4 orange
+            2009 0.5 orange
+            2010 0.6 orange
+            2011 0.7 orange
+            2012 0.8 orange
+            2013 0.9 orange
+            2014 1.0 orange
+            2015 0.1 orange
+            2016 0.2 orange
+            2017 0.3 orange
+        };
+        \end{groupplot}
+    \end{tikzpicture}
+    \caption{Estimated partitions over time based on the independent CRP model (left) and our temporally-dependent random partitions model (right). The colors indicate cluster labels. Note the strong temporal dependence demonstrated by our method.}
+    \label{fig:estimated_partitions}
+\end{figure}
+
+\end{document}

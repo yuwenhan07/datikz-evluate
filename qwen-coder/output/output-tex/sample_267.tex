@@ -1,0 +1,24 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=4]
+    % Define the parameters
+    \def\p{0.5}
+    \def\a{0.3333}
+
+    % First ladder (blue)
+    \foreach \i in {0,...,9} {
+        \pgfmathsetmacro{\x}{\i * \a}
+        \draw[blue] (\x,0) -- ++(0,\p);
+    }
+
+    % Second ladder (green)
+    \foreach \i in {0,...,9} {
+        \pgfmathsetmacro{\x}{\i * \a + 1}
+        \draw[green] (\x,0) -- ++(0,\p);
+    }
+\end{tikzpicture}
+
+\end{document}

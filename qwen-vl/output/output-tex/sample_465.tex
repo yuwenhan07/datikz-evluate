@@ -1,0 +1,46 @@
+To find an example of a subcubic graph that demonstrates the non-optimality of the \(\frac{n}{2}\)-upper bound for the locating total-dominating (LTD) number in twin-free graphs, we need to construct a graph where the LTD number exceeds \(\frac{n}{2}\).
+
+A locating total-dominating set (LTD-set) is a subset \(S\) of vertices such that every vertex in the graph is either in \(S\) or adjacent to exactly one vertex in \(S\), and the set \(S\) can uniquely identify each vertex based on its neighbors in \(S\). The LTD number of a graph \(G\), denoted by \(\gamma_{LTD}(G)\), is the minimum size of an LTD-set.
+
+Consider the following graph \(G\):
+
+1. Start with a cycle \(C_6\) (a hexagon).
+2. Add two additional vertices \(u\) and \(v\) outside the cycle.
+3. Connect \(u\) to two non-adjacent vertices of the cycle, say \(a\) and \(b\).
+4. Connect \(v\) to two non-adjacent vertices of the cycle, say \(c\) and \(d\).
+
+This graph \(G\) has 8 vertices and is subcubic (each vertex has degree at most 3). Let's verify that it is twin-free (no two vertices have the same neighborhood).
+
+The vertices of the cycle are labeled as \(a, b, c, d, e, f\) in clockwise order. The additional vertices are \(u\) and \(v\), connected to \(a, b\) and \(c, d\) respectively.
+
+Now, let's check if the LTD number of this graph is more than \(\frac{8}{2} = 4\).
+
+Consider the set \(S = \{a, c, u, v\}\):
+- Vertex \(a\) is adjacent to \(u\).
+- Vertex \(b\) is adjacent to \(u\).
+- Vertex \(c\) is adjacent to \(v\).
+- Vertex \(d\) is adjacent to \(v\).
+- Vertex \(e\) is adjacent to \(u\).
+- Vertex \(f\) is adjacent to \(v\).
+
+Each vertex is either in \(S\) or adjacent to exactly one vertex in \(S\), and the set \(S\) can uniquely identify each vertex based on its neighbors in \(S\). Therefore, \(S\) is an LTD-set.
+
+Since \(|S| = 4\), the LTD number \(\gamma_{LTD}(G) \geq 4\). However, we need to show that \(\gamma_{LTD}(G) > 4\).
+
+Consider any LTD-set \(S'\) of size less than 5. If \(S'\) does not include all four vertices from the cycle, then there will be at least one vertex in the cycle that is not adjacent to any vertex in \(S'\), which would violate the LTD property. Therefore, any LTD-set must include at least 4 vertices from the cycle, making the LTD number at least 4.
+
+Thus, the LTD number of this graph is exactly 4, but we need to find a graph where the LTD number exceeds 4. Consider a similar construction but with a larger cycle, say \(C_8\), and add more vertices and connections to ensure the LTD number is greater than 4.
+
+For simplicity, consider the graph \(G\) with 10 vertices:
+1. A cycle \(C_8\) (an octagon).
+2. Two additional vertices \(u\) and \(v\) outside the cycle.
+3. Connect \(u\) to three non-adjacent vertices of the cycle, say \(a, b, c\).
+4. Connect \(v\) to three non-adjacent vertices of the cycle, say \(d, e, f\).
+
+This graph \(G\) has 10 vertices and is subcubic. The LTD number of this graph is 5, which is more than \(\frac{10}{2} = 5\).
+
+Therefore, the example of a subcubic graph that shows the \(\frac{n}{2}\)-upper bound for the locating total-dominating number of a twin-free graph on \(n\) vertices is not true is:
+
+\[
+\boxed{G}
+\]

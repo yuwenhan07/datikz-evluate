@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Define the nodes for the states
+        \foreach \i [count=\j] in {0,...,4} {
+            \node (state-\j) at (\j, 0) {$|4\rangle_{\i}$};
+            \node (a^\dagger-\j) at (\j, -0.5) {$a^{\dagger}_{\i}$};
+            \node (state-\j) at (\j, -1) {$|3\rangle_{\i}$};
+            \node (a^\dagger-\j) at (\j, -1.5) {$a^{\dagger}_{\i}$};
+            \node (state-\j) at (\j, -2) {$|2\rangle_{\i}$};
+            \node (a^\dagger-\j) at (\j, -2.5) {$a^{\dagger}_{\i}$};
+            \node (state-\j) at (\j, -3) {$|1\rangle_{\i}$};
+            \node (a^\dagger-\j) at (\j, -3.5) {$a^{\dagger}_{\i}$};
+            \node (state-\j) at (\j, -4) {$|0\rangle_{\i}$};
+        }
+        
+        % Draw the vertical lines
+        \draw[thick] (0, -4) -- (0, 0);
+        \draw[thick] (1, -4) -- (1, 0);
+        \draw[thick] (2, -4) -- (2, 0);
+        \draw[thick] (3, -4) -- (3, 0);
+        \draw[thick] (4, -4) -- (4, 0);
+        
+        % Draw the horizontal lines
+        \draw[thick] (0, 0) -- (0, -4);
+        \draw[thick] (1, 0) -- (1, -4);
+        \draw[thick] (2, 0) -- (2, -4);
+        \draw[thick] (3, 0) -- (3, -4);
+        \draw[thick] (4, 0) -- (4, -4);
+        
+        % Draw the arrows and labels
+        \draw[->, thick] (0, 0) -- (0, 1);
+        \node at (-0.5, 0.5) {$\epsilon_{r}(\lambda)$};
+        
+        \draw[->, thick] (0, -4) -- (0, -5);
+        \node at (-0.5, -4.5) {$H_{0}$};
+        
+        \draw[->, thick] (1, -4) -- (1, -5);
+        \node at (0.5, -4.5) {$H_{1}$};
+        
+        \draw[->, thick] (2, -4) -- (2, -5);
+        \node at (1.5, -4.5) {$H_{2}$};
+        
+        \draw[->, thick] (3, -4) -- (3, -5);
+        \node at (2.5, -4.5) {$H_{3}$};
+        
+        \draw[->, thick] (4, -4) -- (4, -5);
+        \node at (3.5, -4.5) {$H_{4}$};
+        
+        \draw[->, thick] (4, -4) -- (5, -3);
+        \node at (4.5, -3.5) {$SUSY$};
+        
+        \draw[->, thick] (3, -4) -- (4, -3);
+        \node at (3.5, -3.5) {$SUSY$};
+        
+        \draw[->, thick] (2, -4) -- (3, -3);
+        \node at (2.5, -3.5) {$SUSY$};
+        
+        \draw[->, thick] (1, -4) -- (2, -3);
+        \node at (1.5, -3.5) {$SUSY$};
+        
+        \draw[->, thick] (0, -4) -- (1, -3);
+        \node at (0.5, -3.5) {$SUSY$};
+        
+        % Label the x-axis
+        \draw[->, thick] (4, -4) -- (6, -4);
+        \node at (5.5, -4.5) {$r$};
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style={rectangle, draw=black, fill=white!20, text width=6em, text centered, rounded corners, minimum height=4em},
+    line/.style={draw=black, thick, ->, >=stealth'}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes
+    \node (start) [block] {Start};
+    \node (left) [block, below left of=start] {Left Trajectory ($\prescript{l}{}{T} = 2.72$ s)};
+    \node (right) [block, below right of=start] {Right Trajectory ($\prescript{r}{}{T} = 4.53$ s)};
+    \node (goal) [block, below of=left] {Goal};
+
+    % Edges
+    \path [line] (start) -- node[anchor=east] {Collision} (left);
+    \path [line] (start) -- node[anchor=west] {Collision} (right);
+    \path [line] (left) -- node[anchor=north] {No Path} (goal);
+    \path [line] (right) -- node[anchor=north] {No Path} (goal);
+
+\end{tikzpicture}
+
+\end{document}

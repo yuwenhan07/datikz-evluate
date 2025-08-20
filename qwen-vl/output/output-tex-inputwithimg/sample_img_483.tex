@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm, auto]
+        % Define styles
+        \tikzset{
+            vertex/.style={circle, draw, fill=blue!20, minimum size=15pt, inner sep=0pt},
+            edge/.style={thick, ->, >=stealth, shorten >=1pt, -},
+        }
+        
+        % Left side: Original graph G
+        \node[vertex, red] (u) {$u$};
+        \node[vertex, blue, right=of u] (v) {$v$};
+        \draw[edge] (u) -- node[above] {$e$} (v);
+        \node at (u |- {([yshift=-1em]current bounding box.north)}) {$G=(\{u,v\},\{e\})$};
+        
+        % Right side: 2-reduced directed graph D_2(G)
+        \begin{scope}[xshift=6cm]
+            \node[vertex, red] (u1) {$u_1$};
+            \node[vertex, red, below=of u1] (u2) {$u_2$};
+            \node[vertex, red, below=of u2] (u3) {$u_3$};
+            \node[vertex, red, below=of u3] (u4) {$u_4$};
+            
+            \node[vertex, blue] (v1) [right=of u1] {$v_1$};
+            \node[vertex, blue] (v2) [below=of v1] {$v_2$};
+            \node[vertex, blue] (v3) [right=of v1] {$v_3$};
+            \node[vertex, blue] (v4) [below=of v3] {$v_4$};
+            
+            \node[vertex, yellow] (e) [right=of v4] {$e$};
+            
+            \foreach \i/\j in {1/2, 2/3, 3/4, 4/1, 1/3, 2/4, 3/1, 4/2} {
+                \draw[edge] (u\i) -- (u\j);
+                \draw[edge] (v\i) -- (v\j);
+            }
+            \draw[edge] (u1) -- (e);
+            \draw[edge] (u2) -- (e);
+            \draw[edge] (u3) -- (e);
+            \draw[edge] (u4) -- (e);
+            \draw[edge] (v1) -- (e);
+            \draw[edge] (v2) -- (e);
+            \draw[edge] (v3) -- (e);
+            \draw[edge] (v4) -- (e);
+            
+            \node at (e |- {([yshift=-1em]current bounding box.north)}) {$D_2(G)$};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{An illustration of the reduction from densest $k$-subgraph to {\sc u-rcp}. On the left there is a simple undirected graph $G$ with a single edge. The $2$-reduced directed graph of $G$ is on the right. Each vertex of $G$ is replaced by $2\cdot2 = 4$ copies with a bidirectional edge connecting any two copies of the same vertex, and an outgoing edge from each copy to the single edge-vertex $e$.}
+\end{figure}
+
+\end{document}

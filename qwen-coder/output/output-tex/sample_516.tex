@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        title={ResNet-18 Performance vs Dataset Size},
+        xlabel={Dataset Size (in millions)},
+        ylabel={Model Accuracy},
+        xtick=data,
+        ymajorgrids=true,
+        grid style=dashed,
+        legend pos=north west,
+        ymin=0.4,
+        ymax=0.95,
+        xmin=0.2,
+        xmax=3.0,
+        bar width=20pt,
+        symbolic x coords={0.2, 0.5, 1, 2, 3},
+        xtick=data,
+        nodes near coords,
+        nodes near coords align={vertical},
+        ]
+        
+        % Example data points; replace these with your actual data
+        \addplot coordinates {(0.2, 0.45) (0.5, 0.55) (1, 0.7) (2, 0.8) (3, 0.9)};
+        \addlegendentry{Stable Diffusion Mode};
+        
+        % Error bars representing one standard deviation
+        \addplot[error bars/.cd,y dir=both,y explicit] coordinates {
+            (0.2, 0.45) [y error=0.05]
+            (0.5, 0.55) [y error=0.05]
+            (1, 0.7) [y error=0.05]
+            (2, 0.8) [y error=0.05]
+            (3, 0.9) [y error=0.05]
+        };
+    \end{axis}
+\end{tikzpicture}
+\end{document}

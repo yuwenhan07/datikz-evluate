@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = left,
+        xlabel = $\beta$,
+        ylabel = {$v(\beta)$},
+        ymin=0, ymax=2,
+        xmin=0, xmax=2,
+        xtick={0,0.7071,1,1.4142},
+        xticklabels={$0$, $\frac{\sqrt{2}}{2}$, $1$, $\sqrt{2}$},
+        ytick={1.4142},
+        yticklabels={$\sqrt{2}$},
+        legend pos = outer north east,
+        domain=0:2,
+        samples=100,
+        smooth,
+        no markers,
+        every axis plot/.append style={
+            thick,
+            mark options={mark size=3pt}
+        }
+    ]
+        \addplot [blue] {2*x};
+        \addlegendentry{$v(\beta)=2\beta$}
+        
+        \addplot [red,dashed] {1/x + x/2};
+        \addlegendentry{$v(\beta)=1/\beta+\beta/2$}
+        
+        \draw[dashed] (axis cs:0.7071,0) -- (axis cs:0.7071,1.4142);
+        \draw[dashed] (axis cs:1.4142,0) -- (axis cs:1.4142,1.4142);
+        
+        \node at (axis cs:0.7071,1.4142) [above right] {};
+        \node at (axis cs:1.4142,1.4142) [above right] {};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

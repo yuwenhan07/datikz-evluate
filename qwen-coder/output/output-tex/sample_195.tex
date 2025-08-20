@@ -1,0 +1,35 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usepackage{amsmath}
+\usepackage{siunitx}
+
+\tikzset{
+    mycircle/.style={draw=blue,thick,sphere},
+    myparabola/.style={draw=black,thick,domain=-4:4,samples=100},
+    arrow/.style={->,thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    % Draw the Ewald sphere
+    \node[mycircle] (EwaldSphere) at (0,0) {};
+    
+    % Draw the paraboloid
+    \draw[myparabola] plot (\x,{0.5*\x*\x});
+    
+    % Label the paraboloid
+    \node at (0,-2) {Paraboloid};
+    
+    % Draw the angle line
+    \draw[arrow] (0,0) -- (0,-1);
+    \node at (0,-1.5) {$\theta$};
+    
+    % Draw the small angle approximation
+    \draw[dashed,arrow] (0,0) -- (0.5,-0.5);
+    \node at (0.6,-0.8) {$\theta \approx \lambda k$};
+    
+    % Add labels for the electron beam parameters
+    \node at (-2,-3) {$\lambda \approx \SI{0.025}{\angstrom}$};
+    \node at (2,-3) {$k = \SI{1}{\angstrom^{-1}}$};
+    \node at (0,-4) {$\theta \approx \SI{0.025}{\radian}$};
+\end{tikzpicture}
+\end{document}

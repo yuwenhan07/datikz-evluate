@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Axes
+        \draw[->] (-2,0) -- (2,0) node[right] {$v$};
+        \draw[->] (0,-2) -- (0,2) node[above] {$w$};
+
+        % Orange curve
+        \draw[orange, thick] plot[domain=-1.5:1.5, samples=100] (\x,{1/(\x+1)});
+        \node at (1.5, 0.6) {$\frac{v}{R_0^{\max}}$};
+        \node at (-1.5, -0.6) {$\frac{v}{R_0^{\max}}$};
+        \node at (0.8, 1.2) {$\frac{w}{m_{-q}(R_0^{\max},1)}$};
+        \node at (-0.8, -1.2) {$\frac{w}{m_{-q}(R_0^{\max},1)}$};
+
+        % Dashed lines
+        \draw[dashed, blue] (-1.5, 0) -- (1.5, 0);
+        \draw[dashed, red] (0, -1.5) -- (0, 1.5);
+
+        % Dashdotted line
+        \draw[dashdotted, blue] (-1.5, 0) -- (0, 1.5);
+
+        % Points
+        \fill (0, 0) circle (1pt);
+        \fill (-1.5, 0) circle (1pt);
+        \fill (1.5, 0) circle (1pt);
+        \fill (0, 1.5) circle (1pt);
+        \fill (0, -1.5) circle (1pt);
+
+        % Labels
+        \node at (1.5, 0.3) {$v$};
+        \node at (-1.5, -0.3) {$v$};
+        \node at (0.3, 1.5) {$w$};
+        \node at (-0.3, -1.5) {$w$};
+
+        % Arrows
+        \draw[-{Stealth[length=4mm]}] (0.5, 1.5) -- (1.5, 1.5) node[midway, above] {$a_q$};
+        \draw[-{Stealth[length=4mm]}] (0.5, 0) -- (1.5, 0) node[midway, right] {$a$};
+        \draw[-{Stealth[length=4mm]}] (0, 0.5) -- (0, 1.5) node[midway, right] {$x$};
+        \draw[-{Stealth[length=4mm]}] (0, -0.5) -- (0, -1.5) node[midway, right] {$v$};
+
+        % Background
+        \fill[orange!20] (-2, -2) rectangle (2, 2);
+    \end{tikzpicture}
+    \caption{The situation in the proof of Lemma~\ref{p-means radii strict inequality lemma}: None of the points on the orange curve (which consist of $\gamma/g_q$ and two rays) lie in $\inter(K)$, so $K$ is a subset of the orange area. The two dashed lines are parallel and support $K$ at $v$ and $L$ at $w$, respectively. The dashdotted line and segment are also parallel. The line containing $x$ supports $\conv( K \cup L)$ at $x$, whereas the segment belongs to $\bd(\underline{M}_{q}(K,L))$.}
+    \label{fig:proof_lemma}
+\end{figure}
+
+\end{document}

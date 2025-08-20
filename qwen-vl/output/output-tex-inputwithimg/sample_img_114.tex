@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \matrix (m) [matrix of nodes, nodes={draw, minimum width=2cm, minimum height=0.8cm, anchor=center}, column sep=1mm] {
+            A & |[dotted]| i & |[dotted]| \sigma_{[n]}\backslash(A\cup i) & \sigma \\
+            \hat{A} & |[dotted]| A \setminus \hat{A} & |[dotted]| i & \sigma' \\
+            \hat{A} & |[dotted]| i & |[dotted]| A \setminus \hat{A} & \sigma'' \\
+            \hat{A} & |[dotted]| i & |[dotted]| \hat{\sigma}_{[n]}\backslash(\hat{A}\cup i) & \hat{\sigma} \\
+        };
+    \end{tikzpicture}
+    \caption{The transitions from $\sigma$ to $\hat{\sigma}$ used in the proof of \Cref{lemma:before_still_selected}.}
+    \label{fig:transitions}
+\end{figure}
+
+\end{document}

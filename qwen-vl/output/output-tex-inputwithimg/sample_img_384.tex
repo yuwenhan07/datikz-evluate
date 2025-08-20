@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the axes
+        \draw[->] (-3,0) -- (3,0) node[right] {$\beta^*$};
+        \draw[->] (0,-3) -- (0,3) node[above] {$-\infty$};
+
+        % Draw the shaded region
+        \fill[pattern=north east lines, pattern color=gray!50] (-3,-3) rectangle (3,3);
+
+        % Draw the boundary lines
+        \draw (-3,0) -- (3,0);
+        \draw (0,-3) -- (0,3);
+        \draw (-3,3) -- (3,3);
+        \draw (-3,-3) -- (3,-3);
+
+        % Draw the curve
+        \draw[red, thick, domain=-3:3, samples=100] plot (\x, {1/(\x+1)});
+
+        % Mark points
+        \node at (0, 0) [circle, fill, inner sep=1pt]{};
+        \node at (0, 0) [below right] {$\beta(\alpha)$};
+        \node at (-1, -1) [circle, fill, inner sep=1pt]{};
+        \node at (-1, -1) [left] {$\mathcal{D}_{\varphi}$};
+        \node at (-1, 0) [circle, fill, inner sep=1pt]{};
+        \node at (-1, 0) [below left] {$\alpha^*$};
+
+        % Annotations
+        \node at (1.5, 1.5) [rectangle, draw, fill=white, inner sep=2pt] {$\beta(\alpha)$};
+        \node at (1.5, -1.5) [circle, fill, inner sep=1pt]{};
+        \node at (1.5, -1.5) [right] {$\beta^*$};
+    \end{tikzpicture}
+    \caption{In Lemma \ref{Lem_Aux4}, the construction of $\beta(\alpha)$ changes slightly compared to Lemma \ref{Lem_AuxL2}.}
+    \label{fig:beta_alpha}
+\end{figure}
+
+\end{document}

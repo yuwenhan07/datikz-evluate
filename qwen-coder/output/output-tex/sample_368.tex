@@ -1,0 +1,48 @@
+To visualize the Singular Value Decomposition (SVD) of a matrix \( \mathbf{J} \) in the context provided, we will create a TikZ diagram that represents the decomposition \( \mathbf{J} = \mathbf{U}_J \mathbf{\Sigma}_J \mathbf{V}_J^\top \) for \( r_J = 2 \), \( n = 3 \), and \( p = 4 \).
+
+Here's how you can generate the TikZ code:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{matrix, arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+
+% Define styles for matrices
+\tikzset{
+    matrix/.style={
+        matrix of nodes,
+        nodes in empty cells,
+        row sep=-0.5em,
+        column sep=-0.5em,
+        text height=1.5ex,
+        text depth=0.25ex,
+        inner xsep=0pt,
+        outer xsep=0pt,
+        outer ysep=0pt
+    },
+    node/.style={draw, rectangle, minimum size=1cm, align=center},
+    arrow/.style={->, thick, >=stealth'}
+}
+
+% Create matrices
+\node[matrix] (UJ) {
+    U_{J11} & U_{J12} \\
+    U_{J21} & U_{J22} \\
+    U_{J31} & U_{J32} \\
+};
+\node[matrix, right=of UJ.east, anchor=west] (SJ) {
+    \sigma_1 & 0 \\
+    0 & \sigma_2 \\
+};
+\node[matrix, below=of SJ.south, anchor=north] (VJT) {
+    V_{J11} & V_{J12} & V_{J13} & V_{J14} \\
+    V_{J21} & V_{J22} & V_{J23} & V_{J24} \\
+};
+
+% Draw arrows
+\draw[arrow] ([yshift=0.75em]UJ.south east) -- ([yshift=0.75em]SJ.north west);
+\draw[arrow] ([xshift=0.75em

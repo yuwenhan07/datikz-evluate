@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    % Define colors for different types of nodes
+    \definecolor{orange}{RGB}{255, 102, 0}
+    \definecolor{blue}{RGB}{0, 102, 255}
+    \definecolor{green}{RGB}{0, 255, 0}
+    \definecolor{purple}{RGB}{102, 0, 102}
+
+    % Draw nodes
+    \node[draw, fill=blue!50] (top) {$\{1,2,3,4\}$};
+    \node[draw, fill=orange!50, below left=of top] (a) {$\{1,2,3\}$};
+    \node[draw, fill=blue!50, below right=of top] (b) {$\{1,2,4\}$};
+    \node[draw, fill=green!50, below right=of b] (c) {$\{1,3,4\}$};
+    \node[draw, fill=blue!50, below right=of c] (d) {$\{2,3,4\}$};
+    \node[draw, fill=purple!50, below left=of a] (e) {$\{1,2\}$};
+    \node[draw, fill=purple!50, below right=of e] (f) {$\{1,3\}$};
+    \node[draw, fill=green!50, below right=of f] (g) {$\{1,4\}$};
+    \node[draw, fill=purple!50, below right=of g] (h) {$\{2,3\}$};
+    \node[draw, fill=purple!50, below left=of h] (i) {$\{2,4\}$};
+    \node[draw, fill=purple!50, below left=of i] (j) {$\{3\}$};
+    \node[draw, fill=purple!50, below right=of j] (k) {$\{2\}$};
+    \node[draw, fill=purple!50, below right=of k] (l) {$\{3\}$};
+    \node[draw, fill=purple!50, below right=of l] (m) {$\{4\}$};
+
+    % Draw edges
+    \draw (top) -- (a);
+    \draw (top) -- (b);
+    \draw (top) -- (c);
+    \draw (top) -- (d);
+    \draw (a) -- (e);
+    \draw (a) -- (f);
+    \draw (b) -- (e);
+    \draw (b) -- (f);
+    \draw (b) -- (g);
+    \draw (c) -- (f);
+    \draw (c) -- (g);
+    \draw (c) -- (h);
+    \draw (d) -- (h);
+    \draw (d) -- (i);
+    \draw (e) -- (j);
+    \draw (f) -- (j);
+    \draw (f) -- (k);
+    \draw (g) -- (k);
+    \draw (g) -- (l);
+    \draw (h) -- (l);
+    \draw (h) -- (m);
+    \draw (i) -- (m);
+    \draw (j) -- (m);
+    \draw (k) -- (m);
+    \draw (l) -- (m);
+
+    % Add labels to nodes
+    \node at (a.south west) {\small$\{1,2,3\}$};
+    \node at (b.south east) {\small$\{1,2,4\}$};
+    \node at (c.south east) {\small$\{1,3,4\}$};
+    \node at (d.south east) {\small$\{2,3,4\}$};
+    \node at (e.south west) {\small$\{1,2\}$};
+    \node at (f.south east) {\small$\{1,3\}$};
+    \node at (g.south east) {\small$\{1,4\}$};
+    \node at (h.south east) {\small$\{2,3\}$};
+    \node at (i.south east) {\small$\{2,4\}$};
+    \node at (j.south west) {\small$\{3\}$};
+    \node at (k.south east) {\small$\{2\}$};
+    \node at (l.south east) {\small$\{3\}$};
+    \node at (m.south east) {\small$\{4\}$};
+\end{tikzpicture}
+
+\end{document}

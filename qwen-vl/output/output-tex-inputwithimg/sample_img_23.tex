@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm, auto]
+        % Define nodes
+        \node[draw, ellipse] (v1) {$V_1$};
+        \node[draw, ellipse, right of=v1] (v2) {$V_2$};
+        \node[draw, ellipse, right of=v2] (vc-1) {$V_{c-1}$};
+        \node[draw, ellipse, right of=vc-1] (vc) {$V_c$};
+
+        % Draw edges
+        \draw[->, thick] (v1) -- (v2);
+        \draw[->, thick] (v2) -- node[above] {$\cdots$} (vc-1);
+        \draw[->, thick] (vc-1) -- (vc);
+
+        % Draw curved edge
+        \draw[->, thick] (vc) to[bend left=45] (v1);
+
+        % Add dots inside nodes
+        \foreach \i in {1,2,...,3} {
+            \fill (v1) ++(0,-\i*0.5) circle (0.05);
+        }
+        \foreach \i in {1,2} {
+            \fill (v2) ++(0,-\i*0.5) circle (0.05);
+        }
+        \foreach \i in {1,2} {
+            \fill (vc-1) ++(0,-\i*0.5) circle (0.05);
+        }
+        \fill (vc) ++(0,-0.5) circle (0.05);
+    \end{tikzpicture}
+    \caption{A $k$-strong semicomplete multipartite digraph $D'$ with partite sets $V_1,\dots,V_c$ such that $|V_i|=k+1$ for $i\in[c-1]$ and $|V_c|=k$. All arcs between different $V_i$s which are not shown are from left to right.}
+    \label{fig:k-strong-semicomplete-multipartite-digraph}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,37 @@
+To create a TikZ LaTeX diagram that visualizes the concept you described, we can represent the convex hull \( C \) as a polyhedron, the support vectors \( (p_n)_{n \in \mathbb{N}} \) approaching a limit \( p \), and the point \( x \) with the largest \( w' \)-component on the corresponding face of \( C \). Here's a step-by-step guide to generating this diagram:
+
+1. **Define the Convex Hull \( C \)**: We will use a simple 3D polyhedron for demonstration.
+2. **Represent Support Vectors**: Show a few support vectors approaching the limit \( p \).
+3. **Highlight Point \( x \)**: Mark the point \( x \) on the corresponding face of \( C \).
+
+Below is the TikZ code to achieve this:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usepackage{tikz-3dplot}
+
+\begin{document}
+\tikzset{
+    axis/.style={->,thick},
+    vector/.style={->,thick,color=red},
+    point/.style={circle,fill=blue,inner sep=2pt}
+}
+
+\tdplotsetmaincoords{70}{45} % Set the main coordinate system
+
+\begin{tikzpicture}[tdplot_main_coords]
+    % Define the vertices of the convex hull
+    \coordinate (A) at (-1,-1,-1);
+    \coordinate (B) at (1,-1,-1);
+    \coordinate (C) at (1,1,-1);
+    \coordinate (D) at (-1,1,-1);
+    \coordinate (E) at (-1,-1,1);
+    \coordinate (F) at (1,-1,1);
+    \coordinate (G) at (1,1,1);
+    \coordinate (H) at (-1,1,1);
+
+    % Draw the edges of the convex hull
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+    \draw[thick] (A) -- (B) -- (F) -- (E) -- cycle;
+    \draw[thick] (B) -- (C) -- (G) -- (F) -- cycle;
+    \draw[thick] (C) -- (D

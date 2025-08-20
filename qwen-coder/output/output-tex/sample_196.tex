@@ -1,0 +1,36 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta,shapes.geometric,backgrounds}
+
+\tikzset{
+    node/.style={circle,draw,inner sep=2pt},
+    brane/.style={rectangle,draw,inner sep=4pt},
+    torusnode/.style={ellipse,draw,inner sep=2pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Nodes
+\node[torusnode] (O5p1) at (-2,0) {};
+\node[torusnode] (O5p2) at (-1,0) {};
+\node[torusnode] (O5p3) at (0,0) {};
+\node[torusnode] (O5p4) at (1,0) {};
+\node[torusnode] (O5p5) at (2,0) {};
+
+% Branes
+\node[brane] (B1) at (-2,-2) {B};
+\node[brane] (B2) at (-1,-2) {B};
+\node[brane] (B3) at (0,-2) {B};
+\node[brane] (B4) at (1,-2) {B};
+\node[brane] (B5) at (2,-2) {B};
+
+% Lines connecting nodes and branes
+\foreach \i in {1,...,5} {
+    \draw[-Stealth] (O5p\i) -- (B\i);
+}
+
+% Gauge group label
+\node at (0,-3) {$SO(8)$};
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,48 @@
+Certainly! Below is a TikZ LaTeX code snippet that generates a dependency graph based on your description:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\tikzset{
+    definition/.style={rounded rectangle, draw=black, fill=white},
+    lemma/.style={rectangle, draw=black, fill=white},
+    theorem/.style={rectangle, draw=blue, fill=white},
+    application/.style={rectangle, draw=orange, fill=white},
+    file/.style={draw=gray, dashed},
+    node distance=2cm,
+    every node/.style={align=center}
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+% Nodes for Definitions, Abbreviations, and Intermediate Results
+\node (def1) [definition] {Definition 1};
+\node (def2) [definition] at (3,0) {Definition 2};
+\node (def3) [definition] at (6,0) {Definition 3};
+
+\node (abbr1) [definition] at (1,-2) {Abbreviation 1};
+\node (abbr2) [definition] at (4,-2) {Abbreviation 2};
+
+\node (intres1) [lemma] at (7,-2) {Intermediate Result 1};
+\node (intres2) [lemma] at (10,-2) {Intermediate Result 2};
+
+% Nodes for Lemmas and Theorems
+\node (thm1) [theorem] at (1,-4) {Theorem 1};
+\node (thm2) [theorem] at (4,-4) {Theorem 2};
+
+% Nodes for Applications
+\node (app1) [application] at (7,-4) {Application 1};
+\node (app2) [application] at (10,-4) {Application 2};
+
+% Nodes for Files/Sections
+\node (file1) [file] at (2,-5) {File 1};
+\node (file2) [file] at (5,-5) {File 2};
+\node (file3) [file] at (8,-5) {File 3};
+
+% Edges
+\draw[-stealth] (def1) -- (def2);
+\draw[-stealth] (def2) -- (def3);
+\draw[-stealth] (def1)

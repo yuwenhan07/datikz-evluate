@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the left part of the figure
+        \draw[thick] (0,0) -- (1,0);
+        \filldraw (0,0) circle (2pt);
+        \filldraw (1,0) circle (2pt);
+        
+        % Draw the right part of the figure
+        \draw[thick] (2,0) -- (3,0);
+        \filldraw (2,0) circle (2pt);
+        \filldraw (3,0) circle (2pt);
+        
+        % Draw the arrows
+        \draw[-{Latex[length=3mm]}] (1.5,-0.2) -- (2.5,-0.2);
+        
+        % Draw the nodes and edges in the right part of the figure
+        \node at (2.5,0.5) [circle,fill,inner sep=1.5pt,label=above:1] {};
+        \node at (2.5,0) [circle,fill,inner sep=1.5pt,label=below:2] {};
+        \node at (2.5,-0.5) [circle,fill,inner sep=1.5pt,label=below:3] {};
+        \node at (3.5,0) [circle,fill,inner sep=1.5pt,label=below:5] {};
+        \node at (4.5,0) [circle,fill,inner sep=1.5pt,label=below:8] {};
+        \node at (5.5,0) [circle,fill,inner sep=1.5pt,label=below:12] {};
+        \node at (4.5,0.5) [circle,fill,inner sep=1.5pt,label=above:6] {};
+        \node at (4.5,-0.5) [circle,fill,inner sep=1.5pt,label=below:7] {};
+        \node at (5.5,0.5) [circle,fill,inner sep=1.5pt,label=above:9] {};
+        \node at (5.5,-0.5) [circle,fill,inner sep=1.5pt,label=below:11] {};
+        \node at (6.5,0.5) [circle,fill,inner sep=1.5pt,label=above:10] {};
+        
+        % Draw the edges
+        \draw[thick] (2.5,0.5) -- (3.5,0);
+        \draw[thick] (2.5,0.5) -- (4.5,0.5);
+        \draw[thick] (2.5,0.5) -- (5.5,0.5);
+        \draw[thick] (2.5,0.5) -- (6.5,0.5);
+        \draw[thick] (2.5,0) -- (3.5,0);
+        \draw[thick] (2.5,0) -- (4.5,0);
+        \draw[thick] (2.5,0) -- (5.5,0);
+        \draw[thick] (2.5,0) -- (6.5,0);
+        \draw[thick] (2.5,-0.5) -- (3.5,0);
+        \draw[thick] (2.5,-0.5) -- (4.5,-0.5);
+        \draw[thick] (2.5,-0.5) -- (5.5,-0.5);
+        \draw[thick] (2.5,-0.5) -- (6.5,-0.5);
+        
+        % Draw the dashed line
+        \draw[dashed] (3.5,0) -- (4.5,0);
+        
+        % Add labels for the caption
+        \node at (0.5,0.2) {The solid lines in the figure show one of the non-symmetric spaces, with \( N = 3, L_* = 4 \) constructed in the fashion of Example \ref{ex:nonsym}, together with the ordering of vertices described.};
+        \node at (0.5,0) {The dashed line indicates an edge, which can be added to produce another conductively uniform oriented replacement rule with the \( L_* \)-uniform scaling property, where the dashed edge is removable in the sense of Definition \ref{def:removable}.};
+        \node at (0.5,-0.2) {In general, any edge which connects vertically aligned points is removable.};
+    \end{tikzpicture}
+    \caption{}
+\end{figure}
+
+\end{document}

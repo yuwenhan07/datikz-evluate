@@ -1,0 +1,40 @@
+\documentclass[tikz, border=2cm]{standalone}
+\usetikzlibrary{arrows.meta, decorations.pathreplacing}
+
+\tikzset{
+    disk/.style={draw, circle, minimum size=5mm},
+    line/.style={thick, ->, >=Stealth[length=3mm]},
+    brace/.style={decorate, decoration={brace, amplitude=4pt}}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+
+% Define points
+\coordinate (start) at (0,0);
+\coordinate (end) at (6,0);
+\coordinate (q_k) at (1,1);
+\coordinate (hat_q_l0) at (5,-1);
+
+% Draw segments
+\draw[line] (start) -- node[midway, below] {$c((\gamma_k + \beta)s)$} (end)
+             node[midway, above] {$c((\gamma_k + \beta + t\alpha)s)$};
+
+% Draw disks
+\node[disk] (disk_q_k) at (q_k) {};
+\node[disk] (disk_hat_q_l0) at (hat_q_l0) {};
+
+% Draw lines from centers of disks to endpoints
+\draw[dashed] (disk_q_k.north) -- (end)
+              (disk_hat_q_l0.south) -- (start);
+
+% Draw braces
+\draw[brace] ($(start)!0.5!(end)$) -- node[midway, above] {Covering Segment} ++(0,1.5);
+\draw[brace] ($(disk_q_k.north)!) -- node[midway, right] {$d(q_k, \hat{q}_{l_0}) \geq (\beta - t\alpha)s$} ($(disk_hat_q_l0.south)$);
+
+% Labels
+\node[left] at (q_k) {$B(\hat{q}_k)$};
+\node[right] at (hat_q_l0) {$B(\hat{q}_{l_0})$};
+
+\end{tikzpicture}
+\end{document}

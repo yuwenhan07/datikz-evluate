@@ -1,0 +1,35 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Define the coordinates of the square
+\def\x1{-2}
+\def\x2{2}
+\def\y1{-1}
+\def\y2{1}
+
+% Draw the boundary of the square
+\draw (0,0) rectangle (\x2,\y2);
+
+% Fill the red region
+\fill[red] (\x1,\y1) rectangle (\x2,\y2);
+
+% Label the axes
+\node at (-2,-1.5) {x};
+\node at (2.5,1) {y};
+
+% Draw arrows to show the transformation
+\draw[->] (0,0) -- node[midway, above left] {$f$} (0,1);
+\draw[->] (0,0) -- node[midway, below right] {$f^{-1}$} (0,-1);
+\draw[->] (0,0) -- node[midway, above right] {$f^2$} (0,2);
+\draw[->] (0,0) -- node[midway, below left] {$f^{-2}$} (0,-2);
+
+% Draw the transformed regions
+\draw[dashed] (\x1,\y1) rectangle (\x2,\y2);
+\draw[dashed] (\x1-1,\y1-1) rectangle (\x2+1,\y2+1);
+\draw[dashed] (\x1-2,\y1-2) rectangle (\x2+2,\y2+2);
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Draw axes
+        \draw[->, thick] (0,0) -- (16,0) node[right] {$\mu_1$};
+        \draw[->, thick] (0,0) -- (0,16) node[above] {$\mu_2$};
+        
+        % Draw horizontal line at y=15
+        \draw[cyan, thick] (0,15) -- (16,15);
+        
+        % Draw diagonal lines
+        \foreach \i in {0,...,14} {
+            \draw[cyan, thick] (\i, 15-\i) -- (15-\i, \i);
+        }
+        
+        % Mark points on the grid
+        \foreach \x in {0,...,15} {
+            \foreach \y in {0,...,15} {
+                \filldraw[black] (\x,\y) circle (1pt);
+            }
+        }
+        
+        % Label the top right point
+        \node at (16,15) [right] {$\widehat{\mu}_1$};
+        
+        % Label the left side
+        \node at (0,15) [left] {$\mu_2$};
+        
+        % Label the bottom right corner
+        \node at (16,0) [below] {$\mu_1$};
+    \end{tikzpicture}
+    \caption{The recurrence coefficients of $(\mu_1,\mu_2)$ can be computed via the CC algorithm (Theorem~\ref{thm:NNCC}). On the upper boundary we find the recurrence coefficients of $\widehat{\mu}_1$.}
+    \label{fig:recurrence_coefficients}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define the coordinates for points a3 and b1
+\coordinate (a3) at (0,0);
+\coordinate (b1) at (2,0);
+
+% Draw the nodes at the specified coordinates
+\node[draw, circle] at (a3) {a3};
+\node[draw, circle] at (b1) {b1};
+
+% Add labels to indicate they are being compared
+\node[above=5pt of a3] {$a_3$};
+\node[above=5pt of b1] {$b_1$};
+
+% Add text below the diagram explaining the situation
+\begin{flushleft}
+The output of \ref{mainint}. $a_3, b_1$ have been drawn in the same place because we do not know which is larger.
+\end{flushleft}
+
+\end{document}

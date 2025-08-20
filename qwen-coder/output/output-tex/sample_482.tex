@@ -1,0 +1,37 @@
+Para criar a sequência de transposições que atende às suas especificações, vamos seguir o processo passo a passo:
+
+1. **Definir os ciclos iniciais**:
+   - \( C = (5, 3, 1) \)
+   - \( D = (6, 4, 2) \)
+
+2. **Rotular \( C \)**:
+   - Rotulamos \( C \) como \( A \), então \( A = (5, 3, 1) \).
+
+3. **Limpar \( D \)**:
+   - Limparamos \( D \) para formar um novo ciclo limpo, denotado por \( B \). Assim, \( B = (6, 4, 2) \).
+
+4. **Criar três novos ciclos limpos**:
+   - Precisamos criar três novos ciclos limpos. Vamos considerar que esses ciclos são formados pela união dos elementos restantes da permutação.
+
+5. **Formar a permutação final**:
+   - Combinação dos ciclos \( A \), \( B \), e os novos ciclos limpos resulta na permutação final \( \pi \).
+
+Vamos representar isso em código LaTeX/TikZ:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Desenhar os ciclos
+    \draw[->] (0,0) node[above] {$A$} -- (2,0) node[above] {$5$};
+    \draw[->] (2,0) -- (4,0) node[above] {$3$};
+    \draw[->] (4,0) -- (6,0) node[above] {$1$};
+    \draw[->] (6,0) -- (0,0);
+
+    \draw[->] (7,0) node[above] {$B$} -- (9,0) node[above] {$6$};
+    \draw[->] (9,0) -- (11,0) node[above] {$4$};
+    \draw[->] (11,0) -- (13,0) node[above] {$2$};
+    \draw

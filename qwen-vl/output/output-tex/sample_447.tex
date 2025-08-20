@@ -1,0 +1,42 @@
+To illustrate Riemannian optimization on a 2-dimensional torus (\(\mathbb{T}_2\)), we need to understand the key components: the manifold, the tangent space, the retraction, and the descent direction.
+
+### Step-by-Step Illustration:
+
+1. **Manifold Representation**:
+   - The 2-dimensional torus \(\mathbb{T}_2\) can be visualized as a doughnut shape embedded in \(\mathbb{R}^3\). It is a compact, connected, and orientable surface without boundary.
+   - Points on the torus can be parameterized using two angles \((\theta_1, \theta_2)\) where \(0 \leq \theta_1 < 2\pi\) and \(0 \leq \theta_2 < 2\pi\).
+
+2. **Tangent Space**:
+   - At any point \(\mathbf{w} = (\theta_1, \theta_2)\) on the torus, the tangent space \(T_{\mathbf{w}} \mathbb{T}_2\) consists of all possible directions one can move along the surface while staying on the torus.
+   - A tangent vector \(\boldsymbol{\xi} = (\xi_1, \xi_2)\) at \(\mathbf{w}\) can be thought of as a velocity field that describes how the point moves infinitesimally on the torus.
+
+3. **Descent Direction**:
+   - In Riemannian optimization, we seek a direction \(\boldsymbol{\xi}_t \in T_{\mathbf{w}_t} \mathbb{T}_2\) that points downhill in some sense. This direction is typically computed by solving an optimization problem over the tangent space.
+   - For simplicity, let's assume we have computed such a direction \(\boldsymbol{\xi}_t\).
+
+4. **Retraction**:
+   - The retraction \(\mathcal{R}_{\mathbf{w}_t}\) is a map that takes a tangent vector \(\boldsymbol{\xi}_t\) at \(\mathbf{w}_t\) and "pushes" it back onto the manifold \(\mathbb{T}_2\), resulting in a new point \(\mathbf{w}_{t+1}\).
+   - The retraction is designed to preserve the geometric properties of the manifold, ensuring that the new point \(\mathbf{w}_{t+1}\) lies on the torus.
+
+5. **Iterative Process**:
+   - Start with an initial point \(\mathbf{w}_0\) on the torus.
+   - Compute the descent direction \(\boldsymbol{\xi}_t\) at \(\mathbf{w}_t\).
+   - Apply the retraction \(\mathcal{R}_{\mathbf{w}_t}\) to \(\boldsymbol{\xi}_t\) to obtain the new point \(\mathbf{w}_{t+1}\).
+   - Repeat the process until convergence or a stopping criterion is met.
+
+### Visualization:
+
+To visualize this process, imagine starting at a point on the torus, say \(\mathbf{w}_0 = (0, 0)\). Suppose you compute a descent direction \(\boldsymbol{\xi}_0\) pointing slightly clockwise and counterclockwise (to account for the periodicity of the torus).
+
+- The retraction \(\mathcal{R}_{\mathbf{w}_0}\) will push \(\boldsymbol{\xi}_0\) back onto the torus, resulting in a new point \(\mathbf{w}_1\).
+- Continue this process iteratively, computing descent directions and applying retractions, until the sequence of points converges to a stationary point on the torus.
+
+### Summary:
+
+The illustration of Riemannian optimization on \(\mathbb{T}_2\) involves:
+- Starting at a point \(\mathbf{w}_0\).
+- Computing a descent direction \(\boldsymbol{\xi}_t\) at each step.
+- Applying the retraction \(\mathcal{R}_{\mathbf{w}_t}\) to \(\boldsymbol{\xi}_t\) to obtain the next point \(\mathbf{w}_{t+1}\).
+- Repeating the process until convergence.
+
+This iterative procedure ensures that the optimization respects the intrinsic geometry of the torus, leading to efficient and accurate solutions.

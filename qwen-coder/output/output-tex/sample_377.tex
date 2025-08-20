@@ -1,0 +1,37 @@
+To create a TikZ LaTeX diagram that represents the cobounding map modulo \( H = \langle (1\ 2) \rangle \) on the shift of Example \ref{eg:unimodular} for the morphism \(\varphi : \{a, b, c\}^* \to S_3\) with \(\varphi(a) = \varphi(c) = (1\ 2\ 3)\) and \(\varphi(b) = (1\ 2)\), we need to carefully represent the structure of the shift space and the action of the cobounding map.
+
+Here's a step-by-step guide to creating this diagram:
+
+1. **Define the Shift Space**: We will represent the shift space as a sequence of states, where each state corresponds to a word in \(\{a, b, c\}^*\).
+
+2. **Action of the Morphism**: Define how the morphism \(\varphi\) maps words to elements of \(S_3\).
+
+3. **Cylinder Structure**: Represent the cylinder structure by showing how states transition over time.
+
+4. **Modulo \(H\)**: Since \(H = \langle (1\ 2) \rangle\), we need to reduce the actions modulo this subgroup.
+
+5. **Constant on Cylinders of Length 4**: Ensure that the cobounding map is constant on cylinders of length 4.
+
+Below is the TikZ code to achieve this:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{matrix, arrows.meta}
+
+\begin{document}
+
+\tikzset{
+    state/.style={circle, draw=black, fill=white, inner sep=2pt},
+    arrow/.style={->, thick, >=Stealth[length=0.2cm]}
+}
+
+\begin{tikzpicture}
+    % States
+    \node[state] (s0) at (0,0) {$\emptyset$};
+    \node[state] (s1) at (1.5,0) {$a$};
+    \node[state] (s2) at (3,0) {$b$};
+    \node[state] (s3) at (4.5,0) {$c$};
+
+    % Cylinder of length 4
+    \foreach \i in {0,...,3} {
+        \node[state] (s0\i) at (\i,-1)

@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->] (-0.5,0) -- (3.5,0) node[right] {$t$};
+    \draw[->] (0,-0.5) -- (0,3.5);
+    
+    % Wave fronts
+    \draw[red, thick] (0,0) -- (2,2);
+    \draw[green!50!black, thick] (0,0) -- (2.5,2.5);
+    \draw[cyan, thick] (0,0) -- (2.2,1.8);
+    
+    % Labels
+    \node at (1.5, 1.5) {$\hat{\mathbf{u}}$};
+    \node at (1.5, -0.5) {$\bar{\mathbf{u}}$};
+    \node at (2.5, 0.5) {$\mathbf{u}^+$};
+    
+    % Second plot
+    \begin{scope}[xshift=4cm]
+        % Axes
+        \draw[->] (-0.5,0) -- (3.5,0) node[right] {$t$};
+        \draw[->] (0,-0.5) -- (0,3.5);
+        
+        % Wave fronts
+        \draw[red, thick] (0,0) -- (2,2);
+        \draw[green!50!black, thick] (0,0) -- (2.5,2.5);
+        \draw[cyan, thick] (0,0) -- (2.2,1.8);
+        
+        % Labels
+        \node at (1.5, 1.5) {$\hat{\mathbf{u}}$};
+        \node at (1.5, -0.5) {$\bar{\mathbf{u}}$};
+        \node at (2.5, 0.5) {$\mathbf{u}^+$};
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}

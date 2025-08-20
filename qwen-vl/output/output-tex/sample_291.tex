@@ -1,0 +1,179 @@
+To construct a matching in \(\Mat_{9,3}^{>2}(1)\) step by step, we need to understand the structure of the matrix and the rules for constructing a matching. Here, \(\Mat_{9,3}^{>2}(1)\) refers to a 9x3 matrix where each entry is either 0 or 1, and the sum of entries in each row is greater than 2. A matching in this context means selecting one 1 from each row such that no two selected 1's are in the same column.
+
+Let's start with an example matrix:
+
+\[
+\begin{array}{ccc}
+1 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+\end{array}
+\]
+
+We will construct a matching step by step, coloring newly added vertices and arcs in red.
+
+**Step 1:**
+Select the first row and the first column:
+\[
+\begin{array}{ccc}
+\color{red}1 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+\end{array}
+\]
+The matching so far is \((1,1)\).
+
+**Step 2:**
+Select the second row and the third column:
+\[
+\begin{array}{ccc}
+1 & 1 & \color{red}0 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+\end{array}
+\]
+The matching so far is \((1,1), (2,3)\).
+
+**Step 3:**
+Select the third row and the second column:
+\[
+\begin{array}{ccc}
+1 & \color{red}1 & 0 \\
+1 & 0 & 1 \\
+0 & \color{red}1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+\end{array}
+\]
+The matching so far is \((1,1), (2,3), (3,2)\).
+
+**Step 4:**
+Select the fourth row and the first column:
+\[
+\begin{array}{ccc}
+1 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+\color{red}1 & 1 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+\end{array}
+\]
+The matching so far is \((1,1), (2,3), (3,2), (4,1)\).
+
+**Step 5:**
+Select the fifth row and the third column:
+\[
+\begin{array}{ccc}
+1 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+\color{red}0 & 1 & 1 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+\end{array}
+\]
+The matching so far is \((1,1), (2,3), (3,2), (4,1), (5,3)\).
+
+**Step 6:**
+Select the sixth row and the second column:
+\[
+\begin{array}{ccc}
+1 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+\color{red}1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+\end{array}
+\]
+The matching so far is \((1,1), (2,3), (3,2), (4,1), (5,3), (6,2)\).
+
+**Step 7:**
+Select the seventh row and the third column:
+\[
+\begin{array}{ccc}
+1 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+\color{red}0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+\end{array}
+\]
+The matching so far is \((1,1), (2,3), (3,2), (4,1), (5,3), (6,2), (7,3)\).
+
+**Step 8:**
+Select the eighth row and the first column:
+\[
+\begin{array}{ccc}
+1 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+\color{red}1 & 1 & 0 \\
+0 & 1 & 1 \\
+\end{array}
+\]
+The matching so far is \((1,1), (2,3), (3,2), (4,1), (5,3), (6,2), (7,3), (8,1)\).
+
+**Step 9:**
+Select the ninth row and the second column:
+\[
+\begin{array}{ccc}
+1 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+\color{red}0 & 1 & 1 \\
+\end{array}
+\]
+The matching so far is \((1,1), (2,3), (3,2), (4,1), (5,3), (6,2), (7,3), (8,1), (9,2)\).
+
+The final matching is \((1,1), (2,3), (3,2), (4,1), (5,3), (6,2), (7,3), (8,1), (9,2)\).
+
+So the answer is:
+\[
+\boxed{(1,1), (2,3), (3,2), (4,1), (5,3), (6,2), (7,3), (8,1), (9,2)}
+\]

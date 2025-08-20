@@ -1,0 +1,40 @@
+To create a TikZ diagram illustrating a spanning \( r \)-arborescence \( T \) in a directed graph \( G = (V, E) \), we need to carefully structure the nodes, edges, and labels according to the description provided. Below is an example of how you might generate this diagram using TikZ.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzstyle{vertex}=[circle, draw, fill=white!20]
+\tikzstyle{edge}=[->, thick]
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+% Define the vertices
+\node[vertex] (r) at (0,0) {r};
+\node[vertex] (v1) at (-3,-2) {v1};
+\node[vertex] (v2) at (-1,-2) {v2};
+\node[vertex] (v3) at (1,-2) {v3};
+\node[vertex] (v4) at (3,-2) {v4};
+
+% Define the edges
+\draw[edge] (r) -- node[above] {1} (v1);
+\draw[edge] (r) -- node[above] {2} (v2);
+\draw[edge] (v1) -- node[right] {a} (v3);
+\draw[edge] (v1) -- node[left] {b} (v4);
+\draw[edge] (v2) -- node[right] {c} (v3);
+
+% Draw colorful frames around out-neighborhoods
+\draw[dashed, red, thick] (v1) rectangle ++(2,-1);
+\draw[dashed, green, thick] (v2) rectangle ++(2,-1);
+\draw[dashed, blue, thick] (v3) rectangle ++(2,-1);
+
+% Add colorful numbers below the out-neighborhoods
+\node[below, red] at (v1.east) {3};
+\node[below, green] at (v2.east) {2};
+\node[below, blue] at (v3.east) {1};
+
+% Mark non-leaf vertices
+\node[rectangle, draw, fill=yellow!20, inner sep=2pt] at (v1) {};
+\node

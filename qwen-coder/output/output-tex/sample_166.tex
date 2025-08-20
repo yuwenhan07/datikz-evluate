@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Draw the axes
+    \draw[->] (-2,0) -- (4,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,4) node[above] {$y$};
+
+    % Draw the log(x+1) function for x >= 0
+    \draw[blue, thick] plot[domain=0:3,samples=100] (\x, {ln(\x + 1)});
+
+    % Draw the line y = 0 for x < 0
+    \draw[red, dashed] plot[domain=-2:0,samples=100] (\x, {0});
+
+    % Label the regions
+    \node at (1,1) [anchor=south west] {Region I: \( x \geq 0 \)};
+    \node at (-1,-0.5) [anchor=north east] {Region II: \( x < 0 \)};
+\end{tikzpicture}
+\end{document}

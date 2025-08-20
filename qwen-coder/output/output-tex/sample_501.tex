@@ -1,0 +1,33 @@
+To create a TikZ diagram that visualizes the given structure, we need to represent the group \( G = \mathbb{Z}_{90} \), the subsets \( S_0 \) and its cosets modulo the subgroups \( H_1, H_2, \) and \( H_3 \). Here’s how you can do it:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, positioning}
+
+\begin{document}
+
+\tikzset{
+    node distance=2cm,
+    circle/.style={circle, draw, inner sep=2pt},
+    rectangle/.style={rectangle, draw, inner sep=2pt},
+    every node/.style={font=\small}
+}
+
+\begin{tikzpicture}[level distance=2cm]
+
+% Level 0: G = Z_90
+\node (G) [circle] {$G = \mathbb{Z}_{90}$};
+
+% Level 1: H_1 = <45>
+\node (H1) [below left=of G, circle] {$H_1 = \langle 45 \rangle$};
+\node (coset_H1_1) [right=of H1, rectangle, red] {0};
+\node (coset_H1_2) [right=of coset_H1_1, rectangle, red] {45};
+
+% Level 2: H_2 = <15>
+\node (H2) [below left=of H1, circle] {$H_2 = \langle 15 \rangle$};
+\node (coset_H2_1) [right=of H2, rectangle, red] {0};
+\node (coset_H2_2) [right=of coset_H2_1, rectangle, red] {15};
+\node (coset_H2_3) [right=of coset_H2_2, rectangle, red] {30};
+\node (coset_H2_4) [right=of coset_H2_3, rectangle, red] {45};
+\node (coset_H2_5) [right=of coset_H2_4, rectangle, red] {60};
+\node (coset_H2_6) [right=of coset_H2_5, rectangle,

@@ -1,0 +1,24 @@
+To prove Case 2 of \Cref{Thm:cubic graph} when \( |N(\{x, y\})| = 4 \), we need to analyze the structure of the subgraph \( G[X] \) induced by the set \( X \) and the edges connecting \( X \) to the rest of the graph \( V \setminus X \).
+
+Given:
+- \( |N(\{x, y\})| = 4 \)
+- The subgraph \( G[X] \) has a unique edge \( xy \).
+- \( e_G(X, V \setminus X) = 3k + 1 \)
+
+### Step-by-Step Proof:
+
+1. **Understanding \( N(\{x, y\}) \):**
+   - Since \( |N(\{x, y\})| = 4 \), there are four vertices in the neighborhood of both \( x \) and \( y \). This means that \( x \) and \( y \) share exactly one neighbor (the edge \( xy \)), and each of them is connected to three other vertices.
+
+2. **Structure of \( G[X] \):**
+   - The subgraph \( G[X] \) consists of the vertices \( x \) and \( y \) and their unique edge \( xy \). Therefore, \( G[X] \) is a complete bipartite graph \( K_{1,2} \).
+
+3. **Edges Connecting \( X \) to \( V \setminus X \):**
+   - We are given that \( e_G(X, V \setminus X) = 3k + 1 \). This means there are \( 3k + 1 \) edges between the vertices in \( X \) and the vertices not in \( X \).
+
+4. **Counting Neighbors of \( x \) and \( y \):**
+   - Each vertex \( x \) and \( y \) has 3 neighbors outside of \( X \). However, since \( x \) and \( y \) share a common neighbor \( z \) (the edge \( xy \)), each of them contributes an additional 2 unique neighbors.
+   - Therefore, each of \( x \) and \( y \) has exactly 2 neighbors outside of \( X \) in addition to the shared neighbor \( z \).
+
+5. **Total Number of Unique Neighbors Outside \( X \):**
+   - Since \( x \)

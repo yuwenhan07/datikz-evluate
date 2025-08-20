@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (0) {$0$};
+  \node[state] (1) [right of=0] {$1$};
+  \node[state] (2) [above right of=1] {$1$};
+  \node[state] (3) [below right of=1] {$0$};
+
+  \path (0) edge node {$1$} (1)
+        (1) edge node {$1$} (2)
+        (1) edge node {$0$} (3);
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (0) {$0$};
+  \node[state] (1) [right of=0] {$1$};
+  \node[state] (2) [above right of=1] {$1$};
+  \node[state] (3) [below right of=1] {$0$};
+
+  \path (0) edge node {$1$} (1)
+        (1) edge node {$1/2$} (2)
+        (1) edge node {$0$} (3);
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (0) {$0$};
+  \node[state] (1) [right of=0] {$1$};
+  \node[state] (2) [above right of=1] {$1$};
+  \node[state] (3) [below right of=1] {$0$};
+
+  \path (0) edge node {$1$} (1)
+        (1) edge node {$1/2$} (2)
+        (1) edge node {$0$} (3);
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (0) {$0$};
+  \node[state] (1) [right of=0] {$1$};
+  \node[state] (2) [above right of=1] {$1$};
+  \node[state] (3) [below right of=1] {$0$};
+
+  \path (0) edge node {$1$} (1)
+        (1) edge node {$1/2$} (2)
+        (1) edge node {$0$} (3);
+\end{tikzpicture}
+
+\end{document}

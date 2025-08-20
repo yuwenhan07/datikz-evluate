@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = left,
+            xlabel = {},
+            ylabel = {},
+            xticklabels = {},
+            yticklabels = {},
+            xmin=-5, xmax=5,
+            ymin=-5, ymax=5,
+            width=\textwidth,
+            height=0.8\textheight,
+            clip=false,
+            every axis plot/.append style={ultra thick},
+            every axis plot post/.append style={line join=round}
+        ]
+            % Plot the curves
+            \addplot[domain=-5:5, color=green] {sqrt(4-x^2)};
+            \addplot[domain=-5:5, dashed, color=black] {x/2};
+            \addplot[domain=-5:5, color=red] {-x/2};
+
+            % Labels and annotations
+            \node at (axis cs:-3,-3) [anchor=north east, red] {\textcolor{red}{Phase I: has epochs of $\ddot{a}\geq 0$ that}};
+            \node at (axis cs:-3,-4) [anchor=north east, red] {\textcolor{red}{collectively violate TCC.}};
+            \node at (axis cs:2,4) [anchor=south west, blue] {\textcolor{blue}{Phase II: non-accelerating}};
+            \node at (axis cs:2,3) [anchor=south west, blue] {\textcolor{blue}{$\ddot{a}\leq 0$ eternal expansion}};
+            \node at (axis cs:2,2) [anchor=south west, blue] {\textcolor{blue}{Phase II-B:}};
+            \node at (axis cs:2,1.5) [anchor=south west, blue] {\textcolor{blue}{$\Omega_k$: constant}};
+            \node at (axis cs:2,0.5) [anchor=south west, blue] {\textcolor{blue}{Phase II-A:}};
+            \node at (axis cs:2,0) [anchor=south west, blue] {\textcolor{blue}{$\Omega_k\ll 1$}};
+            \node at (axis cs:3.5,3) [anchor=south west, black] {\textcolor{black}{$aH<\infty$}};
+            \node at (axis cs:3.5,1.5) [anchor=south west, black] {\textcolor{black}{$\ddot{a}<0$}};
+            \node at (axis cs:3.5,0) [anchor=south west, black] {\textcolor{black}{$\ddot{a}>0$}};
+            \node at (axis cs:4.5,2) [anchor=south west, black] {\textcolor{black}{$t=t_*$}};
+            \node at (axis cs:4.5,3.5) [anchor=south west, black] {\textcolor{black}{future/infinity}};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{The Penrose diagram of a FRW solution with negative spatial curvature that transitions from a TCC-violating phase to a non-accelerating phase. Phase I has accelerating epochs that collectively violate the TCC. Phase II consists of two subphases: In Phase II-A, $\ddot{a}$ is less than zero; the spatial curvature is negligible; and the expansion is entirely driven by the scalar field. In Phase II-B, $\ddot{a}$ becomes negligible; the spatial curvature becomes important; and $\Omega_k$ converges to a non-zero value.}
+    \label{fig:penrose_diagram}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,27 @@
+To analyze the alignment between singular subspaces of the observation \(\bm{\mathscr{T}}\) and the signal \(\bm{\mathscr{P}}_\circ\) as a function of the signal-to-noise ratio \(\omega\), we need to consider both theoretical predictions and empirical results from simulations. Here's a step-by-step breakdown:
+
+### Theoretical Alignment (Theorem \ref{thm:spike})
+Theorem \ref{thm:spike} provides a theoretical bound on the alignment between the singular subspaces of \(\bm{\mathscr{T}}\) and \(\bm{\mathscr{P}}_\circ\). This bound depends on the signal-to-noise ratio \(\omega\), the dimensions of the data, and the rank of the signal.
+
+### Empirical Results
+Empirical results are obtained by averaging over 10 trials for each value of \(\omega\). Error bars represent the standard deviation of these averages.
+
+### Simulation Setup
+- **Dimensionality**: \(d = 3\)
+- **Signal Dimensions**: \((n_1, n_2, n_3) = (100, 200, 300)\)
+- **Total Observations**: \(N = n_1 + n_2 + n_3 = 600\)
+- **Signal Ranks**: \((r_1, r_2, r_3) = (3, 4, 5)\)
+
+### Algorithms Compared
+- **Truncated MLSVD**: This method is used to approximate the singular subspaces.
+- **HOOI Algorithm**: This is another method for decomposing tensor data.
+
+### Key Points
+1. **Alignment Measure**: Typically, the alignment is measured using the cosine similarity or the Frobenius norm of the difference between the projected matrices.
+2. **Error Bars**: These indicate the variability in the alignment measure across different trials.
+3. **Comparison**: The performance of the truncated MLSVD and the HOOI algorithm is compared at various values of \(\omega\).
+
+### Conclusion
+By plotting the alignment measure against \(\omega\) for both methods, we can observe how well they perform relative to each other and how the theoretical bounds compare with the empirical results. The experimental setting ensures that the analysis is conducted under controlled conditions, allowing for a fair comparison of the two algorithms.
+
+This analysis will help in understanding the effectiveness of the truncated MLSVD and the HOOI algorithm in reconstructing the signal from noisy observations, especially in terms of their alignment with the true signal subspace.

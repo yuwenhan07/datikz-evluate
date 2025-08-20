@@ -1,0 +1,55 @@
+Certainly! Let's create a simple toy example to model the interplay between a company's revenue and its employees' competences, where the competences can be improved through a specific training program.
+
+### Model Overview
+
+We will use a basic linear regression model to represent the relationship between the company's revenue (\( R \)) and the employees' competences (\( C \)). The competences \( C \) can be improved by a training program (\( T \)), which we will also model as a factor affecting the competences.
+
+### Variables and Relationships
+
+1. **Revenue (\( R \))**: This is the output variable that we want to predict.
+2. **Competences (\( C \))**: This is the intermediate variable that affects the revenue.
+3. **Training Program (\( T \))**: This is an input variable that improves the competences.
+
+### Model Formulation
+
+The relationship can be formulated as follows:
+
+\[ R = \beta_0 + \beta_1 C + \epsilon_R \]
+
+where:
+- \( \beta_0 \) is the intercept.
+- \( \beta_1 \) is the coefficient representing the effect of competences on revenue.
+- \( \epsilon_R \) is the error term.
+
+And the competences can be modeled as:
+
+\[ C = \alpha_0 + \alpha_1 T + \epsilon_C \]
+
+where:
+- \( \alpha_0 \) is the intercept.
+- \( \alpha_1 \) is the coefficient representing the effect of the training program on competences.
+- \( \epsilon_C \) is the error term.
+
+### Combined Model
+
+To combine these two models, we can express the revenue \( R \) in terms of the training program \( T \):
+
+\[ R = \beta_0 + \beta_1 (\alpha_0 + \alpha_1 T) + \epsilon_R \]
+\[ R = \beta_0 + \alpha_0 \beta_1 + \alpha_1 \beta_1 T + \epsilon_R \]
+
+Let's denote:
+- \( \beta_0 + \alpha_0 \beta_1 \) as \( \beta_{\text{new}} \)
+- \( \alpha_1 \beta_1 \) as \( \gamma \)
+
+Thus, the combined model becomes:
+
+\[ R = \beta_{\text{new}} + \gamma T + \epsilon_R \]
+
+### Summary
+
+In this toy example:
+- Revenue \( R \) depends on the employees' competences \( C \).
+- Competences \( C \) depend on the training program \( T \).
+- The combined model shows how the training program directly impacts the revenue through its effect on competences.
+
+This simplified model can be extended with more complex relationships, interactions, or additional variables depending on the specific context and data available.

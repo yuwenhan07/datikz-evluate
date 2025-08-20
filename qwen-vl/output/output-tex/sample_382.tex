@@ -1,0 +1,31 @@
+To understand the three main models that satisfy treatment assignment ignorability, we need to explore the concepts of Directed Acyclic Graphs (DAGs), Structural Causal Models (SCMs), and Both-Worlds Graphs. These models help us understand how treatment assignment can be considered independent of potential outcomes given certain observed covariates.
+
+### 1. **DAGs (Directed Acyclic Graphs)**
+
+A Directed Acyclic Graph (DAG) is a graphical model used to represent causal relationships between variables. In the context of causal inference, it helps us identify the causal structure of the data and determine whether treatment assignment is independent of potential outcomes given certain observed covariates.
+
+The ignorability assumption, \( Z \independent (S(1), S(0), Y(1), Y(0)) \mid X \), means that the treatment assignment \( Z \) is independent of the potential outcomes \( S(1) \) and \( S(0) \) as well as the observed outcomes \( Y(1) \) and \( Y(0) \) given the observed covariates \( X \).
+
+In a DAG, this assumption can be represented by ensuring that there are no backdoor paths from the treatment \( Z \) to the outcome \( Y \) that are not blocked by the observed covariates \( X \). A backdoor path is a path that starts at the treatment variable and ends at the outcome variable without passing through any collider (a variable that has two parents in the graph).
+
+### 2. **Structural Causal Models (SCMs)**
+
+Structural Causal Models (SCMs) provide a more formal framework for representing causal relationships using mathematical equations. An SCM consists of a set of structural equations that define the relationships between variables, along with a probability distribution over the exogenous variables.
+
+In an SCM, the ignorability assumption \( Z \independent (S(1), S(0), Y(1), Y(0)) \mid X \) can be expressed mathematically. This assumption implies that the treatment assignment \( Z \) does not directly or indirectly influence the potential outcomes \( S(1) \) and \( S(0) \) or the observed outcomes \( Y(1) \) and \( Y(0) \) through any other variables given the observed covariates \( X \).
+
+### 3. **Both-Worlds Graphs**
+
+Both-Worlds Graphs are a type of graphical representation used in causal inference to visualize the counterfactual world where the treatment is assigned differently than in the actual world. They help in understanding the causal effects of treatments by comparing the outcomes in the actual world with those in the counterfactual worlds.
+
+In a Both-Worlds Graph, the ignorability assumption \( Z \independent (S(1), S(0), Y(1), Y(0)) \mid X \) can be interpreted as follows: the treatment assignment \( Z \) should not be influenced by the potential outcomes \( S(1) \) and \( S(0) \) or the observed outcomes \( Y(1) \) and \( Y(0) \) in either the actual world or the counterfactual worlds, given the observed covariates \( X \).
+
+### Summary
+
+The three main models that satisfy the ignorability assumption \( Z \independent (S(1), S(0), Y(1), Y(0)) \mid X \) are:
+
+1. **DAGs**: Represented by ensuring there are no backdoor paths from the treatment \( Z \) to the outcome \( Y \) that are not blocked by the observed covariates \( X \).
+2. **SCMs**: Represented by ensuring that the treatment assignment \( Z \) does not directly or indirectly influence the potential outcomes \( S(1) \) and \( S(0) \) or the observed outcomes \( Y(1) \) and \( Y(0) \) through any other variables given the observed covariates \( X \).
+3. **Both-Worlds Graphs**: Represented by ensuring that the treatment assignment \( Z \) is not influenced by the potential outcomes \( S(1) \) and \( S(0) \) or the observed outcomes \( Y(1) \) and \( Y(0) \) in either the actual world or the counterfactual worlds, given the observed covariates \( X \).
+
+These models provide different ways to visualize and understand the ignorability assumption in causal inference.

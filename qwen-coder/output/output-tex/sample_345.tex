@@ -1,0 +1,30 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta, shapes.geometric}
+
+\tikzset{
+    myarrow/.style={->, >=Stealth[length=6pt]},
+    mynode/.style={rectangle, draw, fill=blue!30, minimum width=1cm, minimum height=1cm},
+    mylabel/.style={font=\small}
+}
+
+\begin{document}
+\begin{tikzpicture}[x=2cm, y=2cm]
+
+% Nodes for the tunneling processes
+\node[mynode] (top) at (0, 2) {Top};
+\node[mynode] (bottom) at (0, -2) {Bottom};
+
+% Tunneling paths
+\draw[myarrow] (top.west) -- node[above left, mylabel] {Non-Abelian $\nu=5/2$ state} (bottom.west);
+\draw[myarrow] (top.east) -- node[above right, mylabel] {Phononic tunneling} (bottom.east);
+\draw[myarrow] (top.south) -- node[below left, mylabel] {Heat-particle tunneling} (bottom.south);
+\draw[myarrow] (top.north) -- node[below right, mylabel] {Heat tunneling} (bottom.north);
+
+% Labels for the processes
+\node[mylabel, below=of top.west, xshift=-1cm] {p};
+\node[mylabel, above=of top.east, xshift=1cm] {ph};
+\node[mylabel, below=of bottom.west, xshift=-1cm] {hp};
+\node[mylabel, above=of bottom.east, xshift=1cm] {h};
+
+\end{tikzpicture}
+\end{document}

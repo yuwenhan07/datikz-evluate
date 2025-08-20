@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define the vertices of the black polygon (K)
+    \coordinate (A) at (-1,0);
+    \coordinate (B) at (0,1);
+    \coordinate (C) at (1,0);
+    \coordinate (D) at (0,-1);
+    
+    % Draw the black polygon (K)
+    \draw[thick, black] (A) -- (B) -- (C) -- (D) -- cycle;
+    
+    % Draw the dashed polygon (-K)
+    \draw[dashed, thick, black] (A) -- (B) -- (C) -- (D) -- cycle;
+    
+    % Draw the blue polygon (\overline{M}_p(K,-K))
+    \draw[thick, blue] (A) -- (B) -- (C) -- (D) -- cycle;
+    
+    % Draw the orange polygon (\underline{M}_q(K,-K))
+    \draw[thick, orange] (A) -- (B) -- (C) -- (D) -- cycle;
+    
+    % Draw the dotted lines representing the boundaries of the regions
+    \draw[dotted] (A) -- (B) -- (C) -- (D) -- cycle;
+    \draw[dotted] (A) -- (B) -- (C) -- (D) -- cycle;
+    \draw[dotted] (A) -- (B) -- (C) -- (D) -- cycle;
+    \draw[dotted] (A) -- (B) -- (C) -- (D) -- cycle;
+    
+    % Draw the circle representing R=3
+    \draw[blue, thick] (0,0) circle (1.5);
+    
+    % Draw the point 0
+    \filldraw[black] (0,0) circle (1pt) node[anchor=north] {0};
+    
+    % Label the regions
+    \node[above right] at (current bounding box.north east) {$K$};
+    \node[below left] at (current bounding box.south west) {$-K$};
+    \node[above right] at (current bounding box.north east) {$\overline{M}_p(K,-K)$};
+    \node[below left] at (current bounding box.south west) {$\underline{M}_q(K,-K)$};
+\end{tikzpicture}
+
+\end{document}

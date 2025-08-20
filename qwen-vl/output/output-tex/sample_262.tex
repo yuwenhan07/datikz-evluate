@@ -1,0 +1,66 @@
+To solve this problem, we need to construct an outerplanar graph that meets the given conditions. Let's break down the requirements step by step:
+
+1. **Outerplanar Graph**: An outerplanar graph is a graph that can be drawn in the plane such that all its vertices lie on the boundary of a single face (the outer face).
+
+2. **No Degree-1 Vertices**: This means no vertex has exactly one edge connected to it.
+
+3. **Triangle \((5,7,9)\)**: This is the only internal cycle in the graph.
+
+4. **Outer-cycles**: The cycles \((1,2,3)\), \((3,4,5,6,7,8,9,10)\), and \((11,12,13)\) are all part of the outer boundary of the graph.
+
+5. **Cyclic-order**: The vertices are arranged in a cyclic order \((1,2,3,4,5,6,7,8,9,10,11,12,13)\).
+
+Given these conditions, let's construct the graph step by step:
+
+### Step-by-Step Construction
+
+1. **Vertices and Edges**:
+   - We have 13 vertices labeled \(1, 2, 3, \ldots, 13\).
+   - The triangle \((5,7,9)\) is the only internal cycle.
+   - The outer-cycles are \((1,2,3)\), \((3,4,5,6,7,8,9,10)\), and \((11,12,13)\).
+
+2. **Internal Cycle**:
+   - Connect vertices \(5, 7,\) and \(9\) to form the triangle \((5,7,9)\).
+
+3. **Outer-cycles**:
+   - Connect vertices \(1, 2, 3\) to form the outer-cycle \((1,2,3)\).
+   - Connect vertices \(3, 4, 5, 6, 7, 8, 9, 10\) to form the outer-cycle \((3,4,5,6,7,8,9,10)\).
+   - Connect vertices \(11, 12, 13\) to form the outer-cycle \((11,12,13)\).
+
+4. **Ensuring No Degree-1 Vertices**:
+   - Each vertex in the internal cycle \((5,7,9)\) must have at least two edges.
+   - Each vertex in the outer-cycles \((1,2,3)\), \((3,4,5,6,7,8,9,10)\), and \((11,12,13)\) must have at least two edges.
+   - Ensure that the connections do not create any additional degree-1 vertices.
+
+### Constructing the Graph
+
+Let's draw the graph step by step:
+
+1. **Internal Cycle**:
+   - Connect \(5\) to \(7\) and \(9\).
+   - Connect \(7\) to \(9\) and \(5\).
+   - Connect \(9\) to \(5\) and \(7\).
+
+2. **Outer-cycles**:
+   - Connect \(1\) to \(2\) and \(3\).
+   - Connect \(2\) to \(3\) and \(1\).
+   - Connect \(3\) to \(4\) and \(1\).
+   - Connect \(4\) to \(5\) and \(3\).
+   - Connect \(5\) to \(6\) and \(4\).
+   - Connect \(6\) to \(7\) and \(5\).
+   - Connect \(7\) to \(8\) and \(6\).
+   - Connect \(8\) to \(9\) and \(7\).
+   - Connect \(9\) to \(10\) and \(8\).
+   - Connect \(10\) to \(3\) and \(9\).
+   - Connect \(11\) to \(12\) and \(13\).
+   - Connect \(12\) to \(13\) and \(11\).
+
+3. **Ensuring No Degree-1 Vertices**:
+   - Verify that each vertex in the internal cycle \((5,7,9)\) has degree 2.
+   - Verify that each vertex in the outer-cycles \((1,2,3)\), \((3,4,5,6,7,8,9,10)\), and \((11,12,13)\) has degree 2 or more.
+
+The constructed graph satisfies all the given conditions. Therefore, the final answer is:
+
+\[
+\boxed{\text{The constructed graph}}
+\]

@@ -1,0 +1,36 @@
+The illustration you're referring to is likely depicting the Non-Dyadic Wavelet Transform (NDWT) pyramidal algorithm, which is used for multi-resolution analysis of signals or images. Here's a step-by-step breakdown of what the illustration might represent:
+
+### Parameters:
+- \( J = 3 \): The number of levels in the wavelet decomposition.
+- \( W = 2 \): The number of wavelet filters used at each level.
+
+### Input Time Series:
+The top row represents the input time series, which is the original signal that we want to decompose into different frequency bands.
+
+### Filtering Operations:
+- **\(\mathcal{G}\)**: This denotes the low-pass filter, which captures the lower frequency components of the signal.
+- **\(\mathcal{H}\)**: This denotes the high-pass filter, which captures the higher frequency components of the signal.
+
+### Constant-End Extension:
+The coefficients with dotted borders are obtained by extending the input signal using a constant value at the ends. This ensures that the signal length remains consistent across all levels of the pyramid.
+
+### Filtering Process:
+1. **Level 0 to Level 1**:
+   - The input time series is filtered using both \(\mathcal{G}\) and \(\mathcal{H}\).
+   - The output of these filters forms the first level of the pyramid.
+   
+2. **Level 1 to Level 2**:
+   - The outputs from the previous level are again filtered using \(\mathcal{G}\) and \(\mathcal{H}\).
+   - This process continues until the desired number of levels (\( J = 3 \)) is reached.
+
+3. **Level 2 to Level 3**:
+   - The same filtering process is applied to the outputs from the second level.
+
+### Solid and Dashed Arrows:
+- **Dashed Arrows**: These denote the filtering operations with \(\mathcal{G}\), which typically capture the lower frequency components.
+- **Solid Arrows**: These denote the filtering operations with \(\mathcal{H}\), which typically capture the higher frequency components.
+
+### Output:
+The bottom rows of the pyramid represent the coefficients at each level, which correspond to the different frequency bands of the original signal. The leftmost column usually contains the approximation coefficients (low-frequency components), while the rightmost columns contain the detail coefficients (high-frequency components).
+
+This illustration provides a visual representation of how the NDWT pyramidal algorithm processes the input signal through multiple levels of filtering, capturing its frequency content at various resolutions.

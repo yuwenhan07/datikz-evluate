@@ -1,0 +1,32 @@
+The illustration you've provided describes a general framework for a gradient-based optimization algorithm in a manifold setting. Here's a detailed breakdown of the steps involved:
+
+### 1. **Initialization and Setup**
+- **Iterate \( u_t \)**: This is the current point in the manifold \(\mathcal{M}\) at iteration \( t \).
+- **Linear Space \(\mathcal{T}_t\)**: This is a tangent space at \( u_t \), which is a vector subspace of the tangent bundle of \(\mathcal{M}\). It represents the possible directions one can move from \( u_t \).
+
+### 2. **Approximation of the Gradient**
+- **Random Operator \( P_t^n \)**: This is a random operator that projects the true gradient \( g_t \) onto the linear space \(\mathcal{T}_t\). The approximation \( P_t^n g_t \) is a noisy or randomized version of the true gradient.
+- **Approximation \( P_t^n g_t \)**: This is the approximate gradient at iteration \( t \), which lies within the linear space \(\mathcal{T}_t\).
+
+### 3. **Update Step**
+- **Step Size \( s_t \)**: This is a scalar that controls the magnitude of the update. It determines how much we move in the direction of the approximate gradient.
+- **Update \(\bar{u}_{t+1}\)**: The update step is performed by subtracting the scaled approximate gradient from the current iterate:
+  \[
+  \bar{u}_{t+1} = u_t - s_t P_t^n g_t
+  \]
+  This step moves us in the direction opposite to the approximate gradient.
+
+### 4. **Retraction Map Application**
+- **Retraction Map \( R_t \)**: This is a map that projects the updated point \(\bar{u}_{t+1}\) back onto the manifold \(\mathcal{M}\). Retraction maps are essential because they ensure that the updated point remains within the manifold, as the tangent space operations (like the gradient and projection) are typically defined in the ambient Euclidean space.
+- **Next Iterate \( u_{t+1} \)**: The final iterate at iteration \( t+1 \) is obtained by applying the retraction map:
+  \[
+  u_{t+1} = R_t(\bar{u}_{t+1})
+  \]
+
+### Summary
+The process described above is a common approach in Riemannian optimization, where the goal is to minimize a function defined on a manifold. The key components are:
+- The use of a random operator to approximate the gradient,
+- The application of a step size to control the update,
+- The retraction map to ensure the updated point remains on the manifold.
+
+This framework can be adapted to various settings depending on the specific properties of the manifold and the objective function.

@@ -1,0 +1,39 @@
+Certainly! Below is an example of how you can create a TikZ diagram in LaTeX to represent the assignment of jobs to machines as well as the blocks for different scenarios \( S_1 \), \( S_2 \), and \( S_3 \).
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define styles
+\tikzset{
+    machine/.style={draw, rectangle, minimum width=2cm, minimum height=1cm},
+    scenario/.style={draw, rectangle, minimum width=4cm, minimum height=1cm},
+    job/.style={circle, fill=blue!50, inner sep=2pt}
+}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    % Machines
+    \node[machine] (M1) {Machine 1};
+    \node[machine, below=of M1] (M2) {Machine 2};
+    \node[machine, below=of M2] (M3) {Machine 3};
+
+    % Jobs assigned to machines
+    \node[job, left=of M1] (J1) {Job 1};
+    \node[job, right=of M1] (J2) {Job 2};
+    \node[job, left=of M2] (J3) {Job 3};
+    \node[job, right=of M2] (J4) {Job 4};
+    \node[job, left=of M3] (J5) {Job 5};
+    \node[job, right=of M3] (J6) {Job 6};
+
+    % Scenarios
+    \node[scenario, right=of M3, xshift=5cm] (S1) {Scenario $S_1$};
+    \node[scenario, below=of S1] (S2) {Scenario $S_2$};
+    \node[scenario, below=of S2] (S3) {Scenario $S_3$};
+
+    % Job indices in scenarios
+    \node[left=of S1, yshift=-0.5cm] (I1) {1};
+    \node[right=of S1, yshift=-0.5cm] (I2) {2};
+    \node[left=of S2, yshift=-0.5cm] (I

@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing}
+
+\tikzset{
+    node/.style={circle, draw=black, fill=white, inner sep=2pt},
+    edge/.style={->, thick, >=Stealth[round]},
+    thickline/.style={thick, dashed}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+
+% Define the states and their positions
+\foreach \x/\y in {0/0, 1/1, 2/2, 3/3, 4/4, 5/5, 6/6, 7/7, 8/8, 9/9, 10/10} {
+    \node[node] (\x,\y) at (\x,-\y) {};
+}
+
+% Draw edges between consecutive states
+\foreach \x in {0,...,9} {
+    \draw[edge] (\x,\x) -- (\x+1,\x+1);
+}
+
+% Draw the thick line for m_n(ω)
+\draw[thickline] (0,0) -- (10,10);
+
+% Add labels for clarity
+\node at (-1,-1) [below left] {$\mathds{Z} \times \mathds{X}$};
+\node at (11,-11) [below right] {$\text{Time (x-axis)}$};
+\node at (0,11) [above] {$\text{State Space } \mathds{X} = \mathds{N}_0$};
+
+\end{tikzpicture}
+\end{document}

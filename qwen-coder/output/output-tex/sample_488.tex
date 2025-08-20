@@ -1,0 +1,42 @@
+To create a TikZ diagram that visualizes the execution of the \(\textsc{Greedy}\xspace\) algorithm, we need to represent the rectangles, the red points (searched keys), and the blue points (keys touched by \(\textsc{Greedy}\xspace\)). Below is a sample TikZ code that demonstrates this:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    rectangle/.style={draw=black, fill=none},
+    point/.style={circle, draw=red, fill=red},
+    key/.style={circle, draw=blue, fill=blue}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define the rectangles
+    \node[rectangle, minimum width=2cm, minimum height=2cm] (R1) at (0,0) {};
+    \node[rectangle, minimum width=2cm, minimum height=3cm] (R2) at (4,0) {};
+    \node[rectangle, minimum width=2cm, minimum height=2cm] (R3) at (8,0) {};
+
+    % Draw the points
+    \node[point] (P1) at (1,1) {};
+    \node[point] (P2) at (5,1.5) {};
+    \node[point] (P3) at (9,1) {};
+
+    % Draw the keys
+    \node[key] (K1) at (2,2) {};
+    \node[key] (K2) at (6,2.5) {};
+    \node[key] (K3) at (10,2) {};
+
+    % Connect the points to the keys
+    \draw[-Stealth] (P1) -- (K1);
+    \draw[-Stealth] (P2) -- (K2);
+    \draw[-Stealth] (P3) -- (K3);
+
+    % Add labels
+    \node at (1,-0.5) {Red Points};
+    \node at (5,-0.5) {Blue Points};
+    \node at (9,-0.5) {Keys Touched};
+
+    % Add text explanation
+    \node at (-2,2) {\(\textsc{Greedy}\xspace\) Execution};
+   

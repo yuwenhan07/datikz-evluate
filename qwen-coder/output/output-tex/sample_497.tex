@@ -1,0 +1,28 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Define the vertices
+\node (b) at (0,0) {b};
+\node (b0) at (-2,-2) {b0};
+\node (b1) at (0,-4) {b1};
+\node (b2) at (2,-2) {b2};
+\node (b3) at (0,-6) {b3};
+
+% Draw the edges
+\draw (b) -- (b0);
+\draw (b) -- (b1);
+\draw (b) -- (b2);
+
+\draw (b0) -- (b1);
+\draw (b0) -- (b3);
+
+\draw (b1) -- (b2);
+\draw (b1) -- (b3);
+
+\draw (b2) -- (b3);
+
+\end{tikzpicture}
+\end{document}

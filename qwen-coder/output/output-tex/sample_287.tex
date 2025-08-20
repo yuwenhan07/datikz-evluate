@@ -1,0 +1,38 @@
+To create a TikZ diagram representing a tree \( T \) with the properties described, we need to follow these steps:
+
+1. **Define the Tree Structure**: The tree \( T \) should have \( n \) leaves such that \( \beta(T^3) = n \). This implies that \( T \) should be structured in a way that its cube \( T^3 \) has exactly \( n \) leaves.
+2. **Identify Metric Basis Vertices**: The red vertices should form a metric basis for \( T \), meaning they should be enough to uniquely determine any other vertex in the tree by their distances.
+3. **Insert Blue Vertices**: The blue vertices should be added to \( T \) to form a metric basis for \( T^3 \).
+
+Given that \( \beta(T^3) = n \), we can infer that \( T \) must be a path or a structure that, when cubed, results in \( n \) leaves. For simplicity, let's assume \( T \) is a path.
+
+Here is the TikZ code to generate this diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[level distance=1.5cm,
+  level 1/.style={sibling distance=3cm},
+  level 2/.style={sibling distance=2cm},
+  level 3/.style={sibling distance=1.5cm}]
+  
+  % Define the tree T
+  \node (root) [circle, draw, fill=blue] {}
+    child {node (a) [circle, draw, fill=red] {}}
+    child {node (b) [circle, draw, fill=red] {}
+      child {node (c) [circle, draw, fill=red] {}}
+      child {node (d) [circle, draw, fill=red] {}}
+    }
+    child {node (e) [circle, draw, fill=red] {}};
+  
+  % Draw the edges
+  \draw (root) -- (a);
+  \draw (root) -- (b);
+  \draw (b) -- (c);
+  \draw (b) -- (d);
+  \draw (root) -- (e);
+  
+  % Add blue vertices to form T^3
+  \node (f) [circle, draw, fill=blue] at ($(

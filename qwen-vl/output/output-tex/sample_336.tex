@@ -1,0 +1,29 @@
+To understand why \(\langle s, p_1, \ldots, p_{k-1} \rangle\) must be a most degree-central shortest path between \(s\) and \(p_{k-1}\) given that \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\) is a most degree-central shortest path between \(s\) and \(t\), we need to delve into the concept of degree centrality in graph theory.
+
+### Definitions and Concepts
+
+1. **Degree Centrality**: A node's degree centrality measures how many connections it has within the network. In a shortest path context, this can be interpreted as the number of edges in the path.
+
+2. **Shortest Path**: A shortest path between two nodes \(s\) and \(t\) is a path with the minimum number of edges (or length).
+
+3. **Most Degree-Central Shortest Path**: This refers to a shortest path where the sum of the degrees of all nodes along the path is maximized. In other words, it is a path that not only has the fewest edges but also has nodes with higher degrees.
+
+### Given Information
+
+- \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\) is a most degree-central shortest path between \(s\) and \(t\).
+- We need to show that \(\langle s, p_1, \ldots, p_{k-1} \rangle\) is a most degree-central shortest path between \(s\) and \(p_{k-1}\).
+
+### Reasoning
+
+1. **Shortest Path Between \(s\) and \(p_{k-1}\)**:
+   - Since \(\langle s, p_1, \ldots, p_{k-1} \rangle\) is a subpath of \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\), it is a valid path from \(s\) to \(p_{k-1}\).
+   - The length of \(\langle s, p_1, \ldots, p_{k-1} \rangle\) is less than or equal to the length of \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\) because removing nodes from a path cannot increase its length.
+
+2. **Degree Centrality**:
+   - The sum of the degrees of the nodes in \(\langle s, p_1, \ldots, p_{k-1} \rangle\) is a subset of the sum of the degrees of the nodes in \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\).
+   - Since \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\) is a most degree-central shortest path, the sum of the degrees of its nodes is maximized among all shortest paths between \(s\) and \(t\).
+
+3. **Conclusion**:
+   - Because \(\langle s, p_1, \ldots, p_{k-1} \rangle\) is a valid path from \(s\) to \(p_{k-1}\) and its degree centrality is a subset of the degree centrality of \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\), it follows that \(\langle s, p_1, \ldots, p_{k-1} \rangle\) must also be a most degree-central shortest path between \(s\) and \(p_{k-1}\).
+
+Thus, we conclude that \(\langle s, p_1, \ldots, p_{k-1} \rangle\) is indeed a most degree-central shortest path between \(s\) and \(p_{k-1}\).

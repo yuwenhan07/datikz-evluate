@@ -1,0 +1,46 @@
+Certainly! Below is a TikZ LaTeX code that generates a graph with two cycles \( C_u \) and \( C_v \), and it highlights the forbidden pairs \((1,1)\) and \((1,2)\) corresponding to the edge \( uv \).
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Nodes for cycle C_u
+    \node (u1) at (0,0) [circle, draw] {};
+    \node (u2) at (1,1) [circle, draw] {};
+    \node (u3) at (-1,1) [circle, draw] {};
+
+    % Nodes for cycle C_v
+    \node (v1) at (2,0) [circle, draw] {};
+    \node (v2) at (3,1) [circle, draw] {};
+    \node (v3) at (1,-1) [circle, draw] {};
+    \node (v4) at (3,-1) [circle, draw] {};
+
+    % Edges for cycle C_u
+    \draw (u1) -- (u2);
+    \draw (u2) -- (u3);
+    \draw (u3) -- (u1);
+
+    % Edges for cycle C_v
+    \draw (v1) -- (v2);
+    \draw (v2) -- (v3);
+    \draw (v3) -- (v4);
+    \draw (v4) -- (v1);
+
+    % Edge connecting u1 and v1
+    \draw[dashed] (u1) -- (v1);
+
+    % Highlighting forbidden pairs (1,1) and (1,2)
+    \fill[red] (u1) circle (2pt);
+    \fill[blue] (v1) circle (2pt);
+    \fill[green] (u2) circle (2pt);
+    \fill[orange] (v2) circle (2pt);
+
+    % Labels for nodes
+    \node at (u1.south) {$u_1$};
+    \node at (u2.north east) {$u_2$};
+    \node at (u3.north west) {$u_3$};
+
+    \node at (v1.south)

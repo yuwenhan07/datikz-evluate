@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{groupplot}[
+        group style={
+            group size=1 by 2,
+            vertical sep=0.5cm,
+            y descriptions at=edge left,
+            x descriptions at=edge bottom,
+            group name=my plots,
+            group c/.style={title=#1},
+        },
+        width=0.95\textwidth,
+        height=0.45\textwidth,
+        xlabel={$1/\lambda$},
+        ylabel={mCE $\uparrow$ (\%)},
+        xmin=0, xmax=15,
+        ymin=87, ymax=95,
+        xtick={0,2,...,14},
+        ytick={87,87.5,88,88.5,90,92.5,95},
+        yticklabels={87,87.5,88,88.5,90,92.5,95},
+        legend pos=north east,
+        legend cell align=left,
+        legend columns=-1,
+        title=C10,
+        axis on top,
+        grid=major,
+        every axis plot post/.append style={ultra thick},
+        ]
+        \nextgroupplot[
+            title=TIN,
+            ylabel={SA $\uparrow$ (\%)},
+            ymin=61, ymax=65,
+            ytick={61,63,65},
+            yticklabels={61,63,65},
+            y dir=reverse,
+            ]
+            \addplot[blue, mark=*] coordinates {
+                (0,92.5)
+                (2,91.5)
+                (4,90.5)
+                (6,90.0)
+                (8,89.5)
+                (10,88.5)
+                (12,88.0)
+                (14,88.5)
+            };
+            \addlegendentry{TIN}
+            \addplot[red, dashed, mark=*] coordinates {
+                (0,63.5)
+                (2,62.5)
+                (4,62.0)
+                (6,61.5)
+                (8,62.0)
+                (10,63.0)
+                (12,63.5)
+                (14,62.5)
+            };
+    \end{groupplot}
+\end{tikzpicture}
+
+\end{document}

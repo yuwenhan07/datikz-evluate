@@ -1,0 +1,293 @@
+To generate LaTeX code for the given image, you can use the `tikz` package along with the `forest` library to create the tree structure. Below is the LaTeX code that produces the image:
+
+```latex
+\documentclass{article}
+\usepackage{forest}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{forest}
+        for tree={
+            grow'=0,
+            l sep=2em,
+            s sep=3em,
+            parent anchor=south,
+            child anchor=north,
+            fit=band,
+            draw,
+            minimum size=8mm,
+            inner sep=0pt,
+            text width=8mm,
+            align=center,
+            font=\strut,
+            edge={dashed, thick},
+            edge label={node[midway, above] {\strut}},
+            where level=0{
+                draw=none,
+                edge=none,
+                edge label=none,
+                fit=none,
+                minimum size=0pt,
+                inner sep=0pt,
+                text width=0pt,
+                align=left,
+                font=\strut
+            }{}
+        }
+        [
+            [0123, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+            [
+                [012, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]-1}]
+                [
+                    [01, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [0, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [1, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [2, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                                [
+                                    [3, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+                [
+                    [014, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]1}]
+                    [
+                        [04, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [14, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [24, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                                [
+                                    [34, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [013, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [023, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [02, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [12, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [22, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                                [
+                                    [32, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+                [
+                    [034, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [03, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [13, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [23, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                                [
+                                    [33, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [123, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [12, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [14, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [24, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [34, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            ]
+                        ]
+                    ]
+                ]
+                [
+                    [134, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]1}]
+                    [
+                        [13, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [23, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [33, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [124, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [14, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [24, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [34, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        ]
+                    ]
+                ]
+                [
+                    [134, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]1}]
+                    [
+                        [13, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [23, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [33, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [234, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [24, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [34, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    ]
+                ]
+                [
+                    [134, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]1}]
+                    [
+                        [13, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [23, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [33, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [23, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [22, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [32, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    ]
+                ]
+                [
+                    [13, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [23, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [33, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [24, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [24, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                ]
+                [
+                    [134, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]1}]
+                    [
+                        [13, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [23, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [33, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [34, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [34, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                ]
+                [
+                    [134, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]1}]
+                    [
+                        [13, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [23, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [33, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [23, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [22, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [32, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    ]
+                ]
+                [
+                    [13, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [23, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [33, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [24, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [24, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                ]
+                [
+                    [134, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]1}]
+                    [
+                        [13, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [23, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [33, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [34, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [34, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                ]
+                [
+                    [134, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]1}]
+                    [
+                        [13, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                        [
+                            [23, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            [
+                                [33, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+            [
+                [23, draw=none, edge=none, edge label=none, fit=none, minimum size=0pt, inner sep=0pt, text width=0pt, align=left, font=\strut, label={[xshift=-5mm, yshift=-5mm]0}]
+                [
+                    [22, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm]0}]
+                    [
+                        [32, draw=orange, fill=orange!70, text=white, label={[xshift=-5mm, yshift=-5mm

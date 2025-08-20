@@ -1,0 +1,42 @@
+Certainly! Below is a TikZ LaTeX code to generate a graph that visualizes the eigenvalues \(\mu_0(\alpha)\), \(\mu_2(\alpha)\), and \(\mu_3(\alpha)\) as well as the consecutive numbers \(s_{20}\), \(s_{13}\), \(s_{21}\), and \(s_{14}\).
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8, >=Stealth]
+    % Axes
+    \draw[->] (0,0) -- (6,0) node[right] {$\alpha$};
+    \draw[->] (0,0) -- (0,5) node[above] {$\mu(\alpha)$};
+
+    % Labels for eigenvalues
+    \node at (2,4) {\(\mu_0(\alpha)\)};
+    \node at (4,3) {\(\mu_2(\alpha)\)};
+    \node at (3,2) {\(\mu_3(\alpha)\)};
+
+    % Points for eigenvalues
+    \filldraw (2,4) circle (2pt);
+    \filldraw (4,3) circle (2pt);
+    \filldraw (3,2) circle (2pt);
+
+    % Labels for consecutive numbers
+    \node at (2,1) {\(s_{20}\)};
+    \node at (4,1) {\(s_{13}\)};
+    \node at (3,1) {\(s_{21}\)};
+    \node at (5,1) {\(s_{14}\)};
+
+    % Points for consecutive numbers
+    \filldraw (2,1) circle (2pt);
+    \filldraw (4,1) circle (2pt);
+    \filldraw (3,1) circle (2pt);
+    \filldraw (5,1) circle (2pt);
+
+    % Lines connecting points
+    \draw[dashed] (2,4) -- (2,1);
+    \draw[dashed] (4,3) -- (4,1);
+    \draw[dashed] (3,2) -- (3,1);
+
+    % Legend
+    \node at (6,4) [below

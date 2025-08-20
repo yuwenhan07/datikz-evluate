@@ -1,0 +1,29 @@
+To address the slight change in the construction of \(\beta(\alpha)\) from Lemma \ref{Lem_Aux4} compared to Lemma \ref{Lem_AuxL2}, we need to ensure that the TikZ diagram accurately reflects these differences. Below is an example of how you might modify the TikZ code to represent this change:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw, text width=5em, text centered, minimum height=4em},
+    line/.style = {draw, -Stealth, thick}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes for Lemmas
+    \node (LemAUX4) [block] {Lemma \ref{Lem_Aux4}};
+    \node (LemAUXL2) [block, below of=LemAUX4] {Lemma \ref{Lem_AuxL2}};
+    
+    % Nodes for Construction of beta(alpha)
+    \node (BetaAlphaLemAUX4) [block, right of=LemAUX4, xshift=3cm] {Construction of \(\beta(\alpha)\) in Lemma \ref{Lem_Aux4}};
+    \node (BetaAlphaLemAUXL2) [block, right of=LemAUXL2, xshift=3cm] {Construction of \(\beta(\alpha)\) in Lemma \ref{Lem_AuxL2}};
+    
+    % Lines connecting nodes
+    \path [line] (LemAUX4) -- node[anchor=east] {Change} (LemAUXL2);
+    \path [line] (BetaAlphaLemAUX4) -- node[anchor=east] {Different Approach} (BetaAlphaLemAUXL2);
+    
+    % Additional details specific to each lemma's construction
+    \node (DetailLemAUX4) [block, below of=BetaAlphaLemAUX4, yshift=-2cm] {Details of Construction in Lemma \ref{Lem_Aux4}};
+    \node (DetailLemAUXL2) [block, below of=BetaAlphaLemAUXL2, yshift=-2cm] {

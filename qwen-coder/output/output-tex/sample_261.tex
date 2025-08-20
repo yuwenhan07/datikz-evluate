@@ -1,0 +1,34 @@
+Certainly! Below is a TikZ LaTeX code that generates a diagram representing a 64B-aligned `ALock` structure with 8B pointers to the remote and local cohort tails, and an integer victim field.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style={rectangle, draw, minimum width=2cm, minimum height=1cm},
+    pointer/.style={->, >=Stealth[length=5mm]},
+    align/.style={align=center}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+    % Main ALock block
+    \node (ALock) [block] {ALock};
+
+    % Pointers to remote cohort tail
+    \draw[pointer] ([yshift=-1.5cm]ALock.west) -- node[above, align=left] {Remote Cohort Tail} ++(-3,0);
+    \draw[pointer] ([yshift=-1.5cm]ALock.east) -- node[above, align=right] {Remote Cohort Tail} ++(3,0);
+
+    % Pointers to local cohort tail
+    \draw[pointer] ([yshift=-2.5cm]ALock.west) -- node[above, align=left] {Local Cohort Tail} ++(-3,0);
+    \draw[pointer] ([yshift=-2.5cm]ALock.east) -- node[above, align=right] {Local Cohort Tail} ++(3,0);
+
+    % Victim field
+    \node (Victim) [block, below left=of ALock.south west, yshift=-1cm] {Victim};
+    \draw[pointer] ([yshift=-1.5cm]Victim.west) -- node[below, align=left] {Current Victim Cohort} ++(-3,0);
+    \draw[pointer] ([yshift=-1.5cm]Victim.east) -- node[below, align=right] {Current Victim Cohort} ++(3,0);
+
+    % Padding
+    \node (Padding) [block, below right=of ALock.south east, yshift=-1cm] {Padding};
+    \draw[pointer] ([yshift=-1.5cm]

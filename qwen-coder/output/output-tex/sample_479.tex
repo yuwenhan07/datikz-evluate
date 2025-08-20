@@ -1,0 +1,41 @@
+To create a visual representation of the two communication structures you described using TikZ, we can design diagrams for both the Locally Interdependent Multi-Agent MDP (LIM-MDP) and the Cutoff Multi-Agent MDP (C-MDP). Below is the LaTeX code for these diagrams:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzstyle{agent} = [circle, draw=black, fill=blue!20, text width=3em, text centered]
+\tikzstyle{arrow} = [-stealth]
+
+\begin{document}
+
+% Locally Interdependent Multi-Agent MDP (LIM-MDP)
+\begin{tikzpicture}[node distance=4cm]
+    \node[agent] (A) {Agent A};
+    \node[agent, below=of A] (B) {Agent B};
+    \node[agent, below=of B] (C) {Agent C};
+
+    % Connections within LIM-MDP
+    \draw[arrow] (A) -- (B);
+    \draw[arrow] (B) -- (C);
+    \draw[arrow] (C) -- (A);
+
+    % Connection when re-entering visibility
+    \draw[dashed, arrow] (A) -- node[midway, above] {Reconnect} (B);
+    \draw[dashed, arrow] (B) -- node[midway, above] {Reconnect} (C);
+    \draw[dashed, arrow] (C) -- node[midway, above] {Reconnect} (A);
+\end{tikzpicture}
+
+% Cutoff Multi-Agent MDP (C-MDP)
+\begin{tikzpicture}[node distance=4cm, xshift=6cm]
+    \node[agent] (D) {Agent D};
+    \node[agent, below=of D] (E) {Agent E};
+    \node[agent, below=of E] (F) {Agent F};
+
+    % Connections within C-MDP
+    \draw[arrow] (D) -- (E);
+    \draw[arrow] (E) -- (F);
+    \draw[arrow] (F) -- (D);
+
+    % No connection when re-entering visibility
+    \draw[dashed, red, arrow] (D) -- node[midway

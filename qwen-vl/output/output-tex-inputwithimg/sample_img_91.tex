@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the horizontal lines representing the CFTs
+        \draw[thick] (-4,0) -- (4,0);
+        \node at (-4,-0.2) {CFT${}_{\text{I}}$};
+        \node at (4,-0.2) {CFT${}_{\text{II}}$};
+        
+        % Draw the vertical lines representing the interfaces
+        \draw[red, thick] (-3,0) -- (-3,1) node[midway, right] {$x_{\text{I}}$};
+        \draw[red, thick] (3,0) -- (3,1) node[midway, right] {$x_{\text{II}}$};
+        
+        % Draw the arrows indicating the interfaces
+        \draw[->, red, ultra thick] (-3,1) -- (-3,1.5) node[midway, above] {$u_{\text{I}}$};
+        \draw[->, red, ultra thick] (3,1) -- (3,1.5) node[midway, above] {$u_{\text{II}}$};
+        
+        % Draw the blue curve representing the interface brane Q
+        \draw[blue, thick, dotted] (-2,0) .. controls (0,2) and (2,2) .. (4,0) node[midway, above] {$Q$};
+        \node at (-2.5,2.5) {$(N_{\text{I}}, g^{\text{I}}_{ab})$};
+        \node at (3.5,2.5) {$(N_{\text{II}}, g^{\text{II}}_{ab})$};
+    \end{tikzpicture}
+    \caption{Cartoon plot for the setup. The left and right bulk, denoted as $N_{\text{I}}$ and $N_{\text{II}}$ respectively, are dual to CFT${}_{\text{I}}$ and CFT${}_{\text{II}}$ respectively. The interface brane $Q$ is in blue.}
+    \label{fig:cartoon_plot}
+\end{figure}
+
+\end{document}

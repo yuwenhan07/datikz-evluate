@@ -1,0 +1,35 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{xcolor}
+
+\tikzset{
+    redarrow/.style={->, thick, red},
+    bluecurve/.style={thick, blue},
+    brownline/.style={dash pattern=on 0.4pt off 0.4pt, thick, brown},
+    point/.style={circle, fill=black, inner sep=1pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Left side: Non-degenerate case
+\node[point] (P1) at (-3,0) {};
+\node[point] (P2) at (-1,2) {};
+\node[point] (P3) at (-1,-2) {};
+
+\draw[redarrow] (P1) -- node[midway, above] {Red Arrow} ++(1,0);
+\draw[bluecurve] plot coordinates {(-3,0) (-2,1) (-2,-1)};
+\draw[brownline] plot coordinates {(-3,0) (-2.5,0.75) (-2.5,-0.75)};
+\filldraw[red] (P1) circle (0.05);
+
+% Right side: Degenerate case
+\node[point] (Q1) at (3,0) {};
+\node[point] (Q2) at (5,2) {};
+\node[point] (Q3) at (5,-2) {};
+
+\draw[redarrow] (Q1) -- node[midway, above] {Red Arrow} ++(1,0);
+\draw[bluecurve] plot coordinates {(3,0) (4,1) (4,-1)};
+\draw[brownline] plot coordinates {(3,0) (3.5,0.75) (3.5,-0.75)};
+\filldraw[red] (Q1) circle (0.05);
+
+\end{tikzpicture}
+\end{document}

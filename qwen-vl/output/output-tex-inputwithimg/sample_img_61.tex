@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphdrawing, shapes.geometric, positioning, fit, calc}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=0.5cm]
+    % Define styles
+    \tikzset{
+        value/.style={circle, fill=green!50, minimum size=1cm},
+        variable/.style={circle, fill=red!70, minimum size=1cm},
+        constraint/.style={circle, fill=blue!50, minimum size=1cm},
+        model/.style={circle, fill=yellow!50, minimum size=1cm},
+        operator/.style={circle, fill=orange!50, minimum size=1cm},
+        lhs/.style={operator, text=black, minimum size=1cm},
+        rhs/.style={operator, text=black, minimum size=1cm},
+        table/.style={operator, text=black, minimum size=1cm},
+        box/.style={draw, fill=gray!30, rounded corners, inner sep=0.2cm},
+    }
+
+    % Draw nodes
+    \node[value] (v1) {1};
+    \node[value] (v2) [right=of v1] {2};
+    \node[value] (v3) [right=of v2] {3};
+
+    \node[variable] (x1) [below=of v1] {$x_1$};
+    \node[variable] (x2) [below=of v3] {$x_2$};
+
+    \node[model] (M) [below=of x1] {$M$};
+    \node[constraint] (c1) [above=of M] {$\leq$};
+    \node[constraint] (c2) [below=of M] {ext};
+
+    \node[lhs] (l1) [left=of c1] {$\times 3$};
+    \node[rhs] (r1) [right=of c1] {$\times 4$};
+
+    \node[table] (t1) [below=of l1] {$t_1$};
+    \node[table] (t2) [below=of r1] {$t_2$};
+
+    % Draw edges
+    \draw (v1) -- (x1);
+    \draw (v2) -- (x1);
+    \draw (v3) -- (x2);
+
+    \draw (x1) -- (l1);
+    \draw (x1) -- (M);
+    \draw (x1) -- (c1);
+    \draw (x1) -- (c2);
+    \draw (x1) -- (t1);
+
+    \draw (x2) -- (r1);
+    \draw (x2) -- (M);
+    \draw (x2) -- (c1);
+    \draw (x2) -- (c2);
+    \draw (x2) -- (t2);
+
+    \draw (l1) -- (c1);
+    \draw (r1) -- (c1);
+
+    \draw (l1) -- (t1);
+    \draw (r1) -- (t2);
+
+    \draw (M) -- (c1);
+    \draw (M) -- (c2);
+
+    \node[box, fit=(l1) (r1)] {};
+    \node[box, fit=(t1) (t2)] {};
+
+\end{tikzpicture}
+
+\end{document}

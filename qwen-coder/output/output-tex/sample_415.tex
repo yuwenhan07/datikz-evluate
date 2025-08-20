@@ -1,0 +1,45 @@
+To illustrate the maximal case where \( u \) and \( v \) do not have a common neighbor and \( G \) has a triangle, we can construct a graph that meets these criteria. Let's break down the problem step by step:
+
+1. **Graph Structure**:
+   - We need a triangle in the graph.
+   - Vertices \( u \) and \( v \) should not share any neighbors other than those within the triangle.
+
+2. **Vertices and Edges**:
+   - Let the vertices of the triangle be \( a, b, \) and \( c \).
+   - \( u \) and \( v \) should only connect to \( a, b, \) or \( c \).
+
+Given these constraints, let's construct the graph and then color it using 3 colors.
+
+### Step-by-Step Construction
+
+1. **Triangle**: Create a triangle with vertices \( a, b, \) and \( c \). Connect \( a \) to \( b \), \( b \) to \( c \), and \( c \) to \( a \).
+2. **Vertices \( u \) and \( v \)**: Add two additional vertices \( u \) and \( v \). Connect \( u \) to \( a \) and \( v \) to \( b \).
+
+This ensures that \( u \) and \( v \) do not share any neighbors outside of the triangle, and the triangle remains intact.
+
+### TikZ Code
+
+Here is the TikZ code to draw this graph:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Draw the triangle
+\node[circle, draw] (a) at (0,0) {a};
+\node[circle, draw] (b) at (2,0) {b};
+\node[circle, draw] (c) at (1,-1.732) {c};
+
+\draw (a) -- (b);
+\draw (b) -- (c);
+\draw (c) -- (a);
+
+% Draw vertices u and v
+\node[circle, draw] (u) at (-2,-1.732) {u};
+\node[circle, draw] (v) at (4,-1.732) {v};
+
+% Connect u to a and v to b
+\draw (

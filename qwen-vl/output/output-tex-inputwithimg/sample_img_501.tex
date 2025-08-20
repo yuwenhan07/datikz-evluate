@@ -1,0 +1,310 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix, calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define the coordinates for the nodes
+    \node (G) at (0,0) {$G/H_3$};
+    \node (H3) at ($(G)+(0,-1)$) {\begin{tabular}{|c|}
+        \hline
+        0 \\
+        \hline
+        1 \\
+        \hline
+    \end{tabular}};
+    
+    \node (H2) at ($(G)+(0,-2)$) {$G/H_2$};
+    \node (H2_table) at ($(H2)+(0,-1)$) {\begin{tabular}{|c|}
+        \hline
+        0 & 1 \\
+        \hline
+        10 & 1 \\
+        \hline
+        15 & 1 \\
+        \hline
+        20 & 1 \\
+        \hline
+        25 & 1 \\
+        \hline
+        30 & 1 \\
+        \hline
+        35 & 1 \\
+        \hline
+        40 & 1 \\
+        \hline
+        45 & 1 \\
+        \hline
+        50 & 1 \\
+        \hline
+        55 & 1 \\
+        \hline
+        60 & 1 \\
+        \hline
+        65 & 1 \\
+        \hline
+        70 & 1 \\
+        \hline
+        75 & 1 \\
+        \hline
+        80 & 1 \\
+        \hline
+        85 & 1 \\
+        \hline
+        90 & 1 \\
+        \hline
+    \end{tabular}};
+    
+    \node (H1) at ($(G)+(0,-4)$) {$G/H_1$};
+    \node (H1_table) at ($(H1)+(0,-1)$) {\begin{tabular}{|c|}
+        \hline
+        0 & 1 \\
+        \hline
+        1 & 2 \\
+        \hline
+        2 & 3 \\
+        \hline
+        3 & 4 \\
+        \hline
+        4 & 5 \\
+        \hline
+        5 & 6 \\
+        \hline
+        6 & 7 \\
+        \hline
+        7 & 8 \\
+        \hline
+        8 & 9 \\
+        \hline
+        9 & 10 \\
+        \hline
+        10 & 11 \\
+        \hline
+        11 & 12 \\
+        \hline
+        12 & 13 \\
+        \hline
+        13 & 14 \\
+        \hline
+        14 & 15 \\
+        \hline
+        15 & 16 \\
+        \hline
+        16 & 17 \\
+        \hline
+        17 & 18 \\
+        \hline
+        18 & 19 \\
+        \hline
+        19 & 20 \\
+        \hline
+        20 & 21 \\
+        \hline
+        21 & 22 \\
+        \hline
+        22 & 23 \\
+        \hline
+        23 & 24 \\
+        \hline
+        24 & 25 \\
+        \hline
+        25 & 26 \\
+        \hline
+        26 & 27 \\
+        \hline
+        27 & 28 \\
+        \hline
+        28 & 29 \\
+        \hline
+        29 & 30 \\
+        \hline
+        30 & 31 \\
+        \hline
+        31 & 32 \\
+        \hline
+        32 & 33 \\
+        \hline
+        33 & 34 \\
+        \hline
+        34 & 35 \\
+        \hline
+        35 & 36 \\
+        \hline
+        36 & 37 \\
+        \hline
+        37 & 38 \\
+        \hline
+        38 & 39 \\
+        \hline
+        39 & 40 \\
+        \hline
+        40 & 41 \\
+        \hline
+        41 & 42 \\
+        \hline
+        42 & 43 \\
+        \hline
+        43 & 44 \\
+        \hline
+        44 & 45 \\
+        \hline
+        45 & 46 \\
+        \hline
+        46 & 47 \\
+        \hline
+        47 & 48 \\
+        \hline
+        48 & 49 \\
+        \hline
+        49 & 50 \\
+        \hline
+        50 & 51 \\
+        \hline
+        51 & 52 \\
+        \hline
+        52 & 53 \\
+        \hline
+        53 & 54 \\
+        \hline
+        54 & 55 \\
+        \hline
+        55 & 56 \\
+        \hline
+        56 & 57 \\
+        \hline
+        57 & 58 \\
+        \hline
+        58 & 59 \\
+        \hline
+        59 & 60 \\
+        \hline
+        60 & 61 \\
+        \hline
+        61 & 62 \\
+        \hline
+        62 & 63 \\
+        \hline
+        63 & 64 \\
+        \hline
+        64 & 65 \\
+        \hline
+        65 & 66 \\
+        \hline
+        66 & 67 \\
+        \hline
+        67 & 68 \\
+        \hline
+        68 & 69 \\
+        \hline
+        69 & 70 \\
+        \hline
+        70 & 71 \\
+        \hline
+        71 & 72 \\
+        \hline
+        72 & 73 \\
+        \hline
+        73 & 74 \\
+        \hline
+        74 & 75 \\
+        \hline
+        75 & 76 \\
+        \hline
+        76 & 77 \\
+        \hline
+        77 & 78 \\
+        \hline
+        78 & 79 \\
+        \hline
+        79 & 80 \\
+        \hline
+        80 & 81 \\
+        \hline
+        81 & 82 \\
+        \hline
+        82 & 83 \\
+        \hline
+        83 & 84 \\
+        \hline
+        84 & 85 \\
+        \hline
+        85 & 86 \\
+        \hline
+        86 & 87 \\
+        \hline
+        87 & 88 \\
+        \hline
+        88 & 89 \\
+        \hline
+        89 & 90 \\
+        \hline
+    \end{tabular}};
+    
+    % Draw the horizontal line
+    \draw[red] ($(H1_table.north west)!0.5!(H1_table.south west)$) -- ($(H1_table.north east)!0.5!(H1_table.south east)$);
+    
+    % Draw the vertical lines
+    \foreach \x in {0,...,9} {
+        \draw[red] ($(H1_table.north west)!(\x/10)!(H1_table.south west)$) -- ($(H1_table.north east)!(\x/10)!(H1_table.south east)$);
+    }
+    
+    % Draw the horizontal lines
+    \foreach \y in {0,...,9} {
+        \draw[red] ($(H1_table.north west)!(\y/10)!(H1_table.south west)$) -- ($(H1_table.north east)!(\y/10)!(H1_table.south east)$);
+    }
+    
+    % Draw the labels
+    \node at ($(H1_table.north west)!0.5!(H1_table.north east)$) [above] {$0$};
+    \node at ($(H1_table.north west)!0.5!(H1_table.north east)$) [below] {$1$};
+    \node at ($(H1_table.north west)!0.5!(H1_table.north east)$) [left] {$15$};
+    \node at ($(H1_table.north west)!0.5!(H1_table.north east)$) [right] {$16$};
+    \node at ($(H1_table.north west)!0.5!(H1_table.north east)$) [right] {$31$};
+    \node at ($(H1_table.north west)!0.5!(H1_table.north east)$) [right] {$59$};
+    \node at ($(H1_table.north west)!0.5!(H1_table.north east)$) [right] {$74$};
+    \node at ($(H1_table.north west)!0.5!(H1_table.north east)$) [right] {$75$};
+    \node at ($(H1_table.north west)!0.5!(H1_table.north east)$) [right] {$89$};
+    
+    % Draw the labels for G/H1
+    \node at ($(H1_table.north west)!0.5!(H1_table.north east)$) [above] {$G/H_1$};
+    
+    % Draw the labels for G/H2
+    \node at ($(H2_table.north west)!0.5!(H2_table.north east)$) [above] {$G/H_2$};
+    
+    % Draw the labels for G/H3
+    \node at ($(H3.north west)!0.5!(H3.north east)$) [above] {$G/H_3$};
+    
+    % Draw the labels for the numbers
+    \foreach \x in {0,...,9} {
+        \node at ($(H3.north west)!(\x/10)!(H3.south west)$) [below] {$\x$};
+    }
+    \foreach \y in {0,...,9} {
+        \node at ($(H3.north west)!(\y/10)!(H3.south west)$) [left] {$\y$};
+    }
+    
+    % Draw the labels for the numbers in H1
+    \foreach \x in {0,...,9} {
+        \node at ($(H1_table.north west)!(\x/10)!(H1_table.south west)$) [below] {$\x$};
+    }
+    \foreach \y in {0,...,9} {
+        \node at ($(H1_table.north west)!(\y/10)!(H1_table.south west)$) [left] {$\y$};
+    }
+    
+    % Draw the labels for the numbers in H2
+    \foreach \x in {0,...,9} {
+        \node at ($(H2_table.north west)!(\x/10)!(H2_table.south west)$) [below] {$\x$};
+    }
+    \foreach \y in {0,...,9} {
+        \node at ($(H2_table.north west)!(\y/10)!(H2_table.south west)$) [left] {$\y$};
+    }
+    
+    % Draw the labels for the numbers in H3
+    \foreach \x in {0,...,9} {
+        \node at ($(H3.north west)!(\x/10)!(H3.south west)$) [below] {$\x$};
+    }
+    \foreach \y in {0,...,9} {
+        \node at ($(H3.north west)!(\y/10)!(H3.south west)$) [left] {$\y$};
+    }
+\end{tikzpicture}
+
+\end{document}

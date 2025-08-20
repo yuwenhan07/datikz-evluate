@@ -1,0 +1,57 @@
+Certainly! Below is the TikZ LaTeX code to generate the graphs \( K_{1,n}^* \), \( K_n^* \), \( C\!K_n \), \( B\!S_n^p \), and \( F_n \).
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define styles for nodes and edges
+\tikzset{
+    node/.style={circle, draw=black, fill=white, inner sep=2pt},
+    edge/.style={->, thick}
+}
+
+% Graph K_{1,n}^*
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Nodes
+        \node[node] (v) at (0,0) {};
+        \foreach \i in {1,...,4} {
+            \node[node] (u\i) at (\i,0) {};
+        }
+        % Edges
+        \draw[edge] (v) -- (u1);
+        \draw[edge] (v) -- (u2);
+        \draw[edge] (v) -- (u3);
+        \draw[edge] (v) -- (u4);
+    \end{tikzpicture}
+    \caption{Graph \( K_{1,n}^* \)}
+\end{figure}
+
+% Graph K_n^*
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Nodes
+        \foreach \i in {1,...,4} {
+            \node[node] (u\i) at (\i,0) {};
+        }
+        % Edges
+        \foreach \i in {1,...,3} {
+            \foreach \j in {\i+1,...,4} {
+                \draw[edge] (u\i) -- (u\j);
+            }
+        }
+    \end{tikzpicture}
+    \caption{Graph \( K_n^* \)}
+\end{figure}
+
+% Graph C\!K_n
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Nodes
+        \foreach \i in {1,...,4} {
+            \node[node] (u\i) at ({cos(90*\i)},

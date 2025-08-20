@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix, arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm, auto]
+        % Define nodes
+        \node[draw, circle] (u) {$u$};
+        \node[draw, circle, right of=u] (v) {$v$};
+        \node[draw, circle, right of=v] (w) {$w$};
+
+        % Draw edges with labels
+        \path[->, thick]
+            (u) edge[bend left=45, above] node[above] {20@$[1,3]$} (v)
+            (v) edge[bend left=45, below] node[below] {15@$[4,5]$} (u)
+            (v) edge[bend left=45, above] node[above] {25@$[4,6]$} (w)
+            (w) edge[bend left=45, below] node[below] {25@$[4,6]$} (v);
+        
+        % Draw asset labels
+        \node[draw, rectangle, inner sep=2pt, minimum width=8mm, below=of u] (asset_u) {\euro 30};
+        \node[draw, rectangle, inner sep=2pt, minimum width=8mm, below=of v] (asset_v) {\euro 20};
+        \node[draw, rectangle, inner sep=2pt, minimum width=8mm, below=of w] (asset_w) {\euro 10};
+        
+        % Position asset labels relative to nodes
+        \coordinate[below=of asset_u] (aux_u);
+        \coordinate[below=of asset_v] (aux_v);
+        \coordinate[below=of asset_w] (aux_w);
+        
+        \draw (u) -- (aux_u) -- (asset_u);
+        \draw (v) -- (aux_v) -- (asset_v);
+        \draw (w) -- (aux_w) -- (asset_w);
+    \end{tikzpicture}
+    
+    \caption{A simple instance of the Interval Debt Model (IDM). Numbers in square boxes represent the assets of the node (for example, \euro 30 for node $u$), directed edges represent debts, and the label on an edge represents the terms of the associated debt (for example, $u$ must pay $v$ \euro 20 between time 1 and time 3).}
+    \label{fig:idm_example}
+\end{figure}
+
+\end{document}

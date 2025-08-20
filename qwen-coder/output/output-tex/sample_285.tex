@@ -1,0 +1,45 @@
+To create the described TikZ diagram, you can use the following LaTeX code:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta,backgrounds}
+
+\tikzset{
+    myinterval/.style={draw,fill=blue!20},
+    myexpired/.style={draw,dashed,fill=red!20},
+    myspecial/.style={draw,dotted,fill=green!20},
+    mylabel/.style={below=-2pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Draw the timeline
+    \draw[thick,-Stealth] (0,0) -- (10,0);
+    \foreach \x in {1,...,10} {
+        \node at (\x,0) [mylabel] {\x};
+    }
+
+    % Define intervals
+    \coordinate (I1start) at (2,0);
+    \coordinate (I1end) at (4,0);
+    \coordinate (I2start) at (6,0);
+    \coordinate (I2end) at (8,0);
+    \coordinate (IJstart) at (7,0);
+    \coordinate (IJend) at (9,0);
+    \coordinate (ILminus1start) at (5,0);
+    \coordinate (ILminus1end) at (7,0);
+
+    % Draw intervals
+    \draw[myinterval] (I1start) rectangle (I1end);
+    \draw[myinterval] (I2start) rectangle (I2end);
+    \draw[myspecial] (IJstart) rectangle (IJend);
+    \draw[myexpired] (ILminus1start) rectangle (ILminus1end);
+
+    % Label intervals
+    \node at ($(I1start)!0.5!(I1end)$) [mylabel] {$I_1$};
+    \node at ($(I2start)!0.5!(I2end)$) [mylabel] {$I_2$};
+    \node at ($(IJstart)!0.5!(IJend)$) [mylabel] {$I_J$};
+    \node at ($(ILminus1start)!0.5!(ILminus1end)$) [mylabel] {$I_{L-1}$};
+
+    % Highlight the special interval
+   

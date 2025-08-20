@@ -1,0 +1,15 @@
+The scenario you've described highlights an important aspect of machine learning models, particularly in the context of adversarial attacks and robustness. Let's break down the key points:
+
+1. **Adversarial Trade-Off**: This refers to the balance between improving the robustness of a model (its ability to handle adversarial examples) and potentially degrading its performance on clean data (generalization error).
+
+2. **True Labels and Adversarial Perturbations**: The color represents the true label of the data points, while the arrows indicate the direction and magnitude of the adversarial attack perturbation.
+
+3. **Cases to Distinguish**:
+   - **Points F and E**: These points remain correctly classified even after the perturbation, indicating that they are robust against the attack.
+   - **Points C and D**: These points contribute to generalization error because their true labels are misclassified by the model after the perturbation.
+   - **Points B and A**: The perturbations on these points cancel each other out on average, meaning there is no significant change in classification for these points.
+   - **Points H and G**: These points contribute to boundary error, which is the error incurred when the model misclassifies points near the decision boundary.
+
+4. **Impact of Worsening the Estimate**: The statement "A worse angle decreases the number of points contributing to boundary error at the cost of these points contributing to generalization error" suggests that if the model's estimate of the parameters (\(\hat{\boldsymbol{\theta}}\)) becomes less accurate (worse), it might reduce the number of points that are misclassified near the decision boundary (boundary error). However, this improvement in robustness comes at the expense of increasing the number of points that are misclassified elsewhere (generalization error).
+
+In summary, the model's robustness can be improved by making its parameter estimates worse, but this comes with the trade-off of potentially increasing the generalization error. The specific impact depends on how the model handles different types of errors (boundary vs. generalization) and the nature of the adversarial perturbations.

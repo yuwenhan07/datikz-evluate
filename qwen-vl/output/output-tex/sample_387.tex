@@ -1,0 +1,28 @@
+It seems like you're describing a method called Forecasting Model Search (FMS) that builds upon DyHPO's multifidelity method. Here’s a structured summary of the key points:
+
+### Overview of Forecasting Model Search (FMS)
+
+1. **Foundation**: FMS is built on DyHPO's multifidelity method, which is detailed in Algorithm~\ref{alg:dyhpo}.
+   
+2. **Novel Components**:
+   - **Permutation-Invariant Graph Metanetwork (PIGMN)**: FMS uses PIGMN to featureize the model's checkpointed weights (\(\mathbf{W}\)) for input into a deep kernel Gaussian Process (GP). This step is detailed in Section~\ref{pigms}.
+
+3. **Features from DyHPO**:
+   - FMS incorporates DyHPO's features related to hyperparameter configuration, budget, and learning curve.
+   - These features are described in more detail in \cite{wistuba2023supervising}.
+
+4. **Key Benefits**:
+   - **Improved Predictions**: FMS provides better predictions about hyperparameter performance across different compute budgets (refer to Table~\ref{ktau-values}).
+   - **Improved Quality of Final Configuration**: The method improves the quality of the final selected configuration across various compute budgets (refer to Figure~\ref{fig:regret_over_time}).
+   - **Generalization Potential**: FMS has the potential to generalize beyond the data seen during training (refer to Figure~\ref{fig:fms-transfer}).
+
+5. **Design Choices**:
+   - Specific design choices for the surrogate model are detailed in Appendix Section~\ref{meta-hyperparams}.
+
+### References
+
+- \cite{wistuba2023supervising}: For details on DyHPO's features used in FMS.
+- Section~\ref{pigms}: For details on the use of PIGMN.
+- Appendix Section~\ref{meta-hyperparams}: For specific design choices of the surrogate model.
+
+This summary should help clarify the structure and benefits of the Forecasting Model Search (FMS) method. If you need further clarification or additional details, feel free to ask!

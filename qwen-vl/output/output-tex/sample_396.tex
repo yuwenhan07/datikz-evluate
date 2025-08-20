@@ -1,0 +1,27 @@
+To understand the bijection \(\psi\) between \(\mathcal{P}^d_n\) and \(\mathcal{A}^d_n\), we need to first define what these sets represent.
+
+1. \(\mathcal{P}^d_n\) is the set of all \(d\)-dimensional partitions of \(n\). A \(d\)-dimensional partition of \(n\) is a collection of \(d\) non-negative integers that sum to \(n\).
+
+2. \(\mathcal{A}^d_n\) is the set of all \(d\)-dimensional arrays of non-negative integers that sum to \(n\). An \(d\)-dimensional array of non-negative integers is an arrangement of numbers in a grid with \(d\) dimensions, where the sum of all the numbers in the grid equals \(n\).
+
+The bijection \(\psi\) maps each \(d\)-dimensional partition of \(n\) to a corresponding \(d\)-dimensional array of non-negative integers that also sums to \(n\). Here's how this can be done:
+
+Given a \(d\)-dimensional partition \((a_1, a_2, \ldots, a_d)\) of \(n\), where \(a_1 + a_2 + \cdots + a_d = n\), we can construct a \(d\)-dimensional array as follows:
+- Place 1 in the position \((i_1, i_2, \ldots, i_d)\) if \(a_{i_1} + a_{i_2} + \cdots + a_{i_d} = n - (a_1 + a_2 + \cdots + a_{i_1-1}) - (a_2 + a_3 + \cdots + a_{i_2-1}) - \cdots - (a_{i_1-1} + a_{i_1} + \cdots + a_{i_{i_1}-1})\).
+- Continue this process until all positions in the grid are filled with 1s.
+
+For example, let's consider the 2-dimensional partition \((3, 2)\) of 5. The bijection \(\psi\) would map this partition to the following 2-dimensional array:
+\[
+\begin{array}{cc}
+1 & 1 \\
+1 & 0 \\
+\end{array}
+\]
+Here, the sum of the elements in the first row is 3, the sum of the elements in the second row is 2, and the total sum of all elements in the array is 5.
+
+Thus, the bijection \(\psi\) is defined by mapping each \(d\)-dimensional partition \((a_1, a_2, \ldots, a_d)\) of \(n\) to the \(d\)-dimensional array where each element is 1 and the sum of the elements in each dimension matches the corresponding part of the partition.
+
+The final answer is:
+\[
+\boxed{\psi: \mathcal{P}^d_n \to \mathcal{A}^d_n}
+\]

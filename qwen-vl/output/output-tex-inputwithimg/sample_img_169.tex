@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        % Define the grid for the lattice graph
+        \draw[help lines] (0,0) grid (8,8);
+        
+        % Draw the pixel image
+        \foreach \x in {0,...,7} {
+            \foreach \y in {0,...,7} {
+                \fill[gray!\x*12.5] (\x,\y) rectangle ++(1,1);
+            }
+        }
+        
+        % Draw the labels
+        \node at (4,-0.5) {$x \mapsto x / (\mathbf{1}^T x)$};
+        \node at (4,3.5) {$\mathbb{R}^{64}$};
+        \node at (12,3.5) {$\mathcal{P}(V)$};
+        \node at (20,3.5) {$\ell_2(V)$};
+        
+        % Draw the arrows
+        \draw[->, thick] (4,1) -- (4,2);
+        \draw[->, thick] (12,2) -- (12,3);
+        \draw[->, thick] (20,2) -- (20,3);
+        
+        % Draw the legend for the pixel image
+        \draw[->, thick] (-1,0) -- (9,0);
+        \foreach \x in {0,7.5,15} {
+            \fill[gray!\x*12.5] (\x,0) rectangle ++(1,0.2);
+        }
+        \node at (4,-1) {$0$};
+        \node at (5.5,-1) {$7.5$};
+        \node at (7,-1) {$15$};
+        
+        % Draw the legend for the probability distribution
+        \draw[->, thick] (12,-1) -- (23,-1);
+        \foreach \x in {-0.05,0,0.05} {
+            \fill[red!\x*100] (\x,-1) rectangle ++(1,0.2);
+        }
+        \node at (16,-2) {$-0.05$};
+        \node at (18,-2) {$0$};
+        \node at (20,-2) {$0.05$};
+        
+        % Draw the legend for the l2 norm
+        \draw[->, thick] (20,-1) -- (29,-1);
+        \foreach \x in {0,1,2} {
+            \fill[blue!\x*100] (\x,-1) rectangle ++(1,0.2);
+        }
+        \node at (24,-2) {$0$};
+        \node at (26,-2) {$0.05$};
+        \node at (28,-2) {$0.05$};
+    \end{tikzpicture}
+    \caption{An illustration of the preprocessing pipeline for the digits data, with an example from the class of handwritten zeros. The first step is a mass normalization to convert the pixel values into a fixed-sum distribution viewed on the nodes \( V \) of the \( 8 \times 8 \) lattice graph. The second step is an embedding \( \alpha \mapsto L^{-1/2}\alpha \), such that \( \ell_2 \) distance in the target corresponds to \( 2 \)-Beckmann distance in \( \mathcal{P}(V) \). When computing \( \mathcal{W}_2 \), we omit the final step.}
+    \label{fig:preprocessing_pipeline}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,46 @@
+To create a TikZ diagram summarizing the given scenario, we need to depict the following elements:
+1. The projective variety \(\mathbb{P}(1,1,4)\).
+2. The exceptional divisor of the minimal resolution \(\mathbb{F}_4 \to \mathbb{P}(1,1,4)\).
+3. The movement of the edge corresponding to the exceptional divisor.
+4. The intersection of the strict transform of the branch curve with the contracted \(-4\)-curve \(C_1\).
+5. The multiplicity of the curve \(C_1\) in the total transform.
+
+Here is the TikZ code to generate this diagram:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta, positioning}
+
+\tikzset{
+    vertex/.style={circle, fill=black, inner sep=2pt},
+    edge/.style={->, thick, >=Stealth[length=6pt]},
+    curve/.style={thick, dashed}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Projective Variety P(1,1,4)
+\node (P1) at (0,0) [vertex] {};
+\node (P2) at (2,0) [vertex] {};
+\node (P3) at (1,-2) [vertex] {};
+
+\draw[thick] (P1) -- (P2);
+\draw[thick] (P2) -- (P3);
+\draw[thick] (P3) -- (P1);
+
+% Exceptional Divisor F4
+\node (E1) at (-1,0) [vertex] {};
+\node (E2) at (1,0) [vertex] {};
+\node (E3) at (0,-2) [vertex] {};
+
+\draw[curve] (E1) -- (E2);
+\draw[curve] (E2) -- (E3);
+\draw[curve] (E3) -- (E1);
+
+% Movement of Edge Corresponding to Exceptional Divisor
+\node (E1_new) at (-1,-0.5) [vertex] {};
+\node (E2_new) at (1,-0.5) [vertex] {};
+\node (E3_new) at (0,-3) [vertex] {};
+
+\draw[edge] (E1

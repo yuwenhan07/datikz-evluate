@@ -1,0 +1,91 @@
+To solve this problem, we need to construct an automaton that recognizes the language defined by the property \(\varphi = F_{[0,10]}a \land G_{[0,20]}\neg b\) and its negation \(\neg\varphi\). Here's a step-by-step breakdown:
+
+### Step 1: Understanding the Property \(\varphi\)
+The property \(\varphi\) can be broken down as follows:
+- \(F_{[0,10]}a\): This means that the letter 'a' must appear within the first 10 positions.
+- \(G_{[0,20]}\neg b\): This means that the letter 'b' must not appear at any position.
+
+Combining these two conditions, \(\varphi\) states that 'a' appears in the first 10 positions and 'b' does not appear anywhere in the string.
+
+### Step 2: Constructing the Automaton for \(\varphi\)
+We will use a finite state automaton (FA) with three states: \(q_0\), \(q_1\), and \(q_2\).
+
+1. **State \(q_0\)**: Initial state. This state represents the condition where no 'a' has been seen yet.
+   - On input 'a', transition to \(q_1\).
+   - On input 'b', stay in \(q_0\).
+   - On input other than 'a' or 'b', reject.
+
+2. **State \(q_1\)**: This state represents the condition where 'a' has been seen but 'b' has not been seen yet.
+   - On input 'a', stay in \(q_1\).
+   - On input 'b', transition to \(q_2\).
+   - On input other than 'a' or 'b', reject.
+
+3. **State \(q_2\)**: This state represents the condition where both 'a' and 'b' have been seen.
+   - On input 'a', stay in \(q_2\).
+   - On input 'b', stay in \(q_2\).
+   - On input other than 'a' or 'b', reject.
+
+The final accepting state is \(q_2\).
+
+### Step 3: Constructing the Automaton for \(\neg\varphi\)
+The negation \(\neg\varphi\) means that either 'a' does not appear in the first 10 positions or 'b' appears somewhere in the string.
+
+We will use a similar approach with four states: \(q_0'\), \(q_1'\), \(q_2'\), and \(q_3'\).
+
+1. **State \(q_0'\)**: Initial state. This state represents the condition where no 'a' has been seen yet.
+   - On input 'a', transition to \(q_1'\).
+   - On input 'b', stay in \(q_0'\).
+   - On input other than 'a' or 'b', reject.
+
+2. **State \(q_1'\)**: This state represents the condition where 'a' has been seen but 'b' has not been seen yet.
+   - On input 'a', stay in \(q_1'\).
+   - On input 'b', transition to \(q_2'\).
+   - On input other than 'a' or 'b', reject.
+
+3. **State \(q_2'\)**: This state represents the condition where 'a' has been seen and 'b' has been seen.
+   - On input 'a', stay in \(q_2'\).
+   - On input 'b', stay in \(q_2'\).
+   - On input other than 'a' or 'b', reject.
+
+4. **State \(q_3'\)**: This state represents the condition where 'a' has not been seen in the first 10 positions.
+   - On input 'a', transition to \(q_1'\).
+   - On input 'b', stay in \(q_3'\).
+   - On input other than 'a' or 'b', reject.
+
+The final accepting state is \(q_2'\).
+
+### Final Automata
+- **Automaton for \(\varphi\)**:
+  - States: \(q_0, q_1, q_2\)
+  - Initial state: \(q_0\)
+  - Accepting state: \(q_2\)
+  - Transitions:
+    - \(q_0 \xrightarrow{a} q_1\)
+    - \(q_0 \xrightarrow{b} q_0\)
+    - \(q_0 \xrightarrow{\text{other}} \text{reject}\)
+    - \(q_1 \xrightarrow{a} q_1\)
+    - \(q_1 \xrightarrow{b} q_2\)
+    - \(q_1 \xrightarrow{\text{other}} \text{reject}\)
+    - \(q_2 \xrightarrow{a} q_2\)
+    - \(q_2 \xrightarrow{b} q_2\)
+    - \(q_2 \xrightarrow{\text{other}} \text{reject}\)
+
+- **Automaton for \(\neg\varphi\)**:
+  - States: \(q_0', q_1', q_2', q_3'\)
+  - Initial state: \(q_0'\)
+  - Accepting state: \(q_2'\)
+  - Transitions:
+    - \(q_0' \xrightarrow{a} q_1'\)
+    - \(q_0' \xrightarrow{b} q_0'\)
+    - \(q_0' \xrightarrow{\text{other}} \text{reject}\)
+    - \(q_1' \xrightarrow{a} q_1'\)
+    - \(q_1' \xrightarrow{b} q_2'\)
+    - \(q_1' \xrightarrow{\text{other}} \text{reject}\)
+    - \(q_2' \xrightarrow{a} q_2'\)
+    - \(q_2' \xrightarrow{b} q_2'\)
+    - \(q_2' \xrightarrow{\text{other}} \text{reject}\)
+    - \(q_3' \xrightarrow{a} q_1'\)
+    - \(q_3' \xrightarrow{b} q_3'\)
+    - \(q_3' \xrightarrow{\text{other}} \text{reject}\)
+
+These automata correctly recognize the languages \(L(\varphi)\) and \(L(\neg\varphi)\) respectively.

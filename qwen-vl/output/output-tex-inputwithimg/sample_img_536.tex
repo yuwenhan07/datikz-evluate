@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning, decorations.pathreplacing}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=0.5cm]
+    \matrix (T1) [matrix of nodes, nodes={circle, fill, inner sep=1pt}, column sep=0.5cm] {
+        & & \\
+        & & \\
+        & & \\
+    };
+    \draw[red] (T1-1-1.north west) rectangle (T1-3-3.south east);
+    \node at (T1-1-1.north west) {$T_1$};
+
+    \matrix (B1) [matrix of nodes, nodes={circle, fill, inner sep=1pt}, below=of T1, column sep=0.5cm] {
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+    };
+    \draw[red] (B1-1-1.north west) rectangle (B1-6-5.south east);
+    \node at (B1-1-1.north west) {$B_1$};
+
+    \matrix (Bi) [matrix of nodes, nodes={circle, fill, inner sep=1pt}, below=of B1, column sep=0.5cm] {
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+    };
+    \draw[red] (Bi-1-1.north west) rectangle (Bi-6-5.south east);
+    \node at (Bi-1-1.north west) {$B_i$};
+    \node at (Bi-4-3) {$y$};
+    \draw[blue, rounded corners=5pt] (Bi-3-3.north west) -- (Bi-3-3.north east) -- (Bi-4-4.south east) -- (Bi-4-4.south west) -- cycle;
+    \node at (Bi-3-3) {$H_y^i$};
+
+    \matrix (Bk1) [matrix of nodes, nodes={circle, fill, inner sep=1pt}, below=of Bi, column sep=0.5cm] {
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+    };
+    \draw[red] (Bk1-1-1.north west) rectangle (Bk1-6-5.south east);
+    \node at (Bk1-1-1.north west) {$B_{k-1}$};
+
+    \matrix (M) [matrix of nodes, nodes={circle, fill, inner sep=1pt}, below=of Bk1, column sep=0.5cm] {
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+        & & & & \\
+    };
+    \draw[blue] (M-1-1.north west) rectangle (M-6-6.south east);
+    \node at (M-1-1.north west) {$M$};
+
+    \draw[decorate, decoration={brace, amplitude=10pt}] (T1-3-3.east) -- node[right] {$3$} (Bk1-6-5.east);
+    \draw[decorate, decoration={brace, amplitude=10pt}] (Bi-6-5.east) -- node[right] {$k-2-m$} (M-6-6.east);
+    \draw[decorate, decoration={brace, mirror, amplitude=10pt}] (M-6-6.east) -- node[right] {$m$} (M-6-6.east |- M-1-1.north);
+
+    \draw[green] (T1-1-1) circle (0.2);
+    \draw[green] (T1-2-1) circle (0.2);
+    \draw[green] (T1-3-1) circle (0.2);
+    \draw[green] (T1-1-3) circle (0.2);
+    \draw[green] (T1-2-3) circle (0.2);
+    \draw[green] (T1-3-3) circle (0.2);
+
+    \draw[green] (Bi-1-1) circle (0.2);
+    \draw[green] (Bi-2-1) circle (0.2);
+    \draw[green] (Bi-3-1) circle (0.2);
+    \draw[green] (Bi-4-1) circle (0.2);
+    \draw[green] (Bi-5-1) circle (0.2);
+    \draw[green] (Bi-6-1) circle (0.2);
+
+    \draw[green] (Bk1-1-1) circle (0.2);
+    \draw[green] (Bk1-2-1) circle (0.2);
+    \draw[green] (Bk1-3-1) circle (0.2);
+    \draw[green] (Bk1-4-1) circle (0.2);
+    \draw[green] (Bk1-5-1) circle (0.2);
+    \draw[green] (Bk1-6-1) circle (0.2);
+
+    \draw[green] (M-1-1) circle (0.2);
+    \draw[green] (M-2-1) circle (0.2);
+    \draw[green] (M-3-1) circle (0.2);
+    \draw[green] (M-4-1) circle (0.2);
+    \draw[green] (M-5-1) circle (0.2);
+    \draw[green] (M-6-1) circle (0.2);
+    \draw[green] (M-6-2) circle (0.2);
+    \draw[green] (M-6-3) circle (0.2);
+    \draw[green] (M-6-4) circle (0.2);
+    \draw[green] (M-6-5) circle (0.2);
+    \draw[green] (M-6-6) circle (0.2);
+\end{tikzpicture}
+
+\end{document}

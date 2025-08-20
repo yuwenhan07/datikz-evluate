@@ -1,0 +1,29 @@
+It seems like you're describing a process involving the application of two different algorithms (\ref{alg:R1} and \ref{alg:R2}) on a cluster graph derived from a specific figure (Fig.~4(d)). The context suggests that this is related to a Bayesian Model (BM) with certain parameters: a univariate BM model with a mean of 0 and a variance rate of 1, edge lengths of 1 in the original network, and inheritance probabilities of 0.5.
+
+Here's a breakdown of what appears to be happening:
+
+### Algorithms \ref{alg:R1} and \ref{alg:R2}
+- **Algorithm \ref{alg:R1}**: This algorithm starts with a single variable \( x_8 \).
+- **Algorithm \ref{alg:R2}**: This algorithm starts with a cluster \(\{8, 10\}\), which is assumed to be the first cluster scheduled for processing.
+
+### Cluster/Sepset Precision Matrices
+- **Rows**: These are labeled by variables, indicating the nodes in scope.
+- **Precision Matrices**: These show entries before and after regularization.
+- **Before Regularization (Black)**: These represent the initial precision matrices without any adjustments.
+- **After One Pass Through the Outermost Loop (Coloured Adjustments)**: These show the adjustments made by the algorithms.
+
+### Left: Regularization \ref{alg:R1}
+- This algorithm starts with the variable \( x_8 \).
+
+### Right: Regularization \ref{alg:R2}
+- This algorithm starts with the cluster \(\{8, 10\}\).
+- The effects of lines 3-8 (blue) and lines 9-12 (red) are differentiated.
+- For example, the resulting precision matrix for the sepset \(\{x_{10}\}\) is \([3\tilde{\epsilon}]\) after summing these effects, where \(\tilde{\epsilon} = \epsilon + o(\epsilon)\).
+
+### Key Points:
+1. **Algorithm \ref{alg:R1}** focuses on a single variable at a time, starting with \( x_8 \).
+2. **Algorithm \ref{alg:R2}** considers a cluster at a time, starting with \(\{8, 10\}\).
+3. The blue and red colors in the right diagram indicate the different steps within Algorithm \ref{alg:R2}.
+4. The precision matrix for \(\{x_{10}\}\) after applying Algorithm \ref{alg:R2} shows an adjustment factor of \(3\tilde{\epsilon}\), where \(\tilde{\epsilon}\) represents a small perturbation term.
+
+This description suggests a detailed analysis of how these algorithms adjust the precision matrices based on the specified parameters and starting points. If you need further clarification or have additional questions about the algorithms or the context, feel free to ask!

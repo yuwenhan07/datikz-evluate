@@ -1,0 +1,49 @@
+Certainly! Below is a TikZ LaTeX code snippet that illustrates the quantum circuits described:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{tikz-feynman}
+
+\tikzfeynmanset{
+    dot/.style={circle, fill=black, inner sep=2pt},
+    small dot/.style={circle, fill=black, inner sep=1pt},
+    double line/.style={thick},
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    \begin{feynman}
+        \vertex (A);
+        \vertex[right=of A] (B);
+        \vertex[right=of B] (C);
+        \vertex[right=of C] (D);
+        \vertex[right=of D] (E);
+        \vertex[right=of E] (F);
+        \vertex[right=of F] (G);
+
+        \diagram* {
+            (A) -- [double line] node[dot] {} -- (B),
+            (B) -- [double line] node[dot] {} -- (C),
+            (C) -- [double line] node[dot] {} -- (D),
+            (D) -- [double line] node[dot] {} -- (E),
+            (E) -- [double line] node[dot] {} -- (F),
+            (F) -- [double line] node[dot] {} -- (G)
+        };
+
+        % Measurement nodes
+        \node[below=of A] (M1) {$\sigma_{\alpha}$};
+        \node[below=of C] (M2) {$\sigma_{\beta}$};
+        \node[below=of E] (M3) {$\sigma_{\alpha}$};
+
+        % Amplitude damping channel
+        \node[left=of B] (E1) {};
+        \node[right=of G] (E2) {};
+
+        % Bayesian inverse channel
+        \node[left=of D] (F1) {};
+        \node[right=of F] (F2) {};
+
+        % Gates for sigma_y and R_z
+        \node[above=of B, yshift=0.5cm] (H) {H};
+        \node[above=of C, yshift=0.5cm] (Ryz) {R_y(\pi/2)};
+       

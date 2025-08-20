@@ -1,0 +1,39 @@
+python
+def sequential_readout(memory, word_size=2, buffer_size=2):
+    # Initialize the readout buffer
+    readout_buffer = [0] * buffer_size
+    
+    # Readout process
+    while True:
+        # Read the first bit of the current word
+        bit1 = memory.read_bit()
+        
+        # Store the first bit in the buffer
+        readout_buffer[0] = bit1
+        
+        # Read the second bit of the current word
+        bit2 = memory.read_bit()
+        
+        # Store the second bit in the buffer
+        readout_buffer[1] = bit2
+        
+        # Check if the buffer is full (i.e., it contains two bits)
+        if len(readout_buffer) == word_size:
+            # Process the stored bits (e.g., print them, store them elsewhere)
+            print("Word read:", readout_buffer)
+            
+            # Clear the buffer for the next word
+            readout_buffer = [0] * buffer_size
+            
+            # Check if there are more words to read
+            if memory.has_more_words():
+                continue
+            else:
+                break
+        else:
+            # If the buffer is not full, continue reading the next bit
+            continue
+
+# Example usage
+memory = MemorySimulation()  # Assume MemorySimulation is a class that simulates memory access
+sequential_readout(memory)

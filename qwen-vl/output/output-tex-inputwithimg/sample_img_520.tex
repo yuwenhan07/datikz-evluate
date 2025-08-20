@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel=$x \ln x$,
+        ylabel={(1+$a)x \ln x$},
+        xmin=0, xmax=20,
+        ymin=-5, ymax=5,
+        xtick=\empty,
+        ytick=\empty,
+        no markers,
+        domain=0:20,
+        samples=100,
+        every axis plot post/.append style={ultra thick},
+        clip=false
+    ]
+    
+    % Plot the black curve (1 + 2a)x ln(x)
+    \addplot [black] {x * log(x) * (1 + 2*0.5)} node[above right] {(1 + 2a)x ln x};
+    
+    % Plot the red curve (1 + a)x ln(x)
+    \addplot [red, dashed] {x * log(x) * (1 + 0.5)} node[below right] {(1 + a)x ln x};
+    
+    % Plot the red curve (1 + a)x ln(x) with a small bump
+    \addplot [red, domain=0:4, samples=100] {x * log(x) * (1 + 0.5) + 0.5 * sin(30 * x)};
+    
+    % Mark the point where the red curve intersects the black curve
+    \filldraw [red] (axis cs:4, {4 * log(4) * (1 + 0.5)}) circle (2pt);
+    
+    % Draw the horizontal line at y = 0
+    \draw [thick] (axis cs:0, 0) -- (axis cs:20, 0);
+    
+    % Draw the horizontal line at y = (1 + a)x ln(x)
+    \draw [thick] (axis cs:0, {4 * log(4) * (1 + 0.5)}) -- (axis cs:20, {4 * log(4) * (1 + 0.5)});
+    
+    % Draw the horizontal line at y = (1 + 2a)x ln(x)
+    \draw [thick] (axis cs:0, {4 * log(4) * (1 + 2*0.5)}) -- (axis cs:20, {4 * log(4) * (1 + 2*0.5)});
+    
+    % Draw the vertical line at x = 4
+    \draw [thick] (axis cs:4, 0) -- (axis cs:4, {4 * log(4) * (1 + 0.5)});
+    
+    % Draw the arrow indicating the direction of the red curve
+    \draw [->, red, thick] (axis cs:4, {4 * log(4) * (1 + 0.5)}) -- (axis cs:6, {4 * log(4) * (1 + 0.5) + 0.5});
+    
+    % Add the caption
+    \node at (axis cs:10, -2) {\small With the space divided in layers of the form $(1+ka)x\ln{x}$, the process in red is trying to cross the layer $(1+a)n\ln\left(n\right)$, but it is being blocked by a black bound};
+    
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

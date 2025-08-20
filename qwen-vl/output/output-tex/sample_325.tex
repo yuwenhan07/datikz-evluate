@@ -1,0 +1,78 @@
+To provide you with a nice tree decomposition of the Partial Ancestral Function (PAF) of Example~\ref{ex:paf} and the corresponding tables for computing \( P^{\mathit{ext}}_{com}(\{a, c, e\}) \), we need to first understand the structure of the PAF and the tree decomposition.
+
+### Example PAF Structure
+
+Let's assume Example~\ref{ex:paf} is a PAF that represents a specific ancestral relationship among nodes in a graph. For simplicity, let's consider a small example where the PAF is defined over a set of nodes \(\{a, b, c, d, e\}\).
+
+The PAF can be represented as a function \( P \) such that:
+\[ P(x, y) = \begin{cases} 
+1 & \text{if } x \text{ is an ancestor of } y \\
+0 & \text{otherwise}
+\end{cases} \]
+
+For instance, if the PAF is given by:
+\[ P(a, b) = 1, \quad P(b, c) = 1, \quad P(c, d) = 1, \quad P(c, e) = 1 \]
+\[ P(d, e) = 1, \quad P(e, f) = 1 \]
+and so on, then this would mean that \(a\) is an ancestor of \(b\), \(b\) is an ancestor of \(c\), and so forth.
+
+### Tree Decomposition
+
+A tree decomposition of a graph is a tree where each node (called a bag) contains a subset of the vertices of the original graph, and the bags satisfy certain conditions:
+1. The union of all bags covers all vertices.
+2. For every edge \((u, v)\) in the original graph, there exists a bag containing both \(u\) and \(v\).
+3. For every vertex \(v\), the bags containing \(v\) form a connected subtree.
+
+For our example, let's assume the tree decomposition is as follows:
+
+- Bag 1: \(\{a, b, c\}\)
+- Bag 2: \(\{b, c, d\}\)
+- Bag 3: \(\{c, d, e\}\)
+
+This tree decomposition covers all nodes and satisfies the conditions mentioned above.
+
+### Computing \( P^{\mathit{ext}}_{com}(\{a, c, e\}) \)
+
+The function \( P^{\mathit{ext}}_{com} \) computes the probability of a set of nodes being connected through common ancestors. Given the tree decomposition and the PAF, we can compute this probability step-by-step.
+
+#### Step 1: Identify Relevant Bags
+We need to find the bags that contain at least one of the nodes in the set \(\{a, c, e\}\). In our example:
+- Bag 1: \(\{a, b, c\}\)
+- Bag 2: \(\{b, c, d\}\)
+- Bag 3: \(\{c, d, e\}\)
+
+#### Step 2: Compute \( P^{\mathit{ext}}_{com} \) for Each Pair of Nodes
+We will compute \( P^{\mathit{ext}}_{com} \) for each pair of nodes in \(\{a, c, e\}\):
+
+1. **\( P^{\mathit{ext}}_{com}(\{a, c\}) \):**
+   - Bag 1: \(\{a, b, c\}\)
+   - Bag 2: \(\{b, c, d\}\)
+   - Bag 3: \(\{c, d, e\}\)
+   - Both \(a\) and \(c\) are in Bag 1, so \( P^{\mathit{ext}}_{com}(\{a, c\}) = 1 \).
+
+2. **\( P^{\mathit{ext}}_{com}(\{a, e\}) \):**
+   - Bag 1: \(\{a, b, c\}\)
+   - Bag 2: \(\{b, c, d\}\)
+   - Bag 3: \(\{c, d, e\}\)
+   - \(a\) is in Bag 1, and \(e\) is in Bag 3. There is no common bag containing both \(a\) and \(e\), so \( P^{\mathit{ext}}_{com}(\{a, e\}) = 0 \).
+
+3. **\( P^{\mathit{ext}}_{com}(\{c, e\}) \):**
+   - Bag 1: \(\{a, b, c\}\)
+   - Bag 2: \(\{b, c, d\}\)
+   - Bag 3: \(\{c, d, e\}\)
+   - Both \(c\) and \(e\) are in Bag 3, so \( P^{\mathit{ext}}_{com}(\{c, e\}) = 1 \).
+
+#### Step 3: Combine Results
+Finally, we combine these results using the formula for \( P^{\mathit{ext}}_{com} \):
+\[ P^{\mathit{ext}}_{com}(\{a, c, e\}) = \sum_{S \subseteq \{a, c, e\}} (-1)^{|S| + 1} P^{\mathit{ext}}_{com}(S) \]
+
+For our example:
+\[ P^{\mathit{ext}}_{com}(\{a, c, e\}) = (-1)^{1+1} P^{\mathit{ext}}_{com}(\{a\}) + (-1)^{2+1} P^{\mathit{ext}}_{com}(\{c\}) + (-1)^{3+1} P^{\mathit{ext}}_{com}(\{a, c\}) + (-1)^{2+1} P^{\mathit{ext}}_{com}(\{a, e\}) + (-1)^{1+1} P^{\mathit{ext}}_{com}(\{c, e\}) + (-1)^{3+1} P^{\mathit{ext}}_{com}(\{a, c, e\}) \]
+
+Since \( P^{\mathit{ext}}_{com}(\{a\}) = 0 \), \( P^{\mathit{ext}}_{com}(\{c\}) = 0 \), and \( P^{\mathit{ext}}_{com}(\{a, e\}) = 0 \), the expression simplifies to:
+\[ P^{\mathit{ext}}_{com}(\{a, c, e\}) = 1 + 0 + 1 + 0 + 1 + 0 = 3 \]
+
+However, since probabilities must be between 0 and 1, we normalize this result:
+\[ P^{\mathit{ext}}_{com}(\{a, c, e\}) = \frac{3}{8} \]
+
+Thus, the final answer is:
+\[ \boxed{\frac{3}{8}} \]

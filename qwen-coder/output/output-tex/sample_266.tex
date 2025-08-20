@@ -1,0 +1,35 @@
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{
+    state/.style={circle, draw=black, fill=white!30, minimum size=6mm},
+    arrow/.style={thick,->,>=Stealth[length=4pt]}
+}
+
+\begin{document}
+\begin{tikzpicture}[x=2cm,y=2cm]
+
+% States
+\node[state] (start) at (0,0) {Start};
+\node[state] (up) at (1,1) {(0,1)};
+\node[state] (right) at (2,0) {(1,0)};
+\node[state] (down) at (1,-1) {(0,-1)};
+\node[state] (left) at (0,0) {(-1,0)};
+\node[state] (ur) at (2,2) {(1,1)};
+\node[state] (ul) at (-1,2) {(-1,1)};
+\node[state] (dr) at (2,-2) {(1,-1)};
+\node[state] (dl) at (-1,-2) {(-1,-1)};
+
+% Arrows
+\draw[arrow] (start) -- node[above] {(0,1)} (up);
+\draw[arrow] (start) -- node[right] {(1,0)} (right);
+\draw[arrow] (start) -- node[below] {(0,-1)} (down);
+\draw[arrow] (start) -- node[left] {(-1,0)} (left);
+
+\draw[arrow] (up) -- node[above right] {(1,1)} (ur);
+\draw[arrow] (up) -- node[above left] {(-1,1)} (ul);
+\draw[arrow] (right) -- node[below right] {(1,-1)} (dr);
+\draw[arrow] (right) -- node[below left] {(-1,-1)} (dl);
+
+\end{tikzpicture}
+\end{document}

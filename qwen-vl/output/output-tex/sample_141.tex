@@ -1,0 +1,17 @@
+It looks like you're referring to a visualization that shows the accuracies of a model's predictions on a test set, broken down by "shard" and "beam." Here’s a breakdown of what this might mean:
+
+1. **Shard**: In machine learning, especially when dealing with distributed training or large datasets, data is often split into shards (or subsets) for parallel processing. Each shard contains a portion of the dataset.
+
+2. **Beam**: In the context of sequence-to-sequence models (like those used in natural language processing), a beam search is an algorithmic technique used during decoding. It explores multiple possible sequences at each step, keeping the best ones based on a scoring function (often the log-probability).
+
+3. **Top-1 Accuracy**: This measures how often the model correctly predicts the most likely label (the highest probability prediction) for a given input.
+
+4. **Top-5 Accuracy**: This measures how often the model correctly predicts one of the top five most likely labels for a given input.
+
+The blue dots in your visualization represent the top-1 accuracy, and the red dots represent the top-5 accuracy. The text indicates that these values are for "one peer in the associated shard," which suggests that the data points are from a single instance or model configuration within a specific shard.
+
+### Example Interpretation:
+- If you see a blue dot at 90% and a red dot at 95%, it means that for this particular shard and beam setting, the model correctly predicted the correct label 90% of the time (top-1 accuracy) and correctly predicted one of the top five labels 95% of the time.
+- The distribution of these points across different shards and beams can help you understand how well the model performs under different conditions and configurations.
+
+If you have more specific questions about the visualization or need further clarification, feel free to ask!

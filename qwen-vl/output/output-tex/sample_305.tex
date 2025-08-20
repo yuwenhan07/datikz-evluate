@@ -1,0 +1,18 @@
+The illustration you've described seems to be explaining a process related to numerical methods for solving partial differential equations, particularly focusing on the treatment of interfaces between different cells in a computational domain. Here's a breakdown of the key points:
+
+1. **Interface and Cells**: The dashed line represents an interface between two cells \( K_i \) and \( K_j \). The interface is assumed to lie on the edge between these two cells.
+
+2. **Species Coupling**: The species \(\mathfrak{A}\) and \(\mathfrak{B}\) are defined within the cells. The edge \(\partial K_i \cap \partial K_j\) belongs to the species \(\mathfrak{A}\), which means it is responsible for the interaction or coupling between the two cells at this interface.
+
+3. **Empty and Full Cells**: 
+   - \( K_{j,\mathfrak{A}} = \emptyset \): This indicates that the cell \( K_j \) contains no species \(\mathfrak{A}\).
+   - \( K_{j,\mathfrak{B}} = K_j \): This indicates that the cell \( K_j \) is fully occupied by species \(\mathfrak{B}\).
+
+4. **Agglomeration and Modification**:
+   - The process involves modifying the discrete system algebraically.
+   - The modification eliminates the contributions on the edge \(\partial K_{j,\mathfrak{A}}\) associated with the empty cell \( K_{j,\mathfrak{A}} \).
+   - The cell and species coupling are combined, establishing a connection between \( K_{i,\mathfrak{A}} \) and \( K_{j,\mathfrak{B}} \).
+
+5. **Exploded View**: The lower part of the figure provides a detailed view of the connectivity, showing how the species \(\mathfrak{A}\) interacts across the interface and how the empty cell \( K_{j,\mathfrak{A}} \) is treated during the agglomeration process.
+
+This type of illustration is commonly used in finite volume or finite element methods where the goal is to accurately model the behavior of species across interfaces in a computational domain. The process described helps ensure that the numerical solution respects the physical properties of the system being modeled.

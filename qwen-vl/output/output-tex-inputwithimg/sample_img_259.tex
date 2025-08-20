@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+The jumps of $\boldsymbol{M}(z)$. Recall, $\boldsymbol{L}_{k}$ and $\boldsymbol{U}_k$ are defined \eqref{notationDefs}.
+
+\begin{center}
+    \begin{tikzpicture}[scale=1.5]
+        % Define coordinates
+        \coordinate (A) at (-2, 0);
+        \coordinate (B) at (2, 0);
+        \coordinate (C) at (0, -2);
+        \coordinate (D) at (0, 2);
+        
+        % Draw arrows
+        \draw[-{Latex[length=3mm]}] (A) -- (B) node[midway, below] {$0$};
+        \draw[-{Latex[length=3mm]}] (A) -- (C) node[midway, left] {$\boldsymbol{L}_{k}^{-1}(i\theta)$};
+        \draw[-{Latex[length=3mm]}] (B) -- (D) node[midway, right] {$\boldsymbol{L}_{k}(i\theta)$};
+        \draw[-{Latex[length=3mm]}] (C) -- (D) node[midway, left] {$\boldsymbol{U}_{k}(-i\theta)$};
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

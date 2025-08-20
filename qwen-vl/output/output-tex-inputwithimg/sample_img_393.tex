@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Draw the horizontal line
+        \draw[->] (0,0) -- (12,0);
+        
+        % Mark the positions on the x-axis
+        \foreach \x/\label in {0/0, 3/0+\frac{1}{m}, 6/1, 9/1-\frac{1}{m}, 12/1}
+            \draw (\x,0.1) -- (\x,-0.1) node[below] {\label};
+        
+        % Draw the segments for b = 0 and b = 1
+        \draw[->] (0,0.5) -- (6,0.5) node[midway,above] {$b \equiv 0$};
+        \draw[->] (6,0.5) -- (12,0.5) node[midway,above] {$b \equiv 1$};
+        
+        % Draw the distribution of b = 0
+        \foreach \x/\color in {0.5/green, 1.5/green, 2.5/green}
+            \fill[\color] (\x,0.5) circle (0.1);
+        
+        % Draw the distribution of b = 1
+        \foreach \x/\color in {7.5/blue, 8.5/blue, 9.5/blue}
+            \fill[\color] (\x,0.5) circle (0.1);
+        
+        % Add the text for the distribution
+        \node at (3,0.2) {$\{\textcolor{green}{*}\}$ - valid distributions of candidate values $b$ across different processes};
+        \node at (9,0.2) {$\{\textcolor{blue}{*}\}$ - invalid distribution of the same values; ratios at different processes differ by more than $\frac{1}{m}$};
+        
+        % Add the text for the probability distribution
+        \node at (6,1.5) {$b \sim \mathcal{B}\left(1,\frac{1}{7}\right)$};
+    \end{tikzpicture}
+    \caption{A picture explaining the thresholds in a single execution of the biased-majority-voting subroutine, see lines~\ref{line:if-1}-\ref{line:if-random} in Algorithm~\ref{alg:opt-omissions}. Different colors represent different outcomes (each obtained in a different epoch) of the counting of candidate values in preceding lines~\ref{line:group-bits-aggr} and~\ref{line:sum_ones_zeros}.}
+    \label{fig:bias_majority_voting_thresholds}
+\end{figure}
+
+\end{document}

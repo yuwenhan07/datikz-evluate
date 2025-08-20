@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the circles
+    \draw (0,0) circle (1);
+    \draw (2,0) circle (1);
+    \draw (-1,-1.732) circle (1);
+
+    % Label the vertices
+    \node at (0,1.732) {$v$};
+    \node at (1.5,-0.866) {$u_1$};
+    \node at (-0.5,-0.866) {$u_2$};
+
+    % Draw the paths
+    \draw[red,dotted,thick] (0,1.732) -- (1.5,0.866);
+    \draw[blue,dashed,thick] (0,1.732) -- (1.5,-0.866);
+    \draw[blue,dashed,thick] (1.5,0.866) -- (2,0);
+    \draw[red,dotted,thick] (1.5,-0.866) -- (2,0);
+
+    % Arrow indicating the direction
+    \draw[-{Triangle[length=4mm]}] (1.5,0.866) -- (2,0);
+    \draw[-{Triangle[length=4mm]}] (1.5,-0.866) -- (2,0);
+
+    % Highlight the segments with arrows
+    \draw[blue,thick] (0,1.732) -- (1.5,0.866);
+    \draw[red,thick] (0,1.732) -- (1.5,-0.866);
+    \draw[blue,thick] (1.5,0.866) -- (2,0);
+    \draw[red,thick] (1.5,-0.866) -- (2,0);
+
+    % Highlight the segments with arrows
+    \draw[blue,thick,->] (0,1.732) -- (1.5,0.866);
+    \draw[red,thick,->] (0,1.732) -- (1.5,-0.866);
+    \draw[blue,thick,->] (1.5,0.866) -- (2,0);
+    \draw[red,thick,->] (1.5,-0.866) -- (2,0);
+
+    % Highlight the segments with arrows
+    \draw[blue,thick,->] (0,1.732) -- (1.5,0.866);
+    \draw[red,thick,->] (0,1.732) -- (1.5,-0.866);
+    \draw[blue,thick,->] (1.5,0.866) -- (2,0);
+    \draw[red,thick,->] (1.5,-0.866) -- (2,0);
+
+\end{tikzpicture}
+
+\end{document}

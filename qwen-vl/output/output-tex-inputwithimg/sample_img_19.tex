@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.8]
+        % Draw the horizontal line at the top
+        \draw[thick, blue] (0,0) -- (6,0);
+        
+        % Draw the vertical lines
+        \draw[thick, blue] (0,0) -- (-1,3);
+        \draw[thick, red] (6,0) -- (7,3);
+        
+        % Draw the horizontal line at the bottom
+        \draw[thick, black] (0,-1) -- (8,-1);
+        
+        % Draw the circles at the ends of the lines
+        \filldraw[white] (0,0) circle (2pt);
+        \filldraw[white] (6,0) circle (2pt);
+        \filldraw[white] (0,-1) circle (2pt);
+        \filldraw[white] (6,-1) circle (2pt);
+        
+        % Add labels for the edges
+        \node at (-1,3) [above left] {\small $1$};
+        \node at (7,3) [above right] {\small $1$};
+        \node at (0,-1) [below left] {\small $-\frac{1}{2}$};
+        \node at (6,-1) [below right] {\small $0$};
+    \end{tikzpicture}
+\end{center}
+
+A game of \textup{\textsc{Hackenbush}}\xspace, with literal form $\{ 1-1,-\frac{1}{2} \mathrel\vert \{ 0,1 \mathrel\vert \} \}$, that is not a conflict placement game. This game is not a conflict placement game because the top edge cannot be cut if both bottom edges are cut, but the top edge can be cut if at most one of the bottom edges is cut.
+
+\end{document}

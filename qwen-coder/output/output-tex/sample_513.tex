@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white, text width=5em, text centered, minimum height=4em},
+    line/.style = {draw, thick, ->, >=stealth'},
+    decision/.style = {diamond, draw=black, fill=white, text width=5em, text badly centered, node distance=3cm, inner sep=0pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+\node [block] (info_bits) {Information Bits};
+\node [block, below left of=info_bits] (encode) {Encode};
+\node [block, below right of=info_bits] (index_stack) {Index and Stack Symbols};
+\node [block, below of=index_stack] (compress) {Compress};
+
+\node [decision, below of=compress, yshift=-1cm] (compression_done) {Compression Done?};
+\node [block, below of=compression_done, yshift=-1cm] (output) {Output};
+
+\draw [line] (info_bits) -- (encode);
+\draw [line] (encode) -- (index_stack);
+\draw [line] (index_stack) -- (compress);
+\draw [line] (compress) -- (compression_done);
+
+\draw [line] (compression_done) -| node[anchor=east] {Yes} (output);
+\draw [line] (compression_done) |- node[anchor=south] {No} (compress);
+
+\end{tikzpicture}
+\end{document}

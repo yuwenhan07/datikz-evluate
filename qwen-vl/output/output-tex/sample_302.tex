@@ -1,0 +1,19 @@
+python
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from sklearn.model_selection import train_test_split
+
+# Load the tokenizer and model
+tokenizer = AutoTokenizer.from_pretrained("EleutherAI/opt-6.7b")
+model = AutoModelForCausalLM.from_pretrained("EleutherAI/opt-6.7b")
+
+# Load the Alpaca-Data dataset
+# Assuming it's in a pandas DataFrame format
+alpaca_data = pd.read_csv('path_to_alpaca_data.csv')
+
+# Tokenize the data
+def tokenize_function(examples):
+    return tokenizer(examples['text'], truncation=True)
+
+tokenized_datasets = alpaca_data.map(tokenize_function, batched=True)
+train_dataset, val_dataset = train_test_split(tokenized_datasets, test_size=0.1, shuffle=True)

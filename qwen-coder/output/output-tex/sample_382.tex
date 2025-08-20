@@ -1,0 +1,39 @@
+To create a visually appealing representation of the three models you mentioned—treatment assignment ignorability, $Z \perp S(1), S(0), Y(1), Y(0) \mid X$—using Directed Acyclic Graphs (DAGs), Structural With Interventional Graphs (SWIGs), and Both-Worlds Graphs (BWGs)—we can use TikZ in LaTeX. Below is an example of how to generate these diagrams.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}[node distance=2cm, auto]
+            % Nodes
+            \node (X) [circle] {$X$};
+            \node (Z) [circle, below of=X] {$Z$};
+            \node (S1) [circle, right of=X, xshift=2cm] {$S(1)$};
+            \node (S0) [circle, left of=X, xshift=-2cm] {$S(0)$};
+            \node (Y1) [circle, above of=S1, yshift=2cm] {$Y(1)$};
+            \node (Y0) [circle, below of=S0, yshift=-2cm] {$Y(0)$};
+
+            % Edges
+            \draw[->] (X) -- (Z);
+            \draw[->] (X) -- (S1);
+            \draw[->] (X) -- (S0);
+            \draw[->] (S1) -- (Y1);
+            \draw[->] (S0) -- (Y0);
+        \end{tikzpicture}
+        \caption{DAG}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}[node distance=2cm, auto]
+            % Nodes
+            \node (X) [circle] {$X$};
+            \node (Z) [circle, below of=X] {$Z$};
+            \node (S1) [circle, right of=X, xshift=2cm] {$S(1)$};
+            \node (

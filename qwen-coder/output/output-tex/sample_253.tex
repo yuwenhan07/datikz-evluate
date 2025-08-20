@@ -1,0 +1,46 @@
+Certainly! Below is a TikZ LaTeX code that generates a diagram representing the graph $\mathcal{G}'$ with the specified properties, including the sets $S_1$ and $S_2$ as independent transversals.
+
+```latex
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes for S1
+    \node (u0) at (0,4) {\(u_0\)};
+    \node (u1) at (2,4) {\(u_1\)};
+    \node (u2) at (4,4) {\(u_2\)};
+    \node (u3) at (6,4) {\(u_3\)};
+    
+    % Nodes for S2
+    \node (v0) at (0,2) {\(v_0\)};
+    \node (v1) at (2,2) {\(v_1\)};
+    \node (y2) at (4,2) {\(y_2\)};
+    \node (y3) at (6,2) {\(y_3\)};
+    
+    % Nodes for U \setminus A
+    \node (B) at (4,0) {\(B\)};
+    
+    % Edges for S1
+    \draw (u0) -- (u1);
+    \draw (u1) -- (u2);
+    \draw (u2) -- (u3);
+    \draw (u3) -- (u0); % Cycle
+    
+    % Edges for S2
+    \draw (v0) -- (v1);
+    \draw (v1) -- (y2);
+    \draw (y2) -- (y3);
+    \draw (y3) -- (v0); % Cycle
+    
+    % Edges between S1 and B
+    \draw (u0) -- (B);
+    \draw (u2) -- (B);
+    
+    % Edges between S2 and B
+    \draw (v1) -- (B);
+    \draw (y3) -- (B);
+    
+    % Highlighting M(S1) and M(S2)
+    \fill[red] (u0.center) circle (2pt);
+    \fill[

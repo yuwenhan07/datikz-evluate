@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Traccia l'asse delle ascisse
+    \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+    
+    % Traccia l'asse delle ordinate (non necessario per questo esempio)
+    % \draw[->] (0,-1) -- (0,1) node[above] {$y$};
+    
+    % Disegna la linea verticale che divide i casi
+    \draw[dashed] (1.5,0) -- (1.5,1);
+    
+    % Etichetta la linea verticale
+    \node at (1.75,0.5) [below right] {Caso 1: $x \leq \frac{b}{2}$};
+    \node at (1.75,-0.5) [above right] {Caso 2: $x > \frac{b}{2}$};
+    
+    % Opzionale: disegna un punto sulla linea verticale per evidenziarla
+    \filldraw[black] (1.5,0) circle (2pt);
+\end{tikzpicture}
+
+\end{document}

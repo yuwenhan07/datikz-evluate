@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Define coordinates for the ellipses
+        \coordinate (A) at (-1,0);
+        \coordinate (B) at (1,0);
+        \coordinate (C) at (0,1);
+        \coordinate (D) at (0,-1);
+        
+        % Draw the first ellipse
+        \draw[thick,dotted] (A) ellipse (1.5 and 0.5);
+        \draw[thick,dashed] (A) -- (B);
+        \draw[thick,dashed] (C) -- (D);
+        
+        % Label the ellipse
+        \node at (0,0) {$\mathbf{S}$};
+        \node at (1.5,0.5) {$\ker{(w_1^g)}$};
+        \node at (-1.5,0.5) {$h(\mathbf{S})$};
+        
+        % Arrow indicating the transformation
+        \draw[->, thick] (4,0) -- (6,0);
+        \node at (5,0) {$g$};
+        
+        % Draw the second ellipse
+        \draw[thick,dotted] (7,0) ellipse (1.5 and 0.5);
+        \draw[thick,dashed] (7,0) -- (8,0);
+        \draw[thick,dashed] (7,1) -- (8,1);
+        
+        % Label the second ellipse
+        \node at (7,0) {$\ker{(w_1^f)}$};
+        \node at (9,1) {$g(\mathbf{S})$};
+        \node at (9,-1) {$gh(\mathbf{S})$};
+        
+        % Draw the third ellipse
+        \draw[thick] (7,0) ellipse (1.5 and 0.5);
+        
+        % Dashed lines to indicate angles
+        \draw[dashed] (7,0) -- (7,1);
+        \draw[dashed] (7,0) -- (7,-1);
+        \draw[dashed] (8,0) -- (8,1);
+        \draw[dashed] (8,0) -- (8,-1);
+        
+        % Cross marks to indicate the unit sphere
+        \filldraw[black] (0,0) circle (0.05);
+        \filldraw[black] (7,0) circle (0.05);
+        \filldraw[black] (8,0) circle (0.05);
+    \end{tikzpicture}
+    \caption{Illustration of Lemma \ref{lem:herali1} in the case \( E = \mathbb{R}^2 \), with \( \varepsilon_2 \) being the sine of the angle between the main axis of the ellipse \( h(\mathbf{S}) \) and the dashed line \( \ker(w_1^g) \) on the left of the arrow, with \( \varepsilon_2 \) being the angle between the dotted ellipse \( g(\mathbf{S}) \) and the dashed line \( \ker(w_1^f) \), and with \( \varepsilon_3 \) being the angle between the plain ellipse \( gh(\mathbf{S}) \) and the dashed line. We write \( \mathbf{S} \) for the unit sphere.}
+    \label{fig:herali1}
+\end{figure}
+
+\end{document}

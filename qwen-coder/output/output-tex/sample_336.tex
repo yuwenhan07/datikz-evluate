@@ -1,0 +1,23 @@
+To understand why \(\langle s, p_1, \ldots, p_{k-1} \rangle\) must be the most degree-central shortest path between \(s\) and \(p_{k-1}\) given that \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\) is the most degree-central shortest path between \(s\) and \(t\), let's break down the problem step by step.
+
+### Definitions
+
+1. **Most Degree-Central Path**: A path is considered most degree-central if it minimizes the sum of the degrees of all vertices along the path.
+2. **Shortest Path**: A path is considered shortest if it minimizes the number of edges (or hops) along the path.
+
+### Given Information
+
+- \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\) is the most degree-central shortest path from \(s\) to \(t\).
+- We need to show that \(\langle s, p_1, \ldots, p_{k-1} \rangle\) is the most degree-central shortest path from \(s\) to \(p_{k-1}\).
+
+### Reasoning
+
+1. **Path Components**:
+   - Let \(\langle s, p_1, \ldots, p_{k-1} \rangle\) be denoted as \(P_{s \to p_{k-1}}\).
+   - Let \(\langle p_{k-1}, p_k, t \rangle\) be denoted as \(P_{p_{k-1} \to t}\).
+
+2. **Combining Paths**:
+   - The combined path \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\) can be written as \(P_{s \to p_{k-1}} \cup P_{p_{k-1} \to t}\).
+
+3. **Degree-Centrality**:
+   - For \(\mathcal{N}(\langle s, p_1, \ldots, p_k, t \rangle)\) to be the most degree-central path from \(s\) to \(t\), the sum of the degrees of all vertices in \(P_{s \to p_{k-1}} \cup P_{p_{k-1} \to t}\

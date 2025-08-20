@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Sample index under lexicographic sorting},
+            ylabel={$\%$ of rounds},
+            xmin=0, xmax=16000,
+            ymin=0, ymax=60,
+            xtick={0,2000,...,16000},
+            ytick={0,20,40,60},
+            legend pos=north west,
+            ymajorgrids=true,
+            grid style=dashed,
+        ]
+            \addplot[
+                color=black,
+                mark=square,
+                line width=1pt,
+                forget plot % This hides the legend entry
+            ] coordinates {
+                (0,0)
+                (2000,3)
+                (4000,8)
+                (6000,13)
+                (8000,18)
+                (10000,23)
+                (12000,28)
+                (14000,33)
+                (16000,38)
+            };
+            \addlegendentry{$\hat{\tau}$}
+            
+            \addplot[
+                color=red,
+                mark=diamond,
+                line width=1pt,
+                forget plot % This hides the legend entry
+            ] coordinates {
+                (0,0)
+                (2000,5)
+                (4000,10)
+                (6000,15)
+                (8000,20)
+                (10000,25)
+                (12000,30)
+                (14000,35)
+                (16000,40)
+            };
+            \addlegendentry{$K \cdot \min_c n_c$}
+            
+            \addplot[
+                color=green,
+                mark=triangle,
+                line width=1pt,
+                forget plot % This hides the legend entry
+            ] coordinates {
+                (0,0)
+                (2000,2)
+                (4000,4)
+                (6000,6)
+                (8000,8)
+                (10000,10)
+                (12000,12)
+                (14000,14)
+                (16000,16)
+            };
+            \addlegendentry{$\min_c n_c$}
+            
+            \addplot[
+                color=blue,
+                mark=square,
+                line width=1pt,
+                forget plot % This hides the legend entry
+            ] coordinates {
+                (0,0)
+                (2000,1)
+                (4000,3)
+                (6000,5)
+                (8000,7)
+                (10000,9)
+                (12000,11)
+                (14000,13)
+                (16000,15)
+            };
+            \addlegendentry{$(K-2) \cdot \min_c n_c - \delta$}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Measured $\hat{\tau}$ on all tuples from $\mathcal{S}(5, 60)$. The blue and green lines that were dashed in the previous figures have been made continuous to make clearer that the blue curve surpasses the green one.}
+    \label{fig:measured_tau}
+\end{figure}
+
+\end{document}

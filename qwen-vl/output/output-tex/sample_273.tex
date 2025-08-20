@@ -1,0 +1,30 @@
+The image you've described appears to illustrate a machine learning framework for generating data and performing inference within a graphical model. Let's break down the components:
+
+### Left: Data Generation Pipeline
+
+1. **Data Generation**: This part of the pipeline likely involves creating synthetic or real-world data samples. The process might involve:
+   - **Seed Data ($\mathcal{D}_\text{seed}$)**: A set of initial examples that define the structure and behavior of the data.
+   - **Prompting an LLM (Large Language Model)**: Using a large language model to generate new data based on the seed examples. This could involve asking the LLM to generate new code snippets or data points that follow the patterns observed in the seed data.
+
+2. **Program Execution**: The generated data might be executed as programs or scripts to produce outputs. For instance, if the data is code, it would be executed to generate results or outcomes.
+
+### Right: Fine-Tuned Network $q_\theta$
+
+1. **Graphical Model**: The fine-tuned network $q_\theta$ is designed to perform inference within a graphical model. Graphical models represent complex relationships between variables using nodes (variables) and edges (dependencies).
+
+2. **Prior Over Programs ($\mathcal{G}$)**: The prior distribution over programs is defined by prompting an LLM with example code from the seed data ($\mathcal{D}_\text{seed}$). This step helps the model understand the typical structures and behaviors of the programs it will encounter.
+
+3. **Likelihood Function ($p(Y|\rho, X)$)**: The likelihood function defines how probable a given output ($Y$) is given a specific program ($\rho$) and input ($X$). This is typically achieved through program execution. If the data is code, this means running the program with different inputs to observe its behavior and outcomes.
+
+### Summary
+
+- **Data Generation Pipeline**:
+  - Uses seed data and an LLM to generate new data.
+  - Executes the generated data as programs to produce outputs.
+
+- **Fine-Tuned Network $q_\theta$**:
+  - Performs inference within a graphical model.
+  - Defines a prior over programs using seed data and an LLM.
+  - Defines the likelihood through program execution.
+
+This setup is particularly useful in scenarios where the data generation process itself is complex and requires understanding of the underlying program logic. The combination of a generative model and a graphical model allows for both data creation and reasoning about the generated data.

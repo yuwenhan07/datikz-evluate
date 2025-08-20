@@ -1,0 +1,48 @@
+The geometrical equivalence you're referring to pertains to the relationship between the Ewald sphere curvature and the first Born approximation of the multislice formalism in X-ray crystallography. This equivalence is particularly useful in understanding how X-rays diffract off a crystal lattice.
+
+### Ewald Sphere:
+The Ewald sphere is a geometric representation used in reciprocal space analysis. It is a sphere in reciprocal space with its center at the origin and radius equal to the magnitude of the reciprocal lattice vector \( \mathbf{G} \). The intersection of this sphere with the reciprocal lattice plane gives the positions of the diffraction peaks.
+
+### First Born Approximation:
+In the context of the multislice formalism, the first Born approximation is an approximation where the exit wave function \( \psi_{\text{exit}} \) is calculated by summing the contributions from each slice of the crystal. The exit wave function can be expressed as:
+
+\[ \psi_{\text{exit}}(\mathbf{r}) = \sum_{n} \psi_n(\mathbf{r}) e^{i \mathbf{G}_n \cdot \mathbf{r}} \]
+
+where \( \psi_n(\mathbf{r}) \) is the wave function at the nth slice, and \( \mathbf{G}_n \) is the reciprocal lattice vector corresponding to that slice.
+
+### Paraboloid Approximation:
+The exit wave function \( \psi_{\text{exit}} \) can be approximated by a paraboloid in Fourier space. This approximation is valid when the angle \( \theta \) between the incident X-ray beam and the normal to the crystal surface is small. In this case, the \( z \)-component of the wavevector \( k_z \) can be approximated as:
+
+\[ k_z \approx \tan \left( \frac{\theta}{2} \right) \approx \frac{k \theta}{2} \]
+
+where \( k \) is the wavevector of the X-ray beam and \( \theta \) is the angle between the X-ray beam and the normal to the crystal surface.
+
+### Equivalence:
+For small angles \( \theta \), the surface of the paraboloid in Fourier space approaches that of the Ewald sphere. This is because the paraboloid's equation in Fourier space can be written as:
+
+\[ k_x^2 + k_y^2 + k_z^2 \approx 4 k^2 \left( \frac{k \theta}{2} \right)^2 \]
+
+which simplifies to:
+
+\[ k_x^2 + k_y^2 + k_z^2 \approx 2 k^2 \theta^2 \]
+
+This is very similar to the equation of the Ewald sphere in reciprocal space:
+
+\[ k_x^2 + k_y^2 + k_z^2 = 4 \pi^2 |\mathbf{G}|^2 \]
+
+where \( |\mathbf{G}| \) is the magnitude of the reciprocal lattice vector.
+
+### Example Calculation:
+For a 200 keV electron beam (\( \lambda \approx 0.025 \, \text{\AA} \)) and \( k = 1 \, \text{\AA}^{-1} \):
+
+- The wavelength \( \lambda \) is approximately \( 0.025 \, \text{\AA} \).
+- The wavevector \( k \) is \( 1 \, \text{\AA}^{-1} \).
+
+The angle \( \theta \) is given by:
+
+\[ \theta \approx \frac{\lambda k}{2} = \frac{0.025 \times 1}{2} = 0.0125 \, \text{radians} \]
+
+This small angle ensures that the paraboloid approximation closely matches the Ewald sphere geometry, making it a good approximation for the exit wave function in the first Born approximation of the multislice formalism.
+
+### Conclusion:
+The geometrical equivalence between the Ewald sphere curvature and the first Born approximation of the multislice formalism is valid for small angles between the X-ray beam and the crystal surface. This equivalence simplifies the calculations in X-ray crystallography by allowing the use of paraboloid approximations instead of solving the full Ewald sphere equations.

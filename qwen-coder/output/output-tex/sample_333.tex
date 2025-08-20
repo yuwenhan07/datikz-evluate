@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define the positions of the nodes
+    \node (minusone) at (-2,0) {$-1^*$};
+    \node (one) at (0,0) {$1^*$};
+    \node (two) at (2,0) {$2^*$};
+
+    % Draw lines connecting the nodes to represent the region M^I(i)
+    \draw[->] (minusone.east) -- (one.west);
+    \draw[->] (one.east) -- (two.west);
+
+    % Add labels for the region M^I(i)
+    \node[above right] at (1,0.5) {Region $M^{\rm I}(i)$};
+\end{tikzpicture}
+\end{document}

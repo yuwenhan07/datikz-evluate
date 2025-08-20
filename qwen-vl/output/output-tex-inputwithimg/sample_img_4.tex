@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.8]
+        % Define the normal distribution function
+        \newcommand{\gauss}[4]{1/(#4*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#4^2))}
+        
+        % Draw the heterogeneous preferences
+        \draw[thick] plot[domain=-3:3, samples=100] (\x, {\gauss{-1}{1}{0.5}});
+        \node at (-3.5,-0.5) {Heterogeneous};
+        \node at (-3.5,-1) {preferences};
+        
+        % Draw the equal sign
+        \draw[->, thick] (3,0) -- (4,0);
+        \node at (3.5,0) {$=$};
+        
+        % Draw the x-related preference
+        \draw[thick] plot[domain=-3:3, samples=100] (\x, {\gauss{1}{1}{0.5}});
+        \node at (7,-0.5) {$x_{ijt}$};
+        \node at (7,-1) {$\alpha$-related\\preference};
+        
+        % Draw the plus sign
+        \draw[->, thick] (10,0) -- (11,0);
+        \node at (10.5,0) {$+$};
+        
+        % Draw the z-related preference
+        \draw[thick] plot[domain=-3:3, samples=100] (\x, {\gauss{5}{1}{0.5}});
+        \node at (14,-0.5) {$z_{ijt}$};
+        \node at (14,-1) {$\alpha$-related\\preference};
+        
+        % Draw the red arrow from mixed logit to constituent distributions
+        \draw[->, red, thick, shorten >=1pt, shorten <=1pt] (9,1.5) -- (12,1.5);
+        \node at (10.5,2) {Mixed logit models estimate};
+        \node at (10.5,1.5) {constituent mixing distribution parameters};
+        
+        % Draw the blue arrow from HAVAN to constituent distributions
+        \draw[->, blue, thick, shorten >=1pt, shorten <=1pt] (1,1.5) -- (4,1.5);
+        \node at (2.5,2) {HAVAN Framework directly relates model inputs};
+        \node at (2.5,1.5) {to distributional parameters of aggregate observables-related preference};
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

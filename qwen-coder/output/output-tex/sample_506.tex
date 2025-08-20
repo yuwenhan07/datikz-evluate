@@ -1,0 +1,33 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  block/.style={rectangle, draw=black, text width=4em, text centered, minimum height=3em},
+  line/.style={draw, thick, ->, >=stealth'},
+  cloud/.style={cloud, draw=black, aspect=2},
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+\node [block] (teacher) {Teacher};
+\node [block, below=of teacher] (student) {Student};
+
+\node [block, right=of teacher] (data) {Data};
+\node [block, right=of student] (examples) {Examples};
+
+\node [block, above=of data] (labels) {Labels};
+\node [block, above=of examples] (patterns) {Patterns};
+
+\path [line] (teacher) -- node[anchor=east] {Generates} (examples);
+\path [line] (teacher) -- node[anchor=south] {Matches} (patterns);
+\path [line] (student) -- node[anchor=west] {Reconstructs} (patterns);
+\path [line] (student) -- node[anchor=north] {Minimizes} (examples);
+
+\path [line] (data) -- node[anchor=west] {Provides} (labels);
+\path [line] (data) -- node[anchor=north] {Defines} (patterns);
+\path [line] (examples) -- node[anchor=west] {Trains} (labels);
+\path [line] (examples) -- node[anchor=north] {Determines} (patterns);
+
+\end{tikzpicture}
+\end{document}

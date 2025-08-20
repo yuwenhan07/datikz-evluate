@@ -1,0 +1,306 @@
+To generate LaTeX code for the given image and caption, you can use the `tikz` package in LaTeX. Below is the LaTeX code that produces the image:
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.8]
+        % Define coordinates for the vertices
+        \coordinate (A) at (-2, 0);
+        \coordinate (B) at (-1, 1);
+        \coordinate (C) at (0, 2);
+        \coordinate (D) at (1, 1);
+        \coordinate (E) at (2, 0);
+        
+        % Draw the first diamond shape
+        \draw[fill=black] (A) circle (0.1);
+        \draw[fill=black] (B) circle (0.1);
+        \draw[fill=black] (C) circle (0.1);
+        \draw[fill=black] (D) circle (0.1);
+        \draw[fill=black] (E) circle (0.1);
+        
+        % Draw the edges of the diamond
+        \draw (A) -- node[left] {$\frac{1}{c}(1,c-l')$} (B);
+        \draw (B) -- node[above] {$n$} (C);
+        \draw (C) -- node[right] {$m$} (D);
+        \draw (D) -- node[above] {$n$} (E);
+        \draw (E) -- node[left] {$\frac{1}{c}(1,l)$} (A);
+        
+        % Draw the second diamond shape
+        \begin{scope}[xshift=4cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l') \rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the third diamond shape
+        \begin{scope}[xshift=8cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the fourth diamond shape
+        \begin{scope}[xshift=12cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the fifth diamond shape
+        \begin{scope}[xshift=16cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the sixth diamond shape
+        \begin{scope}[xshift=20cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the seventh diamond shape
+        \begin{scope}[xshift=24cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the eighth diamond shape
+        \begin{scope}[xshift=28cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the ninth diamond shape
+        \begin{scope}[xshift=32cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the tenth diamond shape
+        \begin{scope}[xshift=36cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the eleventh diamond shape
+        \begin{scope}[xshift=40cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the twelfth diamond shape
+        \begin{scope}[xshift=44cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A);
+            
+            \node at (0, 3) {$\rightarrow \frac{1}{c}(1,l')$};
+        \end{scope}
+        
+        % Draw the thirteenth diamond shape
+        \begin{scope}[xshift=48cm]
+            \coordinate (A) at (-2, 0);
+            \coordinate (B) at (-1, 1);
+            \coordinate (C) at (0, 2);
+            \coordinate (D) at (1, 1);
+            \coordinate (E) at (2, 0);
+            
+            \draw[fill=black] (A) circle (0.1);
+            \draw[fill=black] (B) circle (0.1);
+            \draw[fill=black] (C) circle (0.1);
+            \draw[fill=black] (D) circle (0.1);
+            \draw[fill=black] (E) circle (0.1);
+            
+            \draw (A) -- node[left] {$\frac{1}{c}(1,c-l)$} (B);
+            \draw (B) -- node[above] {$n$} (C);
+            \draw (C) -- node[right] {$m$} (D);
+            \draw (D) -- node[above] {$n$} (E);
+            \draw (E) -- node[left] {$\frac{1}{c}(1,l')$} (A

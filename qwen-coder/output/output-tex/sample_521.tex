@@ -1,0 +1,38 @@
+To illustrate this concept in a TikZ LaTeX diagram, we need to create a visual representation that captures the relationships between the different elements involved: the sets of distributions, the transformation model, the group actions, and the coboundary.
+
+Here's a TikZ code snippet that attempts to visualize these concepts:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{arrows.meta,shapes.geometric}
+
+\tikzset{
+    distribution/.style={draw, fill=blue!20, rounded corners},
+    transformation/.style={draw, fill=green!20, rounded corners},
+    groupAction/.style={draw, fill=red!20, rounded corners},
+    coboundary/.style={draw, fill=orange!20, rounded corners},
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=3cm]
+
+    % Nodes representing sets of distributions
+    \node[distribution] (PYX) {Set of Distributions};
+    \node[distribution, below left of=PYX] (PYPhiX) {Transformed Set of Distributions};
+
+    % Node representing the transformation model
+    \node[transformation, right of=PYX, xshift=4cm] (TransformationModel) {Transformation Model};
+
+    % Nodes representing group actions
+    \node[groupAction, above right of=TransformationModel, yshift=-1cm] (Gx) {$g_x$ Action};
+    \node[groupAction, below right of=TransformationModel, yshift=1cm] (GPhiX) {$g_{\phi x}$ Action};
+
+    % Node representing the coboundary
+    \node[coboundary, below of=TransformationModel, xshift=4cm] (Coboundary) {Coboundary};
+
+    % Arrows connecting nodes
+    \draw[-Stealth] (PYX) -- node[above] {$P_{Y|X}(y|x)$} (PYPhiX);
+    \draw[-Stealth] (PYPhiX) -- node[below] {$P_{Y|X}(y|\phi x)$} (PYX);
+    \draw[-Stealth] (PYX) -- node[right] {$g_x$} (Gx);
+    \draw[-Stealth] (PYPhiX) -- node[left] {$g_{\phi x}$} (GPhiX);
+    \draw[-Stealth] (

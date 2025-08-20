@@ -1,0 +1,18 @@
+\documentclass[tikz,border=5]{standalone}
+\usetikzlibrary{matrix}
+
+\begin{document}
+\begin{tikzpicture}
+    % Define the matrix environment
+    \matrix (m) [matrix of nodes,
+                 nodes in empty cells,
+                 column sep=-2pt,
+                 row sep=-2pt] {
+        \node[draw, rectangle, minimum size=3em] { $ \boldsymbol{L}_1 $ }; & & \\
+        & \node[draw, rectangle, minimum size=3em] { $ \boldsymbol{U}_2 $ } & \\
+    };
+
+    % Draw arrows between blocks to show jumps
+    \draw[-stealth] (m-1-1.south) -- (m-2-2.north);
+\end{tikzpicture}
+\end{document}

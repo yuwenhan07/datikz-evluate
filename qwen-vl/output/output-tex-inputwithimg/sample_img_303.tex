@@ -1,0 +1,243 @@
+To generate LaTeX code for the given image and caption, you can use the `tikz` package for drawing the diagrams and the `subcaption` package to create subfigures. Below is the LaTeX code that produces the image and the corresponding caption.
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{subcaption}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            % Draw the grid
+            \draw[dashed] (0,0) grid (2,2);
+            
+            % Draw the shaded region
+            \fill[gray!30] (0,0) rectangle (1,1);
+            
+            % Label the corners
+            \node at (0.5,-0.2) {$1$};
+            \node at (1.5,-0.2) {$2$};
+            \node at (-0.2,0.5) {$4$};
+            \node at (-0.2,1.5) {$n_4$};
+            
+            % Label the half-spaces
+            \node at (1.5,1.5) {$n_3$};
+            \node at (1.5,0.5) {$n_2$};
+            \node at (0.5,1.5) {$n_1$};
+            \node at (0.5,0.5) {$n_4$};
+            
+            % Draw the arrows
+            \draw[-{Stealth}] (1,1) -- ++(0.5,0.5) node[midway,above] {$3$};
+            \draw[-{Stealth}] (1,1) -- ++(0.5,-0.5) node[midway,below] {$2$};
+            \draw[-{Stealth}] (1,1) -- ++(-0.5,0.5) node[midway,left] {$1$};
+            \draw[-{Stealth}] (1,1) -- ++(-0.5,-0.5) node[midway,right] {$4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            
+            \node at (0.75,0.75) {$n_1$};
+            \node at (0.75,0.75) {$n_2$};
+            \node at (0.75,0.75) {$n_3$};
+            \node at (0.75,0.75) {$n_4$};
+            
+            \node at (0.75,0.75) {$\uparrow$};
+            \node at (0.75,0.75) {$\downarrow$};
+            \node at (0.75,0.75) {$\leftarrow$};
+            \node at (0.75,0.75) {$\rightarrow$};
+            
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at (0.75,0.75) {$\frac{1}{2}$};
+            \node at

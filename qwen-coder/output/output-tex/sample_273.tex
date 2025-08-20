@@ -1,0 +1,35 @@
+\documentclass[tikz,border=2cm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw, fill=blue!20, 
+                    text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style = {draw, -Stealth', thick},
+    cloud/.style = {draw, ellipse, fill=red!20, node distance=3cm,
+                    minimum height=2em, text centered}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+    % Left side: Data Generation Pipeline
+    \node (data) [cloud] {Data Generation};
+    \node (pipeline) [block, below of=data] {Pipeline};
+
+    % Right side: Fine-Tuned Network q_theta
+    \node (network) [cloud, right of=pipeline, xshift=6cm] {Fine-Tuned Network};
+    \node (inference) [block, below of=network] {Inference};
+    \node (graphical_model) [block, left of=inference, xshift=-3cm] {Graphical Model};
+    
+    % Connections for Data Generation Pipeline
+    \draw [line] (data) -- (pipeline);
+    \draw [line] (pipeline) -- node[anchor=south] {Prior Over Programs} (graphical_model);
+    \draw [line] (graphical_model.east) |- (network.west);
+
+    % Connections for Fine-Tuned Network q_theta
+    \draw [line] (network) -- (inference);
+    \draw [line] (inference) -- node[anchor=north] {Likelihood} (pipeline);
+    \draw [line] (pipeline.south) |- (graphical_model.south);
+
+\end{tikzpicture}
+\end{document}

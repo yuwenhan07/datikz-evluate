@@ -1,0 +1,38 @@
+The Weitzman indices, denoted as \(\sigma_i^{(1)}, \dots\), are used in decision-making processes, particularly in sequential decision problems where one must decide whether to open or not open the next box in a sequence. These indices help in evaluating the potential value of opening each subsequent box.
+
+In the context of a Pandora basket \(i\), the Weitzman indices are used to determine the optimal stopping point. Here's a breakdown of the key components:
+
+1. **Weitzman Indices (\(\sigma_i^{(\ell)}\))**: These indices represent the expected value of the next box being opened, given the information available up to that point. They are calculated based on the values of the previously opened boxes and the probabilities associated with each box.
+
+2. **Minimum Index So Far (\(\gamma_i^{(\ell)}\))**: This is the lowest Weitzman index encountered up to the \(\ell\)-th box. It represents the best value found so far in the sequence of boxes considered.
+
+3. **Capped Value (\(\kappa_i^{(\ell)}\))**: This is the minimum of the current \(\gamma_i^{(\ell)}\) and the Weitzman index of the next box to be considered (\(\sigma_i^{(\ell+1)}\)). It represents the minimum value that could still be achieved by continuing to open boxes.
+
+4. **Yellow Regions**: These regions indicate potential exposure points. If the Weitzman index of the next box (\(\sigma_i^{(\ell)}\)) is higher than the current \(\gamma_i^{(\ell-1)}\), it means that there might be a better value ahead. In this case, failing to continue opening could result in exposure, meaning that the current \(\gamma_i^{(\ell-1)}\) might not be the optimal choice.
+
+### Decision Rule:
+The decision rule is to stop opening boxes once the Weitzman index of the next box is lower than or equal to the current \(\gamma_i^{(\ell-1)}\). This ensures that the cumulative value does not decrease, and the decision-maker maximizes their expected value.
+
+### Example:
+Suppose we have the following Weitzman indices for the first three boxes:
+- \(\sigma_1^{(1)} = 5\)
+- \(\sigma_2^{(1)} = 7\)
+- \(\sigma_3^{(1)} = 6\)
+
+And the corresponding \(\gamma_i^{(\ell)}\) values are:
+- \(\gamma_1^{(0)} = 0\) (initially, no boxes have been opened)
+- \(\gamma_2^{(1)} = 5\) (the minimum of \(\sigma_1^{(1)} = 5\) and \(\sigma_2^{(1)} = 7\))
+- \(\gamma_3^{(2)} = 5\) (the minimum of \(\gamma_2^{(1)} = 5\) and \(\sigma_3^{(1)} = 6\))
+
+The capped values \(\kappa_i^{(\ell)}\) are:
+- \(\kappa_1^{(0)} = 0\)
+- \(\kappa_2^{(1)} = 5\)
+- \(\kappa_3^{(2)} = 5\)
+
+If we consider the fourth box with \(\sigma_4^{(1)} = 8\):
+- \(\gamma_4^{(3)} = 5\) (since \(\sigma_4^{(1)} = 8 > \gamma_3^{(2)} = 5\))
+- \(\kappa_4^{(3)} = 5\)
+
+Since \(\sigma_4^{(1)} = 8 > \gamma_3^{(2)} = 5\), continuing to open the fourth box would expose us to a lower value. Therefore, we stop at the third box, and the optimal decision is to open the first three boxes and stop after the third box.
+
+This approach helps in making informed decisions by balancing the potential gains from opening more boxes against the risk of exposing oneself to a lower value.

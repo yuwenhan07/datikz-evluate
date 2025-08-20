@@ -1,0 +1,33 @@
+Certainly! Below is a TikZ LaTeX code that visualizes the described synchronization scenario with two GPUs, each having two streams, and includes inter-rank and intra-rank/inter-stream synchronization.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm, auto]
+
+    % Define styles for nodes and edges
+    \tikzset{
+        gpu/.style={rectangle, draw, fill=gray!30, minimum width=4cm, minimum height=1cm},
+        kernel/.style={rectangle, draw, fill=blue!50, minimum width=2cm, minimum height=0.5cm},
+        sync/.style={->, thick, shorten >=1pt},
+        inter_sync/.style={->, red, dashed, thick, shorten >=1pt},
+        intra_sync/.style={->, blue, dotted, thick, shorten >=1pt}
+    }
+
+    % Nodes representing GPUs and their streams
+    \node (gpu1) [gpu] at (0, 4) {GPU 1};
+    \node (gpu2) [gpu] at (6, 4) {GPU 2};
+
+    \node (s_cp1) [kernel, below of=gpu1, yshift=-1cm] {$S_{cp1}$};
+    \node (k_c1_1) [kernel, below of=s_cp1, yshift=-1cm] {Kernel 1};
+    \node (k_c1_2) [kernel, below of=k_c1_1, yshift=-1cm] {Kernel 2};
+
+    \node (s_cm1) [kernel, below of=k_c1_2, yshift=-1cm] {$S_{cm1}$};
+    \node (k_cm1_1) [kernel, below of=s_cm1, yshift=-1cm] {Kernel 1};
+    \node (k_cm1_2) [kernel, below of=k_cm1_1, yshift=-1cm] {Kernel 2};
+
+    \node (s_cp2) [kernel, below of=gpu2, yshift=-1cm] {$S_{cp2}$};
+    \node (k_c2_1) [kernel, below of=s_cp2, yshift=-1cm] {Kernel 1};
+    \node (k_c2

@@ -1,0 +1,36 @@
+Certainly! Below is a TikZ LaTeX code that generates an elongated honeycomb structure within a cube. Each subdomain \(\Omega_m\) is a smaller cube containing two particles, one green and one red, positioned at \(z_{m_1}\) and \(z_{m_2}\), respectively. The vectors between these particles represent the angles of the honeycomb elements.
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{calc,angles,quotes}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define the main cube
+    \draw[thick] (0,0,0) -- (4,0,0) -- (4,4,0) -- (0,4,0) -- cycle;
+    \draw[thick] (0,0,0) -- (0,0,4);
+    \draw[thick] (4,0,0) -- (4,0,4);
+    \draw[thick] (0,4,0) -- (0,4,4);
+    \draw[thick] (4,4,0) -- (4,4,4);
+    
+    % Subdomains and particles
+    \foreach \i in {0,1} {
+        \foreach \j in {0,1} {
+            \foreach \k in {0,1} {
+                % Draw subcube
+                \draw[thick,fill=gray!20] (\i*2,\j*2,\k*2) rectangle node[pos=.5] {$\Omega_m$} (\i*2+2,\j*2+2,\k*2+2);
+                
+                % Particles
+                \coordinate (p1) at (\i*2+1,\j*2+1,\k*2+1);
+                \coordinate (p2) at (\i*2+1,\j*2+1,\k*2+3);
+                
+                % Draw particles
+                \fill[green] (p1) circle (2pt);
+                \fill[red] (p2) circle (2pt);
+                
+                % Draw vector
+                \draw[-stealth,blue] (p1) -- node[midway,above,sloped] {\small $\theta_m$} (p2);
+            }
+        }
+    }
+\

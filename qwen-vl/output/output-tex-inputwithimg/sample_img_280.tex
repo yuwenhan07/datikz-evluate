@@ -1,0 +1,209 @@
+To generate LaTeX code for the image you provided, we can use TikZ to draw the graph. Below is the LaTeX code that creates the image:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm, auto]
+    \tikzstyle{every node}=[circle, fill=black, minimum size=5pt, inner sep=0pt]
+
+    % Nodes
+    \node (u) [label=left:$u$, label=below:$0$] {};
+    \node (v) [right=of u, label=left:$v$, label=below:$0$] {};
+    \node (w) [right=of v, label=left:$w$, label=below:$0$] {};
+    \node (x) [right=of w, label=left:$x$, label=below:$0$] {};
+    \node (y) [right=of x, label=left:$y$, label=below:$0$] {};
+
+    % Edges
+    \draw[->, dashed] (u) -- (v);
+    \draw[->, dashed] (v) -- (w);
+    \draw[->, dashed] (w) -- (x);
+    \draw[->, dashed] (x) -- (y);
+
+    % Red nodes
+    \node (u_red) [red, right=of u, label=left:$u$, label=below:$0$] {};
+    \node (v_red) [red, right=of v, label=left:$v$, label=below:$0$] {};
+    \node (w_red) [red, right=of w, label=left:$w$, label=below:$0$] {};
+    \node (x_red) [red, right=of x, label=left:$x$, label=below:$0$] {};
+    \node (y_red) [red, right=of y, label=left:$y$, label=below:$0$] {};
+
+    % Additional nodes and edges for the second row
+    \node (u2) [below=of u, label=left:$u$, label=below:$0$] {};
+    \node (v2) [right=of u2, label=left:$v$, label=below:$0$] {};
+    \node (w2) [right=of v2, label=left:$w$, label=below:$0$] {};
+    \node (x2) [right=of w2, label=left:$x$, label=below:$0$] {};
+    \node (y2) [right=of x2, label=left:$y$, label=below:$0$] {};
+
+    \draw[->, dashed] (u2) -- (v2);
+    \draw[->, dashed] (v2) -- (w2);
+    \draw[->, dashed] (w2) -- (x2);
+    \draw[->, dashed] (x2) -- (y2);
+
+    % Red nodes for the second row
+    \node (u2_red) [red, below=of u_red, label=left:$u$, label=below:$0$] {};
+    \node (v2_red) [red, below=of v_red, label=left:$v$, label=below:$0$] {};
+    \node (w2_red) [red, below=of w_red, label=left:$w$, label=below:$0$] {};
+    \node (x2_red) [red, below=of x_red, label=left:$x$, label=below:$0$] {};
+    \node (y2_red) [red, below=of y_red, label=left:$y$, label=below:$0$] {};
+
+    % Additional nodes and edges for the third row
+    \node (u3) [below=of u2, label=left:$u$, label=below:$0$] {};
+    \node (v3) [right=of u3, label=left:$v$, label=below:$0$] {};
+    \node (w3) [right=of v3, label=left:$w$, label=below:$0$] {};
+    \node (x3) [right=of w3, label=left:$x$, label=below:$0$] {};
+    \node (y3) [right=of x3, label=left:$y$, label=below:$0$] {};
+
+    \draw[->, dashed] (u3) -- (v3);
+    \draw[->, dashed] (v3) -- (w3);
+    \draw[->, dashed] (w3) -- (x3);
+    \draw[->, dashed] (x3) -- (y3);
+
+    % Red nodes for the third row
+    \node (u3_red) [red, below=of u2_red, label=left:$u$, label=below:$0$] {};
+    \node (v3_red) [red, below=of v2_red, label=left:$v$, label=below:$0$] {};
+    \node (w3_red) [red, below=of w2_red, label=left:$w$, label=below:$0$] {};
+    \node (x3_red) [red, below=of x2_red, label=left:$x$, label=below:$0$] {};
+    \node (y3_red) [red, below=of y2_red, label=left:$y$, label=below:$0$] {};
+
+    % Additional nodes and edges for the fourth row
+    \node (u4) [below=of u3, label=left:$u$, label=below:$0$] {};
+    \node (v4) [right=of u4, label=left:$v$, label=below:$0$] {};
+    \node (w4) [right=of v4, label=left:$w$, label=below:$0$] {};
+    \node (x4) [right=of w4, label=left:$x$, label=below:$0$] {};
+    \node (y4) [right=of x4, label=left:$y$, label=below:$0$] {};
+
+    \draw[->, dashed] (u4) -- (v4);
+    \draw[->, dashed] (v4) -- (w4);
+    \draw[->, dashed] (w4) -- (x4);
+    \draw[->, dashed] (x4) -- (y4);
+
+    % Red nodes for the fourth row
+    \node (u4_red) [red, below=of u3_red, label=left:$u$, label=below:$0$] {};
+    \node (v4_red) [red, below=of v3_red, label=left:$v$, label=below:$0$] {};
+    \node (w4_red) [red, below=of w3_red, label=left:$w$, label=below:$0$] {};
+    \node (x4_red) [red, below=of x3_red, label=left:$x$, label=below:$0$] {};
+    \node (y4_red) [red, below=of y3_red, label=left:$y$, label=below:$0$] {};
+
+    % Additional nodes and edges for the fifth row
+    \node (u5) [below=of u4, label=left:$u$, label=below:$0$] {};
+    \node (v5) [right=of u5, label=left:$v$, label=below:$0$] {};
+    \node (w5) [right=of v5, label=left:$w$, label=below:$0$] {};
+    \node (x5) [right=of w5, label=left:$x$, label=below:$0$] {};
+    \node (y5) [right=of x5, label=left:$y$, label=below:$0$] {};
+
+    \draw[->, dashed] (u5) -- (v5);
+    \draw[->, dashed] (v5) -- (w5);
+    \draw[->, dashed] (w5) -- (x5);
+    \draw[->, dashed] (x5) -- (y5);
+
+    % Red nodes for the fifth row
+    \node (u5_red) [red, below=of u4_red, label=left:$u$, label=below:$0$] {};
+    \node (v5_red) [red, below=of v4_red, label=left:$v$, label=below:$0$] {};
+    \node (w5_red) [red, below=of w4_red, label=left:$w$, label=below:$0$] {};
+    \node (x5_red) [red, below=of x4_red, label=left:$x$, label=below:$0$] {};
+    \node (y5_red) [red, below=of y4_red, label=left:$y$, label=below:$0$] {};
+
+    % Additional nodes and edges for the sixth row
+    \node (u6) [below=of u5, label=left:$u$, label=below:$0$] {};
+    \node (v6) [right=of u6, label=left:$v$, label=below:$0$] {};
+    \node (w6) [right=of v6, label=left:$w$, label=below:$0$] {};
+    \node (x6) [right=of w6, label=left:$x$, label=below:$0$] {};
+    \node (y6) [right=of x6, label=left:$y$, label=below:$0$] {};
+
+    \draw[->, dashed] (u6) -- (v6);
+    \draw[->, dashed] (v6) -- (w6);
+    \draw[->, dashed] (w6) -- (x6);
+    \draw[->, dashed] (x6) -- (y6);
+
+    % Red nodes for the sixth row
+    \node (u6_red) [red, below=of u5_red, label=left:$u$, label=below:$0$] {};
+    \node (v6_red) [red, below=of v5_red, label=left:$v$, label=below:$0$] {};
+    \node (w6_red) [red, below=of w5_red, label=left:$w$, label=below:$0$] {};
+    \node (x6_red) [red, below=of x5_red, label=left:$x$, label=below:$0$] {};
+    \node (y6_red) [red, below=of y5_red, label=left:$y$, label=below:$0$] {};
+
+    % Additional nodes and edges for the seventh row
+    \node (u7) [below=of u6, label=left:$u$, label=below:$0$] {};
+    \node (v7) [right=of u7, label=left:$v$, label=below:$0$] {};
+    \node (w7) [right=of v7, label=left:$w$, label=below:$0$] {};
+    \node (x7) [right=of w7, label=left:$x$, label=below:$0$] {};
+    \node (y7) [right=of x7, label=left:$y$, label=below:$0$] {};
+
+    \draw[->, dashed] (u7) -- (v7);
+    \draw[->, dashed] (v7) -- (w7);
+    \draw[->, dashed] (w7) -- (x7);
+    \draw[->, dashed] (x7) -- (y7);
+
+    % Red nodes for the seventh row
+    \node (u7_red) [red, below=of u6_red, label=left:$u$, label=below:$0$] {};
+    \node (v7_red) [red, below=of v6_red, label=left:$v$, label=below:$0$] {};
+    \node (w7_red) [red, below=of w6_red, label=left:$w$, label=below:$0$] {};
+    \node (x7_red) [red, below=of x6_red, label=left:$x$, label=below:$0$] {};
+    \node (y7_red) [red, below=of y6_red, label=left:$y$, label=below:$0$] {};
+
+    % Additional nodes and edges for the eighth row
+    \node (u8) [below=of u7, label=left:$u$, label=below:$0$] {};
+    \node (v8) [right=of u8, label=left:$v$, label=below:$0$] {};
+    \node (w8) [right=of v8, label=left:$w$, label=below:$0$] {};
+    \node (x8) [right=of w8, label=left:$x$, label=below:$0$] {};
+    \node (y8) [right=of x8, label=left:$y$, label=below:$0$] {};
+
+    \draw[->, dashed] (u8) -- (v8);
+    \draw[->, dashed] (v8) -- (w8);
+    \draw[->, dashed] (w8) -- (x8);
+    \draw[->, dashed] (x8) -- (y8);
+
+    % Red nodes for the eighth row
+    \node (u8_red) [red, below=of u7_red, label=left:$u$, label=below:$0$] {};
+    \node (v8_red) [red, below=of v7_red, label=left:$v$, label=below:$0$] {};
+    \node (w8_red) [red, below=of w7_red, label=left:$w$, label=below:$0$] {};
+    \node (x8_red) [red, below=of x7_red, label=left:$x$, label=below:$0$] {};
+    \node (y8_red) [red, below=of y7_red, label=left:$y$, label=below:$0$] {};
+
+    % Additional nodes and edges for the ninth row
+    \node (u9) [below=of u8, label=left:$u$, label=below:$0$] {};
+    \node (v9) [right=of u9, label=left:$v$, label=below:$0$] {};
+    \node (w9) [right=of v9, label=left:$w$, label=below:$0$] {};
+    \node (x9) [right=of w9, label=left:$x$, label=below:$0$] {};
+    \node (y9) [right=of x9, label=left:$y$, label=below:$0$] {};
+
+    \draw[->, dashed] (u9) -- (v9);
+    \draw[->, dashed] (v9) -- (w9);
+    \draw[->, dashed] (w9) -- (x9);
+    \draw[->, dashed] (x9) -- (y9);
+
+    % Red nodes for the ninth row
+    \node (u9_red) [red, below=of u8_red, label=left:$u$, label=below:$0$] {};
+    \node (v9_red) [red, below=of v8_red, label=left:$v$, label=below:$0$] {};
+    \node (w9_red) [red, below=of w8_red, label=left:$w$, label=below:$0$] {};
+    \node (x9_red) [red, below=of x8_red, label=left:$x$, label=below:$0$] {};
+    \node (y9_red) [red, below=of y8_red, label=left:$y$, label=below:$0$] {};
+
+    % Additional nodes and edges for the tenth row
+    \node (u10) [below=of u9, label=left:$u$, label=below:$0$] {};
+    \node (v10) [right=of u10, label=left:$v$, label=below:$0$] {};
+    \node (w10) [right=of v10, label=left:$w$, label=below:$0$] {};
+    \node (x10) [right=of w10, label=left:$x$, label=below:$0$] {};
+    \node (y10) [right=of x10, label=left:$y$, label=below:$0$] {};
+
+    \draw[->, dashed] (u10) -- (v10);
+    \draw[->, dashed] (v10) -- (w10);
+    \draw[->, dashed] (w10) -- (x10);
+    \draw[->, dashed] (x10) -- (y10);
+
+    % Red nodes for the tenth row
+    \node (u10_red) [red, below=of u9_red, label=left:$u$, label=below:$0$] {};
+    \node (v10_red) [red, below=of v9_red, label=left:$v$, label=below:$0$] {};
+    \node (w10_red) [red, below=of w9_red, label=left:$w$, label=below:$0$] {};
+    \node (x10_red) [red, below=of x9_red, label=left:$x$, label=below:$0$] {};
+    \node (y10_red) [red, below=of y9_red, label=left:$y$, label=below:$0$] {};
+
+    % Additional nodes and edges for the eleventh row
+    \node (u11) [below=of u10, label=left:$u$, label=below:$0$] {};
+    \node (v11) [right=of u11, label=left:$v$, label=below:$0$] {};
+    \node (w11) [right=of v11, label=left:$w$, label=below:$0$] {};
+    \node (x11) [right=of w11, label=left:$x$, label=below:$0$] {};
+    \node (y1

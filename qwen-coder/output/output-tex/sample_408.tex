@@ -1,0 +1,29 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+
+\tikzset{
+    node distance = 2cm,
+    block/.style       = {rectangle, draw, fill=blue!20, 
+        text width=6em, text centered, rounded corners, minimum height=4em},
+    line/.style = {-stealth', thick},
+    cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
+        minimum height=2em}
+}
+
+\begin{tikzpicture}[node distance = 2cm]
+
+\node (phaseI) [block] {Phase I};
+\node (phaseII) [block, below left of=phaseI] {Phase II};
+\node (phaseIII) [block, below right of=phaseI] {Phase III};
+
+\node (alpha) [cloud, above left of=phaseI, xshift=-1cm] {$0 < \gamma \leq \pi$};
+\node (duality) [cloud, above right of=phaseI, xshift=1cm] {Duality Transformation};
+
+\path [line] (phaseI) -- (phaseII);
+\path [line] (phaseI) -- (phaseIII);
+
+\end{tikzpicture}
+
+\end{document}

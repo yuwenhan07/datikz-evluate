@@ -1,0 +1,21 @@
+To determine the graph \( G'_\mathcal{F} \) obtained from the formula \(\mathcal{F} = (X_1 \vee X_3) \wedge (X_2 \vee X_3 \vee X_5) \wedge (X_4 \vee X_5)\), we need to understand how the formula translates into a graph. The formula is in Conjunctive Normal Form (CNF), which means it is a conjunction of disjunctions. Each clause in the CNF corresponds to an edge in the graph, and each variable in the clause corresponds to a vertex.
+
+Let's break down the formula step by step:
+
+1. The first clause is \(X_1 \vee X_3\). This means that either \(X_1\) or \(X_3\) must be true for the clause to be true. Therefore, there is an edge between vertices \(X_1\) and \(X_3\).
+2. The second clause is \(X_2 \vee X_3 \vee X_5\). This means that at least one of \(X_2\), \(X_3\), or \(X_5\) must be true for the clause to be true. Therefore, there are edges between vertices \(X_2\) and \(X_3\), \(X_2\) and \(X_5\), and \(X_3\) and \(X_5\).
+3. The third clause is \(X_4 \vee X_5\). This means that either \(X_4\) or \(X_5\) must be true for the clause to be true. Therefore, there is an edge between vertices \(X_4\) and \(X_5\).
+
+Combining all these edges, the graph \(G'_\mathcal{F}\) will have the following edges:
+- Between \(X_1\) and \(X_3\)
+- Between \(X_2\) and \(X_3\)
+- Between \(X_2\) and \(X_5\)
+- Between \(X_3\) and \(X_5\)
+- Between \(X_4\) and \(X_5\)
+
+Thus, the graph \(G'_\mathcal{F}\) is a complete bipartite graph \(K_{2,3}\) with the partition \(\{X_1, X_4\}\) and \(\{X_2, X_3, X_5\}\).
+
+The final answer is:
+\[
+\boxed{K_{2,3}}
+\]

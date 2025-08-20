@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define coordinates for the vertices
+    \coordinate (y1) at (-2,0);
+    \coordinate (y2) at (-1,0);
+    \coordinate (y3) at (0,0);
+    \coordinate (y4) at (1,0);
+    \coordinate (y5) at (2,0);
+    \coordinate (w1) at (3,1);
+    \coordinate (w2) at (3,0);
+    \coordinate (w3) at (3,-1);
+    \coordinate (u) at (4,0);
+
+    % Draw edges between vertices
+    \draw (y1) -- (y2);
+    \draw (y2) -- (y3);
+    \draw (y3) -- (y4);
+    \draw (y4) -- (y5);
+    \draw (y5) -- (w1);
+    \draw (y5) -- (w2);
+    \draw (y5) -- (w3);
+    \draw (w1) -- (u);
+    \draw (w2) -- (u);
+    \draw (w3) -- (u);
+
+    % Draw circles for vertices
+    \foreach \x in {1,...,5} {
+        \filldraw[white] (y\x) circle (2pt);
+    }
+    \foreach \x in {1,...,3} {
+        \filldraw[white] (w\x) circle (2pt);
+    }
+    \filldraw[white] (u) circle (2pt);
+
+    % Label the vertices
+    \node at (y1) [left] {$y_1$};
+    \node at (y2) [right] {$y_2$};
+    \node at (y3) [right] {$y_3$};
+    \node at (y4) [right] {$y_4$};
+    \node at (y5) [right] {$y_5$};
+    \node at (w1) [above] {$w_1$};
+    \node at (w2) [above] {$w_2$};
+    \node at (w3) [below] {$w_3$};
+    \node at (u) [right] {$u$};
+\end{tikzpicture}
+
+\end{document}

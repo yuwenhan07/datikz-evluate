@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Define coordinates for the first diagram
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (3,0);
+        \coordinate (C) at (0,3);
+        
+        % Draw the triangle
+        \draw (A) -- (B) -- (C) -- cycle;
+        
+        % Label the vertices
+        \node[below] at (A) {$N_3$};
+        \node[right] at (B) {$N_1$};
+        \node[left] at (C) {$N_2$};
+        
+        % Label the edges
+        \node[above left] at ($(A)!0.5!(B)$) {$F_1$};
+        \node[below right] at ($(A)!0.5!(C)$) {$F_2$};
+        \node[above right] at ($(B)!0.5!(C)$) {$F_3$};
+        
+        % Label the gcd values
+        \node[left] at ($(A)!0.5!(C)$) {$\gcd(N_2,N_3)$};
+        \node[right] at ($(A)!0.5!(B)$) {$\gcd(N_1,N_2)$};
+        \node[below] at ($(B)!0.5!(C)$) {$\gcd(N_1,N_3)$};
+    \end{tikzpicture}
+    \qquad
+    \begin{tikzpicture}[scale=1.5]
+        % Define coordinates for the second diagram
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (3,0);
+        \coordinate (C) at (0,3);
+        
+        % Draw the triangle
+        \draw (A) -- (B) -- (C) -- cycle;
+        
+        % Label the vertices
+        \node[below] at (A) {$\alpha_1\alpha_2$};
+        \node[right] at (B) {$\alpha_2\alpha_3$};
+        \node[left] at (C) {$\alpha_1\alpha_3$};
+        
+        % Label the edges
+        \node[above left] at ($(A)!0.5!(B)$) {$C_1$};
+        \node[below right] at ($(A)!0.5!(C)$) {$C_2$};
+        \node[above right] at ($(B)!0.5!(C)$) {$C_3$};
+        
+        % Label the branch indices
+        \node[above] at ($(A)!0.5!(B)$) {$\alpha_1$};
+        \node[right] at ($(A)!0.5!(C)$) {$\alpha_2$};
+        \node[left] at ($(B)!0.5!(C)$) {$\alpha_3$};
+    \end{tikzpicture}
+    
+    \caption{Left-hand side: singularity structure of $\mathbb{CP}^2_{\boldsymbol{N}}$ in terms of the $S^5$- moment polytope. The labels in black on vertices and edges denote the degree of the singularity while the grey labels denote the facets. Right-hand side: branching structure of $S^5_{\boldsymbol{\alpha}}$ in terms of the $S^5$-moment polytope. The labels in black on vertices and edges denote the branch index while the grey labels denote the facets.}
+\end{figure}
+
+\end{document}

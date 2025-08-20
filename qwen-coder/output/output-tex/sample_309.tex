@@ -1,0 +1,36 @@
+Certainly! Below is a TikZ LaTeX code that illustrates the described scenario:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, decorations.pathreplacing}
+
+\tikzset{
+    oversample/.style={fill=gray!50, draw=dashed},
+    highlight/.style={draw=red, thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Draw the coarse element K_i^m with m=2
+    \node (K_im) at (0,0) [oversample, minimum size=4cm] {};
+    
+    % Draw the fine elements around the coarse element
+    \node (K_pq) at (-1,-1) [minimum size=2cm] {};
+    \node (K_pp1q) at (1,-1) [minimum size=2cm] {};
+    \node (K_pm1q) at (-1,1) [minimum size=2cm] {};
+    \node (K_pq1) at (1,1) [minimum size=2cm] {};
+    
+    % Highlight the fine element in the top-left corner of K_i^m
+    \node (K_pq_hl) at (-1,-1) [highlight, minimum size=2cm] {};
+    
+    % Label the nodes
+    \node at (0,0) [below left] {\(K_i^m\)};
+    \node at (-1,-1) [above right] {\(\mathtt{k}_{p,q}\)};
+    \node at (1,-1) [above left] {\(\mathtt{k}_{p+1,q}\)};
+    \node at (-1,1) [below right] {\(\mathtt{k}_{p,q-1}\)};
+    \node at (1,1) [below left] {\(\mathtt{k}_{p,q+1}\)};
+    
+    % Draw arrows to show the relationships
+    \draw[-stealth] (K_pq) -- node[anchor=north] {$\mathtt{k}_{p,q}$} (K_im);
+    \draw[-stealth] (K_pp1q) -- node[anchor=north] {$\mathtt{k}_{p+1,q}$} (K_im);
+    \draw[-stealth] (K_pm1q) -- node[anchor=south]

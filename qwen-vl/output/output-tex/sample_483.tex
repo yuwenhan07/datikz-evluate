@@ -1,0 +1,38 @@
+The illustration you've described is a step in the reduction process from the Densest k-Subgraph problem (DkS) to the Undirected Reachability Problem (u-rcp). Let's break down the components and the transformation:
+
+### Densest k-Subgraph Problem (DkS)
+In DkS, we are given an undirected graph \( G \) and an integer \( k \), and the goal is to find a subset of at most \( k \) vertices such that the subgraph induced by these vertices has the maximum number of edges.
+
+### Reduction to Undirected Reachability Problem (u-rcp)
+The Undirected Reachability Problem (u-rcp) asks whether there exists a path between two given vertices in an undirected graph.
+
+### Transformation Process
+
+1. **Graph \( G \)**:
+   - Consider an undirected graph \( G \) with a single edge.
+   - In this case, \( G \) consists of two vertices connected by one edge.
+
+2. **2-reduced Directed Graph**:
+   - The "2-reduced" part refers to the transformation where each vertex in \( G \) is replaced by \( 2^2 = 4 \) copies.
+   - Each original vertex \( v \) is replaced by four new vertices: \( v_0, v_1, v_2, v_3 \).
+   - Bidirectional edges connect any two copies of the same vertex (\( v_i \) and \( v_j \) for \( i \neq j \)).
+   - An outgoing edge is added from each copy \( v_i \) to a special vertex \( e \).
+
+3. **Explanation of the Transformation**:
+   - The purpose of this transformation is to create a directed graph where the reachability between certain vertices can be used to infer the density of edges in the original graph \( G \).
+   - Specifically, if there is a dense subgraph in \( G \), it will translate into a high degree of reachability in the transformed graph.
+
+### Example:
+Let's consider the original graph \( G \):
+\[ G = (V, E) \]
+where \( V = \{v_1, v_2\} \) and \( E = \{(v_1, v_2)\} \).
+
+After the transformation:
+- Each vertex \( v_1 \) and \( v_2 \) is replaced by four copies: \( v_{10}, v_{11}, v_{12}, v_{13} \) and \( v_{20}, v_{21}, v_{22}, v_{23} \).
+- Bidirectional edges exist among the copies of the same vertex.
+- Outgoing edges from each copy to a special vertex \( e \).
+
+The resulting directed graph will have a structure where the reachability between specific vertices can be used to determine the density of edges in the original graph \( G \).
+
+### Conclusion
+This transformation allows us to reduce the Densest k-Subgraph problem to the Undirected Reachability Problem. By analyzing the reachability in the transformed graph, we can infer properties about the original graph, specifically the density of edges in potential subgraphs. This is a common technique in algorithm design for reducing problems to more manageable ones.

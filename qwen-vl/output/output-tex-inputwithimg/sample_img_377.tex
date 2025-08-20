@@ -1,0 +1,155 @@
+To generate LaTeX code for the given image and caption, you can use the `tikz` package in LaTeX. Below is the code to create the diagram:
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[node distance=1cm]
+        % Define nodes
+        \node[draw] (baac) {$baac$};
+        \node[draw, right=of baac] (bbaa) {$bbaa$};
+        \node[draw, right=of bbaa] (abba) {$abba$};
+        \node[draw, below=of abba] (aabba) {$aabba$};
+        \node[draw, left=of bbaa] (aacb) {$aacb$};
+        \node[draw, left=of aacb] (acba) {$acba$};
+        \node[draw, below=of acba] (bacb) {$bacb$};
+        \node[draw, below=of bacb] (abac) {$abac$};
+        \node[draw, below=of abac] (aaba) {$aaba$};
+        \node[draw, above=of aacb] (H23) {$H(2\,3)$};
+        \node[draw, above=of acba] (H23) {$H(2\,3)$};
+        \node[draw, above=of bbaa] (H13) {$H(1\,3)$};
+        \node[draw, above=of abba] (H) {$H$};
+        \node[draw, above=of aaca] (H) {$H$};
+        \node[draw, above=of bacb] (H13) {$H(1\,3)$};
+        \node[draw, above=of abac] (H) {$H$};
+        \node[draw, above=of aaba] (H23) {$H(2\,3)$};
+
+        % Draw edges
+        \path[->] (baac) edge node [above] {$b$} (bbaa);
+        \path[->] (bbaa) edge node [above] {$a$} (abba);
+        \path[->] (abba) edge node [above] {$a$} (aabba);
+        \path[->] (aabba) edge[bend left=45] node [above] {$b$} (aacb);
+        \path[->] (aacb) edge node [above] {$a$} (acba);
+        \path[->] (acba) edge node [above] {$a$} (bacb);
+        \path[->] (bacb) edge node [above] {$b$} (abac);
+        \path[->] (abac) edge node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->] (aaba) edge[bend left=45] node [above] {$b$} (abba);
+        \path[->] (abba) edge[bend left=45] node [above] {$a$} (aabba);
+        \path[->] (aacb) edge[bend left=45] node [above] {$a$} (acba);
+        \path[->] (acba) edge[bend left=45] node [above] {$b$} (bacb);
+        \path[->] (bacb) edge[bend left=45] node [above] {$c$} (abac);
+        \path[->] (abac) edge[bend left=45] node [above] {$a$} (aaba);
+        \path[->]

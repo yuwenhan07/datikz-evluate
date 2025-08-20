@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.75]
+        % Vertices
+        \node[circle,draw] (1) at (0,0) {1};
+        \node[circle,draw] (2) at (1,0) {2};
+        \node[circle,draw] (3) at (2,0) {3};
+        \node[circle,draw] (4) at (3,0) {4};
+        \node[circle,draw] (5) at (4,0) {5};
+        \node[circle,draw] (6) at (0,1) {6};
+        \node[circle,draw] (7) at (3,1) {7};
+        \node[circle,draw] (8) at (4,1) {8};
+
+        % Edges
+        \draw[thick,blue] (1) -- (2);
+        \draw[thick,blue] (2) -- (3);
+        \draw[thick,blue] (3) -- (4);
+        \draw[thick,blue] (4) -- (5);
+        \draw[thick,blue] (5) -- (6);
+        \draw[thick,blue] (6) -- (7);
+        \draw[thick,blue] (7) -- (8);
+        \draw[thick,blue] (8) -- (1);
+
+        % Dotted edges
+        \draw[dotted,red] (1) edge[bend left=45] node[midway,above] {$\Delta_1$} (4);
+        \draw[dotted,red] (2) edge[bend left=45] node[midway,above] {$\Delta_3$} (8);
+        \draw[dotted,red] (3) edge[bend left=45] node[midway,above] {$\Delta_3$} (8);
+
+        % Text
+        \node at (-0.5, 1.5) {$T_{20}:$};
+        \node at (-0.5, 0.5) {$\downarrow$};
+        \node at (-0.5, -0.5) {Not cycle-free:};
+        \node at (-0.5, -1.5) {or};
+        \node at (-0.5, -2.5) {In $\Delta_4$ vertex 4 has degree 5:};
+        \node at (-0.5, -3.5) {In $\Delta_4$ vertex 4 has degree 5:};
+        \node at (-0.5, -4.5) {Switch $(1,4)$ with $(2,4):$};
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

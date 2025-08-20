@@ -1,0 +1,39 @@
+To create a TikZ LaTeX diagram that visually represents the behavior of the function \(\varphi_\Delta(x)\), we need to break down the components of the function and plot them separately before combining them. The function is given by:
+
+\[
+\varphi_\Delta(x) = B_1 - \left(\frac{\diffc^2}{2} + B_2\right)x^{2(\alpha-1)} + \frac{b(0)}{x} + b(0)\left(\diffc^2 + B_2\right)x^{2\alpha-3}\Delta
+\]
+
+Here, \(\Delta\) is a small parameter that scales the last term. Let's assume some values for \(B_1\), \(B_2\), \(\diffc\), \(\alpha\), \(b(0)\), and \(\Delta\) for simplicity. For example, let:
+- \(B_1 = 1\)
+- \(B_2 = 0.5\)
+- \(\diffc = 1\)
+- \(\alpha = 1.5\)
+- \(b(0) = 1\)
+- \(\Delta = 0.1\)
+
+Now, we can write the TikZ code to plot this function.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Define constants
+    \def\BOne{1}
+    \def\BBTwo{0.5}
+    \def\deltac{1}
+    \def\alphaVal{1.5}
+    \def\bZero{1}
+    \def\delta{0.1}
+
+    % Function definition
+    \newcommand{\phiDelta}[1]{
+        \pgfmathsetmacro{\termOne}{\BOne}
+        \pgfmathsetmacro{\termTwo}{-\left(\deltac^2/2 + \BBTwo\right)*#1^(2*({\alphaVal}-1))}
+        \pgfmathsetmacro{\termThree}{\bZero/#1}
+        \pgfmathsetmacro{\termFour}{\bZero*\left(\deltac^2 + \BBTwo\right)*#1^(2*\alphaVal-3)*\delta}
+        \pgfmath

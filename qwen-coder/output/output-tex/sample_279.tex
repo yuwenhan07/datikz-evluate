@@ -1,0 +1,39 @@
+Certainly! Below is an example of how you can create a TikZ diagram to represent a triangulation of a single polygonal domain \( Y \) along with associated quadrature nodes \( y_{j,N} \in Y \) each having a corresponding weight \( w_{j,N} \).
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define the vertices of the polygon
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (4,0);
+    \coordinate (C) at (4,3);
+    \coordinate (D) at (0,3);
+
+    % Draw the polygon
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+
+    % Define the quadrature nodes
+    \node[circle, fill=red, inner sep=1pt] (y1) at (1,1) {};
+    \node[circle, fill=green, inner sep=1pt] (y2) at (3,1) {};
+    \node[circle, fill=blue, inner sep=1pt] (y3) at (2,2) {};
+
+    % Label the quadrature nodes with weights
+    \node[right=2pt] at (y1.east) {$y_{1,N}$};
+    \node[right=2pt] at (y2.east) {$y_{2,N}$};
+    \node[right=2pt] at (y3.east) {$y_{3,N}$};
+
+    % Draw the weights as labels next to the nodes
+    \node[above=2pt] at (y1.north) {$w_{1,N}$};
+    \node[above=2pt] at (y2.north) {$w_{2,N}$};
+    \node[above=2pt] at (y3.north) {$w_{3,N}$};
+
+    % Draw lines from the center of the polygon to the quadrature nodes for emphasis
+    \draw[dashed, thick] (2,1.5) -- (y1);
+    \draw[dashed, thick] (2,1.5) -- (y2);
+    \draw[dashed, thick] (2,1.5) -- (y3);
+
+    % Add labels to

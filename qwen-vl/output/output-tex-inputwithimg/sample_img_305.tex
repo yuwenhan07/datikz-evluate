@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the grid
+        \draw[thick] (-2,-2) rectangle (2,2);
+        
+        % Draw the dashed line
+        \draw[dashed, blue, thick] (0,0) -- (0,2);
+        
+        % Label the regions
+        \node at (0,1) {$\mathcal{J}$};
+        \node at (1,1) {$K_{j,\mathfrak{B}}$};
+        \node at (-1,1) {$K_{i,\mathfrak{A}}$};
+        
+        % Draw the text below the grid
+        \node at (0,-2) {$K_{j,\mathfrak{A}} = \emptyset$};
+        
+        % Exploded view
+        \begin{scope}[xshift=-3cm, yshift=-3cm]
+            % Draw the grid
+            \draw[thick] (-2,-2) rectangle (2,2);
+            
+            % Draw the dashed line
+            \draw[dashed, blue, thick] (0,0) -- (0,2);
+            
+            % Draw the red arrow
+            \draw[red, ultra thick, -{Stealth[length=4mm]}] (-1,0) -- (0,0);
+            
+            % Label the regions
+            \node at (0,1) {$\mathcal{J}$};
+            \node at (1,1) {$K_{j,\mathfrak{B}}$};
+            \node at (-1,1) {$K_{i,\mathfrak{A}}$};
+            
+            % Draw the text below the grid
+            \node at (0,-2) {$K_{j,\mathfrak{A}} = \emptyset$};
+        \end{scope}
+        
+        % Arrows indicating the coupling
+        \draw[<->, thick] (-1.5,-1.5) -- (-0.5,-1.5);
+        \draw[<->, thick] (0.5,0.5) -- (1.5,0.5);
+        
+        % Red dot indicating the interface
+        \fill[red] (0,0) circle (0.05);
+    \end{tikzpicture}
+    
+    \caption{Illustration of the species coupling in case of a coinciding interface. In the figure, the dashed interface lies on top of the edge between two cells. It is assumed that \( K_{j} \) in Equation~\ref{eq:coinFrac} is the cell with the lower index and owns the coinciding interface. The affected edge \( \partial K_i \cap \partial K_j \) belongs to the species \( \mathfrak{A} \) and takes care of the coupling between cells \( K_{i,\mathfrak{A}} \) and \( K_{j,\mathfrak{A}} \). The species are then coupled inside \( K_{j} \) via the interface, from the empty cell \( K_{j,\mathfrak{A}} = \emptyset \) to the full cell \( K_{j,\mathfrak{B}} = K_{j} \). Finally, by performing the agglomeration, the discrete system is algebraically modified. This modification eliminates the (edge) contributions on \( \partial K_{j,\mathfrak{A}} \) of the empty cell and combines the cell and species coupling, establishing the connection between \( K_{i,\mathfrak{A}} \) and \( K_{j,\mathfrak{B}} \). The lower part of the figure shows an exploded view of the situation to clarify the connectivity.}
+    \label{fig:speciesCoupling}
+\end{figure}
+
+\end{document}

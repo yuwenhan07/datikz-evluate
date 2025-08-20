@@ -1,0 +1,46 @@
+Certainly! Below is a TikZ LaTeX code to generate a figure showing the symmetric replacement rule that produces the "Laakso diamond" space. This code will illustrate two steps of the replacement process.
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric}
+
+\tikzset{
+    diamond/.style={draw, shape=diamond, aspect=2, inner sep=1pt},
+    line/.style={thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Step 0: Initial Square
+    \node[diamond] (A) at (0,0) {A};
+    \node[diamond] (B) at (2,0) {B};
+    \node[diamond] (C) at (2,-2) {C};
+    \node[diamond] (D) at (0,-2) {D};
+
+    % Connect nodes with lines
+    \draw[line] (A) -- (B);
+    \draw[line] (B) -- (C);
+    \draw[line] (C) -- (D);
+    \draw[line] (D) -- (A);
+
+    % Labeling
+    \node[above left] at (A.north west) {0};
+    \node[above right] at (B.north east) {1};
+    \node[below right] at (C.south east) {2};
+    \node[below left] at (D.south west) {3};
+
+    % Step 1: First Replacement
+    \node[diamond] (A1) at (-1,1) {A};
+    \node[diamond] (B1) at (3,1) {B};
+    \node[diamond] (C1) at (3,-1) {C};
+    \node[diamond] (D1) at (-1,-1) {D};
+
+    % Connect nodes with lines
+    \draw[line] (A1) -- (B1);
+    \draw[line] (B1) -- (C1);
+    \draw[line] (C1) -- (D1);
+    \draw[line] (D1) -- (A1);
+
+    % Draw lines from step 0 to step 1
+    \draw[line] (A) -- (A1);
+    \draw[line] (B) -- (B1

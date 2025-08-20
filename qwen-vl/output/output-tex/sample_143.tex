@@ -1,0 +1,39 @@
+The concept you're describing is often referred to as "batched multi-armed bandit" or "batched bandits." In this setting, the time horizon is divided into discrete batches, and within each batch, the player (or agent) makes a fixed choice for all arms (combinatorial arms). After the end of each batch, the player receives feedback on the outcomes of these choices.
+
+Here's a more detailed explanation:
+
+1. **Time Horizon Division**: The entire time horizon \( T \) is divided into \( B \) batches, where each batch has a duration of \( t_b \). So, \( T = B \cdot t_b \).
+
+2. **Choice Within Each Batch**: During each batch \( b \), the player selects a set of arms (or a combination of arms) that they will use for the entire batch. This choice is fixed for the entire batch and cannot be changed until the next batch begins.
+
+3. **Feedback at the End of Each Batch**: At the end of each batch, the player receives feedback on the outcomes of the chosen arms. This feedback can be in the form of rewards or losses, depending on the specific problem formulation.
+
+4. **Objective**: The goal is typically to maximize the cumulative reward over the entire time horizon \( T \) while balancing exploration (trying out different combinations of arms) and exploitation (choosing the best-known combination of arms).
+
+### Example
+
+Suppose we have a scenario with 3 arms (A, B, C) and a time horizon of 100 time steps, which is divided into 5 batches of 20 time steps each (\( T = 100 \), \( B = 5 \), \( t_b = 20 \)).
+
+- **Batch 1**: The player chooses a combination of arms (e.g., A and B).
+- **Batch 2**: The player chooses another combination (e.g., B and C).
+- **Batch 3**: The player chooses yet another combination (e.g., A and C).
+- **Batch 4**: The player chooses a fourth combination (e.g., A and B again).
+- **Batch 5**: The player chooses a fifth combination (e.g., B and C again).
+
+At the end of each batch, the player receives feedback on the outcomes of the chosen combinations. The player then uses this feedback to update their strategy for the next batch.
+
+### Mathematical Formulation
+
+Let:
+- \( X_{b,i} \) be the outcome of arm \( i \) in batch \( b \) (reward or loss).
+- \( \mathbf{X}_b \) be the vector of outcomes for batch \( b \), where \( \mathbf{X}_b = [X_{b,1}, X_{b,2}, \ldots, X_{b,n}] \).
+- \( \mathbf{a}_b \) be the vector of chosen arms in batch \( b \), where \( \mathbf{a}_b = [a_{b,1}, a_{b,2}, \ldots, a_{b,n}] \).
+
+The total reward \( R_T \) after \( T \) time steps can be expressed as:
+\[ R_T = \sum_{b=1}^{B} \sum_{i=1}^{n} X_{b,i} \]
+
+The goal is to find the optimal sequence of choices \( \{\mathbf{a}_b\}_{b=1}^B \) that maximizes \( R_T \).
+
+### Conclusion
+
+In summary, the batched multi-armed bandit problem involves dividing the time horizon into batches and making fixed choices for all arms within each batch. The objective is to balance exploration and exploitation to maximize the cumulative reward over the entire time horizon.

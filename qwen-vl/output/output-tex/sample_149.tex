@@ -1,0 +1,63 @@
+python
+import numpy as np
+from scipy.optimize import minimize
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Define the matrices A and b
+A = np.random.rand(50, 10)
+b = np.random.rand(50)
+
+# Define the lambda values for the regularization path
+lambda_values = np.logspace(-2, 2, 100)
+
+# Initialize the grid for theta
+theta_grid = np.linspace(-10, 10, 100)
+theta_mesh, lambda_mesh = np.meshgrid(theta_grid, lambda_values)
+
+# Initialize the objective function values
+F1_mesh = np.zeros_like(theta_mesh)
+F2_mesh = np.zeros_like(theta_mesh)
+F_mesh = np.zeros_like(theta_mesh)
+
+# Evaluate the objective functions on the grid
+for i, lambda_val in enumerate(lambda_values):
+    def obj_func(theta):
+        return 0.5 * np.linalg.norm(A @ theta - b, 2)**2 + lambda_val * np.linalg.norm(theta, 1)
+    
+    res = minimize(obj_func, np.zeros(A.shape[1]), method='L-BFGS-B')
+    theta_star = res.x
+    
+    # Evaluate at each point in the mesh
+    for j, theta_val in enumerate(theta_mesh.ravel()):
+        F1_mesh[i, j] = 0.5 * np.linalg.norm(A @ theta_val - b, 2)**2
+        F2_mesh[i, j] = np.linalg.norm(theta_val, 1)
+        F_mesh[i, j] = F1_mesh[i, j] + lambda_val * F2_mesh[i, j]
+
+# Reshape the arrays back to their original shape
+F1_mesh = F1_mesh.reshape(theta_mesh.shape)
+F2_mesh = F2_mesh.reshape(theta_mesh.shape)
+F_mesh = F_mesh.reshape(theta_mesh.shape)
+
+# Plot the contours
+fig = plt.figure(figsize=(12, 6))
+ax1 = fig.add_subplot(121, projection='3d')
+ax2 = fig.add_subplot(122)
+
+# Plot the smooth objective function F1
+surf1 = ax1.plot_surface(theta_mesh, lambda_mesh, F1_mesh, cmap='viridis', alpha=0.8)
+ax1.set_xlabel(r'$\theta$')
+ax1.set_ylabel(r'$\lambda$')
+ax1.set_zlabel(r'$F_1(\theta)$')
+ax1.set_title('Smooth Objective Function $F_1(\theta)$')
+
+# Plot the non-smooth objective function F2
+surf2 = ax2.contourf(theta_mesh, lambda_mesh, F2_mesh, levels=50, cmap='viridis')
+ax2.set_xlabel(r'$\theta$')
+ax2.set_ylabel(r'$\lambda$')
+ax2.set_title('Non-Smooth Objective Function $F_2(\theta)$')
+cbar = fig.colorbar(surf2, ax=ax2, shrink=0.5, aspect=5)
+cbar.set_label(r'$F_2(\theta)$')
+
+plt.tight_layout()
+plt.show()

@@ -1,0 +1,75 @@
+To understand the problem, we need to break it down into several components:
+
+1. **Understanding the Set \(\partial \mathcal{K}\)**: This typically refers to the boundary of a set \(\mathcal{K}\). In this context, \(\mathcal{K}\) is likely a specific subset of the complex plane or a region defined by some geometric or algebraic constraints.
+
+2. **Intersection with \(\Delta_{1,0,-1/5}\)**: The notation \(\Delta_{1,0,-1/5}\) suggests that we are considering a specific triangle in the complex plane. The vertices of this triangle are at \(1\), \(0\), and \(-\frac{1}{5}\).
+
+3. **Imaginary Parts**: We are interested in the imaginary parts of the points on the boundary of \(\mathcal{K}\) that lie within the triangle \(\Delta_{1,0,-1/5}\).
+
+4. **Base \(-4\)**: This indicates that we are working in a base \(-4\) numeral system. In base \(-4\), each digit can be one of \(\{0, 1, 2, 3\}\), and the place values alternate between positive and negative powers of \(-4\).
+
+Given these components, let's construct an automaton that recognizes the imaginary parts of points in \(\partial \mathcal{K} \cap \Delta_{1,0,-1/5}\) in base \(-4\).
+
+### Step-by-Step Construction
+
+1. **Define the Set \(\Delta_{1,0,-1/5}\)**:
+   - The vertices of the triangle are \(1\), \(0\), and \(-\frac{1}{5}\).
+   - The sides of the triangle are the line segments connecting these points.
+
+2. **Identify Points on the Boundary \(\partial \mathcal{K}\)**:
+   - We need to determine which points on the boundary of \(\mathcal{K}\) lie within the triangle \(\Delta_{1,0,-1/5}\).
+
+3. **Extract Imaginary Parts**:
+   - For each point on the boundary of \(\mathcal{K}\) that lies within the triangle, extract its imaginary part.
+
+4. **Convert Imaginary Parts to Base \(-4\)**:
+   - Convert the imaginary parts from their decimal representation to their base \(-4\) representation.
+   - Each digit in the base \(-4\) representation will be one of \(\{0, 1, 2, 3\}\).
+
+### Automaton Design
+
+An automaton for this task would have the following components:
+
+- **States**: Represent the different states of the automaton as it processes the imaginary part of a point.
+- **Alphabet**: The input alphabet consists of the digits \(\{0, 1, 2, 3\}\) (the possible digits in base \(-4\)).
+- **Transition Function**: Define how the automaton transitions from one state to another based on the current state and the input digit.
+- **Start State**: The initial state where the automaton begins processing.
+- **Accepting States**: The final states where the automaton accepts the input sequence.
+
+### Example Transition Table
+
+Let's assume we have a simple automaton with the following states and transitions:
+
+- **State 0**: Initial state.
+- **State 1**: Represents the first digit of the base \(-4\) representation.
+- **State 2**: Represents the second digit of the base \(-4\) representation.
+- **State 3**: Represents the third digit of the base \(-4\) representation.
+
+The transition table might look like this:
+
+| Current State | Input Digit | Next State |
+|---------------|-------------|------------|
+| 0             | 0           | 1          |
+| 0             | 1           | 1          |
+| 0             | 2           | 1          |
+| 0             | 3           | 1          |
+| 1             | 0           | 2          |
+| 1             | 1           | 2          |
+| 1             | 2           | 2          |
+| 1             | 3           | 2          |
+| 2             | 0           | 3          |
+| 2             | 1           | 3          |
+| 2             | 2           | 3          |
+| 2             | 3           | 3          |
+
+This table assumes that the automaton processes the digits sequentially and moves to the next state upon reading each digit.
+
+### Conclusion
+
+The automaton described above would recognize the base \(-4\) representations of the imaginary parts of points on the boundary of \(\mathcal{K}\) that lie within the triangle \(\Delta_{1,0,-1/5}\). The exact implementation would depend on the specific details of the set \(\mathcal{K}\) and the boundary conditions, but the general structure of the automaton follows the steps outlined above.
+
+Thus, the final answer is:
+
+\[
+\boxed{\text{An automaton that processes the imaginary parts of points on the boundary of } \mathcal{K} \text{ within the triangle } \Delta_{1,0,-1/5} \text{ in base } -4.}
+\]

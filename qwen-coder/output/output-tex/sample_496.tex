@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+
+% Draw the central node
+\node (center) at (0,0) [circle, draw, fill=blue!20, inner sep=4pt] {};
+
+% Draw the surrounding nodes
+\node (top) at (0,2) [circle, draw, fill=blue!20, inner sep=4pt] {};
+\node (bottom) at (0,-2) [circle, draw, fill=blue!20, inner sep=4pt] {};
+\node (left) at (-2,0) [circle, draw, fill=blue!20, inner sep=4pt] {};
+\node (right) at (2,0) [circle, draw, fill=blue!20, inner sep=4pt] {};
+
+% Draw lines connecting the center node to the surrounding nodes
+\draw[-stealth] (center) -- (top);
+\draw[-stealth] (center) -- (bottom);
+\draw[-stealth] (center) -- (left);
+\draw[-stealth] (center) -- (right);
+
+% Circle the surrounding nodes to indicate they are flipped
+\node[circle, draw, thick, inner sep=2pt] at (top) {};
+\node[circle, draw, thick, inner sep=2pt] at (bottom) {};
+\node[circle, draw, thick, inner sep=2pt] at (left) {};
+\node[circle, draw, thick, inner sep=2pt] at (right) {};
+
+% Label the nodes if needed
+\node[above left] at (0,2) {Top};
+\node[below left] at (0,-2) {Bottom};
+\node[left] at (-2,0) {Left};
+\node[right] at (2,0) {Right};
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,30 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Axes
+    \draw[->] (-1,0) -- (6,0) node[right] {$t$};
+    \draw[->] (0,-1) -- (0,6) node[above] {$x$};
+
+    % Optimal Trajectory w*
+    \draw[dashed, thick, black] (0,0) to[out=-70,in=110] (2,2) to[out=-70,in=110] (4,4);
+
+    % Approximative Optimal Trajectories w^N
+    \foreach \N in {2,...,5} {
+        \draw[dotted, thick, red!\N*20] (0,0) to[out=-70,in=110] (\N/2,\N/2);
+    }
+
+    % Labels
+    \node at (0,0) [below left] {$(0,0)$};
+    \node at (2,2) [right] {$w^\star$};
+    \node at (4,4) [right] {$w^\star$};
+    \node at (1,0.5) [left] {$w^2$};
+    \node at (2,1.5) [left] {$w^3$};
+    \node at (3,2.5) [left] {$w^4$};
+    \node at (4,3.5) [left] {$w^5$};
+
+\end{tikzpicture}
+
+\end{document}

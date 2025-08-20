@@ -1,0 +1,11 @@
+The statement you provided describes a fundamental aspect of how sampling-based generative models, such as those used in natural language processing (NLP), work. Let's break down the key components:
+
+1. **Time Step \( s_i \)**: This refers to the current position in the sequence where the model is making its prediction.
+
+2. **Conditional Distribution \( p_\theta(\cdot \mid \boldsymbol{y}_{:i-1}) \)**: This is the probability distribution over possible tokens given the history of tokens up to the previous time step (\( \boldsymbol{y}_{:i-1} \)). The symbol \( \boldsymbol{y}_{:i-1} \) represents the sequence of tokens observed so far, up to but not including the current time step \( i \).
+
+3. **Sampling**: At each time step \( s_i \), the model samples the next token from this conditional distribution. This means that the model chooses the next token based on the probabilities assigned by the distribution \( p_\theta(\cdot \mid \boldsymbol{y}_{:i-1}) \).
+
+4. **Appending to Context**: After sampling the next token, it is appended to the existing sequence of tokens (\( \boldsymbol{y}_{:i-1} \)) to form the new context for the next time step. This process continues until the entire sequence is generated or a stopping criterion is met.
+
+In summary, the sampling algorithm at each time step \( s_i \) selects the next token by drawing from the conditional probability distribution over all possible tokens given the history up to that point, and then adds this token to the growing sequence. This iterative process allows the model to generate sequences that are consistent with the learned patterns in the training data.

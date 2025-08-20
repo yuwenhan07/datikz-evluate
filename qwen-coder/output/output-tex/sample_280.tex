@@ -1,0 +1,35 @@
+To create a TikZ LaTeX diagram that depicts the resolvability conditions in \( T^3 \) depending on \( d_T(u, v) \), we need to consider the following:
+
+1. **Graph Structure**: We will represent a 3-dimensional cube \( T^3 \).
+2. **Vertices and Edges**: Each vertex in \( T^3 \) represents a point in a 3D grid, and edges connect adjacent points.
+3. **Distance \( d_T(u, v) \)**: This represents the Manhattan distance between two vertices \( u \) and \( v \).
+4. **Resolvability Condition**: A vertex \( x \) resolves \( u \) and \( v \) if it is closer to one of them than to the other.
+
+Here's a step-by-step approach to creating the diagram:
+
+1. **Define the Cube Vertices**:
+   - The vertices of \( T^3 \) can be represented as tuples \((i, j, k)\) where \( i, j, k \in \{0, 1\} \).
+
+2. **Calculate Distances**:
+   - For each pair of vertices \( u = (i_1, j_1, k_1) \) and \( v = (i_2, j_2, k_2) \), calculate the Manhattan distance \( d_T(u, v) = |i_1 - i_2| + |j_1 - j_2| + |k_1 - k_2| \).
+
+3. **Identify Resolving Vertices**:
+   - For each pair \( (u, v) \), identify all vertices \( x = (i, j, k) \) such that \( d_T(x, u) < d_T(x, v) \).
+
+4. **Draw the Diagram**:
+   - Use TikZ to draw the cube and mark the resolving vertices in red.
+
+Here is the complete TikZ code to achieve this:
+
+```latex
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Define the vertices of the cube
+\foreach \i in {0,1} {
+    \foreach \j in {0,1} {
+        \foreach \k in {0,1} {
+            \node[draw,circle,fill=black!30]

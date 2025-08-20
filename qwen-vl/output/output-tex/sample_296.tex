@@ -1,0 +1,27 @@
+To solve the problem of building a perfect matching in \( K_{4,4}^{-} \) where the Waiter offers the two dashed edges in each round, we need to understand the structure and properties of the graph \( K_{4,4}^{-} \).
+
+The graph \( K_{4,4}^{-} \) is a complete bipartite graph with 4 vertices in each part, but it has one edge removed. This means that there are 8 vertices in total, and initially, there are 16 possible edges between these vertices (since each vertex in one part can be connected to any vertex in the other part). However, one of these edges is missing.
+
+A perfect matching in a graph is a set of edges such that every vertex is incident to exactly one edge in the set. For a bipartite graph with 8 vertices (4 in each part), a perfect matching will consist of 4 edges.
+
+Given that the Waiter offers the two dashed edges in each round, we need to determine if it is possible to build a perfect matching using only these two edges per round.
+
+Let's analyze the situation step by step:
+
+1. **Initial Setup**: The graph \( K_{4,4}^{-} \) has 8 vertices and 15 edges (since one edge is missing).
+2. **Objective**: We need to find a way to use the two dashed edges offered by the Waiter to form a perfect matching.
+3. **Strategy**: Since the Waiter offers two edges per round, we need to ensure that these two edges can be used to form a perfect matching. A perfect matching requires 4 edges, so we need to check if it is possible to use the two edges from each round to form a perfect matching.
+
+However, the key point here is that the Waiter offers the two dashed edges in each round, and we need to form a perfect matching using these edges. The problem does not specify which edges are the dashed ones, but the crucial point is that we have control over which edges are chosen in each round.
+
+If we assume that the Waiter offers two specific edges in each round, and we can choose these edges strategically, it is indeed possible to form a perfect matching. Here is a step-by-step strategy:
+
+- In the first round, the Waiter offers two edges. Choose these edges such that they do not form a cycle or an isolated vertex.
+- In the second round, the Waiter offers another pair of edges. Again, choose these edges such that they do not form a cycle or an isolated vertex and complement the edges chosen in the first round.
+- Continue this process until all 4 edges required for a perfect matching are chosen.
+
+Since the Waiter offers the two edges in each round, and we can choose them strategically, it is always possible to form a perfect matching. Therefore, the answer is:
+
+\[
+\boxed{\text{Yes}}
+\]

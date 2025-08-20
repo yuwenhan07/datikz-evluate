@@ -1,0 +1,38 @@
+Certainly! Below is a TikZ LaTeX code to generate an iterated blowup of a \( K_4 \) graph, where the "thick" edges indicate that all possible edges between the sets of vertices are given the specified color.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Define colors
+\colorlet{blueedge}{blue}
+\colorlet{rededge}{red}
+
+% Draw the original K4
+\node (v1) at (-2, 2) [circle, draw] {};
+\node (v2) at (0, 2) [circle, draw] {};
+\node (v3) at (2, 2) [circle, draw] {};
+\node (v4) at (0, 0) [circle, draw] {};
+
+% Connect v1-v2, v2-v3, v3-v1, v1-v4, v2-v4, v3-v4
+\draw[thick, blueedge] (v1) -- (v2);
+\draw[thick, blueedge] (v2) -- (v3);
+\draw[thick, blueedge] (v3) -- (v1);
+\draw[thick, rededge] (v1) -- (v4);
+\draw[thick, rededge] (v2) -- (v4);
+\draw[thick, rededge] (v3) -- (v4);
+
+% Blow up each vertex into two parts
+% For v1
+\node (v1a) at (-2.5, 2.5) [circle, fill=white, inner sep=1pt]{};
+\node (v1b) at (-2.5, 1.5) [circle, fill=white, inner sep=1pt]{};
+
+% For v2
+\node (v2a) at (-1.5, 2.5) [circle, fill=white, inner sep=1pt]{};
+\node (v2b) at (-1.5, 1.5) [circle, fill=white, inner sep=1pt]{};
+
+% For v3
+\node (v3a) at (1.5, 2.5) [circle, fill=white, inner sep=1pt]{

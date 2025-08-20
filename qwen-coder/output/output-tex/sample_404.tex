@@ -1,0 +1,16 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Define nodes
+    \foreach \i in {1,...,32} {
+        \node (n\i) at (\i*0.5,0) {$a_\i$};
+    }
+
+    % Draw edges
+    \foreach \i in {1,...,16} {
+        \draw[dashed,red] (n\i) -- (n\i+16);
+    }
+\end{tikzpicture}
+\end{document}

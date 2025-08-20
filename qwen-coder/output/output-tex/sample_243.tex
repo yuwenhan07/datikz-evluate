@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw radial lines for visual reference
+    \draw[gray,dashed] (0,0) -- (4,0);
+    \draw[gray,dashed] (0,0) -- (-4,0);
+    \draw[gray,dashed] (0,0) -- (0,4);
+    \draw[gray,dashed] (0,0) -- (0,-4);
+
+    % Draw red circles for outward-travelling modes
+    \foreach \x in {-3,-2,-1,1,2,3} {
+        \fill[red] (\x,0) circle (0.1);
+        \node at (\x,-0.5) {$m = \x$};
+    }
+
+    % Draw green circles for inward-travelling modes
+    \foreach \y in {-3,-2,-1,1,2,3} {
+        \fill[green] (0,\y) circle (0.1);
+        \node at (0.5,\y) {$m = \y$};
+    }
+
+    % Draw black squares for evanescent modes
+    \foreach \x in {-3,-2,-1,1,2,3} {
+        \foreach \y in {-3,-2,-1,1,2,3} {
+            \ifnum\x<0 \ifnum\y>0
+                \fill[black] (\x,\y) rectangle+(\smallskipamount,\smallskipamount);
+                \node at (\x-0.2,\y+0.2) {Evanescant};
+            \fi\fi
+        }
+    }
+
+    % Add labels
+    \node at (0,4.5) [above] {Positive $m$};
+    \node at (0,-4.5) [below] {Negative $m$};
+    \node at (4.5,0) [right] {Outward-Travelling Modes};
+    \node at (-4.5,0) [left] {Inward-Travelling Modes};
+
+\end{tikzpicture}
+\end{document}

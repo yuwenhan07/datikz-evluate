@@ -1,0 +1,47 @@
+Certainly! Below is the TikZ LaTeX code to generate two configurations of 6 non-heavy vertices \( x_i \) at pairwise distance at most two in a \((3,0)\)-saturated subcubic graph, along with a \((1,2^4)\)-packing coloring for each.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define styles
+\tikzset{
+    vertex/.style={circle, draw=black, fill=white, inner sep=5pt},
+    edge/.style={thick, -stealth},
+    color1/.style={red},
+    color2/.style={blue},
+    color3/.style={green},
+    color4/.style={orange},
+}
+
+\begin{tikzpicture}[scale=1.5]
+
+% Configuration 1
+\node[vertex] (v1) at (0,0) {};
+\node[vertex] (v2) at (1,0) {};
+\node[vertex] (v3) at (0.5,1) {};
+\node[vertex] (v4) at (-1,0) {};
+\node[vertex] (v5) at (-0.5,1) {};
+\node[vertex] (v6) at (0,-1) {};
+
+\draw[edge,color1] (v1) -- (v2);
+\draw[edge,color1] (v1) -- (v3);
+\draw[edge,color2] (v2) -- (v3);
+\draw[edge,color2] (v2) -- (v4);
+\draw[edge,color3] (v3) -- (v5);
+\draw[edge,color3] (v3) -- (v6);
+
+% Configuration 2
+\node[vertex] (w1) at (3,0) {};
+\node[vertex] (w2) at (4,0) {};
+\node[vertex] (w3) at (3.5,1) {};
+\node[vertex] (w4) at (2,0) {};
+\node[vertex] (w5) at (2.5,1) {};
+\node[vertex] (w6) at (3,-1) {};
+
+\draw[edge,color1] (w1) -- (w2);
+\draw[edge,color1] (w1) -- (w3);
+\draw[edge,color2] (w2) -- (w3);
+\draw[edge,color

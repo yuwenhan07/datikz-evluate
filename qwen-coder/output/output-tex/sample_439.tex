@@ -1,0 +1,36 @@
+Certainly! Below is a TikZ LaTeX code that represents the described scenario:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{arrows.meta,calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->] (-1,0) -- (12,0) node[right] {$s$};
+    \draw[->] (0,-1) -- (0,4) node[above] {$\lambda$};
+
+    % Critical point
+    \coordinate (critical_point) at (10,0);
+    \fill (critical_point) circle[radius=2pt] node[below right] {$s^* = 10\pi^2$};
+
+    % Diagonal lines for EBL bifurcations
+    \draw[dashed, thick] ($(critical_point) + (-1,-1)$) -- ($(critical_point) + (1,1)$);
+    \draw[dashed, thick] ($(critical_point) + (-1,1)$) -- ($(critical_point) + (1,-1)$);
+
+    % Horizontal dashed line for BLIS bifurcation
+    \draw[dashed, thick] ($(critical_point) - (1,-0.5)$) -- ($(critical_point) + (1,-0.5)$);
+
+    % Vertical dashed line for another BLIS bifurcation
+    \draw[dashed, thick] ($(critical_point) - (0.5,-0.5)$) -- ($(critical_point) - (0.5,0.5)$);
+
+    % Labels for line types
+    \node[anchor=north east] at (8,-0.75) {EBL};
+    \node[anchor=south west] at (11,-0.75) {BLIS};
+    \node[anchor=north west] at (6.5,-0.75) {BLIS};
+
+    % Group orbits
+    \draw[thick, ->, >=stealth] (0,0) -- (4,1) node[midway, above left] {Group Orbit 1};
+    \draw[thick, ->, >=stealth] (4,1) -- (8,3) node[midway, above right] {Group Orbit 2};
+    \draw[thick, ->, >=ste

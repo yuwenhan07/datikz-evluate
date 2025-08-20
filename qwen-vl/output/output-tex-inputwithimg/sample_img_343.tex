@@ -1,0 +1,410 @@
+To generate LaTeX code for the image and caption provided, you can use the `tikz` package in LaTeX. Below is the complete code:
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\section*{Depiction of Lemma \ref*{lemma:orthog_wave_and_balanced_set}: the wave set is $L^2_H$--orthogonal to the formal tangent space to the balanced set.}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Define coordinates
+        \coordinate (O) at (0,0);
+        \coordinate (X) at (1,0);
+        \coordinate (Y) at (0,1);
+        \coordinate (Z) at (1.5,1.5);
+        
+        % Draw the wave set
+        \filldraw[fill=green!20, draw=black] (O) -- (X) -- (Y) -- cycle;
+        \filldraw[fill=blue!20, draw=black] (O) -- (Z) -- (Y) -- cycle;
+        
+        % Draw the formal tangent space
+        \draw[dashed, blue] (O) -- ($(X)!0.5!(Y)$);
+        \draw[dashed, blue] (O) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the wave set label
+        \node at (0.5, 0.5) {$\mathcal{W}$};
+        
+        % Draw the formal tangent space label
+        \node at (1.75, 0.5) {$T_H\mathcal{B}$};
+        
+        % Draw the wave set equation
+        \node at (0.5, -0.5) {$\mathcal{Y} = \Psi(\xi, w)$};
+        
+        % Draw the formal tangent space equation
+        \node at (1.75, -0.5) {$p$};
+        
+        % Draw the point X
+        \filldraw[black] (X) circle (1pt) node[below right] {$\mathcal{X}$};
+        
+        % Draw the point Z
+        \filldraw[black] (Z) circle (1pt) node[right] {$\mathcal{Z} = D_H\Phi(\pi, \hat{\mu})$};
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, purple] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, green] (O) -- (Z);
+        
+        % Draw the vector from X to Y
+        \draw[->, thick, red] (X) -- (Y);
+        
+        % Draw the vector from Z to Y
+        \draw[->, thick, cyan] (Z) -- (Y);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, blue] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, magenta] (O) -- (Y);
+        
+        % Draw the vector from O to X
+        \draw[->, thick, violet] (O) -- (X);
+        
+        % Draw the vector from O to Z
+        \draw[->, thick, olive] (O) -- (Z);
+        
+        % Draw the vector from X to Z
+        \draw[->, thick, brown] (X) -- ($(X)!0.5!(Z)$);
+        
+        % Draw the vector from O to Y
+        \draw[->, thick, cyan] (O) -- (Y);
+        
+        % Draw

@@ -1,0 +1,18 @@
+The clause gadget \( G^C \) is a common structure used in the construction of certain types of graphs, particularly in the context of satisfiability problems like the Boolean satisfiability problem (SAT). Here's a detailed explanation of how it works:
+
+1. **Definition of Clause Gadget**: A clause gadget \( G^C \) is a subgraph that represents a clause in a Boolean formula. A clause in a Boolean formula is a disjunction of literals (variables or their negations).
+
+2. **Structure of the Clause Gadget**: The clause gadget typically consists of three vertices, say \( v_1, v_2, v_3 \), which represent the variables or their negations in the clause. These vertices are connected to each other in such a way that if any one of them is true (i.e., has value 1), then the clause evaluates to true.
+
+3. **Replacing a Vertex in the Original Graph**: In the original graph \( G_\mathcal{F} \), there is a vertex \( c_i \) that corresponds to a clause in the Boolean formula. This vertex \( c_i \) is replaced by the clause gadget \( G^C \).
+
+4. **Incident Edges**: The edges incident on \( c_i \) in \( G_\mathcal{F} \) are replaced by the edges of the clause gadget \( G^C \). Specifically:
+   - The edge \( e_1 \) incident on \( c_i \) in \( G_\mathcal{F} \) becomes an edge between \( v_1 \) and another vertex in the clause gadget.
+   - The edge \( e_2 \) incident on \( c_i \) in \( G_\mathcal{F} \) becomes an edge between \( v_2 \) and another vertex in the clause gadget.
+   - The edge \( e_3 \) incident on \( c_i \) in \( G_\mathcal{F} \) becomes an edge between \( v_3 \) and another vertex in the clause gadget.
+
+5. **Dashed Edges**: The edges \( e_1, e_2, \) and \( e_3 \) in the original graph \( G_\mathcal{F} \) are often represented as dashed edges in the new graph \( G \) to indicate that they have been replaced by the edges within the clause gadget.
+
+6. **Functionality**: The clause gadget ensures that the clause represented by the original vertex \( c_i \) is satisfied if at least one of the vertices \( v_1, v_2, \) or \( v_3 \) is true. This is because in the clause gadget, if any one of \( v_1, v_2, \) or \( v_3 \) is true, the entire clause is true.
+
+In summary, the clause gadget \( G^C \) is a subgraph that replaces a vertex in the original graph corresponding to a clause in the Boolean formula. It ensures that the clause is satisfied under the appropriate conditions, and the edges incident on the original vertex are replaced by edges within the clause gadget. The dashed edges in the new graph indicate the edges that have been replaced by the clause gadget.

@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define the proposition reference
+\newcommand{\propositionRef}{cota2}
+
+% Create a TikZ picture to represent the condition
+\beginecessaryCondition{
+    \node (condition) at (0,0) {\( g(\Gamma) \geq 5 \)};
+    \node (proposition) at (2,0) {Proposition \ref{propositionRef}};
+    \draw[->] (condition.south) -- ++(0,-1) node[midway,left] {necessary};
+}
+
+\end{document}
+
+% Define a new environment for drawing the necessary condition
+\tikzset{
+    necessaryCondition/.style={
+        execute at begin node=\begin{minipage}{3cm},
+        execute at end node=\end{minipage},
+        align=center,
+        draw=black, thick, rectangle, rounded corners, inner sep=10pt
+    }
+}

@@ -1,0 +1,30 @@
+\documentclass[tikz,border=10pt]{standalone}
+\begin{document}
+
+% Define the vectors
+\def\a{(2, 1)}
+\def\b{(1, 3)}
+
+% Draw the parallelogram
+\begin{tikzpicture}[scale=1]
+    % Start at the origin (0,0)
+    \coordinate (O) at (0,0);
+    
+    % Draw vector \a from O
+    \draw[->, thick] (O) -- ++\a node[midway, above right] {$\vec{a}$};
+    
+    % Draw vector \b from O
+    \draw[->, thick] (O) -- ++\b node[midway, above left] {$\vec{b}$};
+    
+    % Draw the other two sides of the parallelogram
+    \draw[thick] ++\a -- ++\b;
+    \draw[thick] ++(0,0) -- ++\b;
+    
+    % Label the vertices
+    \node at (\a) [right] {A};
+    \node at (\b) [above left] {B};
+    \node at ($(O)+\a+\b$) [below right] {C};
+    \node at (O) [left] {D};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,32 @@
+The illustration you've described seems to be related to a clinical trial or an observational study where the treatment effect is being evaluated across different strata defined by the levels of two variables, \(x_{ij}\) and \(u_{ij}\). Here's a breakdown of what this might represent:
+
+### Case Allocation and Treatment Effect
+
+In a case²-study (also known as a case-control study), the goal is often to compare the treatment effect between two groups: those who received the treatment (\(T\)) and those who did not (\(C\)). The illustration appears to show how the cases are allocated based on their treatment status.
+
+#### Left Panel: All Subjects Treated
+- This panel shows the allocation of cases when all subjects are treated.
+- The numbers \(h_{NN}, h_{MN}, h_{NM}, h_{MM}\) likely represent the expected values for the number of cases in each stratum:
+  - \(h_{NN}\): Number of cases where both \(x_{ij}\) and \(u_{ij}\) are in the "N" (non-treatment) stratum.
+  - \(h_{MN}\): Number of cases where \(x_{ij}\) is in the "M" (treatment) stratum but \(u_{ij}\) is in the "N" stratum.
+  - \(h_{NM}\): Number of cases where \(x_{ij}\) is in the "N" stratum but \(u_{ij}\) is in the "M" stratum.
+  - \(h_{MM}\): Number of cases where both \(x_{ij}\) and \(u_{ij}\) are in the "M" stratum.
+
+#### Right Panel: All Subjects Untreated
+- This panel shows the allocation of cases when all subjects are untreated.
+- Similar to the left panel, these numbers represent the expected values for the number of cases in each stratum under the assumption that no treatment was given.
+
+### Treatment Effect Metrics
+
+The metrics \(\theta_{Tij}/\theta_{Cij}\) and \((1 - \theta_{C_{ij}})/(1 - \theta_{T_{ij}})\) are used to assess the treatment effect:
+- \(\theta_{Tij}\) and \(\theta_{Cij}\) are the probabilities of a positive outcome for the treatment group and control group, respectively, for subject \(i\) in stratum \(j\).
+- \(\theta_{Tij}/\theta_{Cij}\) measures the relative risk of the treatment compared to the control.
+- \((1 - \theta_{C_{ij}})/(1 - \theta_{T_{ij}})\) measures the odds ratio of the treatment compared to the control.
+
+### Interpretation
+
+The illustration helps visualize how the treatment effect varies across different strata. By comparing the expected values in the left and right panels, one can infer whether the treatment has a differential effect depending on the levels of \(x_{ij}\) and \(u_{ij}\).
+
+For example, if \(h_{MM}\) is significantly higher than \(h_{NN}\) in the left panel, it suggests that the treatment may have a stronger effect in the "M" stratum for both \(x_{ij}\) and \(u_{ij}\).
+
+This type of analysis is crucial for understanding the heterogeneity of treatment effects and can inform further subgroup analyses or stratified randomization in future studies.

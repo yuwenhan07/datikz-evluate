@@ -1,0 +1,417 @@
+To generate the LaTeX code for the provided image and caption, you can use the `pgfplots` package in LaTeX. Below is an example of how you can create such a plot:
+
+```latex
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Episode},
+            ylabel={Steps Taken},
+            ymin=0,
+            ymax=30000,
+            ytick={0, 5000, 10000, 15000, 20000, 25000, 30000},
+            yticklabels={0, 5k, 10k, 15k, 20k, 25k, 30k},
+            legend pos=north east,
+            ymajorgrids=true,
+            grid style=dashed,
+            width=\textwidth,
+            height=0.8\textwidth,
+            title={Number of steps taken to find the goal in a randomly generated grid world maze of size $50\times50$},
+            title style={yshift=-1em},
+            legend style={nodes={scale=0.5, transform shape}},
+        ]
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=1] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=2] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=3] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=4] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=5] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=6] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=7] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=8] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=9] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=10] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=11] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=12] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=13] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=14] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=15] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=16] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=17] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=18] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=19] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=20] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=21] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=22] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=23] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=24] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=25] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=26] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=27] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=28] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=29] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=30] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=31] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=32] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=33] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=34] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=35] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=36] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=37] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=38] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=39] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=40] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=41] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=42] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=43] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=44] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=45] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=46] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=47] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=48] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=49] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=50] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=51] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=52] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=53] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=54] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0.4,
+                draw=none,
+                forget plot,
+            ] table [x expr=\thisrowno{0}, y index=55] {data.csv};
+            \addplot[
+                color=green!50!black,
+                fill=green!50!black,
+                opacity=0

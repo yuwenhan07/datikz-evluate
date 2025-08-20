@@ -1,0 +1,43 @@
+To create an illustration of the reduction from the densest \( k \)-subgraph problem to the unweighted rectangle packing problem (u-rcp), we can use TikZ in LaTeX. Below is a sample code that generates the required diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+
+    % Left side: Simple undirected graph G
+    \node (v1) at (0,0) [circle, draw] {v};
+    \node (e) at (1,0) [circle, draw] {e};
+
+    % Draw edges between v and e
+    \draw (v1) -- (e);
+
+    % Right side: 2-reduced directed graph of G
+    \node (v1_1) at (-3,-2) [circle, draw] {v1};
+    \node (v1_2) at (-3,-1) [circle, draw] {v1};
+    \node (v1_3) at (-2,-2) [circle, draw] {v1};
+    \node (v1_4) at (-2,-1) [circle, draw] {v1};
+    
+    \node (e_1) at (-1,-2) [circle, draw] {e};
+    \node (e_2) at (-1,-1) [circle, draw] {e};
+    
+    % Draw edges within the copies of v
+    \draw (v1_1) -- (v1_2);
+    \draw (v1_3) -- (v1_4);
+    \draw (v1_1) -- (v1_3);
+    \draw (v1_2) -- (v1_4);
+    
+    % Draw edges from copies of v to e
+    \draw (v1_1) -- (e_1);
+    \draw (v1_2) -- (e_1);
+    \draw (v1_3) -- (e_2);
+    \draw (v1_4) -- (e_2);
+    
+    % Connect e1 and e2
+    \draw (e_1) -- (e_2);
+
+    % Labels
+    \node[below] at (v1.south) {Left: Simple Undirected Graph \( G \

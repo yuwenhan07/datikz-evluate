@@ -1,0 +1,50 @@
+Certainly! Below is a TikZ LaTeX code that visually represents the described scenario:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    myarrow/.style={thick, ->, >=stealth},
+    myline/.style={thick},
+    mydashline/.style={thick, dashed},
+    mydashedotline/.style={thick, dashdotted},
+    mycircle/.style={fill=orange, opacity=0.3}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+    % Points
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-2,-1);
+    \coordinate (B) at (2,-1);
+    \coordinate (C) at (0,2);
+    \coordinate (D) at (0,-4);
+    \coordinate (E) at (-2,2);
+    \coordinate (F) at (2,2);
+    \coordinate (G) at (0,4);
+    \coordinate (H) at (-2,-4);
+    \coordinate (I) at (2,-4);
+    \coordinate (J) at (0,-6);
+    \coordinate (K) at (-2,0);
+    \coordinate (L) at (2,0);
+
+    % Orange Curve
+    \draw[mycircle] circle[radius=3];
+    \draw[mycircle] (A) arc[start angle=-90, end angle=90, radius=1];
+    \draw[mycircle] (B) arc[start angle=-90, end angle=90, radius=1];
+    
+    % Dashed Lines
+    \draw[mydashline] (C) -- node[midway, above] {$v$} (D);
+    \draw[mydashline] (E) -- node[midway, below] {$w$} (F);
+    
+    % Dashdotted Line and Segment
+    \draw[mydashedotline] (G) -- (H);
+    \draw[myline] (I) -- (J);
+    
+    % Convex Hull Support Line
+    \draw[myline] (K) -- node[midway, right] {$x$} (L);
+    
+    % Boundary Segment
+    \draw[

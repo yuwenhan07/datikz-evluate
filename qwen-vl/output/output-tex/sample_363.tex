@@ -1,0 +1,128 @@
+To understand the transition probability matrices for the given hypotheses, let's break down each case step by step.
+
+### Hypothesis (a): 1st-Order Random Walk
+
+In a 1st-order random walk, the probability of moving from one node to another depends only on the current node. Let's denote the set of all nodes in the graph as \(\mathcal{G}\). The transition probability matrix \(P_a\) for this hypothesis can be written as:
+
+\[ P_a = \begin{pmatrix}
+p_{xx} & p_{xy} \\
+p_{yx} & p_{yy}
+\end{pmatrix} \]
+
+Here:
+- \(p_{xx}\) is the probability of staying at a node that satisfies the \(i\)-th node modifier.
+- \(p_{xy}\) is the probability of moving from a node that satisfies the \(i\)-th node modifier to a node that does not satisfy any node modifier.
+- \(p_{yx}\) is the probability of moving from a node that does not satisfy any node modifier to a node that satisfies the \(i\)-th node modifier.
+- \(p_{yy}\) is the probability of staying at a node that does not satisfy any node modifier.
+
+Given that \(w_h \geq w_l > 0\) denote the transition probabilities, we can assume:
+- \(p_{xx} = w_h\)
+- \(p_{xy} = w_l\)
+- \(p_{yx} = w_l\)
+- \(p_{yy} = w_h\)
+
+Thus, the transition probability matrix \(P_a\) is:
+
+\[ P_a = \begin{pmatrix}
+w_h & w_l \\
+w_l & w_h
+\end{pmatrix} \]
+
+### Hypothesis (b): 1st-Order Random Walk
+
+This is similar to hypothesis (a), but it might have different transition probabilities depending on the specific context or additional constraints. However, without loss of generality, we can assume the same structure as hypothesis (a):
+
+\[ P_b = \begin{pmatrix}
+p_{xx} & p_{xy} \\
+p_{yx} & p_{yy}
+\end{pmatrix} \]
+
+Given the same transition probabilities:
+- \(p_{xx} = w_h\)
+- \(p_{xy} = w_l\)
+- \(p_{yx} = w_l\)
+- \(p_{yy} = w_h\)
+
+Thus, the transition probability matrix \(P_b\) is:
+
+\[ P_b = \begin{pmatrix}
+w_h & w_l \\
+w_l & w_h
+\end{pmatrix} \]
+
+### Hypothesis (c): 2nd-Order Random Walk
+
+In a 2nd-order random walk, the probability of moving from one node to another depends on both the current and the previous nodes. Let's denote the set of all nodes in the graph as \(\mathcal{G}\). The transition probability matrix \(P_c\) for this hypothesis can be written as:
+
+\[ P_c = \begin{pmatrix}
+p_{xxxx} & p_{xxxy} & p_{xxyx} & p_{xxyy} \\
+p_{xyxx} & p_{xyxy} & p_{xyyx} & p_{xyyy} \\
+p_{yxxy} & p_{yxyx} & p_{yxyy} & p_{yxyy} \\
+p_{yyxx} & p_{yyxy} & p_{yyyy} & p_{yyxy}
+\end{pmatrix} \]
+
+Here:
+- \(p_{xxxx}\) is the probability of staying at a node that satisfies the \(i\)-th node modifier given that the previous two nodes also satisfy the \(i\)-th node modifier.
+- \(p_{xxxy}\) is the probability of moving from a node that satisfies the \(i\)-th node modifier to a node that does not satisfy any node modifier given that the previous node satisfies the \(i\)-th node modifier.
+- \(p_{xxyx}\) is the probability of moving from a node that satisfies the \(i\)-th node modifier to a node that satisfies the \(i\)-th node modifier given that the previous node does not satisfy any node modifier.
+- \(p_{xxyy}\) is the probability of moving from a node that satisfies the \(i\)-th node modifier to a node that does not satisfy any node modifier given that the previous node does not satisfy any node modifier.
+- \(p_{xyxx}\) is the probability of moving from a node that does not satisfy any node modifier to a node that satisfies the \(i\)-th node modifier given that the previous node satisfies the \(i\)-th node modifier.
+- \(p_{xyxy}\) is the probability of staying at a node that does not satisfy any node modifier given that the previous node satisfies the \(i\)-th node modifier.
+- \(p_{xyyx}\) is the probability of moving from a node that does not satisfy any node modifier to a node that does not satisfy any node modifier given that the previous node satisfies the \(i\)-th node modifier.
+- \(p_{xyyy}\) is the probability of staying at a node that does not satisfy any node modifier given that the previous node does not satisfy any node modifier.
+- \(p_{yxxy}\) is the probability of moving from a node that does not satisfy any node modifier to a node that satisfies the \(i\)-th node modifier given that the previous node does not satisfy any node modifier.
+- \(p_{yxyx}\) is the probability of moving from a node that does not satisfy any node modifier to a node that satisfies the \(i\)-th node modifier given that the previous node satisfies the \(i\)-th node modifier.
+- \(p_{yxyy}\) is the probability of moving from a node that does not satisfy any node modifier to a node that does not satisfy any node modifier given that the previous node does not satisfy any node modifier.
+- \(p_{yxxy}\) is the probability of moving from a node that does not satisfy any node modifier to a node that satisfies the \(i\)-th node modifier given that the previous node satisfies the \(i\)-th node modifier.
+- \(p_{yyxx}\) is the probability of moving from a node that does not satisfy any node modifier to a node that satisfies the \(i\)-th node modifier given that the previous node does not satisfy any node modifier.
+- \(p_{yyxy}\) is the probability of moving from a node that does not satisfy any node modifier to a node that does not satisfy any node modifier given that the previous node satisfies the \(i\)-th node modifier.
+- \(p_{yyyy}\) is the probability of staying at a node that does not satisfy any node modifier given that the previous node does not satisfy any node modifier.
+
+Given the same transition probabilities:
+- \(p_{xxxx} = w_h\)
+- \(p_{xxxy} = w_l\)
+- \(p_{xxyx} = w_l\)
+- \(p_{xxyy} = w_h\)
+- \(p_{xyxx} = w_l\)
+- \(p_{xyxy} = w_h\)
+- \(p_{xyyx} = w_l\)
+- \(p_{xyyy} = w_h\)
+- \(p_{yxxy} = w_l\)
+- \(p_{yxyx} = w_l\)
+- \(p_{yxyy} = w_h\)
+- \(p_{yxxy} = w_l\)
+- \(p_{yyxx} = w_l\)
+- \(p_{yyxy} = w_l\)
+- \(p_{yyyy} = w_h\)
+
+Thus, the transition probability matrix \(P_c\) is:
+
+\[ P_c = \begin{pmatrix}
+w_h & w_l & w_l & w_h \\
+w_l & w_h & w_l & w_h \\
+w_l & w_l & w_h & w_l \\
+w_l & w_l & w_h & w_h
+\end{pmatrix} \]
+
+The final answer is:
+
+\[
+\boxed{
+\begin{array}{c}
+P_a = \begin{pmatrix}
+w_h & w_l \\
+w_l & w_h
+\end{pmatrix}, \\
+P_b = \begin{pmatrix}
+w_h & w_l \\
+w_l & w_h
+\end{pmatrix}, \\
+P_c = \begin{pmatrix}
+w_h & w_l & w_l & w_h \\
+w_l & w_h & w_l & w_h \\
+w_l & w_l & w_h & w_l \\
+w_l & w_l & w_h & w_h
+\end{pmatrix}
+\end{array}
+}
+\]

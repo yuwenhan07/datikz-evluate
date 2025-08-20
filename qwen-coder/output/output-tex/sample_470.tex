@@ -1,0 +1,45 @@
+To create a TikZ diagram representing the described geometry of the wormhole, we need to carefully construct the hyperbolic quadrilaterals and identify their edges. Below is a LaTeX code snippet that generates this diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+\begin{tikzpicture}[scale=3]
+
+% Define points for the first hyperbolic quadrilateral
+\coordinate (R') at (0, 0);
+\coordinate (R) at (1, 0);
+\coordinate (P'Q') at (-1, -1);
+\coordinate (P''Q'') at (1, -1);
+
+% Draw the first hyperbolic quadrilateral
+\draw[thick] (R') -- (P'Q') -- (P''Q'') -- (R) -- cycle;
+
+% Define points for the second hyperbolic quadrilateral
+\coordinate (S') at (0, 0);
+\coordinate (S) at (1, 0);
+\coordinate (Q'S') at (-1, 1);
+\coordinate (Q''S'') at (1, 1);
+
+% Draw the second hyperbolic quadrilateral
+\draw[thick] (S') -- (Q'S') -- (Q''S'') -- (S) -- cycle;
+
+% Identify edges P'R' and P''R'' with R' and R''
+\draw[dashed, thick] (P'Q') -- (P''Q'');
+\draw[dashed, thick] (Q'S') -- (Q''S'');
+
+% Labeling
+\node at (0.5, 0.5) {$R$};
+\node at (0.5, -0.5) {$S$};
+
+% Angles at R' and R''
+\node at (-1.5, -1.5) [anchor=east] {\footnotesize $\alpha$};
+\node at (1.5, -1.5) [anchor=west] {\footnotesize $\alpha$};
+
+% Angles at S' and S''
+\node at (-1.5, 1.5) [anchor=east] {\footnotesize $\beta$};
+\node at (1.5, 1.5) [anchor=west] {\footnotesize $\beta$};
+
+\end{tikz

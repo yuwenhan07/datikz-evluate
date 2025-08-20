@@ -1,0 +1,38 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+
+% Define points
+\coordinate (A) at (-3,0);
+\coordinate (B) at (0,3);
+\coordinate (C) at (3,0);
+
+% Draw lines
+\draw[->] (A) -- (B) node[midway, above] {$f_1$};
+\draw[->] (B) -- (C) node[midway, right] {$f_2$};
+
+% Draw fixed points
+\node[circle, fill=black, inner sep=1pt] (F1) at (0,-1) {};
+\node[circle, fill=black, inner sep=1pt] (F2) at (0,4) {};
+
+% Draw repelling and attracting intervals
+\draw[dashed] (F1) -- ($(F1)+(0,-2)$);
+\draw[dashed] (F2) -- ($(F2)+(0,2)$);
+
+% Draw arrows indicating directions
+\draw[->] ($(F1)+(0,-2)$) -- ($(F1)+(0,-3)$);
+\draw[<-] ($(F2)+(0,2)$) -- ($(F2)+(0,3)$);
+
+% Label points
+\node at (A) [left] {$(a,b)$};
+\node at (B) [above] {$(c,d)$};
+\node at (C) [right] {$(e,f)$};
+\node at (F1) [below left] {$b_i$};
+\node at (F2) [above right] {$b_{i+1}$};
+
+\end{tikzpicture}
+
+\end{document}

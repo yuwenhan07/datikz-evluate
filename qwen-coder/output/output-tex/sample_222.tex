@@ -1,0 +1,43 @@
+Certainly! Below is a TikZ LaTeX code that represents two permutations \(\sigma_0\) and \(\sigma_1\) on twelve elements, with \(\sigma_0\) shown in cycle notation and \(\sigma_1\) shown using arrows.
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{
+    node distance=2cm,
+    every node/.style={circle, draw, fill=blue!30, minimum size=1cm},
+    arrow style/.style={->, thick, >=Stealth[length=5pt]}
+}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm, y=1cm]
+
+% Nodes for permutation sigma_0
+\node (1) at (0,0) {1};
+\node (2) at (1,0) {2};
+\node (3) at (2,0) {3};
+\node (4) at (0,-1) {4};
+\node (5) at (1,-1) {5};
+\node (6) at (2,-1) {6};
+\node (7) at (0,-2) {7};
+\node (8) at (1,-2) {8};
+\node (9) at (2,-2) {9};
+\node (10) at (0,-3) {10};
+\node (11) at (1,-3) {11};
+\node (12) at (2,-3) {12};
+
+% Cycle notation for sigma_0
+\draw[thick] (1) edge[bend right] (2);
+\draw[thick] (2) edge[bend right] (3);
+\draw[thick] (3) edge[bend right] (1);
+
+\draw[thick] (4) edge[bend left] (5);
+\draw[thick] (5) edge[bend left] (6);
+\draw[thick] (6) edge[bend left] (4);
+
+\draw[thick] (7) edge[bend right] (8);
+\draw[thick] (8) edge[bend right] (9);
+\draw[thick] (9) edge[bend right] (7);
+
+\draw[thick] (10) edge[bend left] (1

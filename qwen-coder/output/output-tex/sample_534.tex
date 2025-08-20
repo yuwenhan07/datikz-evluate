@@ -1,0 +1,45 @@
+Certainly! Below is the TikZ LaTeX code to generate a caterpillar graph with the specified degree sequence \((5, 4^3, 2, 1^{11})\). The spine vertices will be gray, and the leaves will be yellow.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{graphs,graphs.standard}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Define colors
+    \colorlet{spine}{gray}
+    \colorlet{leaf}{yellow}
+
+    % Draw the spine
+    \node[draw, circle, fill=spine] (v1) at (0,0) {};
+    \foreach \i in {1,...,4} {
+        \node[draw, circle, fill=spine] (v\i) at (\i*2,0) {};
+    }
+    \foreach \i in {5} {
+        \node[draw, circle, fill=spine] (v\i) at (10,0) {};
+    }
+
+    % Connect spine nodes
+    \foreach \i [count=\j from 2] in {1,...,4} {
+        \draw (v\j) -- (v\i);
+    }
+    \draw (v5) -- (v4);
+
+    % Draw the leaves
+    \foreach \i in {6,...,17} {
+        \node[draw, circle, fill=leaf] (l\i) at (\i/2,1) {};
+        \draw (l\i) -- (v4);
+    }
+    \foreach \i in {18,...,29} {
+        \node[draw, circle, fill=leaf] (l\i) at (\i/2,-1) {};
+        \draw (l\i) -- (v4);
+    }
+
+    % Labeling the spine vertices
+    \node at (0,-1.5) {\textcolor{spine}{Spine}};
+    \node at (2,-1.5) {\textcolor{spine}{Spine}};
+    \node at (4,-1.5) {\textcolor{spine}{Spine}};
+    \node at (10,-1.5) {\textcolor{spine}{Spine}};
+
+    % Labeling the leaves
+    \

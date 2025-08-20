@@ -1,0 +1,34 @@
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    state/.style={circle, thick, draw=black, fill=white!30},
+    edge/.style={->, >=stealth', shorten >=1pt},
+    color1/.style={red},
+    color2/.style={blue},
+    color3/.style={green},
+    color4/.style={orange},
+    color5/.style={purple},
+    color6/.style={cyan},
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+% States
+\node[state] (q0) {$q_0$};
+\node[state] (q1) [below left of=q0] {$q_1$};
+\node[state] (q2) [above right of=q0] {$q_2$};
+
+% Edges
+\draw[edge, color1] (q0) -- node[above] {$(\chi_+, \chi_-)$} (q1);
+\draw[edge, color2] (q0) -- node[below] {$(\chi_-, \chi_+)$} (q2);
+\draw[edge, color3] (q1) -- node[left] {$(\chi_-, \chi_+)$} (q0);
+\draw[edge, color4] (q1) -- node[right] {$(\chi_+, \chi_-)$} (q2);
+\draw[edge, color5] (q2) -- node[left] {$(\chi_+, \chi_-)$} (q0);
+\draw[edge, color6] (q2) -- node[right] {$(\chi_-, \chi_+)$} (q1);
+
+\end{tikzpicture}
+
+\end{document}

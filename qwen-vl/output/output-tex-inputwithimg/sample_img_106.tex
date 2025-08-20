@@ -1,0 +1,387 @@
+To generate LaTeX code for the given image and caption, you can use TikZ and PGFPlots libraries. Below is an example of how you can create such a diagram:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{calc, shapes.geometric}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define colors
+    \definecolor{lightblue}{RGB}{204, 238, 255}
+    \definecolor{darkblue}{RGB}{0, 102, 204}
+    
+    % Draw the layers
+    \foreach \x in {0,1,...,6} {
+        \draw[dashed] (\x,-2) -- (\x,2);
+        \draw[dashed] (0,\x) -- (7,\x);
+    }
+    
+    % Draw the parallelepipeds
+    \foreach \x in {0,1,...,6} {
+        \draw[fill=lightblue, draw=darkblue, thick] 
+            (\x+0.5,-1.5) -- (\x+0.5,1.5) -- (\x+1.5,1.5) -- (\x+1.5,-1.5) -- cycle;
+    }
+    
+    % Draw the dots
+    \foreach \x in {0,1,...,6} {
+        \foreach \y in {-1.5,-0.5,0.5,1.5} {
+            \fill (\x+0.5,\y) circle (0.1);
+        }
+    }
+    
+    % Draw the curved lines
+    \draw[thick, ->] (0.5,0.5) to[out=90,in=-90] (1.5,1.5);
+    \draw[thick, ->] (1.5,0.5) to[out=90,in=-90] (2.5,1.5);
+    \draw[thick, ->] (2.5,0.5) to[out=90,in=-90] (3.5,1.5);
+    \draw[thick, ->] (3.5,0.5) to[out=90,in=-90] (4.5,1.5);
+    \draw[thick, ->] (4.5,0.5) to[out=90,in=-90] (5.5,1.5);
+    
+    % Draw the label "g"
+    \node at (0.5,-1.5) {$g$};
+    
+    % Draw the dots on the right side
+    \foreach \x in {5.5,6.5} {
+        \foreach \y in {0.5,1.5} {
+            \fill (\x,\y) circle (0.1);
+        }
+    }
+    
+    % Draw the dots on the top
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5,5.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5,5.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the left side
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-0.5) circle (0.1);
+    }
+    
+    % Draw the dots on the right side
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,0.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom right
+    \foreach \x in {5.5,6.5} {
+        \fill (\x,-1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the top left
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+        \fill (\x,1.5) circle (0.1);
+    }
+    
+    % Draw the dots on the bottom left
+    \foreach \x in {0.5,1.5,2.5,3

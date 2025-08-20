@@ -1,0 +1,38 @@
+Certainly! Below is a TikZ LaTeX code that visually represents the structure of the UPINN method as described:
+
+```latex
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style = {draw, -Stealth, thick},
+    cloud/.style = {draw, ellipse, node distance=3cm, minimum height=2em}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes
+    \node [block] (input_time) {Input Time $t$};
+    \node [block, below of=input_time] (surrogate_solution) {Surrogate Solution $U$};
+    \node [cloud, right of=surrogate_solution, xshift=4cm] (known_component) {Known Component $F$};
+    \node [cloud, above of=known_component, yshift=-2cm] (unknown_component) {Unknown Component $G$};
+    \node [block, below of=unknown_component, yshift=-1cm] (prediction_network) {Prediction Network};
+    \node [cloud, left of=prediction_network, xshift=-4cm] (data) {Data};
+    \node [block, right of=prediction_network, xshift=4cm] (pinn_loss) {PINN Loss};
+    \node [block, below of=pinn_loss, yshift=-1cm] (mse_loss) {MSE Loss};
+
+    % Lines
+    \path [line] (input_time) -- (surrogate_solution);
+    \path [line] (surrogate_solution) -- (known_component);
+    \path [line] (surrogate_solution) -- (unknown_component);
+    \path [line] (known_component) -- (pinn_loss);
+    \path [line] (unknown_component) -- (pinn_loss);
+    \path [line] (prediction_network) -- (pinn_loss);
+    \path [line] (prediction_network) -- (mse_loss);
+    \path [line] (data) -- (mse_loss);
+
+    % Arrows for derivatives
+    \draw [-Stealth, thick, dashed] ([yshift=-1

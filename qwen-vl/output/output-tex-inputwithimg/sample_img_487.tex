@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel=Ciphertext length ($2^x$),
+            ylabel=Percentage,
+            legend pos=north west,
+            ymode=log,
+            grid=major,
+            ymin=0,
+            ymax=3000,
+            xmin=3,
+            xmax=12,
+            xtick={3,4,...,12},
+            ytick={0,100,1000,2000,3000},
+            yticklabels={0,100,1000,2000,3000},
+            log basis y={10},
+            title style={align=center},
+            title=Summation of ciphertext elements can be performed using two methods - (i) Discrete Fourier Transform (DFT); (ii) Rotate and Add (RA). This plot depicts relative error percentage and relative speedup percentage of these methods for various ciphertext lengths in summing ciphertext elements. Relative error percentage = $\frac{DFT - RA}{RA} * 100$. Relative speedup percentage = $\frac{T_{DFT} - T_{RA}}{T_{RA}} * 100$, where $T$ denotes time taken using the respective method.
+        ]
+            \addplot coordinates {
+                (3, 50)
+                (4, 100)
+                (5, 200)
+                (6, 500)
+                (7, 300)
+                (8, 500)
+                (9, 100)
+                (10, 100)
+                (11, 100)
+                (12, 2500)
+            };
+            \addlegendentry{Relative error percentage}
+            
+            \addplot coordinates {
+                (3, 50)
+                (4, 100)
+                (5, 100)
+                (6, 100)
+                (7, 100)
+                (8, 100)
+                (9, 100)
+                (10, 100)
+                (11, 100)
+                (12, 100)
+            };
+            \addlegendentry{Relative speedup percentage}
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

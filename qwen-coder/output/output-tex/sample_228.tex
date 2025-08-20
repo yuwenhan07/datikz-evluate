@@ -1,0 +1,31 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    ap/.style={circle, draw=blue, thick, label=left:AP},
+    user/.style={rectangle, draw=red, thick, label=right:User},
+    arrow/.style={->, >=Stealth', thick}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    % Define nodes for APs and Users
+    \node[ap] (AP1) at (0, 0) {};
+    \node[ap] (AP2) at (4, 0) {};
+    
+    \node[user] (User1) at (-3, -2);
+    \node[user] (User2) at (-1, -2);
+    \node[user] (User3) at (1, -2);
+    \node[user] (User4) at (3, -2);
+
+    % Draw arrows representing assignments
+    \draw[arrow] (AP1) -- node[midway, above] {Assignment} (User1);
+    \draw[arrow] (AP1) -- node[midway, above] {Assignment} (User2);
+    \draw[arrow] (AP2) -- node[midway, above] {Assignment} (User3);
+    \draw[arrow] (AP2) -- node[midway, above] {Assignment} (User4);
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,32 @@
+Certainly! Below is a TikZ LaTeX code that generates a graphical representation of a hidden Markov model (HMM) with latent variables \(\mathbf{X}_i\) and observations \(\mathbf{y}_i\). The subsequence is captured in the solid box \(\mathcal{S}\), and the buffer region is highlighted by the dotted box \(\mathcal{S}^*\).
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  process/.style={rectangle, minimum width=2cm, minimum height=1cm, text centered, draw=black, fill=gray!30},
+  observation/.style={ellipse, minimum width=2cm, minimum height=1cm, text centered, draw=black, fill=blue!30},
+  buffer/.style={dotted rectangle, minimum width=2cm, minimum height=1cm, text centered, draw=red, fill=orange!30},
+  arrow/.style={thick,->,>=stealth}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+  % Nodes for the HMM
+  \node [process] (X1) {${\mathbf{X}_1}$};
+  \node [process, below of=X1] (X2) {${\mathbf{X}_2}$};
+  \node [process, below of=X2] (X3) {${\mathbf{X}_3}$};
+  
+  % Nodes for observations
+  \node [observation, right of=X1, xshift=4cm] (Y1) {${\mathbf{y}_1}$};
+  \node [observation, below of=Y1] (Y2) {${\mathbf{y}_2}$};
+  \node [observation, below of=Y2] (Y3) {${\mathbf{y}_3}$};
+  
+  % Subsequence box
+  \draw[dashed, thick] ($(X1.north west)+(-0.5,-0.2)$) rectangle ($(X3.south east)+(0.5,0.2)$);
+  \node at ($(X1.north west)+(0,-0.1)$) {$\mathcal{S}$};
+  
+  % Buffer box
+ 

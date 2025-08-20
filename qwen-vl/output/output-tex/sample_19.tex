@@ -1,0 +1,33 @@
+To determine whether the given game of Hackenbush is a conflict placement game or not, we need to analyze the structure and rules of the game. A conflict placement game is defined by the property that cutting any edge results in a game where the remaining edges are no longer connected in a way that allows for further cuts.
+
+The given game has the literal form \(\{ 1-1, -\frac{1}{2} \mathrel\vert \{ 0, 1 \mathrel\vert \} \}\). Let's break it down:
+
+- The left side of the vertical bar (\(\mathrel\vert\)) represents the edges that can be cut from the top.
+- The right side of the vertical bar represents the edges that can be cut from the bottom.
+- The horizontal bar (\(-\)) indicates that the edge on the left side is not connected to the edge on the right side.
+
+This means:
+- The top edge (1-1) is not connected to the bottom edges (0 and 1).
+- The bottom edge (-\(\frac{1}{2}\)) is not connected to the top edge (1-1).
+
+Now, let's analyze the possible moves and their effects:
+
+1. **Cutting the top edge (1-1):**
+   - If we cut the top edge (1-1), the game reduces to \(\{ 0, -\frac{1}{2} \mathrel\vert \{ 0 \mathrel\vert \} \}\).
+   - The bottom edge (-\(\frac{1}{2}\)) is still not connected to the top edge, so this move does not create a conflict.
+
+2. **Cutting the bottom edge (-\(\frac{1}{2}\)):**
+   - If we cut the bottom edge (-\(\frac{1}{2}\)), the game reduces to \(\{ 1-1, 0 \mathrel\vert \{ 1 \mathrel\vert \} \}\).
+   - The top edge (1-1) is not connected to the bottom edge (0), so this move also does not create a conflict.
+
+3. **Cutting both bottom edges:**
+   - If we cut both bottom edges (0 and 1), the game reduces to \(\{ 1-1, -\frac{1}{2} \mathrel\vert \emptyset \}\).
+   - The top edge (1-1) is not connected to the bottom edges, so this move does not create a conflict.
+
+4. **Cutting only one bottom edge:**
+   - If we cut only one bottom edge (either 0 or 1), the game reduces to \(\{ 1-1, -\frac{1}{2} \mathrel\vert \{ 0 \mathrel\vert \} \}\) or \(\{ 1-1, -\frac{1}{2} \mathrel\vert \{ 1 \mathrel\vert \} \}\).
+   - In either case, the top edge (1-1) is not connected to the bottom edge, so this move does not create a conflict.
+
+Since cutting any edge does not result in a game where the remaining edges are no longer connected in a way that allows for further cuts, the game is not a conflict placement game.
+
+Thus, the answer is \(\boxed{\text{not a conflict placement game}}\).

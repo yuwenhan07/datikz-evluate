@@ -1,0 +1,23 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{
+    vertex/.style={circle, draw, fill=blue!20, minimum size=15pt},
+    edge/.style={->, >=stealth', thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Define the vertices
+\node[vertex] (v0) at (0,0) {0};
+\node[vertex] (v1) at (cos(60),sin(60)) {1};
+\node[vertex] (v2) at (cos(120),sin(120)) {2};
+
+% Draw edges
+\draw[edge] (v0) -- (v1);
+\draw[edge] (v0) -- (v2);
+\draw[edge] (v1) -- (v2);
+
+\end{tikzpicture}
+\end{document}

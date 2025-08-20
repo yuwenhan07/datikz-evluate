@@ -1,0 +1,34 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    node distance=2cm,
+    start chain=going below,
+    box/.style={draw, rectangle, minimum width=4cm, minimum height=1cm, align=center},
+    arrow/.style={->, >=Stealth[length=5pt]}
+}
+
+\begin{document}
+\begin{tikzpicture}[start chain]
+
+\node (H) [box] {Collision-Resistant Hash Function};
+\node (v) [box, right=of H] {Cryptographic Commitment Function};
+
+% Public keys and randomness inputs
+\foreach \i in {1,...,4} {
+    \node (\i) [box, below=of v] at ($(v.south west) + (-\i*1.5,0)$) {$r_\i$};
+    \node (\i pk) [box, right=of \i] at ($(v.south east) + (\i*1.5,0)$) {\texttt{\$\mathsf{pk}_\i\$}};
+}
+
+% Connecting lines
+\draw[arrow] (H.east) -- node[above]{$h$} (v.west);
+\draw[arrow] (v.north) -- node[right]{$c$} (v.south);
+\draw[arrow] (v.west) -- node[left]{$m$} (v.east);
+
+\foreach \i in {1,...,4} {
+    \draw[arrow] (\i.west) -- node[left]{$R_i$} (\i pk.east);
+    \draw[arrow] (\i pk.west) -- node[left]{$P_i$} (\i.east);
+}
+
+\end{tikzpicture}
+\end{document}

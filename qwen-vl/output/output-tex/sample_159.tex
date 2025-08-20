@@ -1,0 +1,22 @@
+The illustration you've described seems to be a visual representation of a proof sketch for a theorem involving a specific structure in graph theory or algorithm design, particularly focusing on the interplay between backward and forward traversals, as well as the concept of $b$-cycles. Here's a breakdown of what each part of the illustration might represent:
+
+### Left Side: $h$-Backward Substructure
+- **Description**: This section describes a substructure within a larger graph or data structure, specifically a subgraph that is derived from a node $p$ and is traversed backwards.
+- **Size**: The size of this substructure is $\Theta(\sqrt{n})$, indicating that it scales with the square root of the total number of nodes ($n$).
+- **Extremal Leaves**: It contains $\Theta(\sqrt{n})$ extremal leaves, which are leaves located at the deepest level ($h$) of the substructure.
+
+### Center: Forward Tree from $r$
+- **Description**: This is a breadth-first traversal starting from a node $r$. The traversal is designed to be valid if it encounters one of the extremal leaves of the $h$-backward substructure before examining $\sqrt{n}$ states.
+- **Traversal Type**: It is a breadth-first search (BFS), which explores all vertices of a graph level by level.
+
+### Right Side: $b$-Threads
+- **Description**: These are threads constructed by reading $b$'s from the $p_i$'s. They are valid if they consist of previously unseen states and remain pairwise disjoint until they form a $b$-cycle.
+- **Cycle Length**: The cycles formed by these threads have lengths in the range $[\![\sqrt{n}, 2\sqrt{n}]\!]$, meaning the length of the cycle can vary but stays within a factor of 2 of $\sqrt{n}$.
+
+### Summary
+The illustration appears to be part of a proof sketch for a theorem that involves a combination of backward and forward traversals, as well as the construction of $b$-cycles. The key points are:
+1. The $h$-backward substructure is a critical component that needs to be of a certain size and contain a specific number of extremal leaves.
+2. The forward traversal must hit one of these extremal leaves before examining too many states.
+3. The $b$-threads must be constructed such that they do not intersect and eventually form cycles of a specific length.
+
+This type of proof often involves combinatorial arguments and careful analysis of the structure and properties of the graph or data structure being considered. The illustration helps visualize the different components and their relationships, making the proof more intuitive and easier to follow.

@@ -1,0 +1,20 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm,
+    mybox/.style={draw, rectangle, minimum width=3cm, minimum height=1cm},
+    arrow/.style={->, thick, >=Stealth[length=0.5em]}
+]
+
+\node (mu1) [mybox] at (0,0) {$(\mu_1, \mu_2)$};
+\node (mu_hat1) [mybox, below right=of mu1] {{{\widehat{\mu}}}_1}};
+
+\node (cc_algorithm) [mybox, above left=of mu1, yshift=-1.5cm] {CC Algorithm};
+
+\draw[arrow] (mu1) -- node[midway, above] {Recurrence Coefficients} (cc_algorithm);
+\draw[arrow] (cc_algorithm) -- node[midway, right] {Compute} (mu_hat1);
+
+\end{tikzpicture}
+\end{document}

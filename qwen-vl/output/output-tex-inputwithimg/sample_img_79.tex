@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{caption}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=\textwidth,
+            height=0.6\textheight,
+            ytick={1,...,3},
+            yticklabels={2D Forward Step, 3D Lid-driven Cavity, 2D Methane Combustion},
+            xbar stacked,
+            xmin=0,
+            xmax=1e5,
+            xlabel={Simulation Time (s)},
+            xmode=log,
+            yticklabel style={font=\small},
+            xticklabel style={font=\small},
+            legend style={at={(0.5,-0.2)},anchor=north,legend columns=-1, font=\small},
+            nodes near coords,
+            nodes near coords align={horizontal},
+            every node near coord/.append style={font=\footnotesize},
+            every axis plot post/.append style={
+                fill opacity=0.5,
+                draw opacity=1,
+                text opacity=1
+            },
+            every axis plot/.append style={
+                fill opacity=0.5,
+                draw opacity=1,
+                text opacity=1
+            }
+        ]
+            \addplot[fill=blue!50] coordinates {
+                (100,1) (1000,2) (1000,3)
+            };
+            \addplot[fill=red!50] coordinates {
+                (10000,1) (100000,2) (100000,3)
+            };
+            \node at (axis cs:92000,3) [above right] {\textbf{92X Speedup}};
+            \node at (axis cs:72000,2) [above right] {\textbf{72X Speedup}};
+            \node at (axis cs:30000,1) [above right] {\textbf{30X Speedup}};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Comparison of Speedup Achieved by PointSAGE in Accelerated CFD Simulations: The \textit{blue bars} represent the time taken for coarse mesh simulation along with the inference time of PointSAGE for predicting fine mesh simulation, while the \textit{red bars} represent the simulation time for fine mesh simulation using the CFD solver OpenFOAM.}
+    \label{fig:speedup_comparison}
+\end{figure}
+
+\end{document}

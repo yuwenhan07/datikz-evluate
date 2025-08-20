@@ -1,0 +1,29 @@
+To understand the composition of the maps and the resultant error in the approximation, let's break down the process step-by-step:
+
+1. **Encoder Map \(\mathcal{E}\)**: This map takes an input \(x\) from the original space and maps it to a lower-dimensional representation \(z = \mathcal{E}(x)\). The goal of the encoder is to capture the essential features of the input data while reducing its dimensionality.
+
+2. **Approximator Map \(\mathcal{A}\)**: This map takes the encoded representation \(z\) and approximates the true map \(\mathcal{G}^{\dagger}_{\text{ext}}\) by some function \(f(z) = \mathcal{A}(z)\). The approximator aims to learn a mapping that closely resembles the true transformation but may introduce some error due to the approximation.
+
+3. **Reconstructor Map \(\mathcal{R}\)**: This map takes the output of the approximator \(f(z)\) and reconstructs it back to a form that is as close as possible to the original input \(x\). The goal of the reconstructor is to minimize the difference between the reconstructed output and the original input.
+
+The overall process can be represented as:
+\[ x \rightarrow z = \mathcal{E}(x) \rightarrow f(z) = \mathcal{A}(z) \rightarrow \hat{x} = \mathcal{R}(f(z)) \]
+
+The resultant error in the approximation is the difference between the original input \(x\) and the reconstructed output \(\hat{x}\):
+\[ \text{Error} = \| x - \hat{x} \| \]
+
+This error can be decomposed into the contributions from each of the individual maps:
+- Encoder Error: The error introduced by the encoder \(\mathcal{E}\), which is the difference between the original input \(x\) and the encoded representation \(z\):
+  \[ \text{Encoder Error} = \| x - z \| \]
+- Approximator Error: The error introduced by the approximator \(\mathcal{A}\), which is the difference between the encoded representation \(z\) and the output of the approximator \(f(z)\):
+  \[ \text{Approximator Error} = \| z - f(z) \| \]
+- Reconstructor Error: The error introduced by the reconstructor \(\mathcal{R}\), which is the difference between the output of the approximator \(f(z)\) and the reconstructed output \(\hat{x}\):
+  \[ \text{Reconstructor Error} = \| f(z) - \hat{x} \| \]
+
+Thus, the total error in the approximation can be expressed as:
+\[ \text{Total Error} = \| x - \hat{x} \| = \| x - z \| + \| z - f(z) \| + \| f(z) - \hat{x} \| \]
+
+In summary, the resultant error in the approximation is the sum of the encoder error, the approximator error, and the reconstructor error. Therefore, the final answer is:
+\[
+\boxed{\| x - \hat{x} \| = \| x - z \| + \| z - f(z) \| + \| f(z) - \hat{x} \|}
+\]

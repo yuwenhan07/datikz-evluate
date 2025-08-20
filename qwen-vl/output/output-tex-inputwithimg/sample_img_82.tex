@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Define coordinates
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (2,0);
+        \coordinate (C) at (1,{sqrt(3)});
+        \coordinate (D) at (1,-{sqrt(3)});
+        
+        % Draw triangle
+        \draw (A) -- (B) -- (C) -- cycle;
+        \draw[dashed] (A) -- (D) -- (B);
+        \draw[dashed] (A) -- (C) -- (D);
+        
+        % Mark vertices with labels
+        \fill (A) circle (1pt) node[below left] {$0$};
+        \fill (B) circle (1pt) node[below right] {$1$};
+        \fill (C) circle (1pt) node[above] {$2$};
+        \fill (D) circle (1pt) node[below] {$3$};
+        
+        % Mark centroid and orthocenter
+        \fill (intersection cs:first line={(A)--(B)}, second line={(C)--(D)}) circle (1pt) node[below right] {$G$};
+        \fill (intersection cs:first line={(A)--(C)}, second line={(B)--(D)}) circle (1pt) node[below] {$H$};
+        
+        % Label circumcenters
+        \node at (intersection cs:first line={(A)--(B)}, second line={(C)--(D)}, solve={first}) [left] {$C_1$};
+        \node at (intersection cs:first line={(A)--(C)}, second line={(B)--(D)}, solve={first}) [right] {$C_2$};
+        \node at (intersection cs:first line={(A)--(C)}, second line={(B)--(D)}, solve={second}) [above] {$C_3$};
+    \end{tikzpicture}
+    \caption{Triangle $[012]$. $0:=(0,0)$, $1:=(2\epsilon_n,0)$, $2:=(\epsilon_n,\sqrt{3}\epsilon_n)$, $3:=(\epsilon_n,-\sqrt{3}\epsilon_n)$.}
+    \label{fig:triangle}
+\end{figure}
+
+\end{document}

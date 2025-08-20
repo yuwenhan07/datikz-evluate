@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.8]
+        % Draw the node k
+        \node[circle,fill,inner sep=2pt,label=below:$k$] (k) at (0,0) {};
+        
+        % Draw the parent node (k,j)
+        \node[above] at (0,2) {$(k,j)$};
+        
+        % Draw the children nodes (k,i_1), (k,i_2), ..., (k,i_p)
+        \node[below left] at (-1,-1) {$(k,i_1)$};
+        \node[below right] at (1,-1) {$(k,i_p)$};
+        \node[below] at (0,-1) {$\cdots$};
+        
+        % Draw the edges connecting the nodes
+        \draw (k) -- ++(0,2);
+        \draw (k) -- ++(-1,-1);
+        \draw (k) -- ++(1,-1);
+    \end{tikzpicture}
+\end{center}
+
+Node $k \in \mathbb{V}$ with its children $i_1, i_2, \ldots, i_p \in \mathcal{C}(k)$ and parent $j = \mathcal{P}(k)$.
+
+\end{document}

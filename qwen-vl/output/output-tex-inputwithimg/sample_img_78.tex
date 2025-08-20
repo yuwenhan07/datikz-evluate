@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = left,
+        xlabel = $x$,
+        ylabel = {$\frac{d\mu_{\alpha,\beta_1}}{dx}$},
+        xmin=0, xmax=5,
+        ymin=0, ymax=1.2,
+        xtick={3},
+        xticklabels={$\bar{x}$},
+        ytick=\empty,
+        enlargelimits=false,
+        grid = none,
+        legend style={at={(1.05,0.5)},anchor=north west}
+    ]
+    
+    % Plot the red curve
+    \addplot [
+        domain=0:4, 
+        samples=100, 
+        color=red
+    ] {exp(-x) * (1 + 2*x)};
+    \addlegendentry{$\frac{d\mu_{\alpha,\beta_1}}{dx}$}
+    
+    % Plot the blue curve
+    \addplot [
+        domain=0:4, 
+        samples=100, 
+        color=blue
+    ] {exp(-x) * (1 - 2*x)};
+    \addlegendentry{$\frac{d\mu_{\alpha,\beta_2}}{dx}$}
+    
+    % Dashed vertical line at x = 3
+    \draw[dashed] (3,0) -- (3,{exp(-3) * (1 - 6)});
+    
+    % Legend
+    \legend{$\frac{d\mu_{\alpha,\beta_1}}{dx}$, $\frac{d\mu_{\alpha,\beta_2}}{dx}$};
+    
+    \end{axis}
+\end{tikzpicture}
+
+The picture suggests that $\mathbb{E}_{\mu_{\alpha, \beta_1}} [V(X)] < \mathbb{E}_{\mu_{\alpha, \beta_2}} [V(X)]$.
+
+\end{document}

@@ -1,0 +1,28 @@
+Certainly! Below is a TikZ LaTeX code that creates two diagrams side by side as described:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{arrows.meta, positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Left: Common Rail Pressure System Diagram
+    \node (rail_pressure_system) [draw, rectangle, minimum width=6cm, minimum height=3cm] {Common Rail Pressure System};
+    \node (input_vk) [left=of rail_pressure_system.west, draw, circle, inner sep=2pt] {$v_k$};
+    \node (input_nk) [below=of input_vk, draw, circle, inner sep=2pt] {$n_k$};
+    \node (output_psi_k) [right=of rail_pressure_system.east, draw, circle, inner sep=2pt] {$\psi_k$};
+
+    \draw[-Stealth] (input_vk) -- node[above] {Input} (rail_pressure_system);
+    \draw[-Stealth] (input_nk) -- node[above] {Input} (rail_pressure_system);
+    \draw[-Stealth] (rail_pressure_system) -- node[right] {Output} (output_psi_k);
+
+    % Right: RMSE Decline Diagram
+    \node (rmse_decline) [draw, rectangle, minimum width=6cm, minimum height=3cm, right=of rail_pressure_system, xshift=4cm] {RMSE Decline};
+    \node (entropy_red) [below left=of rmse_decline.south west, draw, rectangle, fill=red!70, minimum width=2cm, minimum height=1cm] {};
+    \node (our_approach_t_imspe) [below right=of rmse_decline.south east, draw, rectangle, fill=blue!70, minimum width=2cm, minimum height=1cm] {};
+
+    \node (text_entropy) [below=of entropy_red, text width=2cm, align=center] {Entropy\\(Red)};
+    \node (text_t_imspe) [below=of our_approach_t_imspe, text width=2cm, align=center] {Our Approach\\(T-IMSPE)};
+
+    \draw[dashed] (rmse_decl

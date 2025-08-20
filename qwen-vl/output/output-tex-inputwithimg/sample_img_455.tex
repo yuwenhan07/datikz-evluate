@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        % Define the size of the grid
+        \def\gridsize{4}
+        
+        % Draw the grid for 1 antenna/array
+        \matrix (m1) [matrix of nodes, nodes={draw, minimum size=0.5cm, anchor=center}, row sep=-\pgflinewidth, column sep=-\pgflinewidth] {
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,\gridsize} {
+            \foreach \j in {1,...,\gridsize} {
+                \node[fill=yellow!30] at (m1-\i-\j) {};
+            }
+        }
+        
+        % Draw the grid for 2 antennas/array
+        \matrix (m2) [matrix of nodes, nodes={draw, minimum size=0.5cm, anchor=center}, row sep=-\pgflinewidth, column sep=-\pgflinewidth, right=of m1] {
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,\gridsize} {
+            \foreach \j in {1,...,\gridsize} {
+                \node[fill=yellow!30] at (m2-\i-\j) {};
+            }
+        }
+        
+        % Draw the grid for 4 antennas/array
+        \matrix (m4) [matrix of nodes, nodes={draw, minimum size=0.5cm, anchor=center}, row sep=-\pgflinewidth, column sep=-\pgflinewidth, above=of m2] {
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,\gridsize} {
+            \foreach \j in {1,...,\gridsize} {
+                \node[fill=yellow!30] at (m4-\i-\j) {};
+            }
+        }
+        
+        % Draw the grid for 8 antennas/array
+        \matrix (m8) [matrix of nodes, nodes={draw, minimum size=0.5cm, anchor=center}, row sep=-\pgflinewidth, column sep=-\pgflinewidth, right=of m4] {
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,\gridsize} {
+            \foreach \j in {1,...,\gridsize} {
+                \node[fill=yellow!30] at (m8-\i-\j) {};
+            }
+        }
+        
+        % Draw the grid for 16 antennas/array
+        \matrix (m16) [matrix of nodes, nodes={draw, minimum size=0.5cm, anchor=center}, row sep=-\pgflinewidth, column sep=-\pgflinewidth, right=of m8] {
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,\gridsize} {
+            \foreach \j in {1,...,\gridsize} {
+                \node[fill=yellow!30] at (m16-\i-\j) {};
+            }
+        }
+        
+        % Add labels
+        \node at (m1.north west) [above left] {1 antenna/array};
+        \node at (m2.north west) [above left] {2 antennas/array};
+        \node at (m4.north west) [above left] {4 antennas/array};
+        \node at (m8.north west) [above left] {8 antennas/array};
+        \node at (m16.north west) [above left] {16 antennas/array};
+        \node at (m4.north) [above] {4 antennas/array};
+        \node at (m8.north) [above] {8 antennas/array};
+        \node at (m16.north) [above] {16 antennas/array};
+    \end{tikzpicture}
+    
+    \caption{Examples of the evaluated rectangular \gls{hmd} antenna sub-array shapes (active antennas are marked yellow). For each sub-array, all possible locations within the full $4\times4$ array are included in the analysis.}
+    \label{fig:antenna_sub_arrays}
+\end{figure}
+
+\end{document}

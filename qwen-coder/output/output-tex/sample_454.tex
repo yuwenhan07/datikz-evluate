@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{math}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Define the domain and step size
+    \def\xmin{0.785398} % pi/4 in radians
+    \def\xmax{1.570796} % pi/2 in radians
+    \def\step{0.01}
+
+    % Draw the x-axis
+    \draw[->] (-0.1, 0) -- (\xmax+0.1, 0) node[right] {$b$};
+
+    % Draw the y-axis
+    \draw[->] (0, -1.2) -- (0, 1.2) node[above] {$E(b)$};
+
+    % Plot the function E(b) = sin(b) + cos(b)
+    \foreach \x in \xmin,\step,...,\xmax {
+        \pgfmathsetmacro{\y}{sin(\x r)+cos(\x r)}
+        \ifnum\x=\xmin
+            \coordinate (start) at (\x, \y);
+        \else
+            \draw[blue, thick] (start) -- (\x, \y);
+            \coordinate (start) at (\x, \y);
+        \fi
+    }
+
+    % Label the axes
+    \node at (0, -1.3) {0};
+    \node at (\xmax, 0) {\frac{\pi}{2}};
+    \node at (0, 1.3) {2};
+\end{tikzpicture}
+
+\end{document}

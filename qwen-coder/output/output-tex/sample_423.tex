@@ -1,0 +1,30 @@
+Certainly! Below is a TikZ LaTeX code that visualizes the $\sqrt{n}$-decomposition of a group with processes labeled as \(a, b, c, d, e\) and includes the described communication arrows.
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[level distance=2cm,
+        level 1/.style={sibling distance=4cm},
+        level 2/.style={sibling distance=2cm}]
+        
+        % Nodes for the group decomposition
+        \node[draw, circle] (root) {Root};
+        \node[draw, circle, below left of=root] (child1) {Child 1};
+        \node[draw, circle, below right of=root] (child2) {Child 2};
+        \node[draw, circle, below left of=child1] (grandchild1) {Grandchild 1};
+        \node[draw, circle, below right of=child1] (grandchild2) {Grandchild 2};
+        \node[draw, circle, below left of=child2] (grandchild3) {Grandchild 3};
+        \node[draw, circle, below right of=child2] (grandchild4) {Grandchild 4};
+        
+        % Pink arrows for the three-round process
+        \draw[-stealth, thick, pink] (root) ++(0,-0.5) node[left] {\#1} |- (child1);
+        \draw[-stealth, thick, pink] (root) ++(0,-0.5) node[right] {\#1} |- (child2);
+        \draw[-stealth, thick, pink] (child1) ++(0,-0.5) node[left] {\#1} |- (grandchild1);
+        \draw[-stealth, thick, pink] (child1) ++(0,-0.5) node[right] {\#1} |- (grandchild2);
+        \draw[-stealth, thick, pink] (child2) ++(0,-0.5) node[left] {\#1} |- (grandchild3);
+        \draw[-stealth, thick, pink] (child2) ++(0,-0.5) node[right] {\#1} |- (

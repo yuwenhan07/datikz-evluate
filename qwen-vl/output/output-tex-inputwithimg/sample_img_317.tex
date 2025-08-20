@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define coordinates
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (1,1);
+    \coordinate (C) at (2,0);
+    \coordinate (D) at (3,1);
+    \coordinate (E) at (2,2);
+
+    % Draw the pentagon
+    \draw (A) -- (B) -- (C) -- (D) -- (E) -- cycle;
+    \draw (A) -- (C) -- (D) -- (B) -- (E) -- (A);
+    
+    % Label the vertices
+    \node at (A) [left] {$1$};
+    \node at (B) [above left] {$b$};
+    \node at (C) [below right] {$e$};
+    \node at (D) [above right] {$c$};
+    \node at (E) [right] {$4$};
+    
+    % Draw the longest arc gamma
+    \draw[red, thick, ->] (A) -- node[midway, above, sloped] {$\gamma$} (C);
+    
+    % Label the angles
+    \node at (0.5, 0.5) [above right] {$\theta_1$};
+    \node at (1.5, 1.5) [above right] {$\theta_2$};
+    \node at (2.5, 0.5) [above right] {$\theta_3$};
+    
+    % Draw the snake graph
+    \draw (4,0) rectangle (6,2);
+    \draw (4,2) rectangle (5,3);
+    \draw (5,2) rectangle (6,3);
+    
+    % Label the nodes in the snake graph
+    \node at (4.5, 1) [below] {$b$};
+    \node at (5.5, 1) [below] {$c$};
+    \node at (5.5, 2) [right] {$d$};
+    \node at (4.5, 2) [right] {$1$};
+    \node at (5.5, 3) [right] {$2$};
+    \node at (6.5, 2) [right] {$a$};
+    \node at (6.5, 3) [right] {$e$};
+    \node at (4.5, 3) [left] {$2$};
+    
+    % Label the source and target
+    \node at (4.5, -0.5) [below] {$s = 0$};
+    \node at (5.5, -0.5) [below] {$t = 2$};
+    
+    % Label the angles in the snake graph
+    \node at (4.5, 1.5) [above] {$\theta_1$};
+    \node at (5.5, 1.5) [above] {$\theta_2$};
+    \node at (6.5, 1.5) [above] {$\theta_3$};
+\end{tikzpicture}
+
+\caption{A triangulation of the pentagon with default orientation, and the snake graph of the longest arc $\gamma$ with source $s$ and target $t$ on the right.}
+
+\end{document}

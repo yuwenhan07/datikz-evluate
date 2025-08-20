@@ -1,0 +1,31 @@
+Certainly! Below is an example of a TikZ LaTeX diagram that represents a computational graph, highlighting a single path in red and annotating it with component-by-component attributions.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (start) [startstop] {Start};
+    \node (input) [process, below of=start] {Input Processing};
+    \node (feature1) [process, below of=input] {Feature Extraction 1};
+    \node (feature2) [process, below of=feature1] {Feature Extraction 2};
+    \node (decision1) [decision, below of=feature2] {Decision Node};
+    \node (output1) [process, right of=decision1, xshift=4cm] {Output 1};
+    \node (output2) [process, left of=decision1, xshift=-4cm] {Output 2};
+    \node (end) [startstop, below of=output1, yshift=-1cm] {End};
+
+    % Arrows
+    \draw [arrow] (start) -- (input);
+    \draw [arrow] (input) -- (feature1);
+    \draw [arrow] (feature1) -- (feature2);
+    \draw [arrow] (feature2) -- (decision1);
+    \draw [arrow] (decision1) -- node[anchor=east] {Yes} (output1);
+    \draw [arrow] (decision1) -- node[anchor=west] {No} (output2);
+    \draw [arrow] (output1)

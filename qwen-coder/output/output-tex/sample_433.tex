@@ -1,0 +1,37 @@
+To generate a TikZ LaTeX diagram for the Boolean formula \( G'_\mathcal{F} = (X_1 \vee X_3) \wedge (X_2 \vee X_3 \vee X_5) \wedge (X_4 \vee X_5) \), we need to represent the logical operations as nodes in a graph. Each variable \( X_i \) will be represented by a node, and each logical operation (OR or AND) will be represented by an edge connecting the relevant nodes.
+
+Here is the TikZ LaTeX code to create this graph:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+    % Nodes representing variables
+    \node (X1) {X1};
+    \node (X2) [right of=X1] {X2};
+    \node (X3) [above right of=X1] {X3};
+    \node (X4) [below right of=X1] {X4};
+    \node (X5) [right of=X3] {X5};
+
+    % Nodes representing OR operations
+    \node (OR1) [above of=X3, yshift=-0.5cm] {$X_1 \vee X_3$};
+    \node (OR2) [right of=OR1, xshift=1cm] {$X_2 \vee X_3 \vee X_5$};
+    \node (OR3) [below of=OR2, yshift=-0.5cm] {$X_4 \vee X_5$};
+
+    % Nodes representing AND operation
+    \node (AND) [below of=OR2, yshift=-1cm] {$\wedge$};
+
+    % Edges
+    \draw (X1) -- (OR1);
+    \draw (X3) -- (OR1);
+    \draw (X2) -- (OR2);
+    \draw (X3) -- (OR2);
+    \draw (X5) -- (OR2);
+    \draw (X4) -- (OR3);
+    \draw (X5) -- (OR3);
+    \draw (OR1) -- (AND);
+    \draw (OR2) -- (AND);
+    \draw (

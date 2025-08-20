@@ -1,0 +1,43 @@
+Certainly! Below is a TikZ LaTeX code that illustrates the decomposition of trees in \(\mathcal{T}_i\) for \(i \in \mathcal{I}_{|S|-2}\) and how trees in \(\mathcal{T}_{|S|-2}\) can be further decomposed.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{trees,shapes.geometric}
+
+\tikzset{
+    mytree/.style={
+        level distance=3cm,
+        sibling distance=3cm,
+        every node/.style={draw,circle,inner sep=2pt},
+        edge from parent/.style={->,thick}
+    }
+}
+
+\begin{document}
+
+\begin{tikzpicture}[mytree]
+    % Decomposition of trees in T_i for i ∈ I_{|S|-2} on the left-hand side
+    \node (T_i_1) {T_i};
+    child {
+        node (T_i_2) {T_i_2}
+        child { node (T_i_4) {T_i_4} }
+        child { node (T_i_5) {T_i_5} }
+    };
+    child {
+        node (T_i_3) {T_i_3}
+        child { node (T_i_6) {T_i_6} }
+        child { node (T_i_7) {T_i_7} }
+    };
+
+    % Decomposition of trees in T_{|S|-2} on the right-hand side
+    \node[right=of T_i_1, xshift=8cm] (T_S_minus_2_1) {T_{|S|-2}};
+    child {
+        node (T_S_minus_2_2) {T_{|S|-2}_2}
+        child { node (T_S_minus_2_4) {T_{|S|-2}_4} }
+        child { node (T_S_minus_2_5) {T_{|S|-2}_5} }
+    };
+    child {
+        node (T_S_minus_2_3) {T_{|S|-2}_3}
+        child { node (T_S_minus_2_6) {T_{|S|-2}_6} }
+        child { node (T_S_minus_2_7) {T_{|S|-2}_7} }
+    };

@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Axes
+        \draw[->] (-2,0) -- (2,0) node[right] {$Z$};
+        \draw[->] (0,-2) -- (0,2) node[above] {$\dot{Z}$};
+        
+        % Phase portrait for H_
+        \draw[blue, thick] plot[domain=-1.5:1.5, variable=\x] ({\x},{-sqrt(1-\x*\x)});
+        \draw[blue, thick] plot[domain=-1.5:1.5, variable=\x] ({\x},{sqrt(1-\x*\x)});
+        
+        % Trajectory
+        \draw[red, thick, ->] (0,0) -- (1,1);
+        
+        % Lines for h0, h, h1
+        \draw[gray, dashed] (2,0.5) -- (-2,0.5) node[left] {$h_0$};
+        \draw[gray, dashed] (2,1) -- (-2,1) node[left] {$h$};
+        \draw[gray, dashed] (2,1.5) -- (-2,1.5) node[left] {$h_1$};
+        
+        % Labels
+        \node at (-2.5, 0.75) {$Z_-$};
+        \node at (-2.5, -0.75) {$Z_+$};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=1.5]
+        % Axes
+        \draw[->] (-2,0) -- (2,0) node[right] {$Z$};
+        \draw[->] (0,-2) -- (0,2) node[above] {$\dot{Z}$};
+        
+        % Phase portrait for H
+        \draw[black, thick] plot[domain=-1.5:1.5, variable=\x] ({\x},{-sqrt(1-\x*\x)});
+        \draw[black, thick] plot[domain=-1.5:1.5, variable=\x] ({\x},{sqrt(1-\x*\x)});
+        
+        % Trajectory
+        \draw[red, thick, ->] (0,0) -- (1,1);
+        
+        % Lines for h0, h, h1
+        \draw[gray, dashed] (2,0.5) -- (-2,0.5) node[left] {$h_0$};
+        \draw[gray, dashed] (2,1) -- (-2,1) node[left] {$h$};
+        \draw[gray, dashed] (2,1.5) -- (-2,1.5) node[left] {$h_1$};
+        
+        % Labels
+        \node at (-2.5, 0.75) {$Z_-$};
+        \node at (-2.5, -0.75) {$Z_+$};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=1.5]
+        % Axes
+        \draw[->] (-2,0) -- (2,0) node[right] {$Z$};
+        \draw[->] (0,-2) -- (0,2) node[above] {$\dot{Z}$};
+        
+        % Phase portrait for H_
+        \draw[blue, thick] plot[domain=-1.5:1.5, variable=\x] ({\x},{-sqrt(1-\x*\x)});
+        \draw[blue, thick] plot[domain=-1.5:1.5, variable=\x] ({\x},{sqrt(1-\x*\x)});
+        
+        % Trajectory
+        \draw[red, thick, ->] (0,0) -- (1,1);
+        
+        % Lines for h0, h, h1
+        \draw[gray, dashed] (2,0.5) -- (-2,0.5) node[left] {$h_0$};
+        \draw[gray, dashed] (2,1) -- (-2,1) node[left] {$h$};
+        \draw[gray, dashed] (2,1.5) -- (-2,1.5) node[left] {$h_1$};
+        
+        % Labels
+        \node at (-2.5, 0.75) {$Z_-$};
+        \node at (-2.5, -0.75) {$Z_+$};
+    \end{tikzpicture}
+    \caption{Comparison of a trajectory $(z,\dot{z})$ in red with the phase portrait associated to the equations related to $H_-$ (left), $H$ (middle) and $H_+$ (right). On each graph, the three lines are associated to three values $h_0<h<h_1$.}
+\end{figure}
+
+\end{document}

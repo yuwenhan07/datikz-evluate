@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the axes
+        \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$ axis};
+        \draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$ axis};
+        
+        % Draw the unit circle
+        \draw (0,0) circle (1);
+        
+        % Draw the inner circle with radius 1/(M+1)
+        \draw[dashed] (0,0) circle (1/(M+1));
+        
+        % Fill the region between the two circles
+        \fill[gray!50] (0,0) circle (1/(M+1)) circle (1);
+        
+        % Mark the point (1/(M+1), 0)
+        \fill (1/(M+1),0) circle (0.05) node[below right] {$\frac{M}{M+1}$};
+        
+        % Label the point on the x-axis
+        \fill (1,0) circle (0.05) node[below] {1};
+    \end{tikzpicture}
+\end{center}
+
+A Stolz type region $\{ z \in \mathbb{D} : |1 - z|^2 < M(1 - |z|^2) \}$.
+
+\end{document}

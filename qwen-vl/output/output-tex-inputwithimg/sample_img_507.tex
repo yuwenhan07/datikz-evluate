@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphdrawing, quotes, shapes.geometric, positioning}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm and 1cm,
+        block/.style={draw, fill=gray!20, rounded corners, minimum width=2cm, minimum height=1cm},
+        label/.style={draw, fill=yellow!20, rounded corners, minimum width=2cm, minimum height=1cm},
+        >=stealth]
+        
+        % Nodes
+        \node[block] (elasto) {Elastoplasticty};
+        \node[block, below left=of elasto] (elastic) {Elastic response};
+        \node[block, below right=of elasto] (plastic) {Plastic contributions};
+        \node[block, below left=of plastic] (yield) {Yield / Potential function};
+        \node[block, below right=of plastic] (hardening) {Hardening components};
+        \node[block, below right=of hardening] (flow) {Flow direction};
+        
+        % Edges
+        \path[->] (elasto) edge [""] (elastic)
+                  (elasto) edge [""] (plastic)
+                  (plastic) edge [""] (yield)
+                  (plastic) edge [""] (hardening)
+                  (plastic) edge [""] (flow);
+        
+        % Labels
+        \node[label, below left=of elastic] (dd1) {Data-Driven};
+        \node[label, below right=of elastic] (pm1) {Phen. Model};
+        \node[label, below left=of yield] (dd2) {Data-Driven};
+        \node[label, below right=of yield] (pm2) {Phen. Model};
+        \node[label, below left=of hardening] (dd3) {Data-Driven};
+        \node[label, below right=of hardening] (pm3) {Phen. Model};
+        \node[label, below left=of flow] (dd4) {Data-Driven};
+        \node[label, below right=of flow] (pm4) {Phen. Model};
+        
+        % Annotations
+        \node[above=0.5cm of elasto] {\textbf{Modular elastoplastic material modeling. The initial yielding can be fully DD or can separately include the equivalent stress measure and the yield stress. Hardening components can e.g. include the deformation resistance or some form of hardening moduli. See \cite{vlassis2022component} and \cite{fuhg2023modular}.}};
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,25 @@
+The illustration you're referring to likely depicts a scenario where a semi-supervised classification-incremental learning (SS-CIL) framework is being applied to a series of tasks. In this context, the Average Confidence Score (ACS) is a metric used to assess the quality of predictions made on unlabeled data. Here's a breakdown of what this might look like and why it suggests a potential issue with using a fixed high threshold:
+
+### What is ACS?
+- **Definition**: ACS is calculated by averaging the maximum probability confidence scores of predictions made on unlabeled data.
+- **Calculation**: For each unlabeled data point, the model predicts probabilities for each class. The maximum probability score for each data point is then averaged over all unlabeled data points.
+
+### Observed Decaying Trend
+- **Trend Description**: The trend shows a decrease in ACS as the number of tasks increases.
+- **Implication**: This decay suggests that the model's confidence in its predictions on unlabeled data is decreasing over time.
+
+### Why a Fixed High Threshold Might Not Be Suitable
+- **Threshold Issue**: A fixed high threshold in SS-CIL means that only data points with a confidence score above this threshold are considered for training. As the ACS decreases, fewer data points meet this threshold, leading to a significant reduction in the amount of unlabeled data used for training.
+- **Impact on Feature Learning**: With less data being used for training, the model may not effectively learn features that generalize well across tasks. This can lead to suboptimal performance on new tasks.
+
+### Example Scenario
+Imagine you have a sequence of tasks where the model starts with a high ACS but gradually sees a decline due to increasing complexity or domain shift between tasks. If a fixed high threshold is used, the model will only consider a small subset of the unlabeled data for each task, which could result in:
+1. **Reduced Data Utilization**: Fewer data points are used for training, leading to slower learning and potentially worse performance.
+2. **Feature Learning Issues**: The model might not capture enough information from the unlabeled data to adapt to the changing nature of the tasks.
+
+### Recommendations
+To address this issue, one might consider:
+- **Adaptive Thresholds**: Instead of a fixed threshold, use an adaptive threshold that adjusts based on the current ACS. This could help maintain a reasonable amount of data for training even as the ACS decreases.
+- **Dynamic Data Selection**: Implement a mechanism that dynamically selects more data points when the ACS drops below a certain threshold, ensuring that the model continues to have sufficient data for learning.
+
+By addressing these issues, the model can better utilize the unlabeled data across tasks, potentially improving its performance and adaptability.

@@ -1,0 +1,41 @@
+Certainly! Below is an example of how you might create a TikZ diagram to visualize the speedup of PolyTOPS compared to Pluto for the Jacobi-1D problem, using two different configurations and multiple data set sizes.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[x=1cm,y=0.5cm]
+    % Define styles
+    \tikzset{
+        bar/.style={rectangle, draw=black, fill=blue},
+        bar2/.style={rectangle, draw=black, fill=red},
+        axis line style={draw=black, thick},
+        tick label style={font=\small},
+        xlabel style={at={(current axis.right)}, anchor=north west},
+        ylabel style={at={(current axis.above origin)}, rotate=-90, anchor=south east}
+    }
+
+    % Axis setup
+    \begin{scope}[local bounding box=axis]
+        \draw[axis line style] (-0.5,0) -- (6,0);
+        \draw[axis line style] (0,-1) -- (0,4);
+        \foreach \x in {1,...,5} {
+            \draw[thick] (\x,0) -- ++(0,-0.1);
+            \node at (\x,-0.3) {\x};
+        }
+        \foreach \y in {1,...,3} {
+            \draw[thick] (0,\y) -- ++(-0.1,0);
+            \node at (-0.3,\y) {\y};
+        }
+        \node[xlabel] at (6,0) {Data Set Size};
+        \node[ylabel] at (0,4) {Speedup};
+    \end{scope}
+
+    % Data points
+    \node[bar, minimum width=1.5cm, minimum height=2.5cm] (polytops-large) at (1,2.5) {};
+    \node[bar2, minimum width=1.5cm, minimum height=1.8cm] (pluto-large) at (1,1.8) {};
+
+    \node[bar, minimum width=1.5cm, minimum height=3.0cm] (polytops-medium) at (3,3.0) {};
+    \node[bar2, minimum width=1.

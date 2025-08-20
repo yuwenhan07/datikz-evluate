@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  block/.style = {rectangle, draw=black, fill=white!20, text width=5em, text centered, rounded corners, minimum height=4em},
+  decision/.style = {diamond, draw=black, fill=white!30, text width=5em, text badly centered, node distance=3cm, inner sep=0pt},
+  arrow/.style = {thick,->,>=stealth}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+  % Nodes for each technique
+  \node (local) [block] {Local};
+  \node (uniform) [block, below of=local] {Uniform Updating};
+  \node (quantum) [block, below of=uniform] {Quantum Proposal};
+
+  % Arrows between nodes
+  \draw [arrow] (local) -- node[anchor=east] {Achieves good acceptance rates} (uniform);
+  \draw [arrow] (uniform) -- node[anchor=east] {High energy states, low acceptance rates} (quantum);
+  \draw [arrow] (quantum) -- node[anchor=east] {Samples distant states, comparable energy, high acceptance rates} (local);
+
+  % Descriptions next to nodes
+  \node [below=of local, yshift=-1cm] {Relatively good acceptance rates\\Does not explore the state space};
+  \node [below=of uniform, yshift=-1cm] {Tries to explore the state space\\Struggles with high energy states};
+  \node [below=of quantum, yshift=-1cm] {Samples distant states\\Comparable energy\\High acceptance rates};
+\end{tikzpicture}
+\end{document}

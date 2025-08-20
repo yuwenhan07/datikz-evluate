@@ -1,0 +1,38 @@
+To create the specified affine Dynkin diagrams using TikZ in LaTeX, we can use the `tikz-dimension` package to handle the affine nature of the diagrams. Below is an example code that generates the Dynkin diagrams for \( p = 3, 4, 5, 6, \) and \( 7 \). Each node represents either an \( R \)-node (blue), an \( L \)-node (red), or a magnon node (empty).
+
+```latex
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\tikzset{
+    node distance=1cm,
+    dot/.style={circle, fill=black, inner sep=1pt},
+    rdot/.style={circle, fill=red!80, inner sep=1pt},
+    bdot/.style={circle, fill=blue!80, inner sep=1pt},
+    glink/.style={->, thick, green},
+}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tabular}{ccccc}
+        \begin{scope}[start chain=chain1 going right,node distance=1cm]
+            \node[bdot] at (chain1-1.center){};
+            \node[rdot] at (chain1-2.center){};
+            \node[rdot] at (chain1-3.center){};
+            \node[rdot] at (chain1-4.center){};
+            \node[rdot] at (chain1-5.center){}
+        \end{scope} &
+        \begin{scope}[start chain=chain2 going right,node distance=1cm]
+            \node[bdot] at (chain2-1.center){};
+            \node[rdot] at (chain2-2.center){};
+            \node[rdot] at (chain2-3.center){}
+        \end{scope} &
+        \begin{scope}[start chain=chain3 going right,node distance=1cm]
+            \node[bdot] at (chain3-1.center){};
+            \node[rdot] at (chain3-2.center){}
+        \end{scope} &
+        \begin{scope}[start chain=chain4 going right,node distance=1cm]
+            \node[bdot] at (chain4-

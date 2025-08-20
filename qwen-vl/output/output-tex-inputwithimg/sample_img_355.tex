@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define points
+    \coordinate (p1) at (1.5,0);
+    \coordinate (p2) at (2.5,1);
+    \coordinate (p3) at (-1,0);
+    
+    % Draw the ellipse
+    \draw[thick] (0,0) ellipse (1.5 and 0.8);
+    
+    % Draw the tangent line at p2
+    \draw[dashed] (p2) -- ++(45:2);
+    \node at (3.5,1) {$T_{p_2}\partial\Omega$};
+    
+    % Draw the triangle
+    \draw[thick] (p1) -- (p2) -- (p3) -- cycle;
+    
+    % Label the points
+    \fill (p1) circle (1pt) node[below right] {$p_1$};
+    \fill (p2) circle (1pt) node[above left] {$p_2$};
+    \fill (p3) circle (1pt) node[left] {$p_3$};
+    
+    % Label the domain
+    \node at (0.5,0.5) {$\Omega$};
+\end{tikzpicture}
+
+A symplectic billiard bounce $(p_1,p_3)\mapsto (p_2,p_3)$ in a strictly convex domain $\Omega$.
+
+\end{document}

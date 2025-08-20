@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        level distance=15mm,
+        level 1/.style={sibling distance=30mm},
+        level 2/.style={sibling distance=20mm},
+        level 3/.style={sibling distance=15mm},
+        level 4/.style={sibling distance=10mm},
+        edge from parent/.style={draw,dotted},
+        every node/.style={fill=white,circle,inner sep=1pt}
+    ]
+        \node {$q_0$}
+            child {node {$c$} 
+                child {node {$c$} 
+                    child {node {$d$} 
+                        child {node {$c/d$} 
+                            child {node {$c$} 
+                                child {node {$c$}}
+                            }
+                        }
+                    }
+                }
+            }
+            child {node {$q_1$} 
+                child {node {$c$} 
+                    child {node {$c$} 
+                        child {node {$c$}}
+                    }
+                }
+            }
+            child {node {$q_k=q$} 
+                child {node {$c$} 
+                    child {node {$c$} 
+                        child {node {$c$}}
+                    }
+                }
+            }
+            child {node {$q_{k+p}=q$} 
+                child {node {$c$} 
+                    child {node {$c$} 
+                        child {node {$c$}}
+                    }
+                }
+            }
+            child {node {$q_{k+2p}=q$} 
+                child {node {$c$} 
+                    child {node {$c$} 
+                        child {node {$c$}}
+                    }
+                }
+            }
+            child {node {$q_{k+3p}$} 
+                child {node {$c$} 
+                    child {node {$c$} 
+                        child {node {$c$}}
+                    }
+                }
+            };
+    \end{tikzpicture}
+    \caption{Illustration for the proof of Proposition~\ref{twoexamples}. All inner nodes of the tree are labeled with $a$. All leaves not shown in the illustration are labeled with $c$.}
+    \label{fig:tree}
+\end{figure}
+
+\end{document}

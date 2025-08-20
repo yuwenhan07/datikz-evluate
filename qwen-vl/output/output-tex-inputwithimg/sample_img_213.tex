@@ -1,0 +1,230 @@
+To generate LaTeX code for the image you provided, we can use the `tikz` package in LaTeX. Below is the LaTeX code to create the diagram:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.7]
+    % Define colors
+    \definecolor{lightgray}{RGB}{230,230,230}
+    \definecolor{darkgray}{RGB}{180,180,180}
+    
+    % Draw the vertical lines
+    \foreach \x in {0,...,9} {
+        \draw[black, line width=0.5mm] (\x, 0) -- (\x, 10);
+    }
+    
+    % Draw the horizontal lines
+    \foreach \y in {0,...,9} {
+        \draw[black, line width=0.5mm] (0, \y) -- (10, \y);
+    }
+    
+    % Fill the gray areas
+    \fill[darkgray] (0, 0) rectangle (1, 1);
+    \fill[darkgray] (2, 0) rectangle (3, 1);
+    \fill[darkgray] (4, 0) rectangle (5, 1);
+    \fill[darkgray] (6, 0) rectangle (7, 1);
+    \fill[darkgray] (8, 0) rectangle (9, 1);
+    \fill[darkgray] (1, 1) rectangle (2, 2);
+    \fill[darkgray] (3, 1) rectangle (4, 2);
+    \fill[darkgray] (5, 1) rectangle (6, 2);
+    \fill[darkgray] (7, 1) rectangle (8, 2);
+    \fill[darkgray] (9, 1) rectangle (10, 2);
+    \fill[darkgray] (2, 2) rectangle (3, 3);
+    \fill[darkgray] (4, 2) rectangle (5, 3);
+    \fill[darkgray] (6, 2) rectangle (7, 3);
+    \fill[darkgray] (8, 2) rectangle (9, 3);
+    \fill[darkgray] (3, 3) rectangle (4, 4);
+    \fill[darkgray] (5, 3) rectangle (6, 4);
+    \fill[darkgray] (7, 3) rectangle (8, 4);
+    \fill[darkgray] (9, 3) rectangle (10, 4);
+    \fill[darkgray] (4, 4) rectangle (5, 5);
+    \fill[darkgray] (6, 4) rectangle (7, 5);
+    \fill[darkgray] (8, 4) rectangle (9, 5);
+    \fill[darkgray] (5, 5) rectangle (6, 6);
+    \fill[darkgray] (7, 5) rectangle (8, 6);
+    \fill[darkgray] (9, 5) rectangle (10, 6);
+    \fill[darkgray] (6, 6) rectangle (7, 7);
+    \fill[darkgray] (8, 6) rectangle (9, 7);
+    \fill[darkgray] (7, 7) rectangle (8, 8);
+    \fill[darkgray] (9, 7) rectangle (10, 8);
+    \fill[darkgray] (8, 8) rectangle (9, 9);
+    \fill[darkgray] (10, 8) rectangle (11, 9);
+    
+    % Draw the dashed lines
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (0, 0) rectangle (1, 1);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (2, 0) rectangle (3, 1);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (4, 0) rectangle (5, 1);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (6, 0) rectangle (7, 1);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (8, 0) rectangle (9, 1);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (1, 1) rectangle (2, 2);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (3, 1) rectangle (4, 2);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (5, 1) rectangle (6, 2);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (7, 1) rectangle (8, 2);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (9, 1) rectangle (10, 2);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (2, 2) rectangle (3, 3);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (4, 2) rectangle (5, 3);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (6, 2) rectangle (7, 3);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (8, 2) rectangle (9, 3);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (3, 3) rectangle (4, 4);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (5, 3) rectangle (6, 4);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (7, 3) rectangle (8, 4);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (9, 3) rectangle (10, 4);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (4, 4) rectangle (5, 5);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (6, 4) rectangle (7, 5);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (8, 4) rectangle (9, 5);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (5, 5) rectangle (6, 6);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (7, 5) rectangle (8, 6);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (9, 5) rectangle (10, 6);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (6, 6) rectangle (7, 7);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (8, 6) rectangle (9, 7);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (7, 7) rectangle (8, 8);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (9, 7) rectangle (10, 8);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (8, 8) rectangle (9, 9);
+    \draw[dashed, pattern=north west lines, pattern color=black!50] (10, 8) rectangle (11, 9);
+    
+    % Draw the black boxes
+    \fill[black] (1, 1) rectangle (2, 2);
+    \fill[black] (3, 3) rectangle (4, 4);
+    \fill[black] (5, 5) rectangle (6, 6);
+    \fill[black] (7, 7) rectangle (8, 8);
+    \fill[black] (9, 9) rectangle (10, 10);
+    
+    % Draw the black boxes on the right side
+    \fill[black] (10, 1) rectangle (11, 2);
+    \fill[black] (10, 3) rectangle (11, 4);
+    \fill[black] (10, 5) rectangle (11, 6);
+    \fill[black] (10, 7) rectangle (11, 8);
+    \fill[black] (10, 9) rectangle (11, 10);
+    
+    % Draw the black boxes on the left side
+    \fill[black] (0, 1) rectangle (1, 2);
+    \fill[black] (2, 3) rectangle (3, 4);
+    \fill[black] (4, 5) rectangle (5, 6);
+    \fill[black] (6, 7) rectangle (7, 8);
+    \fill[black] (8, 9) rectangle (9, 10);
+    
+    % Draw the black boxes on the bottom
+    \fill[black] (0, 0) rectangle (1, 1);
+    \fill[black] (2, 2) rectangle (3, 3);
+    \fill[black] (4, 4) rectangle (5, 5);
+    \fill[black] (6, 6) rectangle (7, 7);
+    \fill[black] (8, 8) rectangle (9, 9);
+    
+    % Draw the black boxes on the top
+    \fill[black] (10, 0) rectangle (11, 1);
+    \fill[black] (8, 2) rectangle (9, 3);
+    \fill[black] (6, 4) rectangle (7, 5);
+    \fill[black] (4, 6) rectangle (5, 7);
+    \fill[black] (2, 8) rectangle (3, 9);
+    \fill[black] (0, 10) rectangle (1, 11);
+    
+    % Draw the black boxes on the right side
+    \fill[black] (10, 1) rectangle (11, 2);
+    \fill[black] (10, 3) rectangle (11, 4);
+    \fill[black] (10, 5) rectangle (11, 6);
+    \fill[black] (10, 7) rectangle (11, 8);
+    \fill[black] (10, 9) rectangle (11, 10);
+    
+    % Draw the black boxes on the left side
+    \fill[black] (0, 1) rectangle (1, 2);
+    \fill[black] (2, 3) rectangle (3, 4);
+    \fill[black] (4, 5) rectangle (5, 6);
+    \fill[black] (6, 7) rectangle (7, 8);
+    \fill[black] (8, 9) rectangle (9, 10);
+    
+    % Draw the black boxes on the bottom
+    \fill[black] (0, 0) rectangle (1, 1);
+    \fill[black] (2, 2) rectangle (3, 3);
+    \fill[black] (4, 4) rectangle (5, 5);
+    \fill[black] (6, 6) rectangle (7, 7);
+    \fill[black] (8, 8) rectangle (9, 9);
+    
+    % Draw the black boxes on the top
+    \fill[black] (10, 0) rectangle (11, 1);
+    \fill[black] (8, 2) rectangle (9, 3);
+    \fill[black] (6, 4) rectangle (7, 5);
+    \fill[black] (4, 6) rectangle (5, 7);
+    \fill[black] (2, 8) rectangle (3, 9);
+    \fill[black] (0, 10) rectangle (1, 11);
+    
+    % Draw the black boxes on the right side
+    \fill[black] (10, 1) rectangle (11, 2);
+    \fill[black] (10, 3) rectangle (11, 4);
+    \fill[black] (10, 5) rectangle (11, 6);
+    \fill[black] (10, 7) rectangle (11, 8);
+    \fill[black] (10, 9) rectangle (11, 10);
+    
+    % Draw the black boxes on the left side
+    \fill[black] (0, 1) rectangle (1, 2);
+    \fill[black] (2, 3) rectangle (3, 4);
+    \fill[black] (4, 5) rectangle (5, 6);
+    \fill[black] (6, 7) rectangle (7, 8);
+    \fill[black] (8, 9) rectangle (9, 10);
+    
+    % Draw the black boxes on the bottom
+    \fill[black] (0, 0) rectangle (1, 1);
+    \fill[black] (2, 2) rectangle (3, 3);
+    \fill[black] (4, 4) rectangle (5, 5);
+    \fill[black] (6, 6) rectangle (7, 7);
+    \fill[black] (8, 8) rectangle (9, 9);
+    
+    % Draw the black boxes on the top
+    \fill[black] (10, 0) rectangle (11, 1);
+    \fill[black] (8, 2) rectangle (9, 3);
+    \fill[black] (6, 4) rectangle (7, 5);
+    \fill[black] (4, 6) rectangle (5, 7);
+    \fill[black] (2, 8) rectangle (3, 9);
+    \fill[black] (0, 10) rectangle (1, 11);
+    
+    % Draw the black boxes on the right side
+    \fill[black] (10, 1) rectangle (11, 2);
+    \fill[black] (10, 3) rectangle (11, 4);
+    \fill[black] (10, 5) rectangle (11, 6);
+    \fill[black] (10, 7) rectangle (11, 8);
+    \fill[black] (10, 9) rectangle (11, 10);
+    
+    % Draw the black boxes on the left side
+    \fill[black] (0, 1) rectangle (1, 2);
+    \fill[black] (2, 3) rectangle (3, 4);
+    \fill[black] (4, 5) rectangle (5, 6);
+    \fill[black] (6, 7) rectangle (7, 8);
+    \fill[black] (8, 9) rectangle (9, 10);
+    
+    % Draw the black boxes on the bottom
+    \fill[black] (0, 0) rectangle (1, 1);
+    \fill[black] (2, 2) rectangle (3, 3);
+    \fill[black] (4, 4) rectangle (5, 5);
+    \fill[black] (6, 6) rectangle (7, 7);
+    \fill[black] (8, 8) rectangle (9, 9);
+    
+    % Draw the black boxes on the top
+    \fill[black] (10, 0) rectangle (11, 1);
+    \fill[black] (8, 2) rectangle (9, 3);
+    \fill[black] (6, 4) rectangle (7, 5);
+    \fill[black] (4, 6) rectangle (5, 7);
+    \fill[black] (2, 8) rectangle (3, 9);
+    \fill[black] (0, 10) rectangle (1, 11);
+    
+    % Draw the black boxes on the right side
+    \fill[black] (10, 1) rectangle (11, 2);
+    \fill[black] (10, 3) rectangle (11, 4);
+    \fill[black] (10, 5) rectangle (11, 6);
+    \fill[black] (10, 7) rectangle (11, 8);
+    \fill[black] (10, 9) rectangle (11, 10);
+    
+    % Draw the black boxes on the left side
+    \fill[black] (0, 1) rectangle (1, 2);
+    \fill[black] (2, 3) rectangle (3, 4);
+    \fill[black] (4, 5) rectangle (5, 6);
+    \fill[black] (6, 7) rectangle (7, 8);
+    \fill[black] (8, 9) rectangle (9, 10);
+    
+    % Draw the black boxes on the bottom
+    \fill[black] (0, 0) rectangle (1, 1);
+    \fill[black] (2, 2) rectangle (3, 3);
+    \fill[black] (4, 4) rectangle (5, 5);
+    \fill[black] (

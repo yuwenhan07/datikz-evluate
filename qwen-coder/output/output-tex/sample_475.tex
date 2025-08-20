@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[level distance=2cm,
+        level 1/.style={sibling distance=4cm},
+        level 2/.style={sibling distance=3cm}]
+        
+        % Root node
+        \node[draw, circle] {Start}
+            child [gray] {node[draw, circle] {Move}}
+            child [gray] {node[draw, circle] {Turn}}
+            child [gray] {node[draw, circle] {Observe}}
+            child {node[draw, circle] {Learn}};
+        
+        % Level 2
+        \node at ([yshift=-2cm]current bounding box.center)
+            child [white] {node[draw, circle] {Pick}}
+            child [white] {node[draw, circle] {Place}}
+            child [white] {node[draw, circle] {Sort}}
+            child [white] {node[draw, circle] {Inspect}};
+        
+        % Level 3
+        \node at ([yshift=-4cm]current bounding box.center)
+            child [white] {node[draw, circle] {Identify Object}}
+            child [white] {node[draw, circle] {Classify Color}}
+            child [white] {node[draw, circle] {Count Objects}};
+        
+        % Level 4
+        \node at ([yshift=-6cm]current bounding box.center)
+            child [white] {node[draw, circle] {Recognize Shape}}
+            child [white] {node[draw, circle] {Detect Patterns}};
+        
+    \end{tikzpicture}
+    \caption{Hierarchy of Tasks Learned by the Robot}
+    \label{fig:task_hierarchy}
+\end{figure}
+
+\end{document}

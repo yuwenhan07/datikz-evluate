@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{graphdrawing}
+\usepackage{graphs}
+\usegdlibrary{circular}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \GraphInit[vstyle=Normal]
+    \SetGraphUnit{2}
+    
+    \Vertex{0_0}
+    \NOEA(0_0){0_1}
+    \SOEA(0_0){0_2}
+    \NOEA(0_1){1_0}
+    \NOEA(0_2){1_1}
+    \NOEA(1_0){1_2}
+    \NOEA(1_1){2_0}
+    \NOEA(1_2){2_1}
+    \NOEA(2_0){2_2}
+    \NOEA(2_1){0_0}
+    
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](0_0)(0_1)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](0_0)(0_1)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](0_0)(0_2)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](0_0)(0_2)
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](0_1)(0_0)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](0_1)(0_0)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](0_1)(0_2)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](0_1)(0_2)
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](0_2)(0_0)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](0_2)(0_0)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](0_2)(0_1)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](0_2)(0_1)
+    \Edge[style={bend left=45},label={$1$, $2$},labelpos=s](0_1)(1_0)
+    \Edge[style={bend right=45},label={$2$, $1$},labelpos=s](0_1)(1_0)
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](0_1)(1_1)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](0_1)(1_1)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](0_1)(1_2)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](0_1)(1_2)
+    \Edge[style={bend left=45},label={$1$, $2$},labelpos=s](0_2)(2_0)
+    \Edge[style={bend right=45},label={$2$, $1$},labelpos=s](0_2)(2_0)
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](0_2)(2_1)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](0_2)(2_1)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](0_2)(2_2)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](0_2)(2_2)
+    \Edge[style={bend left=45},label={$1$, $2$},labelpos=s](1_0)(2_0)
+    \Edge[style={bend right=45},label={$2$, $1$},labelpos=s](1_0)(2_0)
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](1_0)(2_1)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](1_0)(2_1)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](1_0)(2_2)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](1_0)(2_2)
+    \Edge[style={bend left=45},label={$1$, $2$},labelpos=s](1_1)(2_0)
+    \Edge[style={bend right=45},label={$2$, $1$},labelpos=s](1_1)(2_0)
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](1_1)(2_1)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](1_1)(2_1)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](1_1)(2_2)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](1_1)(2_2)
+    \Edge[style={bend left=45},label={$1$, $2$},labelpos=s](1_2)(2_0)
+    \Edge[style={bend right=45},label={$2$, $1$},labelpos=s](1_2)(2_0)
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](1_2)(2_1)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](1_2)(2_1)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](1_2)(2_2)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](1_2)(2_2)
+    \Edge[style={bend left=45},label={$1$, $2$},labelpos=s](2_0)(0_0)
+    \Edge[style={bend right=45},label={$2$, $1$},labelpos=s](2_0)(0_0)
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](2_0)(0_1)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](2_0)(0_1)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](2_0)(0_2)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](2_0)(0_2)
+    \Edge[style={bend left=45},label={$1$, $2$},labelpos=s](2_1)(0_0)
+    \Edge[style={bend right=45},label={$2$, $1$},labelpos=s](2_1)(0_0)
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](2_1)(0_1)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](2_1)(0_1)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](2_1)(0_2)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](2_1)(0_2)
+    \Edge[style={bend left=45},label={$1$, $2$},labelpos=s](2_2)(0_0)
+    \Edge[style={bend right=45},label={$2$, $1$},labelpos=s](2_2)(0_0)
+    \Edge[style={bend left=45},label={$0$, $1$},labelpos=s](2_2)(0_1)
+    \Edge[style={bend right=45},label={$1$, $0$},labelpos=s](2_2)(0_1)
+    \Edge[style={bend left=45},label={$0$, $2$},labelpos=s](2_2)(0_2)
+    \Edge[style={bend right=45},label={$2$, $0$},labelpos=s](2_2)(0_2)
+\end{tikzpicture}
+
+\end{document}

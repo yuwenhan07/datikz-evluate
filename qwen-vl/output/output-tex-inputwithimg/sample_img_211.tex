@@ -1,0 +1,51 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{groupplot}[
+        group style={group size=2 by 1, vertical sep=1cm},
+        width=7cm,
+        height=6cm,
+        xlabel={x},
+        ylabel={},
+        title style={at={(0.5,1.05)}, anchor=south},
+        title={},
+        legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},
+        xmin=-4.5, xmax=4.5,
+        ymin=-0.5, ymax=1.2,
+        xtick={-4,-3,...,4},
+        ytick={-0.5,0,...,1},
+        domain=-4.5:4.5,
+        samples=100,
+        no markers,
+        every axis legend/.append style={nodes={scale=0.8, transform shape}},
+        ]
+        \nextgroupplot[
+            title={$t=0$},
+            title style={yshift=0.5cm},
+            legend to name=legendname,
+            legend entries={$\left(V^{0}(x)+V^{\mathrm{e}}(x,t)\right)/100$, $\operatorname{Im}(u(x,t))$, $\operatorname{Re}(u(x,t))$},
+            legend columns=3,
+            legend cell align=left,
+            ]
+            \addplot [blue] {sin(deg(x)) + cos(deg(x))};
+            \addplot [orange] {cos(deg(x))};
+            \addplot [green] {sin(deg(x))};
+
+        \nextgroupplot[
+            title={$t=\frac{T}{2}$},
+            title style={yshift=0.5cm},
+            ]
+            \addplot [blue] {sin(deg(x)) + cos(deg(x))};
+            \addplot [orange] {cos(deg(x))};
+            \addplot [green] {sin(deg(x))};
+    \end{groupplot}
+
+    \node [anchor=south west] at (current bounding box.south west)
+        {\ref{legendname}};
+\end{tikzpicture}
+
+\end{document}

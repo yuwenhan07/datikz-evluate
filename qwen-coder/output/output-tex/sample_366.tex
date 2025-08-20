@@ -1,0 +1,35 @@
+To create a semantically accurate and structurally clear TikZ LaTeX code for illustrating bipartite matching in the context of computing the similarity between sense clusters' centroids \( p_1^t \) and \( p_1^{t-1} \), we can follow these steps:
+
+1. **Define the centroids and their embeddings**: We will represent the centroids as nodes and their corresponding embeddings as smaller nodes.
+2. **Draw the edges representing bipartite matching**: These edges will connect the centroids with their respective embeddings.
+3. **Add labels and annotations**: To make the diagram more informative, we will add labels and annotations.
+
+Here is the TikZ LaTeX code to achieve this:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+
+% Define styles for nodes
+\tikzset{
+    centroid/.style={circle, draw, fill=blue!20, minimum size=15pt},
+    embedding/.style={rectangle, draw, fill=green!20, minimum size=10pt},
+    edge/.style={->, >=stealth', shorten >=1pt}
+}
+
+% Draw centroids
+\node (centroid_t) [centroid] at (0,0) {$p_1^t$};
+\node (centroid_tp1) [centroid, below left of=centroid_t] {$p_1^{t-1}$};
+
+% Draw embeddings
+\node (embedding_t1) [embedding, right of=centroid_t, xshift=1.5cm] {$e_1^t$};
+\node (embedding_t2) [embedding, above right of=centroid_t, yshift=-1.5cm] {$e_2^t$};
+\node (embedding_t3) [embedding, below right of=centroid_t, yshift=1.5cm] {$e_3^t$};
+
+\node (embedding_tp11) [embedding, right of=centroid_tp1, xshift=1.5cm] {$e_1^{t-1}$};
+\node (embedding_tp12) [embedding, above right of=centroid_tp1, yshift=-1.5cm] {$e_2^{t-1}$};
+\node (embedding_tp13) [embedding, below right of=centroid_tp1, yshift=1.5cm] {$e_3

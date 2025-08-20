@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\textbf{CASE STUDY5:} Incorrect Prediction During High Upward Price Movement
+
+\textbf{Stock:} stock (CYH)
+
+\textbf{Event:} Community Health Systems to Participate in Barclays Global Healthcare Conference.
+
+FRANKLIN, Tenn.--(BUSINESS WIRE)--Community Health Systems, Inc. (NYSE:CYH) today announced that management will participate virtually in the Barclays Global Healthcare Conference to be held March 9-11, 2021. The investor presentation will begin at 1:15 p.m. Eastern time, 12:15 p.m. Central time, on Thursday, March 11, 2021, and will be available to investors via a live audio webcast. A link to the broadcast can be found at the investor relations section of the Companys website, www.chs.net, and a replay will be available using that same link.
+
+\textbf{Expected Labels:} INC\_18 INC\_57 INC\_90
+
+\textbf{Predicted Labels:} INC\_8 INC\_8 INC\_8
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Price over Time},
+            xlabel={Time},
+            ylabel={Price},
+            legend pos=north east,
+            grid=major,
+            ymin=9.5, ymax=13.5,
+            xmin=1, xmax=9,
+            ytick={10,11,12,13},
+            xtick={1,2,3,4,5,6,7,8,9},
+            legend entries={Actual Price, T5+TimeS, D-Linear+W},
+            mark options={solid},
+            ]
+            \addplot coordinates {
+                (1,10) (2,11) (3,12) (4,13) (5,11.5) (6,12) (7,12) (8,12) (9,11.5)
+            };
+            \addplot coordinates {
+                (1,9.8) (2,9.9) (3,10) (4,10) (5,10) (6,10) (7,10) (8,10) (9,9.9)
+            };
+            \addplot coordinates {
+                (1,9.7) (2,9.8) (3,9.9) (4,10) (5,10) (6,10) (7,10) (8,9.9) (9,9.8)
+            };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Price over Time}
+    \label{fig:price_over_time}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,37 @@
+To create a plot of the non-local Stabilizer Renyi Entropy \(\mathcal{M}_2\) versus the parameter \(g = \theta - \frac{\pi}{4}\) for \(|A| = 5\) and increasing total spins \(n\), we can use TikZ in LaTeX. Below is an example of how you might generate this plot:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Non-local Stabilizer Renyi Entropy $\mathcal{M}_2$ vs. Parameter $g$},
+        xlabel={$g = \theta - \frac{\pi}{4}$},
+        ylabel={$\mathcal{M}_2$},
+        xmin=-0.785398, xmax=0.785398,
+        ymin=0, ymax=1,
+        xtick={-0.785398, -0.392699, 0, 0.392699, 0.785398},
+        xticklabels={$-\frac{\pi}{4}$, $-\frac{\pi}{8}$, $0$, $\frac{\pi}{8}$, $\frac{\pi}{4}$},
+        legend pos=north west,
+        samples=100,
+        domain=-0.785398:0.785398,
+        ]
+        
+        % Plot data points for different values of n
+        \addplot[blue, thick] coordinates {
+            (-0.785398, 0.1)
+            (-0.392699, 0.3)
+            (0, 0.5)
+            (0.392699, 0.7)
+            (0.785398, 0.9)
+        };
+        \legend{$n=1$};
+        
+        \addplot[red, thick] coordinates {
+            (-0.785398, 0.2)
+            (-0.392699, 0.4)
+            (0, 0.6)
+            (

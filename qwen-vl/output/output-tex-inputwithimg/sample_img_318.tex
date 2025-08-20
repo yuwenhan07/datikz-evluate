@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{caption}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Draw the horizontal line
+        \draw[thick] (-5,0) -- (10,0);
+        
+        % Mark the points
+        \foreach \x/\label in {0/0, 2/x_1, 4/x_2, 6/x_{i-2}, 7/x_{i-1}, 8/x_i, 9/x_{i+1}, 10/x_{i+2}, 12/x_{M-1}, 14/x_M, 16/1}
+        {
+            \filldraw (\x,0) circle (2pt);
+            \node at (\x,-0.3) {$\label$};
+        }
+        
+        % Draw the red lines and markers
+        \draw[red, thick] (0,0) -- (2,0);
+        \draw[red, thick] (4,0) -- (6,0);
+        \draw[red, thick] (12,0) -- (14,0);
+        \draw[red, thick] (14,0) -- (16,0);
+        
+        % Dashed line
+        \draw[dashed] (6,0) -- (12,0);
+        
+        % Second-order difference stencil
+        \begin{scope}[shift={(0,-4)}]
+            \draw[thick] (-1,0) -- (1,0);
+            \foreach \x/\label in {-1/1, 0/-2, 1/1}
+            {
+                \filldraw (\x,0) circle (2pt);
+                \node at (\x,-0.3) {$\label$};
+            }
+            \draw[red, thick] (-1,0) -- (0,0);
+            \draw[red, thick] (0,0) -- (1,0);
+        \end{scope}
+        
+        % Fourth-order difference stencil
+        \begin{scope}[shift={(4,-4)}]
+            \draw[thick] (-1,0) -- (1,0);
+            \foreach \x/\label in {-1/1, -0.5/16, 0/-30, 0.5/16, 1/-1}
+            {
+                \filldraw (\x,0) circle (2pt);
+                \node at (\x,-0.3) {$\frac{\label}{12}$};
+            }
+            \draw[red, thick] (-1,0) -- (-0.5,0);
+            \draw[red, thick] (-0.5,0) -- (0,0);
+            \draw[red, thick] (0,0) -- (0.5,0);
+            \draw[red, thick] (0.5,0) -- (1,0);
+        \end{scope}
+        
+        % Second-order difference stencil on the right side
+        \begin{scope}[shift={(10,-4)}]
+            \draw[thick] (-1,0) -- (1,0);
+            \foreach \x/\label in {-1/1, 0/-2, 1/1}
+            {
+                \filldraw (\x,0) circle (2pt);
+                \node at (\x,-0.3) {$\label$};
+            }
+            \draw[red, thick] (-1,0) -- (0,0);
+            \draw[red, thick] (0,0) -- (1,0);
+        \end{scope}
+    \end{tikzpicture}
+    
+    \caption{Stencils used on each direction for the diffusion case (operator $\partial^{(h)}_{x_j,x_j}V$). Observe that they are based on central second order differences for the adjacent points to the boundary and in central fourth order differences for the other interior points. For the advection terms (operator $\partial^{(h)}_{x_j}V$) the corresponding approaches of second and fourth order will be taken at the same points.}
+    \label{fig:stencils}
+\end{figure}
+
+\end{document}

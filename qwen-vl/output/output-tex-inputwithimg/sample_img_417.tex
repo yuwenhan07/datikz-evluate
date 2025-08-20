@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[scale=1.5]
+        % Define coordinates for the vertices of the hexagon
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (2,0);
+        \coordinate (C) at (3,1);
+        \coordinate (D) at (2,2);
+        \coordinate (E) at (0,2);
+        \coordinate (F) at (-1,1);
+        
+        % Draw the hexagon
+        \draw[thick] (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- cycle;
+        
+        % Draw dashed lines for the boundaries of the hexagon
+        \draw[dashed] (A) -- (F);
+        \draw[dashed] (B) -- (C);
+        \draw[dashed] (D) -- (E);
+        
+        % Label the regions
+        \node at (1.5, 1.5) {$\mathbb{①}$};
+        \node at (2.5, 1.5) {$\mathbb{②}$};
+        \node at (2.5, 2.5) {$\mathbb{③}$};
+        \node at (1.5, 2.5) {$\mathbb{④}$};
+        \node at (0.5, 1.5) {$\mathbb{⑤}$};
+        \node at (0.5, 0.5) {$\mathbb{⑥}$};
+        
+        % Draw the blue path
+        \draw[blue, thick] (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- cycle;
+        
+        % Draw the red path
+        \draw[red, thick] (A) -- (F) -- (B) -- (C) -- (D) -- (E) -- (F) -- cycle;
+        
+        % Mark the points with labels
+        \fill[blue] (1,1) circle (2pt) node[above right] {$\frac{\tau}{2}$};
+        \fill[blue] (2,1) circle (2pt) node[above right] {$\frac{1}{2}$};
+        \fill[blue] (1,2) circle (2pt) node[above right] {$\frac{\sigma}{2}$};
+        \fill[blue] (0,1) circle (2pt) node[above left] {$-\frac{1}{2}$};
+        \fill[blue] (0,2) circle (2pt) node[above left] {$\frac{\tau}{2}$};
+        \fill[blue] (2,2) circle (2pt) node[above right] {$\frac{1}{2}$};
+        
+        % Draw the dashed lines for the boundaries of the hexagon
+        \draw[dashed] (A) -- (F);
+        \draw[dashed] (B) -- (C);
+        \draw[dashed] (D) -- (E);
+        
+        % Add the caption
+        \node at (1.5, -0.5) {\caption{Moduli space $\mathcal{M}^{\text{II}}_{\tau}$ of minimal type II tilings on $T_{\tau}$.}};
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

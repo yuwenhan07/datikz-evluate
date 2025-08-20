@@ -1,0 +1,30 @@
+python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+c = 1  # Constant for your approach
+log2 = np.log(2)
+log10 = np.log(10)
+
+# Codebook sizes
+k_values = np.logspace(1, 10, 100)  # Logarithmically spaced values from 10^1 to 10^10
+
+# SOTA result
+n_SOTA = 10 * np.log(k_values) + 6 * log2 + 11
+
+# Your approach result
+n_your_approach = c * k_values
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.plot(k_values, n_SOTA, label='SOTA', color='blue')
+plt.plot(k_values, n_your_approach, label='Your Approach', color='red')
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel('Codebook Size (k)')
+plt.ylabel('Length of the Sequence (n)')
+plt.title('Comparison between SOTA and Your Approach')
+plt.legend()
+plt.grid(True, which="both", ls="--")
+plt.show()

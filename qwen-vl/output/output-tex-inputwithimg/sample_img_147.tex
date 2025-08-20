@@ -1,0 +1,213 @@
+To create the LaTeX code for the schematic diagram you provided, you can use the `tikz` package along with the `tikzlibrary` for flowcharts. Below is an example of how you might write the LaTeX code for this diagram:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,
+                chains,
+                positioning,
+                shapes.geometric}
+
+\begin{document}
+    \begin{figure}[ht]
+\centering
+    \begin{tikzpicture}[
+node distance = 8mm and 12mm,
+  start chain = A going below,
+   arr/.style = {very thick, draw=orange!50},
+   box/.style = {draw, rounded corners, fill=blue!10,
+                 minimum width=34mm, minimum height=7mm,
+                 inner sep=2mm, outer sep=0mm, on chain=A},
+   dot/.style = {circle, draw, fill=black, minimum size=2pt,
+                 inner sep=0pt, outer sep=0pt, node contents={}},
+   io/.style = {ellipse, draw, fill=blue!10,
+                minimum width=24mm, minimum height=7mm,
+                inner sep=2mm, outer sep=0mm, on chain=A},
+every edge/.append style = {draw, -Stealth, semithick}
+                        ]
+\node (n1) [io] {START};
+\node (n2) [box] {DFT-SCF: Find self-consistent solution for the normal-state electronic density $\rho_{\rm s}$};
+\node (n3) [box] {Construct $\Delta_{\rm s}^{\rm SCF}[\rho_{\rm s}]$};
+\node (n4) [dot];
+%
+\node (n5) [box] {Input $\Delta_{\rm s}$};
+\node (n6) [box] {non-SCF-BdG method};
+\node (n7) [dot];
+%
+\node (n8) [box] {Solve eigenvalue problem:
+    \begin{minipage}{0.9\linewidth}
+        \begin{equation*}
+            \left(\begin{array}{cc}
+                \frac{\delta\Delta_{\rm s}^{\rm BdG}}{\delta\Delta_{\rm s}} & \Delta_{\rm s} \\
+                \Delta_{\rm s}^\dagger & \alpha^{\rm BdG}\rho_{\rm s}
+            \end{array}\right)
+            \left(\begin{array}{c}
+                \Delta_{\rm s} \\
+                \gamma_{\rm s}
+            \end{array}\right)
+            =
+            \left(\begin{array}{cc}
+                \mathbf{S}_{\rm s} & 0 \\
+                0 & \mathbf{S}_{\rm s}
+            \end{array}\right)
+            \left(\begin{array}{c}
+                \Delta_{\rm s} \\
+                \gamma_{\rm s}
+            \end{array}\right)
+        \end{equation*}
+    \end{minipage}};
+\node (n9) [box] {Construct $\rho_{\rm s}$ and $\gamma$ matrices from $\left(\begin{array}{c}
+                \Delta_{\rm s} \\
+                \gamma_{\rm s}
+            \end{array}\right)$};
+%
+\node (n10) [io] {Final-$\Delta$};
+\node (n11) [box] {Final-$\Delta$ or full SCF-BdG?};
+\node (n12) [dot];
+%
+\node (n13) [box] {Construct $\Delta_{\rm s}^{\rm BdG}$};
+\node (n14) [dot];
+%
+\node (n15) [box] {Self-consistent $\rho_{\rm s}$ and $\Delta_{\rm s}^{\rm BdG}$?};
+\node (n16) [dot];
+%
+\node (n17) [box] {Charge converged?};
+\node (n18) [dot];
+%
+\node (n19) [io, right=of n17] {V};
+%
+\draw[arr]   (n1) -- (n2);
+\draw[arr]   (n2) -- (n3);
+\draw[arr]   (n3) -- (n4);
+\draw[arr]   (n4) -- (n5);
+\draw[arr]   (n5) -- (n6);
+\draw[arr]   (n6) -- (n7);
+\draw[arr]   (n7) -- (n8);
+\draw[arr]   (n8) -- (n9);
+\draw[arr]   (n9) -- (n10);
+\draw[arr]   (n10) -- (n11);
+\draw[arr]   (n11) -- (n12);
+\draw[arr]   (n12) -- (n13);
+\draw[arr]   (n13) -- (n14);
+\draw[arr]   (n14) -- (n15);
+\draw[arr]   (n15) -- (n16);
+\draw[arr]   (n16) -- (n17);
+\draw[arr]   (n17) -- (n18);
+\draw[arr]   (n18) -- (n19);
+%
+\draw[arr]   (n11.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n17.east) -- ++ (1,0) |- (n19);
+\draw[arr]   (n1

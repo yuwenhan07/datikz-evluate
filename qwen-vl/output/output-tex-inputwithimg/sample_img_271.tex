@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{equation}
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+    \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em] {
+        n(n+1)/2 & \mathcal{S} \\
+        & p \\
+        };
+    \path[-stealth]
+        (m-1-1) edge node [left] {$q$} (m-1-2)
+                edge node [below] {$p$} (m-2-2)
+        (m-1-2) edge node [above] {} (m-2-2);
+    
+    \node[right=2cm of m-1-2] (arrow) {};
+    \draw[->] (arrow) -- ++(0.5,0) node[above] {};
+
+    \matrix (n) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em,right=2cm of arrow] {
+        & \mathcal{Q} & q \\
+        d & \mathcal{N} & n(n+1)/2 \\
+        & \mathcal{P} & p \\
+        };
+    \path[-stealth]
+        (n-1-2) edge node [above] {$D$} (n-2-2)
+                edge node [below] {$D$} (n-3-2)
+        (n-2-1) edge[out=180,in=90] node [left] {} (n-2-2)
+                edge[out=180,in=-90] node [left] {} (n-2-2)
+        (n-2-2) edge node [above] {} (n-2-3)
+                edge node [below] {} (n-3-2)
+        (n-3-2) edge node [below] {$p$} (n-3-3);
+\end{tikzpicture}
+\end{equation}
+
+Diagrammatic representation of Eq.~\eqref{eq:TN} showing the decomposition of the full tensor $\mathcal{S}$ (left) into the three tensors $\mathcal{P}$, $\mathcal{N}$, and $\mathcal{Q}$ (right). Legs are labeled with their dimension.
+
+\end{document}

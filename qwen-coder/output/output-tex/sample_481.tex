@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define the nodes
+    \node (0,0) [circle, draw] {};
+    \node (1,0) [circle, draw, right of=0, xshift=1cm] {};
+    \node (0,1) [circle, draw, above of=0, yshift=1cm] {};
+    \node (1,1) [circle, draw, right of=0, xshift=1cm, above of=0, yshift=1cm] {};
+
+    % Place edges based on B_ij values
+    % Example B_ij values: B_00 = 0, B_10 = 1, B_01 = 1, B_11 = 0
+    \draw[->] (0,0) -- (1,0); % B_00 = 0, so edge from (0,0) to (1,0)
+    \draw[->] (0,0) -- (0,1); % B_01 = 1, so edge from (0,0) to (0,1)
+    \draw[->] (1,1) -- (1,0); % B_10 = 1, so edge from (1,1) to (1,0)
+
+    % Label the nodes for clarity
+    \node at (-0.5,-0.5) {$(0,0)$};
+    \node at (1.5,-0.5) {$(1,0)$};
+    \node at (-0.5,1.5) {$(0,1)$};
+    \node at (1.5,1.5) {$(1,1)$};
+\end{tikzpicture}
+\end{document}

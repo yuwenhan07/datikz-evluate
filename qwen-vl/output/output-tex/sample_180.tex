@@ -1,0 +1,36 @@
+The composition of the end-to-end complexity for solving a Quantum Polynomial-Time (QPT) problem using the HHL algorithm can be broken down into several components:
+
+1. **State Preparation Runtime Cost ($T_b$)**: This represents the time required to prepare the initial quantum state. In the context of the HHL algorithm, this typically involves preparing the input vector and the quantum state representing the matrix.
+
+2. **Single Quantum Simulation Cost ($T_s$)**: This is the cost associated with simulating a single step of the HHL algorithm, which involves applying unitary operations and measurements.
+
+3. **Number of Copies of $|\widetilde{\mathbf{x}}\rangle$ Needed ($T_r$)**: This refers to the number of copies of the estimated solution state $|\widetilde{\mathbf{x}}\rangle$ that are required to achieve a desired level of accuracy in the final solution $\widehat{\mathbf{x}}$. The error tolerance $\varepsilon$ plays a crucial role here.
+
+### Case 1: Using Quantum Random Access Memory (QRAM)
+
+When QRAM is available, the state preparation cost $T_b$ is reduced to $\log(N)$ due to the logarithmic overhead of accessing data from QRAM. The end-to-end complexity then becomes:
+\[
+\mathcal{O}\left( N \log(N) \frac{\kappa^2 s^2}{\varepsilon^2} \right)
+\]
+where:
+- \( N \) is the dimension of the Hilbert space.
+- \( \kappa \) is a constant related to the condition number of the matrix.
+- \( s \) is the sparsity of the matrix.
+- \( \varepsilon \) is the desired error tolerance.
+
+### Case 2: Without QRAM
+
+If QRAM is not available, the state preparation cost $T_b$ scales linearly with the size of the Hilbert space, i.e., \( T_b = N \). The end-to-end complexity then becomes more complex and includes both the cost of preparing the state and the cost of reading out the solution multiple times to achieve the desired accuracy. The end-to-end complexity in this case is:
+\[
+\mathcal{O}\left( N^2 \frac{\kappa}{\varepsilon} + N \log(N) \frac{\kappa^2 s^2}{\varepsilon} \right)
+\]
+This expression accounts for two main components:
+- The first term, \( N^2 \frac{\kappa}{\varepsilon} \), reflects the cost of preparing the state and performing the necessary quantum simulations.
+- The second term, \( N \log(N) \frac{\kappa^2 s^2}{\varepsilon} \), reflects the cost of reading out the solution multiple times to achieve the desired accuracy.
+
+### Summary
+
+- **With QRAM**: The end-to-end complexity is dominated by the logarithmic factor due to the efficient use of QRAM for state preparation, leading to an overall complexity of \( \mathcal{O}(N \log(N) \frac{\kappa^2 s^2}{\varepsilon^2}) \).
+- **Without QRAM**: The end-to-end complexity is higher and includes both the cost of state preparation and the cost of multiple reads to achieve the desired accuracy, resulting in a complexity of \( \mathcal{O}(N^2 \frac{\kappa}{\varepsilon} + N \log(N) \frac{\kappa^2 s^2}{\varepsilon}) \).
+
+These complexities highlight the trade-offs between using QRAM and the additional costs associated with classical post-processing when QRAM is not available.

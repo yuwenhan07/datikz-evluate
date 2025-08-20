@@ -1,0 +1,36 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{
+    timeline/.style={draw=black, thick},
+    event/.style={rectangle, draw=blue, fill=blue!30, rounded corners, minimum width=1cm, minimum height=0.5cm},
+    text node/.style={align=center, font=\small}
+}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm, y=0.5cm]
+    
+    % Timeline line
+    \draw[timeline] (0,-2) -- (8,-2);
+    
+    % Events
+    \node[event, below left] at (1,-2) {FTA with Mexico};
+    \node[event, below right] at (3,-2) {EU Accession};
+    \node[event, below right] at (6,-2) {Trade Access};
+    
+    % Event labels
+    \node[text node, below left=of 1,-2] {2000};
+    \node[text node, below right=of 3,-2] {2004};
+    \node[text node, below right=of 6,-2] {2004};
+    
+    % Connecting lines
+    \draw[->, thick, shorten >=2pt, shorten <=2pt] (1,-2) -- (3,-2);
+    \draw[->, thick, shorten >=2pt, shorten <=2pt] (3,-2) -- (6,-2);
+    
+    % Text annotations
+    \node[text node, above=0.5cm of 1,-2] {NMS negotiates FTA with Mexico};
+    \node[text node, above=0.5cm of 3,-2] {NMS joins the EU};
+    \node[text node, above=0.5cm of 6,-2] {Immediate trade access due to EU membership};
+
+\end{tikzpicture}
+\end{document}

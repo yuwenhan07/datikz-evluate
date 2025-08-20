@@ -1,0 +1,21 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{automata, positioning}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm,
+                    >=stealth',
+                    every state/.style={fill=blue!20},
+                    initial text=$\emptyset$]
+    % Nodes
+    \node[state] (S1) {$S_1$};
+    \node[state, right of=S1] (S2) {$S_2 = \text{\Config}$};
+    \node[state, below of=S2] (S3) {$S_3 = \text{\Config}^\star$};
+    \node[state, above of=S3] (S4) {$S_4 = \text{\Config}^+$};
+
+    % Edges
+    \draw[->] (S1) edge node[above] {Transition 1} (S2);
+    \draw[->] (S2) edge node[above] {Transition 2} (S3);
+    \draw[->] (S3) edge node[above] {Transition 3} (S4);
+    \draw[->] (S4) edge node[below] {Transition 4} (S3);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,34 @@
+Certainly! Below is a TikZ LaTeX code that generates a diagram representing the described scenario:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\tikzset{
+    myarrow/.style={thick, ->, >=stealth},
+    box/.style={draw, rectangle, minimum width=3cm, minimum height=1cm},
+    photon/.style={draw, thick, ->, >=stealth, bend right=45},
+    fermion/.style={draw, circle, fill=black, inner sep=2pt}
+}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+
+        % Left side: Dressed Propagator
+        \node (propagator) [box] {Dressed Propagator $\mathcal{D}^{p'p}_{N}$};
+        \node (chargedparticle) [fermion, below left=of propagator, xshift=-1cm] {};
+        \node (background) [fermion, below right=of propagator, xshift=1cm] {};
+        \draw[myarrow] (chargedparticle) -- node[above] {$p'$} (propagator);
+        \draw[myarrow] (propagator) -- node[below] {$p$} (background);
+
+        % Right side: LSZ Reduction
+        \node (lsz) [box, below=of propagator, yshift=-3cm] {LSZ Reduction};
+        \node (current) [box, below=of lsz, yshift=-3cm] {Tree-Level Off-Shell Current $\mathcal{A}^{p'p}_{N}$};
+        \draw[photon, bend right=45] (lsz) -- node[above] {$k_1$} (current);
+        \draw[photon, bend right=45] (lsz) -- node[above] {$k_2$} (current);
+        \draw[myarrow] (current) -- node[below] {$k_1^2 = 0$} (current.west |- lsz.west);
+        \draw[myarrow] (current) -- node[below] {$k_2^2 = 0$} (current.east

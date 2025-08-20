@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\tikzset{
+    state/.style={circle, draw=black, fill=blue!20, text centered, minimum size=1cm},
+    arrow/.style={->, >=stealth', shorten >=1pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+\node[state] (f) {f};
+\node[state] (g) [below left of=f] {g};
+\node[state] (h) [below right of=f] {h};
+
+\node[state, fill=green!20] (h0) [below of=h, yshift=-1cm] {$h_0$};
+
+% Drawing arrows
+\draw[arrow] (f) -- node[left] {prefix} (g);
+\draw[arrow] (f) -- node[right] {prefix} (h);
+\draw[arrow] (g) -- node[left] {prefix} (h0);
+\draw[arrow] (h) -- node[right] {prefix} (h0);
+
+\end{tikzpicture}
+\end{document}

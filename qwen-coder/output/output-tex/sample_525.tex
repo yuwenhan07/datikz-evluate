@@ -1,0 +1,46 @@
+To create a TikZ diagram representing the described directed acyclic graph (DAG), we can use the `tikz` package along with the `graphdrawing` library for better control over the layout. Below is an example of how you might represent this DAG:
+
+```latex
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{graphs,graphdrawing,shapes.geometric}
+\usegdlibrary{layered}
+
+\tikzset{
+  node distance=2cm,
+  start chain=going below,
+  mynode/.style={draw, circle, inner sep=3pt},
+  myedge/.style={->, thick},
+}
+
+\begin{document}
+\begin{tikzpicture}[layered layout]
+    \node[myedge] (t) {t};
+    \node[myedge] (t1) [below=of t] {t+1};
+
+    % Nodes at time t
+    \node[mynode] (C) [left=of t] {$C$};
+    \node[mynode] (Y) [right=of t] {$Y$};
+    
+    % Nodes at time t+1
+    \node[mynode] (X) [below=of C, left=of t1] {$X$};
+    \node[mynode] (Z) [below=of Y, right=of t1] {$Z$};
+    
+    % Edges
+    \path[myedge] (C) edge (X);
+    \path[myedge] (Y) edge (Z);
+    
+    % Semi-deterministic paths
+    \path[red, dashed] (C) edge (X);
+    \path[red, dashed] (Y) edge (Z);
+    
+    % Selection bias edges
+    \path[myedge] (C) edge[bend left] (t1);
+    \path[myedge] (Y) edge[bend right] (t1);
+    
+    % Time nodes
+    \node[myedge] (t2) [above=of t1] {t+2};
+    \node[mynode] (W) [below=of X, left=of t2] {$W$};
+    \node[mynode] (V) [below=of Z, right=of t2] {$V$};
+    
+    % Additional edges
+    \path[my

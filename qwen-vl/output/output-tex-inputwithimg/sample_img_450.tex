@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the axes
+    \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+    \draw[->] (0,-2) -- (0,2) node[above] {$z$};
+
+    % Draw the origin
+    \filldraw[black] (0,0) circle (1pt);
+
+    % Draw the wires
+    \filldraw[yellow] (90:s) circle (2pt);
+    \filldraw[yellow] (270:s) circle (2pt);
+
+    % Draw the measurement points
+    \foreach \i in {0,...,4} {
+        \filldraw[red] (0,{2*\i}) circle (1pt);
+    }
+
+    % Draw the vectors for the rightmost measurement point
+    \draw[blue, thick, -Stealth] (90:s) -- (90:s |- 0,0) node[midway, below] {$x-s\cos\theta$};
+    \draw[blue, thick, -Stealth] (90:s) -- (90:s |- 0,2) node[midway, left] {$z-s\sin\theta$};
+
+    % Label the rightmost measurement point
+    \filldraw[blue] (90:s |- 0,2) circle (1pt) node[above right] {$(x,z)$};
+
+    % Draw the delta x arrow
+    \draw[<->, thick] (90:s) ++(180:0.5) arc (180:180+60:0.5) node[midway, above] {$\Delta x$};
+
+    % Draw the angle theta
+    \draw[thick, -Stealth] (90:s) -- (90:s |- 0,0) node[midway, below] {$\theta$};
+\end{tikzpicture}
+
+\end{document}

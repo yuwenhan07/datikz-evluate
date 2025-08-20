@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+% Nodes
+\node[node] (node1) {Node 1};
+\node[node] (node2) [below left of=node1] {Node 2};
+\node[node] (node3) [below right of=node1] {Node 3};
+
+% Edges with mass flows
+\draw[->] (node1) -- node[above] {$\dot{m}_{12}$} (node2);
+\draw[<-] (node1) -- node[below] {$\dot{m}_{13}$} (node3);
+
+% Temperature labels
+\node[left of=node2, yshift=-0.5cm] (tempinlet) {$T^{\text{start}}$};
+\node[right of=node3, yshift=-0.5cm] (tempoutlet) {$T^{\text{end}}$};
+
+% Pressure labels
+\node[above of=node1, xshift=0.5cm] (pressure1) {$p_1$};
+\node[above of=node2, xshift=0.5cm] (pressure2) {$p_2$};
+\node[above of=node3, xshift=0.5cm] (pressure3) {$p_3$};
+
+% Arrows indicating temperature localization
+\draw[dashed, ->] (node2) -- node[midway, above] {Inlet} (tempinlet);
+\draw[dashed, <-] (node3) -- node[midway, below] {Outlet} (tempoutlet);
+
+\end{tikzpicture}
+
+\end{document}

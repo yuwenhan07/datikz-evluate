@@ -1,0 +1,31 @@
+To create a TikZ diagram showing the energy levels of \(^{16}\text{N}\), \(^{16}\text{O}\), and \(^{16}\text{F}\) near the ground state with isospin \(T = 1\), you can use the following LaTeX code:
+
+```latex
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{amsmath}
+
+\tikzset{
+    node distance=2cm,
+    level/.style={sibling distance=3cm/#1},
+    box/.style={draw, rectangle, minimum width=1cm, minimum height=0.5cm, align=center}
+}
+
+\begin{document}
+\begin{tikzpicture}[level 1/.style={level distance=3cm}, level 2/.style={level distance=2cm}]
+    
+    % Ground state
+    \node (ground) [box] {Ground State};
+    
+    % Level 1: T=1
+    \node (n) [box, below=of ground, yshift=-1cm] {$^{16}\text{N}$};
+    \node (o) [box, right=of n, xshift=1cm] {$^{16}\text{O}$};
+    \node (f) [box, left=of n, xshift=-1cm] {$^{16}\text{F}$};
+    
+    % Level 2: T=1/2
+    \node (n_t12) [box, below=of n, yshift=-1.5cm] {$^{16}\text{N} (\frac{1}{2})$};
+    \node (o_t12) [box, below=of o, yshift=-1.5cm] {$^{16}\text{O} (\frac{1}{2})$};
+    \node (f_t12) [box, below=of f, yshift=-1.5cm] {$^{16}\text{F} (\frac{1}{2})$};
+    
+    % Level 3: T=3/2
+    \node (n_t32) [box, below=of n_t12, yshift=-1.5cm] {$^{16}\text{N} (\frac{3}{2})$};
+    \node (o_t32) [

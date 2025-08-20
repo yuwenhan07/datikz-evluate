@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{forest}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{forest}
+        for tree={
+            grow'=0,
+            l sep=1cm,
+            s sep=0.5cm,
+            parent anchor=south,
+            child anchor=north,
+            align=center,
+            draw,
+            circle,
+            fill=black,
+            inner sep=2pt,
+            font=\small,
+            edge={thick},
+            where level=0{
+                shape=diamond,
+                draw=none,
+                inner sep=4pt,
+                font=\bfseries,
+                text width=1em,
+                align=center,
+                label distance=0pt,
+                label=above:{\nodepart{lower} s}}
+            {}
+        }
+        [s
+            [s
+                [s
+                    [2,draw,rectangle,label=below:{\texttt{2}}]
+                    [C,draw,rectangle,label=below:{\texttt{-2}}]
+                ]
+                [C,draw,rectangle,label=below:{\texttt{0}}]
+            ]
+            [C,draw,rectangle,label=below:{\texttt{2}}]
+            [s
+                [s
+                    [0,draw,rectangle,label=below:{\texttt{2}}]
+                    [C,draw,rectangle,label=below:{\texttt{-1}}]
+                ]
+                [C,draw,rectangle,label=below:{\texttt{4}}]
+            ]
+            [s
+                [s
+                    [-1,draw,rectangle,label=below:{\texttt{4}}]
+                    [C,draw,rectangle,label=below:{\texttt{-3}}]
+                ]
+                [C,draw,rectangle,label=below:{\texttt{-1}}]
+            ]
+            [s
+                [s
+                    [0,draw,rectangle,label=below:{\texttt{0}}]
+                    [C,draw,rectangle,label=below:{\texttt{-4}}]
+                ]
+                [C,draw,rectangle,label=below:{\texttt{-2}}]
+            ]
+            [s
+                [s
+                    [2,draw,rectangle,label=below:{\texttt{0}}]
+                    [C,draw,rectangle,label=below:{\texttt{-1}}]
+                ]
+                [C,draw,rectangle,label=below:{\texttt{2}}]
+            ]
+            [s
+                [s
+                    [0,draw,rectangle,label=below:{\texttt{2}}]
+                    [C,draw,rectangle,label=below:{\texttt{-2}}]
+                ]
+                [C,draw,rectangle,label=below:{\texttt{0}}]
+            ]
+        ]
+    \end{forest}
+\end{figure}
+
+\end{document}

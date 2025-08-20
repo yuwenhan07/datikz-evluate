@@ -1,0 +1,122 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphdrawing,arrows.meta,positioning}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\section*{SIMPLE MAIN MODEL}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,fill=gray!50,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (X) {$X$};
+  \node[main node] (Z) [right of=X] {$Z$};
+  \node[main node] (S) [right of=Z] {$S$};
+  \node[main node] (Y) [right of=S] {$Y$};
+  \node[main node] (T) [below of=X] {$T$};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (X) edge node [left] {} (Z)
+        edge node [left] {} (T)
+    (Z) edge node [left] {} (S)
+        edge node [left] {} (T)
+    (S) edge node [left] {} (Y)
+        edge node [left] {} (T)
+    (X) edge[bend left] node [left] {} (Y)
+    (Z) edge[bend left] node [left] {} (Y)
+    (S) edge[bend left] node [left] {} (Y)
+    (T) edge[bend left] node [left] {} (Y);
+
+\end{tikzpicture}
+
+\section*{GENERAL MAIN MODEL}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,fill=gray!50,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (X) {$X$};
+  \node[main node] (Z) [right of=X] {$Z$};
+  \node[main node] (S) [right of=Z] {$S(z)$};
+  \node[main node] (Y) [right of=S] {$Y(z)$};
+  \node[main node] (T) [below of=X] {$T$};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (X) edge node [left] {} (Z)
+        edge node [left] {} (T)
+    (Z) edge node [left] {} (S)
+        edge node [left] {} (T)
+    (S) edge node [left] {} (Y)
+        edge node [left] {} (T)
+    (X) edge[bend left] node [left] {} (Y)
+    (Z) edge[bend left] node [left] {} (Y)
+    (S) edge[bend left] node [left] {} (Y)
+    (T) edge[bend left] node [left] {} (Y);
+
+\end{tikzpicture}
+
+\section*{SIMPLE MAIN MODEL}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,fill=gray!50,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (X) {$X$};
+  \node[main node] (Z) [right of=X] {$Z$};
+  \node[main node] (S1) [above right of=Z] {$S(1)$};
+  \node[main node] (S0) [below right of=Z] {$S(0)$};
+  \node[main node] (Y1) [right of=S1] {$Y(1)$};
+  \node[main node] (Y0) [right of=S0] {$Y(0)$};
+  \node[main node] (T) [below of=X] {$T$};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (X) edge node [left] {} (Z)
+        edge node [left] {} (T)
+    (Z) edge node [left] {} (S1)
+        edge node [left] {} (S0)
+        edge node [left] {} (T)
+    (S1) edge node [left] {} (Y1)
+    (S0) edge node [left] {} (Y0)
+    (X) edge[bend left] node [left] {} (Y1)
+    (X) edge[bend left] node [left] {} (Y0)
+    (Z) edge[bend left] node [left] {} (Y1)
+    (Z) edge[bend left] node [left] {} (Y0)
+    (S1) edge[bend left] node [left] {} (Y1)
+    (S0) edge[bend left] node [left] {} (Y0)
+    (T) edge[bend left] node [left] {} (Y1)
+    (T) edge[bend left] node [left] {} (Y0);
+
+\end{tikzpicture}
+
+\section*{GENERAL MAIN MODEL}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,fill=gray!50,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (X) {$X$};
+  \node[main node] (Z) [right of=X] {$Z$};
+  \node[main node] (S1) [above right of=Z] {$S(1)$};
+  \node[main node] (S0) [below right of=Z] {$S(0)$};
+  \node[main node] (Y1) [right of=S1] {$Y(1)$};
+  \node[main node] (Y0) [right of=S0] {$Y(0)$};
+  \node[main node] (T) [below of=X] {$T$};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (X) edge node [left] {} (Z)
+        edge node [left] {} (T)
+    (Z) edge node [left] {} (S1)
+        edge node [left] {} (S0)
+        edge node [left] {} (T)
+    (S1) edge node [left] {} (Y1)
+    (S0) edge node [left] {} (Y0)
+    (X) edge[bend left] node [left] {} (Y1)
+    (X) edge[bend left] node [left] {} (Y0)
+    (Z) edge[bend left] node [left] {} (Y1)
+    (Z) edge[bend left] node [left] {} (Y0)
+    (S1) edge[bend left] node [left] {} (Y1)
+    (S0) edge[bend left] node [left] {} (Y0)
+    (T) edge[bend left] node [left] {} (Y1)
+    (T) edge[bend left] node [left] {} (Y0);
+
+\end{tikzpicture}
+
+\end{document}

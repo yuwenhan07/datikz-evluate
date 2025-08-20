@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define axes
+    \draw[->] (0,0) -- (6,0) node[right] {Predicted Percentage Change};
+    \draw[->] (0,0) -- (0,4) node[above] {Actual Percentage Change};
+
+    % Draw the diagonal line
+    \draw[dashed] (0,0) -- (6,4);
+
+    % Draw the red lines for synthesis noise window
+    \draw[red, thick] (2,3) -- (4,1);
+    \draw[red, thick] (4,3) -- (2,1);
+
+    % Sample data points (replace with actual data)
+    \foreach \x/\y in {0.5/0.8, 1.2/1.5, 2.5/2.2, 3.8/3.0, 5.0/4.5} {
+        \fill (\x,\y) circle (2pt);
+    }
+
+    % Labels for data points (optional)
+    \node at (0.5,0.8) [below left] {A};
+    \node at (1.2,1.5) [above left] {B};
+    \node at (2.5,2.2) [above right] {C};
+    \node at (3.8,3.0) [below right] {D};
+    \node at (5.0,4.5) [above right] {E};
+
+    % Title and labels
+    \node at (3,-0.5) [below] {ROVER's Predicted vs Actual Percentage Change};
+\end{tikzpicture}
+
+\end{document}

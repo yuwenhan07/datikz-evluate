@@ -1,0 +1,21 @@
+\documentclass{article}
+   \usepackage{tikz}
+
+   \begin{document}
+
+   \begin{tikzpicture}[node distance=2cm]
+       % Define nodes
+       \node (state1) [circle, draw] {$\prevon{i}{\varphi}$};
+       \node (state2) [circle, draw, below right of=state1] {$\pi'$};
+       \node (satisfaction) [rectangle, draw, below left of=state1, yshift=-2cm] {$t, e'' \models \phi$};
+
+       % Draw arrows
+       \draw [->] (state1) -- (state2);
+       \draw [->] (satisfaction) -- (state1);
+
+       % Add labels
+       \node [below of=satisfaction, yshift=-0.5cm] {Satisfaction Condition};
+       \node [right of=state2, xshift=0.5cm] {Sequence Composition};
+   \end{tikzpicture}
+
+   \end{document}

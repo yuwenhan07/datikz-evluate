@@ -1,0 +1,40 @@
+Certainly! Below is a TikZ LaTeX code to illustrate the construction of \(\tilde{\kappa}\) as described:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    node distance=2cm,
+    every node/.style={circle, draw, minimum size=10pt},
+    edge/.style={->, thick},
+    highlight/.style={draw=red, line width=1pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Nodes representing k values
+    \node (kpq) at (0,0) {$\mathtt{k}_{p,q}$};
+    \node (kpm1q) at (-1,-1) {$\mathtt{k}_{p-1,q}$};
+    \node (kp1q) at (1,-1) {$\mathtt{k}_{p+1,q}$};
+    \node (kpq1) at (0,-2) {$\mathtt{k}_{p,q-1}$};
+    \node (kpq1) at (0,-2) {$\mathtt{k}_{p,q+1}$};
+
+    % Nodes representing v values
+    \node (vpq) at (0,0) {$\mathtt{v}_{p,q}$};
+    \node (vp1q) at (1,-1) {$\mathtt{v}_{p+1,q}$};
+    \node (vpq1) at (0,-2) {$\mathtt{v}_{p,q-1}$};
+
+    % Highlighted fine element
+    \node[highlight] (fine_elem) at (0,0) {};
+
+    % Edges surrounding the highlighted fine element
+    \draw[edge] (fine_elem.north) -- (fine_elem.north west);
+    \draw[edge] (fine_elem.north) -- (fine_elem.north east);
+    \draw[edge] (fine_elem.south) -- (fine_elem.south west);
+    \draw[edge] (fine_elem.south) -- (fine_elem.south east);
+
+    % Labels for edges
+    \node[left] at (fine_elem.west) {$e_1$};
+    \node[right] at (fine_elem.east) {$e_2$};
+    \node[below] at (fine_elem

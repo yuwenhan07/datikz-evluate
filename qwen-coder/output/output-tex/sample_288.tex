@@ -1,0 +1,30 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{matrix,shapes.geometric}
+
+\tikzset{
+    event/.style={rectangle, draw=black, fill=blue!50, minimum size=6mm},
+    noise/.style={rectangle, draw=black, fill=red!50, minimum size=6mm},
+    mask/.style={rectangle, draw=black, fill=gray!50, minimum size=6mm}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=1cm]
+    % First Layer
+    \matrix (first) [matrix of nodes, row sep=1cm, column sep=1cm] {
+        \node[mask]; & \node[mask]; & \node[mask]; \\
+        \node[mask]; & \node[event]; & \node[mask]; \\
+        \node[mask]; & \node[mask]; & \node[mask]; \\
+    };
+    
+    % Second Layer
+    \matrix (second) [matrix of nodes, row sep=1cm, column sep=1cm, xshift=5cm] {
+        \node[noise]; & \node[noise]; & \node[noise]; \\
+        \node[noise]; & \node[event]; & \node[noise]; \\
+        \node[noise]; & \node[noise]; & \node[noise]; \\
+    };
+
+    % Connect first layer to second layer
+    \draw[-stealth] ([yshift=-1mm]first-2-2.south) -- node[midway, below] {Input} ([yshift=-1mm]second-2-2.north);
+    \draw[-stealth] ([xshift=1mm,yshift=-1mm]first-2-2.east) -- node[midway, right] {$\mathbf{N}^{(1)}_i$} ([xshift=-1mm,yshift=-1mm]second-2-2.west);
+\end{tikzpicture}
+\end{document}

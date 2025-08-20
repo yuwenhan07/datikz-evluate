@@ -1,0 +1,30 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=7cm,
+        height=8cm,
+        xbar,
+        symbolic y coords={2,4,6,8},
+        ytick=data,
+        nodes near coords,
+        nodes near coords align={vertical},
+        ylabel={Number of Training Tokens},
+        xlabel={$\rho$ (Spearman Rank Correlation)},
+        legend pos=north west,
+        legend entries={Linear Regression, LightGBM Regression},
+        enlarge x limits=0.2,
+        ymin=-1,
+        ymax=9,
+        bar width=15pt
+    ]
+        \addplot coordinates {(0.3, 2) (0.4, 4) (0.5, 6) (0.6, 8)};
+        \addlegendentry{Linear Regression}
+        \addplot coordinates {(0.7, 2) (0.8, 4) (0.9, 6) (1.0, 8)};
+        \addlegendentry{LightGBM Regression}
+    \end{axis}
+\end{tikzpicture}
+\end{document}

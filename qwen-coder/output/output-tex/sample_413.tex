@@ -1,0 +1,26 @@
+To illustrate Axiom 4) of Definition \ref{def:operad} for the endomorphism operad $\OEnd(X)$ using TikZ, we can create a diagram that shows the transformation from applying $f$ directly to arguments of the form $\tau_{\sigma_i}(g_i)$ to first permuting all arguments via $(\sigma_1,\ldots,\sigma_{n})^{-1}$ and then applying $f \star \vec{g}$. Here's how you can do it:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style={rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style={draw, thick, ->, >=stealth'}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (input) [block] {Input: $f(\tau_{\sigma_1}(g_1), \tau_{\sigma_2}(g_2), \ldots, \tau_{\sigma_n}(g_n))$};
+    \node (permute) [block, right of=input, xshift=3cm] {Permute Arguments: $(\sigma_1,\ldots,\sigma_{n})^{-1}$};
+    \node (apply) [block, below of=permute, yshift=-1cm] {Apply: $f \star \vec{g}$};
+    \node (output) [block, right of=apply, xshift=3cm] {Output};
+
+    % Arrows
+    \path [line] (input) -- node[anchor=south] {$f$} (permute);
+    \path [line] (permute) -- node[anchor=north] {$\sigma_1^{-1}, \sigma_2^{-1}, \ldots, \sigma_n^{-1}$} (apply);
+    \path [line] (apply) -- node[anchor=south] {$f \star \vec{g}$} (output);
+
+    % Arrow between input and output
+    \path [line, dashed] (input.west |- output.north) -- node[above] {Same Function} (output.e

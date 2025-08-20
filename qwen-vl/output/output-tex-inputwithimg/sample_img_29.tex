@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{feynmp}
+\usepackage{feynmansymbols}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \begin{fmffile}{triangle1}
+            \begin{fmfgraph*}(60,60)
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{fermion,label=$j_N^{\mu}(x)$,label.side=left,tension=0.3}{i1,v1}
+                \fmf{fermion,label=$J_{\alpha}^{\nu}(y)$,label.side=right,tension=0.3}{v1,v2}
+                \fmf{fermion,label=$J_{\beta}^{\sigma}(z)$,label.side=right,tension=0.3}{v2,o2}
+                \fmf{fermion,label=$j_N^{\mu}(x)$,label.side=left,tension=0.3}{i2,v3}
+                \fmf{fermion,label=$J_{\alpha}^{\nu}(y)$,label.side=right,tension=0.3}{v3,v4}
+                \fmf{fermion,label=$J_{\beta}^{\sigma}(z)$,label.side=right,tension=0.3}{v4,o2}
+                \fmf{wiggly}{v1,v3}
+                \fmf{wiggly}{v2,v4}
+            \end{fmfgraph*}
+        \end{fmffile}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \begin{fmffile}{triangle2}
+            \begin{fmfgraph*}(60,60)
+                \fmfleft{i1,i2}
+                \fmfright{o1,o2}
+                \fmf{fermion,label=$j_N^{\mu}(x)$,label.side=left,tension=0.3}{i1,v1}
+                \fmf{fermion,label=$J_{\alpha}^{\nu}(y)$,label.side=right,tension=0.3}{v1,v2}
+                \fmf{fermion,label=$J_{\beta}^{\sigma}(z)$,label.side=right,tension=0.3}{v2,o2}
+                \fmf{fermion,label=$j_N^{\mu}(x)$,label.side=left,tension=0.3}{i2,v3}
+                \fmf{fermion,label=$J_{\alpha}^{\nu}(y)$,label.side=right,tension=0.3}{v3,v4}
+                \fmf{fermion,label=$J_{\beta}^{\sigma}(z)$,label.side=right,tension=0.3}{v4,o2}
+                \fmf{wiggly}{v1,v3}
+                \fmf{wiggly}{v2,v4}
+            \end{fmfgraph*}
+        \end{fmffile}
+    \end{minipage}
+\end{figure}
+
+Triangle diagram contributing to the axial anomaly. The axial anomaly leads to non-conservation of the singlet flavour current $j_0^\mu$, sourced by the dark gluons.
+
+\end{document}

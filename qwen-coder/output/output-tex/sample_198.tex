@@ -1,0 +1,30 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    ring/.style={draw, rectangle, rounded corners, minimum size=2cm},
+    arrow/.style={thick, ->, >=Stealth[length=5mm]}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=3cm]
+
+    % Define nodes for different classes of rings
+    \node[ring] (CommutativeRings) {Commutative Rings};
+    \node[ring, below left of=CommutativeRings] (IntegralDomains) {Integral Domains};
+    \node[ring, below right of=CommutativeRings] (PID) {Principal Ideal Domains};
+    \node[ring, below of=PID] (EuclideanDomains) {Euclidean Domains};
+    \node[ring, below of=EuclideanDomains] (UniqueFactorizationDomains) {Unique Factorization Domains};
+    \node[ring, below of=UniqueFactorizationDomains] (BézoutDomains) {Bézout Domains};
+    \node[ring, below of=BézoutDomains, yshift=-1cm] (ElementaryDivisorDomains) {Elementary Divisor Domains};
+
+    % Draw arrows indicating inclusion relations
+    \draw[arrow] (CommutativeRings) -- (IntegralDomains);
+    \draw[arrow] (IntegralDomains) -- (PID);
+    \draw[arrow] (PID) -- (EuclideanDomains);
+    \draw[arrow] (EuclideanDomains) -- (UniqueFactorizationDomains);
+    \draw[arrow] (UniqueFactorizationDomains) -- (BézoutDomains);
+    \draw[arrow, dashed] (BézoutDomains) -- (ElementaryDivisorDomains);
+
+\end{tikzpicture}
+\end{document}

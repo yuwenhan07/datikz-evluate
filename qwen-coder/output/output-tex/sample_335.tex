@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+% Define styles for nodes
+\tikzstyle{variable} = [circle, draw, fill=blue!30, minimum size=15pt]
+\tikzstyle{factor}   = [rectangle, draw, fill=red!30, minimum width=20pt, minimum height=15pt]
+
+% Random Variables (Circles)
+\foreach \i in {1,...,5} {
+    \node[variable] (V\i) at (\i*2,0) {$X_{\i}$};
+}
+
+% Factor Nodes (Squares)
+\foreach \j in {1,...,3} {
+    \node[factor] (F\j) at (\j*2,-2) {$\mu_{\j}$};
+}
+
+% Draw edges between variables and factors
+\foreach \i in {1,...,5} {
+    \foreach \j in {1,...,3} {
+        \draw[-stealth] (V\i) -- (F\j);
+    }
+}
+
+\end{tikzpicture}
+
+\end{document}

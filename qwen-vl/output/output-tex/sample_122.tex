@@ -1,0 +1,76 @@
+To construct a smooth convex function \( f \) that satisfies the given conditions, we need to ensure that \( f \) is continuous and differentiable at the points where the pieces of the function meet, specifically at \( r = \frac{\eta}{2} \) and \( r = \eta \). Additionally, the function must be convex.
+
+Given:
+- \( f(r) = \frac{1}{2} - \frac{e}{2}r \) for \( r \in ]-\frac{\eta}{2}, \frac{\eta}{2}[\)
+- \( f(r) = a - r \) for \( r \in ]\eta, a[\)
+
+We need to find a smooth transition between these two pieces at \( r = \frac{\eta}{2} \) and \( r = \eta \).
+
+### Step 1: Define the function on the intervals
+
+For \( r \in ]-\frac{\eta}{2}, \frac{\eta}{2}[\):
+\[ f(r) = \frac{1}{2} - \frac{e}{2}r \]
+
+For \( r \in ]\eta, a[\):
+\[ f(r) = a - r \]
+
+### Step 2: Ensure continuity at \( r = \frac{\eta}{2} \)
+
+At \( r = \frac{\eta}{2} \), both pieces of the function must have the same value:
+\[ f\left(\frac{\eta}{2}\right) = \frac{1}{2} - \frac{e}{2} \cdot \frac{\eta}{2} = \frac{1}{2} - \frac{e\eta}{4} \]
+\[ f\left(\frac{\eta}{2}\right) = a - \frac{\eta}{2} \]
+
+Equating these, we get:
+\[ \frac{1}{2} - \frac{e\eta}{4} = a - \frac{\eta}{2} \]
+Solving for \( a \):
+\[ a = \frac{1}{2} + \frac{\eta}{2} - \frac{e\eta}{4} \]
+
+### Step 3: Ensure continuity at \( r = \eta \)
+
+At \( r = \eta \), both pieces of the function must have the same value:
+\[ f(\eta) = \frac{1}{2} - \frac{e}{2} \cdot \eta = \frac{1}{2} - \frac{e\eta}{2} \]
+\[ f(\eta) = a - \eta \]
+
+Equating these, we get:
+\[ \frac{1}{2} - \frac{e\eta}{2} = a - \eta \]
+Substituting \( a = \frac{1}{2} + \frac{\eta}{2} - \frac{e\eta}{4} \):
+\[ \frac{1}{2} - \frac{e\eta}{2} = \left( \frac{1}{2} + \frac{\eta}{2} - \frac{e\eta}{4} \right) - \eta \]
+Simplifying:
+\[ \frac{1}{2} - \frac{e\eta}{2} = \frac{1}{2} + \frac{\eta}{2} - \frac{e\eta}{4} - \eta \]
+\[ -\frac{e\eta}{2} = \frac{\eta}{2} - \eta - \frac{e\eta}{4} \]
+\[ -\frac{e\eta}{2} = \frac{\eta}{2} - \frac{2\eta}{2} - \frac{e\eta}{4} \]
+\[ -\frac{e\eta}{2} = -\frac{\eta}{2} - \frac{e\eta}{4} \]
+Multiplying through by 4 to clear the denominators:
+\[ -2e\eta = -2\eta - e\eta \]
+\[ -2e\eta + e\eta = -2\eta \]
+\[ -e\eta = -2\eta \]
+\[ e = 2 \]
+
+### Step 4: Ensure smoothness (differentiability) at \( r = \frac{\eta}{2} \) and \( r = \eta \)
+
+The derivative of \( f(r) \) for \( r \in ]-\frac{\eta}{2}, \frac{\eta}{2}[\) is:
+\[ f'(r) = -\frac{e}{2} = -1 \]
+
+The derivative of \( f(r) \) for \( r \in ]\eta, a[\) is:
+\[ f'(r) = -1 \]
+
+Since both derivatives are equal at \( r = \frac{\eta}{2} \) and \( r = \eta \), the function is smooth at these points.
+
+### Final Function
+
+Given \( e = 2 \), we have:
+\[ a = \frac{1}{2} + \frac{\eta}{2} - \frac{2\eta}{4} = \frac{1}{2} + \frac{\eta}{2} - \frac{\eta}{2} = \frac{1}{2} \]
+
+Thus, the function is:
+\[ f(r) = \begin{cases} 
+\frac{1}{2} - r & \text{if } r \in ]-\frac{\eta}{2}, \frac{\eta}{2}[] \\
+a - r & \text{if } r \in ]\eta, a[
+\end{cases} \]
+
+Where \( a = \frac{1}{2} \).
+
+Therefore, the final form of the function is:
+\[ f(r) = \begin{cases} 
+\frac{1}{2} - r & \text{if } r \in ]-\frac{\eta}{2}, \frac{\eta}{2}[] \\
+\frac{1}{2} - r & \text{if } r \in ]\eta, a[
+\end{cases} \]

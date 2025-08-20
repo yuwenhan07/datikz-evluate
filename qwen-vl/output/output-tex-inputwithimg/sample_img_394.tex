@@ -1,0 +1,148 @@
+To generate LaTeX code for the given image and caption, you can use the `tikz` package in LaTeX. Below is the LaTeX code that creates the diagram:
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    % Define coordinates for the points
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (1,0);
+    \coordinate (C) at (2,0);
+    \coordinate (D) at (3,0);
+    \coordinate (E) at (4,0);
+    
+    % Draw the first row of points
+    \filldraw[black] (A) circle (2pt) node[above] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[above] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[above] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[above] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[above] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the second row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the third row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the fourth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the fifth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the sixth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the seventh row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the eighth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the ninth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the tenth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the eleventh row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the twelfth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the thirteenth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the fourteenth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the fifteenth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the sixteenth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the seventeenth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the eighteenth row of points
+    \filldraw[black] (A) circle (2pt) node[below] {$\frac{1}{p_1}(1,l_1)\cdots\frac{1}{p_n}(1,l_n)$};
+    \filldraw[black] (B) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (C) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    \filldraw[black] (D) circle (2pt) node[below] {$g=0$,};
+    \filldraw[black] (E) circle (2pt) node[below] {$\frac{1}{p_1}(1,\hat{l}_1)\cdots\frac{1}{p_n}(1,\hat{l}_n)$};
+    
+    % Draw the nineteenth row of points
+    \filldraw

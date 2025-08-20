@@ -1,0 +1,42 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{graphs,graphdrawing,shapes.geometric,backgrounds}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.6]
+
+% Define the 8x8 grid
+\draw[thick] (0,0) grid (8,8);
+\node at (4,4) {Zero};
+
+% Nodes representing pixels
+\foreach \i in {0,...,7} {
+    \foreach \j in {0,...,7} {
+        \node[pin={[pin distance=-10pt, pin edge={->, thick}] above:Pixel (\i,\j)}] at (\i,\j) {};
+    }
+}
+
+% Mass Normalization Step
+\node[below left, align=center] at (0,-1) {Mass Normalization};
+\draw[dashed, thick] (0,0) -- (0,-3);
+
+% Embedding Step
+\node[above right, align=center] at (9,4) {Embedding: $\alpha \mapsto L^{-1/2}\alpha$};
+\draw[dashed, thick] (8,8) -- (11,4);
+
+% W2 Distance Step
+\node[below right, align=center] at (9,-1) {$\mathcal{W}_2$ Distance};
+\draw[dashed, thick] (8,8) -- (11,-1);
+
+% Connect steps
+\draw[thick, ->] (0,-3) -- (8,-3);
+\draw[thick, ->] (11,-1) -- (11,4);
+
+% Highlighting the zero example
+\foreach \i in {3,4} {
+    \foreach \j in {3,4} {
+        \node[fill=blue!30] at (\i,\j) {};
+    }
+}
+
+\end{tikzpicture}
+\end{document}

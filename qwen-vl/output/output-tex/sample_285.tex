@@ -1,0 +1,34 @@
+The figure you're referring to seems to illustrate a proof related to the lower bound (LB) for the problem $\textsf{Index}_{L-2}$, which involves finding the minimum number of intervals needed to cover certain conditions in a bitvector \( X \). Here's a breakdown of the key components:
+
+1. **Bitvector \( X \)**:
+   - The bitvector \( X \) has length \( L \).
+   - The specific instance being considered here is where \( X[J] = 1 \).
+
+2. **Dashed Intervals**:
+   - These represent the zero elements of the bitvector \( X \). In other words, these are the positions in the bitvector where \( X[i] = 0 \).
+
+3. **Red Intervals \( I_1 \), \( I_2 \)**:
+   - These are labeled as "expired intervals." This typically means that these intervals have been processed or removed from consideration in some context of the algorithm.
+
+4. **Interval \( I_J \)**:
+   - This is the only non-expired interval that is disjoint from the special interval \( I_{L-1} \).
+
+5. **Special Interval \( I_{L-1} \)**:
+   - This interval is marked as special, possibly because it has a particular significance in the problem definition or the algorithm's logic.
+
+6. **Optimal Solution Size**:
+   - Given \( X[J] = 1 \), the optimal solution is of size 2.
+   - If \( X[J] \) were 0, then the interval \( I_J \) would not be disjoint from \( I_{L-1} \), leading to an optimal solution of size 1.
+
+### Explanation of the Proof:
+
+The proof likely involves showing that the minimum number of intervals required to cover the conditions specified by \( X \) is at least 2 when \( X[J] = 1 \). Here’s how this might work:
+
+1. **Condition for Size 2 Optimal Solution**:
+   - When \( X[J] = 1 \), there must be at least two intervals to cover the bitvector such that each interval covers exactly one position where \( X[i] = 1 \) and no overlapping with expired intervals.
+   
+2. **Condition for Size 1 Optimal Solution**:
+   - If \( X[J] = 0 \), then the interval \( I_J \) would overlap with \( I_{L-1} \), making it impossible to cover all necessary positions with just one interval. Therefore, the optimal solution would need to include another interval to cover the remaining positions.
+
+### Conclusion:
+The figure helps visualize the constraints and conditions under which different optimal solutions can exist based on the value of \( X[J] \). It shows that the presence of a specific bit (1 or 0) in the bitvector \( X \) influences the minimum number of intervals required to satisfy the conditions of the problem.

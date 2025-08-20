@@ -1,0 +1,38 @@
+Certainly! Below is an example of how you can create a TikZ diagram to visualize the rolling mean of loss per batch for 10 peers within the same shard, with each peer represented by a different color.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm,
+        height=8cm,
+        title={Rolling Mean Loss per Batch for 10 Peers},
+        xlabel={Batch Number},
+        ylabel={Loss},
+        legend pos=north west,
+        ymin=0,
+        ymax=1,
+        xtick=data,
+        grid=major,
+        cycle list name=exotic
+    ]
+        % Example data points for 10 peers
+        \addplot coordinates {(1,0.4)(2,0.3)(3,0.45)(4,0.5)(5,0.4)
+                            (6,0.55)(7,0.6)(8,0.5)(9,0.45)(10,0.5)};
+        \label{peer1}
+        
+        \addplot coordinates {(1,0.35)(2,0.3)(3,0.4)(4,0.45)(5,0.5)
+                            (6,0.55)(7,0.6)(8,0.5)(9,0.45)(10,0.5)};
+        \label{peer2}
+        
+        \addplot coordinates {(1,0.4)(2,0.35)(3,0.45)(4,0.5)(5,0.45)
+                            (6,0.55)(7,0.6)(8,0.5)(9,0.45)(10,0.5)};
+        \label{peer3}
+        
+        \addplot coordinates {(1,0.3)(2,0.3)(3,0.4)(4,0.45)(5,0.5)
+                            (6,0.55)(7,0.6)(8,0.5)(9,0.45)(10,0.5)};
+        \label{peer4

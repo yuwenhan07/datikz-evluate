@@ -1,0 +1,38 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+
+\tikzset{
+    subsystem/.style={draw, thick, fill=blue!30},
+    interface/.style={circle, draw, fill=red},
+    arrow/.style={->, >=stealth', shorten >=1pt},
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Subsystem A: Finite with interface in the interior
+\node[subsystem] (A) at (0,0) {CFT$_\text{I}$};
+\node[interface] (intA) at (0,-2) {};
+\draw[arrow] (A.south) -- (intA.north);
+
+% Subsystem B: Finite with interface at one end
+\node[subsystem] (B) at (4,0) {CFT$_\text{I}$};
+\node[interface] (intB) at (4,-2) {};
+\draw[arrow] (B.south) -- (intB.north);
+\draw[dashed] (B.west) -- (intB.east);
+
+% Subsystem C: Infinite with interface at one end
+\node[subsystem] (C) at (8,0) {CFT$_\text{I}$};
+\node[interface] (intC) at (8,-2) {};
+\draw[arrow] (C.south) -- (intC.north);
+\draw[dashed] (C.west) -- (intC.east);
+\draw[dashed] (C.east) -- ([xshift=5cm]C.east);
+
+% Labels
+\node[above left] at (A.north) {(a)};
+\node[above left] at (B.north) {(b)};
+\node[above left] at (C.north) {(c)};
+\node[left] at (0,-4) {$X$};
+
+\end{tikzpicture}
+\end{document}

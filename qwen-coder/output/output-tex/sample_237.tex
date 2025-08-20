@@ -1,0 +1,41 @@
+To create a TikZ LaTeX diagram that represents the graphs \( P_n \) and \( C_n \) with specific vertices labeled as "black" to indicate an FTD-code, you can use the following code. This example assumes \( n = 5 \) for simplicity.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define the number of vertices
+    \def\n{5}
+    
+    % Draw the path graph P_n
+    \foreach \i in {1,...,\n} {
+        \node[draw, circle, fill=white] (P-\i) at (\i,0) {};
+        \ifnum\i<\n
+            \draw[-stealth] (P-\i) -- (P-\the\numexpr\i+1\relax);
+        \fi
+    }
+    \foreach \i in {1,...,\n} {
+        \ifnum\i=2
+            \node[draw, circle, fill=black] at (\i,-0.8) {$v_1$};
+        \else ifnum\i=\n
+            \node[draw, circle, fill=black] at (\i,-0.8) {$v_n$};
+        \else
+            \node[draw, circle, fill=white] at (\i,-0.8) {};
+        \fi
+    }
+    
+    % Draw the cycle graph C_n
+    \foreach \i in {1,...,\n} {
+        \node[draw, circle, fill=white] (C-\i) at ({cos(72*\i)}, {sin(72*\i)}) {};
+        \ifnum\i<\n
+            \draw[-stealth] (C-\i) -- (C-\the\numexpr\i+1\relax);
+        \fi
+    }
+    \draw[-stealth] (C-\n) -- (C-1);
+    \foreach \i in {1,...,\n} {
+        \ifnum\i=3
+            \node[draw, circle, fill=black] at ({cos(72*\i)}, {sin(72*\i)} - 0.8) {$v_1$};
+        \else ifnum\i=4
+            \node[draw

@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\textbf{The Newsvendor Pricing Game.} In this Stackelberg game, there is a logistics network between a supplier (leader) and retailer (follower), where utility functions are not necessarily supermodular. The supplier issues a wholesale price \(a\), and the retailer issues a purchase quantity \(b_a\) and a retail price \(p_a\) in response.
+
+\begin{center}
+    \begin{tikzpicture}[node distance=1cm]
+        % Supplier (Leader)
+        \node[draw, circle] (supplier) {};
+        \node[draw, rectangle, below=of supplier] (supplier_body) {};
+        \node[left=of supplier_body] {Leader (Supplier)};
+        
+        % Arrow from Supplier to Retailer
+        \draw[->, thick] ([xshift=-0.5cm]supplier.east) -- node[above] {$a$} ([xshift=-0.5cm]retailer.west);
+        
+        % Retailer (Follower)
+        \node[draw, circle, right=of supplier] (retailer) {};
+        \node[draw, rectangle, below=of retailer] (retailer_body) {};
+        \node[right=of retailer_body] {Follower (Retailer)};
+        
+        % Arrow from Retailer to Market
+        \draw[->, thick] ([xshift=0.5cm]retailer.east) -- node[above] {$p_a$} ([xshift=0.5cm]market.west);
+        
+        % Market
+        \node[draw, circle, right=of retailer] (market1) {};
+        \node[draw, circle, above=of market1] (market2) {};
+        \node[draw, circle, below=of market1] (market3) {};
+        \node[draw, rectangle, below=of market3] (market4) {};
+        \node[right=of market4] {Market};
+        
+        % Arrow from Market to Retailer
+        \draw[->, thick] ([xshift=-0.5cm]market3.east) -- node[below] {$d(p_a)$} ([xshift=-0.5cm]retailer.west);
+        
+        % Utility Functions
+        \node[below=of supplier_body] {$\mathcal{G}_A(a) = ab_a$};
+        \node[below=of retailer_body] {$\mathcal{G}_B(p_a, b_a) = p_a \min\{d(p_a), b_a\}$};
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

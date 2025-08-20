@@ -1,0 +1,60 @@
+The workflow you've described outlines a parallel processing strategy for reconstructing full-resolution images from lower-resolution inputs. This approach leverages the concept of major cycles (MC) to distribute computational tasks across multiple nodes, thereby accelerating the reconstruction process. Here’s a detailed breakdown of the workflow:
+
+### Workflow Overview
+
+1. **Initialization:**
+   - Start with a low-resolution image \( i_{\mathcal{L}_1} \).
+   - Optionally, start with a high-resolution image \( i_{\mathcal{H}_1} \).
+
+2. **Major Cycle (MC):**
+   - Perform a major cycle of processing on the current low-resolution image \( i_{\mathcal{L}_1} \) and the high-resolution image \( i_{\mathcal{H}_1} \).
+   - During this cycle, deconvolve the residuals to obtain intermediate results.
+   - Share these deconvolved residuals across different nodes.
+
+3. **Intermediate Results:**
+   - After the first major cycle:
+     - Low-resolution image: \( i_{\mathcal{L}_1} \)
+     - High-resolution image: \( i_{\mathcal{H}_1} \)
+
+4. **Subsequent Major Cycles:**
+   - Continue performing major cycles to refine the low-resolution and high-resolution images.
+   - Each major cycle refines the images further, producing:
+     - Low-resolution image: \( i_{{\text{V}_\mathcal{L}}_n} \)
+     - High-resolution image: \( i_{{\text{V}_\mathcal{H}}_n} \)
+
+5. **Final Reconstruction:**
+   - After several major cycles, the refined low-resolution and high-resolution images are available.
+   - Combine the final reconstructed low-resolution image \( \hat{\imath}_{\text{V}_\mathcal{L}} \) and the high-resolution image \( \hat{\imath}_{\text{V}_\mathcal{H}} \) to produce the final reconstructed image \( \hat{\imath} \).
+
+### Parallel Processing Strategy
+
+- **Node Coordination:**
+  - Each node performs its own computations independently but shares the deconvolved residuals with other nodes.
+  - This sharing ensures that all nodes have access to the latest updates, allowing them to continue refining their respective images.
+
+- **Communication:**
+  - After each major cycle, the deconvolved residuals are communicated between nodes.
+  - This communication is crucial for maintaining consistency and ensuring that all nodes are working towards the same goal.
+
+- **Combining Results:**
+  - Once the final refined images \( \hat{\imath}_{\text{V}_\mathcal{L}} \) and \( \hat{\imath}_{\text{V}_\mathcal{H}} \) are obtained, they are combined to produce the final reconstructed image \( \hat{\imath} \).
+
+### Example Workflow Steps
+
+1. **Initial Setup:**
+   - Node 1: Receives \( i_{\mathcal{L}_1} \) and optionally \( i_{\mathcal{H}_1} \).
+   - Node 2: Receives \( i_{\mathcal{L}_1} \) and optionally \( i_{\mathcal{H}_1} \).
+
+2. **First Major Cycle:**
+   - Node 1 performs deconvolution on \( i_{\mathcal{L}_1} \) and shares the residuals with Node 2.
+   - Node 2 performs deconvolution on \( i_{\mathcal{L}_1} \) and shares the residuals with Node 1.
+   - Both nodes produce \( i_{\mathcal{L}_1} \) and \( i_{\mathcal{H}_1} \).
+
+3. **Subsequent Major Cycles:**
+   - Repeat the process for subsequent major cycles, refining the images \( i_{{\text{V}_\mathcal{L}}_n} \) and \( i_{{\text{V}_\mathcal{H}}_n} \).
+
+4. **Final Reconstruction:**
+   - Node 1 combines \( \hat{\imath}_{\text{V}_\mathcal{L}} \) and \( \hat{\imath}_{\text{V}_\mathcal{H}} \) to produce \( \hat{\imath} \).
+   - Node 2 combines \( \hat{\imath}_{\text{V}_\mathcal{L}} \) and \( \hat{\imath}_{\text{V}_\mathcal{H}} \) to produce \( \hat{\imath} \).
+
+By following this workflow, the proposed method effectively leverages parallel processing to reconstruct full-resolution images more efficiently than sequential methods.

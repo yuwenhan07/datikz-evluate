@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+Two octaves of $\mathcal{T}_5(100)$ together with $\Delta_5$ defined in Example \ref{EX.5-EDO with 100}.
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.8]
+        % Draw the horizontal axis
+        \draw[->] (-2,0) -- (10,0) node[right] {Hz};
+        
+        % Mark the frequency points
+        \foreach \x/\label in {
+            -1/$100$, 
+            1/$120$, 
+            3/$140$, 
+            5/$160$, 
+            7/$180$, 
+            9/$200$, 
+            11/$240$, 
+            13/$280$, 
+            15/$320$, 
+            17/$360$, 
+            19/$400$
+        } {
+            \draw (\x,0.1) -- (\x,-0.1) node[below] {$\nu_{k,\label}$};
+        }
+        
+        % Draw the labels for the frequencies
+        \node at (0.5,0.5) {$\left(\nu_{k+1,0}\right)$};
+        
+        % Draw the vertical lines
+        \foreach \x in {-1,1,...,19} {
+            \draw (\x,-0.1) -- (\x,0.1);
+        }
+        
+        % Draw the arrowheads
+        \draw[->] (-2,0) -- (10,0);
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

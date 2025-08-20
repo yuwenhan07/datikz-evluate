@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Axes
+        \draw[->] (-2,0) -- (2,0) node[right] {$\bar{\rho}$};
+        \draw[->] (0,-1) -- (0,1) node[above] {$f(\rho)$};
+        
+        % Curve
+        \draw[thick, domain=-1.732:1.732, samples=100] plot (\x,{sin(90*\x r)});
+        
+        % Lines
+        \draw[dashed, green!50!black, thick] (-1.732, 0) -- (-1.732, {sin(90*(-1.732) r)});
+        \draw[dashed, blue!50!black, thick] (-1.732, 0) -- (-1.732, {sin(90*(-1.732) r)});
+        \draw[dashed, blue!50!black, thick] (1.732, 0) -- (1.732, {sin(90*(1.732) r)});
+        \draw[dashed, red!50!black, thick] (1.732, 0) -- (1.732, {sin(90*(1.732) r)});
+        
+        % Labels
+        \node at (-1.732, 0) [below] {$\rho_L$};
+        \node at (-1.732, {sin(90*(-1.732) r)}) [above] {$-v(\rho_L)$};
+        \node at (1.732, 0) [below] {$\rho_R$};
+        \node at (1.732, {sin(90*(1.732) r)}) [above] {$v(\rho_R)$};
+        \node at (-1.4, 0) [above] {$PM$};
+        \node at (-0.8, 0) [above] {$PL$};
+        \node at (0.8, 0) [above] {$PR$};
+        \node at (1.4, 0) [above] {$PE$};
+        
+        % Second figure
+        \begin{scope}[shift={(6,0)}]
+            % Axes
+            \draw[->] (-2,0) -- (2,0) node[right] {$\bar{\rho}$};
+            \draw[->] (0,-1) -- (0,1) node[above] {$f(\rho)$};
+            
+            % Curve
+            \draw[thick, domain=-1.732:1.732, samples=100] plot (\x,{sin(90*\x r)});
+            
+            % Lines
+            \draw[dashed, green!50!black, thick] (-1.732, 0) -- (-1.732, {sin(90*(-1.732) r)});
+            \draw[dashed, blue!50!black, thick] (-1.732, 0) -- (-1.732, {sin(90*(-1.732) r)});
+            \draw[dashed, blue!50!black, thick] (1.732, 0) -- (1.732, {sin(90*(1.732) r)});
+            \draw[dashed, red!50!black, thick] (1.732, 0) -- (1.732, {sin(90*(1.732) r)});
+            
+            % Labels
+            \node at (-1.732, 0) [below] {$\rho_L$};
+            \node at (-1.732, {sin(90*(-1.732) r)}) [above] {$-v(\rho_L)$};
+            \node at (1.732, 0) [below] {$\rho_R$};
+            \node at (1.732, {sin(90*(1.732) r)}) [above] {$v(\rho_R)$};
+            \node at (-1.4, 0) [above] {$PM$};
+            \node at (-0.8, 0) [above] {$PL$};
+            \node at (0.8, 0) [above] {$PR$};
+            \node at (1.4, 0) [above] {$PE$};
+        \end{scope}
+        
+        % Caption
+        \captionsetup{justification=centering}
+        \caption{\small{Non classical The Riemann solvers at turning curve for the initial data \eqref{eq:riemann_data}, with $\alpha>v(\rho_R)$ (left) and $\alpha<-v(\rho_L)$ (right).}}
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

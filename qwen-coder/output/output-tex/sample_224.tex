@@ -1,0 +1,32 @@
+To create a TikZ LaTeX diagram that visualizes the posterior mean of total \( R^2 \) over time for different priors, we can use the following code. This example assumes you have defined the colors `arr2flatcolour`, `arr2minncolour`, `sparsenessinducingcolour`, `minnesotacolour`, and `rhscolour` in your preamble.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{xcolor}
+
+% Define custom colors (if not already defined)
+\definecolor{arr2flatcolour}{RGB}{255, 0, 0} % Red
+\definecolor{arr2minncolour}{RGB}{0, 255, 0} % Green
+\definecolor{sparsenessinducingcolour}{RGB}{0, 0, 255} % Blue
+\definecolor{minnesotacolour}{RGB}{128, 128, 0} % Olive
+\definecolor{rhscolour}{RGB}{160, 32, 240} % Purple
+
+\begin{document}
+\begin{tikzpicture}[scale=0.7]
+
+% Axes
+\draw[->] (-1,0) -- (10,0) node[right] {Time};
+\draw[->] (0,-1) -- (0,5) node[above] {$R^2$};
+
+% Labels for priors
+\node at (0.5, -1.5) [below] {\textcolor{arr2flatcolour}{ARR2 flat}};
+\node at (2.5, -1.5) [below] {\textcolor{arr2minncolour}{ARR2 Minnesota}};
+\node at (4.5, -1.5) [below] {\textcolor{sparsenessinducingcolour}{Sparsity-inducing}};
+\node at (6.5, -1.5) [below] {\textcolor{minnesotacolour}{Minnesota-type}};
+\node at (8.5, -1.5) [below] {\textcolor{rhscolour}{Regularised Horseshoe}};
+
+% Data points (example data)
+\foreach \x/\y in {
+    1/0.3,
+    2/0.4,
+    3/0

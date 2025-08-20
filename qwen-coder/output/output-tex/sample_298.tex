@@ -1,0 +1,44 @@
+To construct a new generation using the described method, you can follow these steps:
+
+1. **Order the Current Generation**: Evaluate each individual in the current generation based on some fitness criterion (e.g., performance score, accuracy). Rank them from best to worst.
+
+2. **Discard the Worst Genes**: Remove the individuals ranked as the worst according to your fitness criteria. These will be represented by the red part.
+
+3. **Copy the Best Genes**: Directly copy the individuals that are considered the best into the new generation. These are represented by the green part.
+
+4. **Create New Genes Through Crossover**: For the remaining slots in the new generation, create new individuals through crossover operations. Each offspring is formed by combining parts of genes from either the green part (parents) or the grey part (other individuals from the previous generation).
+
+Here's a simple example using pseudocode to illustrate this process:
+
+```python
+# Step 1: Order the current generation
+current_generation = [...individuals...]
+fitness_scores = [evaluate(individual) for individual in current_generation]
+sorted_indices = sorted(range(len(fitness_scores)), key=lambda i: fitness_scores[i], reverse=True)
+ordered_generation = [current_generation[i] for i in sorted_indices]
+
+# Step 2: Discard the worst genes
+num_to_discard = int(len(ordered_generation) * discard_percentage)
+new_generation = ordered_generation[num_to_discard:]
+
+# Step 3: Copy the best genes
+best_genes = ordered_generation[:num_to_discard]
+new_generation.extend(best_genes)
+
+# Step 4: Create new genes through crossover
+while len(new_generation) < len(current_generation):
+    parent1 = random.choice(best_genes + grey_part)
+    parent2 = random.choice(best_genes + grey_part)
+    child = crossover(parent1, parent2)
+    new_generation.append(child)
+
+# Now new_generation contains the next generation
+```
+
+In this example:
+- `evaluate(individual)` is a function that returns the fitness score of an individual.
+- `discard_percentage` is the fraction of the population to discard.
+- `grey_part` is a list of individuals that are neither in the best nor the worst but are used for crossover.
+- `crossover(parent1, parent2)` is a function that takes two parents and produces a new individual through crossover.
+
+This approach ensures that the new generation retains the best individuals while introducing diversity through genetic crossover.

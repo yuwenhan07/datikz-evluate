@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the circle representing the drop
+        \draw (0,0) circle (1);
+        
+        % Draw the center of the circle
+        \fill (0,0) circle (0.05);
+        
+        % Draw the radius vector
+        \draw[->] (0,0) -- (1,0) node[right] {$r$};
+        
+        % Draw the angle theta
+        \pic [draw, ->, "$\theta$", angle eccentricity=1.2] {angle = 0--1--0};
+        
+        % Draw the vertical line from the center to the free surface
+        \draw (0,-1) -- (0,0) node[left] {$z$};
+        
+        % Draw the x-axis
+        \draw[dotted] (-1.5,0) -- (1.5,0) node[below] {$x$};
+        
+        % Draw the wavy free surface
+        \draw[samples=100,domain=-1.5:1.5,smooth] plot (\x,{sin(\x r)});
+        
+        % Draw the dotted line representing the unperturbed free surface
+        \draw[dotted] (-1.5,-1) -- (1.5,-1);
+        
+        % Label the origin
+        \node at (0,-1.2) {Origin};
+    \end{tikzpicture}
+    \caption{Schematic of model domain denoting two frames of reference points. Origin for the full frame is Cartesian $(x,z)$ and sets the origin directly beneath the south pole of the drop and aligned to an unperturbed bath free surface. The droplet will be evolved in a moving frame of reference with polar coordinates $(r,\theta)$ centered at the center of mass of a drop whose free surface lies at $r=R_0$, and $\theta=0$ pointing vertically downwards towards the bath.}
+    \label{fig:model_domain}
+\end{figure}
+
+\end{document}

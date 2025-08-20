@@ -1,0 +1,20 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{trees}
+
+\begin{document}
+\tikzset{
+  every node/.style={circle, draw, fill=blue!20, inner sep=2pt},
+  level distance=40pt,
+  sibling distance=80pt
+}
+
+\begin{tikzpicture}[level 1/.style={sibling distance=50pt}]
+  \node (root) {$j$}
+    child {node {$k$}
+      child {node {$i_1$}}
+      child {node {$i_2$}}
+      child {node {$i_3$}}
+      % Add more children as needed
+    };
+\end{tikzpicture}
+\end{document}

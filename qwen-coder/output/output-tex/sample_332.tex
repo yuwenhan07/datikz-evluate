@@ -1,0 +1,42 @@
+To create a TikZ diagram that represents the neighborhood of \(a \times b\) in a grid \(\protect\Gc\) with the graph \(G^{(2)}_f\) represented by pink lines, you can use the following LaTeX code:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Define the coordinates for the grid points
+    \def\a{3} % Number of rows
+    \def\b{4} % Number of columns
+
+    % Draw the grid
+    \foreach \i in {0,...,\a} {
+        \draw[very thin] (0,\i) -- (\b, \i);
+    }
+    \foreach \j in {0,...,\b} {
+        \draw[very thin] (\j, 0) -- (\j, \a);
+    }
+
+    % Highlight the neighborhood of a specific point (e.g., at (2,3))
+    \draw[pink, thick] (2,3) circle[radius=0.2];
+    \draw[pink, thick] (2,2) rectangle (3,3);
+
+    % Label the grid points
+    \foreach \i in {0,...,\a} {
+        \foreach \j in {0,...,\b} {
+            \node at (\j+\j/2, \i+\i/2) [below left] {\scriptsize $(\j, \i)$};
+        }
+    }
+
+    % Draw the graph G^(2)_f with pink lines (example edges)
+    \draw[pink, thick] (0,0) -- (1,1);
+    \draw[pink, thick] (1,1) -- (2,2);
+    \draw[pink, thick] (2,2) -- (3,3);
+    \draw[pink, thick] (3,3) -- (4,4);
+    \draw[pink, thick] (4,4) -- (5,5);
+    \draw[pink, thick] (5,5) -- (6,6);
+    \draw[pink, thick] (6,6) -- (7,7);
+    \draw[pink, thick] (7,7) -- (8,8);
+    \draw[pink, thick] (8,8) -- (9,9

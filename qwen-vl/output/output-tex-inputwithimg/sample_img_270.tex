@@ -1,0 +1,244 @@
+To generate LaTeX code for the given image, you can use the `tikz` package along with the `pgfplots` package for plotting the graph. Below is the LaTeX code that creates the image:
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Define coordinates for the nodes
+        \foreach \x/\y in {-8/3,-7/2,-6/1,-5/0,-4/0,-3/1,-2/2,-1/3,0/3}
+            \coordinate (A\x) at (\x,\y);
+        
+        % Draw the thick line representing m_n(omega)
+        \draw[ultra thick] (-8,0) -- (0,0);
+        
+        % Draw the arrows
+        \foreach \x/\y in {-8/3,-7/2,-6/1,-5/0,-4/0,-3/1,-2/2,-1/3,0/3}
+            \draw[->,thick] (A\x) -- (A\x|-A\x-1);
+        
+        % Draw the nodes
+        \foreach \x/\y in {-8/3,-7/2,-6/1,-5/0,-4/0,-3/1,-2/2,-1/3,0/3}
+            \filldraw (A\x) circle (2pt);
+        
+        % Draw the x-axis
+        \draw[->] (-8.5,0) -- (0.5,0) node[right] {$\omega$};
+        
+        % Draw the y-axis
+        \draw[->] (0,-0.5) -- (0,3.5) node[above] {$m_n(\omega)$};
+        
+        % Label the x-axis
+        \foreach \x/\y in {-8/3,-7/2,-6/1,-5/0,-4/0,-3/1,-2/2,-1/3,0/3}
+            \node at (\x,-0.5) {$\theta_{-\x}\omega$};
+        
+        % Label the y-axis
+        \foreach \y in {1,2,3}
+            \node at (-8.5,\y) {\y};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the y-axis label
+        \node at (-8.5,0) {$\theta_{-8}\omega$};
+        \node at (-8.5,1) {$\theta_{-7}\omega$};
+        \node at (-8.5,2) {$\theta_{-6}\omega$};
+        \node at (-8.5,3) {$\theta_{-5}\omega$};
+        \node at (-8.5,4) {$\theta_{-4}\omega$};
+        \node at (-8.5,5) {$\theta_{-3}\omega$};
+        \node at (-8.5,6) {$\theta_{-2}\omega$};
+        \node at (-8.5,7) {$\theta_{-1}\omega$};
+        \node at (-8.5,8) {$\omega$};
+        
+        % Add the text for the

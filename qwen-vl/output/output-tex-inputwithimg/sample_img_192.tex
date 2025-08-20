@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        % Left panel: Initial refinement level
+        \matrix (initial) [matrix of nodes, nodes={draw, minimum width=1cm, minimum height=0.5cm, anchor=center}, column sep=-\pgflinewidth, row sep=-\pgflinewidth] {
+            $x_{10}$ & $x_{11}$ & $x_{14}$ & $x_{15}$ \\
+            $x_{8}$  & $x_{9}$  & $x_{12}$ & $x_{13}$ \\
+            $x_{2}$  & $x_{3}$  & $x_{6}$  & $x_{7}$  \\
+            $x_{0}$  & $x_{1}$  & $x_{4}$  & $x_{5}$  \\
+        };
+        
+        % Middle panel: Coarsening step
+        \node[draw, minimum width=2cm, minimum height=1cm, right=0.5cm of initial-1-1.south east, anchor=north west] (coarse1) {$\bar{x}_2$};
+        \node[draw, minimum width=2cm, minimum height=1cm, right=0.5cm of coarse1.south east, anchor=north west] (coarse2) {$\bar{x}_3$};
+        \node[draw, minimum width=2cm, minimum height=1cm, below=0.5cm of coarse1.west, anchor=east] (coarse3) {$\bar{x}_0$};
+        \node[draw, minimum width=2cm, minimum height=1cm, below=0.5cm of coarse2.west, anchor=east] (coarse4) {$\bar{x}_1$};
+        
+        % Right panel: Second coarsening step
+        \node[draw, minimum width=4cm, minimum height=2cm, right=0.5cm of coarse3.south east, anchor=north west] (final) {$\bar{\bar{x}}_0$};
+        
+        % Arrows
+        \draw[->] (initial-1-1.north west) -- (coarse1.north west);
+        \draw[->] (coarse1.south east) -- (coarse3.north east);
+        \draw[->] (coarse3.south east) -- (final.north west);
+    \end{tikzpicture}
+    
+    \caption{(Left:) Data on the initial refinement level. (Middle:) A coarsening step in which all (four) element families have been coarsened. (Right:) A second coarsening step of the resulting family of elements from the first step.}
+\end{figure}
+
+\end{document}

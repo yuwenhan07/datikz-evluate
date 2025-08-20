@@ -1,0 +1,42 @@
+Certainly! Below is a TikZ LaTeX code that generates a diagram illustrating the behavior of Riemann solvers at a turning curve for the given initial conditions.
+
+```latex
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+
+\tikzset{
+    arrow/.style={thick,->,>=stealth},
+    wave/.style={thick,dashed},
+    box/.style={rectangle,draw=black,minimum width=2cm,minimum height=1cm,text centered},
+    line/.style={thick}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define coordinates
+    \coordinate (A) at (-3,-2);
+    \coordinate (B) at (3,-2);
+    \coordinate (C) at (-3,2);
+    \coordinate (D) at (3,2);
+
+    % Draw axes
+    \draw[thick] (-4,0) -- (4,0) node[right] {$x$};
+    \draw[thick] (0,-3) -- (0,3) node[above] {$u$};
+
+    % Draw initial data lines
+    \draw[line] (A) -- (B) node[midway,below] {$\alpha > v(\rho_R)$};
+    \draw[line] (C) -- (D) node[midway,above] {$\alpha < -v(\rho_L)$};
+
+    % Draw turning curve
+    \draw[arrow] (0,0) -- (0,-1) node[left] {$\rho_L$} -- (1,-1) arc[start angle=-90,end angle=90,radius=1] node[right] {$\rho_R$};
+
+    % Draw waves
+    \draw[wave] (A) -- (-1,-1) node[midway,below] {$S_L$};
+    \draw[wave] (B) -- (1,-1) node[midway,below] {$S_R$};
+    \draw[wave] (C) -- (-1,1) node[midway,above] {$S_L$};
+    \draw[wave] (D) -- (1,1) node[midway,above] {$S_R$};
+
+    % Draw boxes for Riemann solutions
+    \node[box] at (-2,0) {Rarefaction};
+    \node[box]

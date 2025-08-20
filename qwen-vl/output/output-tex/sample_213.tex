@@ -1,0 +1,109 @@
+To provide a clear and detailed example for the lower bound construction in Theorem~\ref{thm:omega_log_m_lower_bound_non_stochastic}, let's break down the scenario step-by-step.
+
+### Example Setup
+
+1. **Agents and Alternatives**: There are \( n \) agents and \( m \) alternatives.
+2. **Valuation Function**: Each agent has a valuation function \( v_i(a) \) for each alternative \( a \). The valuations are such that there exists a set of "high-value" buckets and "low-value" buckets.
+3. **Mechanism**: A mechanism \( \mathcal{M} \) is designed to select an alternative \( \widehat{a} \) based on the agents' reported valuations.
+4. **Querying Positions**: The mechanism queries the positions of some alternatives to estimate their valuations.
+
+### Example Illustration
+
+#### Step 1: Define the Buckets
+
+- **High-Value Buckets**: These are buckets where all alternatives have high values.
+- **Low-Value Buckets**: These are buckets where all alternatives have low values.
+- **Mixed Buckets**: These are buckets where the winning alternative (i.e., the one with the highest value) is not known yet, but the mechanism has queried the value of at least one alternative in the bucket.
+
+#### Step 2: Construct the Valuation Function
+
+Consider the following valuation function for simplicity:
+
+- **Agent 1**:
+  - High-Value Buckets: \( \{a_1, a_2, a_3\} \)
+  - Low-Value Buckets: \( \{a_4, a_5, a_6\} \)
+
+- **Agent 2**:
+  - High-Value Buckets: \( \{a_7, a_8, a_9\} \)
+  - Low-Value Buckets: \( \{a_{10}, a_{11}, a_{12}\} \)
+
+- **Agent 3**:
+  - High-Value Buckets: \( \{a_{13}, a_{14}, a_{15}\} \)
+  - Low-Value Buckets: \( \{a_{16}, a_{17}, a_{18}\} \)
+
+- **Agent 4**:
+  - High-Value Buckets: \( \{a_{19}, a_{20}, a_{21}\} \)
+  - Low-Value Buckets: \( \{a_{22}, a_{23}, a_{24}\} \)
+
+- **Agent 5**:
+  - High-Value Buckets: \( \{a_{25}, a_{26}, a_{27}\} \)
+  - Low-Value Buckets: \( \{a_{28}, a_{29}, a_{30}\} \)
+
+### Step 3: Mechanism Querying
+
+The mechanism \( \mathcal{M} \) queries the positions of some alternatives to estimate their valuations. For simplicity, let's assume it queries the first position in each bucket.
+
+#### Step 4: Illustrate the Mechanism's Decision
+
+- **Bucket 1 (High-Value)**: \( \{a_1, a_2, a_3\} \)
+  - Query: \( a_1 \)
+  - Value: High
+
+- **Bucket 2 (Low-Value)**: \( \{a_4, a_5, a_6\} \)
+  - Query: \( a_4 \)
+  - Value: Low
+
+- **Bucket 3 (Mixed)**: \( \{a_7, a_8, a_9\} \)
+  - Query: \( a_7 \)
+  - Value: High
+
+- **Bucket 4 (Low-Value)**: \( \{a_{10}, a_{11}, a_{12}\} \)
+  - Query: \( a_{10} \)
+  - Value: Low
+
+- **Bucket 5 (Mixed)**: \( \{a_{13}, a_{14}, a_{15}\} \)
+  - Query: \( a_{13} \)
+  - Value: High
+
+- **Bucket 6 (Low-Value)**: \( \{a_{16}, a_{17}, a_{18}\} \)
+  - Query: \( a_{16} \)
+  - Value: Low
+
+- **Bucket 7 (Mixed)**: \( \{a_{19}, a_{20}, a_{21}\} \)
+  - Query: \( a_{19} \)
+  - Value: High
+
+- **Bucket 8 (Low-Value)**: \( \{a_{22}, a_{23}, a_{24}\} \)
+  - Query: \( a_{22} \)
+  - Value: Low
+
+- **Bucket 9 (Mixed)**: \( \{a_{25}, a_{26}, a_{27}\} \)
+  - Query: \( a_{25} \)
+  - Value: High
+
+- **Bucket 10 (Low-Value)**: \( \{a_{28}, a_{29}, a_{30}\} \)
+  - Query: \( a_{28} \)
+  - Value: Low
+
+### Step 5: Determine the Winning Alternative
+
+Based on the queries and the values obtained:
+
+- **Bucket 1**: \( a_1 \) is high
+- **Bucket 2**: \( a_4 \) is low
+- **Bucket 3**: \( a_7 \) is high
+- **Bucket 4**: \( a_{10} \) is low
+- **Bucket 5**: \( a_{13} \) is high
+- **Bucket 6**: \( a_{16} \) is low
+- **Bucket 7**: \( a_{19} \) is high
+- **Bucket 8**: \( a_{22} \) is low
+- **Bucket 9**: \( a_{25} \) is high
+- **Bucket 10**: \( a_{28} \) is low
+
+From the above, we can see that the high-value buckets are \( \{a_1, a_7, a_{13}, a_{19}, a_{25}\} \).
+
+### Conclusion
+
+The mechanism \( \mathcal{M} \) selects the alternative \( \widehat{a} \) from these high-value buckets. In this example, the mechanism could pick any of the alternatives \( a_1, a_7, a_{13}, a_{19}, a_{25} \), but for simplicity, let's say it picks \( a_1 \).
+
+This example illustrates how the mechanism queries the positions of alternatives to estimate their valuations and how the agents' valuations are structured into high-value and low-value buckets. The mechanism then selects the alternative from the high-value buckets, ensuring that the selection process is robust against strategic manipulation by the agents.

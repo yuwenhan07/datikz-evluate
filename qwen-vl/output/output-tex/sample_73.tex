@@ -1,0 +1,27 @@
+To construct the intersection poset \( L(\mathcal{A}) \) for an arrangement of \( N \) families \( A_i \) of \( D \) parallel hyperplanes in general position, we need to follow these steps:
+
+1. **Define the Arrangement**: An arrangement of hyperplanes is a finite set of hyperplanes in a vector space. Here, we have \( N \) families of \( D \) parallel hyperplanes each. In general position means that no \( D+1 \) hyperplanes intersect at a single point.
+
+2. **Intersection Poset**: The intersection poset \( L(\mathcal{A}) \) is a partially ordered set where the elements are the intersections of the hyperplanes from the different families, and the order relation is given by inclusion. Specifically, if \( P_1 \) and \( P_2 \) are two intersections, then \( P_1 \leq P_2 \) if and only if \( P_1 \subseteq P_2 \).
+
+3. **Constructing the Poset**:
+   - Start with the empty set (the intersection of zero hyperplanes).
+   - For each family of hyperplanes, consider all possible intersections of hyperplanes within that family.
+   - Consider all possible intersections of hyperplanes from different families, ensuring that the intersections are taken in such a way that they respect the order of inclusion.
+   - The poset will be the collection of all these intersections, ordered by inclusion.
+
+4. **Example for \( D = 2 \) and \( N = 2 \)**:
+   - Suppose we have two families of parallel lines in the plane. Each family has \( D = 2 \) lines.
+   - The intersections of the lines can be points, lines, or the entire plane.
+   - The poset will include the empty set, the points of intersection of lines from different families, the lines themselves, and the entire plane.
+   - The poset will look like this: \(\emptyset < p_1 < l_1 < \text{plane} < p_2 < l_2 < \text{plane}\), where \( p_1 \) and \( p_2 \) are points of intersection, \( l_1 \) and \( l_2 \) are lines, and "plane" is the entire plane.
+
+5. **General Case**:
+   - For \( D \) dimensions and \( N \) families, the poset will include the empty set, points of intersection of hyperplanes from different families, lines, planes, etc., up to the entire space.
+   - The poset will be a lattice, meaning every pair of elements has a unique least upper bound (join) and greatest lower bound (meet).
+
+The final answer is the construction of the intersection poset \( L(\mathcal{A}) \) as described above. The exact structure of the poset depends on the specific arrangement of hyperplanes, but the general form is a lattice of intersections ordered by inclusion.
+
+\[
+\boxed{L(\mathcal{A})}
+\]

@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the x-axis
+        \draw[->] (-4.5,0) -- (4.5,0) node[right] {$z$};
+        
+        % Mark points on the x-axis
+        \foreach \x/\label in {-4/-4a, -3/-3a, -2/-2a, -1/-1a, 0/0, 1/a, 2/2a, 3/3a, 4/4a} {
+            \fill (\x,0) circle (1pt);
+            \node at (\x,-0.2) {\label};
+        }
+        
+        % Draw the y-axis
+        \draw[->] (0,-2) -- (0,2) node[above] {$y$};
+        
+        % Red arrow pointing down
+        \draw[-{Triangle[length=6mm, width=4mm]}, red] (0,-1.5) -- (0,-2.5);
+        
+        % Blue arrows pointing up
+        \draw[-{Triangle[length=6mm, width=4mm]}, blue] (0,1.5) -- (0,2.5);
+        
+        % Mark points on the y-axis with stars
+        \foreach \y/\label in {1.5/*, 1/*, 0.5/*, -0.5/*, -1/*, -1.5/*} {
+            \fill (0,\y) circle (1pt);
+            \node at (0.2,\y) {\label};
+        }
+    \end{tikzpicture}
+    
+    \caption{For our Casimir system to have a value of \( D^{(1)} = 0 \) on both plates we need an infinite set of image sources placed at a distance of \( z = \pm 2an \) for integer \( n \) for each plate. Placing the images at a spacing of \( a \) locates a source on each plate, and causes double placement of sources at each point along the \( z \) axis. This doubling of the boundary terms translates into an extra factor of \( 2 \) on the numerator of the boundary term for the Hadamard function.}
+    \label{fig:casimir_system}
+\end{figure}
+
+\end{document}

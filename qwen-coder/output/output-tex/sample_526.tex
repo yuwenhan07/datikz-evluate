@@ -1,0 +1,41 @@
+Creating a vending machine simulation that counts to 25 cents using flip-flops (FFs) and logic gates like OR and AND in TikZ involves several steps. Below is a basic example of how you might structure such a system in LaTeX.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{circuits.ee.IEC,shapes.geometric}
+
+\tikzset{
+    block/.style={draw, rectangle, minimum height=3em, minimum width=4em},
+    input/.style={draw, circle, inner sep=1pt},
+    output/.style={draw, circle, inner sep=1pt},
+    wire/.style={->,thick},
+}
+
+\begin{document}
+\begin{tikzpicture}[circuit ee IEC]
+
+% Inputs for 5, 10, and 25 cent coins
+\node[input] (coin5) at (0,0) {};
+\node[input] (coin10) at (-1,-2) {};
+\node[input] (coin25) at (1,-2) {};
+
+% Flip-Flops to store the value
+\node[block] (ff5) at (-3,-4) {FF};
+\node[block] (ff10) at (-1,-4) {FF};
+\node[block] (ff25) at (1,-4) {FF};
+
+% Logic gates
+\node[and gate IEC, draw, thick, rotate=-90] (and1) at (-4,-6) {};
+\node[or gate IEC, draw, thick, rotate=-90] (or1) at (-2,-6) {};
+\node[or gate IEC, draw, thick, rotate=-90] (or2) at (0,-6) {};
+\node[or gate IEC, draw, thick, rotate=-90] (or3) at (2,-6) {};
+
+% Outputs
+\node[output] (out1) at (-5,-8) {};
+\node[output] (out2) at (-3,-8) {};
+\node[output] (out3) at (-1,-8) {};
+\node[output] (out4) at (1,-8) {};
+\node[output] (out5) at (3,-8) {};
+
+% Connections
+\draw[wire] (coin5) -- node[left

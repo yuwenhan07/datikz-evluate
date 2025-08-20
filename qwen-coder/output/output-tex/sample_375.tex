@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Define styles
+    \tikzstyle{variable} = [circle, draw, fill=blue!20, minimum size=15pt]
+    \tikzstyle{factor}   = [rectangle, draw, fill=red!20, minimum size=20pt]
+
+    % Create variable nodes
+    \foreach \i in {1,...,N}{
+        \node[variable] (V\i) at (0,-\i*1.5) {};
+    }
+
+    % Create factor nodes
+    \foreach \j in {1,...,K}{
+        \node[factor] (F\j) at (\j*2,0) {};
+    }
+
+    % Connect variable nodes to factor nodes
+    \foreach \i in {1,...,N}{
+        \foreach \j in {1,...,K}{
+            \draw[-stealth] (V\i) -- (F\j);
+        }
+    }
+
+    % Add labels
+    \node[left] at (-3,0) {Factors};
+    \node[right] at (K+3,0) {Variables};
+
+\end{tikzpicture}
+
+\end{document}

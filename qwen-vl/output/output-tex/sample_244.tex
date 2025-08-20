@@ -1,0 +1,42 @@
+python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define the state space
+states = np.linspace(0, 10, 100)
+current_state = 5
+
+# Local Proposal Technique
+local_proposals = [current_state + np.random.normal(0, 0.5) for _ in range(10)]
+local_energy_diff = [abs(state - current_state) for state in local_proposals]
+
+# Uniform Updating
+uniform_proposals = np.random.uniform(0, 10, 10)
+uniform_energy_diff = [abs(state - current_state) for state in uniform_proposals]
+
+# Quantum Proposal Routine
+quantum_proposals = np.random.uniform(0, 10, 10)
+quantum_energy_diff = [abs(state - current_state) for state in quantum_proposals]
+
+# Plotting
+plt.figure(figsize=(12, 6))
+
+# Local Proposal Technique
+plt.subplot(1, 3, 1)
+plt.scatter(local_proposals, local_energy_diff, c=local_energy_diff, cmap='viridis')
+plt.colorbar(label='Energy Difference')
+plt.title('Local Proposal Technique')
+
+# Uniform Updating
+plt.subplot(1, 3, 2)
+plt.scatter(uniform_proposals, uniform_energy_diff, c=uniform_energy_diff, cmap='viridis')
+plt.colorbar(label='Energy Difference')
+plt.title('Uniform Updating')
+
+# Quantum Proposal Routine
+plt.subplot(1, 3, 3)
+plt.scatter(quantum_proposals, quantum_energy_diff, c=quantum_energy_diff, cmap='viridis')
+plt.colorbar(label='Energy Difference')
+plt.title('Quantum Proposal Routine')
+
+plt.show()

@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows.meta}
+
+\begin{document}
+
+\section*{Illustration of Online NDWT Pyramidal Algorithm for \( J = 3 \), \( W = 2 \)}
+
+Input time series given by top row of coefficients. Coefficients with dotted borders obtained by constant-end extension. Dashed arrows denote filtering operations with \(\mathcal{G}\), solid arrows denote filtering operations with \(\mathcal{H}\).
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8, transform shape]
+        % Define styles for nodes
+        \tikzset{
+            mynode/.style={rectangle, draw=black, fill=white, minimum size=1cm},
+            mydottednode/.style={rectangle, draw=black, dashed, fill=white, minimum size=1cm},
+            myarrow/.style={-{Latex[length=3mm, width=3mm]}, thick},
+            mydottedarrow/.style={-{Latex[length=3mm, width=3mm]}, dashed, thick}
+        }
+        
+        % Nodes for T=1
+        \matrix (T1) [matrix of nodes, row sep=1cm, column sep=1cm] {
+            \node[mynode] (c2_0) {$c_{2,0}$}; & & \\
+            & \node[mynode] (c2_1) {$c_{2,1}$}; & \\
+            & & \node[mynode] (d1_1) {$d_{1,1}$}; \\
+            & \node[mynode] (c1_1) {$c_{1,1}$}; & \\
+            & & \node[mynode] (d0_1) {$d_{0,1}$}; \\
+            & & \node[mynode] (v0_1) {$v_{0,1}$}; \\
+        };
+        
+        % Nodes for T=2
+        \matrix (T2) [matrix of nodes, row sep=1cm, column sep=1cm, right=2cm of T1] {
+            & & \node[mynode] (c2_2) {$c_{2,2}$}; \\
+            & \node[mynode] (c2_1) {$c_{2,1}$}; & \\
+            & & \node[mynode] (d1_2) {$d_{1,2}$}; \\
+            & \node[mynode] (c1_2) {$c_{1,2}$}; & \\
+            & & \node[mynode] (d0_2) {$d_{0,2}$}; \\
+            & & \node[mynode] (v0_2) {$v_{0,2}$}; \\
+        };
+        
+        % Dotted border nodes
+        \node[mynode, dotted, above left=of c2_0] (c2_0_dotted) {};
+        \node[mynode, dotted, below left=of c1_1] (c1_1_dotted) {};
+        \node[mynode, dotted, below left=of d0_1] (d0_1_dotted) {};
+        
+        % Dotted border nodes for T=2
+        \node[mynode, dotted, above left=of c2_1] (c2_1_dotted) {};
+        \node[mynode, dotted, below left=of c1_2] (c1_2_dotted) {};
+        \node[mynode, dotted, below left=of d0_2] (d0_2_dotted) {};
+        
+        % Arrows for T=1
+        \draw[myarrow] (c2_0) -- (c2_1);
+        \draw[myarrow] (c2_0) to[bend left=45] (d1_1);
+        \draw[myarrow] (c2_0) to[bend right=45] (c1_1);
+        \draw[myarrow] (c2_0) to[bend right=45] (d0_1);
+        \draw[myarrow] (c2_0) to[bend right=45] (v0_1);
+        
+        \draw[myarrow] (c1_1) -- (d1_1);
+        \draw[myarrow] (c1_1) to[bend left=45] (d0_1);
+        \draw[myarrow] (c1_1) to[bend right=45] (v0_1);
+        
+        \draw[myarrow] (d0_1) -- (v0_1);
+        
+        % Arrows for T=2
+        \draw[myarrow] (c2_1) -- (c2_2);
+        \draw[myarrow] (c2_1) to[bend left=45] (d1_2);
+        \draw[myarrow] (c2_1) to[bend right=45] (c1_2);
+        \draw[myarrow] (c2_1) to[bend right=45] (d0_2);
+        \draw[myarrow] (c2_1) to[bend right=45] (v0_2);
+        
+        \draw[myarrow] (c1_2) -- (d1_2);
+        \draw[myarrow] (c1_2) to[bend left=45] (d0_2);
+        \draw[myarrow] (c1_2) to[bend right=45] (v0_2);
+        
+        \draw[myarrow] (d0_2) -- (v0_2);
+        
+        % Dotted arrows for T=1
+        \draw[mydottedarrow] (c2_0_dotted) -- (c2_0);
+        \draw[mydottedarrow] (c1_1_dotted) -- (c1_1);
+        \draw[mydottedarrow] (d0_1_dotted) -- (d0_1);
+        
+        % Dotted arrows for T=2
+        \draw[mydottedarrow] (c2_1_dotted) -- (c2_1);
+        \draw[mydottedarrow] (c1_2_dotted) -- (c1_2);
+        \draw[mydottedarrow] (d0_2_dotted) -- (d0_2);
+        
+        % Labels for T=1 and T=2
+        \node at ([xshift=-1cm]T1.north west) {\(T=1\)};
+        \node at ([xshift=-1cm]T2.north west) {\(T=2\)};
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

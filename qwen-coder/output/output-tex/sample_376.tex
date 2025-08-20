@@ -1,0 +1,57 @@
+Certainly! To create a TikZ diagram that illustrates the construction described in Theorem~\ref{thm:const}, we need to represent both the tournament graph and the resulting vertex coloring. Below is an example of how you might construct such a diagram:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define styles for nodes and edges
+\tikzset{
+  node style/.style={circle, draw=black, fill=white, inner sep=5pt},
+  edge style/.style={->, thick, ->>
+}
+
+% Create the tournament graph
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+  % Nodes for the tournament
+  \node[node style] (A) at (0,2) {A};
+  \node[node style] (B) at (-1,-1) {B};
+  \node[node style] (C) at (1,-1) {C};
+  
+  % Edges representing the tournament
+  \draw[edge style] (A) -- (B);
+  \draw[edge style] (A) -- (C);
+  \draw[edge style] (B) -- (C);
+\end{tikzpicture}
+\caption{Tournament Graph}
+\label{fig:tournament}
+\end{figure}
+
+% Create the colored graph
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+  % Nodes for the colored graph
+  \node[node style, fill=red] (A) at (0,2) {A};
+  \node[node style, fill=blue] (B) at (-1,-1) {B};
+  \node[node style, fill=green] (C) at (1,-1) {C};
+  
+  % Edges representing the colored graph
+  \draw[edge style] (A) -- (B);
+  \draw[edge style] (A) -- (C);
+  \draw[edge style] (B) -- (C);
+\end{tikzpicture}
+\caption{Colored Graph}
+\label{fig:colored}
+\end{figure}
+
+% Explanation
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+  % Nodes for the explanation
+  \node[node style, fill=red] (A) at (0,2) {A};
+  \node

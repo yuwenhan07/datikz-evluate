@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        grid=major,
+        xmin=0,
+        xmax=6.5,
+        ymin=0,
+        ymax=6.5,
+        xtick={0,...,6},
+        ytick={0,...,6},
+        xlabel=$x$,
+        ylabel=$y$,
+        clip=false,
+    ]
+        % Plot the polynomial function
+        \addplot[blue, thick, domain=0:6] {6 - x};
+        
+        % Plot the points on the polynomial
+        \foreach \x/\y in {0/6, 1/5, 2/4, 3/3, 4/2, 5/1, 6/0} {
+            \filldraw[red] (\x,\y) circle (2pt);
+        }
+        
+        % Plot the dotted line with triangle markers
+        \addplot[dotted, blue, thick, domain=0:2] {4 - x} node[above left] {$1/2$};
+        \addplot[dotted, blue, thick, domain=0:2] {2 - x};
+        
+        % Plot the triangle markers
+        \filldraw[blue] (1,2) -- (1.5,2.5) -- (2,2) -- cycle;
+        \filldraw[blue] (0.5,1) -- (1,1.5) -- (1.5,1) -- cycle;
+    \end{axis}
+\end{tikzpicture}
+\end{document}

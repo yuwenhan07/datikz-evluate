@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the horizontal line
+    \draw[thick] (-3,0) -- (3,0);
+    
+    % Define coordinates
+    \coordinate (A) at (-2,0);
+    \coordinate (B) at ($(A) + (0.5,0)$);
+    \coordinate (C) at ($(B) + (0.5,0)$);
+    \coordinate (D) at ($(C) + (0.5,0)$);
+    \coordinate (E) at ($(D) + (0.5,0)$);
+    
+    % Draw circles
+    \draw[red, thick] (A) circle (0.5);
+    \draw[red, thick] (C) circle (0.5);
+    \draw[red, thick] (E) circle (0.5);
+    
+    % Mark points
+    \filldraw[black] (A) circle (1pt) node[below] {$c(k)$};
+    \filldraw[black] (B) circle (1pt) node[below] {$q_k$};
+    \filldraw[black] (C) circle (1pt) node[below] {$c((\gamma_k+\beta)s)$};
+    \filldraw[black] (D) circle (1pt) node[below] {$\hat{q}_1$};
+    \filldraw[black] (E) circle (1pt) node[below] {$c((\gamma_k+\beta+t\alpha)s)$};
+    \filldraw[black] (F) circle (1pt) node[below] {$\hat{q}_2$};
+    
+    % Draw lines between points
+    \draw[thick] (B) -- (C);
+    \draw[thick] (D) -- (F);
+    
+    % Label the distance condition
+    \node at (0,-0.7) {There is a smallest $l_0$ such that $d(q_k,\hat q_{l_0})\geq (\beta-t\alpha)s.$};
+\end{tikzpicture}
+
+\end{document}

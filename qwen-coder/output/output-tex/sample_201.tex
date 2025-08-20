@@ -1,0 +1,28 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{amsmath}
+
+\begin{document}
+\begin{tikzpicture}[scale=3]
+    % Draw the unit circle
+    \draw[thick,->] (0,-1) -- (0,1) node[above]{$y$};
+    \draw[thick,->] (-1,0) -- (1,0) node[right]{$x$};
+    \draw[thick,domain=-1:1,samples=100] plot (\x,\sqrt{1-\x^2}) node[left]{$|z|=1$};
+    \draw[thick,domain=-1:1,samples=100] plot (\x,-\sqrt{1-\x^2});
+
+    % Define M as a parameter (e.g., M = 2)
+    \def\M{2}
+
+    % Plot the boundary of the region |1 - z|^2 = M(1 - |z|^2)
+    \pgfmathsetmacro{\r}{sqrt(1/(1+\M))}
+    \draw[thick,dashed] (0,0) circle[radius=\r];
+
+    % Fill the region |1 - z|^2 < M(1 - |z|^2)
+    \fill[blue!30,opacity=0.5] (-1,-1) rectangle (1,1);
+    \clip (0,0) circle[radius=\r];
+    \fill[white] (-1,-1) rectangle (1,1);
+
+    % Label the region
+    \node at (0,1.2) {Stolz Type Region};
+
+\end{tikzpicture}
+\end{document}

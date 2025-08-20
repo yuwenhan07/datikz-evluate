@@ -1,0 +1,35 @@
+Certainly! Below is an example of a TikZ LaTeX diagram that visualizes the intensity of attacks using the Shapley measure for the h-categoriser semantics. The diagram includes nodes representing arguments (with their degrees in blue) and edges representing the intensity of attacks (in red).
+
+```latex
+\documentclass[tikz, border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  argument/.style={draw, circle, minimum size=2em, font=\small},
+  attack/.style={->, thick, >=Stealth[length=3mm]},
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=3cm]
+
+% Arguments
+\node[argument, draw=blue] (A) at (0,0) {A};
+\node[argument, draw=blue] (B) at (-3,-2) {B};
+\node[argument, draw=blue] (C) at (3,-2) {C};
+\node[argument, draw=blue] (D) at (0,-4) {D};
+
+% Attacks
+\node[attack, red] (AB) [out=-60, in=120] to (A);
+\node[attack, red] (AC) [out=-60, in=120] to (A);
+\node[attack, red] (AD) [out=-60, in=120] to (A);
+
+\node[attack, red] (BA) [out=-120, in=60] to (B);
+\node[attack, red] (BC) [out=-120, in=60] to (B);
+\node[attack, red] (BD) [out=-120, in=60] to (B);
+
+\node[attack, red] (CA) [out=-120, in=60] to (C);
+\node[attack, red] (CB) [out=-120, in=60] to (C);
+\node[attack, red] (CD) [out=-120, in=60] to (C);
+
+\node[attack, red] (DA) [out=-120, in=60] to (D);
+\node[attack, red] (DB) [out

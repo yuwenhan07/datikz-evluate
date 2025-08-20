@@ -1,0 +1,50 @@
+The online phase of the neural viscosity approach involves using a neural network to estimate the viscosity value for each element of the mesh independently. This process is typically part of a larger finite element method (FEM) simulation where the goal is to solve partial differential equations (PDEs). Below is a detailed explanation of the scheme:
+
+### Scheme Overview
+
+1. **Mesh and Degrees of Freedom**: Consider a mesh divided into elements \( K \), and let \( U_i^n \) represent the value of the unknown function \( u_h \) at the \( i \)-th degree of freedom within element \( K \) at time step \( t^n \).
+
+2. **Neural Network Input**: The neural network takes as input the nodal values \( U_i^n \) for all degrees of freedom within element \( K \). These values are used to compute relevant statistics.
+
+3. **Statistics Extraction**: The neural network extracts four key statistics from these nodal values:
+   - Minimum (\( \min(U_i^n) \))
+   - Maximum (\( \max(U_i^n) \))
+   - Mean (\( \mu_U \))
+   - Standard Deviation (\( \sigma_U \))
+
+4. **Viscosity Estimation**: Based on these statistics, the neural network outputs a viscosity value \( \mu_K^{\text{bnd}} \) for element \( K \). This value is specific to that element and does not depend on the viscosities of other elements.
+
+5. **Application in FEM**: In the context of FEM, this viscosity value is then used to modify the stiffness matrix or the right-hand side of the system of equations, effectively incorporating the estimated viscosity into the solution process.
+
+### Mathematical Representation
+
+Let's denote the nodal values within element \( K \) at time \( t^n \) as \( U = [U_1^n, U_2^n, \ldots, U_m^n] \), where \( m \) is the number of degrees of freedom in element \( K \).
+
+The statistics extracted by the neural network can be represented as:
+\[
+\text{stats}(U) = [\min(U), \max(U), \mu_U, \sigma_U]
+\]
+
+The neural network then maps these statistics to the viscosity value:
+\[
+\mu_K^{\text{bnd}} = f(\text{stats}(U))
+\]
+where \( f \) is the mapping function learned by the neural network.
+
+### Example Calculation
+
+For simplicity, consider a linear element with two degrees of freedom \( U_1^n \) and \( U_2^n \). The statistics would be:
+\[
+\text{stats}(U) = [\min(U_1^n, U_2^n), \max(U_1^n, U_2^n), \frac{U_1^n + U_2^n}{2}, \sqrt{\frac{(U_1^n - U_2^n)^2}{2}}]
+\]
+
+The neural network would then map these statistics to a single viscosity value \( \mu_K^{\text{bnd}} \).
+
+### Summary
+
+In summary, the online phase of the neural viscosity approach involves:
+1. Extracting relevant statistics from the nodal values within each element.
+2. Using these statistics as input to a neural network to estimate an element-wise viscosity value.
+3. Incorporating this viscosity value into the FEM solution process to account for local variations in material properties.
+
+This approach allows for more accurate modeling of complex materials with varying properties across different regions of the domain.

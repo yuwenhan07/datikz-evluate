@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={\(\mathcal{LP}(1)\) Ranking Source},
+        ylabel={Win rate},
+        xtick={350M, 1.3B, 2.7B, 6.7B},
+        xticklabels={350M, 1.3B, 2.7B, 6.7B},
+        ytick={51, 51.5, 52, 52.5, 53},
+        yticklabels={51, 51.5, 52, 52.5, 53},
+        legend pos=north west,
+        legend cell align=left,
+        legend style={nodes={right}},
+        xmin=340, xmax=680,
+        ymin=51, ymax=53.5,
+        xmajorgrids=true,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    
+    % Data for 10% Low
+    \addplot[
+        color=teal,
+        mark=square,
+        ]
+        coordinates {
+            (350, 51.2)
+            (1300, 51.7)
+            (2700, 51.3)
+            (6700, 51.0)
+        };
+        \addlegendentry{10\% Low}
+        
+    % Data for 25% Low
+    \addplot[
+        color=orange,
+        mark=square,
+        ]
+        coordinates {
+            (350, 52.0)
+            (1300, 52.1)
+            (2700, 53.0)
+            (6700, 51.5)
+        };
+        \addlegendentry{25\% Low}
+        
+    % Data for 33% Low
+    \addplot[
+        color=blue!50!black,
+        mark=triangle,
+        ]
+        coordinates {
+            (350, 51.6)
+            (1300, 52.8)
+            (2700, 53.4)
+            (6700, 52.2)
+        };
+        \addlegendentry{33\% Low}
+        
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

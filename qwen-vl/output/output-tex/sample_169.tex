@@ -1,0 +1,59 @@
+To provide a detailed explanation of the preprocessing pipeline for the digits data, particularly focusing on the class of handwritten zeros, let's break down each step as described:
+
+### Step 1: Mass Normalization
+
+The first step in the preprocessing pipeline involves converting the pixel values of the handwritten digit images into a fixed-sum distribution. This is typically done by normalizing the pixel intensities so that they sum up to a constant value, usually 1. For an \(8 \times 8\) image, this means normalizing the pixel values \(p_{ij}\) (where \(i, j = 0, 1, \ldots, 7\)) such that:
+
+\[
+\sum_{i=0}^{7} \sum_{j=0}^{7} p_{ij} = 1
+\]
+
+This ensures that each image is represented as a probability distribution over the 64 pixels. Mathematically, if \(p_{ij}\) represents the intensity at position \((i, j)\), then after normalization, the new value \(p'_{ij}\) can be calculated as:
+
+\[
+p'_{ij} = \frac{p_{ij}}{\sum_{i=0}^{7} \sum_{j=0}^{7} p_{ij}}
+\]
+
+### Step 2: Embedding
+
+The second step involves an embedding transformation that maps the normalized pixel distributions onto a lower-dimensional space while preserving certain distances. Specifically, the embedding is defined as:
+
+\[
+\alpha \mapsto L^{-1/2} \alpha
+\]
+
+Here, \(\alpha\) is the vector representing the normalized pixel distribution, and \(L\) is a matrix that encodes the structure of the \(8 \times 8\) lattice graph. The matrix \(L\) is often the Laplacian matrix of the graph, which captures the connectivity between the nodes (pixels). The Laplacian matrix \(L\) is defined as:
+
+\[
+L = D - A
+\]
+
+where \(D\) is the degree matrix (a diagonal matrix where the \(i\)-th diagonal element is the sum of the \(i\)-th row of \(A\)), and \(A\) is the adjacency matrix of the graph.
+
+The matrix \(L^{-1/2}\) is the inverse square root of the Laplacian matrix, which is used to perform a spectral embedding. This transformation ensures that the Euclidean distance in the target space corresponds to a specific type of distance in the original space, known as the 2-Beckmann distance. The 2-Beckmann distance is a measure of dissimilarity between two probability distributions, and it is defined as:
+
+\[
+d_B^2(P, Q) = \left( \int \left( \sqrt{P(x)} - \sqrt{Q(x)} \right)^2 \, dx \right)^{1/2}
+\]
+
+In the context of the embedding, the 2-Beckmann distance is used to ensure that the embedding preserves the relative distances between the distributions of the handwritten zeros.
+
+### Computing \(\mathcal{W}_2\)
+
+When computing \(\mathcal{W}_2\), which is a measure of the Wasserstein distance between two probability distributions, we typically do not include the final step of the embedding. Instead, we directly compute the Wasserstein distance using the original pixel distributions before the embedding. The Wasserstein distance \(\mathcal{W}_2\) between two probability distributions \(P\) and \(Q\) is defined as:
+
+\[
+\mathcal{W}_2(P, Q) = \inf_{\gamma \in \Pi(P, Q)} \left( \int \int \|x - y\|^2 \, d\gamma(x, y) \right)^{1/2}
+\]
+
+where \(\Pi(P, Q)\) is the set of all joint distributions with marginals \(P\) and \(Q\).
+
+### Example from the Class of Handwritten Zeros
+
+For the class of handwritten zeros, the preprocessing pipeline would involve the following steps:
+1. Normalize the pixel values of each zero image so that their sum is 1.
+2. Compute the Laplacian matrix \(L\) of the \(8 \times 8\) lattice graph.
+3. Perform the embedding \(\alpha \mapsto L^{-1/2} \alpha\) to map the normalized pixel distributions onto a lower-dimensional space.
+4. Compute the Wasserstein distance \(\mathcal{W}_2\) between the embedded distributions of different zero images.
+
+By following these steps, we can effectively preprocess the handwritten zero images and use them for further analysis or machine learning tasks.

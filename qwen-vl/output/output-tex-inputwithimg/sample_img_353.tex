@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Node i
+        \draw[thick] (0,0) circle (0.5);
+        \node at (-0.7, 0) {$p_i$, $T_i$};
+        \node at (-0.7, -0.5) {$T_{ij}^{start}$};
+        \node at (-0.7, -1.5) {$T_{ij}^{end}$};
+        
+        % Node j
+        \draw[thick] (6,0) circle (0.5);
+        \node at (6.7, 0) {$p_j$, $T_j$};
+        \node at (6.7, -0.5) {$T_{ij}^{end}$};
+        
+        % Edge
+        \draw[thick] (0,0) -- (6,0);
+        \draw[-{Stealth[scale=1.5]}] (3,0) -- (4,0);
+        
+        % Text for edge
+        \node at (3.5, 0.2) {Edge $(i,j) \in E$};
+        \node at (3.5, -0.2) {$\dot{m}_{ij} \geq 0$};
+        \node at (3.5, -1.2) {$\dot{m}_{ij} \leq 0$};
+        
+        % Caption
+        \node at (-1.5, -0.5) {Node $i \in V$};
+        \node at (4.5, -0.5) {Edge $(i,j) \in E$};
+        \node at (7.5, -0.5) {Node $j \in V$};
+        
+        % Additional text for caption
+        \node at (0.5, -2) {
+            The state variables in steady-state models of DH grids include node-bound variables such as fluid temperatures $T_{i}$ and pressures $p_{i}$. The sign of the edge-bound mass flows $\dot{m}_{ij}$ depends on the orientation with respect to the edge orientation (indicated by the thick arrow). The localization of the temperatures at the inlet $T_{}^{start}$ and outlet $T_{}^{end}$ of the pipe depends on the sign of $\dot{m}_{ij}$ (for positive mass flows see above the thick arrow, otherwise below).
+        };
+    \end{tikzpicture}
+    \caption{
+        The state variables in steady-state models of DH grids include node-bound variables such as fluid temperatures $T_{i}$ and pressures $p_{i}$. The sign of the edge-bound mass flows $\dot{m}_{ij}$ depends on the orientation with respect to the edge orientation (indicated by the thick arrow). The localization of the temperatures at the inlet $T_{}^{start}$ and outlet $T_{}^{end}$ of the pipe depends on the sign of $\dot{m}_{ij}$ (for positive mass flows see above the thick arrow, otherwise below).
+    }
+\end{figure}
+
+\end{document}

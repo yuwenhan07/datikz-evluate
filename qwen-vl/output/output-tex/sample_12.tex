@@ -1,0 +1,40 @@
+Sparsity is a fundamental concept in signal processing, machine learning, and data compression, where it refers to the property of having many zero-valued elements in a matrix or vector. There are various types of sparsity, each with its own characteristics and applications. Here are some common types of sparsity:
+
+### 1. **Random Sparsity**
+- **Definition**: In random sparsity, any element in the matrix can be either zero or non-zero independently of other elements.
+- **Characteristics**: Each element has an equal probability of being zero or non-zero.
+- **Example**: Consider a matrix \( A \) of size \( m \times n \). In random sparsity, each entry \( A_{ij} \) is set to zero with probability \( p \) and to a non-zero value (e.g., drawn from a distribution like Gaussian) with probability \( 1 - p \).
+
+### 2. **Block-Random Sparsity**
+- **Definition**: Block-random sparsity assumes that the matrix can be divided into blocks, and within each block, all elements are either zero or non-zero together.
+- **Characteristics**: The sparsity pattern is not random but rather follows a block structure where entire blocks are either sparse or dense.
+- **Example**: Consider a matrix \( A \) of size \( m \times n \) divided into \( k \) blocks. Within each block, all elements are either zero or non-zero. This means that if one element in a block is non-zero, then all elements in that block are non-zero.
+
+### 3. **Degree of Block-Random Sparsity**
+- **Definition**: The degree of block-random sparsity is the fraction of non-zero blocks out of the total number of blocks.
+- **Characteristics**: It measures how much of the matrix is sparse in terms of blocks.
+- **Example**: If a matrix is divided into \( k \) blocks and only \( d \) of these blocks contain non-zero elements, the degree of block-random sparsity is \( \frac{d}{k} \).
+
+### 4. **Random Column Sparsity**
+- **Definition**: Random column sparsity is a type of sparsity where columns of the matrix are treated as independent random variables.
+- **Characteristics**: Each column is sparse independently of the others.
+- **Example**: Consider a matrix \( A \) of size \( m \times n \). Each column \( A_j \) is sparse with probability \( q \), meaning that each element in column \( j \) is zero with probability \( q \) and non-zero with probability \( 1 - q \).
+
+### 5. **Random Block Column Sparsity**
+- **Definition**: Random block column sparsity combines the concepts of block-random sparsity and random column sparsity.
+- **Characteristics**: The matrix is divided into blocks, and within each block, columns are treated as independent random variables.
+- **Example**: Consider a matrix \( A \) of size \( m \times n \) divided into \( k \) blocks. Within each block, columns are sparse independently with probability \( q \). This means that for each block, all columns within that block are either zero or non-zero independently.
+
+### 6. **Deja Vu Sparsity (Block Column Patterns)**
+- **Definition**: Deja Vu sparsity, as mentioned in the reference to Liu et al. (2023), refers to a specific pattern of sparsity where certain columns within blocks are non-zero while others are zero.
+- **Characteristics**: This type of sparsity is often observed in certain datasets or signals where there are recurring patterns or structures.
+- **Example**: Imagine a matrix where certain columns within each block are non-zero, while others are zero. This could represent a scenario where certain features or patterns are consistently present across different instances or samples.
+
+### Summary
+- **Random Sparsity** involves each element being zero or non-zero independently.
+- **Block-Random Sparsity** involves blocks being either completely sparse or completely dense.
+- **Random Column Sparsity** treats each column as an independent random variable.
+- **Random Block Column Sparsity** combines block-random sparsity with random column sparsity.
+- **Deja Vu Sparsity** refers to a specific pattern of sparsity within blocks, often observed in structured data.
+
+Each type of sparsity has its own implications for algorithms and applications, such as compressed sensing, machine learning, and data compression. Understanding the type of sparsity in a given dataset can help in designing more efficient and effective algorithms tailored to that specific sparsity pattern.

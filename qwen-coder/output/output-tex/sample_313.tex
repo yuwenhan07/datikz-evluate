@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \foreach \i in {1,...,7} {
+        \foreach \j in {1,...,7} {
+            \node at (\j,\i) {\texttt{\ifnum\i=\j A\fi\ifnum\i+\j=8 N\fi\ifnum\i=4 I\fi\ifnum\i=5 L\fi\ifnum\i=6 I\fi\ifnum\i=7 N\fi}};
+        }
+    }
+\end{tikzpicture}
+\end{center}
+
+\end{document}

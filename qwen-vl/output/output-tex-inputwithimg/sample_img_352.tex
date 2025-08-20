@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.7, every node/.style={transform shape}]
+        % Define styles for nodes
+        \tikzset{
+            dot/.style={circle, fill, inner sep=1pt},
+            line/.style={thick, red},
+            loop/.style={thick, red, out=90, in=90, distance=8mm}
+        }
+
+        % Draw diagrams for n=1
+        \node[dot] (a1) {};
+        \node[dot, right=of a1] (b1) {};
+        \draw[line] (a1) -- (b1);
+        \draw[loop] (a1) to (a1);
+
+        \node[dot, below=of a1] (a2) {};
+        \node[dot, right=of a2] (b2) {};
+        \draw[line] (a2) -- (b2);
+        \draw[loop] (a2) to (a2);
+
+        % Draw diagrams for n=2
+        \node[dot, below=of b1] (c1) {};
+        \node[dot, right=of c1] (d1) {};
+        \draw[line] (c1) -- (d1);
+        \draw[loop] (c1) to (c1);
+
+        \node[dot, below=of b2] (c2) {};
+        \node[dot, right=of c2] (d2) {};
+        \draw[line] (c2) -- (d2);
+        \draw[loop] (c2) to (c2);
+
+        \node[dot, below=of d1] (e1) {};
+        \node[dot, right=of e1] (f1) {};
+        \draw[line] (e1) -- (f1);
+        \draw[loop] (e1) to (e1);
+
+        \node[dot, below=of d2] (e2) {};
+        \node[dot, right=of e2] (f2) {};
+        \draw[line] (e2) -- (f2);
+        \draw[loop] (e2) to (e2);
+
+        % Draw diagrams for n=3
+        \node[dot, below=of f1] (g1) {};
+        \node[dot, right=of g1] (h1) {};
+        \draw[line] (g1) -- (h1);
+        \draw[loop] (g1) to (g1);
+
+        \node[dot, below=of f2] (g2) {};
+        \node[dot, right=of g2] (h2) {};
+        \draw[line] (g2) -- (h2);
+        \draw[loop] (g2) to (g2);
+
+        \node[dot, below=of h1] (i1) {};
+        \node[dot, right=of i1] (j1) {};
+        \draw[line] (i1) -- (j1);
+        \draw[loop] (i1) to (i1);
+
+        \node[dot, below=of h2] (i2) {};
+        \node[dot, right=of i2] (j2) {};
+        \draw[line] (i2) -- (j2);
+        \draw[loop] (i2) to (i2);
+
+        \node[dot, below=of j1] (k1) {};
+        \node[dot, right=of k1] (l1) {};
+        \draw[line] (k1) -- (l1);
+        \draw[loop] (k1) to (k1);
+
+        \node[dot, below=of j2] (k2) {};
+        \node[dot, right=of k2] (l2) {};
+        \draw[line] (k2) -- (l2);
+        \draw[loop] (k2) to (k2);
+
+        \node[dot, below=of l1] (m1) {};
+        \node[dot, right=of m1] (n1) {};
+        \draw[line] (m1) -- (n1);
+        \draw[loop] (m1) to (m1);
+
+        \node[dot, below=of l2] (m2) {};
+        \node[dot, right=of m2] (n2) {};
+        \draw[line] (m2) -- (n2);
+        \draw[loop] (m2) to (m2);
+
+        \node[dot, below=of n1] (o1) {};
+        \node[dot, right=of o1] (p1) {};
+        \draw[line] (o1) -- (p1);
+        \draw[loop] (o1) to (o1);
+
+        \node[dot, below=of n2] (o2) {};
+        \node[dot, right=of o2] (p2) {};
+        \draw[line] (o2) -- (p2);
+        \draw[loop] (o2) to (o2);
+
+        % Add labels if needed
+        % \node at (current bounding box.north) {Your Caption Here};
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

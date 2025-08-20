@@ -1,0 +1,45 @@
+To create a TikZ LaTeX diagram that visually represents the mean (normalized) R10 ONT raw signal value conditioned on individual nucleotide base at a given (relative) position, we can follow these steps:
+
+1. **Define the Axes**: We will have a horizontal axis for the relative positions and a vertical axis for the normalized signal values.
+2. **Plot Data Points**: We will plot data points for each nucleotide base at different relative positions.
+3. **Highlight the 10-mers**: We will highlight the region corresponding to the 10-mers.
+
+Here's a sample TikZ LaTeX code to achieve this:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+
+% Define the axes
+\draw[->] (-5,0) -- (5,0) node[right] {Relative Position};
+\draw[->] (0,-1) -- (0,4) node[above] {Normalized Signal Value};
+
+% Plot data points
+\foreach \x in {-4,-3,-2,-1,0,1,2,3,4} {
+    \foreach \y in {0.2,0.4,0.6,0.8,1.0} {
+        \fill (\x,\y) circle (2pt);
+    }
+}
+
+% Highlight the 10-mers
+\draw[thick, fill=gray!20] (-4,0) rectangle (1,1);
+
+% Legend
+\node at (-5,4.5) [anchor=east] {Legend};
+\node at (-5,4) [anchor=east] {A};
+\node at (-5,3.5) [anchor=east] {C};
+\node at (-5,3) [anchor=east] {G};
+\node at (-5,2.5) [anchor=east] {T};
+
+% Labels for nucleotides
+\node at (-4,-0.5) {A};
+\node at (-3,-0.5) {C};
+\node at (-2,-0.5) {G};
+\node at (-1,-0.5) {T};
+\node at (0,-0.5) {A};
+\node at (1,-0.5) {C

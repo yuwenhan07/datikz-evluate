@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{circuits.ee.IEC}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[circuit ee IEC, every node/.style={scale=0.8}]
+        % (a)
+        \node[transformer, label={[label distance=-1mm]above:$p$}] (A) at (0,0) {A};
+        \draw (A.30) -- ++(0:1cm) coordinate (aux1);
+        \draw (A.210) -- ++(180:1cm) coordinate (aux2);
+        \draw (A.330) -- ++(-60:1cm) coordinate (aux3);
+        \draw (A.90) -- ++(90:1cm) coordinate (aux4);
+        
+        \draw (aux1) -- ++(0:1cm) node[above] {$\alpha^u$};
+        \draw (aux2) -- ++(180:1cm) node[below] {$\alpha^l$};
+        \draw (aux3) -- ++(-60:1cm) node[below] {$\beta^l$};
+        \draw (aux4) -- ++(90:1cm) node[above] {$\beta^u$};
+        
+        \node[transformer, label={[label distance=-1mm]above:$a$}, below of=A] (A*) {A*};
+        \draw (A*.30) -- ++(0:1cm) coordinate (aux5);
+        \draw (A*.210) -- ++(180:1cm) coordinate (aux6);
+        \draw (A*.330) -- ++(-60:1cm) coordinate (aux7);
+        \draw (A*.90) -- ++(90:1cm) coordinate (aux8);
+        
+        \draw (aux5) -- ++(0:1cm) node[above] {$\alpha^u$};
+        \draw (aux6) -- ++(180:1cm) node[below] {$\alpha^l$};
+        \draw (aux7) -- ++(-60:1cm) node[below] {$\beta^l$};
+        \draw (aux8) -- ++(90:1cm) node[above] {$\beta^u$};
+        
+        % (b)
+        \node[transformer, label={[label distance=-1mm]above:$p$}, right=2cm of A] (A) {A};
+        \draw (A.30) -- ++(0:1cm) coordinate (aux1);
+        \draw (A.210) -- ++(180:1cm) coordinate (aux2);
+        \draw (A.330) -- ++(-60:1cm) coordinate (aux3);
+        \draw (A.90) -- ++(90:1cm) coordinate (aux4);
+        
+        \draw (aux1) -- ++(0:1cm) node[above] {$\alpha^u$};
+        \draw (aux2) -- ++(180:1cm) node[below] {$\alpha^l$};
+        \draw (aux3) -- ++(-60:1cm) node[below] {$\beta^l$};
+        \draw (aux4) -- ++(90:1cm) node[above] {$\beta^u$};
+        
+        \node[transformer, label={[label distance=-1mm]above:$a$}, below of=A] (A*) {A*};
+        \draw (A*.30) -- ++(0:1cm) coordinate (aux5);
+        \draw (A*.210) -- ++(180:1cm) coordinate (aux6);
+        \draw (A*.330) -- ++(-60:1cm) coordinate (aux7);
+        \draw (A*.90) -- ++(90:1cm) coordinate (aux8);
+        
+        \draw (aux5) -- ++(0:1cm) node[above] {$\alpha^{u\prime}$};
+        \draw (aux6) -- ++(180:1cm) node[below] {$\alpha^{l\prime}$};
+        \draw (aux7) -- ++(-60:1cm) node[below] {$\beta^{l\prime}$};
+        \draw (aux8) -- ++(90:1cm) node[above] {$\beta^{u\prime}$};
+        
+        \node[transformer, label={[label distance=-1mm]above:$p'$}, right=2cm of A*, draw=red] (A) {A};
+        \draw (A.30) -- ++(0:1cm) coordinate (aux1);
+        \draw (A.210) -- ++(180:1cm) coordinate (aux2);
+        \draw (A.330) -- ++(-60:1cm) coordinate (aux3);
+        \draw (A.90) -- ++(90:1cm) coordinate (aux4);
+        
+        \draw (aux1) -- ++(0:1cm) node[above] {$\alpha^u$};
+        \draw (aux2) -- ++(180:1cm) node[below] {$\alpha^l$};
+        \draw (aux3) -- ++(-60:1cm) node[below] {$\beta^l$};
+        \draw (aux4) -- ++(90:1cm) node[above] {$\beta^u$};
+        
+        \node[transformer, label={[label distance=-1mm]above:$a'$}, below of=A] (A*) {A*};
+        \draw (A*.30) -- ++(0:1cm) coordinate (aux5);
+        \draw (A*.210) -- ++(180:1cm) coordinate (aux6);
+        \draw (A*.330) -- ++(-60:1cm) coordinate (aux7);
+        \draw (A*.90) -- ++(90:1cm) coordinate (aux8);
+        
+        \draw (aux5) -- ++(0:1cm) node[above] {$\alpha^{u\prime}$};
+        \draw (aux6) -- ++(180:1cm) node[below] {$\alpha^{l\prime}$};
+        \draw (aux7) -- ++(-60:1cm) node[below] {$\beta^{l\prime}$};
+        \draw (aux8) -- ++(90:1cm) node[above] {$\beta^{u\prime}$};
+        
+        \draw[blue, ultra thick] (A.30) -- (A*.30);
+        \draw[red, ultra thick] (A.210) -- (A*.210);
+        \draw[red, ultra thick] (A.330) -- (A*.330);
+        \draw[red, ultra thick] (A.90) -- (A*.90);
+    \end{tikzpicture}
+    \caption{Transfer matrices corresponding to (a) weak injectivity in Eq.~\eqref{weak transfer matrix} and (b) strong injectivity in Eq.~\eqref{strong transfer matrix} respectively.}
+    \label{fig:transfer_matrices}
+\end{figure}
+
+\end{document}

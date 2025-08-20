@@ -1,0 +1,35 @@
+Para remover o rótulo de arestas de destino de diferentes \(\text{runs}\) de um mesmo ciclo, podemos usar o pacote `tikz` para criar um gráfico representando o ciclo e as arestas correspondentes. Vamos considerar o exemplo fornecido:
+
+\[ A = (0~\alpha~11~9~7~5~3~\alpha~2~13) \]
+\[ n = 12 \]
+
+A operação aplicada em \(A\) é a inserção \(\phi(0, (1~4~8))\).
+
+Vamos criar um código TikZ para representar este ciclo e destacar as arestas de destino das diferentes \(\text{runs}\):
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm, auto]
+    % Nodes
+    \node (0) {0};
+    \node (1) at (30:2cm) {$\alpha$};
+    \node (2) at (60:2cm) {11};
+    \node (3) at (90:2cm) {9};
+    \node (4) at (120:2cm) {7};
+    \node (5) at (150:2cm) {5};
+    \node (6) at (180:2cm) {3};
+    \node (7) at (-150:2cm) {$\alpha$};
+    \node (8) at (-120:2cm) {2};
+    \node (9) at (-90:2cm) {13};
+
+    % Edges
+    \draw[->] (0) -- node[above] {1} (1);
+    \draw[->] (1) -- node[above] {2} (2);
+    \draw[->] (2) -- node[above] {3} (3);
+    \draw[->] (3) -- node[above] {4} (4);
+    \draw[->] (4) -- node[above] {5} (5);
+    \draw[->] (5) -- node[above] {6} (6);
+    \draw[->] (6) -- node[

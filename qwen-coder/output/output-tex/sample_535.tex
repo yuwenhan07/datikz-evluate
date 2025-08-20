@@ -1,0 +1,28 @@
+To demonstrate the birational equivalence between \((\mathbb{CP}^1 \times \mathbb{CP}^1) / \mathbb{Z}_c\) and a weighted projective plane, we can use the following steps:
+
+1. **Understand the Quotient Space**: The quotient space \((\mathbb{CP}^1 \times \mathbb{CP}^1) / \mathbb{Z}_c\) is formed by identifying points in \(\mathbb{CP}^1 \times \mathbb{CP}^1\) that differ by an element of \(\mathbb{Z}_c\).
+
+2. **Weighted Projective Plane**: A weighted projective plane \(\mathbb{WP}(a, b, c)\) is defined as the set of points \([x_0 : x_1 : x_2]\) such that \(x_i \neq 0\) for some \(i\) and the coordinates satisfy:
+   \[
+   x_0^a + x_1^b + x_2^c = 0.
+   \]
+
+3. **Birational Equivalence**: To show birational equivalence, we need to find a map between these two spaces that is both injective and surjective up to rational functions.
+
+Here is the TikZ code to visualize this concept:
+
+```latex
+\documentclass[tikz,border=5]{standalone}
+\usepackage{tikz-3dplot}
+
+\begin{document}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale=1.5]
+    % Draw CP^1 x CP^1
+    \draw[thick] (0,0,0) -- (4,0,0);
+    \draw[thick] (0,0,0) -- (0,4,0);
+    \draw[thick] (0,0,0) -- (0,0,4);
+    \fill[blue!30] (0,0,0) circle[radius=0.1];
+    \fill[red!30] (4,0,0) circle[radius=0.1];
+    \fill[green!30] (0,4,0) circle[radius=0.1];
+    \fill[yellow!30] (0,0,4)

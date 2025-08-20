@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[level distance=2cm,
+  level 1/.style={sibling distance=6cm},
+  level 2/.style={sibling distance=3cm}]
+  
+  % Root node (Server)
+  \node (server) {Server};
+  
+  % Level 1 nodes (Caches)
+  \foreach \i in {1,...,2} {
+    \node [below left of=server-\i] (cache-\i) {Cache \i};
+  }
+  
+  % Level 2 nodes (Leaf caches)
+  \foreach \i in {1,...,2} {
+    \foreach \j in {1,...,2} {
+      \node [below left of=cache-\i-\j] (leaf-\i-\j) {Leaf \i,\j};
+    }
+  }
+  
+  % Draw edges between nodes
+  \foreach \i in {1,...,2} {
+    \draw (server) -- (cache-\i);
+    \foreach \j in {1,...,2} {
+      \draw (cache-\i) -- (leaf-\i-\j);
+    }
+  }
+  
+\end{tikzpicture}
+
+\end{document}

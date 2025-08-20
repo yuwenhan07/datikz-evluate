@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,
+                         nodes={minimum width=2cm, minimum height=1cm, text centered},
+                         column sep=-\pgflinewidth,
+                         row sep=-\pgflinewidth]
+            {
+                & x_1 & y \\
+                x_1 & w_h & w_l \\
+                y & w_h & w_l \\
+            };
+            \draw[->] (m-2-2) -- (m-2-1);
+            \draw[->] (m-3-2) -- (m-3-1);
+            \draw[->] (m-2-1) -- (m-1-2);
+            \draw[->] (m-3-1) -- (m-1-2);
+        \end{tikzpicture}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,
+                         nodes={minimum width=2cm, minimum height=1cm, text centered},
+                         column sep=-\pgflinewidth,
+                         row sep=-\pgflinewidth]
+            {
+                & x_1 & x_2 & y \\
+                x_1 & w_l & w_h & w_l \\
+                x_2 & w_h & w_l & w_l \\
+                y & w_h & w_l & w_l \\
+            };
+            \draw[->] (m-2-2) -- (m-2-1);
+            \draw[->] (m-3-2) -- (m-3-1);
+            \draw[->] (m-4-2) -- (m-4-1);
+            \draw[->] (m-2-1) -- (m-1-2);
+            \draw[->] (m-3-1) -- (m-1-2);
+            \draw[->] (m-4-1) -- (m-1-2);
+            \draw[->] (m-2-2) -- (m-2-3);
+            \draw[->] (m-3-2) -- (m-3-3);
+            \draw[->] (m-4-2) -- (m-4-3);
+            \draw[->] (m-2-3) -- (m-1-4);
+            \draw[->] (m-3-3) -- (m-1-4);
+            \draw[->] (m-4-3) -- (m-1-4);
+        \end{tikzpicture}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,
+                         nodes={minimum width=2cm, minimum height=1cm, text centered},
+                         column sep=-\pgflinewidth,
+                         row sep=-\pgflinewidth]
+            {
+                x_1 & x_2 & x_3 & y \\
+                x_1, x_1 & w_l & w_h & w_l & w_l \\
+                x_1, x_2 & w_l & w_l & w_h & w_l \\
+                x_1, x_3 & w_h & w_l & w_l & w_l \\
+                x_1, y & w_h & w_l & w_l & w_l \\
+                \vdots & \vdots & \vdots & \vdots & \vdots \\
+            };
+            \draw[->] (m-2-2) -- (m-2-1);
+            \draw[->] (m-3-2) -- (m-3-1);
+            \draw[->] (m-4-2) -- (m-4-1);
+            \draw[->] (m-5-2) -- (m-5-1);
+            \draw[->] (m-2-1) -- (m-1-2);
+            \draw[->] (m-3-1) -- (m-1-2);
+            \draw[->] (m-4-1) -- (m-1-2);
+            \draw[->] (m-5-1) -- (m-1-2);
+            \draw[->] (m-2-2) -- (m-2-3);
+            \draw[->] (m-3-2) -- (m-3-3);
+            \draw[->] (m-4-2) -- (m-4-3);
+            \draw[->] (m-5-2) -- (m-5-3);
+            \draw[->] (m-2-3) -- (m-1-4);
+            \draw[->] (m-3-3) -- (m-1-4);
+            \draw[->] (m-4-3) -- (m-1-4);
+            \draw[->] (m-5-3) -- (m-1-4);
+            \draw[->] (m-2-4) -- (m-1-5);
+            \draw[->] (m-3-4) -- (m-1-5);
+            \draw[->] (m-4-4) -- (m-1-5);
+            \draw[->] (m-5-4) -- (m-1-5);
+        \end{tikzpicture}
+        \caption{}
+    \end{subfigure}
+    \caption{Transition probability matrices for node (a), edge (b), and path ($l=2$) (c) hypotheses, where $w_h \geq w_l > 0$ denote transition probabilities. $x_i$ represents nodes in $\mathcal{G}$ satisfying the $i$-th node modifier on $\mathcal{P}$, while $y$ represents nodes not satisfying any node modifier on $\mathcal{P}$. (a) and (b) involve 1st-order random walks, whereas (c) involves 2nd-order random walks because the probability of selecting the next node depends on both the current and previous nodes.}
+\end{figure}
+
+\end{document}

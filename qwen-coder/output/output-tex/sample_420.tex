@@ -1,0 +1,37 @@
+Certainly! Below is a TikZ LaTeX code that generates a diagram representing the described scenario:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{backgrounds,calc}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw the black curve (Cauchy slice)
+    \draw[black] plot[domain=-1:1,samples=500] (\x,{1/(1+\x^2)});
+    
+    % Draw the diagonal lines
+    \draw[blue,dashed] (-1,-1) -- (1,1);
+    \draw[blue,dashed] (-1,1) -- (1,-1);
+    
+    % Label the intersections as S_L and S_R
+    \filldraw[red] (-0.6,0.4) circle (2pt) node[left] {$S_{\rm L}$};
+    \filldraw[red] (0.6,-0.4) circle (2pt) node[right] {$S_{\rm R}$};
+    
+    % Draw the red dot in S_L ∪ S_R
+    \filldraw[red] (-0.3,0.2) circle (2pt);
+    
+    % Draw the blue region spanned by equivalent slices Σ'
+    \filldraw[blue!30] plot[domain=-1:1,samples=500] (\x,{1/(1+\x^2)}) |- (0,0) -| cycle;
+    
+    % Draw quantum extremal surfaces
+    \filldraw[black] (-0.8,0.3) circle (2pt);
+    \filldraw[black] (0.4,-0.3) circle (2pt);
+    \filldraw[black] (0,0) circle (2pt);
+    
+    % Draw the dashed line for Cauchy slice Σ'_i
+    \draw[dashed] plot[domain=-1:1,samples=500] (\x,{1/(1+\x^2)});
+    
+    % Draw red segments on Σ'
+    \draw[red] (-0.9,0.4) -- (-0.7,0.3);
+    \draw[red] (0.5,-0.4) -- (0.7,-0.3);
+    \draw[red] (-0.5

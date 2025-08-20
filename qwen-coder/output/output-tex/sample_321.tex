@@ -1,0 +1,29 @@
+Certainly! Below is an example of how you might generate a TikZ diagram to visually represent the performance comparison of different methods on the Hi4D dataset with tight thresholds. This diagram will include bars representing the 3DPCK values for each method at various thresholds.
+
+```latex
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage{xcolor}
+\usetikzlibrary{positioning,shapes.geometric}
+
+\begin{document}
+\begin{tikzpicture}[x=2cm, y=1cm]
+    % Define colors
+    \definecolor{myblue}{RGB}{0,128,255}
+    \definecolor{mygreen}{RGB}{0,255,0}
+    \definecolor{myred}{RGB}{255,0,0}
+    
+    % Nodes for methods
+    \node (method1) [rectangle, draw=myblue, fill=myblue!30, minimum width=2cm, minimum height=1cm] {Method A};
+    \node (method2) [rectangle, draw=mygreen, fill=mygreen!30, below=of method1, minimum width=2cm, minimum height=1cm] {Method B};
+    \node (method3) [rectangle, draw=myred, fill=myred!30, below=of method2, minimum width=2cm, minimum height=1cm] {Our Method};
+    
+    % Thresholds
+    \foreach \threshold in {0, 25, 50, 75, 100} {
+        \draw[thick] (\threshold/2, -0.5) -- ++(0, 2);
+        \node[anchor=north] at (\threshold/2, -1) {\threshold mm};
+    }
+    
+    % Bars for Method A
+    \node (bar1a) [rectangle, draw=myblue, fill=myblue!60, minimum width=0.5cm, minimum height=0.8cm, right=of method1.west] {};
+    \node (bar2a) [rectangle, draw=myblue, fill=myblue!60, minimum width=0.5cm, minimum height=1.2cm, below=of bar1a] {};
+    \node (bar3a) [rectangle, draw=myblue, fill=myblue!60, minimum width=0

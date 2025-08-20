@@ -1,0 +1,30 @@
+Certainly! Below is the TikZ LaTeX code to create a schematic of a Moore finite state machine (FSM) that recognizes the word "10010". Each state will be represented by a blue circle with the state name and output inside it. Arrows between states will indicate the transitions caused by inputs.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!20},
+    process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+    decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
+    arrow/.style={thick,->,>=stealth}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (start) [startstop] {Start};
+    \node (q0) [process, below of=start, yshift=-1cm] {$q_0$ \\ $O=0$};
+    \node (q1) [process, below of=q0, yshift=-1cm] {$q_1$ \\ $O=0$};
+    \node (q2) [process, below of=q1, yshift=-1cm] {$q_2$ \\ $O=0$};
+    \node (q3) [process, below of=q2, yshift=-1cm] {$q_3$ \\ $O=0$};
+    \node (q4) [process, below of=q3, yshift=-1cm] {$q_4$ \\ $O=1$};
+    \node (end) [startstop, below of=q4, yshift=-1cm] {End};
+
+    % Arrows
+    \draw [arrow] (start) -- node[anchor=east] {0} (q0);
+    \draw [arrow] (q0) -- node[anchor=north] {1} (q1);
+    \draw [arrow] (q1) -- node[anchor=south] {0

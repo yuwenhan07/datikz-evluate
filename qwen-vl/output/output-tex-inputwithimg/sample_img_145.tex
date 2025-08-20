@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    % Define the nodes for the individual questions
+    \matrix (Q_A) [matrix of nodes, row sep=0.5cm, column sep=0.5cm] {
+        a & b \\
+        a & a \\
+        a & a \\
+        c & a \\
+    };
+    \matrix (Q_B) [matrix of nodes, right=of Q_A, row sep=0.5cm, column sep=0.5cm] {
+        b & \gamma \\
+        c & b \\
+        b & b \\
+        c & a \\
+    };
+
+    % Define the nodes for the composite questions
+    \node[draw,circle,fill=gray!50,inner sep=2pt,label=above:$\tilde{Q}_{AB}$] at (3.5,2) (Q_AB) {};
+
+    % Draw the connections between the individual questions and the composite questions
+    \draw (Q_A-1-1) -- node[above] {$a$} (Q_AB);
+    \draw (Q_A-1-2) -- node[above] {$b$} (Q_AB);
+    \draw (Q_A-2-1) -- node[above] {$a$} (Q_AB);
+    \draw (Q_A-2-2) -- node[above] {$a$} (Q_AB);
+    \draw (Q_A-3-1) -- node[above] {$a$} (Q_AB);
+    \draw (Q_A-3-2) -- node[above] {$a$} (Q_AB);
+    \draw (Q_A-4-1) -- node[above] {$c$} (Q_AB);
+    \draw (Q_A-4-2) -- node[above] {$a$} (Q_AB);
+
+    \draw (Q_B-1-1) -- node[above] {$b$} (Q_AB);
+    \draw (Q_B-1-2) -- node[above] {$\gamma$} (Q_AB);
+    \draw (Q_B-2-1) -- node[above] {$c$} (Q_AB);
+    \draw (Q_B-2-2) -- node[above] {$b$} (Q_AB);
+    \draw (Q_B-3-1) -- node[above] {$b$} (Q_AB);
+    \draw (Q_B-3-2) -- node[above] {$a$} (Q_AB);
+
+    % Draw the circles representing the individual question sets
+    \draw (Q_A.north west) circle (2cm);
+    \draw (Q_A.south east) circle (2cm);
+    \draw (Q_B.north west) circle (2cm);
+    \draw (Q_B.south east) circle (2cm);
+
+    % Draw the label for the composite question set
+    \node[draw,circle,fill=gray!50,inner sep=2pt,label=right:$\mathcal{Q}_{AB}$] at (6,2) (Q_AB_label) {};
+    \draw (Q_AB_label) -- (Q_AB);
+
+    % Draw the labels for the individual question sets
+    \node[draw,circle,fill=gray!50,inner sep=2pt,label=above:$\mathcal{Q}_A$] at (0,0) (Q_A_label) {};
+    \node[draw,circle,fill=gray!50,inner sep=2pt,label=above:$\mathcal{Q}_B$] at (4,0) (Q_B_label) {};
+\end{tikzpicture}
+
+\end{document}

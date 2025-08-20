@@ -1,0 +1,28 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style={rectangle, draw=black, fill=white!30, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style={draw, thick, ->, >=stealth'},
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes
+    \node (start) [block] {Start};
+    \node (read1) [block, below of=start] {Read Bit 1};
+    \node (read2) [block, below of=read1] {Read Bit 2};
+    \node (output) [block, below of=read2] {Output Word};
+    \node (end) [block, below of=output] {End};
+
+    % Arrows
+    \draw [line] (start) -- (read1);
+    \draw [line] (read1) -- (read2);
+    \draw [line] (read2) -- (output);
+    \draw [line] (output) -- (end);
+
+\end{tikzpicture}
+
+\end{document}

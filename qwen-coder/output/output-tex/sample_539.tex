@@ -1,0 +1,44 @@
+Certainly! Below is a TikZ LaTeX code snippet that generates a figure illustrating the scenario described. This figure will show a circle with radius \( r \) centered at a vertex of a polygon, along with the tangent lines and the lengths involved.
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define the center of the circle (vertex)
+    \coordinate (O) at (0,0);
+    
+    % Define the radius of the circle
+    \def\radius{1};
+    
+    % Draw the circle
+    \draw (O) circle (\radius);
+    
+    % Draw the tangent lines
+    \draw[dashed] (O) -- ($(O)+(\radius*cos(45),\radius*sin(45))$); % Tangent line 1
+    \draw[dashed] (O) -- ($(O)+(-\radius*cos(45),-\radius*sin(45))$); % Tangent line 2
+    
+    % Mark the points where the tangent lines intersect the edges
+    \coordinate (A) at ($(O)+(\radius*cos(45),\radius*sin(45))$);
+    \coordinate (B) at ($(O)+(-\radius*cos(45),-\radius*sin(45))$);
+    
+    % Draw the edges of the polygon
+    \draw[->] (O) -- (A) node[midway,right] {Distance $ry$};
+    \draw[->] (O) -- (B) node[midway,left] {Distance $rh(y,\alpha_i)$};
+    
+    % Label the radius
+    \node at (0,-1.2) {$r$};
+    
+    % Add annotations
+    \node at (0.7,0.7) {$\text{Tangent Line 1}$};
+    \node at (-0.7,-0.7) {$\text{Tangent Line 2}$};
+    
+    % Add labels for distances
+    \node at (A) [above right] {$ry$};
+    \node at (B) [below left] {$rh(y,\alpha_i)$};
+    
+    % Add alpha_i angle label
+    \node at (0.2,-0.2) {\footnotesize $\alpha_i$};
+\end{tik

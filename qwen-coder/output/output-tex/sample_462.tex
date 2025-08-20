@@ -1,0 +1,57 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+% Plot (a): 2D map of the mixing function
+\begin{tikzpicture}
+    \begin{axis}[
+        width=8cm,
+        height=6cm,
+        xlabel=$\varpi$,
+        ylabel=$z$,
+        zlabel=$f(\varpi, z)$,
+        colormap={mix}{
+            rgb(0cm)=(blue);
+            rgb(1cm)=(red)
+        },
+        view={45}{30},
+        domain=0:2*pi,
+        y domain=-1:1,
+        samples=100,
+        surf,
+        z buffer=sort,
+        opacity=0.7,
+        colorbar
+    ]
+        \addplot3[surf] {sin(x)*cos(y)};
+    \end{axis}
+\end{tikzpicture}
+
+% Plot (b): Extension of the ASO component over the selected region
+\begin{tikzpicture}
+    \begin{axis}[
+        width=8cm,
+        height=6cm,
+        xlabel=$x$,
+        ylabel=$y$,
+        zlabel=$f(x, y)$,
+        colormap={mix}{
+            rgb(0cm)=(blue);
+            rgb(1cm)=(red)
+        },
+        view={45}{30},
+        domain=-1:1,
+        y domain=-1:1,
+        samples=100,
+        surf,
+        z buffer=sort,
+        opacity=0.7,
+        colorbar
+    ]
+        \addplot3[surf] {exp(-x^2 - y^2)};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

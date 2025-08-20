@@ -1,0 +1,43 @@
+Certainly! Below is a TikZ LaTeX code that illustrates Riemannian optimization on the 2-torus \(\mathbb{T}_2\) (represented as a torus embedded in \(\mathbb{R}^3\)). The iterate \(\mathbf{w}_{t+1}\) is obtained from the retraction \(\mathcal{R}_{\mathbf{w}_t}\) applied to the direction descent \(\boldsymbol{\xi}_t \in T_{\mathbf{w}_t} \mathbb{T}_2\).
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc, arrows.meta}
+
+\begin{document}
+
+\tikzset{
+    arrow style/.style={->, thick},
+    vector style/.style={thick, ->, >=Stealth[length=5pt]},
+    tangent line style/.style={dashed, thin}
+}
+
+\begin{tikzpicture}[scale=2]
+
+% Draw the torus
+\def\R{2}
+\def\r{0.5}
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\begin{scope}[on layer=background]
+    \draw[torus] (\R+\r,0,0) arc (0:360:\R+\r);
+    \foreach \x in {0,...,7} {
+        \draw[torus] (\R+\r,\x*\r/\pi,0) arc (0:360:\R+\r);
+    }
+    \foreach \y in {-\r,-\r/2,0,\r/2,\r} {
+        \draw[torus] (\R+\r,0,\y) arc (0:360:\R+\r);
+    }
+    \fill[torus] (\R+\r,0,0) circle (0.05);
+    \fill[torus] (\R+\r,0,0) circle (0.05);
+\end{scope}
+
+% Draw points and vectors
+\coordinate (w_t) at (2,0,0);
+\coordinate (xi_t) at (4,0,0);
+
+% Draw the retraction
+\draw[vector style] (w_t) -- node[midway, above] {$\boldsymbol{\xi}_t$} (xi_t);
+
+% Draw

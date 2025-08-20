@@ -1,0 +1,36 @@
+Certainly! Below is a TikZ LaTeX code to construct the digraph \( D' \) from a given digraph \( D \) with \( k = 2 \), along with an \((\infty, k)\)-decomposition \((F_\infty, F_k)\) of \( D' \). The Hamiltonian cycle of \( D \) is colored in blue, dashed red arcs are in \( A(F_k) \), and solid green arcs are in \( A(F_\infty) \).
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+
+% Define nodes for the original digraph D
+\node (v1) at (0,0) {1};
+\node (v2) at (2,0) {2};
+\node (v3) at (4,0) {3};
+\node (v4) at (6,0) {4};
+
+% Draw edges for the original digraph D
+\draw[->] (v1) -- node[above] {$a_1$} (v2);
+\draw[->] (v2) -- node[above] {$a_2$} (v3);
+\draw[->] (v3) -- node[above] {$a_3$} (v4);
+\draw[->] (v4) -- node[above] {$a_4$} (v1);
+
+% Add extra vertices for D'
+\node (v1') at (0,-2) {1'};
+\node (v2') at (2,-2) {2'};
+\node (v3') at (4,-2) {3'};
+\node (v4') at (6,-2) {4'};
+
+% Draw edges for D'
+\draw[->] (v1) -- node[below] {$b_1$} (v1');
+\draw[->] (v2) -- node[below] {$b_2$} (v2');
+\draw[->] (v3) -- node[below] {$b_3$} (v3');
+\draw[->] (v4) -- node[below] {$b_4$} (v4');
+
+% Hamiltonian cycle in blue
+\draw[blue, thick] (v1) -- (v

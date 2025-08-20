@@ -1,0 +1,47 @@
+To create a TikZ diagram comparing the PSF (Point Spread Function) of a single sparse array and a joint setup of a fixed communication array and a varying sensing array, we can follow these steps:
+
+1. **Define the arrays**: We will define the positions of the elements in both arrays.
+2. **Draw the arrays**: We will draw the arrays using TikZ nodes.
+3. **Highlight the differences**: We will highlight the key differences between the two setups.
+
+Here is the TikZ code to generate this diagram:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{tikzpicture}[node distance=0.5cm]
+
+% Sparse Array
+\node (sparse_array) at (0,0) {Sparse Array};
+\foreach \i in {0,...,8} {
+    \foreach \j in {0,...,8} {
+        \ifnum\i=1 \&\& \j=1 \else
+            \ifnum\i=2 \&\& \j=2 \else
+                \node[draw, circle, inner sep=1pt] (s-\i-\j) at (\i,-\j) {};
+            \fi
+        \fi
+    }
+}
+
+% Communication Array
+\node (comm_array) at (4,0) {Communication Array};
+\foreach \i in {0,...,10} {
+    \foreach \j in {0,...,10} {
+        \node[draw, circle, inner sep=1pt] (c-\i-\j) at (\i,-\j) {};
+    }
+}
+
+% Sensing Array
+\node (sense_array) at (8,0) {Sensing Array};
+\foreach \i in {0,...,10} {
+    \foreach \j in {0,...,10} {
+        \node[draw, circle, inner sep=1pt] (s-\i-\j) at (\i,-\j) {};
+    }
+}
+
+% Highlight Differences
+\draw[dashed, thick] (s-0-0.south west) rectangle (s-8-8.north east);
+\draw[dashed, thick] (c-0-0.south west) rectangle (c-10-10.north east);
+\draw[dashed, thick] (s-0-0

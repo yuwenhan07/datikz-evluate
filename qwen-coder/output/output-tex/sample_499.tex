@@ -1,0 +1,35 @@
+To create a TikZ diagram comparing the performance of a data stream allocation algorithm with other methods in a Peer-to-Peer Content Caching (PCNC) scenario, we need to define the parameters and plot the results accordingly. Here's an example of how you can achieve this using TikZ:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{tikzscale}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+% Define colors for different algorithms
+\definecolor{algorithmA}{RGB}{0, 102, 204} % Blue
+\definecolor{algorithmB}{RGB}{255, 165, 0}   % Orange
+\definecolor{algorithmC}{RGB}{153, 0, 153}   % Purple
+
+% Define node styles
+\tikzset{
+    box/.style={draw, rectangle, minimum width=2cm, minimum height=1cm},
+    legend/.style={draw=none, rectangle, fill=white, inner sep=2pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm, y=1cm]
+
+% Plot axis
+\draw[->] (0,0) -- (8,0) node[right] {$Time$};
+\draw[->] (0,0) -- (0,5) node[above] {$Performance$};
+
+% Data points for Algorithm A
+\draw[algorithmA, thick, -Stealth] (1,1) -- (2,2) -- (3,3) -- (4,4) -- (5,4.5) -- (6,5);
+\node at (5.5,4.75) [legend] {Algorithm A};
+
+% Data points for Algorithm B
+\draw[algorithmB, thick, -Stealth] (1,2) -- (2,2.5) -- (3,3) -- (4,3.5) -- (5,4) -- (6,4.5);
+\node at (5.5,3.75) [legend] {Algorithm B};
+
+% Data points for Algorithm C
+\draw[algorithmC, thick, -Stealth] (1,1.5) -- (2,2) -- (3,2.5) -- (4,3) -- (

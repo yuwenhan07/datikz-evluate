@@ -1,0 +1,40 @@
+To provide an example of a weighted graph \( G \) used in Theorem~\ref{thm:np-complete}, we need to understand the context of the theorem. Typically, such a theorem might involve transforming a problem from one graph structure to another, often involving the concept of vertex cover or independent set, which are known NP-complete problems.
+
+Let's consider a simple example where we start with an unweighted graph \( H \) and then add weights to it to form a weighted graph \( G \). We'll use this transformation to show that the problem remains NP-complete.
+
+### Step 1: Define the Unweighted Graph \( H \)
+Consider the following unweighted graph \( H \):
+\[ H = (V_H, E_H) \]
+where:
+- \( V_H = \{v_1, v_2, v_3, v_4\} \)
+- \( E_H = \{\{v_1, v_2\}, \{v_2, v_3\}, \{v_3, v_4\}\} \)
+
+This is a path graph with 4 vertices and 3 edges.
+
+### Step 2: Add Weighted Vertices and Edges
+We will add some additional vertices and edges to \( H \) to form the weighted graph \( G \). Let's assume we add a new vertex \( u \) and edges connecting \( u \) to each of the vertices in \( H \), with each edge having a weight equal to the size of the vertex set \( U \).
+
+For simplicity, let's assume \( U = \{u_1, u_2, u_3\} \), so the weight of each edge \( \{u, v_i\} \) is 3 (since \( |U| = 3 \)).
+
+The resulting weighted graph \( G \) will be:
+\[ G = (V_G, E_G) \]
+where:
+- \( V_G = V_H \cup \{u\} = \{v_1, v_2, v_3, v_4, u\} \)
+- \( E_G = E_H \cup \{\{u, v_1\}, \{u, v_2\}, \{u, v_3\}, \{u, v_4\}\} \)
+
+Each edge \( \{u, v_i\} \) has a weight of 3.
+
+### Step 3: Transformation and NP-Completeness
+The transformation involves adding the vertex \( u \) and the edges \( \{u, v_i\} \) with weight 3. This transformation is designed to maintain the NP-completeness of the problem because the original problem (e.g., vertex cover or independent set) on the unweighted graph \( H \) is transformed into a problem on the weighted graph \( G \) that retains its NP-completeness.
+
+### Conclusion
+The weighted graph \( G \) is constructed by adding a single vertex \( u \) and edges from \( u \) to each vertex in \( H \), each with a weight of 3. This construction ensures that the problem remains NP-complete, as the addition of weights does not change the fundamental nature of the problem being solved.
+
+Thus, the example of the weighted graph \( G \) is:
+\[ G = (V_G, E_G) \]
+where:
+- \( V_G = \{v_1, v_2, v_3, v_4, u\} \)
+- \( E_G = \{\{v_1, v_2\}, \{v_2, v_3\}, \{v_3, v_4\}, \{u, v_1\}, \{u, v_2\}, \{u, v_3\}, \{u, v_4\}\} \)
+- Each edge \( \{u, v_i\} \) has a weight of 3.
+
+This example demonstrates how a simple transformation can be used to prove the NP-completeness of a problem by maintaining the core structure while introducing weights.

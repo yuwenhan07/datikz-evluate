@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+    \node[state] (q_0) {$1$};
+    \node[state] (q_1) [right=of q_0] {$\lambda^{-3}$};
+    \node[state] (q_2) [right=of q_1] {$\lambda^{-2}$};
+    \node[state] (q_3) [right=of q_2] {$\lambda^{-1}$};
+    \node[state] (q_4) [right=of q_3] {$\lambda^{0}$};
+    \node[state] (q_5) [right=of q_4] {$\lambda^{1}$};
+    \node[state] (q_6) [right=of q_5] {$\lambda^{2}$};
+    \node[state] (q_7) [right=of q_6] {$\lambda^{3}$};
+    \node[state] (q_8) [right=of q_7] {$\lambda^{4}$};
+    \node[state] (q_9) [right=of q_8] {$\lambda^{5}$};
+    \node[state] (q_10) [below=of q_0] {$\lambda^{-4}$};
+    \node[state] (q_11) [below=of q_1] {$\lambda^{-5}$};
+    \node[state] (q_12) [below=of q_2] {$\lambda^{-6}$};
+    \node[state] (q_13) [below=of q_3] {$\lambda^{-7}$};
+    \node[state] (q_14) [below=of q_4] {$\lambda^{-8}$};
+    \node[state] (q_15) [below=of q_5] {$\lambda^{-9}$};
+    \node[state] (q_16) [below=of q_6] {$\lambda^{-10}$};
+    \node[state] (q_17) [below=of q_7] {$\lambda^{-11}$};
+    \node[state] (q_18) [below=of q_8] {$\lambda^{-12}$};
+    \node[state] (q_19) [below=of q_9] {$\lambda^{-13}$};
+
+    \path[->]
+        (q_0) edge node {$a$} (q_1)
+              edge node {$b$} (q_10)
+        (q_1) edge node {$a$} (q_3)
+              edge node {$b$} (q_2)
+        (q_2) edge node {$a$} (q_5)
+              edge node {$b$} (q_4)
+        (q_3) edge node {$a$} (q_7)
+              edge node {$b$} (q_6)
+        (q_4) edge node {$a$} (q_9)
+              edge node {$b$} (q_8)
+        (q_5) edge node {$a$} (q_13)
+              edge node {$b$} (q_12)
+        (q_6) edge node {$a$} (q_17)
+              edge node {$b$} (q_16)
+        (q_7) edge node {$a$} (q_19)
+              edge node {$b$} (q_18)
+        (q_8) edge node {$a$} (q_11)
+              edge node {$b$} (q_10)
+        (q_9) edge node {$a$} (q_15)
+              edge node {$b$} (q_14)
+        (q_10) edge node {$a$} (q_13)
+              edge node {$b$} (q_12)
+        (q_11) edge node {$a$} (q_17)
+              edge node {$b$} (q_16)
+        (q_12) edge node {$a$} (q_19)
+              edge node {$b$} (q_18)
+        (q_13) edge node {$a$} (q_15)
+              edge node {$b$} (q_14)
+        (q_14) edge node {$a$} (q_11)
+              edge node {$b$} (q_10)
+        (q_15) edge node {$a$} (q_7)
+              edge node {$b$} (q_6)
+        (q_16) edge node {$a$} (q_3)
+              edge node {$b$} (q_2)
+        (q_17) edge node {$a$} (q_5)
+              edge node {$b$} (q_4)
+        (q_18) edge node {$a$} (q_9)
+              edge node {$b$} (q_8)
+        (q_19) edge node {$a$} (q_1);
+\end{tikzpicture}
+
+\end{document}

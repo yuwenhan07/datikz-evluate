@@ -1,0 +1,27 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    % Draw the number line
+    \draw[->] (-3,0) -- (4,0) node[right] {$x$};
+    
+    % Mark the point b/2
+    \node at (2,0.5) [above] {\(\frac{b}{2}\)};
+    \fill (2,0) circle (2pt);
+    
+    % Left side: x <= b/2
+    \draw[dashed, thick] (-3,0) -- (2,0);
+    \node at (-1,-0.5) [below] {\( x \leq \frac{b}{2} \)};
+    
+    % Right side: x > b/2
+    \draw[dashed, thick] (2,0) -- (4,0);
+    \node at (3,-0.5) [below] {\( x > \frac{b}{2} \)};
+    
+    % Label points
+    \node at (-2,-0.5) [below] {\( -3 \)};
+    \node at (1,-0.5) [below] {\( 1 \)};
+    \node at (3,-0.5) [below] {\( 3 \)};
+    \node at (4,-0.5) [below] {\( 4 \)};
+\end{tikzpicture}
+\end{document}

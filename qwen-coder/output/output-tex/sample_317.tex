@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+
+% Pentagon vertices
+\node (v1) at (0,0) {};
+\node (v2) at (1,1) {};
+\node (v3) at (2,0) {};
+\node (v4) at (1,-1) {};
+\node (v5) at (0,0) {};
+
+% Draw the pentagon
+\draw (v1) -- (v2) -- (v3) -- (v4) -- (v5);
+
+% Triangulation of the pentagon
+\draw (v1) -- (v2);
+\draw (v2) -- (v3);
+\draw (v3) -- (v4);
+\draw (v4) -- (v1);
+
+% Snake graph for the longest arc γ
+\node (s) at (3,0) {s};
+\node (t) at (4,0) {t};
+
+\draw[dashed] (v2) -- (s);
+\draw[dashed] (v3) -- (t);
+
+\end{tikzpicture}
+
+\end{document}

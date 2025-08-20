@@ -1,0 +1,49 @@
+Certainly! Below is a TikZ LaTeX code that generates a comparison of trajectories \((z, \dot{z})\) in red with the phase portraits for \(H_-\), \(H\), and \(H_+\). Each graph will show three lines corresponding to three values \(h_0 < h < h_1\).
+
+```latex
+\documentclass[tikz,border=2cm]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+\begin{tikzpicture}
+    % Define the colors for the lines
+    \def\color1{blue}
+    \def\color2{green}
+    \def\color3{red}
+
+    % Create subfigures side by side
+    \begin{scope}[xshift=-5cm]
+        \begin{axis}[
+            title=$H_{-}$,
+            xlabel=$z$,
+            ylabel=$\dot{z}$,
+            axis equal,
+            xmin=-2, xmax=2,
+            ymin=-2, ymax=2,
+            grid=major,
+            legend entries={$h_0$, $h$, $h_1$},
+            legend pos=north west
+        ]
+            % Plot the lines for H-
+            \addplot[domain=-2:2, samples=100, color=\color1] {sqrt(h0)};
+            \addplot[domain=-2:2, samples=100, color=\color2] {sqrt(h)};
+            \addplot[domain=-2:2, samples=100, color=\color3] {sqrt(h1)};
+        \end{axis}
+    \end{scope}
+
+    \begin{scope}[xshift=0cm]
+        \begin{axis}[
+            title=$H$,
+            xlabel=$z$,
+            ylabel=$\dot{z}$,
+            axis equal,
+            xmin=-2, xmax=2,
+            ymin=-2, ymax=2,
+            grid=major,
+            legend entries={$h_0$, $h$, $h_1$},
+            legend pos=north west
+        ]
+            % Plot the lines for H
+            \addplot[domain=-2:2, samples=100, color=\color1] {sqrt(h0)};
+            \addplot[domain=-2:2, samples=100, color=\color2] {

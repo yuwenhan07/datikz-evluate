@@ -1,0 +1,34 @@
+To visualize this scenario using TikZ, we can create a diagram that clearly represents the different cases described. Below is a LaTeX code snippet that generates such a diagram:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+    % Define nodes
+    \node (A) [circle, draw, fill=red!30] {A};
+    \node (B) [circle, draw, fill=blue!30] {B};
+    \node (C) [circle, draw, fill=green!30] {C};
+    \node (D) [circle, draw, fill=green!30] {D};
+    \node (E) [circle, draw, fill=yellow!30] {E};
+    \node (F) [circle, draw, fill=yellow!30] {F};
+    \node (G) [circle, draw, fill=purple!30] {G};
+    \node (H) [circle, draw, fill=purple!30] {H};
+
+    % Draw arrows for perturbations
+    \draw[-Stealth, thick] (A) -- node[above] {Attack} (B);
+    \draw[-Stealth, thick] (B) -- node[below] {Cancel} (A);
+    \draw[-Stealth, thick] (C) -- node[above] {Attack} (D);
+    \draw[-Stealth, thick] (D) -- node[below] {Generalize} (C);
+
+    % Mark true labels
+    \node (ALabel) [right=of A] {True Label: 1};
+    \node (BLabel) [right=of B] {True Label: 0};
+    \node (CLabel) [right=of C] {True Label: 1};
+    \node (DLabel) [right=of D] {True Label: 1};
+    \node (ELabel) [right=of E] {True Label: 0};
+    \node (FLabel) [right=of F] {True Label: 0};
+    \node (GLabel) [right=of G] {True Label: 0};
+    \node (HLabel)

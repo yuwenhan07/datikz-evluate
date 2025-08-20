@@ -1,0 +1,111 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.8]
+            % Grid lines
+            \draw[gray!50, thin] (-1,-1) grid (4,4);
+            
+            % Arrows
+            \draw[-{Latex[length=3mm]}] (0,0) -- (1,0);
+            \draw[-{Latex[length=3mm]}] (0,1) -- (1,1);
+            \draw[-{Latex[length=3mm]}] (0,2) -- (1,2);
+            \draw[-{Latex[length=3mm]}] (0,3) -- (1,3);
+            \draw[-{Latex[length=3mm]}] (1,0) -- (2,0);
+            \draw[-{Latex[length=3mm]}] (1,1) -- (2,1);
+            \draw[-{Latex[length=3mm]}] (1,2) -- (2,2);
+            \draw[-{Latex[length=3mm]}] (1,3) -- (2,3);
+            \draw[-{Latex[length=3mm]}] (2,0) -- (3,0);
+            \draw[-{Latex[length=3mm]}] (2,1) -- (3,1);
+            \draw[-{Latex[length=3mm]}] (2,2) -- (3,2);
+            \draw[-{Latex[length=3mm]}] (2,3) -- (3,3);
+            \draw[-{Latex[length=3mm]}] (3,0) -- (4,0);
+            \draw[-{Latex[length=3mm]}] (3,1) -- (4,1);
+            \draw[-{Latex[length=3mm]}] (3,2) -- (4,2);
+            \draw[-{Latex[length=3mm]}] (3,3) -- (4,3);
+            
+            % Blue dashed line
+            \draw[dashed, blue] (0,0) -- (0,4);
+            \draw[dashed, blue] (1,0) -- (1,4);
+            \draw[dashed, blue] (2,0) -- (2,4);
+            \draw[dashed, blue] (3,0) -- (3,4);
+            
+            % Arrows with non-zero counts
+            \draw[-{Latex[length=3mm]}, thick] (0,0) -- (1,1);
+            \draw[-{Latex[length=3mm]}, thick] (0,1) -- (1,2);
+            \draw[-{Latex[length=3mm]}, thick] (0,2) -- (1,3);
+            \draw[-{Latex[length=3mm]}, thick] (1,0) -- (2,1);
+            \draw[-{Latex[length=3mm]}, thick] (1,1) -- (2,2);
+            \draw[-{Latex[length=3mm]}, thick] (1,2) -- (2,3);
+            \draw[-{Latex[length=3mm]}, thick] (2,0) -- (3,1);
+            \draw[-{Latex[length=3mm]}, thick] (2,1) -- (3,2);
+            \draw[-{Latex[length=3mm]}, thick] (2,2) -- (3,3);
+            \draw[-{Latex[length=3mm]}, thick] (3,0) -- (4,1);
+            \draw[-{Latex[length=3mm]}, thick] (3,1) -- (4,2);
+            \draw[-{Latex[length=3mm]}, thick] (3,2) -- (4,3);
+            
+            % Caption
+            \node at (2.5, -1.5) {\small Left: The setup for the Gibbs property in the uncolored $q$-Boson model. Outgoing arrow counts outside the region $\Lambda$ outlined in blue are conditioned upon, and arrows have been displayed in this depiction if the arrow count is non-zero and has been conditioned on. Arrow counts entering the blue region are conditioned on due to consistency, but those exiting it are not.};
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.8]
+            % Grid lines
+            \draw[gray!50, thin] (-1,-1) grid (4,4);
+            
+            % Arrows
+            \draw[-{Latex[length=3mm]}, red] (0,0) -- (1,0);
+            \draw[-{Latex[length=3mm]}, cyan] (0,1) -- (1,1);
+            \draw[-{Latex[length=3mm]}, cyan] (0,2) -- (1,2);
+            \draw[-{Latex[length=3mm]}, cyan] (0,3) -- (1,3);
+            \draw[-{Latex[length=3mm]}, cyan] (1,0) -- (2,0);
+            \draw[-{Latex[length=3mm]}, cyan] (1,1) -- (2,1);
+            \draw[-{Latex[length=3mm]}, cyan] (1,2) -- (2,2);
+            \draw[-{Latex[length=3mm]}, cyan] (1,3) -- (2,3);
+            \draw[-{Latex[length=3mm]}, cyan] (2,0) -- (3,0);
+            \draw[-{Latex[length=3mm]}, cyan] (2,1) -- (3,1);
+            \draw[-{Latex[length=3mm]}, cyan] (2,2) -- (3,2);
+            \draw[-{Latex[length=3mm]}, cyan] (2,3) -- (3,3);
+            \draw[-{Latex[length=3mm]}, cyan] (3,0) -- (4,0);
+            \draw[-{Latex[length=3mm]}, cyan] (3,1) -- (4,1);
+            \draw[-{Latex[length=3mm]}, cyan] (3,2) -- (4,2);
+            \draw[-{Latex[length=3mm]}, cyan] (3,3) -- (4,3);
+            
+            % Blue dashed line
+            \draw[dashed, blue] (0,0) -- (0,4);
+            \draw[dashed, blue] (1,0) -- (1,4);
+            \draw[dashed, blue] (2,0) -- (2,4);
+            \draw[dashed, blue] (3,0) -- (3,4);
+            
+            % Arrows with non-zero counts
+            \draw[-{Latex[length=3mm]}, thick] (0,0) -- (1,1);
+            \draw[-{Latex[length=3mm]}, thick] (0,1) -- (1,2);
+            \draw[-{Latex[length=3mm]}, thick] (0,2) -- (1,3);
+            \draw[-{Latex[length=3mm]}, thick] (1,0) -- (2,1);
+            \draw[-{Latex[length=3mm]}, thick] (1,1) -- (2,2);
+            \draw[-{Latex[length=3mm]}, thick] (1,2) -- (2,3);
+            \draw[-{Latex[length=3mm]}, thick] (2,0) -- (3,1);
+            \draw[-{Latex[length=3mm]}, thick] (2,1) -- (3,2);
+            \draw[-{Latex[length=3mm]}, thick] (2,2) -- (3,3);
+            \draw[-{Latex[length=3mm]}, thick] (3,0) -- (4,1);
+            \draw[-{Latex[length=3mm]}, thick] (3,1) -- (4,2);
+            \draw[-{Latex[length=3mm]}, thick] (3,2) -- (4,3);
+            
+            % Purple arrow
+            \draw[-{Latex[length=3mm]}, magenta] (0,3) -- (1,3);
+            
+            % Caption
+            \node at (2.5, -1.5) {\small Right: The setup for the Gibbs property in the colored $q$-Boson model. Horizontally outgoing colored arrows counts are conditioned on strictly to the left of the blue dashed line (which extends to the ends of the domain in both directions), while only total outgoing arrow counts (depicted in black) are conditioned on to the right (including on $\Gamma_k$).};
+        \end{tikzpicture}
+    \end{minipage}
+\end{figure}
+
+\end{document}

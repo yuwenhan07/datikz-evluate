@@ -1,0 +1,31 @@
+\begin{tikzpicture}[node distance=1cm, auto]
+        % Define nodes
+        \node (v1) [circle, draw] {$v_i$};
+        \node (x1) [circle, draw, below=of v1] {$x_i$};
+        \node (vj) [circle, draw, right=of v1] {$v_j$};
+        \node (vj1) [circle, draw, right=of vj] {$v_{j+1}$};
+        \node (vj2) [circle, draw, below=of vj] {$v_{j-1}$};
+        \node (vj3) [circle, draw, below=of vj1] {$v_{j-2}$};
+        \node (vj4) [circle, draw, below=of vj2] {$v_{j-3}$};
+        
+        % Draw edges
+        \draw[->, thick] (v1) -- (vj);
+        \draw[->, thick] (vj) -- (vj1);
+        \draw[->, thick] (vj1) -- (vj2);
+        \draw[->, thick] (vj2) -- (vj3);
+        \draw[->, thick] (vj3) -- (vj4);
+        
+        \draw[dashed, ->, thick] (x1) -- (vj);
+        \draw[dashed, ->, thick] (vj) -- (vj1);
+        \draw[dashed, ->, thick] (vj1) -- (vj2);
+        \draw[dashed, ->, thick] (vj2) -- (vj3);
+        \draw[dashed, ->, thick] (vj3) -- (vj4);
+        
+        \draw[dashed, ->, thick] (vj) -- (x1);
+        \draw[dashed, ->, thick] (vj1) -- (x1);
+        \draw[dashed, ->, thick] (vj2) -- (x1);
+        \draw[dashed, ->, thick] (vj3) -- (x1);
+        \draw[dashed, ->, thick] (vj4) -- (x1);
+        
+        \node at (current bounding box.north west) {(a)};
+    \end{tikzpicture}

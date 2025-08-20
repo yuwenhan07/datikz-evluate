@@ -1,0 +1,35 @@
+python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample data generation
+np.random.seed(42)
+num_batches = 1000
+losses_per_peer = 10  # Number of peers
+
+# Generate random loss values for each peer
+peers = []
+for _ in range(losses_per_peer):
+    peer_losses = np.random.normal(loc=0.1, scale=0.01, size=num_batches)
+    peers.append(peer_losses)
+
+# Convert to DataFrame
+df = pd.DataFrame(peers).T
+df.columns = [f'Peer_{i+1}' for i in range(losses_per_peer)]
+
+# Calculate rolling mean with window size 500
+window_size = 500
+rolling_means = df.rolling(window=window_size).mean()
+
+# Plotting
+plt.figure(figsize=(14, 6))
+for col in rolling_means.columns:
+    plt.plot(rolling_means[col], label=col)
+
+plt.title('Rolling Mean Loss per Batch for 10 Peers')
+plt.xlabel('Batch Number')
+plt.ylabel('Loss')
+plt.legend()
+plt.grid(True)
+plt.show()

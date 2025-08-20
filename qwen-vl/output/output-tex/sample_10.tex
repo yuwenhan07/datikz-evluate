@@ -1,0 +1,39 @@
+The BasicEntangler ansatz is a type of quantum circuit used in quantum machine learning and quantum computing to create entangled states. It is particularly useful for generating complex quantum states that can be used as features for classification tasks or for training quantum neural networks.
+
+Let's break down the given example:
+
+### BasicEntangler Ansatz
+
+#### Circuit Structure:
+- **Rotation Gates**: Each qubit \(i\) (where \(i = 1, 2, 3, 4\)) undergoes a rotation around the y-axis by an angle \(\theta_i\). This is represented by the gate \(R_y(\theta_i)\).
+- **Circuit Layer**: The dashed box represents a circuit layer that can be repeated \(D\) times. This repetition increases the representational capacity of the ansatz, allowing it to generate more complex quantum states.
+
+#### Mathematical Representation:
+The rotation gate \(R_y(\theta_i)\) around the y-axis for a qubit can be expressed using the Pauli-Y matrix:
+\[ R_y(\theta_i) = e^{-i \frac{\theta_i}{2} Y} \]
+where \(Y\) is the Pauli-Y matrix:
+\[ Y = \begin{pmatrix}
+0 & -i \\
+i & 0
+\end{pmatrix} \]
+
+#### Example Circuit:
+For simplicity, let's assume we have four qubits and we apply the \(R_y(\theta_i)\) gates with angles \(\theta_1, \theta_2, \theta_3,\) and \(\theta_4\):
+\[ \text{Circuit: } R_y(\theta_1) \otimes R_y(\theta_2) \otimes R_y(\theta_3) \otimes R_y(\theta_4) \]
+
+#### Repeating the Circuit Layer:
+If we repeat this circuit layer \(D\) times, the overall circuit becomes:
+\[ \underbrace{(R_y(\theta_1) \otimes R_y(\theta_2) \otimes R_y(\theta_3) \otimes R_y(\theta_4))^D}_{\text{D repeated layers}} \]
+
+### Example with Specific Angles:
+Suppose we choose specific angles for the rotation gates:
+\[ \theta_1 = \pi/4, \quad \theta_2 = \pi/6, \quad \theta_3 = \pi/8, \quad \theta_4 = \pi/12 \]
+
+The circuit would then be:
+\[ \underbrace{(R_y(\pi/4) \otimes R_y(\pi/6) \otimes R_y(\pi/8) \otimes R_y(\pi/12))^D}_{\text{D repeated layers}} \]
+
+### Representational Capacity:
+By increasing \(D\), the number of parameters in the ansatz grows exponentially. This allows the ansatz to represent a wider variety of quantum states, which can be crucial for training quantum neural networks or performing quantum machine learning tasks.
+
+### Summary:
+The BasicEntangler ansatz is a powerful tool for generating entangled quantum states. By applying rotation gates around the y-axis to each qubit and repeating these layers multiple times, it can be used to create highly complex quantum states suitable for various quantum computing applications.

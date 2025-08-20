@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[level distance=1.5cm,
+    level 1/.style={sibling distance=3.5cm},
+    level 2/.style={sibling distance=2cm},
+    level 3/.style={sibling distance=1.5cm},
+    level 4/.style={sibling distance=1cm}]
+
+    \node (root) {$0$}
+        child {node {$1$}
+            child {node {$3$}}
+            child {node {$4$}}
+        }
+        child {node {$2$}
+            child {node {$5$}}
+            child {node {$6$}}
+        };
+\end{tikzpicture}
+
+Each vertex \( j \) for \( 2^k - 1 \leq j \leq 2^{k+1} - 2 \) may be reached in exactly \( k \) steps.
+
+\end{document}

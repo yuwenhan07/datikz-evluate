@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5, >=stealth]
+
+        % Define the axes
+        \draw[->] (0,-1) -- (0,6) node[above] {$y$};
+        \draw[->] (-1,0) -- (7,0) node[right] {$x$};
+
+        % Draw the intervals
+        \draw[thick, blue] (1,2) rectangle (4,4);
+        \draw[thick, red] (3,2) rectangle (6,4);
+
+        % Label the intervals
+        \node at (2.5, 4.5) [below right] {Interval 1: $[r + \lfloor a_1 tr^{2/3} \rfloor, r + \lfloor a_2 tr^{2/3} \rfloor]$};
+        \node at (4.5, 4.5) [below right] {Interval 2: $[r + \lfloor b_1 t(n-r)^{2/3} \rfloor, r + \lfloor b_2 t(n-r)^{2/3} \rfloor]$};
+
+        % Mark the points r, n-r
+        \fill (1,0) circle (2pt) node[left] {$r$};
+        \fill (6,0) circle (2pt) node[right] {$n-r$};
+
+    \end{tikzpicture}
+    \caption{Illustration of the Intervals Described in Section \ref{fix_para}}
+    \label{fig:intervals}
+\end{figure}
+
+\end{document}

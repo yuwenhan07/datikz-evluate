@@ -1,0 +1,36 @@
+Certainly! Below is a TikZ LaTeX code that creates an illustration showing how the time horizon is divided into batches, with the player maintaining the same choice of combinatorial arm within each batch.
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta, shapes.geometric, decorations.pathreplacing}
+
+\tikzset{
+    decision/.style={diamond, draw, fill=blue!20, text width=4em, text badly centered, node distance=3cm, inner sep=0pt},
+    block/.style={rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style={draw, thick, -Stealth},
+    batch/.style={rectangle, draw, fill=gray!10, rounded corners, minimum height=2em, minimum width=4em},
+    arrow/.style={thick,->,>=stealth,shorten >=1pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance = 2cm]
+    % Nodes
+    \node (start) [decision] {Start};
+    \node (batch1) [block, below of=start] {Batch 1};
+    \node (batch2) [block, below of=batch1] {Batch 2};
+    \node (batch3) [block, below of=batch2] {Batch 3};
+    \node (end) [decision, below of=batch3] {End};
+
+    % Lines
+    \path [line] (start) -- (batch1);
+    \path [line] (batch1) -- (batch2);
+    \path [line] (batch2) -- (batch3);
+    \path [line] (batch3) -- (end);
+
+    % Batches
+    \node (batch1rect) [batch, left of=batch1, xshift=-3cm] {};
+    \node (batch2rect) [batch, right of=batch2, xshift=3cm] {};
+
+    % Arrows for batch labels
+    \draw[arrow] (batch1rect.north) -- ++(0,-0.5) node[midway, below] {Batch 1};
+    \draw[arrow] (batch2rect.south) -- ++(0,0.5) node[midway, above] {Batch 2};

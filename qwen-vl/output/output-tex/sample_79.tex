@@ -1,0 +1,16 @@
+The comparison you've described is useful for understanding how PointSAGE, a machine learning model, can be integrated into Computational Fluid Dynamics (CFD) simulations to achieve speedups. Here's a breakdown of the comparison:
+
+1. **Blue Bars**: These represent the total time required for simulating on a coarse mesh and then using PointSAGE to predict the results for a fine mesh. This includes both the time spent on the coarse mesh simulation and the additional time needed to run PointSAGE to generate predictions for the fine mesh.
+
+2. **Red Bars**: These represent the time taken to simulate directly on the fine mesh using the CFD solver OpenFOAM. This is the baseline or direct method of obtaining the fine mesh simulation results without any machine learning intervention.
+
+### Key Points:
+- **Speedup**: The goal is to compare the total time taken when using PointSAGE (blue bars) against the time taken when running the simulation directly on the fine mesh (red bars). If the blue bars are significantly shorter than the red bars, it indicates that PointSAGE is providing a speedup.
+  
+- **Inference Time**: The inference time for PointSAGE is an important component of the blue bars. This time is the duration it takes for PointSAGE to process the coarse mesh data and generate predictions for the fine mesh. If this time is relatively small compared to the simulation time on the fine mesh, it suggests that the overall speedup is feasible.
+
+### Example Scenario:
+Suppose the blue bars show a total time of 30 minutes, which includes a 15-minute coarse mesh simulation and a 15-minute inference time for PointSAGE. Meanwhile, the red bars show a total time of 60 minutes for the fine mesh simulation alone. In this case, the use of PointSAGE would provide a speedup of approximately 50% (since 30 minutes is half of 60 minutes).
+
+### Conclusion:
+The comparison helps in evaluating whether the integration of PointSAGE into the CFD workflow is beneficial in terms of reducing the overall simulation time. If the blue bars consistently show significant reductions in total time compared to the red bars, it indicates that PointSAGE is effectively accelerating the CFD simulations.

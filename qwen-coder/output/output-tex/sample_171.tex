@@ -1,0 +1,44 @@
+Certainly! Below is the TikZ LaTeX code to generate diagrams for the different patterns you described:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{positioning, shapes.geometric}
+
+\tikzset{
+    qubit/.style={circle, draw, fill=blue!20, minimum size=8mm},
+    clause/.style={rectangle, draw, fill=red!20, minimum width=15mm, minimum height=6mm},
+    edge/.style={->, thick}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+
+% (a) Sunflower
+\node[qubit] (q1) {};
+\node[clause, below left=of q1] (c1) {};
+\node[clause, above left=of q1] (c2) {};
+\node[clause, below right=of q1] (c3) {};
+\node[clause, above right=of q1] (c4) {};
+
+% (b) Loose chain
+\node[qubit] (qc1) at (0,0) {};
+\node[qubit] (qc2) at (1,0) {};
+\node[qubit] (qc3) at (2,0) {};
+\node[qubit] (qc4) at (3,0) {};
+\node[clause, below=of qc1] (cc1) {};
+\node[clause, below=of qc2] (cc2) {};
+\node[clause, below=of qc3] (cc3) {};
+\node[clause, below=of qc4] (cc4) {};
+
+% (c) Strong chain
+\node[qubit] (sc1) at (0,0) {};
+\node[qubit] (sc2) at (1,0) {};
+\node[qubit] (sc3) at (2,0) {};
+\node[qubit] (sc4) at (3,0) {};
+\node[clause, below=of sc1] (cs1) {};
+\node[clause, below=of sc2] (cs2) {};
+\node[clause, below=of sc3] (cs3) {};
+\node[clause, below=of sc4] (cs4) {};
+\draw[edge] (sc1) -- (cs1);
+\draw[edge] (sc2

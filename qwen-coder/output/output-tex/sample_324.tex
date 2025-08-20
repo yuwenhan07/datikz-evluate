@@ -1,0 +1,31 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  node distance=2cm,
+  startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30},
+  process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+  decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
+  arrow/.style={thick->,>=stealth}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+\node (start) [startstop] {Start};
+\node (init) [process, below of=start] {Initialize Context $\boldsymbol{y}_{:0}$};
+\node (sample) [decision, below of=init, yshift=-1cm] {Sample Token $s_i$ \\ from $p_\theta(\cdot \mid \boldsymbol{y}_{:i-1})$};
+\node (append) [process, below of=sample, yshift=-1cm] {Append Token to Context};
+\node (repeat) [decision, below of=append, yshift=-1cm] {Repeat until End?};
+\node (end) [startstop, below of=repeat, yshift=-1cm] {End};
+
+% Drawing arrows
+\draw [arrow] (start) -- (init);
+\draw [arrow] (init) -- (sample);
+\draw [arrow] (sample) -- (append);
+\draw [arrow] (append) -- (repeat);
+\draw [arrow] (repeat) -| node[anchor=east] {Yes} ++(4,-2) |- (end);
+\draw [arrow] (repeat) -| node[anchor=east] {No} ++(4,-2) |- (sample);
+
+\end{tikzpicture}
+\end{document}

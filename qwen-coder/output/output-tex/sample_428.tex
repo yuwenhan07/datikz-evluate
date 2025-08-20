@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes
+    \node (initial_estimate) [rectangle, draw, fill=blue!30] {Initial Estimate};
+    \node (neural_network) [rectangle, draw, fill=green!30, below=of initial_estimate] {Neural Network};
+    \node (final_estimate) [rectangle, draw, fill=red!30, below=of neural_network] {Final Estimate};
+
+    % Arrows
+    \draw[->] (initial_estimate) -- node[anchor=south] {$\tilde{\varphi}(\mathbf{x})$} (neural_network);
+    \draw[->] (neural_network) -- node[anchor=south] {$\hat{\varphi}(\mathbf{x})$} (final_estimate);
+
+\end{tikzpicture}
+
+\end{document}

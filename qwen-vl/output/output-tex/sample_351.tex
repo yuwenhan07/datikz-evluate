@@ -1,0 +1,39 @@
+To analyze the provided problem, we need to understand the context and the mathematical expressions involved. The problem describes the alignment between singular subspaces of the observation tensor \({\bm{\mathscr{T}}}\) and the signal tensor \({\bm{\mathscr{P}}}\) in the context of a truncated Multilinear Singular Value Decomposition (MLSVD) algorithm.
+
+### Definitions and Context
+
+1. **Observation Tensor**: \({\bm{\mathscr{T}}} = {\bm{\mathscr{P}}} + \frac{1}{\sqrt{N}}{\bm{\mathscr{N}}}\)
+   - \({\bm{\mathscr{P}}}\) is the signal tensor.
+   - \({\bm{\mathscr{N}}}\) is the noise tensor.
+   - \(N\) is the total number of observations.
+   - \(\lVert{\bm{\mathscr{P}}} \rVert_{\mathrm{F}}^2 / \sigma_N = 10\), where \(\sigma_N\) is the noise variance.
+
+2. **Truncated MLSVD**: This is an iterative algorithm that aims to decompose the tensor into its signal and noise components.
+
+3. **Initialization and Iteration**:
+   - At initialization (\(\ell = 0\)), the algorithm uses the truncated MLSVD to estimate the signal subspace.
+   - After the first iteration (\(\ell = 1\)), the algorithm refines this estimate.
+
+4. **Alignment Metrics**:
+   - \(\frac{1}{r_\ell} \lVert{\bm{X}}^{(\ell) \top} {\bm{U}}^{(\ell)}_0 \rVert_{\mathrm{F}}^2\): This measures the alignment between the estimated signal subspace at iteration \(\ell\) and the true signal subspace.
+   - \(\frac{1}{r_\ell} \lVert{\bm{X}}^{(\ell) \top} {\bm{U}}^{(\ell)}_1 \rVert_{\mathrm{F}}^2\): This measures the alignment between the refined signal subspace at iteration \(\ell\) and the true signal subspace.
+   - \((1 - \frac{1}{r_\ell} \lVert{\bm{X}}^{(\ell) \top} {\bm{U}}^{(\ell)}_1 \rVert_{\mathrm{F}}^2) \times \sqrt{\sigma_N}\): This measures the residual error after refinement.
+
+### Experimental Setting
+
+- \(d = 3\): The dimensionality of the tensor.
+- \((\frac{n_1}{N}, \frac{n_2}{N}, \frac{n_3}{N}) = (\frac{1}{6}, \frac{2}{6}, \frac{3}{6})\): The proportions of the tensor dimensions.
+- \(N = n_1 + n_2 + n_3\): The total number of observations.
+- \((r_1, r_2, r_3) = (3, 4, 5)\): The rank of the signal subspace for each mode.
+
+### Analysis
+
+The left plot shows the alignment between the estimated signal subspace at initialization and the true signal subspace. As \(N\) increases, the alignment improves, which is expected because more data leads to better estimation.
+
+The middle plot shows the alignment between the refined signal subspace after the first iteration and the true signal subspace. Similar to the left plot, the alignment improves with increasing \(N\).
+
+The right plot shows the residual error after the first iteration. As \(N\) increases, the residual error decreases, indicating that the algorithm is able to better separate the signal from the noise.
+
+### Conclusion
+
+The plots demonstrate that the truncated MLSVD algorithm effectively aligns the estimated signal subspace with the true signal subspace as the size of the tensor \(N\) increases. The residual error also decreases, confirming the algorithm's ability to improve the separation of signal from noise with more data.

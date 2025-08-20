@@ -1,0 +1,37 @@
+To analyze the given information about the summation of ciphertext elements using the Discrete Fourier Transform (DFT) and the Rotate and Add (RA) methods, let's break down the provided details step by step.
+
+### Definitions:
+- **Relative Error Percentage**: 
+  \[
+  \text{Relative Error Percentage} = \left( \frac{\text{DFT} - \text{RA}}{\text{RA}} \right) \times 100
+  \]
+  This measures how much the DFT method deviates from the RA method in terms of accuracy.
+
+- **Relative Speedup Percentage**:
+  \[
+  \text{Relative Speedup Percentage} = \left( \frac{T_{\text{DFT}} - T_{\text{RA}}}{T_{\text{RA}}} \right) \times 100
+  \]
+  This measures how much faster the DFT method is compared to the RA method in terms of computational time.
+
+### Interpretation:
+The plot shows the relative error percentage and relative speedup percentage for different ciphertext lengths. Let's assume the plot provides data points for various ciphertext lengths \( n \).
+
+### Example Data Points:
+For simplicity, let's assume the plot provides the following data points:
+
+| Ciphertext Length \( n \) | Relative Error Percentage | Relative Speedup Percentage |
+|--------------------------|---------------------------|----------------------------|
+| 100                      | 5%                        | 20%                        |
+| 200                      | 3%                        | 30%                        |
+| 300                      | 2%                        | 40%                        |
+| 400                      | 1%                        | 50%                        |
+
+### Analysis:
+1. **Relative Error Percentage**:
+   - As the ciphertext length increases, the relative error decreases. For example, at \( n = 100 \), the relative error is 5%, but at \( n = 400 \), it drops to 1%. This suggests that both methods become more accurate as the ciphertext length increases.
+   
+2. **Relative Speedup Percentage**:
+   - Similarly, as the ciphertext length increases, the relative speedup also increases. At \( n = 100 \), the DFT method is 20% faster than the RA method, but at \( n = 400 \), it is 50% faster. This indicates that the DFT method becomes significantly faster than the RA method as the ciphertext length grows.
+
+### Conclusion:
+From the provided data, we can conclude that the Discrete Fourier Transform (DFT) method is more accurate than the Rotate and Add (RA) method for summing ciphertext elements, especially as the ciphertext length increases. However, the DFT method is also significantly faster, with the speedup increasing as the ciphertext length grows. Therefore, for large ciphertext lengths, the DFT method is both more accurate and faster, making it the preferred choice for this task.

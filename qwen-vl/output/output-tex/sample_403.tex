@@ -1,0 +1,26 @@
+In a Markov Decision Process (MDP), the basic agent-environment relationship is characterized by a series of interactions between the agent and its environment, which are governed by certain rules and dynamics. Here's a detailed breakdown of the components involved:
+
+1. **Agent**: The agent is the entity that makes decisions and takes actions. It has a set of possible actions \( A_t \) available at each time step \( t \).
+
+2. **Environment**: The environment is the system or setting in which the agent operates. It provides feedback to the agent in the form of rewards and transitions.
+
+3. **State Space (\( S \))**: This is the set of all possible states the environment can be in. At each time step \( t \), the environment is in a specific state \( S_t \in S \).
+
+4. **Action Space (\( A \))**: This is the set of all possible actions the agent can take. At each time step \( t \), the agent selects an action \( A_t \in A \).
+
+5. **Reward Function (\( R \))**: This function maps the current state \( S_t \) and the chosen action \( A_t \) to a scalar value \( R_{t+1} \), which represents the immediate reward received by the agent after taking action \( A_t \) in state \( S_t \). The reward function typically depends on the state-action pair and possibly other factors like the next state.
+
+6. **Transition Dynamics**: The environment transitions from one state to another based on the action taken by the agent. The transition probability \( P(S_{t+1} | S_t, A_t) \) describes the probability of moving from state \( S_t \) to state \( S_{t+1} \) when action \( A_t \) is taken. The transition dynamics can be deterministic or stochastic.
+
+7. **Policy (\( \pi \))**: This is a mapping from states to actions, representing the strategy the agent uses to choose actions. A policy determines the probability distribution over actions given a state. For example, a deterministic policy might always choose the same action for a given state, while a stochastic policy might choose different actions with certain probabilities.
+
+The interaction between the agent and the environment in an MDP can be summarized as follows:
+
+- At time step \( t \), the agent observes the current state \( S_t \).
+- The agent chooses an action \( A_t \) according to its policy.
+- The environment transitions to a new state \( S_{t+1} \) based on the action \( A_t \) and the transition dynamics.
+- The environment also provides a reward \( R_{t+1} \) to the agent for taking action \( A_t \) in state \( S_t \).
+
+This sequence of events repeats at each time step until the task is completed or a termination condition is met. The goal of the agent is often to maximize the cumulative reward over time, which involves learning an optimal policy through interaction with the environment.
+
+The dotted line in your figure represents the transition from time step \( t \) to time step \( t+1 \), illustrating the progression of the agent-environment interaction in the MDP framework.

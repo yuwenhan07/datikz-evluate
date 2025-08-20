@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm, auto]
+    \tikzstyle{every node}=[draw, circle, minimum size=8mm];
+    
+    % Nodes for the first configuration
+    \node (x1) {$x_1$};
+    \node[below right=of x1] (x2) {$x_2$};
+    \node[below left=of x2] (x5) {$x_5$};
+    \node[above right=of x2] (y1) {$y_1$};
+    \node[above right=of y1] (y3) {$y_3$};
+    \node[below right=of y1] (y2) {$y_2$};
+    \node[below right=of y2] (x4) {$x_4$};
+    \node[below right=of x4] (x6) {$x_6$};
+    
+    % Edges for the first configuration
+    \draw (x1) -- node[above] {1} (x2);
+    \draw (x2) -- node[above] {$2_4$} (y1);
+    \draw (x2) -- node[above] {$2_4$} (y2);
+    \draw (x2) -- node[above] {$2_4$} (x5);
+    \draw (x5) -- node[above] {$2_4$} (y2);
+    \draw (x5) -- node[above] {$2_4$} (x4);
+    \draw (x4) -- node[above] {$2_4$} (y2);
+    \draw (x4) -- node[above] {$2_4$} (x6);
+    \draw (x6) -- node[above] {1} (y2);
+    \draw (x6) -- node[above] {$2_1$} (y3);
+    \draw (x6) -- node[above] {$2_1$} (x1);
+    \draw (x1) -- node[above] {$2_1$} (y3);
+    \draw (x1) -- node[above] {$2_1$} (x3);
+    \draw (x3) -- node[above] {$2_1$} (y3);
+    \draw (x3) -- node[above] {$2_1$} (x6);
+    \draw (x3) -- node[above] {$2_1$} (x5);
+    \draw (x5) -- node[above] {$2_1$} (x3);
+    \draw (x5) -- node[above] {$2_1$} (x2);
+    \draw (x2) -- node[above] {$2_1$} (x3);
+    
+    % Nodes for the second configuration
+    \node[right=4cm of x1] (x1') {$x_1$};
+    \node[below right=of x1'] (x2') {$x_2$};
+    \node[below left=of x2'] (x5') {$x_5$};
+    \node[above right=of x2'] (y1') {$y_1$};
+    \node[above right=of y1'] (y3') {$y_3$};
+    \node[below right=of y1'] (y2') {$y_2$};
+    \node[below right=of y2'] (x4') {$x_4$};
+    \node[below right=of x4'] (x6') {$x_6$};
+    
+    % Edges for the second configuration
+    \draw (x1') -- node[above] {1} (x2');
+    \draw (x2') -- node[above] {$2_1$} (y1');
+    \draw (x2') -- node[above] {$2_1$} (y2');
+    \draw (x2') -- node[above] {$2_1$} (x5');
+    \draw (x5') -- node[above] {$2_1$} (y2');
+    \draw (x5') -- node[above] {$2_1$} (x4');
+    \draw (x4') -- node[above] {$2_1$} (y2');
+    \draw (x4') -- node[above] {$2_1$} (x6');
+    \draw (x6') -- node[above] {1} (y2');
+    \draw (x6') -- node[above] {$2_3$} (y3');
+    \draw (x6') -- node[above] {$2_3$} (x1');
+    \draw (x1') -- node[above] {$2_3$} (y3');
+    \draw (x1') -- node[above] {$2_3$} (x3');
+    \draw (x3') -- node[above] {$2_3$} (y3');
+    \draw (x3') -- node[above] {$2_3$} (x6');
+    \draw (x3') -- node[above] {$2_3$} (x5');
+    \draw (x5') -- node[above] {$2_3$} (x3');
+    \draw (x5') -- node[above] {$2_3$} (x2');
+    \draw (x2') -- node[above] {$2_3$} (x3');
+    
+    % Labels for the edges
+    \node[left=of x1] {$2_4$};
+    \node[left=of x5] {$1$};
+    \node[below=of x2] {$1$};
+    \node[below=of x4] {$2_4$};
+    \node[below=of x6] {$2_2$};
+    \node[above=of x1'] {$1$};
+    \node[above=of x5'] {$2_1$};
+    \node[below=of x2'] {$1$};
+    \node[below=of x4'] {$2_4$};
+    \node[below=of x6'] {$2_1$};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,29 @@
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!30},
+    process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+    decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
+    arrow/.style={thick->,>=stealth}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=5cm]
+    % Nodes for traces
+    \node (trace1) [startstop] {$(n,a,b)$-resilient trace $\tau$};
+    \node (trace2) [process, below of=trace1] {$(n-1,a-d_i,b)$-resilient reaction trace $\tau'$};
+
+    % Arrows for rules
+    \draw [arrow] (trace1) -- node[above] {\textcolor{blue}{System Rule}} (trace2);
+    \draw [arrow, red] (trace2) -- node[below] {\textcolor{red}{Update Rule}} (trace1);
+
+    % Green nodes for goal configurations
+    \node (goal1) [decision, right of=trace1, xshift=4cm] {Goal Configuration};
+    \node (goal2) [decision, right of=trace2, xshift=4cm] {Goal Configuration};
+
+    % Connecting arrows to goals
+    \draw [arrow] (trace1) -- (goal1);
+    \draw [arrow] (trace2) -- (goal2);
+\end{tikzpicture}
+\end{document}

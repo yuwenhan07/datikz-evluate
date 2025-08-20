@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{forest}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{forest}
+  for tree={
+    grow'=0,
+    l sep=15mm,
+    s sep=20mm,
+    edge={Stealth-},
+    align=center,
+    parent anchor=south,
+    child anchor=north,
+    fit=band,
+  }
+  [\textbf{Summation Methods}
+    [Sequential
+      [N\"{o}rlund]
+      [Euler]
+    ]
+    [Functional
+      [Abelian means]
+      [Lambert]
+      [Mittag-Leffler]
+    ]
+    [Abel]
+    [weak Borel]
+    [strong Borel]
+  ]
+\end{forest}
+
+\end{document}

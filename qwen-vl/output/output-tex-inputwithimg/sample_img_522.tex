@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=0pt, auto]
+        % Define styles
+        \tikzset{
+            myline/.style={thick, draw=black},
+            mydot/.style={circle, fill=red, inner sep=1.5pt},
+            mylabel/.style={above=2pt, anchor=south, font=\footnotesize}
+        }
+
+        % (a)
+        \draw[myline] (-3,0) -- (3,0);
+        \draw[myline, blue] (-3,-0.2) -- (3,-0.2);
+        \fill[mydot] (0,-0.2) circle (1.5pt);
+        \draw[myline, red] (-1,-0.2) -- (1,-0.2);
+        \node[mylabel] at (0,0.2) {$X$};
+        \node[mylabel] at (0,-0.4) {(a)};
+
+        % (b)
+        \node[right=of (a)] (b) {};
+        \draw[myline] (b) ++(-3,0) -- ++(6,0);
+        \draw[myline, blue] (b) ++(-3,-0.2) -- ++(6,-0.2);
+        \fill[mydot] (b) ++(0,-0.2) circle (1.5pt);
+        \draw[myline, red] (b) ++(-1,-0.2) -- ++(1,-0.2);
+        \node[mylabel] at (b) {$X$};
+        \node[mylabel] at (b |- 0,-0.4) {(b)};
+
+        % (c)
+        \node[right=of b] (c) {};
+        \draw[myline] (c) ++(-3,0) -- ++(6,0);
+        \draw[myline, blue] (c) ++(-3,-0.2) -- ++(6,-0.2);
+        \fill[mydot] (c) ++(0,-0.2) circle (1.5pt);
+        \draw[myline, red] (c) ++(1,-0.2) -- ++(1,-0.2);
+        \node[mylabel] at (c) {$X$};
+        \node[mylabel] at (c |- 0,-0.4) {(c)};
+    \end{tikzpicture}
+    \caption{Cartoon plot for various boundary subsystems. CFT$_{\text{I,II}}$ are two halves of the straight line and the red dot is the interface. $X$ is the subsystem. (a) the interface is at the interior of the subsystem and the subsystem is finite; (b) the interface is at one end of the subsystem and the subsystem is finite; (c) the interface is at one end of the subsystem and the subsystem is infinite.}
+\end{figure}
+
+\end{document}

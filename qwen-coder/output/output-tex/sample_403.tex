@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+  % Nodes
+  \node (agent) at (0,0) {Agent};
+  \node (env) at (4,0) {Environment};
+  \node (action) at (0,-2) {$A_t$};
+  \node (state) at (4,-2) {$S_{t+1}$};
+  \node (reward) at (2,-3) {$R_{t+1}$};
+
+  % Arrows
+  \draw[->] (agent) -- node[above]{$A_t$} (env);
+  \draw[dotted] (env) -- (state);
+  \draw[dotted] (env) |- (reward);
+
+\end{tikzpicture}
+
+\end{document}

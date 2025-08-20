@@ -1,0 +1,55 @@
+To illustrate the recursive encryption algorithm described, let's break down the process step by step.
+
+### Initial Setup:
+We have a \(3 \times 3\) pixel grid. Let's label the pixels as follows:
+
+\[
+\begin{array}{ccc}
+A & B & C \\
+D & E & F \\
+G & H & I \\
+\end{array}
+\]
+
+The event \(\mathbf{E}_c\) is triggered at the center pixel \(E\).
+
+### First Layer of Recursion:
+In this layer, we synthesize noise \(\mathbf{N}^{(1)}_i\) in the four spatially adjacent pixels (horizontally or vertically) to \(\mathbf{E}_c\). These pixels are \(A, B, D,\) and \(F\).
+
+- For each of these pixels, the noise \(\mathbf{N}^{(1)}_i\) is synthesized such that its magnitude is equal to the magnitude of \(\mathbf{E}_c\). This means if \(\mathbf{E}_c\) has a certain intensity, then \(\mathbf{N}^{(1)}_i\) will also have the same intensity.
+
+The resulting set of pixels after the first layer of recursion is:
+
+\[
+\begin{array}{ccc}
+A & B & C \\
+D & E & F \\
+G & H & I \\
+\end{array}
+\]
+
+where the noise \(\mathbf{N}^{(1)}_i\) is added to the pixels \(A, B, D,\) and \(F\).
+
+### Second Layer of Recursion:
+In the second layer, the algorithm synthesizes new noise \(\mathbf{N}^{(2)}_i\) based on the adjacent events from the first layer. The adjacent pixels to \(\mathbf{E}_c\) now include the newly added noise pixels from the first layer, specifically \(A, B, D,\) and \(F\).
+
+The algorithm is blind to the specific values of \(\mathbf{N}^{(1)}_i\) and \(\mathbf{E}_c\), but it synthesizes \(\mathbf{N}^{(2)}_i\) based on the presence of these events. The resulting set of pixels after the second layer of recursion is:
+
+\[
+\begin{array}{ccc}
+A' & B' & C' \\
+D' & E' & F' \\
+G' & H' & I' \\
+\end{array}
+\]
+
+where \(A', B', D', F'\) are the pixels that were originally \(A, B, D,\) and \(F\) plus the noise \(\mathbf{N}^{(1)}_i\), and \(E'\) is the original \(E\) plus the noise \(\mathbf{N}^{(1)}_i\).
+
+The algorithm continues this process recursively, adding more layers of noise synthesis until the desired level of encryption is achieved.
+
+### Summary:
+1. **First Layer**: Synthesize noise \(\mathbf{N}^{(1)}_i\) in the four adjacent pixels to \(\mathbf{E}_c\).
+2. **Second Layer**: Synthesize new noise \(\mathbf{N}^{(2)}_i\) based on the presence of the events from the first layer.
+3. **Recursive Layers**: Continue this process until the desired level of encryption is reached.
+
+This recursive approach ensures that the noise is distributed across the entire grid, making it difficult to identify the original event \(\mathbf{E}_c\).

@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Axes
+        \draw[->] (-2,0) -- (3,0) node[right] {$\lambda_1$};
+        \draw[->] (0,-2) -- (0,3) node[above] {$\lambda_2$};
+        
+        % Potential couplings (teal)
+        \draw[teal, thick, ->] (0,0) -- (2,2) node[right] {$\gamma_1$};
+        \draw[teal, thick, ->] (0,0) -- (2,4) node[right] {$\gamma_2$};
+        \draw[teal, thick, ->] (0,0) -- (2,0) node[right] {$\gamma_{\infty}$};
+        
+        % Orthogonal couplings (cyan)
+        \draw[cyan!70!black, thick, ->] (0,0) -- (1,1) node[left] {$\lambda_1^{\perp}$};
+        \draw[cyan!70!black, thick, ->] (0,0) -- (1,2) node[left] {$\lambda_2^{\perp}$};
+        
+        % Labels
+        \node at (2.5, 2.5) {$\Gamma$};
+        \node at (2.5, -0.5) {$\tilde{\Gamma}$};
+        
+        % Orthogonal coordinate system
+        \draw[dashed] (-1,0) -- (0,0) -- (0,1);
+        
+        % Arrows for clarity
+        \draw[->, cyan!70!black, thick] (0,0) -- (-1,1) node[left] {$\lambda_1^{\perp}$};
+        \draw[->, cyan!70!black, thick] (0,0) -- (-1,2) node[left] {$\lambda_2^{\perp}$};
+    \end{tikzpicture}
+    \caption{The figure shows a parameter-space configuration such that, for all the axion couplings $\lambda_r$ (cyan), the projections of the orthogonal couplings $\smash{\lambda^\perp_r}$ (fading cyan) on all potential couplings $\gamma_i$ (teal) are non-negative. The minimal-distance vector $\gamma_\infty$ (purple) from the origin to the potential convex hull (orange) is also shown. An orthogonal coordinate system is also shown to facilitate identifying right angles.}
+    \label{fig:parameter_space}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,62 @@
+The SIRV compartmental model you described is an extension of the classic SIR (Susceptible, Infected, Recovered) model to include additional compartments for exposed individuals, quarantined individuals, and vaccinated individuals. This model can be particularly useful for understanding the dynamics of COVID-19 spread, especially when considering the impact of vaccination.
+
+Here's a detailed breakdown of the model:
+
+### Compartments:
+1. **Susceptible (\(S\))**: Individuals who are not yet infected but can become infected.
+2. **Exposed (\(E\))**: Individuals who have been infected but are not yet infectious (e.g., incubation period).
+3. **Quarantined (\(U\))**: Individuals who are infectious and are under quarantine or isolation.
+4. **Recovered (\(R\))**: Individuals who have recovered from the infection and are now immune.
+5. **Vaccinated (\(V\))**: Individuals who have received at least one dose of the vaccine.
+
+### Parameters:
+- **Transmission Rate (\(\beta\))**: The rate at which susceptible individuals become exposed.
+- **Recovery Rate (\(\delta\))**: The rate at which exposed individuals recover and become immune.
+- **Susceptibility After Disease (\(\gamma\))**: The rate at which recovered individuals become susceptible again due to waning immunity.
+- **Vaccination Rates (\(\alpha_i\))**: The rate at which individuals receive the \(i^{th}\) dose of the vaccine, calculated as a proportion of those who have taken the previous dose.
+- **Wearing Off of Vaccination Immunity (\(\phi_i\))**: The rate at which the immunity provided by the \(i^{th}\) vaccination wears off.
+
+### Model Equations:
+The dynamics of the system can be described by the following set of differential equations:
+
+\[
+\begin{align*}
+\frac{dS}{dt} &= -\beta SE - \alpha_1 S V_1 - \alpha_2 S V_2 - \alpha_3 S V_3 \\
+\frac{dE}{dt} &= \beta SE + \alpha_1 E V_1 - \gamma E - \delta E \\
+\frac{dU}{dt} &= \gamma E - \delta U \\
+\frac{dR}{dt} &= \delta E + \delta U - \gamma R - \phi_1 R V_1 - \phi_2 R V_2 - \phi_3 R V_3 \\
+\frac{dV_1}{dt} &= \alpha_1 S V_1 - \phi_1 V_1 \\
+\frac{dV_2}{dt} &= \alpha_2 S V_2 - \phi_2 V_2 \\
+\frac{dV_3}{dt} &= \alpha_3 S V_3 - \phi_3 V_3
+\end{align*}
+\]
+
+### Explanation of the Equations:
+1. **Susceptible (\(S\))**:
+   - The rate of change of susceptibles decreases due to infection (\(\beta SE\)), vaccination (\(\alpha_1 S V_1 + \alpha_2 S V_2 + \alpha_3 S V_3\)), and waning immunity (\(\gamma R\)).
+   
+2. **Exposed (\(E\))**:
+   - The rate of change of exposed individuals increases due to infection (\(\beta SE\)) and decreases due to recovery (\(\delta E\)) and waning immunity (\(\gamma E\)).
+   
+3. **Quarantined (\(U\))**:
+   - The rate of change of quarantined individuals increases due to recovery from the exposed state (\(\gamma E\)) and decreases due to recovery (\(\delta U\)).
+   
+4. **Recovered (\(R\))**:
+   - The rate of change of recovered individuals increases due to recovery from the exposed and quarantined states (\(\delta E\) and \(\delta U\)) and decreases due to waning immunity (\(\gamma R\), \(\phi_1 R V_1\), \(\phi_2 R V_2\), \(\phi_3 R V_3\)).
+   
+5. **Vaccinated (\(V_i\))**:
+   - The rate of change of vaccinated individuals increases due to vaccination (\(\alpha_i S V_i\)) and decreases due to waning immunity (\(\phi_i V_i\)).
+
+### Initial Conditions:
+- \(S(0)\): Initial number of susceptible individuals.
+- \(E(0)\): Initial number of exposed individuals.
+- \(U(0)\): Initial number of quarantined individuals.
+- \(R(0)\): Initial number of recovered individuals.
+- \(V_1(0)\): Initial number of individuals with the first dose of the vaccine.
+- \(V_2(0)\): Initial number of individuals with the second dose of the vaccine.
+- \(V_3(0)\): Initial number of individuals with the third dose of the vaccine.
+
+### Boundary Conditions:
+- The total population \(N = S + E + U + R + V_1 + V_2 + V_3\) remains constant over time.
+
+This model can be solved numerically using methods such as the Runge-Kutta method to simulate the spread of COVID-19 and the impact of vaccination on the population dynamics. Adjusting the parameters based on real-world data can provide insights into the effectiveness of different vaccination strategies and the potential for herd immunity.

@@ -1,0 +1,42 @@
+To create a TikZ diagram that visualizes the described geometric construction, you can use the following LaTeX code. This code will draw two circles (one small and one large), mark their centers and radii, and highlight their intersection.
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{intersections}
+
+\tikzset{
+    mycircle/.style={draw=red,dashed},
+    mypoint/.style={fill,circle,scale=0.5}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define points A, B, C, D
+    \coordinate (A) at (-1,0);
+    \coordinate (B) at (1,0);
+    \coordinate (C) at (0,-1);
+    \coordinate (D) at (0,1);
+
+    % Draw the circles
+    \draw[mycircle] (A) circle[radius=0.7]; % Circle with center A and radius 0.7
+    \draw[mycircle] (B) circle[radius=1.2]; % Circle with center B and radius 1.2
+
+    % Mark the centers and radii
+    \node[mypoint] at (A) {};
+    \node[mypoint] at (B) {};
+    \node[below left] at (A) {$a_n$};
+    \node[above right] at (B) {$b_n$};
+
+    % Label the circles
+    \node[left] at ($(A)+(0,-0.8)$) {$U_{n,i_0} = B_{i_0}(b_n)$};
+    \node[right] at ($(B)+(0,1.4)$) {$B_{e_2}(a_n)$};
+
+    % Find and mark the intersection points
+    \path[name path=circle1] (A) circle[radius=0.7];
+    \path[name path=circle2] (B) circle[radius=1.2];
+    \path[name intersections={of=circle1 and circle2}]
+        node[cross out,draw=black,scale=0.5] at (intersection-1) {}
+        node[cross out,draw=black,scale=0.5] at (intersection-2) {};
+
+    % Label the intersection points
+    \node[above left] at (intersection-1

@@ -1,0 +1,34 @@
+To create a TikZ diagram that represents singular dynamics on the graph of \( c + \mathcal{T}^+[u_c] \), we need to visualize both the original function and its transformed version under the map \(\Omega_c\). We will use different colors to distinguish between these two states.
+
+Here's a step-by-step guide to creating this diagram:
+
+1. **Define the domain and range**: Let's assume the domain is a simple interval, say \([0, 2]\), and the range is also an interval, say \([-1, 1]\).
+
+2. **Plot the original function**: This can be represented by a curve in the plane.
+
+3. **Apply the transformation**: The transformation \(\Omega_c\) maps each point \((x, y)\) to \((x, c + \mathcal{T}^+[u_c](y))\).
+
+4. **Plot the transformed function**: This will be another curve in the plane, but shifted vertically by \(c + \mathcal{T}^+[u_c](y)\).
+
+5. **Use different colors for clarity**.
+
+Below is the TikZ code to achieve this:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usepackage{amsmath}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define the domain and range
+    \draw[->] (-0.5,0) -- (2.5,0) node[right] {$x$};
+    \draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};
+
+    % Original function: y = x^2
+    \draw[blue, thick] plot[domain=-0.5:2.5,samples=100] (\x,\x*\x);
+    \node at (1.5,2.25) [above right] {Original Function: $y = x^2$};
+
+    % Transformed function: y = c + (x^2)
+    \def\c{1} % Example value for c
+    \draw[red, thick] plot[domain=-0.5:2.5,samples=100] (\x,{\c + \x*\x});
+    \node at (1.5,2.75) [above right] {Transformed Function

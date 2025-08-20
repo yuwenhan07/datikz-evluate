@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define the vertices of the strictly convex domain
+    \coordinate (A) at (-2, 0);
+    \coordinate (B) at (0, 2);
+    \coordinate (C) at (2, 0);
+    \coordinate (D) at (0, -2);
+
+    % Draw the boundary of the domain
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+
+    % Mark the initial point p1 and the final point p2
+    \fill[red] (0, 0) circle (2pt) node[above right] {$p_1$};
+    \fill[blue] (1, 1) circle (2pt) node[above left] {$p_2$};
+
+    % Draw the trajectory from p1 to p2
+    \draw[-stealth, thick, red] (0, 0) -- (1, 1);
+
+    % Draw the reflection line at the boundary
+    \draw[dashed, thick, blue] (0, 0) -- (1, -1);
+
+    % Label the points on the boundary for clarity
+    \node at (-2, 0.5) {$A$};
+    \node at (0.5, 2) {$B$};
+    \node at (2, 0.5) {$C$};
+    \node at (0.5, -2) {$D$};
+
+\end{tikzpicture}
+\end{document}

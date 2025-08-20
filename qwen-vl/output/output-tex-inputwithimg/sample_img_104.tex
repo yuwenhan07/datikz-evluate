@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Axes
+        \draw[->] (-3,0) -- (3,0) node[right] {$\text{Re}(z)=\tau$};
+        \draw[->] (0,-1.5) -- (0,1.5) node[above] {$\text{Im}(z)=\pi$};
+        \draw[->] (3,0) -- (4,0) node[right] {$\text{Im}(z)=0$};
+        
+        % Dashed lines
+        \draw[dashed] (-2,0) -- (-2,1.5);
+        \draw[dashed] (0,0) -- (0,1.5);
+        \draw[dashed] (2,0) -- (2,1.5);
+        
+        % Curves
+        \draw[blue, thick, domain=-2:2, smooth, variable=\x, samples=100] plot ({\x},{0.5*\x^2-1});
+        \node at (1.5, 0.75) {$\nu_2$};
+        
+        \draw[red, thick, domain=-2:2, smooth, variable=\x, samples=100] plot ({\x},{0.25*\x^2-0.5});
+        \node at (1.5, -0.25) {$\nu_1$};
+        
+        % Labels
+        \node at (3.5, 0.75) {$V(a_n,b_{n+j},M_l)$};
+        \node at (3.5, -0.25) {$\omega_{\lambda_{g,s}}$};
+    \end{tikzpicture}
+    \caption{The curve $\nu_2$ passes twice through $V(a_n,b_{n+j},M_l)$.}
+    \label{fig:curves}
+\end{figure}
+
+\end{document}

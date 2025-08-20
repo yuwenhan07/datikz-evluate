@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the horizontal line
+        \draw[red] (-4,0) -- (4,0);
+        
+        % Define the radius of the spheres
+        \def\radius{1}
+        
+        % Draw the dashed circle
+        \draw[dashed, thick] (0,0) circle (\radius);
+        
+        % Draw the blue arcs
+        \draw[blue, thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+            plot [domain=-\radius:\radius, variable=\x] ({\x},{sqrt(\radius^2 - \x^2)});
+        \draw[blue, thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+            plot [domain=-\radius:\radius, variable=\x] ({\x},{-\sqrt(\radius^2 - \x^2)});
+        
+        % Mark the point x_0
+        \filldraw[black] (0,0) circle (1pt) node[below] {$x_0$};
+        
+        % Draw the vertical lines
+        \draw[blue, dashed] (-\radius,-\radius) -- (-\radius,\radius);
+        \draw[blue, dashed] (\radius,-\radius) -- (\radius,\radius);
+        
+        % Draw the vertical arrow
+        \draw[blue, thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+            plot [domain=-\radius:\radius, variable=\x] ({\x},{0});
+        
+        % Draw the vertical arrow for the cut-off
+        \draw[blue, thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+            plot [domain=-\radius:\radius, variable=\x] ({\x},{-0.5*\radius});
+        
+        % Draw the vertical arrow for the cut-off
+        \draw[blue, thick, postaction={decorate, decoration={markings, mark=at position 0.5 with {\arrow{>}}}}] 
+            plot [domain=-\radius:\radius, variable=\x] ({\x},{0.5*\radius});
+    \end{tikzpicture}
+    
+    \caption{Cut-off sphere at \( x = x_0 \). For RT surfaces anchored at \( x_0 \), the part inside the cutoff sphere is excluded, which has the same length \( |\phi(x_0)| \).}
+    \label{fig:cut_off_sphere}
+\end{figure}
+
+\end{document}

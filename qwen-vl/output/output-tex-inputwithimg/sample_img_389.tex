@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the horizontal line at y = 0
+        \draw[thick] (-4,0) -- (4,0);
+        
+        % Draw the vertical line at x = -2
+        \draw[thick] (-2,-2) -- (-2,2);
+        
+        % Draw the vertical line at x = 2
+        \draw[thick] (2,-2) -- (2,2);
+        
+        % Draw the horizontal line at y = b/2
+        \draw[thick] (-4,b/2) -- (4,b/2);
+        
+        % Draw the horizontal line at y = b
+        \draw[thick] (-4,b) -- (4,b);
+        
+        % Draw the horizontal line at y = b-2x
+        \draw[thick] (-4,b-2*x) -- (4,b-2*x);
+        
+        % Draw the blue rectangle
+        \draw[blue, thick] (-2,-2) rectangle (2,2);
+        
+        % Draw the green triangle T1
+        \filldraw[green!30] (-2,2) -- (0,0) -- (2,2);
+        
+        % Draw the orange triangle T2
+        \filldraw[orange!30] (0,0) -- (2,2) -- (2,0);
+        
+        % Draw the yellow triangle T3
+        \filldraw[yellow!30] (-2,0) -- (0,0) -- (0,2);
+        
+        % Draw the cyan triangle T4
+        \filldraw[cyan!30] (-2,0) -- (-2,2) -- (0,0);
+        
+        % Label the triangles
+        \node at (0,1) {$T_1$};
+        \node at (1,1) {$T_2$};
+        \node at (-1,0) {$H$};
+        \node at (-1,-1) {$T_3$};
+        \node at (-1,1) {$T_4$};
+        
+        % Label the horizontal lines
+        \node at (-2.5,2) {$b-2x$};
+        \node at (-2.5,1) {$\frac{b}{2}$};
+        \node at (-2.5,0) {$b$};
+        \node at (-2.5,-1) {$x-\frac{b}{2}$};
+        \node at (-2.5,-2) {$\partial R$};
+        
+        % Label the vertical lines
+        \node at (-2.5,2) {$x$};
+        \node at (2.5,2) {$x$};
+        \node at (2.5,0) {$b$};
+        \node at (-2.5,0) {$\partial R$};
+        
+        % Draw the blue rectangle on the right side
+        \draw[blue, thick] (6,-2) rectangle (10,2);
+        
+        % Draw the green triangle T1
+        \filldraw[green!30] (6,2) -- (8,0) -- (10,2);
+        
+        % Draw the orange triangle T2
+        \filldraw[orange!30] (8,0) -- (10,2) -- (10,0);
+        
+        % Draw the yellow triangle T3
+        \filldraw[yellow!30] (6,0) -- (8,0) -- (8,2);
+        
+        % Draw the cyan triangle T4
+        \filldraw[cyan!30] (6,0) -- (6,2) -- (8,0);
+        
+        % Label the triangles
+        \node at (7,1) {$\tilde{T}_1$};
+        \node at (8,1) {$\tilde{T}_2$};
+        \node at (6.5,0) {$\tilde{H}$};
+        \node at (6.5,-1) {$\tilde{T}_3$};
+        \node at (7.5,-1) {$\tilde{T}_4$};
+        
+        % Label the horizontal lines
+        \node at (5.5,2) {$\frac{b}{2}$};
+        \node at (5.5,0) {$x-\frac{b}{2}$};
+        \node at (5.5,-2) {$\partial R$};
+        
+        % Label the vertical lines
+        \node at (6.5,2) {$x$};
+        \node at (10.5,2) {$x$};
+        \node at (10.5,0) {$b$};
+        \node at (5.5,0) {$\partial R$};
+    \end{tikzpicture}
+    
+    \caption{Nel lato sinistro il caso $x \leq \frac{b}{2}$ e nel lato destro il caso $x > \frac{b}{2}$.}
+\end{figure}
+
+\end{document}

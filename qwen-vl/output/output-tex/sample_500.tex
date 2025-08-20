@@ -1,0 +1,338 @@
+To create an example of vehicles arriving at a factory with two docking ports, we can use a simple sequence of events. Let's assume the following:
+
+1. There are two docking ports labeled as Port A and Port B.
+2. Vehicles arrive randomly, and each vehicle has a specific order (unloading or loading).
+3. The factory has a buffer where vehicles wait if both ports are occupied.
+
+Here is a step-by-step example:
+
+### Step 1: Initial State
+- **Port A**: Empty
+- **Port B**: Empty
+- **Buffer**: Empty
+
+### Step 2: Vehicle Arrivals and Orders
+- **Vehicle 1** arrives with an **unloading order**.
+- **Vehicle 2** arrives with a **loading order**.
+
+### Step 3: Processing the Orders
+- **Vehicle 1** is assigned to **Port A** because it is available.
+- **Vehicle 2** is assigned to **Port B** because it is available.
+
+### Step 4: Unloading and Loading
+- **Vehicle 1** completes its unloading at **Port A**.
+- **Vehicle 2** completes its loading at **Port B**.
+
+### Step 5: Next Vehicle Arrives
+- **Vehicle 3** arrives with a **loading order**.
+
+### Step 6: Processing the New Order
+- Since **Port A** is free, **Vehicle 3** is assigned to **Port A**.
+
+### Step 7: Buffer State
+- **Vehicle 1** is in the buffer waiting for **Port A** to become free.
+- **Vehicle 2** is in the buffer waiting for **Port B** to become free.
+
+### Step 8: Final State
+- **Port A**: Empty
+- **Port B**: Empty
+- **Buffer**: **Vehicle 1** and **Vehicle 2**
+
+### Visual Representation
+
+```
+Time | Port A | Port B | Buffer
+-----|--------|--------|--------
+0    | Empty  | Empty  | Empty
+1    | Empty  | Empty  | Empty
+2    | Empty  | Empty  | Empty
+3    | Empty  | Empty  | Empty
+4    | Empty  | Empty  | Empty
+5    | Empty  | Empty  | Empty
+6    | Empty  | Empty  | Empty
+7    | Empty  | Empty  | Empty
+8    | Empty  | Empty  | Empty
+9    | Empty  | Empty  | Empty
+10   | Empty  | Empty  | Empty
+11   | Empty  | Empty  | Empty
+12   | Empty  | Empty  | Empty
+13   | Empty  | Empty  | Empty
+14   | Empty  | Empty  | Empty
+15   | Empty  | Empty  | Empty
+16   | Empty  | Empty  | Empty
+17   | Empty  | Empty  | Empty
+18   | Empty  | Empty  | Empty
+19   | Empty  | Empty  | Empty
+20   | Empty  | Empty  | Empty
+21   | Empty  | Empty  | Empty
+22   | Empty  | Empty  | Empty
+23   | Empty  | Empty  | Empty
+24   | Empty  | Empty  | Empty
+25   | Empty  | Empty  | Empty
+26   | Empty  | Empty  | Empty
+27   | Empty  | Empty  | Empty
+28   | Empty  | Empty  | Empty
+29   | Empty  | Empty  | Empty
+30   | Empty  | Empty  | Empty
+31   | Empty  | Empty  | Empty
+32   | Empty  | Empty  | Empty
+33   | Empty  | Empty  | Empty
+34   | Empty  | Empty  | Empty
+35   | Empty  | Empty  | Empty
+36   | Empty  | Empty  | Empty
+37   | Empty  | Empty  | Empty
+38   | Empty  | Empty  | Empty
+39   | Empty  | Empty  | Empty
+40   | Empty  | Empty  | Empty
+41   | Empty  | Empty  | Empty
+42   | Empty  | Empty  | Empty
+43   | Empty  | Empty  | Empty
+44   | Empty  | Empty  | Empty
+45   | Empty  | Empty  | Empty
+46   | Empty  | Empty  | Empty
+47   | Empty  | Empty  | Empty
+48   | Empty  | Empty  | Empty
+49   | Empty  | Empty  | Empty
+50   | Empty  | Empty  | Empty
+51   | Empty  | Empty  | Empty
+52   | Empty  | Empty  | Empty
+53   | Empty  | Empty  | Empty
+54   | Empty  | Empty  | Empty
+55   | Empty  | Empty  | Empty
+56   | Empty  | Empty  | Empty
+57   | Empty  | Empty  | Empty
+58   | Empty  | Empty  | Empty
+59   | Empty  | Empty  | Empty
+60   | Empty  | Empty  | Empty
+61   | Empty  | Empty  | Empty
+62   | Empty  | Empty  | Empty
+63   | Empty  | Empty  | Empty
+64   | Empty  | Empty  | Empty
+65   | Empty  | Empty  | Empty
+66   | Empty  | Empty  | Empty
+67   | Empty  | Empty  | Empty
+68   | Empty  | Empty  | Empty
+69   | Empty  | Empty  | Empty
+70   | Empty  | Empty  | Empty
+71   | Empty  | Empty  | Empty
+72   | Empty  | Empty  | Empty
+73   | Empty  | Empty  | Empty
+74   | Empty  | Empty  | Empty
+75   | Empty  | Empty  | Empty
+76   | Empty  | Empty  | Empty
+77   | Empty  | Empty  | Empty
+78   | Empty  | Empty  | Empty
+79   | Empty  | Empty  | Empty
+80   | Empty  | Empty  | Empty
+81   | Empty  | Empty  | Empty
+82   | Empty  | Empty  | Empty
+83   | Empty  | Empty  | Empty
+84   | Empty  | Empty  | Empty
+85   | Empty  | Empty  | Empty
+86   | Empty  | Empty  | Empty
+87   | Empty  | Empty  | Empty
+88   | Empty  | Empty  | Empty
+89   | Empty  | Empty  | Empty
+90   | Empty  | Empty  | Empty
+91   | Empty  | Empty  | Empty
+92   | Empty  | Empty  | Empty
+93   | Empty  | Empty  | Empty
+94   | Empty  | Empty  | Empty
+95   | Empty  | Empty  | Empty
+96   | Empty  | Empty  | Empty
+97   | Empty  | Empty  | Empty
+98   | Empty  | Empty  | Empty
+99   | Empty  | Empty  | Empty
+100  | Empty  | Empty  | Empty
+101  | Empty  | Empty  | Empty
+102  | Empty  | Empty  | Empty
+103  | Empty  | Empty  | Empty
+104  | Empty  | Empty  | Empty
+105  | Empty  | Empty  | Empty
+106  | Empty  | Empty  | Empty
+107  | Empty  | Empty  | Empty
+108  | Empty  | Empty  | Empty
+109  | Empty  | Empty  | Empty
+110  | Empty  | Empty  | Empty
+111  | Empty  | Empty  | Empty
+112  | Empty  | Empty  | Empty
+113  | Empty  | Empty  | Empty
+114  | Empty  | Empty  | Empty
+115  | Empty  | Empty  | Empty
+116  | Empty  | Empty  | Empty
+117  | Empty  | Empty  | Empty
+118  | Empty  | Empty  | Empty
+119  | Empty  | Empty  | Empty
+120  | Empty  | Empty  | Empty
+121  | Empty  | Empty  | Empty
+122  | Empty  | Empty  | Empty
+123  | Empty  | Empty  | Empty
+124  | Empty  | Empty  | Empty
+125  | Empty  | Empty  | Empty
+126  | Empty  | Empty  | Empty
+127  | Empty  | Empty  | Empty
+128  | Empty  | Empty  | Empty
+129  | Empty  | Empty  | Empty
+130  | Empty  | Empty  | Empty
+131  | Empty  | Empty  | Empty
+132  | Empty  | Empty  | Empty
+133  | Empty  | Empty  | Empty
+134  | Empty  | Empty  | Empty
+135  | Empty  | Empty  | Empty
+136  | Empty  | Empty  | Empty
+137  | Empty  | Empty  | Empty
+138  | Empty  | Empty  | Empty
+139  | Empty  | Empty  | Empty
+140  | Empty  | Empty  | Empty
+141  | Empty  | Empty  | Empty
+142  | Empty  | Empty  | Empty
+143  | Empty  | Empty  | Empty
+144  | Empty  | Empty  | Empty
+145  | Empty  | Empty  | Empty
+146  | Empty  | Empty  | Empty
+147  | Empty  | Empty  | Empty
+148  | Empty  | Empty  | Empty
+149  | Empty  | Empty  | Empty
+150  | Empty  | Empty  | Empty
+151  | Empty  | Empty  | Empty
+152  | Empty  | Empty  | Empty
+153  | Empty  | Empty  | Empty
+154  | Empty  | Empty  | Empty
+155  | Empty  | Empty  | Empty
+156  | Empty  | Empty  | Empty
+157  | Empty  | Empty  | Empty
+158  | Empty  | Empty  | Empty
+159  | Empty  | Empty  | Empty
+160  | Empty  | Empty  | Empty
+161  | Empty  | Empty  | Empty
+162  | Empty  | Empty  | Empty
+163  | Empty  | Empty  | Empty
+164  | Empty  | Empty  | Empty
+165  | Empty  | Empty  | Empty
+166  | Empty  | Empty  | Empty
+167  | Empty  | Empty  | Empty
+168  | Empty  | Empty  | Empty
+169  | Empty  | Empty  | Empty
+170  | Empty  | Empty  | Empty
+171  | Empty  | Empty  | Empty
+172  | Empty  | Empty  | Empty
+173  | Empty  | Empty  | Empty
+174  | Empty  | Empty  | Empty
+175  | Empty  | Empty  | Empty
+176  | Empty  | Empty  | Empty
+177  | Empty  | Empty  | Empty
+178  | Empty  | Empty  | Empty
+179  | Empty  | Empty  | Empty
+180  | Empty  | Empty  | Empty
+181  | Empty  | Empty  | Empty
+182  | Empty  | Empty  | Empty
+183  | Empty  | Empty  | Empty
+184  | Empty  | Empty  | Empty
+185  | Empty  | Empty  | Empty
+186  | Empty  | Empty  | Empty
+187  | Empty  | Empty  | Empty
+188  | Empty  | Empty  | Empty
+189  | Empty  | Empty  | Empty
+190  | Empty  | Empty  | Empty
+191  | Empty  | Empty  | Empty
+192  | Empty  | Empty  | Empty
+193  | Empty  | Empty  | Empty
+194  | Empty  | Empty  | Empty
+195  | Empty  | Empty  | Empty
+196  | Empty  | Empty  | Empty
+197  | Empty  | Empty  | Empty
+198  | Empty  | Empty  | Empty
+199  | Empty  | Empty  | Empty
+200  | Empty  | Empty  | Empty
+201  | Empty  | Empty  | Empty
+202  | Empty  | Empty  | Empty
+203  | Empty  | Empty  | Empty
+204  | Empty  | Empty  | Empty
+205  | Empty  | Empty  | Empty
+206  | Empty  | Empty  | Empty
+207  | Empty  | Empty  | Empty
+208  | Empty  | Empty  | Empty
+209  | Empty  | Empty  | Empty
+210  | Empty  | Empty  | Empty
+211  | Empty  | Empty  | Empty
+212  | Empty  | Empty  | Empty
+213  | Empty  | Empty  | Empty
+214  | Empty  | Empty  | Empty
+215  | Empty  | Empty  | Empty
+216  | Empty  | Empty  | Empty
+217  | Empty  | Empty  | Empty
+218  | Empty  | Empty  | Empty
+219  | Empty  | Empty  | Empty
+220  | Empty  | Empty  | Empty
+221  | Empty  | Empty  | Empty
+222  | Empty  | Empty  | Empty
+223  | Empty  | Empty  | Empty
+224  | Empty  | Empty  | Empty
+225  | Empty  | Empty  | Empty
+226  | Empty  | Empty  | Empty
+227  | Empty  | Empty  | Empty
+228  | Empty  | Empty  | Empty
+229  | Empty  | Empty  | Empty
+230  | Empty  | Empty  | Empty
+231  | Empty  | Empty  | Empty
+232  | Empty  | Empty  | Empty
+233  | Empty  | Empty  | Empty
+234  | Empty  | Empty  | Empty
+235  | Empty  | Empty  | Empty
+236  | Empty  | Empty  | Empty
+237  | Empty  | Empty  | Empty
+238  | Empty  | Empty  | Empty
+239  | Empty  | Empty  | Empty
+240  | Empty  | Empty  | Empty
+241  | Empty  | Empty  | Empty
+242  | Empty  | Empty  | Empty
+243  | Empty  | Empty  | Empty
+244  | Empty  | Empty  | Empty
+245  | Empty  | Empty  | Empty
+246  | Empty  | Empty  | Empty
+247  | Empty  | Empty  | Empty
+248  | Empty  | Empty  | Empty
+249  | Empty  | Empty  | Empty
+250  | Empty  | Empty  | Empty
+251  | Empty  | Empty  | Empty
+252  | Empty  | Empty  | Empty
+253  | Empty  | Empty  | Empty
+254  | Empty  | Empty  | Empty
+255  | Empty  | Empty  | Empty
+256  | Empty  | Empty  | Empty
+257  | Empty  | Empty  | Empty
+258  | Empty  | Empty  | Empty
+259  | Empty  | Empty  | Empty
+260  | Empty  | Empty  | Empty
+261  | Empty  | Empty  | Empty
+262  | Empty  | Empty  | Empty
+263  | Empty  | Empty  | Empty
+264  | Empty  | Empty  | Empty
+265  | Empty  | Empty  | Empty
+266  | Empty  | Empty  | Empty
+267  | Empty  | Empty  | Empty
+268  | Empty  | Empty  | Empty
+269  | Empty  | Empty  | Empty
+270  | Empty  | Empty  | Empty
+271  | Empty  | Empty  | Empty
+272  | Empty  | Empty  | Empty
+273  | Empty  | Empty  | Empty
+274  | Empty  | Empty  | Empty
+275  | Empty  | Empty  | Empty
+276  | Empty  | Empty  | Empty
+277  | Empty  | Empty  | Empty
+278  | Empty  | Empty  | Empty
+279  | Empty  | Empty  | Empty
+280  | Empty  | Empty  | Empty
+281  | Empty  | Empty  | Empty
+282  | Empty  | Empty  | Empty
+283  | Empty  | Empty  | Empty
+284  | Empty  | Empty  | Empty
+285  | Empty  | Empty  | Empty
+286  | Empty  | Empty  | Empty
+287  | Empty  | Empty  | Empty
+288  | Empty  | Empty  | Empty
+289  | Empty  | Empty  | Empty
+290  | Empty  | Empty  | Empty
+291  | Empty  | Empty  | Empty
+292

@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white, text width=6em, text centered, rounded corners, minimum height=3em},
+    line/.style = {draw, thick, -Stealth},
+    cloud/.style = {draw=red, ellipse, minimum width=8em, minimum height=4em, node distance=3cm},
+    confounder/.style = {cloud, draw=blue, fill=lightblue},
+    covariate/.style = {block, draw=green, fill=lightgreen},
+    outcome/.style = {block, draw=orange, fill=yellow!50},
+    treatment/.style = {block, draw=brown, fill=brown!20}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+\node (X1) [covariate] {$X_1$};
+\node (X2) [covariate, right of=X1] {$X_2$};
+\node (T) [treatment, below of=X1] {$T$};
+\node (U) [confounder, above of=T, xshift=-1cm] {$U$};
+\node (Y) [outcome, below of=T] {$Y$};
+
+\path [line] (X1) -- (T);
+\path [line] (X2) -- (T);
+\path [line] (U) -- (T);
+\path [line] (U) -- (Y);
+\path [line, <->] (Y) -- (U);
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define coordinates for vertices
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (1,1);
+    \coordinate (C) at (2,0);
+    
+    % Draw the triangle
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    
+    % Label the vertices
+    \node at (A) [below right] {$v_3$};
+    \node at (B) [above right] {$v_2$};
+    \node at (C) [above left] {$v_1$};
+    
+    % Draw the directed edges
+    \draw[-{Latex[length=3mm]}] (A) -- node[midway, above] {$\psi_{(v_3,v_1)}$} (B);
+    \draw[-{Latex[length=3mm]}] (B) -- node[midway, below] {$\psi_{(v_2,v_3)}$} (C);
+    \draw[-{Latex[length=3mm]}] (C) -- node[midway, above] {$\psi_{(v_1,v_2)}$} (A);
+    
+    % Draw the complex plane labels
+    \node at (3,0) [right] {$\mathbf{C}_{v_1}$};
+    \node at (1,-1) [below] {$\mathbf{C}_{v_3}$};
+    \node at (-1,1) [left] {$\mathbf{C}_{v_2}$};
+    
+    % Draw the arrows for z1 and z1'
+    \draw[-{Latex[length=3mm]}, thick, black] (3.5,0) -- node[midway, above] {$z_1'$} (4.5,0);
+    \draw[-{Latex[length=3mm]}, dashed, blue] (4.5,0) -- node[midway, above] {$z_1 = \psi_C(z_1)$} (5.5,0);
+    
+    % Draw the arrows for z2 and z3
+    \draw[-{Latex[length=3mm]}, dashed, black] (1.5,1) -- node[midway, above] {$z_2 = \psi_{(v_1,v_2)}(z_1)$} (2.5,1);
+    \draw[-{Latex[length=3mm]}, dashed, black] (2.5,-1) -- node[midway, above] {$z_3 = \psi_{(v_2,v_3)}(z_2)$} (3.5,-1);
+    
+    % Draw the dotted boxes
+    \draw[dotted, thick] (0,-1) rectangle (1,1);
+    \draw[dotted, thick] (2,-1) rectangle (3,1);
+    \draw[dotted, thick] (4,-1) rectangle (5,1);
+    
+    % Add labels for the connections
+    \node at (6,1) [above] {$\psi_{v_1,v_2}$};
+    \node at (6,-1) [below] {$\psi_{v_2,v_3}$};
+    \node at (8,0) [right] {$\psi_C = \psi_{(v_3,v_1)} \circ \psi_{(v_2,v_3)} \circ \psi_{(v_1,v_2)}$};
+    
+    % Add labels for the angles
+    \node at (0.5,1.5) [above] {$\kappa_{v_2}$};
+    \node at (4.5,1.5) [above] {$\kappa_{v_1}$};
+    
+    % Add labels for the complex planes
+    \node at (3.5,0.5) [above] {$\mathbf{C}_{v_1}$};
+    \node at (1.5,0.5) [above] {$\mathbf{C}_{v_2}$};
+    \node at (2.5,-0.5) [below] {$\mathbf{C}_{v_3}$};
+    
+    % Add labels for the z values
+    \node at (1.5,1.5) [above] {$z_2$};
+    \node at (2.5,-1.5) [below] {$z_3$};
+    \node at (4.5,0.5) [above] {$z_1'$};
+    
+\end{tikzpicture}
+
+\end{document}

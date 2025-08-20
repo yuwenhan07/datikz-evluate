@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define coordinates for the vertices
+    \coordinate (A) at (-4, 4);
+    \coordinate (B) at (-3, 3);
+    \coordinate (C) at (-2, 2);
+    \coordinate (D) at (-1, 1);
+    \coordinate (E) at (0, 0);
+    \coordinate (F) at (1, 1);
+    \coordinate (G) at (2, 2);
+    \coordinate (H) at (3, 3);
+    \coordinate (I) at (4, 4);
+    
+    \coordinate (J) at (-4, 0);
+    \coordinate (K) at (-3, -1);
+    \coordinate (L) at (-2, -2);
+    \coordinate (M) at (-1, -3);
+    \coordinate (N) at (0, -4);
+    \coordinate (O) at (1, -3);
+    \coordinate (P) at (2, -2);
+    \coordinate (Q) at (3, -1);
+    \coordinate (R) at (4, 0);
+    
+    \coordinate (S) at (-2, -5);
+    \coordinate (T) at (-1, -6);
+    \coordinate (U) at (0, -7);
+    \coordinate (V) at (1, -6);
+    \coordinate (W) at (2, -5);
+    
+    % Draw edges
+    \draw (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- (G) -- (H) -- (I);
+    \draw (J) -- (K) -- (L) -- (M) -- (N) -- (O) -- (P) -- (Q) -- (R);
+    \draw (E) -- (S) -- (T) -- (U) -- (V) -- (W);
+    
+    % Label the vertices
+    \node at (A) [above] {$x_{12}$};
+    \node at (B) [above] {$/x_{12}$};
+    \node at (C) [above] {$x_1$};
+    \node at (D) [above] {$x_2$};
+    \node at (E) [above] {$x_3$};
+    \node at (F) [above] {$x_4$};
+    \node at (G) [above] {$x_5$};
+    \node at (H) [above] {$x_6$};
+    \node at (I) [above] {$x_7$};
+    \node at (J) [above] {$x_{11}$};
+    \node at (K) [above] {$x_{10}$};
+    \node at (L) [above] {$x_9$};
+    \node at (M) [above] {$x_8$};
+    \node at (N) [above] {$P_2$};
+    \node at (O) [above] {$x_4$};
+    \node at (P) [above] {$x_5$};
+    \node at (Q) [above] {$x_6$};
+    \node at (R) [above] {$x_7$};
+    \node at (S) [below] {$x_8$};
+    \node at (T) [below] {$x_9$};
+    \node at (U) [below] {$x_{10}$};
+    \node at (V) [below] {$x_{11}$};
+    \node at (W) [below] {$x_{12}$};
+    
+    % Label the path P12
+    \draw[->, dashed] (A) -- node[midway, above] {$P_{12}$} (B);
+\end{tikzpicture}
+
+\end{document}

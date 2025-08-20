@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = {$z$},
+            ylabel = {$t$},
+            ymin=-0.5, ymax=2,
+            xmin=-4, xmax=4,
+            domain=-4:4,
+            samples=100,
+            every axis plot post/.append style={ultra thick},
+            ]
+            \addplot [mark=none] {2^(1/(abs(x)^2))-1};
+            \node at (-3, 1) {$f(z)=2^{\frac{1}{|z|^2}-1}$};
+            \addplot [mark=none] {2^(-1/x)-1};
+            \node at (3, 1) {$f(z)=2^{-\frac{1}{z}-1}$};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Flux function $f$ considered in \S~\ref{Ss:nondifferentiabilityset}. Close to the origin, $f$ is strictly convex, but not uniformly convex. This flux function is $C^{\infty}(\mathbb{R})$, with all derivatives vanishing at the origin, but of course it is not analytic.}
+    \label{fig:flux_function}
+\end{figure}
+
+\end{document}

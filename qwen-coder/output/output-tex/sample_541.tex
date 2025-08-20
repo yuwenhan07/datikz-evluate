@@ -1,0 +1,46 @@
+To create a TikZ diagram illustrating the described scenario, we need to represent the graph \( W_5 \) (which is a wheel graph with 5 vertices) and highlight the troublesome slices \( S \) and \( T \). Here's a step-by-step guide to creating this diagram:
+
+1. **Define the vertices and edges of \( W_5 \)**:
+   - The central vertex is connected to all other vertices.
+   - The other vertices form a cycle.
+
+2. **Highlight the troublesome slices \( S \) and \( T \)**:
+   - \( S \) and \( T \) are represented by specific edges.
+
+3. **Use colors to distinguish between \( S \) and \( T \)**:
+   - \( S \) in red.
+   - \( T \) in blue.
+
+Here is the TikZ code to achieve this:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usepackage{xcolor}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define the central node
+    \node[circle, fill=black] (C) at (0,0) {};
+    
+    % Define the outer nodes
+    \foreach \i [count=\j from 1] in {0,60,120,180,240} {
+        \node[circle, draw] (V\j) at (\i:1) {};
+    }
+    
+    % Draw edges connecting the central node to the outer nodes
+    \foreach \j in {1,...,5} {
+        \draw[thick] (C) -- (V\j);
+    }
+    
+    % Draw the outer cycle
+    \draw[thick] (V1) -- (V2) -- (V3) -- (V4) -- (V5) -- cycle;
+    
+    % Highlight the troublesome slices S and T
+    \draw[thick, red] (V1) -- (V2); % Edge for slice S
+    \draw[thick, blue] (V3) -- (V4); % Edge for slice T
+    
+    % Label the nodes
+    \foreach \j in {1,...,5} {
+        \node at ($(V\j)+(0,-0.2)$) {$v_\j$};
+    }
+    \node at ($(C)+(0,-0.2)$) {$

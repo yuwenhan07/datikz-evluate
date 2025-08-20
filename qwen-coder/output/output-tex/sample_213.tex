@@ -1,0 +1,49 @@
+Certainly! Below is a TikZ LaTeX code snippet that visualizes the described scenario:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+
+% Define colors
+\colorlet{blackbox}{black}
+\colorlet{graybucket}{gray!50}
+\colorlet{whitebucket}{white}
+\colorlet{querymark}{blue!50}
+
+% Draw the grid
+\draw[step=1cm, thin] (0,0) grid (4,3);
+
+% Label the grid points
+\node at (0.5,0.5) {1};
+\node at (1.5,0.5) {2};
+\node at (2.5,0.5) {3};
+\node at (3.5,0.5) {4};
+
+\node at (0.5,1.5) {5};
+\node at (1.5,1.5) {6};
+\node at (2.5,1.5) {7};
+\node at (3.5,1.5) {8};
+
+\node at (0.5,2.5) {9};
+\node at (1.5,2.5) {10};
+\node at (2.5,2.5) {11};
+\node at (3.5,2.5) {12};
+
+% Mark the queried positions with blue circles
+\fill[querymark] (0.5,0.5) circle (0.1);
+\fill[querymark] (2.5,1.5) circle (0.1);
+\fill[querymark] (3.5,2.5) circle (0.1);
+
+% Mark the black box
+\fill[blackbox] (1.5,1.5) rectangle (2.5,2.5);
+
+% Color the buckets
+\fill[graybucket] (0,0) rectangle (1,1); % Gray bucket 1
+\fill[graybucket] (1,1) rectangle (2,2); % Gray bucket 2
+\fill[graybucket] (2,2) rectangle (3,3); % Gray bucket 3
+
+\fill[whitebucket] (1,0) rectangle (2,1); % White bucket 4

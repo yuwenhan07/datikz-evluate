@@ -1,0 +1,40 @@
+To create a TikZ diagram illustrating the species coupling in case of a coinciding interface, we can use the following LaTeX code:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    cell/.style={draw, rectangle, minimum size=1cm},
+    interface/.style={dashed, thick},
+    species/.style={fill=blue!20},
+    empty/.style={species, fill=white},
+    full/.style={species, fill=blue!60},
+    arrow/.style={thick, ->, >=Stealth[]}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=1cm]
+
+    % Nodes for cells
+    \node[cell] (K1) {Cell $K_1$};
+    \node[cell] (K2) [below right=of K1] {Cell $K_2$};
+
+    % Interface
+    \draw[interface] (K1.east) -- node[midway, above] {$\partial K_1 \cap \partial K_2$} (K2.west);
+
+    % Species nodes
+    \node[species, left=of K1.south, yshift=-1cm] (SA1) {Species $\mathfrak{A}$};
+    \node[species, right=of K2.south, yshift=-1cm] (SB2) {Species $\mathfrak{B}$};
+
+    % Empty and Full species nodes within K2
+    \node[empty, below=of SA1, yshift=-1cm] (SA1_empty) {};
+    \node[full, below=of SB2, yshift=-1cm] (SB2_full) {};
+
+    % Arrows representing coupling
+    \draw[arrow] (SA1_empty) -- node[midway, above] {Coupling} (SB2_full);
+    \draw[arrow] (SA1_empty) -- node[midway, below] {Agglomeration} (SA1_empty.west |- K1.west);
+    \draw[arrow] (SB2_full) -- node[midway, above] {Agglomeration} (SB2_full.east |- K2.east);
+
+    % Exploded view
+    \draw[dotted] (K1.north west) -- (K1

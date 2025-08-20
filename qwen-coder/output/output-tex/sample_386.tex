@@ -1,0 +1,45 @@
+Certainly! Below is a TikZ LaTeX code to generate a Hasse diagram for the poset of discontinuity points, assuming you have defined the elements \( u \) and \( v \) as required.
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+% Define custom arrows for Hasse diagram
+\tikzset{
+    >=stealth,
+    level 1/.style={sibling distance=3cm},
+    level 2/.style={sibling distance=2cm},
+    level 3/.style={sibling distance=1cm},
+}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[level distance=2cm]
+        % Nodes representing elements of the poset
+        \node (root) {u};
+        
+        % Level 1 nodes
+        \node [below left of=root] (child1) {u_1};
+        \node [below right of=root] (child2) {u_2};
+
+        % Level 2 nodes
+        \node [below left of=child1] (grandchild1) {u_{11}};
+        \node [below right of=child1] (grandchild2) {u_{12}};
+        \node [below left of=child2] (grandchild3) {u_{21}};
+        \node [below right of=child2] (grandchild4) {u_{22}};
+
+        % Draw edges between nodes
+        \draw[->] (root) -- (child1);
+        \draw[->] (root) -- (child2);
+        \draw[->] (child1) -- (grandchild1);
+        \draw[->] (child1) -- (grandchild2);
+        \draw[->] (child2) -- (grandchild3);
+        \draw[->] (child2) -- (grandchild4);
+
+        % Label edges with ≤ relation
+        \path[->] node[midway, above] {$\leq$} (root) edge (child1);
+        \path[->] node[midway, below] {$\leq$} (root) edge (child2);
+        \path[->] node[midway, above] {$\leq$} (child1) edge (grandchild1);
+        \path[->] node[midway, below] {$

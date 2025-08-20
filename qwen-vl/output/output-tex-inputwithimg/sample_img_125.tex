@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the AdS-Vaidya spacetime diagram
+        \draw (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+        \draw[thick] (3.8,3.8) -- (0.2,0.2);
+        
+        % Add a wavy line at the top right corner
+        \draw[decorate, decoration={snake, amplitude=1pt, segment length=5pt}] (3.9,3.9) -- (4,4);
+        
+        % Add a label for the integral
+        \node at (3.5, 3.5) {$\int dx O(x,t)$};
+    \end{tikzpicture}
+    
+    \caption{Vaidya geometry. Right side boundary denotes the asymptotic boundary of the AdS-Vaidya spacetime. Outside the mass shell is the black hole geometry. Inside the mass shell is Vacuum AdS in Poincaré patch.}
+    \label{fig:vaidya_geometry}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,39 @@
+Certainly! Below is an example of how you can create a TikZ diagram to illustrate estimated partitions over time based on both the independent Chinese Restaurant Process (CRP) model and your temporally-dependent random partitions model. This example will include two plots side by side, with different color schemes representing the cluster labels.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define colors for clusters
+    \definecolor{cluster1}{RGB}{255, 99, 71} % Red
+    \definecolor{cluster2}{RGB}{54, 162, 235} % Blue
+    \definecolor{cluster3}{RGB}{255, 206, 86} % Yellow
+    \definecolor{cluster4}{RGB}{75, 192, 192} % Teal
+
+    % Time steps
+    \def\timesteps{5}
+
+    % Independent CRP Model Plot
+    \begin{scope}[xshift=-3cm]
+        \draw[thick,->] (0,0) -- (\timesteps,0);
+        \foreach \i in {1,...,\timesteps}{
+            \fill[cluster\i] (0.5*\i-0.25,-0.1) rectangle (0.5*\i+0.25,0.1);
+        }
+        \node at (-1,-0.2) [below] {Independent CRP};
+        \foreach \i in {1,...,\timesteps}{
+            \node at (0.5*\i, -0.3) [below] {\i};
+        }
+    \end{scope}
+
+    % Temporally-Dependent Random Partitions Model Plot
+    \begin{scope}[xshift=3cm]
+        \draw[thick,->] (0,0) -- (\timesteps,0);
+        \foreach \i in {1,...,\timesteps}{
+            \ifnum\i=1
+                \fill[cluster1] (0.5*\i-0.25,-0.1) rectangle (0.5*\i+0.25,0.1);
+            \else
+                \pgfmathsetmacro{\

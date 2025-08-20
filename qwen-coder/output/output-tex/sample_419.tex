@@ -1,0 +1,27 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Define the vertices
+\coordinate (v1) at (1,0);
+\coordinate (v2) at (0,1);
+\coordinate (v3) at (-1,-1);
+
+% Draw the edges
+\draw[-Stealth] (v1) -- (v2) node[midway, above right] {$e_{12}$};
+\draw[-Stealth] (v2) -- (v3) node[midway, below left] {$e_{23}$};
+\draw[-Stealth] (v3) -- (v1) node[midway, below right] {$e_{31}$};
+
+% Label the vertices
+\node[above right] at (v1) {$(1,0)$};
+\node[left] at (v2) {$(0,1)$};
+\node[right] at (v3) {(-1,-1)};
+
+% Draw the axes
+\draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
+\draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};
+
+\end{tikzpicture}
+\end{document}

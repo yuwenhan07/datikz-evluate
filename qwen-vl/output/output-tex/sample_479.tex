@@ -1,0 +1,40 @@
+It seems like you're comparing two different types of multi-agent Markov Decision Processes (MDPs) with respect to how agents maintain their connections or visibility.
+
+### Left Diagram: Locally Interdependent Multi-Agent MDP
+
+In this type of MDP, the communication structure is dynamic and based on the visibility of agents. Here’s what it means:
+
+- **Visibility**: An agent can "see" another agent if they are within a certain radius.
+- **Reconnection**: When an agent leaves the visibility range of another agent, they do not lose contact permanently. Instead, as soon as the agent re-enters the visibility range of the other agent, they reconnect and resume communication.
+
+This model allows for a more flexible and adaptive communication network where agents can dynamically form and break connections based on their spatial proximity.
+
+### Right Diagram: Cutoff Multi-Agent MDP
+
+In contrast, the Cutoff Multi-Agent MDP has a more rigid communication structure:
+
+- **Visibility**: Similar to the Locally Interdependent MDP, agents have a visibility range.
+- **Reconnection**: However, once an agent leaves the visibility range of another agent, they cannot reconnect even if they later re-enter the visibility range. This means that the communication link between these agents is broken permanently.
+
+This model results in a more static and less adaptable communication network, where the loss of visibility leads to permanent disconnection.
+
+### Key Differences
+
+1. **Dynamic vs. Static Connections**:
+   - In the Locally Interdependent MDP, connections are dynamic and can be re-established.
+   - In the Cutoff MDP, once a connection is lost, it remains lost.
+
+2. **Adaptability**:
+   - The Locally Interdependent MDP is more adaptable because it allows for reconnections based on spatial proximity.
+   - The Cutoff MDP is less adaptable due to the permanent nature of disconnections.
+
+3. **Complexity**:
+   - The Locally Interdependent MDP might be more complex to implement but offers greater flexibility.
+   - The Cutoff MDP is simpler but may lead to less efficient communication networks.
+
+### Applications
+
+- **Locally Interdependent MDP**: Useful in scenarios where agents need to dynamically adjust their communication based on their environment, such as in mobile ad hoc networks or dynamic teams.
+- **Cutoff MDP**: More suitable for environments where the loss of communication is not recoverable, such as in some distributed systems or certain types of sensor networks.
+
+Understanding these differences can help in choosing the appropriate model depending on the specific requirements of your application.

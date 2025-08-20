@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+
+        % Nodes for outer-cycles
+        \node (1) at (0, 2) {};
+        \node (2) at (1.5, 2) {};
+        \node (3) at (3, 2) {};
+        \node (4) at (4.5, 2) {};
+        \node (5) at (6, 2) {};
+        \node (6) at (7.5, 2) {};
+        \node (7) at (9, 2) {};
+        \node (8) at (10.5, 2) {};
+        \node (9) at (12, 2) {};
+        \node (10) at (13.5, 2) {};
+        
+        % Nodes for inner-cycle
+        \node (11) at (2, -2) {};
+        \node (12) at (4, -2) {};
+        \node (13) at (6, -2) {};
+
+        % Draw edges for outer-cycles
+        \draw (1) -- (2);
+        \draw (2) -- (3);
+        \draw (3) -- (4);
+        \draw (4) -- (5);
+        \draw (5) -- (6);
+        \draw (6) -- (7);
+        \draw (7) -- (8);
+        \draw (8) -- (9);
+        \draw (9) -- (10);
+        \draw (10) -- (1);
+
+        % Draw edges for inner-cycle
+        \draw (11) -- (12);
+        \draw (12) -- (13);
+        \draw (13) -- (11);
+
+        % Draw edge connecting inner and outer cycles
+        \draw (5) -- (11);
+
+    \end{tikzpicture}
+    \caption{An outerplanar graph with the specified properties}
+\end{figure}
+
+\end{document}

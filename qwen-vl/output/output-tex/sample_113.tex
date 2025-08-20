@@ -1,0 +1,9 @@
+python
+import gym
+from stable_baselines3 import PPO
+
+# Initialize the environment
+env = gym.make('CartPole-v1')
+
+# Initialize the policy model
+model = PPO("MlpPolicy", env)

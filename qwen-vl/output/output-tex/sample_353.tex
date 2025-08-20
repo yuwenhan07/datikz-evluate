@@ -1,0 +1,27 @@
+In the context of distributed heating (DH) grid models, steady-state analysis involves understanding the behavior of fluid flow and temperature distribution within the network. Here's a detailed explanation of the key components mentioned:
+
+### State Variables:
+1. **Node-Bound Variables**:
+   - **Fluid Temperatures ($T_i$)**: These represent the temperature at each node or junction in the grid.
+   - **Pressures ($p_i$)**: These represent the pressure at each node.
+
+2. **Edge-Bound Variables**:
+   - **Mass Flows ($\dot{m}_{ij}$)**: These represent the rate of mass flow through each edge (pipe segment) connecting two nodes. The sign of these mass flows is crucial for determining the direction of flow.
+
+### Orientation and Mass Flow Direction:
+- The orientation of the edges is indicated by a thick arrow, which shows the direction of the mass flow.
+- The sign of the mass flow $\dot{m}_{ij}$ determines whether the flow is entering or leaving a particular node. If $\dot{m}_{ij}$ is positive, it indicates that the mass flow is entering the node from the upstream side of the edge. Conversely, if $\dot{m}_{ij}$ is negative, it indicates that the mass flow is leaving the node towards the downstream side of the edge.
+
+### Temperature Localization:
+- **Inlet Temperature ($T_{inlet}^{start}$)**: This is the temperature at the start of the pipe where the fluid enters the system.
+- **Outlet Temperature ($T_{outlet}^{end}$)**: This is the temperature at the end of the pipe where the fluid exits the system.
+- **Temperature Distribution**: The temperature at any point along the pipe depends on the mass flow direction. For positive mass flows (where $\dot{m}_{ij} > 0$), the temperature will be higher above the thick arrow (indicating entry into the node). For negative mass flows (where $\dot{m}_{ij} < 0$), the temperature will be lower below the thick arrow (indicating exit from the node).
+
+### Example:
+Consider a simple pipe segment with an inlet and an outlet. If the mass flow $\dot{m}_{ij}$ is positive, it means that the fluid is entering the node from the left side of the pipe (as indicated by the thick arrow pointing to the right). In this case, the temperature at the inlet would be higher than the temperature at the outlet because the fluid is being heated as it flows through the pipe. Conversely, if the mass flow $\dot{m}_{ij}$ is negative, it means that the fluid is exiting the node towards the right side of the pipe. In this case, the temperature at the outlet would be higher than the temperature at the inlet because the fluid is losing heat as it flows out of the pipe.
+
+### Summary:
+- **Positive Mass Flow ($\dot{m}_{ij} > 0$)**: Indicates entry into the node, typically associated with higher temperatures above the thick arrow.
+- **Negative Mass Flow ($\dot{m}_{ij} < 0$)**: Indicates exit from the node, typically associated with lower temperatures below the thick arrow.
+
+Understanding these relationships is crucial for modeling and analyzing the performance of DH grids, ensuring efficient heat transfer and accurate temperature control throughout the network.

@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = {$x$},
+            ylabel = {$f(x)$},
+            ymin=-0.5, ymax=1.5,
+            xmin=-1.5, xmax=3.5,
+            xtick={-1, 0, 1, 2.5},
+            ytick={0.5},
+            extra x ticks={-0.5, 0.5, 1.5},
+            extra x tick labels={$-\frac{\eta}{2}$, $\frac{\eta}{2}$, $\eta$},
+            extra y tick labels={$\frac{1}{2}$},
+            extra tick style={grid=major, dashed},
+            domain=-1.5:2.5,
+            samples=100,
+            smooth,
+            no markers,
+            thick,
+            every axis plot/.append style={
+                mark options={fill=white},
+                mark size=1pt,
+                mark=*
+            }
+        ]
+            \addplot [red] {1/2 - exp(1)/2*x} 
+                coordinates {(-0.5, 1/2 - exp(1)/2*(-0.5)) (0.5, 1/2 - exp(1)/2*0.5)};
+            \addplot [green] {1/2 - exp(1)/2*x} 
+                coordinates {(0.5, 1/2 - exp(1)/2*0.5) (1.5, 1/2 - exp(1)/2*1.5)};
+            \addplot [blue] {2.5-x} 
+                coordinates {(1.5, 2.5-1.5) (2.5, 2.5-2.5)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Example of a smooth convex function \( f \) defined on \( ]-\frac{\eta}{2}, a[ \), satisfying \( f(r) = \frac{1}{2} - \frac{e}{2} r \) on \( ]-\frac{\eta}{2}, \frac{\eta}{2}[ \) and \( f(r) = a - r \) on \( ]\eta, a[ \).}
+    \label{fig:smooth_convex_function}
+\end{figure}
+
+\end{document}

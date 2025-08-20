@@ -1,0 +1,46 @@
+To create a TikZ diagram that represents the network described, we need to follow these steps:
+
+1. Define the nodes and their positions.
+2. Draw the edges between the nodes.
+3. Label the nodes and edges with the appropriate values.
+
+Here is the TikZ code to generate the diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, every node/.style={circle, draw, fill=blue!20, text width=1em, align=center}]
+
+    % Nodes
+    \node (P1) {0};
+    \node (P2) [right of=P1] {1};
+    \node (P3) [below right of=P2] {2};
+    \node (P4) [below right of=P1] {3};
+    \node (P5) [below left of=P3] {4};
+    \node (P6) [below left of=P2] {5};
+
+    % Edges
+    \draw (P1) -- (P2);
+    \draw (P2) -- (P3);
+    \draw (P3) -- (P5);
+    \draw (P1) -- (P4);
+    \draw (P4) -- (P5);
+    \draw (P2) -- (P6);
+
+    % Labels
+    \node [above left of=P1] {0};
+    \node [above right of=P2] {1};
+    \node [below right of=P3] {2};
+    \node [below right of=P1] {3};
+    \node [below left of=P3] {4};
+    \node [below left of=P2] {5};
+
+    % Throughput values
+    \node [below of=P1, yshift=-1cm] {$\frac{29}{55}$};
+    \node [below of=P2, yshift=-1cm] {$\frac{29}{55}$};
+    \node [below of=P3, yshift=-1cm] {$\frac{29}{55}$};
+    \node [below of=P4, yshift=-1cm] {$\frac{29}{55}$};
+    \node [below of=P5, yshift=-1cm] {$\frac{29}{

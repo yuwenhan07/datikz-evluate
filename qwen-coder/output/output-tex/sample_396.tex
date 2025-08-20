@@ -1,0 +1,44 @@
+Certainly! To create a visual representation of the bijection \(\psi\) between \(\mathcal{P}^d_n\) (the set of all \(d\)-dimensional polytopes with \(n\) vertices) and \(\mathcal{A}^d_n\) (the set of all \(d\)-dimensional simplicial complexes with \(n\) vertices), we can use TikZ to draw examples of both sets.
+
+Here is an example of how you might represent this bijection in TikZ:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+% Define styles for different shapes
+\tikzset{
+  vertex/.style={circle, fill=black, inner sep=2pt},
+  edge/.style={thick},
+  face/.style={fill=blue!30, opacity=0.7}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+  % Draw a 2-dimensional polytope (triangle)
+  \node[vertex] (v1) at (0,0) {};
+  \node[vertex] (v2) at (2,0) {};
+  \node[vertex] (v3) at (1,2) {};
+  
+  \draw[edge] (v1) -- (v2);
+  \draw[edge] (v2) -- (v3);
+  \draw[edge] (v3) -- (v1);
+
+  % Label the vertices
+  \node[below left] at (v1) {1};
+  \node[below right] at (v2) {2};
+  \node[above] at (v3) {3};
+
+  % Draw a 2-dimensional simplicial complex (triangulation of a square)
+  \node[vertex] (w1) at (4,0) {};
+  \node[vertex] (w2) at (6,0) {};
+  \node[vertex] (w3) at (5,2) {};
+  \node[vertex] (w4) at (5,-2) {};
+
+  \draw[edge] (w1) -- (w2);
+  \draw[edge] (w2) -- (w3);
+  \draw[edge] (w3) -- (w4);
+  \draw[edge] (w4) -- (w1);
+  \draw[edge] (w1) -- (w3);
+  \draw[edge

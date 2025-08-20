@@ -1,0 +1,19 @@
+python
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Set parameters
+n = 300
+ell_n_over_n = (np.log(n)) ** 2.5
+r = 2
+
+# Generate random data for demonstration purposes
+np.random.seed(42)
+X = np.random.randn(n, r)
+
+# Create a pair plot
+plt.figure(figsize=(10, 10))
+sns.pairplot(X, diag_kind='kde')
+plt.title(f'Pair Plot of Embedding \(\hat{X}\) with rank(p) = {r}')
+plt.show()

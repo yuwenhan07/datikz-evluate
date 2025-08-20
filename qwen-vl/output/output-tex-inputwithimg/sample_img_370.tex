@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm, auto]
+        % Define nodes
+        \node[draw, circle] (R0) {$\mathcal{R}_0$};
+        \node[draw, circle, below of=R0] (R1) {$\mathcal{R}_1$};
+        \node[draw, rectangle, below of=R1] (q1) {$q_1$};
+        \node[draw, circle, below of=q1] (R0') {$\mathbf{R}_0$};
+        \node[draw, circle, right of=R0', node distance=3cm] (R1') {$\mathbf{R}_1'$};
+        \node[draw, circle, right of=R1', node distance=3cm] (R2') {$\mathbf{R}_2'$};
+        \node[draw, circle, below of=R0', node distance=2cm] (R0'') {$\mathbf{R}_0''$};
+        
+        % Draw edges
+        \draw[->] (R0) -- (R1);
+        \draw[->] (R1) -- (q1);
+        \draw[->] (q1) -- (R0');
+        \draw[->] (R0') -- (R1');
+        \draw[->] (R0') -- (R2');
+        \draw[->] (R1') -- (R0'');
+        \draw[->] (R2') -- (R0'');
+        
+        % Draw plus signs
+        \node[draw, circle, left of=R0', node distance=2cm] (plus1) {$+$};
+        \node[draw, circle, right of=R0', node distance=2cm] (plus2) {$+$};
+        \node[draw, circle, left of=R1', node distance=2cm] (plus3) {$+$};
+        \node[draw, circle, right of=R1', node distance=2cm] (plus4) {$+$};
+        \node[draw, circle, left of=R2', node distance=2cm] (plus5) {$+$};
+        \node[draw, circle, right of=R2', node distance=2cm] (plus6) {$+$};
+        
+        \draw[->] (R0') -- (plus1);
+        \draw[->] (R0') -- (plus2);
+        \draw[->] (plus1) -- (q_{4i}^{(0)});
+        \draw[->] (plus1) -- (q_{4i+1}^{(1)});
+        \draw[->] (plus2) -- (q_{4i+2}^{(0)});
+        \draw[->] (plus2) -- (q_{4i+3}^{(1)});
+        \draw[->] (plus3) -- (q_{4i+1}^{(0)});
+        \draw[->] (plus3) -- (q_{4i+1}^{(1)});
+        \draw[->] (plus4) -- (q_{4i+2}^{(0)});
+        \draw[->] (plus4) -- (q_{4i+2}^{(1)});
+        \draw[->] (plus5) -- (q_{4i+2}^{(0)});
+        \draw[->] (plus5) -- (q_{4i+2}^{(1)});
+        \draw[->] (plus6) -- (q_{4i+3}^{(0)});
+        \draw[->] (plus6) -- (q_{4i+3}^{(1)});
+        
+        % Draw boxes
+        \node[draw, rectangle, below of=q1, node distance=1cm] (box1) {$q_{4i}^{(0)}$};
+        \node[draw, rectangle, right of=box1, node distance=1cm] (box2) {$q_{4i+1}^{(1)}$};
+        \node[draw, rectangle, right of=box2, node distance=1cm] (box3) {$q_{4i+1}^{(0)}$};
+        \node[draw, rectangle, right of=box3, node distance=1cm] (box4) {$q_{4i+1}^{(1)}$};
+        \node[draw, rectangle, right of=box4, node distance=1cm] (box5) {$q_{4i+2}^{(0)}$};
+        \node[draw, rectangle, right of=box5, node distance=1cm] (box6) {$q_{4i+2}^{(1)}$};
+        \node[draw, rectangle, right of=box6, node distance=1cm] (box7) {$q_{4i+3}^{(0)}$};
+        \node[draw, rectangle, right of=box7, node distance=1cm] (box8) {$q_{4i+3}^{(1)}$};
+        
+        \draw[->] (q1) -- (box1);
+        \draw[->] (q1) -- (box2);
+        \draw[->] (box1) -- (q_{4i}^{(0)});
+        \draw[->] (box2) -- (q_{4i+1}^{(1)});
+        \draw[->] (box3) -- (q_{4i+1}^{(0)});
+        \draw[->] (box4) -- (q_{4i+1}^{(1)});
+        \draw[->] (box5) -- (q_{4i+2}^{(0)});
+        \draw[->] (box6) -- (q_{4i+2}^{(1)});
+        \draw[->] (box7) -- (q_{4i+3}^{(0)});
+        \draw[->] (box8) -- (q_{4i+3}^{(1)});
+        
+        % Draw q'_i
+        \node[draw, rectangle, below of=box1, node distance=1cm] (q1p) {$q_{4i}^{'(0)}$};
+        \node[draw, rectangle, right of=q1p, node distance=1cm] (q2p) {$q_{4i+1}^{'(1)}$};
+        \node[draw, rectangle, right of=q2p, node distance=1cm] (q3p) {$q_{4i+1}^{'(0)}$};
+        \node[draw, rectangle, right of=q3p, node distance=1cm] (q4p) {$q_{4i+1}^{'(1)}$};
+        \node[draw, rectangle, right of=q4p, node distance=1cm] (q5p) {$q_{4i+2}^{'(0)}$};
+        \node[draw, rectangle, right of=q5p, node distance=1cm] (q6p) {$q_{4i+2}^{'(1)}$};
+        \node[draw, rectangle, right of=q6p, node distance=1cm] (q7p) {$q_{4i+3}^{'(0)}$};
+        \node[draw, rectangle, right of=q7p, node distance=1cm] (q8p) {$q_{4i+3}^{'(1)}$};
+        
+        \draw[->] (q1) -- (q1p);
+        \draw[->] (q2) -- (q2p);
+        \draw[->] (q3) -- (q3p);
+        \draw[->] (q4) -- (q4p);
+        \draw[->] (q5) -- (q5p);
+        \draw[->] (q6) -- (q6p);
+        \draw[->] (q7) -- (q7p);
+        \draw[->] (q8) -- (q8p);
+        
+        % Draw R'_i
+        \node[draw, circle, below of=q1p, node distance=1cm] (R1p) {$\mathbf{R}_1'$};
+        \node[draw, circle, right of=R1p, node distance=3cm] (R2p) {$\mathbf{R}_2'$};
+        
+        \draw[->] (q1p) -- (R1p);
+        \draw[->] (q2p) -- (R1p);
+        \draw[->] (q3p) -- (R1p);
+        \draw[->] (q4p) -- (R1p);
+        \draw[->] (q5p) -- (R2p);
+        \draw[->] (q6p) -- (R2p);
+        \draw[->] (q7p) -- (R2p);
+        \draw[->] (q8p) -- (R2p);
+    \end{tikzpicture}
+    \caption{A high-level scheme for sequential readout of word size $b=2$, an extension to the scheme in \cref{fig: unconditional_optimal_layout}.}
+    \label{fig:sequential_readout_scheme}
+\end{figure}
+
+\end{document}

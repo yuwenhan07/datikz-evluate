@@ -1,0 +1,41 @@
+To create a Penrose diagram for the described FRW solution using TikZ in LaTeX, we need to visualize the different phases and their characteristics. Here's a step-by-step guide to creating this diagram:
+
+1. **Understand the Phases**:
+   - **Phase I**: Accelerating epochs with negative spatial curvature.
+   - **Phase II-A**: Negative acceleration, negligible spatial curvature, driven by a scalar field.
+   - **Phase II-B**: Negligible acceleration, significant spatial curvature, \(\Omega_k\) converging to a non-zero value.
+
+2. **Set Up the TikZ Diagram**:
+   - Use a timeline to represent the different phases.
+   - Indicate the characteristics of each phase with appropriate labels and symbols.
+
+Here's the TikZ code to generate the Penrose diagram:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Timeline
+    \draw[thick] (0,0) -- (6,0);
+    \node at (0,-0.5) {Phase I};
+    \node at (2,-0.5) {Phase II-A};
+    \node at (4,-0.5) {Phase II-B};
+
+    % Acceleration indicators
+    \draw[dashed, thick, ->] (1.5,0.5) -- (1.5,-0.5);
+    \draw[dashed, thick, <-] (3.5,0.5) -- (3.5,-0.5);
+
+    % Spatial curvature indicators
+    \draw[dotted, thick, ->] (2.5,0.5) -- (2.5,-0.5);
+    \draw[dotted, thick, <->] (4.5,0.5) -- (4.5,-0.5);
+
+    % Labels
+    \node at (1,-1) {\textbf{TCC Violating}};
+    \node at (3,-1) {\textbf{Negligible Acceleration}};
+    \node at (5,-1) {\textbf{Significant Spatial Curvature}};
+
+    % Scalar field indicator
+    \node at (2,-1) {\textbf{Scalar Field Dominant}};
+    \node at (4,-1) {$\Omega_k \to

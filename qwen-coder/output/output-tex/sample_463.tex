@@ -1,0 +1,33 @@
+To create a TikZ diagram representing the described braiding setup, we need to visualize the three Majorana boxes connected by tunneling lines, along with two quantum dots (QD1 and QD2) coupled to these Majorana boxes. Below is the TikZ code that accomplishes this:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    majoranabox/.style={draw, rectangle, minimum size=2cm, node distance=2cm},
+    qdnode/.style={circle, draw, fill=blue!20, minimum size=1cm},
+    arrow/.style={thick,->,>=stealth'},
+}
+
+\begin{document}
+\begin{tikzpicture}[auto]
+
+% Define the nodes for the Majorana boxes
+\node[majoranabox] (M1) at (0,0) {Box 1};
+\node[majoranabox] (M2) at (3,0) {Box 2};
+\node[majoranabox] (M3) at (6,0) {Box 3};
+
+% Define the nodes for the quantum dots
+\node[qdnode] (QD1) at (-1,-2) {QD1};
+\node[qdnode] (QD2) at (7,-2) {QD2};
+
+% Draw the tunneling lines between the Majorana boxes
+\draw[arrow] (M1.east) -- node[midway, above] {$t_{12}$} (M2.west);
+\draw[arrow] (M2.east) -- node[midway, above] {$t_{13}$} (M3.west);
+
+% Draw the tunneling lines between the quantum dots and the Majorana boxes
+\draw[arrow] (QD1) -- node[midway, below] {$t_{QD1M1}$} (M1.west);
+\draw[arrow] (QD1) -- node[midway, below] {$t_{QD1M2}$} (M2.west);
+\draw[arrow] (QD2) -- node[midway, below] {$t_{QD2M2}$} (M2.east);
+\draw[arrow] (QD2) -- node[midway, below] {$t_{Q

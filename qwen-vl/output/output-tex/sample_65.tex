@@ -1,0 +1,26 @@
+In the context of raster scan order, the bits or blocks are processed in a specific sequence that is commonly used in image processing and computer graphics. Let's break down the notation and the concept:
+
+1. **Raster Scan Order**: This refers to the way data is accessed in a grid-like pattern, typically from left to right and top to bottom, similar to how you would read a page in a book.
+
+2. **Bits ($b_i$)**: These represent individual elements or components of a larger structure, such as pixels in an image. The subscript \( i \) denotes the position or index of the bit within its group.
+
+3. **Blocks ($B_n^i$)**: These are groups of bits or pixels that are processed together. The superscript \( n \) represents the size of the block (e.g., \( B_8^i \) could mean an 8-bit block), and the subscript \( i \) indicates the specific block within the larger structure.
+
+### Example:
+Consider an image with a resolution of 8x8 pixels. Each pixel can be represented by 8 bits (a byte). If we want to process these pixels using a raster scan order, we would process them row by row and column by column.
+
+- For a single byte (8 bits), the bits might be indexed as \( b_0, b_1, b_2, \ldots, b_7 \).
+- If we have multiple bytes (blocks), say 4 bytes per block (each block being 32 bits), then each block could be indexed as \( B_4^i \).
+
+### Processing Order:
+If we start at the top-left corner and move right and then down, the order of processing for a 4-byte block (32 bits) would be:
+\[ B_4^1 = [b_0, b_1, b_2, b_3, b_4, b_5, b_6, b_7, b_8, b_9, b_{10}, b_{11}, b_{12}, b_{13}, b_{14}, b_{15}, b_{16}, b_{17}, b_{18}, b_{19}, b_{20}, b_{21}, b_{22}, b_{23}, b_{24}, b_{25}, b_{26}, b_{27}, b_{28}, b_{29}, b_{30}, b_{31}] \]
+
+This means the first bit \( b_0 \) is the least significant bit (LSB) of the first byte, and the last bit \( b_{31} \) is the most significant bit (MSB) of the fourth byte.
+
+### Summary:
+- \( b_i \): Represents an individual bit or pixel.
+- \( B_n^i \): Represents a block of \( n \) bits or pixels, where \( i \) specifies the block within the larger structure.
+- Raster scan order processes data from left to right and top to bottom, ensuring a sequential and predictable access pattern.
+
+This approach is particularly useful in image processing algorithms like convolution, filtering, and compression, where the data needs to be processed in a consistent and efficient manner.

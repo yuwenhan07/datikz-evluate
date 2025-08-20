@@ -1,0 +1,31 @@
+To illustrate the described algorithm using TikZ in LaTeX, we can create a visual representation that captures each step of the process. Below is the TikZ code to generate such a diagram:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+\node (init) [startstop] {Initialize $u_0 \in \mathcal{M}$};
+\node (iterate) [process, below of=init] {$u_t \in \mathcal{M}$};
+\node (space) [process, below of=iterate, yshift=-1cm] {$\mathcal{T}_t$};
+\node (approximate) [process, below of=space, yshift=-1cm] {$P_t^n g_t \in \mathcal{T}_t$};
+\node (update) [process, below of=approximate, yshift=-1cm] {$\bar{u}_{t+1} = u_t - s_t P_t^n g_t$};
+\node (retract) [process, below of=update, yshift=-1cm] {$u_{t+1} \in \mathcal{M}$};
+\node (end) [startstop, below of=retract, yshift=-1cm] {Stop};
+
+% Draw arrows
+\draw [arrow] (init) -- (iterate);
+\draw [arrow] (iterate) -- (space);
+\draw [arrow] (space) -- (approximate);
+\draw [arrow] (approximate) -- (update);
+\draw [arrow] (update) -- (retract);
+\draw [arrow] (retract) -- (end);
+
+\end{

@@ -1,0 +1,38 @@
+To create a TikZ diagram illustrating the stencil for the diffusion and advection cases, we can use the following code:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{matrix}
+
+\tikzset{
+    node style/.style={draw=black, fill=white, circle, inner sep=2pt},
+    line style/.style={thick, ->, >=stealth'}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=1cm]
+    \matrix (diffusion) [matrix of nodes, row sep=1cm, column sep=1cm] {
+        & & V_{i-1,j} & V_i & V_{i+1,j} & \\
+        & & V_{i-1,j-1} & V_{i,j-1} & V_{i+1,j-1} & \\
+        & & V_{i-1,j+1} & V_{i,j+1} & V_{i+1,j+1} & \\
+    };
+    \foreach \i in {0,...,4}{
+        \foreach \j in {0,...,2}{
+            \node[below left=0.5cm and 0.5cm of diffusion-\i-\j] {$\partial^{(h)}_{x_j,x_j}V$};
+        }
+    }
+
+    \matrix (advection) [matrix of nodes, below=2cm of diffusion, row sep=1cm, column sep=1cm] {
+        & & V_{i-1,j} & V_i & V_{i+1,j} & \\
+        & & V_{i-1,j-1} & V_{i,j-1} & V_{i+1,j-1} & \\
+        & & V_{i-1,j+1} & V_{i,j+1} & V_{i+1,j+1} & \\
+    };
+    \foreach \i in {0,...,4}{
+        \foreach \j in {0,...,2}{
+            \node[below left=0.5cm and 0.5cm of advection-\i-\j] {$\partial^{(h)}_{x_j}V$};
+        }
+    }
+
+    % Draw lines for diffusion stencils
+    \draw[line style] (diffusion-2-3) -- (diffusion-2-4);
+    \

@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=3cm,
+                        thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+        \node[main node] (X) {$X^{MIV}$};
+        \node[main node] (Z) [below left of=X] {$Z$};
+        \node[main node] (M1) [below right of=X] {$M_1$};
+        \node[main node] (M2) [below right of=M1] {$M_2$};
+        \node[main node] (Y) [below right of=M2] {$Y$};
+
+        \path[every node/.style={font=\sffamily\small}]
+            (X) edge node [left] {} (Z)
+            (X) edge node [above] {} (M1)
+            (X) edge node [above] {} (M2)
+            (Z) edge node [above] {} (M1)
+            (Z) edge node [above] {} (M2)
+            (M1) edge node [above] {} (M2)
+            (M1) edge node [above] {} (Y)
+            (M2) edge node [above] {} (Y)
+            (X) edge[bend left=45,blue,dashed] node [left] {} (Z)
+            (X) edge[bend left=45,red,dotted] node [right] {} (M1)
+            (X) edge[bend left=45,red,dotted] node [right] {} (M2)
+            (Z) edge[bend left=45,blue,dashed] node [left] {} (M1)
+            (Z) edge[bend left=45,blue,dashed] node [left] {} (M2);
+    \end{tikzpicture}
+    \caption{Assumption \ref{cond:irre1} rules out the blue dashed path. Assumption \ref{cond:irre2} rules out both of the red dot-dashed paths. All black solid paths are permissible under Assumptions \ref{cond:irre1} and \ref{cond:irre2}.}
+    \label{fig:irreducibility}
+\end{figure}
+
+\end{document}

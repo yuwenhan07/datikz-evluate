@@ -1,0 +1,36 @@
+To create a TikZ diagram representing the semilattice of idempotents of \( FI_1 \), we need to understand that \( FI_1 \) is the category whose objects are finite sets with one element and morphisms are injective functions between these sets. The idempotents in this context correspond to certain matrices.
+
+Given \( u = (-a, 3, b) \in FI_1 \), we can represent it as a matrix:
+\[
+u = \begin{pmatrix}
+-a & 0 & 0 \\
+0 & 3 & 0 \\
+0 & 0 & b
+\end{pmatrix}
+\]
+The idempotents in \( FI_1 \) are those matrices that commute with \( u \). These matrices are of the form:
+\[
+e = \begin{pmatrix}
+e_{11} & 0 & 0 \\
+0 & e_{22} & 0 \\
+0 & 0 & e_{33}
+\end{pmatrix}
+\]
+where \( e_{ii} \) are either 0 or 1. This is because any non-zero entry off the diagonal would not commute with \( u \).
+
+To visualize this in a TikZ diagram, we can place the red dots at positions corresponding to the possible values of \( e_{11}, e_{22}, \) and \( e_{33} \). Here is the TikZ code to generate the diagram:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes for idempotents
+    \node (e110e220e330) at (0,0) [circle, draw, fill=red] {};
+    \node (e110e221e330) at (2,0) [circle, draw, fill=red] {};
+    \node (e110e220e331) at (4,0) [circle, draw, fill=red] {};
+    \node (e110e221e331) at (6,0) [circle, draw, fill=red] {};
+
+    \node (e111e220e330) at (0,-2

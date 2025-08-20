@@ -1,0 +1,245 @@
+To generate LaTeX code for the image and caption provided, you can use the `tikz` package in LaTeX. Below is an example of how you might create such a diagram using TikZ:
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+
+        % Top Row: Filtration of D(X,Y,R)
+        \node at (-3, 0) {$\mathcal{D}(X,Y,R)_m$};
+        \node[regular polygon, regular polygon sides=4, draw, fill=gray!50] (a) at (0, 2) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (b) at (1, 3) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (c) at (2, 1) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (d) at (1, 0) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (e) at (0, 1) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (f) at (1, -1) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (g) at (0, -1) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (h) at (-1, 0) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (i) at (-1, -1) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (j) at (-2, 0) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (k) at (-2, -1) {};
+        \node[regular polygon, regular polygon sides=4, draw, fill=blue!20] (l) at (-3, 0) {};
+
+        \draw (a) -- (b);
+        \draw (a) -- (c);
+        \draw (a) -- (d);
+        \draw (a) -- (e);
+        \draw (a) -- (f);
+        \draw (a) -- (g);
+        \draw (a) -- (h);
+        \draw (a) -- (i);
+        \draw (a) -- (j);
+        \draw (a) -- (k);
+        \draw (a) -- (l);
+
+        \draw (b) -- (c);
+        \draw (b) -- (d);
+        \draw (b) -- (e);
+        \draw (b) -- (f);
+        \draw (b) -- (g);
+        \draw (b) -- (h);
+        \draw (b) -- (i);
+        \draw (b) -- (j);
+        \draw (b) -- (k);
+        \draw (b) -- (l);
+
+        \draw (c) -- (d);
+        \draw (c) -- (e);
+        \draw (c) -- (f);
+        \draw (c) -- (g);
+        \draw (c) -- (h);
+        \draw (c) -- (i);
+        \draw (c) -- (j);
+        \draw (c) -- (k);
+        \draw (c) -- (l);
+
+        \draw (d) -- (e);
+        \draw (d) -- (f);
+        \draw (d) -- (g);
+        \draw (d) -- (h);
+        \draw (d) -- (i);
+        \draw (d) -- (j);
+        \draw (d) -- (k);
+        \draw (d) -- (l);
+
+        \draw (e) -- (f);
+        \draw (e) -- (g);
+        \draw (e) -- (h);
+        \draw (e) -- (i);
+        \draw (e) -- (j);
+        \draw (e) -- (k);
+        \draw (e) -- (l);
+
+        \draw (f) -- (g);
+        \draw (f) -- (h);
+        \draw (f) -- (i);
+        \draw (f) -- (j);
+        \draw (f) -- (k);
+        \draw (f) -- (l);
+
+        \draw (g) -- (h);
+        \draw (g) -- (i);
+        \draw (g) -- (j);
+        \draw (g) -- (k);
+        \draw (g) -- (l);
+
+        \draw (h) -- (i);
+        \draw (h) -- (j);
+        \draw (h) -- (k);
+        \draw (h) -- (l);
+
+        \draw (i) -- (j);
+        \draw (i) -- (k);
+        \draw (i) -- (l);
+
+        \draw (j) -- (k);
+        \draw (j) -- (l);
+
+        \draw (k) -- (l);
+
+        \node at (0, 2.5) {$m=1$};
+        \node at (1, 3.5) {$\alpha\delta\epsilon$};
+        \node at (1, 2.5) {$\alpha\gamma\epsilon$};
+        \node at (0, 1.5) {$\gamma$};
+        \node at (1, 1.5) {$\beta\gamma$};
+        \node at (2, 1.5) {$\alpha\beta\delta\epsilon$};
+        \node at (1, 0.5) {$\beta$};
+        \node at (0, 0.5) {$\alpha\delta$};
+        \node at (1, -0.5) {$\delta$};
+        \node at (0, -0.5) {$\alpha\gamma$};
+        \node at (-1, 0.5) {$\gamma$};
+        \node at (-1, -0.5) {$\delta$};
+        \node at (-2, 0.5) {$\alpha$};
+        \node at (-2, -0.5) {$\beta$};
+        \node at (-3, 0.5) {$\alpha\beta$};
+        \node at (-3, -0.5) {$\beta\gamma$};
+
+        \node at (6, 2.5) {$m=2$};
+        \node at (7, 3.5) {$b$};
+        \node at (6, 1.5) {$c$};
+        \node at (7, 1.5) {$a$};
+        \node at (6, -0.5) {$d$};
+        \node at (7, -0.5) {$\alpha$};
+        \node at (8, -0.5) {$\beta$};
+        \node at (9, -0.5) {$\gamma$};
+        \node at (6, -1.5) {$\alpha\beta\gamma$};
+        \node at (7, -1.5) {$\alpha\beta\gamma$};
+        \node at (8, -1.5) {$\alpha\beta\gamma$};
+        \node at (9, -1.5) {$\alpha\beta\gamma$};
+        \node at (6, -2.5) {$\alpha\beta\gamma$};
+        \node at (7, -2.5) {$\alpha\beta\gamma$};
+        \node at (8, -2.5) {$\alpha\beta\gamma$};
+        \node at (9, -2.5) {$\alpha\beta\gamma$};
+        \node at (6, -3.5) {$\alpha\beta\gamma$};
+        \node at (7, -3.5) {$\alpha\beta\gamma$};
+        \node at (8, -3.5) {$\alpha\beta\gamma$};
+        \node at (9, -3.5) {$\alpha\beta\gamma$};
+        \node at (6, -4.5) {$\alpha\beta\gamma$};
+        \node at (7, -4.5) {$\alpha\beta\gamma$};
+        \node at (8, -4.5) {$\alpha\beta\gamma$};
+        \node at (9, -4.5) {$\alpha\beta\gamma$};
+        \node at (6, -5.5) {$\alpha\beta\gamma$};
+        \node at (7, -5.5) {$\alpha\beta\gamma$};
+        \node at (8, -5.5) {$\alpha\beta\gamma$};
+        \node at (9, -5.5) {$\alpha\beta\gamma$};
+        \node at (6, -6.5) {$\alpha\beta\gamma$};
+        \node at (7, -6.5) {$\alpha\beta\gamma$};
+        \node at (8, -6.5) {$\alpha\beta\gamma$};
+        \node at (9, -6.5) {$\alpha\beta\gamma$};
+        \node at (6, -7.5) {$\alpha\beta\gamma$};
+        \node at (7, -7.5) {$\alpha\beta\gamma$};
+        \node at (8, -7.5) {$\alpha\beta\gamma$};
+        \node at (9, -7.5) {$\alpha\beta\gamma$};
+        \node at (6, -8.5) {$\alpha\beta\gamma$};
+        \node at (7, -8.5) {$\alpha\beta\gamma$};
+        \node at (8, -8.5) {$\alpha\beta\gamma$};
+        \node at (9, -8.5) {$\alpha\beta\gamma$};
+        \node at (6, -9.5) {$\alpha\beta\gamma$};
+        \node at (7, -9.5) {$\alpha\beta\gamma$};
+        \node at (8, -9.5) {$\alpha\beta\gamma$};
+        \node at (9, -9.5) {$\alpha\beta\gamma$};
+        \node at (6, -10.5) {$\alpha\beta\gamma$};
+        \node at (7, -10.5) {$\alpha\beta\gamma$};
+        \node at (8, -10.5) {$\alpha\beta\gamma$};
+        \node at (9, -10.5) {$\alpha\beta\gamma$};
+        \node at (6, -11.5) {$\alpha\beta\gamma$};
+        \node at (7, -11.5) {$\alpha\beta\gamma$};
+        \node at (8, -11.5) {$\alpha\beta\gamma$};
+        \node at (9, -11.5) {$\alpha\beta\gamma$};
+        \node at (6, -12.5) {$\alpha\beta\gamma$};
+        \node at (7, -12.5) {$\alpha\beta\gamma$};
+        \node at (8, -12.5) {$\alpha\beta\gamma$};
+        \node at (9, -12.5) {$\alpha\beta\gamma$};
+        \node at (6, -13.5) {$\alpha\beta\gamma$};
+        \node at (7, -13.5) {$\alpha\beta\gamma$};
+        \node at (8, -13.5) {$\alpha\beta\gamma$};
+        \node at (9, -13.5) {$\alpha\beta\gamma$};
+        \node at (6, -14.5) {$\alpha\beta\gamma$};
+        \node at (7, -14.5) {$\alpha\beta\gamma$};
+        \node at (8, -14.5) {$\alpha\beta\gamma$};
+        \node at (9, -14.5) {$\alpha\beta\gamma$};
+        \node at (6, -15.5) {$\alpha\beta\gamma$};
+        \node at (7, -15.5) {$\alpha\beta\gamma$};
+        \node at (8, -15.5) {$\alpha\beta\gamma$};
+        \node at (9, -15.5) {$\alpha\beta\gamma$};
+        \node at (6, -16.5) {$\alpha\beta\gamma$};
+        \node at (7, -16.5) {$\alpha\beta\gamma$};
+        \node at (8, -16.5) {$\alpha\beta\gamma$};
+        \node at (9, -16.5) {$\alpha\beta\gamma$};
+        \node at (6, -17.5) {$\alpha\beta\gamma$};
+        \node at (7, -17.5) {$\alpha\beta\gamma$};
+        \node at (8, -17.5) {$\alpha\beta\gamma$};
+        \node at (9, -17.5) {$\alpha\beta\gamma$};
+        \node at (6, -18.5) {$\alpha\beta\gamma$};
+        \node at (7, -18.5) {$\alpha\beta\gamma$};
+        \node at (8, -18.5) {$\alpha\beta\gamma$};
+        \node at (9, -18.5) {$\alpha\beta\gamma$};
+        \node at (6, -19.5) {$\alpha\beta\gamma$};
+        \node at (7, -19.5) {$\alpha\beta\gamma$};
+        \node at (8, -19.5) {$\alpha\beta\gamma$};
+        \node at (9, -19.5) {$\alpha\beta\gamma$};
+        \node at (6, -20.5) {$\alpha\beta\gamma$};
+        \node at (7, -20.5) {$\alpha\beta\gamma$};
+        \node at (8, -20.5) {$\alpha\beta\gamma$};
+        \node at (9, -20.5) {$\alpha\beta\gamma$};
+        \node at (6, -21.5) {$\alpha\beta\gamma$};
+        \node at (7, -21.5) {$\alpha\beta\gamma$};
+        \node at (8, -21.5) {$\alpha\beta\gamma$};
+        \node at (9, -21.5) {$\alpha\beta\gamma$};
+        \node at (6, -22.5) {$\alpha\beta\gamma$};
+        \node at (7, -22.5) {$\alpha\beta\gamma$};
+        \node at (8, -22.5) {$\alpha\beta\gamma$};
+        \node at (9, -22.5) {$\alpha\beta\gamma$};
+        \node at (6, -23.5) {$\alpha\beta\gamma$};
+        \node at (7, -23.5) {$\alpha\beta\gamma$};
+        \node at (8, -23.5) {$\alpha\beta\gamma$};
+        \node at (9, -23.5) {$\alpha\beta\gamma$};
+        \node at (6, -24.5) {$\alpha\beta\gamma$};
+        \node at (7, -24.5) {$\alpha\beta\gamma$};
+        \node at (8, -24.5) {$\alpha\beta\gamma$};
+        \node at (9, -24.5) {$\alpha\beta\gamma$};
+        \node at (6, -25.5) {$\alpha\beta\gamma$};
+        \node at (7, -25.5) {$\alpha\beta\gamma$};
+        \node at (8, -25.5) {$\alpha\beta\gamma$};
+        \node at (9, -25.5) {$\alpha\beta\gamma$};
+        \node at (6, -26.5) {$\alpha\beta\gamma$};
+        \node at (7, -26.5) {$\alpha\beta\gamma$};
+        \node at (8, -26.5) {$\alpha\beta\gamma$};
+        \node at (9, -26.5) {$\alpha\beta\gamma$};
+        \node at (6, -27.5) {$\alpha\beta\gamma$};
+        \node at (7, -27.5) {$\alpha\beta\gamma$};
+        \node at (8, -27.5) {$\alpha\beta\gamma$};
+        \node at (9, -27.5) {$\alpha\beta\gamma$};
+        \node at (6, -28.5) {$\alpha\beta\gamma$};
+        \node at (7, -28.5) {$\alpha\beta\gamma$};
+        \node at (8, -28.5) {$\alpha\beta\gamma$};
+        \node at (9, -28.5) {$\alpha\beta\gamma$};
+        \node at (6, -29.5) {$\alpha\beta\gamma$};
+        \node at (7, -29.5)

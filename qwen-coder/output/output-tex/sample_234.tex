@@ -1,0 +1,40 @@
+Certainly! To generate a Newton polygon for a polynomial \( Q = P[r(x)] \) and to include elements relevant to the proof of Lemma~\ref{le:sum-zero}, we need to understand the structure and properties involved.
+
+Let's assume:
+- \( P(x) \) is a polynomial with coefficients in a field \( k \).
+- \( r(x) \) is another polynomial.
+- \( Q(x) = P[r(x)] \).
+
+The Newton polygon of a polynomial \( P(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0 \) is constructed by plotting the points \((i, v_p(a_i))\) where \( i \) is the power of \( x \) and \( v_p(a_i) \) is the valuation (in terms of the prime \( p \)) of the coefficient \( a_i \). The Newton polygon is then the lower convex hull of these points.
+
+For the proof of Lemma~\ref{le:sum-zero}, let's consider specific elements such as:
+- The valuation of the leading coefficient of \( P(r(x)) \).
+- The valuation of the constant term of \( P(r(x)) \).
+- The slopes of segments of the Newton polygon.
+
+Here is a TikZ code snippet to illustrate the Newton polygon of \( Q = P[r(x)] \):
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define the points for the Newton polygon of P(r(x))
+    \coordinate (A) at (0, 3);
+    \coordinate (B) at (1, 2);
+    \coordinate (C) at (2, 1);
+    \coordinate (D) at (3, 0);
+
+    % Draw the Newton polygon
+    \draw[thick] (A) -- (B) -- (C) -- (D);
+
+    % Label the points
+    \node[above left] at (A) {$(0, 3)$};
+    \node[below right] at (B) {$(1, 2)$};
+    \node[below left] at (C) {$(2, 1)$};
+    \node[above right] at (D) {$(3, 0)$};
+
+    % Add labels for the slopes
+    \node[mid

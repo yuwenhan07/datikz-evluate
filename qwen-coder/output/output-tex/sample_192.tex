@@ -1,0 +1,32 @@
+Certainly! Below is a TikZ LaTeX code that visually represents the three stages you described: the initial refinement level, a coarsening step, and another coarsening step.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white!20, text width=4em, text centered, rounded corners, minimum height=3em},
+    line/.style = {->, thick, >=stealth}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+% Initial Refinement Level
+\node (initial) [block] {Initial Refinement};
+\node (initial_element_1) [block, below left=of initial] {Element 1};
+\node (initial_element_2) [block, below right=of initial] {Element 2};
+\node (initial_element_3) [block, below left=of initial_element_1] {Sub-Element 1};
+\node (initial_element_4) [block, below right=of initial_element_1] {Sub-Element 2};
+\node (initial_element_5) [block, below left=of initial_element_2] {Sub-Element 3};
+\node (initial_element_6) [block, below right=of initial_element_2] {Sub-Element 4};
+
+% Coarsening Step 1
+\node (coarse_step_1) [block, below=of initial, yshift=-3cm] {Coarsening Step 1};
+\node (coarse_element_1) [block, below left=of coarse_step_1] {Element 1};
+\node (coarse_element_2) [block, below right=of coarse_step_1] {Element 2};
+\node (coarse_element_3) [block, below left=of coarse_element_1] {Coarsened Element 1};
+\node (coarse_element_4) [block, below right=of coarse_element_1] {Coarsened Element 2};
+\node (coarse_element_5) [block, below left=of coarse_element_2] {Coarsened Element 3};
+\node (coarse_element_6) [block, below right=of coarse_element_

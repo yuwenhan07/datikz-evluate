@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Full Frame (Cartesian)
+\draw[thick, ->] (-3,0) -- (3,0) node[right] {$x$};
+\draw[thick, ->] (0,-3) -- (0,3) node[above] {$z$};
+\filldraw[black] (0,0) circle (1pt) node[below left] {Origin};
+\node at (0,-2) {Full Frame (Cartesian)}; 
+
+% Moving Frame (Polar)
+\draw[thick, ->] (0,0) -- (2,0) node[right] {$r$};
+\draw[thick, ->] (0,0) arc[start angle=90, end angle=-90, radius=2];
+\node at (2,-1) {$R_0$};
+\node at (0,-2) {Moving Frame (Polar)};
+\node at (0,-4) {\textbf{Center of Mass}};
+\node at (0,-5) {$\theta = 0$ pointing vertically downwards};
+
+% Connecting Lines
+\draw[dashed] (0,0) -- (-2,0);
+\draw[dashed] (0,0) -- (0,2);
+
+\end{tikzpicture}
+\end{document}

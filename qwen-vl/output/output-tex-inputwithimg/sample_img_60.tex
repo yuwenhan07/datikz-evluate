@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Top-1 accuracy, inference speed and model size on the test set},
+            xlabel={Speed (FPS)},
+            ylabel={Top-1 Accuracy (\%)},
+            xmin=0, xmax=30,
+            ymin=35, ymax=65,
+            xtick={0, 5, 10, 15, 20, 25, 30},
+            ytick={35, 40, 45, 50, 55, 60, 65},
+            legend pos=north west,
+            ymajorgrids=true,
+            grid style=dashed,
+            nodes near coords,
+            point meta=explicit symbolic,
+            visualization depends on={value \thisrow{size} \as \mySize},
+            every node near coord/.append style={
+                font=\footnotesize,
+                /pgf/number format/precision=2,
+                /pgf/number format/fixed zerofill,
+                /pgf/number format/1000 sep={},
+                anchor=south east,
+                rotate=90,
+                /utils/exec={\pgfmathparse{\mySize}\ifdim\pgfmathresult pt<1pt\node[fill=white] at (axis direction cs:0,0) {\tiny \pgfmathprintnumber{\mySize}M};\fi}
+            },
+        ]
+        
+        % MVit
+        \addplot+[only marks, mark=circle*, mark size=\mySize, mark options={solid}, color=red] coordinates {(5, 45) [100]};
+        
+        % EfficientNet-b5
+        \addplot+[only marks, mark=circle*, mark size=\mySize, mark options={solid}, color=yellow] coordinates {(15, 50) [20]};
+        
+        % EfficientNet-b0
+        \addplot+[only marks, mark=circle*, mark size=\mySize, mark options={solid}, color=gray] coordinates {(20, 50) [10]};
+        
+        % ShuffleNetV2
+        \addplot+[only marks, mark=circle*, mark size=\mySize, mark options={solid}, color=blue] coordinates {(25, 53) [5]};
+        
+        % Ours
+        \addplot+[only marks, mark=circle*, mark size=\mySize, mark options={solid}, color=blue] coordinates {(27, 60) [2]};
+        
+        % EfficientFormer
+        \addplot+[only marks, mark=circle*, mark size=\mySize, mark options={solid}, color=olive] coordinates {(8, 38) [1]};
+        
+        % MVit
+        \node[anchor=south west, inner sep=0] at (rel axis cs:0.5,0.5) {MVit};
+        
+        % EfficientNet-b5
+        \node[anchor=south west, inner sep=0] at (rel axis cs:0.6,0.6) {EfficientNet-b5};
+        
+        % EfficientNet-b0
+        \node[anchor=south west, inner sep=0] at (rel axis cs:0.7,0.7) {EfficientNet-b0};
+        
+        % ShuffleNetV2
+        \node[anchor=south west, inner sep=0] at (rel axis cs:0.8,0.8) {ShuffleNetV2};
+        
+        % Ours
+        \node[anchor=south west, inner sep=0] at (rel axis cs:0.9,0.9) {Ours};
+        
+        % EfficientFormer
+        \node[anchor=south west, inner sep=0] at (rel axis cs:0.4,0.4) {EfficientFormer};
+        
+        % Red Arrow
+        \draw[->, red, thick] (rel axis cs:0.7,0.7) -- (rel axis cs:0.9,0.9) node[midway, above, red] {Better};
+        
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Top-1 accuracy, inference speed and model size on the test set. The size of the circle denotes the model size, the smaller it is the fewer the model parameters. The closer the model to top right corner represents higher accuracy and faster inference. As the red arrow shows, it can be perceived as toward better performance.}
+    \label{fig:performance}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the rectangle
+    \draw[fill=blue!20] (0,0) rectangle (4,4);
+    
+    % Draw the horizontal line at y=2x
+    \draw[thick] (0,2) -- (4,2);
+    
+    % Draw the vertical lines
+    \draw[thick] (0,0) -- (0,4);
+    \draw[thick] (4,0) -- (4,4);
+    
+    % Label the sides of the rectangle
+    \node at (4.5, 2) {$b$};
+    \node at (-0.5, 2) {$b-2x$};
+    \node at (2, -0.5) {$\partial R$};
+    
+    % Draw the horizontal line at y=x
+    \draw[thick] (0,1) -- (4,1);
+    
+    % Draw the diagonal lines to divide the rectangle into triangles
+    \draw[pattern=north east lines, pattern color=orange] (0,0) -- (4,4) -- (4,1) -- cycle;
+    \draw[pattern=north west lines, pattern color=green] (0,0) -- (4,4) -- (0,4) -- cycle;
+    
+    % Label the triangles
+    \node at (1,3) {$T_1$};
+    \node at (2,2) {$T_2$};
+    \node at (3,1) {$T_3$};
+    \node at (1,1) {$T_4$};
+    \node at (2,0.5) {$H$};
+    
+    % Draw the horizontal line at y=b/2
+    \draw[thick] (0,2) -- (4,2);
+    
+    % Draw the vertical lines
+    \draw[thick] (0,0) -- (0,4);
+    \draw[thick] (4,0) -- (4,4);
+    
+    % Label the sides of the rectangle
+    \node at (4.5, 2) {$b$};
+    \node at (-0.5, 2) {$\frac{b}{2}$};
+    \node at (2, -0.5) {$\partial R$};
+    
+    % Draw the horizontal line at y=x
+    \draw[thick] (0,1) -- (4,1);
+    
+    % Draw the diagonal lines to divide the rectangle into triangles
+    \draw[pattern=north east lines, pattern color=orange] (0,0) -- (4,4) -- (4,1) -- cycle;
+    \draw[pattern=north west lines, pattern color=green] (0,0) -- (4,4) -- (0,4) -- cycle;
+    
+    % Label the triangles
+    \node at (1,3) {$\tilde{T}_1$};
+    \node at (2,2) {$\tilde{T}_2$};
+    \node at (3,1) {$\tilde{T}_3$};
+    \node at (1,1) {$\tilde{T}_4$};
+    \node at (2,0.5) {$H$};
+    
+    % Label the horizontal line at y=x/2
+    \draw[thick] (0,0.5) -- (4,0.5);
+    
+    % Label the horizontal line at y=x/2
+    \node at (2, 0.5) {$x-\frac{b}{2}$};
+    
+\end{tikzpicture}
+
+\end{document}

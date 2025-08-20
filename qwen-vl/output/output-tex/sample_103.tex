@@ -1,0 +1,46 @@
+The Newsvendor Pricing Game is a classic example of a Stackelberg game, which is a type of sequential game where one player (the leader) moves first and commits to a strategy, and the other player (the follower) observes the leader's move and then chooses their own strategy. In this context, the leader is the supplier who sets the wholesale price \(a\) for the product, and the follower is the retailer who decides on the purchase quantity \(b\) and the retail price \(p\).
+
+### Key Components of the Newsvendor Pricing Game:
+
+1. **Players:**
+   - **Supplier (Leader):** Sets the wholesale price \(a\).
+   - **Retailer (Follower):** Chooses the purchase quantity \(b\) and the retail price \(p\).
+
+2. **Decision Variables:**
+   - **Wholesale Price:** \(a\)
+   - **Purchase Quantity:** \(b\)
+   - **Retail Price:** \(p\)
+
+3. **Utility Functions:**
+   - The supplier's utility function depends on the purchase quantity \(b\) and the retail price \(p\). Typically, it is given by:
+     \[
+     U_S(a, b, p) = (p - a)b - c_S(b)
+     \]
+     where \(c_S(b)\) represents the supplier's cost function associated with the purchase quantity \(b\).
+
+   - The retailer's utility function depends on the wholesale price \(a\), the purchase quantity \(b\), and the retail price \(p\). It is typically given by:
+     \[
+     U_R(a, b, p) = (p - a - c_R(p))b - c_R(p)b
+     \]
+     where \(c_R(p)\) represents the retailer's cost function associated with the retail price \(p\).
+
+4. **Game Dynamics:**
+   - The supplier (leader) sets the wholesale price \(a\) first.
+   - The retailer (follower) observes the wholesale price \(a\) and then decides on the purchase quantity \(b\) and the retail price \(p\).
+
+5. **Equilibrium:**
+   - The equilibrium in this game is typically found using backward induction. The retailer will choose \(b\) and \(p\) as a response to the supplier's wholesale price \(a\). Then, the supplier will choose \(a\) to maximize its expected utility.
+
+### Example Scenario:
+
+Suppose the supplier has a fixed cost \(c_S(b) = 0\) and the retailer has a fixed cost \(c_R(p) = 0\). The demand for the product is given by a random variable \(D\) with a known distribution. The supplier sets the wholesale price \(a\), and the retailer decides on the purchase quantity \(b\) and the retail price \(p\) based on the observed wholesale price \(a\).
+
+- **Retailer's Decision:**
+  The retailer will set the retail price \(p\) such that the profit from selling the product equals the cost of purchasing it plus the profit margin. The optimal purchase quantity \(b\) will be determined by the retailer's demand function and the wholesale price \(a\).
+
+- **Supplier's Decision:**
+  The supplier will choose the wholesale price \(a\) to maximize its expected profit, taking into account the retailer's response.
+
+### Conclusion:
+
+The Newsvendor Pricing Game is a strategic interaction where the supplier sets the wholesale price first, and the retailer responds by choosing the purchase quantity and retail price. The equilibrium solution involves the supplier setting a wholesale price that maximizes its expected profit, considering the retailer's optimal response. This game is widely used in supply chain management and pricing strategies to model real-world scenarios involving sequential decision-making under uncertainty.

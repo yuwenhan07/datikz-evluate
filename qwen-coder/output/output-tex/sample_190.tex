@@ -1,0 +1,38 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+
+% Define styles
+\tikzset{
+    pole/.style={circle,fill=blue!50,inner sep=2pt},
+    label/.style={below left}
+}
+
+% Draw axes
+\draw[->] (-4,0) -- (4,0) node[right] {$Re(\omega)$};
+\draw[->] (0,-4) -- (0,4) node[above] {$Im(\omega)$};
+
+% Trajectories
+\draw[dashed,thick] (0,0) to[out=-90,in=180] (2,2);
+\draw[dashed,thick] (0,0) to[out=-90,in=180] (-2,2);
+\draw[dashed,thick] (0,0) to[out=-90,in=180] (2,-2);
+\draw[dashed,thick] (0,0) to[out=-90,in=180] (-2,-2);
+
+% Poles
+\node[pole,label=$\mathcal{N}$] at (2,2) {};
+\node[pole,label=$\gamma$] at (-2,2) {};
+\node[pole,label=$e$] at (2,-2) {};
+\node[pole,label=$\gamma$] at (-2,-2) {};
+
+% Labels for trajectories
+\node at (3,2.5) {Nuclear Propagators ($T_3$)};
+\node at (-3,2.5) {Nuclear Propagators ($T_3$)};
+\node at (3,-2.5) {Photon Propagator};
+\node at (-3,-2.5) {Electron Propagator};
+
+\end{tikzpicture}
+
+\end{document}

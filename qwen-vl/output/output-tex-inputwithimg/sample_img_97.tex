@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+\begin{document}
+
+The monoid \( M = \langle a, b \mid ba = aa \rangle \) from the case \( r = 2 \) of \cref{thm:rank_two}, an upho lattice with core \( M_2 \).
+
+\begin{center}
+    \begin{tikzpicture}[level distance=1.5cm,
+        level 1/.style={sibling distance=4.5cm},
+        level 2/.style={sibling distance=3cm},
+        level 3/.style={sibling distance=2cm},
+        level 4/.style={sibling distance=1.5cm},
+        level 5/.style={sibling distance=1cm},
+        edge from parent/.style={draw,-latex}]
+        
+        \node {1}
+            child {node {$a$}
+                child {node {$abb$}
+                    child {node {$ab$}
+                        child {node {$a$}}
+                        child {node {$b$}}
+                    }
+                }
+                child {node {$aab$}
+                    child {node {$ab$}
+                        child {node {$a$}}
+                        child {node {$b$}}
+                    }
+                }
+            }
+            child {node {$aaa$}
+                child {node {$aa$}
+                    child {node {$a$}}
+                    child {node {$b$}}
+                }
+                child {node {$bb$}}
+            }
+            child {node {$bbb$}};
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

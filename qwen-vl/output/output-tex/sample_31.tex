@@ -1,0 +1,26 @@
+In the context of image processing, particularly when dealing with poorly textured regions, the \(x_p^\pm\) and \(y_p^\pm\) values typically refer to the estimated positions of a pixel \(p\) in the image. These values are often used in algorithms that estimate the displacement or motion between two images (e.g., optical flow, stereo vision).
+
+Here's a detailed explanation:
+
+1. **\(x_p^\pm\)**: This represents the horizontal position of the pixel \(p\) in the image. The superscript \(\pm\) indicates that these values might be slightly different due to noise or other factors affecting the estimation process.
+
+2. **\(y_p^\pm\)**: Similarly, this represents the vertical position of the pixel \(p\) in the image. Again, the \(\pm\) superscript signifies that there could be some uncertainty or variation in the estimated position.
+
+### Context of Poorly Textured Regions
+
+Poorly textured regions in an image are areas where traditional methods for estimating motion or displacement (like optical flow) can fail because there is not enough visual information to accurately determine the movement. These regions often appear as areas with low contrast, repetitive patterns, or areas with very little texture.
+
+### Orange Points
+
+The orange points in your diagram likely represent pixels within these poorly textured regions. These pixels can cause errors in the estimation of \(\Delta x_p\) and \(\Delta y_p\) because they do not provide sufficient information for accurate motion estimation.
+
+### Estimation of \(\Delta x_p\) and \(\Delta y_p\)
+
+- **\(\Delta x_p\)**: This is the horizontal displacement of the pixel \(p\) from one frame to another.
+- **\(\Delta y_p\)**: This is the vertical displacement of the pixel \(p\) from one frame to another.
+
+When dealing with poorly textured regions, the estimation of \(\Delta x_p\) and \(\Delta y_p\) can be less reliable. The orange points highlight these problematic pixels, indicating that their positions might be uncertain or that the algorithm might struggle to accurately estimate the motion in these areas.
+
+### Conclusion
+
+In summary, \(x_p^\pm\) and \(y_p^\pm\) are the estimated horizontal and vertical positions of a pixel \(p\) in a poorly textured region, respectively. The orange points in the diagram indicate pixels whose positions are uncertain and may contribute to errors in the estimation of \(\Delta x_p\) and \(\Delta y_p\).

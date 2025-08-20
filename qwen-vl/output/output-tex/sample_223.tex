@@ -1,0 +1,24 @@
+The image you've described illustrates the synchronization patterns in a parallel computing environment, specifically within a multi-GPU setup with multiple streams. Here's a breakdown of the synchronization types mentioned:
+
+1. **Inter-rank Synchronization (Red Dashed Line):**
+   - This type of synchronization occurs between different ranks or processes that are running on separate GPUs.
+   - It is essential to ensure that data or control flow is properly coordinated between these ranks to avoid race conditions or other synchronization issues.
+   - In the context of the figure, if there are two GPUs, each might have its own set of ranks (e.g., `S_{cp}` and `S_{cm}`), and inter-rank synchronization ensures that operations on one GPU do not proceed until the corresponding operations on another GPU are completed.
+
+2. **Intra-rank/Inter-stream Synchronization (Blue Dotted Line):**
+   - This type of synchronization occurs within the same rank or process but across different streams.
+   - Streams are typically used to manage the execution of tasks in parallel on a single GPU, allowing for overlapping computation and communication.
+   - The blue dotted lines in the figure represent the need to synchronize between different streams (`S_{cp}` and `S_{cm}`) on the same GPU to ensure that the compute kernel (`S_{cp}`) does not proceed until the communication kernel (`S_{cm}`) has completed its task.
+   - This is crucial for maintaining the correct order of operations and ensuring that data dependencies are respected.
+
+### Example Scenario:
+- Suppose you have a GPU with two streams (`S_{cp}` and `S_{cm}`).
+- A compute kernel (`S_{cp}`) needs to wait for a communication kernel (`S_{cm}`) to complete before it can proceed.
+- The red dashed line would represent the synchronization needed between the two GPUs to ensure that the communication from one GPU is received correctly by the other.
+- The blue dotted line would represent the synchronization needed within the same GPU to ensure that the compute kernel waits for the communication kernel to finish before proceeding.
+
+### Summary:
+- **Inter-rank Synchronization** ensures that operations on different GPUs are properly coordinated.
+- **Intra-rank/Inter-stream Synchronization** ensures that operations within the same GPU are properly coordinated, especially when dealing with multiple streams.
+
+This setup is common in high-performance computing environments where efficient use of multiple GPUs and streams is critical for achieving optimal performance.

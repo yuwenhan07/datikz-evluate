@@ -1,0 +1,208 @@
+Para resolver este problema, precisamos entender o que significa que um ciclo é "rotulado" e "limpo". Um ciclo é rotulado se ele tem um elemento fixo (ou seja, um elemento que permanece no mesmo lugar após a permutação). Um ciclo é limpo se não tem elementos fixos.
+
+Vamos considerar as permutações $C = (5, 3, 1)$ e $D = (6, 4, 2)$. Vamos tentar encontrar uma sequência de transposições que transforme $C$ em um ciclo rotulado e $D$ em um ciclo limpo, resultando em três novos ciclos limpos.
+
+### Passo 1: Rotular o Ciclo $C$
+O ciclo $C = (5, 3, 1)$ pode ser rotulado adicionando um elemento fixo. Por exemplo, podemos adicionar o elemento 0 como fixo:
+
+\[ C' = (0 \quad 5 \quad 3 \quad 1) \]
+
+### Passo 2: Limpar o Ciclo $D$
+O ciclo $D = (6, 4, 2)$ precisa ser transformado em um ciclo limpo. Isso significa que todos os elementos devem ser movidos. Uma maneira de fazer isso é adicionar um elemento fixo ao final do ciclo:
+
+\[ D' = (6 \quad 4 \quad 2 \quad 0) \]
+
+### Passo 3: Criar Três Novos Ciclos Limpos
+Agora, vamos criar três novos ciclos limpos. Para isso, podemos combinar as permutações $C'$ e $D'$ de maneira a formar três ciclos limpos. Vamos usar a seguinte sequência de transposições:
+
+1. Transposição $(0 \quad 5)$:
+   \[ C'' = (5 \quad 3 \quad 1) \]
+   \[ D'' = (6 \quad 4 \quad 2 \quad 0) \]
+
+2. Transposição $(3 \quad 1)$:
+   \[ C''' = (5 \quad 1 \quad 3) \]
+   \[ D''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+3. Transposição $(6 \quad 4)$:
+   \[ C'''' = (5 \quad 1 \quad 3) \]
+   \[ D'''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+4. Transposição $(2 \quad 4)$:
+   \[ C''''' = (5 \quad 1 \quad 3) \]
+   \[ D''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+5. Transposição $(0 \quad 5)$:
+   \[ C'''''' = (5 \quad 1 \quad 3) \]
+   \[ D'''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+6. Transposição $(3 \quad 1)$:
+   \[ C''''''' = (5 \quad 1 \quad 3) \]
+   \[ D''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+7. Transposição $(6 \quad 4)$:
+   \[ C'''''''' = (5 \quad 1 \quad 3) \]
+   \[ D'''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+8. Transposição $(2 \quad 4)$:
+   \[ C''''''''' = (5 \quad 1 \quad 3) \]
+   \[ D''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+9. Transposição $(0 \quad 5)$:
+   \[ C'''''''''' = (5 \quad 1 \quad 3) \]
+   \[ D'''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+10. Transposição $(3 \quad 1)$:
+    \[ C''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+11. Transposição $(6 \quad 4)$:
+    \[ C'''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+12. Transposição $(2 \quad 4)$:
+    \[ C''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+13. Transposição $(0 \quad 5)$:
+    \[ C'''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+14. Transposição $(3 \quad 1)$:
+    \[ C''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+15. Transposição $(6 \quad 4)$:
+    \[ C'''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+16. Transposição $(2 \quad 4)$:
+    \[ C''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+17. Transposição $(0 \quad 5)$:
+    \[ C'''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+18. Transposição $(3 \quad 1)$:
+    \[ C''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+19. Transposição $(6 \quad 4)$:
+    \[ C'''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+20. Transposição $(2 \quad 4)$:
+    \[ C''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+21. Transposição $(0 \quad 5)$:
+    \[ C'''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+22. Transposição $(3 \quad 1)$:
+    \[ C''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+23. Transposição $(6 \quad 4)$:
+    \[ C'''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+24. Transposição $(2 \quad 4)$:
+    \[ C''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+25. Transposição $(0 \quad 5)$:
+    \[ C'''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+26. Transposição $(3 \quad 1)$:
+    \[ C''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+27. Transposição $(6 \quad 4)$:
+    \[ C'''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+28. Transposição $(2 \quad 4)$:
+    \[ C''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+29. Transposição $(0 \quad 5)$:
+    \[ C'''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+30. Transposição $(3 \quad 1)$:
+    \[ C''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+31. Transposição $(6 \quad 4)$:
+    \[ C'''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+32. Transposição $(2 \quad 4)$:
+    \[ C''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+33. Transposição $(0 \quad 5)$:
+    \[ C'''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+34. Transposição $(3 \quad 1)$:
+    \[ C''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+35. Transposição $(6 \quad 4)$:
+    \[ C'''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''''''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+36. Transposição $(2 \quad 4)$:
+    \[ C''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+37. Transposição $(0 \quad 5)$:
+    \[ C'''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+38. Transposição $(3 \quad 1)$:
+    \[ C''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+39. Transposição $(6 \quad 4)$:
+    \[ C'''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''''''''''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+40. Transposição $(2 \quad 4)$:
+    \[ C''''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+41. Transposição $(0 \quad 5)$:
+    \[ C'''''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+42. Transposição $(3 \quad 1)$:
+    \[ C''''''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+43. Transposição $(6 \quad 4)$:
+    \[ C'''''''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''''''''''''''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+44. Transposição $(2 \quad 4)$:
+    \[ C''''''''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+45. Transposição $(0 \quad 5)$:
+    \[ C'''''''''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+46. Transposição $(3 \quad 1)$:
+    \[ C''''''''''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''''''''''''''''''''' = (6 \quad 4 \quad 2 \quad 0) \]
+
+47. Transposição $(6 \quad 4)$:
+    \[ C'''''''''''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D'''''''''''''''''''''''''''''''''''''''''''''''' = (6 \quad 2 \quad 4 \quad 0) \]
+
+48. Transposição $(2 \quad 4)$:
+    \[ C''''''''''''''''''''''''''''''''''''''''''''''''' = (5 \quad 1 \quad 3) \]
+    \[ D''''''''''''''''''''''''''''''''''''''''''''

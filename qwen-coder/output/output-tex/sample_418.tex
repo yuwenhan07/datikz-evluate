@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+
+% Define colors
+\colorlet{observerColor}{red!70}
+\colorlet{sourceColor}{blue!70}
+\colorlet{voidColor}{gray!30}
+
+% Draw observer and source
+\node[draw, circle, fill=observerColor, inner sep=0pt, label={below:$z=0$}] (observer) at (0,0) {};
+\node[draw, circle, fill=sourceColor, inner sep=0pt, label={above:$z_s$}] (source) at (4,0) {};
+
+% Draw void
+\draw[fill=voidColor] (2,-1) rectangle (2,1);
+
+% Draw ellipses representing paths of photons
+\draw[dashed, ->, line width=1pt, color=black] (observer) -- node[midway, above] {$\ell_1$} (2,-1);
+\draw[dashed, ->, line width=1pt, color=black] (observer) -- node[midway, below] {$\ell_2$} (2,1);
+
+% Draw line from photon to center of void
+\draw[dashed, ->, line width=1pt, color=black] (2,-1) -- node[midway, left] {$\ell_v$} (2,0);
+\draw[dashed, ->, line width=1pt, color=black] (2,1) -- node[midway, right] {$\ell_v$} (2,0);
+
+% Draw angle theta_max
+\draw[dashed, ->, line width=1pt, color=black] (2,0) -- node[midway, above] {$\theta_{\text{max}}$} (3,0);
+
+% Labeling
+\node at (2,-2) {Void};
+\node at (-1,0) {Observer};
+\node at (5,0) {Source};
+
+\end{tikzpicture}
+
+\end{document}

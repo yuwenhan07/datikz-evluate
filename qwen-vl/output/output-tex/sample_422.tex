@@ -1,0 +1,23 @@
+The schematic illustration you've described is a common representation used in numerical simulations, particularly those involving domain decomposition methods for solving partial differential equations. Here's a detailed breakdown of the components and the process:
+
+### Components:
+1. **Blocks**: These represent subdomains of the overall computational domain.
+2. **Halo Cells**: These are special cells around the boundary of each block that store information about neighboring blocks. They are crucial for communication between adjacent blocks.
+3. **Face Halo Cells**: These are the cells on the faces of the block that need to be updated with information from the neighboring block.
+4. **Edge Halo Cells**: These are the cells along the edges of the block that need to be updated.
+5. **Vertex Halo Cells**: These are the cells at the corners of the block that need to be updated.
+
+### Process:
+- **Highlighted Cells in Block 1**:
+  - **East Side of Block 1**: The blue cells represent the face halo cells, which are the cells on the eastern face of block 1 that need to be updated with information from block 2.
+  - **Green Cells**: These represent the edge halo cells, which are the cells along the edges of block 1 that need to be updated.
+  - **Red Cells**: These represent the vertex halo cells, which are the cells at the corners of block 1 that need to be updated.
+
+- **Highlighted Cells in Block 2**:
+  - The corresponding cells in block 2 that need to be updated are highlighted. These cells are the ones that will provide the necessary information to update the halo cells in block 1.
+
+- **West Permutation**:
+  - The term "west permutation" refers to the process where data from block 2 (the right-hand side block) is permuted or transferred to block 1 (the left-hand side block). This is done to ensure that the boundary conditions and continuity of the solution across the interface between the two blocks are maintained.
+
+### Summary:
+The schematic illustrates how the halo update process works in a domain decomposition method. By updating the halo cells, the solution in one block can be influenced by the solution in its neighboring block, ensuring a consistent and accurate solution across the entire domain. The west permutation specifically involves transferring data from the right block to the left block, facilitating this inter-block communication.

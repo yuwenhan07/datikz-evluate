@@ -1,0 +1,46 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define colors
+    \definecolor{mygray}{RGB}{204,204,204}
+    
+    % Draw the background
+    \fill[mygray!30] (-4,-2) rectangle (4,2);
+    
+    % Draw the main spherical cap
+    \draw[dashed] (0,0) circle (2);
+    \draw (0,0) circle (2);
+    
+    % Draw the inner spherical cap
+    \draw[dotted] (0,0) circle (1);
+    \draw (0,0) circle (1);
+    
+    % Draw the effective distance line
+    \draw[->] (0,0) -- (180:2) node[midway, above right] {$s_{\mathrm{eff}}$};
+    
+    % Draw the minimum and maximum distances
+    \draw[->] (0,0) -- (90:1) node[midway, left] {$s_{\mathrm{min}}$};
+    \draw[->] (0,0) -- (60:2) node[midway, right] {$s_{\mathrm{max}}$};
+    
+    % Draw the angular opening
+    \draw[->] (0,0) -- (180:2) node[midway, below] {$\theta_{\mathrm{MAX}}$};
+    
+    % Draw the central point O
+    \filldraw[black] (0,0) circle (1pt) node[below left] {O};
+    
+    % Draw the dashed line for the effective distance
+    \draw[dashed] (0,0) -- (180:2);
+    
+    % Draw the angle labels
+    \pic [draw, ->, "$\theta_{\mathrm{MAX}}$", angle eccentricity=1.5] {angle = 180:2--0:1};
+    \pic [draw, ->, "$s_{\mathrm{min}}$", angle eccentricity=1.5] {angle = 90:1--0:1};
+    \pic [draw, ->, "$s_{\mathrm{max}}$", angle eccentricity=1.5] {angle = 60:2--0:1};
+    \pic [draw, ->, "$s_{\mathrm{eff}}$", angle eccentricity=1.5] {angle = 180:2--0:2};
+    
+\end{tikzpicture}
+
+\end{document}

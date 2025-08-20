@@ -1,0 +1,32 @@
+Certainly! Below is a TikZ LaTeX code that creates a timeline of research activities by leading groups from 2018 to 2023, focusing on the fields of digital forensics, disinformation detection, and generative AI.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.7]
+    % Timeline axis
+    \draw[thick, -Stealth] (0,0) -- (16,0);
+    \foreach \x in {0,2,...,16} {
+        \draw (\x,0) -- ++(0,-0.1);
+        \node at (\x,-0.3) {\x};
+    }
+    
+    % Labels for each field
+    \node at (4,-0.5) [below] {Digital Forensics};
+    \node at (8,-0.5) [below] {Disinformation Detection};
+    \node at (12,-0.5) [below] {Generative AI};
+
+    % Digital Forensics milestones
+    \filldraw[blue, rounded corners=2pt] (1,1) rectangle (3,1.5) node[midway, above] {2018: Paper A};
+    \filldraw[green, rounded corners=2pt] (3,1.5) rectangle (5,2) node[midway, above] {2019: Conference B};
+    \filldraw[red, rounded corners=2pt] (5,2) rectangle (7,2.5) node[midway, above] {2020: Publication C};
+    \filldraw[purple, rounded corners=2pt] (7,2.5) rectangle (9,3) node[midway, above] {2021: Report D};
+    \filldraw[orange, rounded corners=2pt] (9,3) rectangle (11,3.5) node[midway, above] {2022: Workshop E};
+    \filldraw[cyan, rounded corners=2pt] (11,3.5) rectangle (13,4) node[midway, above] {2023: Journal F};
+
+    % Disinformation Detection milestones
+   

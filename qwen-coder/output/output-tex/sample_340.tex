@@ -1,0 +1,26 @@
+To generate the TikZ LaTeX code for the graph \( G = K_3 \Box P_3 \), we need to understand its structure. The operation \( \Box \) (Cartesian product) between two graphs \( G_1 \) and \( G_2 \) results in a new graph where each vertex is an ordered pair \((u, v)\) with \( u \in V(G_1) \) and \( v \in V(G_2) \). Two vertices \((u_1, v_1)\) and \((u_2, v_2)\) are adjacent if and only if either \( u_1 = u_2 \) and \( v_1 \) is adjacent to \( v_2 \) in \( G_2 \), or \( v_1 = v_2 \) and \( u_1 \) is adjacent to \( u_2 \) in \( G_1 \).
+
+For \( G = K_3 \Box P_3 \):
+- \( K_3 \) is a complete graph with 3 vertices.
+- \( P_3 \) is a path graph with 3 vertices.
+
+Let's label the vertices of \( K_3 \) as \( A, B, C \) and the vertices of \( P_3 \) as \( 1, 2, 3 \). The Cartesian product \( K_3 \Box P_3 \) will have vertices:
+\[ (A, 1), (A, 2), (A, 3), (B, 1), (B, 2), (B, 3), (C, 1), (C, 2), (C, 3) \]
+
+Now, let's write the TikZ code to draw this graph:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the first set of nodes (A, B, C)
+    \foreach \i in {1, 2, 3} {
+        \node[draw, circle] at (\i, -2) (A\i) {};
+        \node[draw, circle] at (\i, 0) (B\i) {};
+        \node[draw, circle] at (\i, 2) (C\i) {};
+    }
+
+   

@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm, auto]
+    % Define node styles
+    \tikzset{
+        block/.style={
+            rectangle,
+            draw,
+            fill=yellow!30,
+            text width=5em,
+            text centered,
+            rounded corners,
+            minimum height=4em
+        },
+        circle/.style={
+            circle,
+            draw,
+            fill=white,
+            inner sep=2pt
+        },
+        arrow/.style={
+            thick,
+            ->,
+            >=Stealth
+        }
+    }
+
+    % Nodes
+    \node [circle] (h) {$h$};
+    \node [circle, below=of h] (h') {$h'$};
+    \node [block, right=of h'] (f) {$f_{\phi}$};
+    \node [circle, right=of f] (z) {$z$};
+    \node [circle, below=of z] (a) {$a$};
+    \node [block, right=of a] (q) {$Q_{\omega}, \pi_{\nu}$};
+    \node [circle, right=of q] (r) {$r$};
+    \node [block, right=of a] (g) {$g_{\theta}$};
+    \node [circle, right=of g] (z') {$z'$};
+
+    % Edges
+    \draw [arrow] (h) -- (f);
+    \draw [arrow] (h') -- (f);
+    \draw [arrow] (f) -- (z);
+    \draw [arrow] (f) -- (a);
+    \draw [arrow] (z) -- (q);
+    \draw [arrow] (a) -- (q);
+    \draw [arrow] (a) -- (g);
+    \draw [arrow] (g) -- (z');
+    \draw [arrow, dashed] (f) to[bend left] (z');
+    \draw [arrow, dashed] (f) to[bend right] (z');
+
+    % Caption
+    \node at (current bounding box.north west) {\textbf{Architecture of our minimalist $\phi_L$ algorithm.}};
+    \node at (current bounding box.south west) {The dashed edge indicates the stop-gradient operator; the undirected edges indicate learning from grounded signals of rewards or next latent states.};
+\end{tikzpicture}
+
+\end{document}

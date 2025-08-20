@@ -1,0 +1,50 @@
+To create a TikZ diagram that represents both a \(3 \times 3\) quadrilateral mesh and a flexible mesh with fixed angles, we can use the following LaTeX code:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{calc,angles,quotes}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Draw the 3x3 quadrilateral mesh
+\foreach \i in {0,...,2} {
+    \foreach \j in {0,...,2} {
+        \node[draw,circle,inner sep=1pt] (q\i\j) at (\i,\j) {};
+    }
+}
+
+\foreach \i in {0,...,2} {
+    \foreach \j in {0,...,1} {
+        \draw (q\i\j) -- (q\i\j+1);
+    }
+    \foreach \j in {0,...,2} {
+        \draw (q\j\i) -- (q\j+1\i);
+    }
+}
+
+% Highlight the smaller area for flexibility
+\draw[dashed] (q00) rectangle (q11);
+
+% Define points for the flexible mesh
+\coordinate (A) at (0,0);
+\coordinate (B) at (1,0);
+\coordinate (C) at (1,1);
+\coordinate (D) at (0,1);
+\coordinate (E) at (0.5,0.5);
+\coordinate (F) at (1.5,0.5);
+\coordinate (G) at (1.5,1.5);
+\coordinate (H) at (0.5,1.5);
+
+% Draw the flexible mesh
+\draw (A) -- (B) -- (C) -- (D) -- cycle;
+\draw (A) -- (E);
+\draw (B) -- (F);
+\draw (C) -- (G);
+\draw (D) -- (H);
+
+% Label the angles
+\pic [angle radius=1cm,"$\alpha_1$",draw] {angle = F--B--A};
+\pic [angle radius=1cm,"$\alpha_2$",draw] {angle = G--C--B};
+\pic [angle radius=1cm,"$\alpha_3$",draw] {angle = H--D--C};
+\

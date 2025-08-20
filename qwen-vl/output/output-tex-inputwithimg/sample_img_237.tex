@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=0.5cm]
+    % Define the positions of the vertices
+    \foreach \i in {1,...,12} {
+        \pgfmathtruncatemacro{\j}{mod(\i-1,3)+1}
+        \ifnum\j=1
+            \node[circle,draw,fill=white] (v\i) at (\i*0.5,0) {$v_{\i}$};
+        \else
+            \node[circle,draw,fill=black] (v\i) at (\i*0.5,0) {};
+        \fi
+    }
+    
+    % Draw the edges between the vertices
+    \foreach \i in {1,...,11} {
+        \draw (v\i) -- (v\the\numexpr\i+1);
+    }
+    
+    % Draw the dashed lines for the FTD-codes
+    \draw[dashed] (v4) -- (v7);
+    \draw[dashed] (v8) -- (v11);
+    \draw[dashed] (v12) -- (v15);
+    
+    % Label the vertices in the FTD-codes
+    \node[circle,draw,fill=white] at (6.5,-0.5) {$v_{11}$};
+    \node[circle,draw,fill=black] at (6.5,-0.5) {$v_{12}$};
+    \node[circle,draw,fill=white] at (6.5,-0.5) {$v_{13}$};
+    \node[circle,draw,fill=black] at (6.5,-0.5) {$v_{14}$};
+    
+    \node[circle,draw,fill=white] at (9.5,-0.5) {$v_{11}$};
+    \node[circle,draw,fill=black] at (9.5,-0.5) {$v_{12}$};
+    \node[circle,draw,fill=white] at (9.5,-0.5) {$v_{13}$};
+    \node[circle,draw,fill=black] at (9.5,-0.5) {$v_{14}$};
+    \node[circle,draw,fill=white] at (9.5,-0.5) {$v_{15}$};
+    
+    \node[circle,draw,fill=white] at (12.5,-0.5) {$v_{11}$};
+    \node[circle,draw,fill=black] at (12.5,-0.5) {$v_{12}$};
+    \node[circle,draw,fill=white] at (12.5,-0.5) {$v_{13}$};
+    \node[circle,draw,fill=black] at (12.5,-0.5) {$v_{14}$};
+    \node[circle,draw,fill=white] at (12.5,-0.5) {$v_{15}$};
+    \node[circle,draw,fill=black] at (12.5,-0.5) {$v_{16}$};
+    
+    % Add the caption on the right side
+    \node[right=2cm of v12,align=left] {
+        $P_{12}$: $r=0$ \\
+        $P_{13}$: $r=1$ \\
+        $P_{14}$: $r=2$ \\
+        $P_{15}$: $r=3$ \\
+        $P_{16}$: $r=4$ \\
+        $P_{17}$: $r=5$
+    };
+\end{tikzpicture}
+
+\end{document}

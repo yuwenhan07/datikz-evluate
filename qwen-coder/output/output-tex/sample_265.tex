@@ -1,0 +1,41 @@
+To create a TikZ LaTeX diagram illustrating a honeycomb lattice with edges colored according to the plaquettes they are connected to, you can use the following code:
+
+```latex
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric, positioning}
+
+\tikzset{
+    hexagon/.style={
+        regular polygon,
+        regular polygon sides=6,
+        minimum size=1cm,
+        draw,
+        inner sep=0pt
+    },
+    edgecolor/.style={draw=blue},
+    plaqcolor/.style={draw=red}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes representing hexagons (plaquettes)
+    \node[hexagon] (P1) {};
+    \node[hexagon, right=of P1] (P2) {};
+    \node[hexagon, below left=of P1] (P3) {};
+    \node[hexagon, below right=of P2] (P4) {};
+    \node[hexagon, above left=of P3] (P5) {};
+    \node[hexagon, above right=of P4] (P6) {};
+
+    % Edges connecting nodes
+    \draw[edgecolor] (P1.south) -- (P3.north);
+    \draw[edgecolor] (P1.east) -- (P2.west);
+    \draw[edgecolor] (P2.east) -- (P4.west);
+    \draw[edgecolor] (P2.north) -- (P5.south);
+    \draw[edgecolor] (P3.east) -- (P4.west);
+    \draw[edgecolor] (P3.south) -- (P6.north);
+    \draw[edgecolor] (P4.east) -- (P6.west);
+    \draw[edgecolor] (P5.east) -- (P6.west);
+
+    % Plaquette coloring (optional)
+    \draw[plaqcolor] ([yshift=-0.5cm]P1.center) rectangle node[midway, above] {Plaque 1} ([xshift=0.5cm,yshift=-0.5cm]P2.center);
+    \draw[plaqcolor] ([yshift=-0.5cm]P2.center) rectangle node[midway, above] {Plaque 

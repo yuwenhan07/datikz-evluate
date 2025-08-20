@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, quotes, graphs, graphdrawing}
+\usegdlibrary{layered}
+
+\begin{document}
+
+\begin{tikzpicture}[>=Stealth]
+    \graph [layered layout, level sep=1cm, sibling sep=0.5cm] {
+        "context" -> ["early life 1"] "early life 1" -> ["early life 2"] "early life 2" -> ["early life 3"] "early life 3" -> ["baseline"] "baseline" -> ["wave 1"] "wave 1" -> ["wave 2"] "wave 2";
+
+        "context" -> ["migrant", "income", "ISCED"] "mother's age";
+        "context" -> ["sex", "age"] "mother's BMI";
+        "context" -> ["birth weight", "weeks pregnant"] "household diet";
+        "context" -> ["formula milk", "breastfeeding"] "mother's BMI";
+        "context" -> ["physical activity", "sleep"] "well-being";
+        "context" -> ["healthy eating"] "insulin resistance";
+
+        "early life 1" -> ["school"] "school";
+        "early life 1" -> ["media"] "media";
+        "early life 1" -> ["BMI"] "mother's BMI";
+        "early life 1" -> ["physical activity", "sleep"] "well-being";
+        "early life 1" -> ["healthy eating"] "insulin resistance";
+
+        "early life 2" -> ["school"] "school";
+        "early life 2" -> ["media"] "media";
+        "early life 2" -> ["BMI"] "mother's BMI";
+        "early life 2" -> ["physical activity", "sleep"] "well-being";
+        "early life 2" -> ["healthy eating"] "insulin resistance";
+
+        "early life 3" -> ["school"] "school";
+        "early life 3" -> ["media"] "media";
+        "early life 3" -> ["BMI"] "mother's BMI";
+        "early life 3" -> ["physical activity", "sleep"] "well-being";
+        "early life 3" -> ["healthy eating"] "insulin resistance";
+
+        "baseline" -> ["school"] "school";
+        "baseline" -> ["media"] "media";
+        "baseline" -> ["BMI"] "mother's BMI";
+        "baseline" -> ["physical activity", "sleep"] "well-being";
+        "baseline" -> ["healthy eating"] "insulin resistance";
+
+        "wave 1" -> ["school"] "school";
+        "wave 1" -> ["media"] "media";
+        "wave 1" -> ["BMI"] "mother's BMI";
+        "wave 1" -> ["physical activity", "sleep"] "well-being";
+        "wave 1" -> ["healthy eating"] "insulin resistance";
+
+        "wave 2" -> ["school"] "school";
+        "wave 2" -> ["media"] "media";
+        "wave 2" -> ["BMI"] "mother's BMI";
+        "wave 2" -> ["physical activity", "sleep"] "well-being";
+        "wave 2" -> ["healthy eating"] "insulin resistance";
+
+        "school" -> ["media"] "media";
+        "school" -> ["BMI"] "mother's BMI";
+        "school" -> ["physical activity", "sleep"] "well-being";
+        "school" -> ["healthy eating"] "insulin resistance";
+
+        "media" -> ["BMI"] "mother's BMI";
+        "media" -> ["physical activity", "sleep"] "well-being";
+        "media" -> ["healthy eating"] "insulin resistance";
+
+        "BMI" -> ["physical activity", "sleep"] "well-being";
+        "BMI" -> ["healthy eating"] "insulin resistance";
+
+        "physical activity" -> ["sleep"] "well-being";
+        "physical activity" -> ["healthy eating"] "insulin resistance";
+
+        "sleep" -> ["healthy eating"] "insulin resistance";
+
+        "healthy eating" -> ["insulin resistance"];
+    };
+\end{tikzpicture}
+
+\end{document}

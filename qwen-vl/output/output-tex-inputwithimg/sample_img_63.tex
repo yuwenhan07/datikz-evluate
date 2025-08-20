@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \matrix (m) [matrix of nodes, column sep=0.5cm, row sep=0.5cm] {
+        \node[draw, minimum width=3cm, minimum height=2cm] (state) {State = (x,y) \\ Reward = cx}; & 
+        \node[draw, minimum width=3cm, minimum height=2cm] (reward) {+10 \\ \nodepart{lower} +1}; \\
+        \node[circle, draw, minimum size=0.5cm] (agent) {}; &
+        \node[circle, draw, minimum size=0.5cm] (agent2) {}; \\
+        \node[draw, minimum size=0.5cm] (barrier) {}; &
+        \node[draw, minimum size=0.5cm] (barrier2) {}; \\
+    };
+
+    % Arrows for the treadmill
+    \draw[dotted, ->] (agent) -- (barrier);
+    \draw[->] (agent2) -- (barrier2);
+
+    % Lines connecting the states
+    \draw (state) -- (agent);
+    \draw (reward) -- (agent2);
+
+    % Lines connecting the rewards
+    \draw (state) -- (reward);
+
+    % Lines connecting the barriers
+    \draw (barrier) -- (barrier2);
+\end{tikzpicture}
+
+\end{document}

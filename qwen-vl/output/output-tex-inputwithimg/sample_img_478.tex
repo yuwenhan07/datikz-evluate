@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm, auto]
+        % Define nodes for the left network
+        \node (r) {$r$};
+        \node [below=of r] (1) {1};
+        \node [below=of 1] (2) {2};
+        \node [below=of 2] (3) {3};
+        \node [below=of 3] (4) {4};
+        \node [below=of 4] (5) {5};
+        \node [below=of 5] (6) {6};
+        \node [below=of 6] (7) {7};
+        \node [below=of 7] (8) {8};
+        \node [below=of 8] (9) {9};
+        \node [below=of 9] (10) {10};
+        \node [below=of 10] (11) {11};
+        
+        % Draw edges for the left network
+        \draw[->] (r) -- (1);
+        \draw[->] (1) -- (2);
+        \draw[->] (2) -- (3);
+        \draw[->] (3) -- (4);
+        \draw[->] (4) -- (5);
+        \draw[->] (5) -- (6);
+        \draw[->] (6) -- (7);
+        \draw[->] (7) -- (8);
+        \draw[->] (8) -- (9);
+        \draw[->] (9) -- (10);
+        \draw[->] (10) -- (11);
+        
+        % Define nodes for the right network
+        \node [right=of 11] (a) {$a$};
+        \node [right=of a] (b) {$b$};
+        \node [right=of b] (c) {$c$};
+        \node [right=of c] (d) {$d$};
+        \node [right=of d] (e) {$e$};
+        \node [right=of e] (f) {$f$};
+        \node [right=of f] (g) {$g$};
+        \node [right=of g] (h) {$h$};
+        \node [right=of h] (i) {$i$};
+        \node [right=of i] (j) {$j$};
+        \node [right=of j] (k) {$k$};
+        \node [right=of k] (l) {$l$};
+        \node [right=of l] (m) {$m$};
+        \node [right=of m] (n) {$n$};
+        \node [right=of n] (o) {$o$};
+        
+        % Draw edges for the right network
+        \draw[->] (a) -- node[left] {0.4} (b);
+        \draw[->] (b) -- node[left] {0.4} (c);
+        \draw[->] (c) -- node[left] {0.4} (d);
+        \draw[->] (d) -- node[left] {0.4} (e);
+        \draw[->] (e) -- node[left] {0.4} (f);
+        \draw[->] (f) -- node[left] {0.4} (g);
+        \draw[->] (g) -- node[left] {0.4} (h);
+        \draw[->] (h) -- node[left] {0.4} (i);
+        \draw[->] (i) -- node[left] {0.4} (j);
+        \draw[->] (j) -- node[left] {0.4} (k);
+        \draw[->] (k) -- node[left] {0.4} (l);
+        \draw[->] (l) -- node[left] {0.4} (m);
+        \draw[->] (m) -- node[left] {0.4} (n);
+        \draw[->] (n) -- node[left] {0.4} (o);
+        
+        % Draw arrows for the left network
+        \draw[->, red, thick] (7) -- node[above] {0.5} (8);
+        \draw[->, red, thick] (10) -- node[above] {0.3} (11);
+        \draw[->, red, thick] (10) -- node[above] {0.3} (11);
+        \draw[->, red, thick] (10) -- node[above] {0.3} (11);
+        
+        % Draw arrows for the right network
+        \draw[->, red, thick] (i) -- node[above] {0.3} (j);
+        \draw[->, red, thick] (j) -- node[above] {0.3} (k);
+        \draw[->, red, thick] (k) -- node[above] {0.3} (l);
+        
+        % Add labels for the right network
+        \node at (a) [below] {$a$};
+        \node at (b) [below] {$b$};
+        \node at (c) [below] {$c$};
+        \node at (d) [below] {$d$};
+        \node at (e) [below] {$e$};
+        \node at (f) [below] {$f$};
+        \node at (g) [below] {$g$};
+        \node at (h) [below] {$h$};
+        \node at (i) [below] {$i$};
+        \node at (j) [below] {$j$};
+        \node at (k) [below] {$k$};
+        \node at (l) [below] {$l$};
+        \node at (m) [below] {$m$};
+        \node at (n) [below] {$n$};
+        \node at (o) [below] {$o$};
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

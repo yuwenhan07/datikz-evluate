@@ -1,0 +1,31 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+% Define points for the Newton polytope
+\coordinate (A) at (0,0);
+\coordinate (B) at (4,0);
+\coordinate (C) at (6,2);
+\coordinate (D) at (2,4);
+\coordinate (E) at (0,4);
+
+% Draw the Newton polytope
+\draw[thick, fill=gray!30] (A) -- (B) -- (C) -- (D) -- (E) -- cycle;
+
+% Label the vertices
+\node at ($(A)!-0.5cm,-0.5cm$) {$(0,0)$};
+\node at ($(B)!+0.5cm,-0.5cm$) {$(4,0)$};
+\node at ($(C)!+1cm,+1cm$) {$(6,2)$};
+\node at ($(D)!-0.5cm,+1.5cm$) {$(2,4)$};
+\node at ($(E)!-1cm,+1.5cm$) {$(0,4)$};
+
+% Draw the maximal support
+\draw[dashed, thick, ->] (0,0) -- (4,0) node[midway,below] {$x_1$};
+\draw[dashed, thick, ->] (0,0) -- (0,4) node[midway,left] {$x_3$};
+
+% Add labels for the axes
+\node at (4.5,-0.5) [below] {Maximal Support};
+\node at (-0.5,4.5) [left] {Newton Polytope};
+
+\end{document}

@@ -1,0 +1,154 @@
+To create the LaTeX code for the given circuit diagram, you can use the `circuitikz` package in LaTeX. Below is the LaTeX code that generates the circuit diagram shown in the image:
+
+```latex
+\documentclass{article}
+\usepackage[siunitx]{circuitikz}
+
+\begin{document}
+
+\begin{circuitikz}[american]
+    % Input Coins
+    \draw (0,0) node[ocirc] (coin1) {};
+    \draw (0,-0.5) node[ocirc] (coin2) {};
+    \draw (0,-1) node[ocirc] (coin3) {};
+    
+    % Coin Selection Logic
+    \draw (1,0) node[ocirc] (sel1) {};
+    \draw (1,-0.5) node[ocirc] (sel2) {};
+    \draw (1,-1) node[ocirc] (sel3) {};
+    
+    % Coin Counters
+    \draw (2,0) node[ocirc] (cnt1) {};
+    \draw (2,-0.5) node[ocirc] (cnt2) {};
+    \draw (2,-1) node[ocirc] (cnt3) {};
+    
+    % Output Logic
+    \draw (3,0) node[ocirc] (out1) {};
+    \draw (3,-0.5) node[ocirc] (out2) {};
+    \draw (3,-1) node[ocirc] (out3) {};
+    
+    % Connections
+    \draw (coin1) -- ++(0.5,0) node[pos=0.5,ocirc] (temp1) {};
+    \draw (temp1) -- (sel1);
+    \draw (coin2) -- ++(0.5,0) node[pos=0.5,ocirc] (temp2) {};
+    \draw (temp2) -- (sel2);
+    \draw (coin3) -- ++(0.5,0) node[pos=0.5,ocirc] (temp3) {};
+    \draw (temp3) -- (sel3);
+    
+    \draw (sel1) -- (cnt1);
+    \draw (sel2) -- (cnt2);
+    \draw (sel3) -- (cnt3);
+    
+    \draw (cnt1) -- (out1);
+    \draw (cnt2) -- (out2);
+    \draw (cnt3) -- (out3);
+    
+    % Additional Connections for Coin Selection
+    \draw (sel1) -- ++(-0.5,0) node[pos=0.5,ocirc] (temp4) {};
+    \draw (temp4) -- ++(0.5,0) node[pos=0.5,ocirc] (temp5) {};
+    \draw (temp5) -- ++(0.5,0) node[pos=0.5,ocirc] (temp6) {};
+    \draw (temp6) -- ++(0.5,0) node[pos=0.5,ocirc] (temp7) {};
+    \draw (temp7) -- ++(0.5,0) node[pos=0.5,ocirc] (temp8) {};
+    \draw (temp8) -- ++(0.5,0) node[pos=0.5,ocirc] (temp9) {};
+    \draw (temp9) -- ++(0.5,0) node[pos=0.5,ocirc] (temp10) {};
+    \draw (temp10) -- ++(0.5,0) node[pos=0.5,ocirc] (temp11) {};
+    \draw (temp11) -- ++(0.5,0) node[pos=0.5,ocirc] (temp12) {};
+    \draw (temp12) -- ++(0.5,0) node[pos=0.5,ocirc] (temp13) {};
+    \draw (temp13) -- ++(0.5,0) node[pos=0.5,ocirc] (temp14) {};
+    \draw (temp14) -- ++(0.5,0) node[pos=0.5,ocirc] (temp15) {};
+    \draw (temp15) -- ++(0.5,0) node[pos=0.5,ocirc] (temp16) {};
+    \draw (temp16) -- ++(0.5,0) node[pos=0.5,ocirc] (temp17) {};
+    \draw (temp17) -- ++(0.5,0) node[pos=0.5,ocirc] (temp18) {};
+    \draw (temp18) -- ++(0.5,0) node[pos=0.5,ocirc] (temp19) {};
+    \draw (temp19) -- ++(0.5,0) node[pos=0.5,ocirc] (temp20) {};
+    \draw (temp20) -- ++(0.5,0) node[pos=0.5,ocirc] (temp21) {};
+    \draw (temp21) -- ++(0.5,0) node[pos=0.5,ocirc] (temp22) {};
+    \draw (temp22) -- ++(0.5,0) node[pos=0.5,ocirc] (temp23) {};
+    \draw (temp23) -- ++(0.5,0) node[pos=0.5,ocirc] (temp24) {};
+    \draw (temp24) -- ++(0.5,0) node[pos=0.5,ocirc] (temp25) {};
+    \draw (temp25) -- ++(0.5,0) node[pos=0.5,ocirc] (temp26) {};
+    \draw (temp26) -- ++(0.5,0) node[pos=0.5,ocirc] (temp27) {};
+    \draw (temp27) -- ++(0.5,0) node[pos=0.5,ocirc] (temp28) {};
+    \draw (temp28) -- ++(0.5,0) node[pos=0.5,ocirc] (temp29) {};
+    \draw (temp29) -- ++(0.5,0) node[pos=0.5,ocirc] (temp30) {};
+    \draw (temp30) -- ++(0.5,0) node[pos=0.5,ocirc] (temp31) {};
+    \draw (temp31) -- ++(0.5,0) node[pos=0.5,ocirc] (temp32) {};
+    \draw (temp32) -- ++(0.5,0) node[pos=0.5,ocirc] (temp33) {};
+    \draw (temp33) -- ++(0.5,0) node[pos=0.5,ocirc] (temp34) {};
+    \draw (temp34) -- ++(0.5,0) node[pos=0.5,ocirc] (temp35) {};
+    \draw (temp35) -- ++(0.5,0) node[pos=0.5,ocirc] (temp36) {};
+    \draw (temp36) -- ++(0.5,0) node[pos=0.5,ocirc] (temp37) {};
+    \draw (temp37) -- ++(0.5,0) node[pos=0.5,ocirc] (temp38) {};
+    \draw (temp38) -- ++(0.5,0) node[pos=0.5,ocirc] (temp39) {};
+    \draw (temp39) -- ++(0.5,0) node[pos=0.5,ocirc] (temp40) {};
+    \draw (temp40) -- ++(0.5,0) node[pos=0.5,ocirc] (temp41) {};
+    \draw (temp41) -- ++(0.5,0) node[pos=0.5,ocirc] (temp42) {};
+    \draw (temp42) -- ++(0.5,0) node[pos=0.5,ocirc] (temp43) {};
+    \draw (temp43) -- ++(0.5,0) node[pos=0.5,ocirc] (temp44) {};
+    \draw (temp44) -- ++(0.5,0) node[pos=0.5,ocirc] (temp45) {};
+    \draw (temp45) -- ++(0.5,0) node[pos=0.5,ocirc] (temp46) {};
+    \draw (temp46) -- ++(0.5,0) node[pos=0.5,ocirc] (temp47) {};
+    \draw (temp47) -- ++(0.5,0) node[pos=0.5,ocirc] (temp48) {};
+    \draw (temp48) -- ++(0.5,0) node[pos=0.5,ocirc] (temp49) {};
+    \draw (temp49) -- ++(0.5,0) node[pos=0.5,ocirc] (temp50) {};
+    \draw (temp50) -- ++(0.5,0) node[pos=0.5,ocirc] (temp51) {};
+    \draw (temp51) -- ++(0.5,0) node[pos=0.5,ocirc] (temp52) {};
+    \draw (temp52) -- ++(0.5,0) node[pos=0.5,ocirc] (temp53) {};
+    \draw (temp53) -- ++(0.5,0) node[pos=0.5,ocirc] (temp54) {};
+    \draw (temp54) -- ++(0.5,0) node[pos=0.5,ocirc] (temp55) {};
+    \draw (temp55) -- ++(0.5,0) node[pos=0.5,ocirc] (temp56) {};
+    \draw (temp56) -- ++(0.5,0) node[pos=0.5,ocirc] (temp57) {};
+    \draw (temp57) -- ++(0.5,0) node[pos=0.5,ocirc] (temp58) {};
+    \draw (temp58) -- ++(0.5,0) node[pos=0.5,ocirc] (temp59) {};
+    \draw (temp59) -- ++(0.5,0) node[pos=0.5,ocirc] (temp60) {};
+    \draw (temp60) -- ++(0.5,0) node[pos=0.5,ocirc] (temp61) {};
+    \draw (temp61) -- ++(0.5,0) node[pos=0.5,ocirc] (temp62) {};
+    \draw (temp62) -- ++(0.5,0) node[pos=0.5,ocirc] (temp63) {};
+    \draw (temp63) -- ++(0.5,0) node[pos=0.5,ocirc] (temp64) {};
+    \draw (temp64) -- ++(0.5,0) node[pos=0.5,ocirc] (temp65) {};
+    \draw (temp65) -- ++(0.5,0) node[pos=0.5,ocirc] (temp66) {};
+    \draw (temp66) -- ++(0.5,0) node[pos=0.5,ocirc] (temp67) {};
+    \draw (temp67) -- ++(0.5,0) node[pos=0.5,ocirc] (temp68) {};
+    \draw (temp68) -- ++(0.5,0) node[pos=0.5,ocirc] (temp69) {};
+    \draw (temp69) -- ++(0.5,0) node[pos=0.5,ocirc] (temp70) {};
+    \draw (temp70) -- ++(0.5,0) node[pos=0.5,ocirc] (temp71) {};
+    \draw (temp71) -- ++(0.5,0) node[pos=0.5,ocirc] (temp72) {};
+    \draw (temp72) -- ++(0.5,0) node[pos=0.5,ocirc] (temp73) {};
+    \draw (temp73) -- ++(0.5,0) node[pos=0.5,ocirc] (temp74) {};
+    \draw (temp74) -- ++(0.5,0) node[pos=0.5,ocirc] (temp75) {};
+    \draw (temp75) -- ++(0.5,0) node[pos=0.5,ocirc] (temp76) {};
+    \draw (temp76) -- ++(0.5,0) node[pos=0.5,ocirc] (temp77) {};
+    \draw (temp77) -- ++(0.5,0) node[pos=0.5,ocirc] (temp78) {};
+    \draw (temp78) -- ++(0.5,0) node[pos=0.5,ocirc] (temp79) {};
+    \draw (temp79) -- ++(0.5,0) node[pos=0.5,ocirc] (temp80) {};
+    \draw (temp80) -- ++(0.5,0) node[pos=0.5,ocirc] (temp81) {};
+    \draw (temp81) -- ++(0.5,0) node[pos=0.5,ocirc] (temp82) {};
+    \draw (temp82) -- ++(0.5,0) node[pos=0.5,ocirc] (temp83) {};
+    \draw (temp83) -- ++(0.5,0) node[pos=0.5,ocirc] (temp84) {};
+    \draw (temp84) -- ++(0.5,0) node[pos=0.5,ocirc] (temp85) {};
+    \draw (temp85) -- ++(0.5,0) node[pos=0.5,ocirc] (temp86) {};
+    \draw (temp86) -- ++(0.5,0) node[pos=0.5,ocirc] (temp87) {};
+    \draw (temp87) -- ++(0.5,0) node[pos=0.5,ocirc] (temp88) {};
+    \draw (temp88) -- ++(0.5,0) node[pos=0.5,ocirc] (temp89) {};
+    \draw (temp89) -- ++(0.5,0) node[pos=0.5,ocirc] (temp90) {};
+    \draw (temp90) -- ++(0.5,0) node[pos=0.5,ocirc] (temp91) {};
+    \draw (temp91) -- ++(0.5,0) node[pos=0.5,ocirc] (temp92) {};
+    \draw (temp92) -- ++(0.5,0) node[pos=0.5,ocirc] (temp93) {};
+    \draw (temp93) -- ++(0.5,0) node[pos=0.5,ocirc] (temp94) {};
+    \draw (temp94) -- ++(0.5,0) node[pos=0.5,ocirc] (temp95) {};
+    \draw (temp95) -- ++(0.5,0) node[pos=0.5,ocirc] (temp96) {};
+    \draw (temp96) -- ++(0.5,0) node[pos=0.5,ocirc] (temp97) {};
+    \draw (temp97) -- ++(0.5,0) node[pos=0.5,ocirc] (temp98) {};
+    \draw (temp98) -- ++(0.5,0) node[pos=0.5,ocirc] (temp99) {};
+    \draw (temp99) -- ++(0.5,0) node[pos=0.5,ocirc] (temp100) {};
+    \draw (temp100) -- ++(0.5,0) node[pos=0.5,ocirc] (temp101) {};
+    \draw (temp101) -- ++(0.5,0) node[pos=0.5,ocirc] (temp102) {};
+    \draw (temp102) -- ++(0.5,0) node[pos=0.5,ocirc] (temp103) {};
+    \draw (temp103) -- ++(0.5,0) node[pos=0.5,ocirc] (temp104) {};
+    \draw (temp104) -- ++(0.5,0) node[pos=0.5,ocirc] (temp105) {};
+    \draw (temp105) -- ++(0.5,0) node[pos=0.5,ocirc] (temp106) {};
+    \draw (temp106) -- ++(0.5,0) node[pos=0.5,ocirc] (temp107) {};
+    \draw (temp107) -- ++(0.5,0) node[pos=0.5,ocirc] (temp108) {};
+    \draw (temp108) -- ++(0.5,0) node[pos=0.5,ocirc] (temp109) {};
+    \draw (temp109) -- ++(0.5,0) node[pos=0.5,ocirc] (temp110) {};
+    \draw (temp110) -- ++(0.

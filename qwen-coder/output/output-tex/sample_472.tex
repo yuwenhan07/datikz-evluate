@@ -1,0 +1,40 @@
+To create a TikZ diagram that visualizes the filtration of \(\mathcal{D}(X,Y,R)\) by total weight and Sheehy's subdivision filtration applied to the dual Dowker complex \(\mathcal{D}(Y,X,R^\top)\), we can use the following TikZ code:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{matrix,shapes.geometric,arrows.meta}
+
+\tikzset{
+    node style/.style={draw, rectangle, minimum width=2cm, minimum height=1cm},
+    arrow style/.style={->, thick, >=Stealth[length=5pt]},
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    % Top row: Filtration of \mathcal{D}(X,Y,R)
+    \matrix (top) [matrix of nodes, nodes in empty cells, column sep=1cm] {
+        & & & \\
+        & & & \\
+        & & & \\
+    };
+    \foreach \i in {0,...,2} {
+        \node[below=of top-\i-4, node style] (top-\i-3) {};
+        \node[above=of top-\i-3, node style] (top-\i-2) {};
+        \node[left=of top-\i-2, node style] (top-\i-1) {};
+        \node[right=of top-\i-2, node style] (top-\i-4) {};
+    }
+    
+    % Bottom row: Sheehy's subdivision filtration applied to \mathcal{D}(Y,X,R^\top)
+    \matrix (bottom) [matrix of nodes, nodes in empty cells, below=of top, column sep=1cm] {
+        & & & \\
+        & & & \\
+        & & & \\
+    };
+    \foreach \i in {0,...,2} {
+        \node[below=of bottom-\i-4, node style] (bottom-\i-3) {};
+        \node[above=of bottom-\i-3, node style] (bottom-\i-2) {};
+        \node[left=of bottom-\i-2, node style] (bottom-\i-1) {};
+        \node[right=of bottom-\i-2, node style] (bottom-\i-4) {};
+    }
+    

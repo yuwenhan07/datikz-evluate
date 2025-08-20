@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{forest}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\section*{(a) Phylogenetic species tree \( T \), used to generate gene genealogies for \( n_{\underline{1}} \) and \( n_{\underline{2}} \) individuals sampled from species 1 and 2 respectively.}
+
+\begin{figure}[h]
+    \centering
+    \begin{forest}
+        for tree={
+            grow'=0,
+            l sep+=5mm,
+            s sep+=5mm,
+            parent anchor=south,
+            child anchor=north,
+            align=center,
+            font=\small,
+            draw,
+            fill=white,
+            text width=1cm,
+            minimum height=1cm,
+            inner sep=0pt,
+            outer sep=0pt,
+            anchor=center,
+            edge={thick,->},
+            edge path={
+                \noexpand\path [\forestoption{edge}]
+                    (!u.parent anchor) -- +(0,-5mm) -| (.child anchor)\forestoption{edge label};
+            },
+        }
+        [n_{\underline{1}}, name=A
+            [n_{\overline{1}}, name=B
+                [n_{\underline{1}}]
+                [r_{\underline{1}}]
+            ]
+            [n_{\overline{2}}, name=C
+                [n_{\underline{2}}]
+                [r_{\underline{2}}]
+            ]
+        ]
+        [n_{\underline{2}}, name=D
+            [n_{\overline{1}}, name=E
+                [n_{\underline{1}}]
+                [r_{\underline{1}}]
+            ]
+            [n_{\overline{2}}, name=F
+                [n_{\underline{2}}]
+                [r_{\underline{2}}]
+            ]
+        ]
+    \end{forest}
+\end{figure}
+
+\section*{(b) Graph \( G \) for the graphical model associated with the evolution of a binary trait on a gene tree drawn from the multispecies coalescent model. \( G \) is a DAG with 2 sources (roots) \( n_{\underline{1}} \) and \( n_{\underline{2}} \), and 2 sinks (leaves) \( r_{\underline{1}} \) and \( r_{\underline{2}} \). The model restricted to variables \( n_{\overline{e}} \) and \( n_{\underline{e}} \) (in black) can be described by the subgraph \( G_n \) whose nodes and edges are in black. It is a tree similar to \( T \) but with reversed edge directions.}
+
+\begin{figure}[h]
+    \centering
+    \begin{forest}
+        for tree={
+            grow'=0,
+            l sep+=5mm,
+            s sep+=5mm,
+            parent anchor=south,
+            child anchor=north,
+            align=center,
+            font=\small,
+            draw,
+            fill=white,
+            text width=1cm,
+            minimum height=1cm,
+            inner sep=0pt,
+            outer sep=0pt,
+            anchor=center,
+            edge={thick,->},
+            edge path={
+                \noexpand\path [\forestoption{edge}]
+                    (!u.parent anchor) -- +(0,-5mm) -| (.child anchor)\forestoption{edge label};
+            },
+        }
+        [n_{\underline{1}}, name=A
+            [n_{\overline{1}}, name=B
+                [n_{\underline{1}}]
+                [r_{\underline{1}}]
+            ]
+            [n_{\overline{2}}, name=C
+                [n_{\underline{2}}]
+                [r_{\underline{2}}]
+            ]
+        ]
+        [n_{\underline{2}}, name=D
+            [n_{\overline{1}}, name=E
+                [n_{\underline{1}}]
+                [r_{\underline{1}}]
+            ]
+            [n_{\overline{2}}, name=F
+                [n_{\underline{2}}]
+                [r_{\underline{2}}]
+            ]
+        ]
+    \end{forest}
+\end{figure}
+
+\section*{(c) Clique tree \( \mathcal{U} \) for \( G \). Note that the 6-variable clique is overparametrized because \( n_{\overline{1}} + n_{\overline{2}} = n_{\underline{3}} \) and \( r_{\overline{1}} + r_{\overline{2}} = r_{\underline{3}} \), but reflects the symmetry of the model.}
+
+\begin{figure}[h]
+    \centering
+    \begin{forest}
+        for tree={
+            grow'=0,
+            l sep+=5mm,
+            s sep+=5mm,
+            parent anchor=south,
+            child anchor=north,
+            align=center,
+            font=\small,
+            draw,
+            fill=white,
+            text width=1cm,
+            minimum height=1cm,
+            inner sep=0pt,
+            outer sep=0pt,
+            anchor=center,
+            edge={thick,->},
+            edge path={
+                \noexpand\path [\forestoption{edge}]
+                    (!u.parent anchor) -- +(0,-5mm) -| (.child anchor)\forestoption{edge label};
+            },
+        }
+        [n_{\underline{1}}, name=A
+            [n_{\overline{1}}, name=B
+                [n_{\underline{1}}]
+                [r_{\underline{1}}]
+            ]
+            [n_{\overline{2}}, name=C
+                [n_{\underline{2}}]
+                [r_{\underline{2}}]
+            ]
+        ]
+        [n_{\underline{2}}, name=D
+            [n_{\overline{1}}, name=E
+                [n_{\underline{1}}]
+                [r_{\underline{1}}]
+            ]
+            [n_{\overline{2}}, name=F
+                [n_{\underline{2}}]
+                [r_{\underline{2}}]
+            ]
+        ]
+    \end{forest}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,37 @@
+Certainly! Below is a TikZ LaTeX code that generates a 3D diagram illustrating the labeling of the corners and half-spaces with their outward normals, as well as the face-corner correspondence with Chern numbers.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{3d, arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2, line width=1pt]
+
+% Define points for a cube
+\coordinate (A) at (-1,-1,-1);
+\coordinate (B) at (1,-1,-1);
+\coordinate (C) at (1,1,-1);
+\coordinate (D) at (-1,1,-1);
+\coordinate (E) at (-1,-1,1);
+\coordinate (F) at (1,-1,1);
+\coordinate (G) at (1,1,1);
+\coordinate (H) at (-1,1,1);
+
+% Draw edges of the cube
+\draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+\draw[thick] (A) -- (E) -- (F) -- (B) -- cycle;
+\draw[thick] (C) -- (G) -- (F) -- (D) -- cycle;
+\draw[thick] (E) -- (F) -- (G) -- (H) -- cycle;
+\draw[thick] (A) -- (D) -- (H) -- (E) -- cycle;
+
+% Label vertices with outward normals
+\node at ($(A)!0.5!(E)$) [below left] {$-n_1$};
+\node at ($(B)!0.5!(F)$) [below right] {$n_2$};
+\node at ($(C)!0.5!(G)$) [above right] {$n_3$};
+\node at ($(D)!0.5!(H)$) [above left] {$-n_4$};
+
+% Draw Chern numbers on faces
+\node at ($(A)!0.75!(B)$) [below] {{\small ${\rm Ch}_{{{\mathcal F}_\lambda}, v \times n_{\lambda+1}} = 2$}};
+\node at ($(B)!0.75!(C)$) [right] {{\small ${\

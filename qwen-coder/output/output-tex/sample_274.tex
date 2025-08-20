@@ -1,0 +1,38 @@
+Certainly! Below is a TikZ LaTeX code snippet that visually represents the relationship between the non-realizability of the quotient \( P \setminus e \) and the non-realizability of the non-Pappus matroid \( P \). The non-Pappus matroid \( P \) is depicted in blue.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+
+    % Define nodes for the elements of the matroid P
+    \node (e1) [circle, draw] {1};
+    \node (e2) [circle, draw] at (3,0) {2};
+    \node (e3) [circle, draw] at (6,0) {3};
+    \node (e4) [circle, draw] at (9,0) {4};
+
+    % Draw edges to represent the independence structure of the matroid P
+    \draw[blue] (e1) -- (e2);
+    \draw[blue] (e1) -- (e3);
+    \draw[blue] (e1) -- (e4);
+    \draw[blue] (e2) -- (e3);
+    \draw[blue] (e2) -- (e4);
+    \draw[blue] (e3) -- (e4);
+
+    % Node for the element e to be removed
+    \node (e) [circle, draw, fill=red] at (5,-2) {$e$};
+
+    % Nodes for the quotient matroid P \ e
+    \node (e1_prime) [circle, draw, right=of e1] {1'};
+    \node (e2_prime) [circle, draw, right=of e2] {2'};
+    \node (e3_prime) [circle, draw, right=of e3] {3'};
+    \node (e4_prime) [circle, draw, right=of e4] {4'};
+
+    % Draw edges to represent the independence structure of the quotient matroid P \ e
+    \draw (e1_prime) -- (e2_prime);
+    \draw (e1_prime) -- (e3_prime);
+    \draw (e1_prime) -- (e4_prime);
+    \draw (e2_prime) -- (e3_prime);

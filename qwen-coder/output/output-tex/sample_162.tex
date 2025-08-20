@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\tikzset{
+    arrow/.style={->,thick},
+    bluebox/.style={draw=blue,thick,dashed},
+    redarrow/.style={red,->,thick},
+    blackarrow/.style={black,->,thick},
+    box/.style={rectangle,draw=black,thick,text width=2cm,align=center}
+}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        % Left Panel
+        \node[box] at (0,0) {Uncolored $q$-Boson Model};
+        
+        \draw[bluebox] (1,-1) rectangle (3,1);
+        \draw[arrow] (4,0) -- (6,0);
+        \draw[redarrow] (5,-1) -- (5,1);
+        
+        \node[below=of 1,-1] {Outgoing arrows};
+        \node[above=of 1,1] {Incoming arrows};
+        
+        % Right Panel
+        \node[box,right=3cm] at (0,0) {Colored $q$-Boson Model};
+        
+        \draw[bluebox] (1,-1) rectangle (3,1);
+        \draw[dashed,bluebox] (-1,-1) rectangle (-3,1);
+        \draw[redarrow] (5,-1) -- (5,1);
+        \draw[blackarrow] (4,0) -- (6,0);
+        
+        \node[below=of 1,-1] {Outgoing arrows};
+        \node[above=of 1,1] {Incoming arrows};
+        
+        \node[right=of -1,-1] {$\Gamma_k$};
+    \end{tikzpicture}
+    \caption{Setups for the Gibbs Property in Uncolored and Colored $q$-Boson Models}
+\end{figure}
+
+\end{document}

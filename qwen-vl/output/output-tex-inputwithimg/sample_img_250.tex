@@ -1,0 +1,180 @@
+To generate LaTeX code for the given image, you can use TikZ to draw the grid and lines. Below is an example of how you might create such a diagram using TikZ:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Left side: q-Boson model
+    \draw[help lines,dashed] (-0.5,-0.5) grid (7.5,6.5);
+    \foreach \x in {0,...,7} {
+        \node at (\x,-0.5) {\x};
+    }
+    \foreach \y in {0,...,6} {
+        \node at (-0.5,\y) {\y};
+    }
+    \draw[red, thick] (0,0) -- (0,1) -- (3,1) -- (3,2) -- (4,2) -- (4,3) -- (5,3) -- (5,4) -- (6,4) -- (6,5) -- (7,5) -- (7,6);
+    \draw[blue, thick] (0,2) -- (1,2) -- (1,3) -- (2,3) -- (2,4) -- (3,4) -- (3,5) -- (4,5) -- (4,6) -- (5,6) -- (5,7) -- (6,7) -- (6,6) -- (7,6);
+
+    % Right side: Colored line ensemble
+    \matrix[matrix of nodes,nodes={minimum width=1cm, minimum height=1cm, anchor=center},row sep=-\pgflinewidth,column sep=-\pgflinewidth] (m) {
+        & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+        0 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 \\
+        1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+        2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+        0 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 \\
+        1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+        2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    };
+    \draw[thick,purple] (m-1-2.north west) -- (m-1-3.north east) -- (m-1-4.south east) -- (m-1-5.south west) -- (m-1-6.north east) -- (m-1-7.south east) -- (m-1-8.south west) -- (m-1-9.north east);
+    \draw[thick,blue] (m-2-2.north west) -- (m-2-3.north east) -- (m-2-4.south east) -- (m-2-5.south west) -- (m-2-6.north east) -- (m-2-7.south east) -- (m-2-8.south west) -- (m-2-9.north east);
+    \draw[thick,blue] (m-3-2.north west) -- (m-3-3.north east) -- (m-3-4.south east) -- (m-3-5.south west) -- (m-3-6.north east) -- (m-3-7.south east) -- (m-3-8.south west) -- (m-3-9.north east);
+    \draw[thick,blue] (m-4-2.north west) -- (m-4-3.north east) -- (m-4-4.south east) -- (m-4-5.south west) -- (m-4-6.north east) -- (m-4-7.south east) -- (m-4-8.south west) -- (m-4-9.north east);
+    \node at (m-1-1.north west) {$M$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {$(0,1)$};
+    \node at (m-1-10.north west) {$(0,1)$};
+    \node at (m-1-10.north east) {$(0,1)$};
+    \node at (m-1-1.south west) {$(0,1)$};
+    \node at (m-1-1.south east) {

@@ -1,0 +1,38 @@
+Certainly! Below is a TikZ LaTeX code that represents the Snyk Code Codesearch system as described:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw, fill=blue!20, 
+        text width=5em, text centered, rounded corners, minimum height=4em},
+    ellipsis/.style = {ellipse, draw, fill=red!20, 
+        text width=3em, text centered, minimum height=3em},
+    line/.style = {draw, thick, ->, >=stealth}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Inputs
+    \node [block] (input1) {Input 1};
+    \node [block, below=of input1] (input2) {Input 2};
+
+    % System Components
+    \node [block, left=of input1, xshift=-3cm] (codesearch_stl) {Codesearch STL};
+    \node [block, right=of input2, xshift=3cm] (starlang_api) {StarLang API};
+    \node [block, below=of codesearch_stl, yshift=-2cm] (computation1) {Computation 1};
+    \node [block, below=of computation1] (computation2) {Computation 2};
+    \node [ellipsis, below=of computation2, yshift=-2cm] (output_data) {Output Data};
+
+    % Outputs
+    \node [block, above=of output_data, yshift=2cm] (output1) {Output 1};
+    \node [block, above=of output1, yshift=2cm] (output2) {Output 2};
+
+    % Arrows
+    \draw [line] (input1) -- (codesearch_stl);
+    \draw [line] (input2) -- (codesearch_stl);
+    \draw [line] (codesearch_stl) -- (computation1);
+    \draw [line] (computation1) -- (computation2);
+    \draw [line] (computation2) -- (output_data);
+    \draw [line] (output_data) |- (output1);

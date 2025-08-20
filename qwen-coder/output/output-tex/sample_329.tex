@@ -1,0 +1,30 @@
+Certainly! Let's consider a square \( ABCD \) with side length 1, positioned in the coordinate plane such that:
+- \( A = (0, 0) \)
+- \( B = (1, 0) \)
+- \( C = (1, 1) \)
+- \( D = (0, 1) \)
+
+We will place four points \( X_1, X_2, X_3, X_4 \) on the edges of this square. For simplicity, let's place them at the midpoints of each edge:
+- \( X_1 \) is at the midpoint of \( AB \), so \( X_1 = \left( \frac{1}{2}, 0 \right) \)
+- \( X_2 \) is at the midpoint of \( BC \), so \( X_2 = \left( 1, \frac{1}{2} \right) \)
+- \( X_3 \) is at the midpoint of \( CD \), so \( X_3 = \left( \frac{1}{2}, 1 \right) \)
+- \( X_4 \) is at the midpoint of \( DA \), so \( X_4 = \left( 0, \frac{1}{2} \right) \)
+
+The counting measure \( \mu = \mu_X \) assigns to each point \( X_i \) a mass of 1. Therefore, the total mass assigned by \( \mu \) is 4.
+
+Here is the TikZ LaTeX code to draw this setup:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+    % Draw the square
+    \draw[thick] (0,0) -- (1,0) node[midway,below] {$A$};
+    \draw[thick] (1,0) -- (1,1) node[midway,right] {$B$};
+    \draw[thick] (1,1) -- (0,1) node[midway,above] {$C$};
+    \draw[thick] (0,1) -- (0,0) node[midway,left] {$D$};
+
+    % Draw the points
+    \filldraw[black] (0.5,0) circle (2pt) node[below] {$X_1

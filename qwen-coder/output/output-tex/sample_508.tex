@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{pgfplots}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Failure Size Error Rates vs Scaling Values},
+        xlabel={$\alpha$},
+        ylabel=$l_{size}^\alpha$,
+        legend pos=north west,
+        ymin=0,
+        ymax=1,
+        xmin=0,
+        xmax=2,
+        xtick={0, 0.5, 1, 1.5, 2},
+        ytick={0, 0.2, 0.4, 0.6, 0.8, 1},
+        grid=major,
+        width=10cm,
+        height=6cm
+    ]
+        % IEEE 89 data
+        \addplot[blue, mark=square] coordinates {
+            (0, 0.1)
+            (0.5, 0.3)
+            (1, 0.5)
+            (1.5, 0.7)
+            (2, 0.9)
+        };
+        \legend{IEEE 89}
+
+        % IEEE 118 data
+        \addplot[red, mark=diamond] coordinates {
+            (0, 0.2)
+            (0.5, 0.4)
+            (1, 0.6)
+            (1.5, 0.8)
+            (2, 1.0)
+        };
+        \legend{IEEE 118}
+    \end{axis}
+\end{tikzpicture}
+\end{document}

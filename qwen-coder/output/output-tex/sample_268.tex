@@ -1,0 +1,39 @@
+To visualize the allowed region of integer solutions for the exponents \( v_0 \) and \( \bar{v}_0 \) in the ansatz for the \((m_1, m_2, m_3) = (m, m, 0)\) amplitudes, we can use a TikZ diagram. The allowed region will be represented by a grid where both \( v_0 \) and \( \bar{v}_0 \) are integers.
+
+Here is the TikZ LaTeX code to generate this diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.5]
+    % Draw the axes
+    \draw[->] (-4,0) -- (4,0) node[right] {$v_0$};
+    \draw[->] (0,-4) -- (0,4) node[above] {$\bar{v}_0$};
+
+    % Draw the grid
+    \foreach \x in {-3,-2,-1,0,1,2,3} {
+        \draw (\x,-4) -- (\x,4);
+    }
+    \foreach \y in {-3,-2,-1,0,1,2,3} {
+        \draw (-4,\y) -- (4,\y);
+    }
+
+    % Mark the origin
+    \filldraw (0,0) circle (2pt);
+
+    % Label the points
+    \node at (1,1) [below right] {(1,1)};
+    \node at (-1,1) [below left] {(-1,1)};
+    \node at (1,-1) [above right] {(1,-1)};
+    \node at (-1,-1) [above left] {(-1,-1)};
+    \node at (2,2) [below right] {(2,2)};
+    \node at (-2,2) [below left] {(-2,2)};
+    \node at (2,-2) [above right] {(2,-2)};
+    \node at (-2,-2) [above left] {(-2,-2)};
+
+    % Add labels for the axes
+    \node at (4.5,0) [right] {Allowed Region};
+    \node at (0,4.5) [above] {for Integer Solutions

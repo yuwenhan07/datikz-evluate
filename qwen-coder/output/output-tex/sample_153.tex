@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+
+% Define the partition
+\def\partition{4, 3, 2, 1}
+
+% Calculate the total number of elements in the partition
+\pgfmathsetmacro{\totalElements}{0}
+\foreach \x in \partition {
+    \pgfmathsetmacro{\totalElements}{\totalElements + \x}
+}
+
+% Draw the partition of partial sums
+\newcommand{\drawPartition}[2]{
+    \foreach \y [count=\i from #2] in \partition {
+        \pgfmathsetmacro{\height}{#1 - \y}
+        \pgfmathsetmacro{\width}{\y}
+        \fill[blue] (\i, \height) rectangle (\i+\width, \height+1);
+    }
+}
+
+% Draw the original partition
+\drawPartition{\totalElements}{0};
+
+% Draw the conjugate partition
+\drawPartition{\totalElements}{\totalElements};
+
+\end{tikzpicture}
+
+\end{document}

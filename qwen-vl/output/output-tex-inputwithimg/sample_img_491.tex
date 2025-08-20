@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines=left,
+            xlabel=$p/q$,
+            ylabel=$\alpha(E_{p/q}^{\boxtimes 3})$,
+            xmin=1.5, xmax=3.5,
+            ymin=7.5, ymax=14.5,
+            xtick={2, 2.5, 3},
+            ytick={8, 10, 12, 13, 14},
+            xticklabels={$2$, $\frac{5}{2}$, $3$},
+            yticklabels={$8$, $10$, $12$, $13$, $14$},
+            legend pos=north east,
+            ymajorgrids=true,
+            grid style=dashed,
+        ]
+            % Right-continuous step function
+            \addplot[mark=*, mark options={solid}, color=black] coordinates {
+                (2, 8) (2.5, 8) (2.5, 10) (3, 10)
+                (3, 12) (3.5, 12) (3.5, 14) (4, 14)
+                (4, 13) (4.5, 13) (4.5, 11) (5, 11)
+                (5, 9) (5.5, 9) (5.5, 8) (6, 8)
+            };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Graph of the right-continuous step function $\alpha(E_{p/q}^{\boxtimes 3})$ for $p/q \in \mathbb{Q} \cap [2,3)$ with discontinuity points as described in \autoref{th:symm-disc}.}
+    \label{fig:right_continuous_step_function}
+\end{figure}
+
+\end{document}

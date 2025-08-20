@@ -1,0 +1,42 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw the origin
+    \draw (0,0) node[below left] {O};
+    
+    % Draw the two yellow wires
+    \draw[yellow, thick] (-1,-1) -- (1,-1);
+    \draw[yellow, thick] (-1,1) -- (1,1);
+    
+    % Label the wires
+    \node[yellow, below] at (-1,-1) {$\theta$};
+    \node[yellow, above] at (-1,1) {$\theta$};
+    
+    % Draw the horizontal line for measurements
+    \draw (0,-2) -- (4,-2);
+    
+    % Label the measurement points
+    \foreach \x in {0, 1, 2, 3} {
+        \fill (\x,-2) circle (2pt);
+        \node at (\x,-2.5) {$x=\x \Delta x$};
+    }
+    
+    % Draw the vertical line from the rightmost measurement point to the wires
+    \draw[dashed] (3,-2) -- (3,-1);
+    
+    % Label the distances needed to compute B field
+    \node at (3,-1.5) {$x$, $z$};
+    
+    % Draw arrows showing the distances
+    \draw[-stealth, very thick] (3,-2) -- (3,-1);
+    \draw[-stealth, very thick] (3,-1) -- (2,-1);
+    \draw[-stealth, very thick] (2,-1) -- (2,-2);
+    
+    % Label the distances
+    \node at (3,-1.75) {$z$};
+    \node at (2,-1.25) {$x$};
+    \node at (2,-2.5) {$\Delta x$};
+\end{tikzpicture}
+\end{document}

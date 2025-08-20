@@ -1,0 +1,34 @@
+To solve this problem, we need to understand the structure of the tree \( T \) and its third power \( T^3 \), as well as the concept of a metric basis.
+
+1. **Understanding the Tree \( T \)**:
+   - A tree \( T \) is a connected graph with no cycles.
+   - The third power of a tree \( T^3 \) is a graph where two vertices are adjacent if their distance in \( T \) is at most 3.
+   - The metric basis of a graph is a set of vertices such that every pair of vertices in the graph is uniquely determined by their distances to the vertices in the set.
+
+2. **Metric Basis**:
+   - For a tree \( T \), the metric basis is typically the set of leaves (end vertices) because they provide the maximum number of pairwise distances.
+   - For the third power \( T^3 \), the metric basis must be chosen such that it can uniquely determine all pairs of vertices in \( T^3 \).
+
+3. **Red Vertices as Metric Basis**:
+   - The red vertices form the metric basis of \( T \).
+   - Since \( T \) is a tree, the metric basis of \( T \) is the set of leaves of \( T \). If \( T \) has \( n \) leaves, then the metric basis of \( T \) is exactly these \( n \) leaves.
+
+4. **Blue Vertices**:
+   - The blue vertices are extra inserted to form a metric basis of \( T^3 \).
+   - To form a metric basis for \( T^3 \), we need to ensure that the distances between all pairs of vertices in \( T^3 \) can be uniquely determined by the distances to the vertices in the metric basis.
+   - Since \( T \) has \( n \) leaves, the metric basis of \( T \) is \( n \) vertices. For \( T^3 \), we need to consider the structure of \( T^3 \) and how the distances are affected by the additional edges introduced by the third power.
+
+5. **Case Analysis**:
+   - If \( n \) is odd, the red vertices alone might not form a metric basis for \( T^3 \) because the additional edges in \( T^3 \) can introduce new distances that are not uniquely determined by the red vertices alone.
+   - Therefore, we need to add some blue vertices to the red vertices to form a metric basis for \( T^3 \).
+   - If \( n \) is even, the red vertices alone might form a metric basis for \( T^3 \) because the additional edges in \( T^3 \) do not introduce new distances that cannot be uniquely determined by the red vertices alone.
+
+6. **Conclusion**:
+   - When \( n \) is odd, the red vertices alone do not form a metric basis for \( T^3 \), so we need to add some blue vertices.
+   - When \( n \) is even, the red vertices alone form a metric basis for \( T^3 \), so we do not need to add any blue vertices.
+
+Thus, the final answer is:
+
+\[
+\boxed{\text{The red vertices form the metric basis of } T \text{ and the blue vertices are extra inserted to form a metric basis of } T^3.}
+\]

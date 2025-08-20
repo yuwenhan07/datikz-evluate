@@ -1,0 +1,32 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+
+% Define colors for different research areas
+\tikzstyle{researcharea} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, align=center]
+\tikzstyle{resource} = [circle, draw, fill=blue!20, text width=1.5em, text centered]
+\tikzstyle{conversion} = [->, thick, shorten >=1pt, >=stealth']
+\tikzstyle{displacement} = [->, dashed, thick, shorten >=1pt, >=stealth']
+\tikzstyle{layering} = [->, dotted, thick, shorten >=1pt, >=stealth']
+
+% Nodes representing different research areas and resources
+\node (area1) [researcharea] {Area 1};
+\node (area2) [researcharea, below of=area1] {Area 2};
+\node (area3) [researcharea, right of=area1, xshift=4cm] {Area 3};
+
+\node (res1) [resource, left of=area1] {Res1};
+\node (res2) [resource, above of=res1] {Res2};
+\node (res3) [resource, below of=res1] {Res3};
+\node (res4) [resource, right of=area1, xshift=4cm] {Res4};
+
+% Arrows representing conversions, displacements, and layerings
+\draw [conversion] (res1) -- node[midway, above] {Convert} (res2);
+\draw [displacement] (res2) -- node[midway, above] {Displace} (res3);
+\draw [layering] (res3) -- node[midway, above] {Layer} (res4);
+
+\end{tikzpicture}
+
+\end{document}

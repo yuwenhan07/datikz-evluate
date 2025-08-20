@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+        % Define styles for nodes
+        \tikzset{
+            mynode/.style={draw=red, fill=red!20, minimum width=1cm, minimum height=1cm},
+            myedge/.style={draw=blue, thick},
+            myrededge/.style={draw=red, thick},
+            mycircle/.style={draw=blue, fill=blue!20, circle, inner sep=0pt, minimum size=0.5cm}
+        }
+        
+        % Draw the initial graph
+        \matrix (A) [matrix of nodes, row sep=0.5cm, column sep=0.5cm] {
+            \mynode & & & \\
+            & \mynode & & \\
+            & & \mynode & \\
+            & & & \mynode \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,9} {
+            \draw[myedge] (A-\i-1) -- (A-\i-2);
+            \draw[myedge] (A-\i-2) -- (A-\i-3);
+            \draw[myedge] (A-\i-3) -- (A-\i-4);
+        }
+        
+        % Draw the first transformation
+        \matrix (B) [matrix of nodes, right=1cm of A, row sep=0.5cm, column sep=0.5cm] {
+            \mynode & & & \\
+            & \mynode & & \\
+            & & \mynode & \\
+            & & & \mynode \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,4} {
+            \draw[myrededge] (B-\i-1) -- (B-\i-2);
+            \draw[myrededge] (B-\i-2) -- (B-\i-3);
+            \draw[myrededge] (B-\i-3) -- (B-\i-4);
+        }
+        \draw[myedge] (B-5-1) -- (B-5-2);
+        \draw[myedge] (B-5-2) -- (B-5-3);
+        \draw[myedge] (B-5-3) -- (B-5-4);
+        
+        % Draw the second transformation
+        \matrix (C) [matrix of nodes, right=1cm of B, row sep=0.5cm, column sep=0.5cm] {
+            \mynode & & & \\
+            & \mynode & & \\
+            & & \mynode & \\
+            & & & \mynode \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,3} {
+            \draw[myrededge] (C-\i-1) -- (C-\i-2);
+            \draw[myrededge] (C-\i-2) -- (C-\i-3);
+        }
+        \draw[myedge] (C-4-1) -- (C-4-2);
+        \draw[myedge] (C-4-2) -- (C-4-3);
+        
+        % Draw the third transformation
+        \matrix (D) [matrix of nodes, right=1cm of C, row sep=0.5cm, column sep=0.5cm] {
+            \mynode & & & \\
+            & \mynode & & \\
+            & & \mynode & \\
+            & & & \mynode \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,2} {
+            \draw[myrededge] (D-\i-1) -- (D-\i-2);
+        }
+        \draw[myedge] (D-3-1) -- (D-3-2);
+        
+        % Draw the fourth transformation
+        \matrix (E) [matrix of nodes, right=1cm of D, row sep=0.5cm, column sep=0.5cm] {
+            \mynode & & & \\
+            & \mynode & & \\
+            & & \mynode & \\
+            & & & \mynode \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,1} {
+            \draw[myrededge] (E-\i-1) -- (E-\i-2);
+        }
+        
+        % Draw the final transformation
+        \matrix (F) [matrix of nodes, right=1cm of E, row sep=0.5cm, column sep=0.5cm] {
+            \mynode & & & \\
+            & \mynode & & \\
+            & & \mynode & \\
+            & & & \mynode \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,1} {
+            \draw[myrededge] (F-\i-1) -- (F-\i-2);
+        }
+        
+        % Draw the final circles
+        \matrix (G) [matrix of nodes, right=1cm of F, row sep=0.5cm, column sep=0.5cm] {
+            \mynode & & & \\
+            & \mynode & & \\
+            & & \mynode & \\
+            & & & \mynode \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+            & & & \\
+        };
+        \foreach \i in {1,...,1} {
+            \draw[mycircle] (G-\i-1) circle (0.25cm);
+            \draw[mycircle] (G-\i-2) circle (0.25cm);
+        }
+        
+        % Draw the arrows
+        \draw[->] (A-5-4) -- node[above] {$\Rightarrow$} (B-5-4);
+        \draw[->] (B-5-4) -- node[above] {$\Rightarrow$} (C-5-4);
+        \draw[->] (C-5-4) -- node[above] {$\Rightarrow$} (D-5-4);
+        \draw[->] (D-5-4) -- node[above] {$\Rightarrow$} (E-5-4);
+        \draw[->] (E-5-4) -- node[above] {$\Rightarrow$} (F-5-4);
+        \draw[->] (F-5-4) -- node[above] {$\Rightarrow$} (G-5-4);
+        
+        % Caption
+        \node at (current bounding box.north west) [anchor=north west, align=center] {
+            Shown is the upper-bounding construction with $k = 10$, $l = 3$, $\delta = 0.5$. In each step we replace the blue edges with as many red edges of $\frac{1}{1 + \delta}$ times the size as possible. Then we pick the $l$ red edges that the algorithm puts the most weight on, make those the new blue edges and repeat until only singleton edges are left.
+        };
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,45 @@
+Certainly! Below is the TikZ LaTeX code to generate two octaves of the Temperament $\mathcal{T}_5(100)$ together with the interval $\Delta_5$.
+
+```latex
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{calc,arrows.meta}
+
+\tikzset{
+    mynode/.style={circle, draw, inner sep=2pt},
+    myarrow/.style={->, thick, >=Stealth[]}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define the intervals for one octave
+    \def\noteA{0}
+    \def\noteB{\noteA + 100/12}
+    \def\noteC{\noteB + 100/12}
+    \def\noteD{\noteC + 100/12}
+    \def\noteE{\noteD + 100/12}
+    \def\noteF{\noteE + 100/12}
+    \def\noteG{\noteF + 100/12}
+    \def\noteAup{\noteG + 100/12}
+
+    % Draw notes for one octave
+    \foreach \i in {0,...,7} {
+        \node[mynode] (note\i) at (\i,0) {};
+    }
+    
+    % Draw arrows between notes for one octave
+    \foreach \i in {0,...,6} {
+        \draw[myarrow] (note\i) -- (note\the\numexpr\i+1);
+    }
+
+    % Define the second octave starting from the first note
+    \foreach \i in {8,...,15} {
+        \node[mynode] (note\i) at (\i,1) {};
+    }
+    
+    % Draw arrows between notes for the second octave
+    \foreach \i in {8,...,14} {
+        \draw[myarrow] (note\i) -- (note\the\numexpr\i+1);
+    }
+
+    % Draw Delta_5 as an arrow from the last note of the first octave to the first note of the second octave
+    \draw[myarrow, dashed, thick] (note7.east) -- (note8.west

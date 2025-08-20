@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+
+The proposed braiding setup consists of three Majorana boxes mutually linked by tunneling with amplitudes \( t_{12} \), \( t_{13} \) and \( t_{23} \). The Majorana operator \( \gamma_{n \mu} \) denotes the MBS \( \mu \in \{1,\ldots,4\} \) in the box \( n \in \{1,2,3\} \). Two QDs (QD1 and QD2) are coupled via tunneling to the MBSs. The quantum dots, the driving field, and the environment remain identical to the case of a single Majorana box. The tunneling couplings are designed for attaining the jump operator~\eqref{eq:8by8_jump_operator_f_g_form} whose odd-parity dark states depend on the parameters \( f \) and \( g \) as shown in Eqs.~\eqref{eq:8by8_darkstate_psi1_f_g_form}-\eqref{eq:8by8_darkstate_psi2_f_g_form}.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        % Draw Majorana boxes
+        \node[draw, rounded rectangle, fill=blue!20, minimum width=2cm, minimum height=1.5cm] (box1) at (-2, 2) {};
+        \node[draw, rounded rectangle, fill=blue!20, minimum width=2cm, minimum height=1.5cm] (box2) at (2, 2) {};
+        \node[draw, rounded rectangle, fill=blue!20, minimum width=2cm, minimum height=1.5cm] (box3) at (0, -2) {};
+        
+        % Draw Majorana operators
+        \foreach \i/\j in {1/1, 1/2, 1/3, 1/4, 2/1, 2/2, 2/3, 2/4, 3/1, 3/2, 3/3, 3/4}{
+            \node[circle, draw, inner sep=1pt, fill=black] (op\i\j) at (\i*2-1, \j*1.5-1) {};
+            \node[circle, draw, inner sep=1pt, fill=black] (op\i\j) at (\i*2+1, \j*1.5-1) {};
+            \node[circle, draw, inner sep=1pt, fill=black] (op\i\j) at (\i*2, \j*1.5-1) {};
+        }
+        
+        % Draw Majorana labels
+        \node[above left] at (box1.north west) {$\gamma_{11}$};
+        \node[above right] at (box1.north east) {$\gamma_{12}$};
+        \node[below left] at (box1.south west) {$\gamma_{13}$};
+        \node[below right] at (box1.south east) {$\gamma_{14}$};
+        \node[above left] at (box2.north west) {$\gamma_{21}$};
+        \node[above right] at (box2.north east) {$\gamma_{22}$};
+        \node[below left] at (box2.south west) {$\gamma_{23}$};
+        \node[below right] at (box2.south east) {$\gamma_{24}$};
+        \node[above left] at (box3.north west) {$\gamma_{31}$};
+        \node[above right] at (box3.north east) {$\gamma_{32}$};
+        \node[below left] at (box3.south west) {$\gamma_{33}$};
+        \node[below right] at (box3.south east) {$\gamma_{34}$};
+        
+        % Draw Majorana box labels
+        \node[below left] at (box1.west) {Majorana\\ box 1};
+        \node[below right] at (box2.east) {Majorana\\ box 2};
+        \node[below left] at (box3.west) {Majorana\\ box 3};
+        
+        % Draw tunneling lines
+        \draw[->, dashed, blue] (box1.north) -- node[midway, above] {$t_{12}$} (box2.north);
+        \draw[->, dashed, red] (box1.south) -- node[midway, below] {$t_{13}$} (box3.south);
+        \draw[->, dashed, purple] (box2.south) -- node[midway, below] {$t_{23}$} (box3.south);
+        
+        % Draw QDs
+        \fill[red] (box1.north) circle (2pt) node[above right] {QD 1};
+        \fill[red] (box3.south) circle (2pt) node[below right] {QD 2};
+        
+        % Draw AC
+        \draw[thick, ->] (0, -4) arc (180:0:1) node[above right] {AC};
+        
+        % Draw Majorana operators
+        \foreach \i/\j in {1/1, 1/2, 1/3, 1/4, 2/1, 2/2, 2/3, 2/4, 3/1, 3/2, 3/3, 3/4}{
+            \node[draw, cross out, minimum size=6pt, line width=1pt] at (\i*2-1, \j*1.5-1) {};
+            \node[draw, cross out, minimum size=6pt, line width=1pt] at (\i*2+1, \j*1.5-1) {};
+            \node[draw, cross out, minimum size=6pt, line width=1pt] at (\i*2, \j*1.5-1) {};
+        }
+        
+        % Draw Majorana labels
+        \node[above left] at (box1.north west) {$\gamma_{11}$};
+        \node[above right] at (box1.north east) {$\gamma_{12}$};
+        \node[below left] at (box1.south west) {$\gamma_{13}$};
+        \node[below right] at (box1.south east) {$\gamma_{14}$};
+        \node[above left] at (box2.north west) {$\gamma_{21}$};
+        \node[above right] at (box2.north east) {$\gamma_{22}$};
+        \node[below left] at (box2.south west) {$\gamma_{23}$};
+        \node[below right] at (box2.south east) {$\gamma_{24}$};
+        \node[above left] at (box3.north west) {$\gamma_{31}$};
+        \node[above right] at (box3.north east) {$\gamma_{32}$};
+        \node[below left] at (box3.south west) {$\gamma_{33}$};
+        \node[below right] at (box3.south east) {$\gamma_{34}$};
+        
+        % Draw Majorana box labels
+        \node[below left] at (box1.west) {Majorana\\ box 1};
+        \node[below right] at (box2.east) {Majorana\\ box 2};
+        \node[below left] at (box3.west) {Majorana\\ box 3};
+        
+        % Draw tunneling lines
+        \draw[->, dashed, blue] (box1.north) -- node[midway, above] {$t_{12}$} (box2.north);
+        \draw[->, dashed, red] (box1.south) -- node[midway, below] {$t_{13}$} (box3.south);
+        \draw[->, dashed, purple] (box2.south) -- node[midway, below] {$t_{23}$} (box3.south);
+        
+        % Draw QDs
+        \fill[red] (box1.north) circle (2pt) node[above right] {QD 1};
+        \fill[red] (box3.south) circle (2pt) node[below right] {QD 2};
+        
+        % Draw AC
+        \draw[thick, ->] (0, -4) arc (180:0:1) node[above right] {AC};
+        
+        % Draw Majorana operators
+        \foreach \i/\j in {1/1, 1/2, 1/3, 1/4, 2/1, 2/2, 2/3, 2/4, 3/1, 3/2, 3/3, 3/4}{
+            \node[draw, cross out, minimum size=6pt, line width=1pt] at (\i*2-1, \j*1.5-1) {};
+            \node[draw, cross out, minimum size=6pt, line width=1pt] at (\i*2+1, \j*1.5-1) {};
+            \node[draw, cross out, minimum size=6pt, line width=1pt] at (\i*2, \j*1.5-1) {};
+        }
+    \end{tikzpicture}
+    \caption{The proposed braiding setup consists of three Majorana boxes mutually linked by tunneling with amplitudes \( t_{12} \), \( t_{13} \) and \( t_{23} \). The Majorana operator \( \gamma_{n \mu} \) denotes the MBS \( \mu \in \{1,\ldots,4\} \) in the box \( n \in \{1,2,3\} \). Two QDs (QD1 and QD2) are coupled via tunneling to the MBSs. The quantum dots, the driving field, and the environment remain identical to the case of a single Majorana box. The tunneling couplings are designed for attaining the jump operator~\eqref{eq:8by8_jump_operator_f_g_form} whose odd-parity dark states depend on the parameters \( f \) and \( g \) as shown in Eqs.~\eqref{eq:8by8_darkstate_psi1_f_g_form}-\eqref{eq:8by8_darkstate_psi2_f_g_form}.}
+    \label{fig:braiding_setup}
+\end{figure}
+
+\end{document}

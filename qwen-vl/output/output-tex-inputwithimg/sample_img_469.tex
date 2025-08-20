@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+        % Define states
+        \node[state] (s0) {$s_0$};
+        \node[state, right of=s0] (s1) {$s_1$};
+        \node[state, below of=s0] (s2) {$s_2$};
+
+        % Draw arrows and labels
+        \draw[->] (s0) -- node[above left] {$(a_0, 0.8)$} (s1);
+        \draw[->] (s0) -- node[below left] {$(a_1, 0.6)$} (s2);
+
+        % Add rewards
+        \node[right of=s1, xshift=1cm] {$R = 1$};
+        \node[right of=s2, xshift=1cm] {$R = 0$};
+    \end{tikzpicture}
+    \caption{Tabular MDP. The environment starts in state $s_0$ and has horizon $H=1$. Transition probabilities from state $s_0$ are given for the two binary actions $a_0, a_1$ (which send the agent to the other state with complementary probability).}
+    \label{fig:tabular_mdp}
+\end{figure}
+
+\end{document}

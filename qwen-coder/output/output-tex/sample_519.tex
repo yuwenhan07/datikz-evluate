@@ -1,0 +1,29 @@
+To create the described TikZ diagram in LaTeX, you can use the following code:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define nodes for vertices of the triangle
+    \node[circle, draw, fill=white] (v1) at (0,0) {};
+    \node[circle, draw, fill=white] (v2) at (1,0) {};
+    \node[circle, draw, fill=white] (v3) at (0.5,-sqrt(3)/2) {};
+
+    % Draw edges with labels
+    \draw[-Stealth, thick] (v1) -- node[midway, above] {$\psi_{(v_1,v_2)}$} (v2);
+    \draw[-Stealth, thick] (v2) -- node[midway, above] {$\psi_{(v_2,v_3)}$} (v3);
+    \draw[-Stealth, thick] (v3) -- node[midway, above] {$\psi_{(v_3,v_1)}$} (v1);
+
+    % Draw the cyclic path C
+    \draw[dashed, blue] (v3) to[bend left=60] (v1) to[bend left=60] (v2) to[bend left=60] (v3);
+
+    % Label the angles
+    \node at ($(v1)!0.2!(v2)$) [anchor=south west] {\(\theta_{(v_1,v_2)} = \frac{\pi}{4}\)};
+    \node at ($(v2)!0.2!(v3)$) [anchor=south east] {\(\theta_{(v_2,v_3)} = \frac{\pi}{4}\)};
+    \node at ($(v3)!0.2!(v1)$) [anchor=north] {\(\theta_{(v_3,v_1)} = \frac{\pi}{4}\)};
+
+    % Points z1, z1', z2, z3
+    \node[below right] at (v1) {\(\mathbf{C}_{v_1}\)};
+    \node[above right] at (v2) {\(\

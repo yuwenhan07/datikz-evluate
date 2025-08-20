@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz-feynman}
+
+\begin{document}
+
+\begin{center}
+\begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+    \begin{feynman}
+        \vertex (a);
+        \vertex [right=of a] (b);
+        \vertex [above right=of b] (c);
+        \vertex [below right=of b] (d);
+        \vertex [below left=of d] (e);
+        \vertex [left=of e] (f);
+        \vertex [below left=of f] (g);
+        \vertex [below right=of c] (h);
+        \vertex [above right=of h] (i);
+
+        \diagram* {
+            (a) -- [fermion, edge label'=\(\gamma,\text{Z},\text{W}^\pm\)] (b),
+            (b) -- [boson, edge label'=\(\Psi\)] (c),
+            (b) -- [boson, edge label'=\(\Psi\)] (d),
+            (d) -- [fermion, edge label'=\(\gamma,\text{Z},\text{W}^\pm\)] (e),
+            (e) -- [fermion, edge label'=\(\chi\)] (f),
+            (f) -- [boson, edge label'=\(\Psi\)] (g),
+            (g) -- [fermion, edge label'=\(\Psi\)] (h),
+            (h) -- [boson, edge label'=\(\Psi\)] (i),
+            (i) -- [fermion, edge label'=\(\chi\)] (c),
+            (c) -- [boson, edge label'=\(S\)] (h),
+        };
+    \end{feynman}
+\end{tikzpicture}
+\end{center}
+
+\end{document}

@@ -1,0 +1,70 @@
+The iterative process to compute self-consistent solutions of the \textsc{SIESTA}-BdG (Band Density-Functional Theory) secular equation involves several key steps, including the mixing of the density matrix and the Hamiltonian. Here's a schematic overview of this process:
+
+1. **Initialization**: Start with an initial guess for the density matrix \( \rho_0 \) and the Hamiltonian \( H_0 \).
+
+2. **Self-Consistency Loop**:
+   - **Density Update Step**:
+     - Compute the Green's function \( G \) using the current density matrix \( \rho_n \).
+     - Calculate the self-energy \( \Sigma \) from the Green's function.
+     - Update the density matrix \( \rho_{n+1} \) by solving the Kohn-Sham equations with the updated self-energy.
+   - **Hamiltonian Update Step**:
+     - Use the updated density matrix \( \rho_{n+1} \) to construct the effective Hamiltonian \( H_{\text{eff}} \).
+     - Solve the BdG (Bogoliubov-de Gennes) equations to obtain the eigenvalues and eigenvectors corresponding to the effective Hamiltonian.
+
+3. **Convergence Check**:
+   - Compare the new density matrix \( \rho_{n+1} \) with the previous one \( \rho_n \) to check for convergence.
+   - If the change in the density matrix is below a certain threshold, the iteration is considered converged, and the final density matrix and Hamiltonian are obtained.
+   - If not, repeat the self-consistency loop starting from the density update step.
+
+4. **Output**:
+   - Once convergence is achieved, output the final density matrix and the effective Hamiltonian.
+
+### Detailed Steps
+
+#### Density Update Step
+- **Green's Function Calculation**:
+  \[
+  G(\mathbf{k}, \omega) = \left( \omega + \mu - \epsilon_{\mathbf{k}} - \Sigma(\mathbf{k}, \omega) \right)^{-1}
+  \]
+  where \( \mu \) is the chemical potential, \( \epsilon_{\mathbf{k}} \) is the kinetic energy, and \( \Sigma(\mathbf{k}, \omega) \) is the self-energy.
+
+- **Self-Energy Calculation**:
+  \[
+  \Sigma(\mathbf{k}, \omega) = \sum_{\mathbf{k}'} V(\mathbf{k}, \mathbf{k}') G(\mathbf{k}', \omega)
+  \]
+  where \( V(\mathbf{k}, \mathbf{k}') \) is the interaction potential.
+
+- **Density Matrix Update**:
+  \[
+  \rho_{n+1}(\mathbf{k}) = \frac{1}{\pi} \int d\omega \, \text{Im} \left[ G(\mathbf{k}, \omega) \right]
+  \]
+
+#### Hamiltonian Update Step
+- **Effective Hamiltonian Construction**:
+  The effective Hamiltonian \( H_{\text{eff}} \) is constructed based on the density matrix \( \rho_{n+1} \):
+  \[
+  H_{\text{eff}} = H_0 + \sum_{\mathbf{k}} \sum_{\sigma} \sum_{\mathbf{k}'} \sum_{\sigma'} \rho_{n+1}(\mathbf{k}) V(\mathbf{k}, \mathbf{k}') G(\mathbf{k}', \omega) \sigma' \otimes \sigma
+  \]
+
+- **BdG Equations Solution**:
+  Solve the BdG equations:
+  \[
+  \begin{pmatrix}
+    H_{\text{eff}} & \Delta \\
+    \Delta^* & -H_{\text{eff}}
+  \end{pmatrix}
+  \begin{pmatrix}
+    \psi_{\uparrow} \\
+    \psi_{\downarrow}
+  \end{pmatrix} = E
+  \begin{pmatrix}
+    \psi_{\uparrow} \\
+    \psi_{\downarrow}
+  \end{pmatrix}
+  \]
+  where \( \Delta \) is the pairing term representing the superconducting gap.
+
+### Mixing
+During the update steps, the density matrix and the Hamiltonian are mixed to ensure that the self-consistency is maintained. This can be done through various methods such as the Fermi golden rule or other mixing schemes designed to converge the solution efficiently.
+
+By iterating through these steps, the \textsc{SIESTA}-BdG method aims to find the self-consistent solution that satisfies both the Kohn-Sham equations and the BdG equations simultaneously.

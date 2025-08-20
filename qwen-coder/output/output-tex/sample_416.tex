@@ -1,0 +1,40 @@
+Certainly! Below is a TikZ LaTeX code to generate a diagram illustrating the mass spectrum of dark pions and dark baryons, with two panels showing the situation at \( m = 0 \) and for nonzero dark quark mass.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+
+        % Left Panel: Mass Spectrum at m = 0
+        \begin{scope}[xshift=-4cm]
+            \draw[->] (0,0) -- (0,3) node[above] {$M$};
+            \draw[->] (-2,-0.5) -- (2,-0.5);
+            \node at (-2,-0.75) {$-\Delta/2$};
+            \node at (2,-0.75) {$\Delta/2$};
+
+            \filldraw[black] (0,2) circle[radius=2pt];
+            \filldraw[blue] (0,1) circle[radius=2pt];
+
+            \node at (0,2.2) {Dark Pion (\(\pi\))};
+            \node at (0,1.2) {Dark Baryon (\(\chi\))};
+        \end{scope}
+
+        % Right Panel: Mass Spectrum with Nonzero Dark Quark Mass
+        \begin{scope}[xshift=4cm]
+            \draw[->] (0,0) -- (0,3) node[above] {$M$};
+            \draw[->] (-2,-0.5) -- (2,-0.5);
+            \node at (-2,-0.75) {$-\Delta/2$};
+            \node at (2,-0.75) {$\Delta/2$};
+
+            \filldraw[black] (0,2) circle[radius=2pt];
+            \filldraw[blue] (0,1) circle[radius=2pt];
+            \filldraw[red] (0,1.5) circle[radius=2pt];
+
+            \node at (0,2.2) {Dark Pion (\(\pi\))};
+            \node at (0,1.7) {Dark Baryon (\(\chi\))};
+            \node at

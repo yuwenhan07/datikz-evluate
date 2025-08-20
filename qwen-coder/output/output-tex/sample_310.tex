@@ -1,0 +1,47 @@
+To create a TikZ diagram that represents the parametrization of \( Y \)-variables in terms of \( q \)-Weyl algebra generators near a crossing \( i \) in a wiring diagram, we can follow these steps:
+
+1. **Define the basic elements**: We need to represent the vertices (crossings), the edges (wiring), and the \( Y \)-variables with their respective factors.
+
+2. **Draw the symmetric butterfly quiver**: This involves drawing a central vertex connected to four other vertices (north, east, south, west).
+
+3. **Label the vertices and edges**: Clearly label each vertex and edge to indicate their positions relative to the center crossing \( i \).
+
+4. **Add the factors for each vertex**: Place the appropriate factors next to each vertex as specified.
+
+Here is the TikZ code to achieve this:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define styles
+    \tikzset{
+        vertex/.style={circle, draw, fill=blue!20, minimum size=1cm},
+        edge/.style={thick, ->},
+        factor/.style={below right}
+    }
+
+    % Draw the central vertex
+    \node[vertex] (i) at (0,0) {$i$};
+
+    % Draw the north vertex
+    \node[vertex] (n) at (-1,-1) {};
+    \draw[edge] (i) -- (n);
+    \node[factor] at (n.south east) {$\mathrm{e}^{a_i + w_i}$};
+
+    % Draw the east vertex
+    \node[vertex] (e) at (1,-1) {};
+    \draw[edge] (i) -- (e);
+    \node[factor] at (e.south east) {$\mathrm{e}^{b_i - u_i - w_i}$};
+
+    % Draw the south vertex
+    \node[vertex] (s) at (0,-2) {};
+    \draw[edge] (i) -- (s);
+    \node[factor] at (s.south east) {$\mathrm{e}^{c_i + w_i}$};
+
+    % Draw the west vertex
+    \node[vertex] (w) at (-1,-2) {};
+    \draw[edge] (i) -- (w);
+    \node

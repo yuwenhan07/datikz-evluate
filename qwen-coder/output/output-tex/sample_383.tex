@@ -1,0 +1,43 @@
+Certainly! Below is a TikZ LaTeX code to illustrate Newton's method for finding the root of the nonlinear equation \( f(x) = 0.5x^2 - 3x + 4 \). This example includes two initial guesses, \( x_0 \) and \( x_m \), to show how they lead to different roots.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+
+% Define the function
+\def\f(#1){0.5*#1^2 - 3*#1 + 4}
+
+% Draw the axes
+\draw[->] (-2,0) -- (6,0) node[right] {$x$};
+\draw[->] (0,-2) -- (0,8) node[above] {$y$};
+
+% Draw the function
+\draw[domain=-2:6,samples=100,blue] plot (\x,\f{\x});
+
+% Initial guess x0
+\coordinate (x0) at (2,0);
+\fill (x0) circle[radius=2pt];
+\node[below] at (x0) {$(x_0, f(x_0))$};
+
+% Tangent line at x0
+\pgfmathsetmacro\slopeA{0.5*2 - 3} % Derivative of f(x) at x0
+\pgfmathsetmacro\interceptA{-\slopeA*2 + \f{2}} % y-intercept of tangent line
+\draw[dashed,red] (x0) -- ($(x0)+(1,-\slopeA)$) node[midway,right] {Tangent Line};
+
+% Intersection of tangent line with x-axis
+\pgfmathsetmacro\x1{-(\interceptA/\slopeA)}
+\coordinate (x1) at (\x1,0);
+\fill (x1) circle[radius=2pt];
+\node[below] at (x1) {$(x_1, f(x_1))$};
+
+% Initial guess xm
+\coordinate (xm) at (4,0);
+\fill (xm) circle[radius=2pt];
+\node[below] at (xm) {$(x_m, f(x_m))$};
+
+% Tangent line at xm

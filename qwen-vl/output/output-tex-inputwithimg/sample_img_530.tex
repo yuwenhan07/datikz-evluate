@@ -1,0 +1,39 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel=$x$,
+        ylabel=$\psi(x)$,
+        xmin=-1, xmax=4.5,
+        ymin=-4, ymax=12,
+        xtick={-1, 1, 2, 3, 4},
+        ytick={-4, -2, 0, 2, 4, 6, 8, 10},
+        xticklabels={-1, , 1, 2, 3, 4},
+        yticklabels={-4, -2, 0, 2, 4, 6, 8, 10},
+        legend pos=north west,
+        width=10cm,
+        height=7cm,
+        domain=-1:4.5,
+        samples=100,
+        smooth,
+        no markers,
+        thick,
+        every axis plot/.append style={ultra thick},
+        ]
+        \addplot [red] {12/(x^2) - (x^2 + 1)*x^(2*0.5-1)};
+        \addplot [black, mark=*] coordinates {(3, 0)};
+        \addplot [blue, mark=*, mark options={solid, fill=white}] coordinates {(3, 0) (3.5, 0)};
+        \node at (axis cs:3, 0) [below right] {$\xi_{\Delta t}$};
+        \node at (axis cs:3.5, 0) [below left] {$\xi_{\Delta t} + \epsilon$};
+    \end{axis}
+\end{tikzpicture}
+
+\caption{Behaviour of function $\varphi_\Dt(x) = B_1 - \left(\frac{\diffc^2}{2} + B_2\right)x^{2(\alpha-1)} + \frac{b(0)}{x} + b(0)\left(\diffc^2 + B_2\right)x^{2\alpha-3}\Dt$.}
+\label{fig:phi_dt_behavior}
+
+\end{document}

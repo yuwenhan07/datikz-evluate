@@ -1,0 +1,57 @@
+It seems like you're describing a high-level overview of the Snyk Code Codesearch system's architecture. Let's break down the components and their roles:
+
+### Overview:
+- **System Components**: The components within the gray box represent the core functionalities of the Snyk Code Codesearch system.
+- **Inputs and Outputs**: These are the external interactions or data that enter and exit the system.
+- **Computations**: Represented by rectangles, these are the processes or algorithms that transform input data into output data.
+- **Data**: Represented by ellipses, these are the pieces of information that flow through the system.
+
+### Detailed Breakdown:
+
+1. **System Components**:
+   - **Snyk Code Codesearch System**: This is the main component that handles the search functionality for code repositories.
+   - **Code Search Engine**: This component performs the actual search operations across various code repositories.
+   - **Indexing Service**: This service builds indexes of code repositories to speed up search queries.
+   - **API Gateway**: Facilitates communication between the system and external clients, such as developers using the API.
+   - **Database**: Stores metadata about the indexed code repositories and search results.
+   - **User Interface**: Provides a graphical interface for users to interact with the system.
+
+2. **Inputs and Outputs**:
+   - **Inputs**:
+     - **Search Queries**: Users provide search queries to find specific code snippets or patterns.
+     - **Code Repositories**: The system can also receive new code repositories for indexing.
+   - **Outputs**:
+     - **Search Results**: The system returns relevant code snippets, files, or projects based on the search query.
+     - **Index Updates**: If new code repositories are added, the system updates its index accordingly.
+
+3. **Computations**:
+   - **Query Parsing**: Parses the search query to understand what needs to be searched.
+   - **Index Matching**: Matches the parsed query against the indexed code repositories.
+   - **Result Filtering**: Filters out irrelevant results based on the query parameters.
+   - **Result Ranking**: Ranks the results based on relevance and other factors.
+   - **Index Building**: Builds or updates the index of code repositories.
+
+4. **Data**:
+   - **Code Snippets**: Individual lines or blocks of code that match the search query.
+   - **Files**: Complete files containing the matched code snippets.
+   - **Projects**: Collections of files that match the search query.
+   - **Repository Metadata**: Information about the code repositories, such as name, description, and owner.
+   - **Search Query Metadata**: Information about the search query, such as keywords, date range, and context.
+
+5. **STL (Standard Library)**:
+   - **Role**: Acts as an API to the underlying StarLang language.
+   - **Functionality**: Provides standard functions and utilities that can be used within the system to perform common tasks, such as parsing, searching, and indexing.
+
+### Example Flow:
+1. **User Inputs**:
+   - A user enters a search query in the UI.
+   
+2. **System Processing**:
+   - The query is parsed and sent to the Code Search Engine.
+   - The Index Matching and Result Filtering computations are performed.
+   - The Result Ranking computation determines the order of the results.
+   
+3. **Output**:
+   - The system returns the search results to the user.
+
+This high-level overview should give you a clear understanding of how the Snyk Code Codesearch system works, including its components, data flow, and interactions.

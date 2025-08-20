@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=\textwidth,
+        height=0.8\textheight,
+        xlabel={},
+        ylabel={},
+        axis lines=none,
+        xmin=0,
+        xmax=50,
+        ymin=0,
+        ymax=50,
+        xtick=\empty,
+        ytick={30.471, 40.706, 49.218, 57.583},
+        yticklabels={$s_{20}$, $s_{13}$, $s_{21}$, $s_{14}$},
+        extra y ticks={0},
+        extra y tick labels={$\mu_0(\alpha)$, $\mu_3(\alpha)$, $\mu_2(\alpha)$},
+        extra y tick style={grid=major},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        minor tick num=4,
+        enlargelimits=false,
+        clip=false,
+        axis on top,
+        no markers,
+        domain=0:50,
+        samples=100,
+        every axis plot post/.append style={
+            thick,
+            mark=none,
+            smooth
+        }
+    ]
+    
+    \addplot [red] {sqrt(x)} node [pos=0.9, anchor=south west] {$\mu_2(\alpha)$};
+    \addplot [green] {sqrt(2*x)} node [pos=0.9, anchor=south west] {$\mu_3(\alpha)$};
+    \addplot [blue] {sqrt(3*x)} node [pos=0.9, anchor=south west] {$\mu_0(\alpha)$};
+    
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+The Markov chain for the process of \cref{lem:lower_mutant}. %$S_2=\Config$, $S_3=\Config^\star$,$S_4=\Config^+$.
+
+\begin{center}
+    \begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=3cm,
+                        thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+        \node[main node] (1) {$S_1$};
+        \node[main node] (2) [right of=1] {$S_2$};
+        \node[main node] (3) [right of=2] {$S_3$};
+        \node[main node] (4) [right of=3] {$S_4$};
+
+        \path[every node/.style={font=\sffamily\small}]
+            (1) edge [bend left] node [left] {$1$} (1)
+            (1) edge [bend left] node [above] {$1-p^*$} (2)
+            (2) edge [bend left] node [above] {$1-q$} (3)
+            (3) edge [bend left] node [below] {$p^*$} (2)
+            (3) edge [bend left] node [below] {$q$} (4)
+            (4) edge [loop above] node [right] {$1$} (4);
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

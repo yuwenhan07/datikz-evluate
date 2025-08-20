@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define styles for the grid lines and nodes
+    \tikzset{
+        grid/.style={draw, thin},
+        node/.style={circle, draw, inner sep=1pt, minimum size=5mm},
+    }
+
+    % Draw the left part of the diagram
+    \matrix (left) [matrix of nodes, row sep=0.5cm, column sep=0.5cm] {
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+    };
+    \draw[grid] (left-1-1.north west) rectangle (left-8-8.south east);
+    \node at (left-2-4.west) {$col[i]$};
+    \node at (left-3-6.west) {$<pivots[\ell]$};
+    \node at (left-7-1.east) {$colEnd[i]$};
+    \node at (left-2-4.north) {$pivots[1]\leq$};
+    \node at (left-4-4.north) {$i$};
+
+    % Draw the right part of the diagram
+    \matrix (right) [matrix of nodes, row sep=0.5cm, column sep=0.5cm, right=2cm of left] {
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+        & & & & & & & \\
+    };
+    \draw[grid] (right-1-1.north west) rectangle (right-8-8.south east);
+    \node at (right-2-4.west) {$j$};
+    \node at (right-7-1.east) {$\ell$};
+    \node at (right-8-7.east) {$buc[j]$};
+
+    % Draw the connecting line
+    \draw[->, thick] (left-7-1.east) -- (right-1-1.north west);
+
+    % Draw the diagonal lines
+    \draw[->, thick] (left-2-4.north west) -- (right-8-7.north east);
+    \draw[->, thick] (left-3-6.north west) -- (right-7-1.north east);
+\end{tikzpicture}
+
+\end{document}

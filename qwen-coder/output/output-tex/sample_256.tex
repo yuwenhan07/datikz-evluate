@@ -1,0 +1,24 @@
+To compute \( F_{j+1} \mid m_j \) from \( e^{G_{j+1}\tau_j} \) and \( e^{(G_{j+1} - G_j)\tau_j} \), we need to understand the relationship between these quantities. Typically, in many applications such as filtering or control systems, \( F_{j+1} \mid m_j \) represents the conditional probability distribution of the state at time \( j+1 \) given the measurement at time \( j \).
+
+Here's a step-by-step explanation and a corresponding TikZ LaTeX diagram to illustrate this:
+
+### Step-by-Step Explanation
+
+1. **Define the Variables:**
+   - \( F_{j+1} \mid m_j \): The conditional probability distribution of the state at time \( j+1 \) given the measurement at time \( j \).
+   - \( e^{G_{j+1}\tau_j} \): A term related to the transition model.
+   - \( e^{(G_{j+1} - G_j)\tau_j} \): Another term related to the transition model.
+
+2. **Transition Model:**
+   The transition model typically describes how the state evolves over time. For simplicity, let's assume \( G_{j+1} = G_j + H \), where \( H \) is some matrix representing the change in the transition model.
+
+3. **Compute \( F_{j+1} \mid m_j \):**
+   Using the properties of conditional probabilities and the transition model, we can express \( F_{j+1} \mid m_j \) as:
+   \[
+   F_{j+1} \mid m_j = \frac{e^{G_{j+1}\tau_j} \cdot e^{(G_{j+1} - G_j)\tau_j}}{e^{G_j\tau_j}}
+   \]
+
+4. **Simplify the Expression:**
+   Simplify the expression by combining the exponents:
+   \[
+   F_{j+1} \mid m_j = \frac{e^{G_{j+1}\tau_j} \cdot e^{G_{j+1}\tau_j - G_j\tau_j}}{e^{G_j\tau_j}} = \frac{e^{2G_{j+1}\tau_j - G_j\tau_j}}{e^{G_j\tau_j}} = e^{G_{j

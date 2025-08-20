@@ -1,0 +1,50 @@
+Certainly! Below is a TikZ LaTeX code that creates a vertical cross-section through a simple city environment illustrating Line-of-Sight (LoS) encoding and elevation angles.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{
+    building/.style={fill=red},
+    tx/.style={fill=green},
+    locint/.style={fill=yellow},
+    minheight/.style={fill=blue},
+    elevangle/.style={fill=purple}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Draw the ground plane
+    \draw[thick] (-1,0) -- (4,0);
+    
+    % Draw the buildings
+    \draw[building] (0,-1) rectangle (1,3);
+    \draw[building] (2,-2) rectangle (3,2);
+    \draw[building] (3,-3) rectangle (4,1);
+    
+    % Location of Interest (LOI)
+    \node[locint] at (2,0) {};
+    
+    % Minimum Height for LoS
+    \draw[minheight] (2,-1) rectangle (3,0);
+    
+    % Transmitter (Tx)
+    \node[tx] at (1,2) {};
+    \draw[-Stealth, thick] (1,2) -- (1,5); % Antenna Pattern
+    
+    % Main Direction
+    \draw[orange, thick] (1,2) -- (4,0);
+    
+    % Elevation Angles
+    \draw[elevangle] (1,2) -- (2,0); % Angle corresponding to LOI
+    \draw[elevangle] (1,2) -- (2,-2); % Angle corresponding to left corner of the building
+    
+    % Labels
+    \node[above right] at (1,5) {Antenna};
+    \node[below right] at (1,-1) {Building};
+    \node[right] at (2,0) {Location of Interest};
+    \node[left] at (2,-1) {Minimum Height};
+    \node[above] at (1,2) {Transmitter};
+    \node[above right] at (4,0) {Main Direction};
+    \node[above right] at (2,0) {E

@@ -1,0 +1,29 @@
+Certainly! Below is a TikZ LaTeX code that generates a diagram representing the decomposition of the full tensor \(\ensuremath{\mathcal{S}}\) into the three tensors \(\ensuremath{\mathcal{P}}\), \(\ensuremath{\mathcal{N}}\), and \(\ensuremath{\mathcal{Q}}\). The legs are labeled with their dimensions.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+    % Nodes for the tensors
+    \node (S) [rectangle, draw, minimum size=1cm] at (0,0) {\( \mathcal{S} \)};
+    \node (P) [rectangle, draw, minimum size=1cm] at (-3,-2) {\( \mathcal{P} \)};
+    \node (N) [rectangle, draw, minimum size=1cm] at (0,-2) {\( \mathcal{N} \)};
+    \node (Q) [rectangle, draw, minimum size=1cm] at (3,-2) {\( \mathcal{Q} \)};
+    
+    % Legs labels
+    \draw[->] (S.north) node[left] {d1} -- (P.north);
+    \draw[->] (S.south) node[right] {d2} -- (P.south);
+    \draw[->] (S.west) node[below] {d3} -- (P.west);
+    \draw[->] (S.east) node[above] {d4} -- (P.east);
+    
+    \draw[->] (S.north) node[left] {d1} -- (N.north);
+    \draw[->] (S.south) node[right] {d2} -- (N.south);
+    \draw[->] (S.west) node[below] {d5} -- (N.west);
+    \draw[->] (S.east) node[above] {d6} -- (N.east);
+    
+    \draw[->] (S.north) node[left] {d7} -- (Q.north);
+    \draw[->] (S.south) node[right] {d8} -- (Q.south);
+    \

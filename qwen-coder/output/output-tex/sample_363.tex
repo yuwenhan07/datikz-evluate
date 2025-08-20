@@ -1,0 +1,39 @@
+To create a TikZ diagram that visually represents the transition probability matrices for the given hypotheses, we need to consider the structure of each hypothesis:
+
+1. **Node Hypothesis (a)**: This involves a 1st-order random walk where the probability of moving from one node to another depends only on the current node.
+2. **Edge Hypothesis (b)**: This also involves a 1st-order random walk but focuses on the edges rather than nodes directly.
+3. **Path Hypothesis (c)**: This involves a 2nd-order random walk where the probability of moving from one node to another depends on both the current and previous nodes.
+
+Here is a LaTeX code snippet using TikZ to illustrate these concepts:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{matrix,shapes.geometric}
+
+\tikzset{
+    node/.style={circle, draw, minimum size=1cm},
+    edge/.style={->, thick},
+    state/.style={rectangle, draw, rounded corners, minimum width=2cm, minimum height=1cm},
+    transition/.style={->, dotted, thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[row sep=1cm, column sep=1cm]
+    % Node Hypothesis (a)
+    \matrix (nodeHypothesis) at (0,0) {
+        \node[node] (a) {A}; & \node[node] (b) {B}; \\
+        \node[node] (c) {C}; & \node[node] (d) {D}; \\
+    };
+    \draw[edge] (a) -- (b);
+    \draw[edge] (a) -- (c);
+    \draw[edge] (b) -- (d);
+    \draw[edge] (c) -- (d);
+
+    % Edge Hypothesis (b)
+    \matrix (edgeHypothesis) at (4,-2) {
+        \node[state] (e1) {E1}; & \node[state] (e2) {E2}; \\
+        \node[state] (e3) {E3}; & \node[state] (e4) {E4}; \\
+    };
+    \draw[transition] (e1) -- (e2);
+    \draw[transition] (e1) -- (e3);
+    \draw[transition] (e2) --

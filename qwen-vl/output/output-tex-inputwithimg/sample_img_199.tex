@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define the coordinates for the nodes
+    \foreach \x in {0,...,9} {
+        \node[circle,fill,inner sep=2pt] (a\x) at (\x,0) {};
+        \node[circle,fill,inner sep=2pt] (b\x) at (\x,-1) {};
+        \node[circle,fill,inner sep=2pt] (c\x) at (\x,-2) {};
+    }
+    
+    % Draw the horizontal lines
+    \draw[blue,thick] (a0) -- (a9);
+    \draw[blue,thick] (b0) -- (b9);
+    \draw[blue,thick] (c0) -- (c9);
+    
+    % Draw the arcs
+    \foreach \x in {0,...,8} {
+        \draw[black,thick] (a\x) to [out=-45,in=135] (b\x+1);
+        \draw[cyan,thick] (b\x) to [out=-45,in=135] (c\x+1);
+    }
+    
+    % Label the nodes
+    \foreach \x in {0,...,9} {
+        \node at (\x,-2.5) {$\x$};
+    }
+    
+    % Add labels for f, g, h
+    \node at (-0.5,-1.5) {$f$};
+    \node at (-0.5,-2.5) {$g$};
+    \node at (-0.5,-3.5) {$h$};
+    
+    % Highlight h_0
+    \node[circle,fill=red,inner sep=2pt] at (0,-2) {};
+    \node at (0,-2.5) {$h_0$};
+\end{tikzpicture}
+
+\end{document}

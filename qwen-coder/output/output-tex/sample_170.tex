@@ -1,0 +1,34 @@
+To create a TikZ diagram that represents the described scenario, we need to visualize two $b$-cycles on the left and their product on the right. Below is the TikZ code to achieve this:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+% Left side
+\node (start1) [circle, draw, fill=white] {0};
+\node (a1) [circle, draw, fill=white, below of=start1] {$\alpha$};
+\node (b1) [circle, draw, fill=green!30, right of=a1] {1};
+\node (c1) [circle, draw, fill=green!30, above of=b1] {1};
+
+\draw[->] (start1) -- node[left] {0} (a1);
+\draw[->] (a1) -- node[right] {0} (b1);
+\draw[->] (b1) -- node[above] {1} (c1);
+\draw[->] (c1) -- node[below] {1} (start1);
+
+% Right side
+\node (start2) [circle, draw, fill=white, xshift=5cm] {0};
+\node (a2) [circle, draw, fill=white, below of=start2] {$\alpha$};
+\node (b2) [circle, draw, fill=green!30, right of=a2] {1};
+\node (c2) [circle, draw, fill=green!30, above of=b2] {1};
+\node (d2) [circle, draw, fill=green!30, right of=c2] {1};
+\node (e2) [circle, draw, fill=green!30, above of=d2] {1};
+\node (f2) [circle, draw, fill=green!30, right of=e2] {1};
+\node (g2) [circle, draw, fill=green!30, below of=f2] {1};
+
+\draw[->] (start2) -- node[left] {0} (a2);
+\draw[->] (a2) -- node[right] {0} (b2);
+\draw[

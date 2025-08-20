@@ -1,0 +1,263 @@
+To generate LaTeX code for the given image, you can use TikZ and PGFPlots packages to create the diagram. Below is an example of how you might write the LaTeX code for this image:
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{equation}
+    \Gamma_{\mathrm{d}} = \Gamma_{1} \oplus \Gamma_{\mathrm{Wick}} \oplus \Gamma_{2}
+\end{equation}
+
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[->, thick] (-4,0) -- (4,0) node[right] {$\Gamma_{\mathrm{real}}$};
+    \draw[->, thick] (0,-4) -- (0,4) node[above] {$\mathcal{I}m\,\nu$};
+
+    % Gamma 1
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) arc (90:-90:2cm);
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) arc (90:270:2cm);
+
+    % Gamma 2
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) arc (90:-90:1cm);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) arc (90:270:1cm);
+
+    % Wick
+    \draw[black, ultra thick, ->, >=Stealth] (0,0) -- (0,-2cm) node[left] {$\Gamma_{\mathrm{Wick}}$};
+
+    % Labels
+    \node at (3.5, 2.5) {$\Gamma_{1}$};
+    \node at (-3.5, -2.5) {$\Gamma_{2}$};
+
+    % Poles
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for poles
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Dashed lines
+    \draw[blue, dashed, thick] (0,0) -- (0,2cm);
+    \draw[brown, dashed, thick] (0,0) -- (0,-2cm);
+
+    % Arrows for poles
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots
+    \filldraw[green] (0, -2.5) circle (1pt);
+    \filldraw[green] (0, -3) circle (1pt);
+    \filldraw[green] (0, -3.5) circle (1pt);
+
+    % Dashed line for Wick
+    \draw[blue, dashed, thick] (0,0) -- (0,2cm);
+    \draw[brown, dashed, thick] (0,0) -- (0,-2cm);
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (1pt);
+    \filldraw[red] (2, -1.5) circle (1pt);
+    \filldraw[red] (2.5, -1.5) circle (1pt);
+    \filldraw[red] (3, -1.5) circle (1pt);
+    \filldraw[red] (3.5, -1.5) circle (1pt);
+
+    % Labels for Wick
+    \node at (-4, 1.5) {$\mathrm{P}_{e}^{(+)}$};
+    \node at (-4, 0.5) {$\mathrm{P}_{\gamma}^{(+)}$};
+    \node at (-4, -0.5) {$\mathrm{P}_{\mathcal{N}}^{(+)}$};
+
+    % Arrows for Wick
+    \draw[blue, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+    \draw[brown, ultra thick, ->, >=Stealth] (0,0) -- (-4, 0);
+
+    % Dots for Wick
+    \filldraw[red] (1.5, -1.5) circle (

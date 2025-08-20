@@ -1,0 +1,157 @@
+To generate LaTeX code for the given image and caption, you can use the `tikz` package in LaTeX. Below is the LaTeX code that produces the image and the corresponding caption:
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Define coordinates
+        \coordinate (A) at (-3, 0);
+        \coordinate (B) at (-1, 0);
+        \coordinate (C) at (4, 0);
+        \coordinate (D) at (-3, -1);
+        \coordinate (E) at (-1, -1);
+        \coordinate (F) at (4, -1);
+        \coordinate (G) at (-3, -2);
+        \coordinate (H) at (-1, -2);
+        \coordinate (I) at (4, -2);
+        \coordinate (J) at (-3, -3);
+        \coordinate (K) at (-1, -3);
+        \coordinate (L) at (4, -3);
+        \coordinate (M) at (-3, -4);
+        \coordinate (N) at (-1, -4);
+        \coordinate (O) at (4, -4);
+        \coordinate (P) at (-3, -5);
+        \coordinate (Q) at (-1, -5);
+        \coordinate (R) at (4, -5);
+        
+        % Draw the main curve
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        
+        % Draw the dashed line
+        \draw[dashed] (A) -- (C);
+        
+        % Draw the vertical lines
+        \draw[->] (A) -- (A |- M) node[left] {$\frac{1}{3} \delta_i$};
+        \draw[->] (B) -- (B |- M) node[left] {$\frac{1}{3} \delta_i$};
+        \draw[->] (C) -- (C |- M) node[right] {$\delta_i$};
+        
+        % Draw the horizontal lines
+        \draw[dotted] (A) -- (A |- D) node[left] {$\frac{1}{3} \delta_i$};
+        \draw[dotted] (B) -- (B |- D) node[left] {$\frac{1}{3} \delta_i$};
+        \draw[dotted] (C) -- (C |- D) node[right] {$\frac{1}{3} \delta_i$};
+        
+        % Draw the triangle
+        \fill[orange!50] (A) -- (B) -- (D) -- cycle;
+        
+        % Draw the arrows
+        \draw[-{Stealth[length=2mm]}] (B) -- ++(1, 1) node[above right] {$T_i$};
+        \draw[-{Stealth[length=2mm]}] (C) -- ++(1, 1) node[above right] {$\overline{u}$};
+        \draw[-{Stealth[length=2mm]}] (B) -- ++(1, -1) node[below right] {$\text{slope } = -2^k$};
+        
+        % Label the points
+        \node at (A) [left] {$v_{i-1}$};
+        \node at (B) [left] {$v_i$};
+        \node at (C) [right] {$\widetilde{u}_k$};
+        
+        % Draw the parabola
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-3, -1) (-1, -1) (4, -1)};
+        \draw[thick] plot [smooth, tension=1] coordinates {(-

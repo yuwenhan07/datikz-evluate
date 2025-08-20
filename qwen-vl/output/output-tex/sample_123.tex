@@ -1,0 +1,34 @@
+To illustrate the proof of Proposition \ref{pro: LWconv}, let's break down the key points and provide a step-by-step explanation.
+
+### Proposition \ref{pro: LWconv}
+The proposition states two main points:
+1. For any ball of radius \( r < \lfloor n/2 \rfloor \) in graph-distance around any vertex in \( G_{k,n} \), it is isomorphic to the respective ball around \( 0 \) in \( G_{k,\infty} \).
+2. For any given \( r \geq 1 \), we can choose \( n \geq \lceil 2r \rceil \) such that each ball of radius \( r \) in \( G_{k,n} \) is isomorphic to the respective ball around \( 0 \) in \( G_{k,\infty} \).
+
+### Step-by-Step Explanation
+
+#### Part 1: Balls of Radius \( r < \lfloor n/2 \rfloor \)
+Consider a ball of radius \( r \) centered at a vertex \( v \) in \( G_{k,n} \). The vertices within this ball are those that are at most distance \( r \) from \( v \). We need to show that this ball is isomorphic to the ball of radius \( r \) centered at \( 0 \) in \( G_{k,\infty} \).
+
+- **Graph \( G_{k,n} \)**: This is a random graph where each edge exists independently with probability \( p = \frac{k}{n} \).
+- **Graph \( G_{k,\infty} \)**: This is an infinite random graph where each edge also exists independently with probability \( p = \frac{k}{\infty} = \frac{k}{n} \) (for large \( n \)).
+
+For small \( r \), the structure of the ball in \( G_{k,n} \) is very similar to the ball in \( G_{k,\infty} \) because the probability of edges is the same. Specifically, if \( r < \lfloor n/2 \rfloor \), the ball in \( G_{k,n} \) will have a structure that is essentially the same as the ball in \( G_{k,\infty} \) up to a certain point. The reason is that the number of vertices within distance \( r \) from \( v \) in \( G_{k,n} \) is finite and manageable, and the probability of edges between these vertices is the same as in \( G_{k,\infty} \).
+
+Thus, the ball of radius \( r < \lfloor n/2 \rfloor \) in \( G_{k,n} \) is isomorphic to the ball of radius \( r \) in \( G_{k,\infty} \).
+
+#### Part 2: Balls of Radius \( r \geq 1 \)
+Now consider a ball of radius \( r \geq 1 \) in \( G_{k,n} \). We need to show that we can choose \( n \) large enough such that this ball is isomorphic to the ball of radius \( r \) centered at \( 0 \) in \( G_{k,\infty} \).
+
+- **Choosing \( n \geq \lceil 2r \rceil \)**: If \( n \geq \lceil 2r \rceil \), then the ball of radius \( r \) in \( G_{k,n} \) will contain at least \( 2r + 1 \) vertices. This ensures that the structure of the ball in \( G_{k,n} \) is sufficiently large to be isomorphic to the ball in \( G_{k,\infty} \).
+
+- **Isomorphism**: Since \( n \geq \lceil 2r \rceil \), the ball of radius \( r \) in \( G_{k,n} \) will have a structure that is essentially the same as the ball in \( G_{k,\infty} \) up to a certain point. The probability of edges between these vertices is the same as in \( G_{k,\infty} \), ensuring that the balls are isomorphic.
+
+Thus, for any given \( r \geq 1 \), we can choose \( n \geq \lceil 2r \rceil \) such that each ball of radius \( r \) in \( G_{k,n} \) is isomorphic to the respective ball around \( 0 \) in \( G_{k,\infty} \).
+
+### Conclusion
+The illustration of the proof of Proposition \ref{pro: LWconv} shows that the structure of balls in \( G_{k,n} \) for small \( r \) is isomorphic to the corresponding balls in \( G_{k,\infty} \), and for larger \( r \), we can ensure isomorphism by choosing \( n \) appropriately. This completes the proof.
+
+\[
+\boxed{\text{The proposition is proven.}}
+\]

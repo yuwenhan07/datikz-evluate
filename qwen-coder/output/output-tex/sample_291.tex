@@ -1,0 +1,53 @@
+To construct a matching in \(\Mat_{9,3}^{>2}(1)\) step by step using TikZ, we need to understand the structure of the matrix and the rules for forming a matching. The notation \(\Mat_{9,3}^{>2}(1)\) suggests a 9x3 matrix where each entry is either 0 or 1, and there are more than two 1's in at least one row.
+
+Let's start with an example matrix:
+\[
+A = \begin{pmatrix}
+1 & 0 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+1 & 1 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 0 & 0
+\end{pmatrix}
+\]
+
+We will form a matching step by step, ensuring that no two edges share a vertex and that each edge is represented by a line connecting corresponding rows and columns.
+
+### Step-by-Step Construction
+
+1. **Select the first available edge:**
+   - Choose the edge between row 1 and column 1.
+   - This edge connects the non-zero entries in row 1 (column 1 and column 3).
+
+2. **Update the matrix:**
+   - Set the selected entries to 0:
+     \[
+     A = \begin{pmatrix}
+     0 & 0 & 0 \\
+     1 & 1 & 0 \\
+     0 & 1 & 1 \\
+     1 & 0 & 0 \\
+     0 & 0 & 1 \\
+     1 & 1 & 1 \\
+     0 & 1 & 0 \\
+     1 & 0 & 1 \\
+     0 & 0 & 0
+     \end{pmatrix}
+     \]
+
+3. **Select the next available edge:**
+   - Choose the edge between row 4 and column 2.
+   - This edge connects the non-zero entries in row 4 (column 2).
+
+4. **Update the matrix:**
+   - Set the selected entry to 0:
+     \[
+     A = \begin{pmatrix}
+     0 & 0 & 0 \\
+     1 & 1 & 0 \\
+     0 & 1 & 1 \\
+     0

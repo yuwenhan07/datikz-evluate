@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the axes
+        \draw[->] (-3,0) -- (3,0);
+        \draw[->] (0,-1) -- (0,1);
+
+        % Draw the blue curve
+        \draw[thick, blue] plot [smooth,tension=1] coordinates {(-2.5,0.5) (-1.5,1) (0,0) (1.5,1) (2.5,0.5)};
+        
+        % Draw the dashed brown curve
+        \draw[dashed, brown] plot [smooth,tension=1] coordinates {(-3,0.5) (-2,1) (0,0) (2,1) (3,0.5)};
+        
+        % Draw the red arrows
+        \draw[red, ultra thick, -Stealth] (0,0.5) -- (0,1.5);
+        \draw[red, ultra thick, -Stealth] (0,-0.5) -- (0,-1.5);
+        
+        % Label the regions
+        \node at (0,1.5) {$\Omega^+$};
+        \node at (0,-1.5) {$\Omega^+$};
+        \node at (-1.5,0.5) {$\Omega^0$};
+        \node at (1.5,0.5) {$\Omega^0$};
+        
+        % Draw the vertical line
+        \draw[thick, black] (0,0) -- (0,2);
+        
+        % Repeat the same drawing on the right side
+        \begin{scope}[xshift=4cm]
+            % Draw the blue curve
+            \draw[thick, blue] plot [smooth,tension=1] coordinates {(0.5,0.5) (1.5,1) (3,0) (4.5,1) (5.5,0.5)};
+            
+            % Draw the dashed brown curve
+            \draw[dashed, brown] plot [smooth,tension=1] coordinates {(0,0.5) (1,1) (3,0) (4,1) (5,0.5)};
+            
+            % Draw the red arrows
+            \draw[red, ultra thick, -Stealth] (3,0.5) -- (3,1.5);
+            \draw[red, ultra thick, -Stealth] (3,-0.5) -- (3,-1.5);
+            
+            % Label the regions
+            \node at (3,1.5) {$\Omega^+$};
+            \node at (3,-1.5) {$\Omega^+$};
+            \node at (1.5,0.5) {$\Omega^0$};
+            \node at (4.5,0.5) {$\Omega^0$};
+        \end{scope}
+        
+        % Draw the blue dashed line
+        \draw[dashed, blue] (0,0) -- (4,0);
+        
+        % Caption
+        \captionsetup{justification=centering}
+        \caption{
+            Examples of singular free boundary points where the function $u-\psi$ has strict quadratic growth. We expect quadratic growth in the direction of the \textcolor{red}{red} arrows. The case on the right is more degenerate than the case on the left, and worse for the approximation of the free boundary $\Gamma$ (depicted in \textcolor{blue}{blue}). In both cases we have that $\dim \ker\bm{\mathbf{A}} = 1$. A discrete free boundary $\Gamma_\Triang$, which is at a distance $\mathcal{O}(\delta(h)^{1/2})$ is depicted in \textcolor{brown}{dashed brown}.
+        }
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

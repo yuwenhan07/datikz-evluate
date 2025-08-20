@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth,shorten >=1pt,auto,node distance=3cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state]         (A)                      {$\begin{matrix}0\\0\\0\\0\end{matrix}$};
+  \node[state]         (B) [left of=A]          {$\begin{matrix}0\\1\\1\\1\end{matrix}$};
+  \node[state]         (C) [below of=A]         {$\begin{matrix}0\\0\\0\\1\end{matrix}$};
+  \node[state]         (D) [right of=A]         {$\begin{matrix}0\\0\\1\\1\end{matrix}$};
+  \node[state]         (E) [below of=C]         {$\begin{matrix}1\\1\\1\\1\end{matrix}$};
+
+  \path (A) edge [loop left] node {4x} (A)
+        (A) edge [bend right] node {1x} (B)
+        (A) edge [bend right] node {4x} (C)
+        (A) edge [bend right] node {1x} (D)
+        (A) edge [bend right] node {2x} (E)
+        (B) edge [bend right] node {1x} (A)
+        (B) edge [bend right] node {4x} (C)
+        (B) edge [bend right] node {1x} (D)
+        (B) edge [bend right] node {2x} (E)
+        (C) edge [bend right] node {1x} (A)
+        (C) edge [bend right] node {4x} (B)
+        (C) edge [bend right] node {1x} (D)
+        (C) edge [bend right] node {2x} (E)
+        (D) edge [bend right] node {1x} (A)
+        (D) edge [bend right] node {4x} (B)
+        (D) edge [bend right] node {1x} (C)
+        (D) edge [loop right] node {4x} (D)
+        (E) edge [bend right] node {1x} (A)
+        (E) edge [bend right] node {4x} (B)
+        (E) edge [bend right] node {2x} (C)
+        (E) edge [loop below] node {4x} (E);
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,39 @@
+Certainly! Below is an example of a TikZ LaTeX diagram that illustrates the relationship between the worst group accuracy and the parameter \(\alpha\) for different datasets, highlighting how \(\alpha \geq 1\) significantly increases the worst group accuracy.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define colors for different datasets
+    \colorlet{datasetA}{red}
+    \colorlet{datasetB}{blue}
+    \colorlet{datasetC}{green}
+
+    % X-axis label and ticks
+    \draw[->] (0,-2) -- (5,0) node[right] {\( \alpha \)};
+    \foreach \x in {1,2,3,4} {
+        \draw (\x,-2pt) -- (\x,2pt);
+        \node at (\x,-1.5) {\x};
+    }
+
+    % Y-axis label and ticks
+    \draw[->] (0,-2) -- (0,6) node[above] {Worst Group Accuracy};
+    \foreach \y in {1,2,3,4,5} {
+        \draw (-2pt,\y) -- (2pt,\y);
+        \node at (-1.5,\y) {\y};
+    }
+
+    % Plot dataset A
+    \draw[datasetA, thick] plot coordinates {(1,1) (2,2) (3,3.5) (4,5)};
+    \fill[datasetA, opacity=0.3] plot coordinates {(1,1) (2,2) (3,3.5) (4,5)} |- cycle;
+
+    % Plot dataset B
+    \draw[datasetB, thick] plot coordinates {(1,0.5) (2,1.5) (3,2.5) (4,4)};
+    \fill[datasetB, opacity=0.3] plot coordinates {(1,0.5) (2,1.5) (3,2.5) (4,4)} |- cycle;
+
+    % Plot dataset C
+    \draw[datasetC, thick] plot coordinates {(1,0.7) (2,1.8) (3,2.9) (4,4.5)};
+    \fill[datasetC, opacity=

@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define coordinates for the nodes
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (1,0);
+    \coordinate (C) at (0,1);
+    \coordinate (D) at (1,1);
+    \coordinate (E) at (2,1);
+    \coordinate (F) at (3,1);
+    \coordinate (G) at (4,1);
+    \coordinate (H) at (5,1);
+    \coordinate (I) at (6,1);
+    \coordinate (J) at (7,1);
+    
+    % Draw the nodes
+    \filldraw[black] (A) circle (2pt) node[below left] {1};
+    \filldraw[black] (B) circle (2pt) node[below right] {1};
+    \filldraw[black] (C) circle (2pt) node[above left] {2};
+    \filldraw[black] (D) circle (2pt) node[above right] {2};
+    \filldraw[black] (E) circle (2pt) node[above left] {3};
+    \filldraw[black] (F) circle (2pt) node[above right] {3};
+    \filldraw[black] (G) circle (2pt) node[above left] {0};
+    \filldraw[black] (H) circle (2pt) node[above right] {0};
+    \filldraw[black] (I) circle (2pt) node[above left] {0};
+    \filldraw[black] (J) circle (2pt) node[above right] {0};
+    
+    % Draw the edges
+    \draw (A) -- (C);
+    \draw (A) -- (D);
+    \draw (B) -- (C);
+    \draw (B) -- (D);
+    \draw (C) -- (E);
+    \draw (D) -- (E);
+    \draw (E) -- (F);
+    \draw (E) -- (G);
+    \draw (E) -- (H);
+    \draw (E) -- (I);
+    \draw (E) -- (J);
+    \draw (F) -- (G);
+    \draw (F) -- (H);
+    \draw (F) -- (I);
+    \draw (F) -- (J);
+    \draw (G) -- (H);
+    \draw (G) -- (I);
+    \draw (G) -- (J);
+    \draw (H) -- (I);
+    \draw (H) -- (J);
+    \draw (I) -- (J);
+    
+    % Add labels to the edges
+    \node at (0.5,-0.2) {0};
+    \node at (1.5,-0.2) {0};
+    \node at (2.5,-0.2) {0};
+    \node at (3.5,-0.2) {0};
+    \node at (4.5,-0.2) {0};
+    \node at (5.5,-0.2) {0};
+    \node at (6.5,-0.2) {0};
+    \node at (7.5,-0.2) {0};
+    \node at (0.5,1.2) {0};
+    \node at (1.5,1.2) {0};
+    \node at (2.5,1.2) {0};
+    \node at (3.5,1.2) {0};
+    \node at (4.5,1.2) {0};
+    \node at (5.5,1.2) {0};
+    \node at (6.5,1.2) {0};
+    \node at (7.5,1.2) {0};
+    \node at (0.5,0.8) {2};
+    \node at (1.5,0.8) {2};
+    \node at (2.5,0.8) {3};
+    \node at (3.5,0.8) {3};
+\end{tikzpicture}
+
+\end{document}

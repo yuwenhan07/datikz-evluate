@@ -1,0 +1,23 @@
+The Sierpiński product graph \( K_6 \otimes_f K_9 \) is a specific type of graph product, specifically the Cartesian product of two graphs \( K_6 \) and \( K_9 \), with a particular labeling function \( f \).
+
+### Definitions:
+- **\( K_n \)**: The complete graph on \( n \) vertices, where every pair of distinct vertices is connected by an edge.
+- **Cartesian Product**: For two graphs \( G = (V_G, E_G) \) and \( H = (V_H, E_H) \), their Cartesian product \( G \otimes H \) is defined as follows:
+  - The vertex set \( V(G \otimes H) \) is the Cartesian product of the vertex sets of \( G \) and \( H \), i.e., \( V(G \otimes H) = V_G \times V_H \).
+  - Two vertices \((u, v)\) and \((u', v')\) in \( G \otimes H \) are adjacent if and only if either \( u = u' \) and \( v \) is adjacent to \( v' \) in \( H \), or \( v = v' \) and \( u \) is adjacent to \( u' \) in \( G \).
+
+### Labeling Function \( f \):
+The function \( f \) maps the vertices of \( K_6 \) to the vertices of \( K_9 \). Specifically, \( f(i) = x_i \) for \( i \in [6] \). This means that each vertex in \( K_6 \) is labeled with a unique vertex from \( K_9 \).
+
+### Constructing \( K_6 \otimes_f K_9 \):
+1. **Vertices**: The vertices of \( K_6 \otimes_f K_9 \) are pairs \((i, j)\) where \( i \in [6] \) and \( j \in [9] \). Thus, there are \( 6 \times 9 = 54 \) vertices.
+2. **Edges**: Two vertices \((i, j)\) and \((i', j')\) are adjacent if and only if either \( i = i' \) and \( j \) is adjacent to \( j' \) in \( K_9 \), or \( j = j' \) and \( i \) is adjacent to \( i' \) in \( K_6 \).
+
+### Properties:
+- Since \( K_6 \) is a complete graph, every vertex in \( K_6 \) is adjacent to every other vertex. Therefore, for any fixed \( i \in [6] \), the subgraph induced by the vertices \((i, j)\) for \( j \in [9] \) is a copy of \( K_9 \).
+- Similarly, for any fixed \( j \in [9] \), the subgraph induced by the vertices \((i, j)\) for \( i \in [6] \) is a copy of \( K_6 \).
+
+### Conclusion:
+The Sierpiński product graph \( K_6 \otimes_f K_9 \) is a graph with 54 vertices, where each vertex is a pair \((i, j)\) with \( i \in [6] \) and \( j \in [9] \). It has edges connecting vertices based on the adjacency rules described above. Each vertex in \( K_6 \) is connected to all vertices in \( K_9 \) through its corresponding label, forming a grid-like structure where each row and each column forms a complete graph.
+
+This graph is a specific instance of a more general class of graphs known as Sierpiński graphs, which have interesting properties related to dimensionality and connectivity.

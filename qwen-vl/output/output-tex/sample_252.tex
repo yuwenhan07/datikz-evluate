@@ -1,0 +1,54 @@
+The Universal Physics-Informed Neural Network (UPINN) method is an advanced approach that combines the strengths of physics-informed neural networks (PINNs) with universal approximation capabilities of deep learning models. It is particularly useful for solving partial differential equations (PDEs) where some components are known while others need to be inferred from data.
+
+### Overview of the Structure of UPINN Method Applied to Equation \eqref{eq:1}
+
+#### Inputs:
+- **Time \( t \)**: The independent variable.
+- **Surrogate Solution \( U \)**: The predicted solution by the neural network.
+- **Known Component \( F \)**: A known function of \( t \) and \( U \).
+- **Unknown Component \( G \)**: An unknown function of \( t \), \( U \), and the prediction \( \hat{U} \) from the neural network.
+- **Prediction \( \hat{U} \)**: The output of the neural network.
+- **Data \( D \)**: The observed or measured data used to train the model.
+
+#### Outputs:
+- **Surrogate Solution \( U \)**: The predicted solution by the neural network.
+- **Losses**:
+  - **PINN Loss**: Measures the discrepancy between the time derivative of the surrogate solution \( U_t \) and the sum of the known component \( F \) and the unknown component \( G \).
+  - **MSE Loss**: Measures the discrepancy between the surrogate solution \( U \) and the observed data \( D \).
+
+#### Components and Flow:
+
+1. **Surrogate Solution \( U \)**:
+   - The neural network predicts the solution \( U \) at each time step \( t \). This is the output of the UPINN.
+
+2. **Known Component \( F \)**:
+   - \( F \) is a known function of \( t \) and \( U \). It is provided as input to the PINN loss.
+
+3. **Unknown Component \( G \)**:
+   - \( G \) is an unknown function of \( t \), \( U \), and the prediction \( \hat{U} \) from the neural network. This is also provided as input to the PINN loss.
+
+4. **Prediction \( \hat{U} \)**:
+   - \( \hat{U} \) is the output of the neural network, representing its prediction of the solution at each time step.
+
+5. **Time Derivative \( U_t \)**:
+   - \( U_t \) is the autodifferentiated derivative of \( U \) with respect to time \( t \). This is computed using automatic differentiation techniques.
+
+6. **PINN Loss**:
+   - The PINN loss measures the discrepancy between the time derivative of the surrogate solution \( U_t \) and the sum of the known component \( F \) and the unknown component \( G \):
+     \[
+     \text{PINN Loss} = \int \left( U_t - (F + G) \right)^2 \, dt
+     \]
+   - This loss ensures that the predicted solution \( U \) satisfies the differential equation approximately.
+
+7. **MSE Loss**:
+   - The MSE loss measures the discrepancy between the surrogate solution \( U \) and the observed data \( D \):
+     \[
+     \text{MSE Loss} = \frac{1}{n} \sum_{i=1}^n \left( U(t_i) - D(t_i) \right)^2
+     \]
+   - This loss ensures that the predicted solution \( U \) matches the observed data.
+
+8. **Training**:
+   - The UPINN is trained by minimizing both the PINN loss and the MSE loss simultaneously. This dual objective ensures that the predicted solution not only satisfies the differential equation but also fits the observed data.
+
+### Summary:
+The UPINN method leverages the power of neural networks to predict solutions to PDEs while ensuring that these predictions satisfy the underlying physical laws encoded in the differential equation. By combining the PINN loss with the MSE loss, it provides a robust framework for solving complex problems where some components are known and others need to be inferred from data.

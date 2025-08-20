@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the horizontal line
+        \draw (-4,0) -- (4,0);
+        
+        % Mark points
+        \filldraw [black] (0,0) circle (1pt) node[anchor=north] {$(0,0)$};
+        \filldraw [black] (1,0) circle (1pt) node[anchor=north] {$(r,r)$};
+        \filldraw [black] (3,2) circle (1pt) node[anchor=south] {$(n,n)$};
+        
+        % Draw the thick segments
+        \draw[line width=1mm, color=black!50] (1,0) -- (2,0);
+        \draw[line width=1mm, color=black!50] (2,0) -- (3,0);
+        
+        % Label the thick segments
+        \node at (1.5,-0.5) {$\xi[\lambda]\text{-directed}$};
+        \node at (2.5,1.5) {$-\xi[\eta]\text{-directed}$};
+        
+        % Arrows
+        \draw[-{Stealth[scale=1.5]}] (1.5,0) -- (2.5,0.5);
+        \draw[-{Stealth[scale=1.5]}] (1.5,0) -- (2.5,-0.5);
+        
+        % Grid lines
+        \draw[dashed] (0,0) -- (0,2);
+        \draw[dashed] (1,0) -- (1,2);
+        \draw[dashed] (3,0) -- (3,2);
+    \end{tikzpicture}
+    \caption{An illustration for choosing the parameters described in Section \ref{fix_para}. The two thick segments represent the intervals $[r+\lfloor a_1 t r^{2/3} \rfloor, r+\lfloor a_2 t r^{2/3} \rfloor]$ and $[r+\lfloor b_1 t (n-r)^{2/3} \rfloor, r+\lfloor b_2 t (n-r)^{2/3} \rfloor]$.}
+    \label{fig:parameters}
+\end{figure}
+
+\end{document}

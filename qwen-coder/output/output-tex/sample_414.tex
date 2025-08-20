@@ -1,0 +1,43 @@
+To generate a TikZ LaTeX diagram that represents two matchings $\mathcal{M}_1$ and $\mathcal{M}_2$ in a hypergraph $\mathcal{H}$, whose union forms a $P$-perfect matching $\mathcal{M}$ with parameters $p=2$, $q=4$, and $r=2$, we need to carefully define the structure of the hypergraph and the matchings.
+
+Here's how you can create such a diagram:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{graphs, graphdrawing}
+\usegdlibrary{layered}
+
+\tikzset{
+    node style/.style={circle, draw, inner sep=2pt},
+    edge style/.style={->, thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Define nodes for H1
+    \node[node style] (v1) {v1};
+    \node[node style] (v2) [right of=v1] {v2};
+    \node[node style] (v3) [below of=v1] {v3};
+    \node[node style] (v4) [right of=v3] {v4};
+
+    % Define nodes for H2
+    \node[node style] (w1) [below right of=v1] {w1};
+    \node[node style] (w2) [right of=w1] {w2};
+    \node[node style] (w3) [below of=w1] {w3};
+    \node[node style] (w4) [right of=w3] {w4};
+
+    % Draw edges for M1 in H1
+    \draw[edge style] (v1) -- (v2);
+    \draw[edge style] (v3) -- (v4);
+
+    % Draw edges for M2 in H2
+    \draw[edge style] (w1) -- (w2);
+    \draw[edge style] (w3) -- (w4);
+
+    % Draw edges for M in H
+    \draw[edge style] (v1) -- (w1);
+    \draw[edge style] (v2) -- (w2);
+    \draw[edge style] (v3) -- (w3);
+    \draw[edge style] (v4) -- (w4);
+
+    %

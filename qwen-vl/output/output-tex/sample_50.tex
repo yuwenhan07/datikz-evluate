@@ -1,0 +1,17 @@
+Multidimensional consistency is a fundamental property in the theory of integrable systems, particularly in the context of partial differential equations (PDEs). It ensures that the solution to a system of PDEs can be consistently computed using different sets of initial conditions and different paths of computation.
+
+In the context of calculating \( u_{ijk} \) (the third-order partial derivative of \( u \)), multidimensional consistency requires that the following three routes to compute this quantity yield the same result:
+
+1. **Direct differentiation**: Compute \( u_{ijk} \) directly by differentiating \( u \) with respect to \( x \), then \( y \), and finally \( z \):
+   \[
+   u_{ijk} = \frac{\partial^3 u}{\partial x \partial y \partial z}
+   \]
+
+2. **Mixed derivatives**: Compute \( u_{ijk} \) by first differentiating \( u \) with respect to one variable, say \( x \), then with respect to another variable, say \( y \), and finally with respect to the remaining variable, say \( z \). This can be done in any order:
+   \[
+   u_{ijk} = \frac{\partial^3 u}{\partial x \partial y \partial z} = \frac{\partial}{\partial x} \left( \frac{\partial^2 u}{\partial y \partial z} \right) = \frac{\partial}{\partial y} \left( \frac{\partial^2 u}{\partial x \partial z} \right) = \frac{\partial}{\partial z} \left( \frac{\partial^2 u}{\partial x \partial y} \right)
+   \]
+
+3. **Other combinations**: Similarly, you could compute \( u_{ijk} \) by differentiating \( u \) with respect to other combinations of variables, such as \( y \) first, then \( z \), and finally \( x \).
+
+For a system to be multidimensionally consistent, the results obtained from these different routes must be identical. This property is crucial for ensuring that the solution to the PDEs is well-defined and unique, and it often plays a key role in the construction of integrable systems and their solutions.

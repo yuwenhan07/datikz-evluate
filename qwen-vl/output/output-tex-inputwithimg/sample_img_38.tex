@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphdrawing, quotes}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={draw, ellipse}]
+    \node (Type) {Type};
+    \node (Size) [below left=of Type] {Size};
+    \node (Weight) [below right=of Type] {Weight};
+    \node (Texture) [below right=of Weight] {Texture};
+    \node (Rigidity) [below right=of Texture] {Rigidity};
+    \node (Gripper) [below left=of Type] {Gripper};
+    \node (Target) [below right=of Gripper] {Target};
+    \node (Success) [below right=of Target] {Success};
+    \node (Robot) [below left=of Gripper] {Robot};
+    \node (Goal) [below right=of Target] {Goal};
+
+    \graph [tree layout, grow'=right, level distance=2cm, sibling distance=1.5cm]
+    {
+        Type -> [bend left] Size,
+        Type -> [bend left] Weight,
+        Type -> [bend left] Texture,
+        Type -> [bend left] Rigidity,
+        Size -> [bend left] Gripper,
+        Weight -> [bend left] Gripper,
+        Texture -> [bend left] Gripper,
+        Rigidity -> [bend left] Gripper,
+        Gripper -> Target,
+        Target -> Success,
+        Robot -> Gripper,
+        Goal -> Target;
+    };
+\end{tikzpicture}
+
+An example of the relationships between the operator-identified variables for a pick-and-place task. Each edge corresponds to a direct causal relationship between the connected variables. Changes in the source of an edge have a direct consequence on the target of an edge.
+\end{document}

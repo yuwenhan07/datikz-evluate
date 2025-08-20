@@ -1,0 +1,40 @@
+To construct the 2-circlet \( C(k, m) \) using TikZ in LaTeX, we need to follow the steps described in the problem statement. Below is a detailed TikZ code to create the 2-circlet \( C(3, 4) \). This example will illustrate the construction for \( k = 3 \) and \( m = 4 \).
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, positioning}
+
+\tikzset{
+    vertex/.style={circle, draw, inner sep=2pt},
+    edge/.style={->, thick},
+    polygon/.style={draw, thick, fill=lightgray!30}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Step 1: Draw K_{1,4} and P_4
+\node (v1) at (0,0) [vertex] {};
+\node (v2) at (1,0) [vertex] {};
+\node (v3) at (2,0) [vertex] {};
+\node (v4) at (3,0) [vertex] {};
+
+\node (w1) at (4,0) [vertex] {};
+\node (w2) at (5,0) [vertex] {};
+\node (w3) at (6,0) [vertex] {};
+\node (w4) at (7,0) [vertex] {};
+
+% Connect K_{1,4} to P_4
+\foreach \i in {1,...,4} {
+    \draw[edge] (v\i) -- (w\i);
+}
+
+% Step 2: Twist K_{1,4} and connect to itself
+\draw[edge, bend left=90] (v1) to[bend left=90] (w1);
+\draw[edge, bend left=90] (v2) to[bend left=90] (w2);
+\draw[edge, bend left=90] (v3) to[bend left=90] (w3);
+\draw[edge, bend left=90] (v4) to[bend left=90] (w4);
+
+% Step 3: Draw the polygon around the boundary
+\draw[polygon] (v1) -- (v2) --

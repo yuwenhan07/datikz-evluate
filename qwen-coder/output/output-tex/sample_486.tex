@@ -1,0 +1,36 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+  node distance=2cm,
+  start chain=going below,
+  rectangle/.style={draw, rectangle, rounded corners, minimum width=3cm, minimum height=1cm},
+  shaded/.style={rectangle, fill=blue!30},
+  arrow/.style={thick, ->, >=stealth'}
+}
+
+\begin{document}
+\begin{tikzpicture}[start chain]
+
+  % Initial Tree Nodes
+  \node (root) [rectangle] {Root};
+  \node (child1) [rectangle, right=of root] {Child 1};
+  \node (child2) [rectangle, right=of child1] {Child 2};
+  
+  % Connect Nodes
+  \draw[arrow] (root) -- (child1);
+  \draw[arrow] (child1) -- (child2);
+
+  % Shaded Rectangles for Arborally Satisfied Nodes
+  \node (shaded1) [shaded, below=of child1, xshift=-1cm] {Shaded Node 1};
+  \node (shaded2) [shaded, below=of child2, xshift=1cm] {Shaded Node 2};
+
+  % Point z_i
+  \node (zi) [circle, draw, inner sep=2pt, below=of root, yshift=-1.5cm] {$z_i$};
+
+  % Arrows from zi to Shaded Nodes
+  \draw[arrow] (zi) -- (shaded1);
+  \draw[arrow] (zi) -- (shaded2);
+
+\end{tikzpicture}
+\end{document}

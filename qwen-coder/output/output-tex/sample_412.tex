@@ -1,0 +1,26 @@
+To create the TikZ diagrams you've described, we need to break down each component and construct them step-by-step. Below is the complete TikZ code for all three parts: the phylogenetic species tree \( T \), the graphical model \( G \), and the clique tree \( \mathcal{U} \).
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+
+\begin{document}
+
+% Part (a): Phylogenetic species tree T
+\begin{tikzpicture}[level/.style={sibling distance = 40mm/#1}]
+    \node (root) [circle, draw] {};
+    \node (n1) [below left of=root, circle, draw] {$n_1$};
+    \node (n2) [below right of=root, circle, draw] {$n_2$};
+    \node (n3) [below left of=n1, circle, draw] {$n_3$};
+    \node (n4) [below right of=n1, circle, draw] {$n_4$};
+    \node (n5) [below left of=n2, circle, draw] {$n_5$};
+    \node (n6) [below right of=n2, circle, draw] {$n_6$};
+    \node (n7) [below left of=n3, circle, draw] {$n_7$};
+    \node (n8) [below right of=n3, circle, draw] {$n_8$};
+    \node (n9) [below left of=n4, circle, draw] {$n_9$};
+    \node (n10) [below right of=n4, circle, draw] {$n_{10}$};
+    \node (n11) [below left of=n5, circle, draw] {$n_{11}$};
+    \node (n12) [below right of=n5, circle, draw] {$n_{12}$};
+    \node (n13) [below left of=n6, circle, draw] {$n_{13}$};
+    \node (n14) [below right of=n6, circle, draw] {$n_{14}$};
+    \node (n15) [below left of=n7, circle,

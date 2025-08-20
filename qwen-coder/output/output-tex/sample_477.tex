@@ -1,0 +1,38 @@
+To generate the TikZ LaTeX code for the described multiline diagram \( D \), we need to create a visual representation of the Young tableau with the given content and properties. Here is the step-by-step process:
+
+1. **Define the dimensions and content**: The diagram has 6 columns and 5 rows, with the content \(\lambda = (5, 4, 3, 1, 0, 0)\). The bottom row \(\rho^{(1)}(D) = (4, 0, 1, 5, 3, 0)\).
+
+2. **Calculate the weights**: The weight \(\wt(D) = \wt_x(D) \wt_t(D) = x_1^3 x_3^2 x_4^4 x_5^2 x_6^2 \, t^2\).
+
+3. **Construct the TikZ code**:
+   - Use `\node` to place each element in the correct position.
+   - Use `matrix` environment to organize the nodes into rows and columns.
+
+Here is the TikZ LaTeX code for the diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Define the matrix
+    \matrix (m) [matrix of nodes,
+                 column sep=-\pgflinewidth,
+                 row sep=-\pgflinewidth,
+                 nodes={draw, minimum size=1em},
+                 anchor=north west] {
+        & 5 & 4 & 3 & 1 & 0 & 0 \\
+        & & 4 & 0 & 1 & 5 & 3 \\
+        & & & 0 & 1 & 5 & 3 \\
+        & & & & 1 & 5 & 3 \\
+        & & & & & 5 & 3 \\
+    };
+
+    % Draw the lines between cells
+    \foreach \i in {1,...,5} {
+        \foreach \j in {1,...,6} {
+            \ifnum\j<6
+                \draw[dashed] ([yshift=-0.5ex,xshift=0.5ex]m-\i-\j.north east) -- ([yshift=-0.5ex,xshift=0.5ex]m-\i+\j.west);
+            \fi
+            \ifnum

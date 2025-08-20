@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Define coordinates for the grid points
+\def\nx{4} % Number of spatial points in x-direction
+\def\ny{3} % Number of spatial points in y-direction
+
+% Draw the domain Omega
+\draw[thick] (0,0) rectangle (\nx, \ny);
+
+% Nodes for p(t, y_i, θ_j) inside Ω
+\foreach \i in {1,...,\nx-1} {
+    \foreach \j in {1,...,\ny-1} {
+        \node[circle, fill=black, inner sep=2pt] at (\i, \j) {};
+    }
+}
+
+% Nodes for p_+
+\foreach \i in {1,...,\nx-1} {
+    \node[circle, fill=blue, inner sep=2pt] at (\i, 0) {};
+}
+
+% Nodes for p_-
+\foreach \i in {1,...,\nx-1} {
+    \node[circle, fill=red, inner sep=2pt] at (\i, \ny) {};
+}
+
+% Labels for clarity
+\node[left] at (-0.5, 0.5*\ny) {$\Omega$};
+\node[below] at (0.5*\nx, -0.5) {$p(t, y_i, \theta_j)$};
+\node[above] at (0.5*\nx, \ny + 0.5) {$p_+$};
+\node[below] at (0.5*\nx, 0 - 0.5) {$p_-$};
+
+\end{tikzpicture}
+\end{document}

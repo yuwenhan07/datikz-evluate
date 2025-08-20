@@ -1,0 +1,29 @@
+To understand Axiom 4 of Definition \ref{def:operad} for the endomorphism operad \(\mathcal{O}\text{End}(X)\), let's break it down step by step.
+
+### Definition Recap
+An operad \(\mathcal{O}\) is a collection of vector spaces \(\mathcal{O}(n)\) indexed by non-negative integers \(n\) (the number of inputs), equipped with an action of the symmetric group \(\Sigma_n\) on each \(\mathcal{O}(n)\). The operad structure includes two main operations:
+1. **Composition**: A way to combine elements from different \(\mathcal{O}(m)\) and \(\mathcal{O}(n)\) into an element of \(\mathcal{O}(m+n-1)\).
+2. **Action of Symmetric Groups**: Each \(\mathcal{O}(n)\) is acted upon by \(\Sigma_n\).
+
+For the endomorphism operad \(\mathcal{O}\text{End}(X)\), the space \(\mathcal{O}\text{End}(X)(n)\) consists of all possible ways to map \(n\) copies of \(X\) to \(X\).
+
+### Axiom 4
+Axiom 4 states that for any \(f \in \mathcal{O}\text{End}(X)(n)\) and any permutation \((\sigma_1, \ldots, \sigma_n) \in \Sigma_n\), the following holds:
+\[ f \circ (\tau_{\sigma_1}(g_1), \ldots, \tau_{\sigma_n}(g_n)) = (\sigma_1, \ldots, \sigma_n)^{-1} \cdot (f \star (g_1, \ldots, g_n)). \]
+
+Here's what this means in more detail:
+
+1. **Left Side**: \( f \circ (\tau_{\sigma_1}(g_1), \ldots, \tau_{\sigma_n}(g_n)) \)
+   - This represents applying the function \(f\) to the arguments \(\tau_{\sigma_1}(g_1), \ldots, \tau_{\sigma_n}(g_n)\).
+   - Here, \(\tau_{\sigma_i}(g_i)\) denotes the operation of applying \(g_i\) to \(X\) and then permuting the result according to \(\sigma_i\).
+
+2. **Right Side**: \((\sigma_1, \ldots, \sigma_n)^{-1} \cdot (f \star (g_1, \ldots, g_n))\)
+   - First, we permute the arguments \((g_1, \ldots, g_n)\) using the inverse permutation \((\sigma_1, \ldots, \sigma_n)^{-1}\).
+   - Then, we apply the composition operation \(f \star (g_1, \ldots, g_n)\), which combines \(f\) with the sequence of functions \((g_1, \ldots, g_n)\).
+
+### Interpretation
+The axiom essentially says that the order in which you apply the permutations and the composition operation does not matter. Specifically:
+- You can either apply \(f\) directly to the permuted arguments \(\tau_{\sigma_1}(g_1), \ldots, \tau_{\sigma_n}(g_n)\).
+- Or, you can first permute the arguments \((g_1, \ldots, g_n)\) and then apply the composition operation \(f \star (g_1, \ldots, g_n)\), and then permute the result back using the inverse permutation.
+
+This property ensures that the endomorphism operad respects the symmetry of the input arguments and the composition operation, making it a well-behaved algebraic structure.

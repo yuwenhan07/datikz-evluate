@@ -1,0 +1,32 @@
+To construct the trajectories described, we need to define the sets \(Q^+\), \(Q^-\), and \(Q^0\). For simplicity, let's assume these sets are intervals on the real line. We will then draw the curves \(\Gamma_+\) and \(\Gamma_-\) connecting points in \(Q^+\) and \(Q^-\) respectively to an intermediate point \(z_0\) in \(Q^0\).
+
+Here is a TikZ LaTeX code to achieve this:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+
+% Define the sets Q+, Q-, and Q0 as intervals
+\draw[thick, ->] (-3,0) -- (3,0) node[right] {$x$};
+\fill[blue!20] (-1,0) rectangle (1,0.5);
+\fill[red!20] (-3,-0.5) rectangle (-1,0);
+\fill[green!20] (-1,0) rectangle (1,-0.5);
+
+\node at (-1,0.75) {\(Q^+\)};
+\node at (-2.5,-0.25) {\(Q^-\)};
+\node at (-1,-0.75) {\(Q^0\)};
+\node at (-3,0.75) {(-1, 1)};
+\node at (-3,-0.25) {(-3, -1)};
+\node at (-3,-0.75) {(-1, -1)};
+
+% Draw the intermediate point z0
+\filldraw[black] (0,0) circle (2pt) node[below right] {\(z_0\)}; 
+
+% Draw the curves Gamma+ and Gamma-
+\draw[->, thick, blue] (-0.5,0.4) .. controls (-1,0.8) and (-2,0.2) .. (-2,0);
+\draw[->, thick, red] (-2.5,-0.6) .. controls (-2,-1) and (-1,-1.5) .. (-1,0);
+\draw[->, thick, green] (-1,-0.9) .. controls (0,-1.3) and (1,-0.7)

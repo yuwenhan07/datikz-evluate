@@ -1,0 +1,33 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    transformer/.style={rectangle, draw, minimum width=4cm, minimum height=2cm},
+    adapter/.style={rectangle, draw, minimum width=2cm, minimum height=1cm, fill=blue!20},
+    arrow/.style={->, >=stealth', thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=1cm]
+    % Input Layer
+    \node (input) [transformer] {Input};
+    
+    % Encoder Layers
+    \foreach \i in {1,...,3} {
+        \node[transformer, below=of input.south west, xshift=\i*1.5cm] (encoder-\i) {Encoder \i};
+        \draw[arrow] (input.south) -- (encoder-\i.north);
+        
+        % Feed Forward Layer
+        \node[below=of encoder-\i.south west, xshift=\i*1.5cm] (ff-\i) {Feed Forward};
+        \draw[arrow] (encoder-\i.south) -- (ff-\i.north);
+        
+        % Adapter Layer
+        \node[adapter, below=of ff-\i.south west, xshift=\i*1.5cm] (adapter-\i) {Adapter};
+        \draw[arrow] (ff-\i.south) -- (adapter-\i.north);
+        
+        % Output Layer
+        \node[transformer, below=of adapter-\i.south west, xshift=\i*1.5cm] (output-\i) {Output};
+        \draw[arrow] (adapter-\i.south) -- (output-\i.north);
+    }
+\end{tikzpicture}
+\end{document}

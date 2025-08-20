@@ -1,0 +1,30 @@
+To solve the problem, we need to understand the action of the connection $\Psi$ on the vertices of the triangle graph $K_3$. The connection $\Psi$ is defined such that each edge map $\psi_e$ corresponds to a rotation by an angle $\theta_e = \frac{\pi}{4}$. We will analyze the effect of these rotations on the complex plane.
+
+### Step-by-Step Solution:
+
+1. **Understanding the Rotation:**
+   Each edge map $\psi_e$ is a rotation by $\frac{\pi}{4}$ in the complex plane. This means that if $z$ is a point in the complex plane, then $\psi_e(z)$ is obtained by rotating $z$ counterclockwise by $\frac{\pi}{4}$ radians.
+
+2. **Action on a Cyclic Path:**
+   Consider the cyclic path $C = ((v_1, v_2), (v_2, v_3), (v_3, v_1))$. The composition of the edge maps along this path is given by:
+   \[
+   \psi_C = \psi_{(v_3, v_1)} \circ \psi_{(v_2, v_3)} \circ \psi_{(v_1, v_2)}
+   \]
+   Since each $\psi_e$ is a rotation by $\frac{\pi}{4}$, we have:
+   \[
+   \psi_{(v_3, v_1)}(z_1) = z_1 e^{i\frac{\pi}{4}}, \quad \psi_{(v_2, v_3)}(z_2) = z_2 e^{i\frac{\pi}{4}}, \quad \psi_{(v_1, v_2)}(z_3) = z_3 e^{i\frac{\pi}{4}}
+   \]
+   Therefore,
+   \[
+   \psi_C(z_1) = \psi_{(v_3, v_1)}(\psi_{(v_2, v_3)}(\psi_{(v_1, v_2)}(z_1))) = \psi_{(v_3, v_1)}(\psi_{(v_2, v_3)}(z_3 e^{i\frac{\pi}{4}})) = \psi_{(v_3, v_1)}(z_3 e^{i\frac{\pi}{4}} e^{i\frac{\pi}{4}}) = \psi_{(v_3, v_1)}(z_3 e^{i\frac{\pi}{2}}) = \psi_{(v_3, v_1)}(z_3 i) = z_3 i e^{i\frac{\pi}{4}} = z_3 e^{i\frac{3\pi}{4}}
+   \]
+   So, the composition $\psi_C$ is a rotation by $\frac{3\pi}{4}$.
+
+3. **Effect on a Point:**
+   If we start with a point $z_1 \in \mathbf{C}_{v_1}$, then after applying the composition $\psi_C$, the point $z_1$ is mapped to $z_1' = z_1 e^{i\frac{3\pi}{4}}$. This means that $z_1'$ is obtained by rotating $z_1$ counterclockwise by $\frac{3\pi}{4}$ radians.
+
+### Final Answer:
+The final answer is:
+\[
+\boxed{z_1' = z_1 e^{i\frac{3\pi}{4}}}
+\]

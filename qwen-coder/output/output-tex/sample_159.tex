@@ -1,0 +1,36 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    node distance=2cm,
+    start chain/.style={start chain=going below},
+    box/.style={draw, rectangle, minimum width=3cm, minimum height=1cm, align=center},
+    line/.style={->, thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+% Left: h-backward substructure
+\node[box] (left_box) {h-backward substructure};
+\node[box, below=of left_box] (extremal_leaves) {$\Theta(\sqrt{n})$ extremal leaves};
+
+% Center: Forward tree
+\node[box, left=of left_box, xshift=-5cm] (center_box) {Forward Tree};
+\node[box, below=of center_box] (states_examined) {$< \sqrt{n}$ states examined};
+\node[box, below=of states_examined] (extremal_leaf_hit) {Hit extremal leaf};
+
+% Right: b-threads
+\node[box, right=of left_box, xshift=5cm] (right_box) {$b$-threads};
+\node[box, below=of right_box] (disjoint_threads) {Pairwise disjoint};
+\node[box, below=of disjoint_threads] (b_cycle) {$b$-cycle $[\![\sqrt{n}, 2\sqrt{n}\,]\!]$};
+
+% Connections
+\draw[line] (left_box.south) -- (extremal_leaves.north);
+\draw[line] (center_box.south) -- (states_examined.north);
+\draw[line] (states_examined.south) -- (extremal_leaf_hit.north);
+\draw[line] (right_box.south) -- (disjoint_threads.north);
+\draw[line] (disjoint_threads.south) -- (b_cycle.north);
+
+\end{tikzpicture}
+\end{document}

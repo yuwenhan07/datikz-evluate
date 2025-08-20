@@ -1,0 +1,37 @@
+Certainly! Below is a TikZ LaTeX code that creates an illustration of the EIT (Electrical Impedance Tomography) measurement tank, including the electrodes and different injection patterns as described.
+
+```latex
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+
+\tikzset{
+    electrode/.style={circle, fill=black, inner sep=0pt, minimum size=3pt},
+    injection/.style={draw, thick},
+    adjacent/.style={injection, draw=black},
+    all_against/.style={injection, dashed, draw=#1},
+    dashed_in_2nd/.style={injection, dashed, draw=#1, dash pattern=on 4pt off 2pt},
+    dotted_in_4th/.style={injection, dashed, draw=#1, dash pattern=on 2pt off 2pt},
+    dash_dotted_in_6th/.style={injection, dashed, draw=#1, dash pattern=on 2pt off 2pt on 2pt off 2pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Draw the tank
+\node[draw, rectangle, minimum width=8cm, minimum height=4cm] (tank) at (0,0) {EIT Measurement Tank};
+
+% Draw electrodes
+\node[electrode] (el1) at (-3,1) {};
+\node[electrode] (el2) at (-2,1) {};
+\node[electrode] (el3) at (-1,1) {};
+\node[electrode] (el4) at (0,1) {};
+\node[electrode] (el5) at (1,1) {};
+\node[electrode] (el6) at (2,1) {};
+\node[electrode] (el7) at (3,1) {};
+
+\node[electrode] (el8) at (-3,-1) {};
+\node[electrode] (el9) at (-2,-1) {};
+\node[electrode] (el10) at (-1,-1) {};
+\node[electrode] (el11) at (0,-1) {};
+\node[electrode] (el12) at (1,-1) {};
+\node[electrode]

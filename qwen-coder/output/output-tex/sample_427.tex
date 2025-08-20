@@ -1,0 +1,38 @@
+To visualize the given orthonormal bases and their dual vectors using TikZ, we can create a simple diagram that shows the vectors and their relationships. Below is the TikZ code to generate this diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define coordinates for vectors
+    \coordinate (Ms) at (0,1);
+    \coordinate (bs) at (1,-1);
+    \coordinate (Mu) at (0.577,0.577);
+    \coordinate (bu) at (0.707,-0.707);
+
+    % Draw vectors Ms and bs
+    \draw[-stealth] (0,0) -- node[midway, below right] {$\widehat{M}_s$} (Ms);
+    \draw[-stealth] (0,0) -- node[midway, above left] {$\widehat{b}_s$} (bs);
+
+    % Draw vectors Mu and bu
+    \draw[-stealth] (0,0) -- node[midway, above right] {$\widehat{M}_u$} (Mu);
+    \draw[-stealth] (0,0) -- node[midway, below right] {$\widehat{b}_u$} (bu);
+
+    % Draw labels for vectors
+    \node at (Ms) [above right] {$(0,1)$};
+    \node at (bs) [below left] {$(1,-1)$};
+    \node at (Mu) [above right] {$\left(\frac{1}{\sqrt{6}}, \frac{1}{\sqrt{6}}\right)$};
+    \node at (bu) [below right] {$\left(\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}\right)$};
+
+    % Draw unit circle
+    \draw[dashed] (0,0) circle (1);
+
+    % Draw lines showing the projections
+    \draw[dotted] (0,0) -- (Ms |- Mu);
+    \draw[dotted] (0,0) -- (bs |- Mu);
+    \draw[dotted] (0,0) -- (Ms |- bu);
+    \draw[dotted] (0,0) -- (bs |- bu);
+

@@ -1,0 +1,38 @@
+To construct \( J_{i_0} \) using a heuristic approach based on the given information, we need to follow these steps:
+
+1. **Identify the Nodes and Links**: We have a graph \( G = (V, E) \) where \( V = L_n \cup R_n \) and \( E = E_n \). Here, \( L_n \) represents the left set of nodes and \( R_n \) represents the right set of nodes. The edges in \( E_n \) connect nodes from \( L_n \) to nodes from \( R_n \).
+
+2. **Determine the Closest and Second Closest Nodes**: Let \( e_1 \) and \( e_2 \) be the nodes in \( L_n \) that are the closest and the second closest to some node \( b_n \in R_n \), respectively. These nodes \( e_1 \) and \( e_2 \) must have links in \( E_n \) to nodes in \( R_n \).
+
+3. **Define the Circles**: 
+   - The smaller red dotted circle \( U_{n, i_0} \) is defined as the open ball \( B_{i_0}(b_n) \) centered at \( b_n \) with radius \( i_0 \).
+   - The larger circle is \( B_{e_2}(a_n) \), which is an open ball centered at \( a_n \) with radius \( e_2 \).
+
+4. **Find the Intersection**: The set \( J_{i_0} \) is defined as the intersection of these two circles:
+   \[
+   J_{i_0} = U_{n, i_0} \cap B_{e_2}(a_n)
+   \]
+
+5. **Interpretation**: The intersection \( J_{i_0} \) consists of all points (nodes) that lie within both the smaller red dotted circle \( U_{n, i_0} \) and the larger circle \( B_{e_2}(a_n) \).
+
+### Example
+
+Let's consider a simple example to illustrate this:
+
+- Suppose \( L_n = \{a_1, a_2, a_3\} \) and \( R_n = \{b_1, b_2, b_3\} \).
+- Assume \( e_1 = a_1 \) and \( e_2 = a_2 \) are the closest and second closest nodes in \( L_n \) to \( b_n \).
+- Suppose \( b_n \) is connected to \( a_1 \) and \( a_2 \) by edges in \( E_n \).
+
+- Define \( U_{n, i_0} = B_{i_0}(b_n) \) as the open ball centered at \( b_n \) with radius \( i_0 \).
+- Define \( B_{e_2}(a_n) = B_{e_2}(a_n) \) as the open ball centered at \( a_n \) with radius \( e_2 \).
+
+The intersection \( J_{i_0} \) will be the set of nodes in \( L_n \) that lie within both \( U_{n, i_0} \) and \( B_{e_2}(a_n) \).
+
+### Conclusion
+
+The set \( J_{i_0} \) is constructed by finding the intersection of the open ball \( U_{n, i_0} \) centered at \( b_n \) with radius \( i_0 \) and the open ball \( B_{e_2}(a_n) \) centered at \( a_n \) with radius \( e_2 \). This intersection gives us the set of nodes in \( L_n \) that are within both specified distances from \( b_n \) and \( a_n \).
+
+Thus, the final answer is:
+\[
+\boxed{J_{i_0} = U_{n, i_0} \cap B_{e_2}(a_n)}
+\]

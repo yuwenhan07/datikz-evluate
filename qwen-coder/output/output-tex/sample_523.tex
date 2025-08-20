@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows.meta, positioning}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white!20, text width=4em, text centered, rounded corners, minimum height=1em},
+    line/.style = {draw, thick, -Stealth},
+    pinstyle/.style = {pin edge={to-,thick}}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=3cm]
+
+    % Nodes
+    \node (pump) [block] {$\alpha(t)$};
+    \node (resonator) [block, right=of pump] {Resonator};
+    \node (environment) [block, below=of pump, xshift=-2cm] {Environment};
+    \node (signal_photons) [block, right=of resonator, yshift=-2cm] {Signal Photons};
+
+    % Connections
+    \draw [line] (pump) -- node[above]{$\omega_p$} (resonator);
+    \draw [line] (resonator) -- node[right]{$\Gamma$} (environment);
+    \draw [line] (resonator) |- node[left]{$\omega$} (signal_photons);
+
+    % Labels
+    \node (temperature) [below=of environment, xshift=-2cm] {$T_b$};
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Year},
+            ylabel={$R^2$},
+            ymin=0,
+            ymax=1,
+            xmin=2000,
+            xmax=2025,
+            legend pos=north west,
+            ymajorgrids=true,
+            grid style=dashed,
+            width=\textwidth,
+            height=0.6\textheight,
+            title={Posterior mean of total $R^2$ over time. The priors compared are our proposed \textcolor{arr2flatcolour}{ARR2 prior with flat concentration}, \textcolor{arr2minncolour}{ARR2 prior with Minnesota concentration}, and sparsity-inducing concentration. Also shown are the \textcolor{minnesotacolour}{Minnesota-type prior}, and the \textcolor{rhscolour}{regularised horseshoe prior}.},
+            legend entries={
+                ARR2 prior with flat concentration,
+                ARR2 prior with Minnesota concentration,
+                Sparsity-inducing concentration,
+                Minnesota-type prior,
+                Regularised horseshoe prior
+            },
+            legend cell align=left,
+            legend style={at={(0.5,-0.1)}, anchor=north, legend columns=-1}
+        ]
+            % Add your data here
+            \addplot[black, thick] table [x index=0, y index=1] {datafile1.txt};
+            \addplot[violet, dashed] table [x index=0, y index=2] {datafile2.txt};
+            \addplot[blue, dotted] table [x index=0, y index=3] {datafile3.txt};
+            \addplot[red, dashdotted] table [x index=0, y index=4] {datafile4.txt};
+            \addplot[green, dashed] table [x index=0, y index=5] {datafile5.txt};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Posterior mean of total $R^2$ over time. The priors compared are our proposed \textcolor{arr2flatcolour}{ARR2 prior with flat concentration}, \textcolor{arr2minncolour}{ARR2 prior with Minnesota concentration}, and sparsity-inducing concentration. Also shown are the \textcolor{minnesotacolour}{Minnesota-type prior}, and the \textcolor{rhscolour}{regularised horseshoe prior}.}
+    \label{fig:posterior_r2}
+\end{figure}
+
+\end{document}

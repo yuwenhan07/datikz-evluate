@@ -1,0 +1,21 @@
+The image you've described appears to be a comparison of different prior distributions used in the context of an Autoregressive (AR) model with 12 lags. These priors are designed to influence the posterior distribution of the model parameters, particularly the coefficient estimates and the overall fit of the model as measured by the coefficient of determination ($R^2$).
+
+Here's a breakdown of what each color represents:
+
+- **Blue (ARR2 prior)**: This is the ARR2 prior, which is a specific type of prior that can be tuned using hyperparameters. The top plot shows how the implied prior $R^2$ changes based on these hyperparameters.
+  
+- **Yellow (Minnesota-type prior)**: This is a prior that is often used in Bayesian linear regression models. It is known for its shrinkage properties, which help in reducing overfitting.
+
+- **Green (Independent Gaussian priors)**: This represents the use of independent Gaussian priors for the coefficients. These priors assume that each coefficient is drawn from a normal distribution with a mean of zero and a certain variance.
+
+- **Purple (Regularized Horseshoe prior)**: This is another type of prior that is popular in high-dimensional settings. The regularized horseshoe prior is known for its ability to perform variable selection and shrinkage simultaneously.
+
+The bottom plots show the prior means of the relative contributions to the $R^2$ of the regression coefficients. These contributions are influenced by the different hyperparameter settings for the ARR2 prior, which are represented by:
+  
+- **Flat (blue)**: This setting corresponds to a flat prior, where there is no strong preference for any particular value of the coefficients.
+  
+- **Minnesota-type (red)**: This setting uses a Minnesota-type prior, which is a form of shrinkage prior that tends to pull the coefficients towards zero.
+  
+- **Bump (light blue)**: This setting uses a bump prior, which is a more flexible form of shrinkage prior that allows for some coefficients to have larger absolute values while still being shrunk towards zero.
+
+In summary, the image provides a visual comparison of how different prior distributions affect the implied prior $R^2$ and the relative contributions of the regression coefficients to this $R^2$. This can be useful for understanding how the choice of prior can influence the performance of the AR model.

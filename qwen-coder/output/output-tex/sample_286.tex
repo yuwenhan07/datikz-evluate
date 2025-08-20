@@ -1,0 +1,39 @@
+Certainly! Below is a TikZ LaTeX code that generates a diagram representing the layers \( A \) and \( B \), their respective optical depths \( \tau_A \) and \( \tau_B \), upward and downward fluxes \( U_{A,B} \) and \( D_{A,B} \), scattering \( S_{A,B} \), and transmission functions \( T_{A,B} \). The starred variables are oriented opposite to the typical direction and are important for multiple scattering.
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Define styles
+    \tikzset{
+        layer/.style={draw, rectangle, minimum width=3cm, minimum height=1cm},
+        arrow/.style={->, thick},
+        label/.style={midway, above},
+        starred/.style={below left, red}
+    }
+
+    % Layers
+    \node[layer] (LayerA) {Layer A};
+    \node[layer] (LayerB) [below=of LayerA] {Layer B};
+
+    % Optical Depths
+    \node[label] at ([yshift=0.5cm]LayerA.north) {$\tau_A$};
+    \node[label] at ([yshift=-0.5cm]LayerB.south) {$\tau_B$};
+
+    % Fluxes
+    \node[arrow] (UA) [left=of LayerA.west] {};
+    \node[label] at (UA.west) {$U_A$};
+    \node[arrow] (UB) [right=of LayerA.east] {};
+    \node[label] at (UB.east) {$D_A$};
+    \node[arrow] (DA) [left=of LayerB.west] {};
+    \node[label] at (DA.west) {$D_B$};
+    \node[arrow] (DB) [right=of LayerB.east] {};
+    \node[label] at (DB.east) {$U_B$};
+
+    % Scattering and Transmission Functions
+    \node[arrow] (SA) [above=of LayerA] {};
+    \node[label] at (SA.above) {$S_A$};
+    \node[arrow] (SB) [above=of LayerB] {};
+    \node[label] at (SB.above) {$S

@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphdrawing,arrows.meta,positioning,shapes.geometric}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+  \tikzset{every state/.style={fill=gray!50,draw=none,text=black}}
+  
+  \node[state] (a) {$\{a,b,c\}$};
+  \node[state] (b) [right=of a] {$\{a,b\}$};
+  \node[state] (c) [right=of b] {$\{b,d\}$};
+  \node[state] (d) [right=of c] {$\{c,d\}$};
+  \node[state] (e) [right=of d] {$\{a,c,d\}$};
+  \node[state] (f) [below=of e] {$\{b,c,d\}$};
+  \node[state] (g) [below=of f] {$\{b\}$};
+  \node[state] (h) [left=of g] {$\{a,b,c\}$};
+  \node[state] (i) [left=of h] {$\{a,b,d\}$};
+  \node[state] (j) [above=of i] {$\{a,b,d\}$};
+  \node[state] (k) [above=of j] {$\emptyset$};
+  \node[state] (l) [right=of k] {$\{d\}$};
+  \node[state] (m) [right=of l] {$\{c\}$};
+  \node[state] (n) [below=of m] {$\{b,c\}$};
+  \node[state] (o) [below=of n] {$\{a,b,c,d\}$};
+
+  \path (a) edge node {} (b);
+  \path (b) edge node {} (c);
+  \path (c) edge node {} (d);
+  \path (d) edge node {} (e);
+  \path (e) edge node {} (f);
+  \path (f) edge node {} (g);
+  \path (g) edge node {} (h);
+  \path (h) edge node {} (a);
+  \path (a) edge[dashed] node {} (i);
+  \path (i) edge[dashed] node {} (j);
+  \path (j) edge[dashed] node {} (k);
+  \path (k) edge[dashed] node {} (l);
+  \path (l) edge[dashed] node {} (m);
+  \path (m) edge[dashed] node {} (n);
+  \path (n) edge[dashed] node {} (o);
+  \path (o) edge[dashed] node {} (h);
+\end{tikzpicture}
+
+Transition \texttt{\textbackslash graph\{Pi\_1\}} of temporal program $\Pi_1$. The nodes that belong to some solution of length $4$ have a gray background. The transitions of those solutions are represented by normal arrows, while the other arrows are dashed.
+
+\end{document}

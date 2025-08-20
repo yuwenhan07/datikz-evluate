@@ -1,0 +1,36 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta,shapes.geometric}
+
+\tikzset{
+    myarrow/.style={-{Stealth[length=4pt,width=2pt]},thick},
+    tiltedbox/.style={
+        draw,
+        rectangle,
+        inner sep=2pt,
+        minimum width=2cm,
+        minimum height=1cm,
+        rotate=-5
+    }
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Points
+\node (x0) at (0,0) {$x_0$};
+\node (x1) at (2,1) {$x_1$};
+
+% Lines
+\draw[myarrow] (x0) -- node[midway,below,sloped] {Predictor} (x1);
+\draw[dotted,myarrow] (x0) -- node[midway,above,sloped] {Corrector} (x1);
+
+% Line segment s(t)
+\draw[red,thick] (x0) -- (x1) node[midway,right] {$s(t)$};
+
+% Tilted boxes along s(t)
+\foreach \i in {0.25,0.5,0.75}{
+    \node[tiltedbox] at ($(x0)!{\i}!(x1)$) {};
+}
+
+\end{tikzpicture}
+\end{document}

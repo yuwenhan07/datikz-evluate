@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm, auto]
+        % State 1-cycles
+        \node[state] (q_1) {$Q_1$};
+        \path[->] 
+            (q_1) edge [loop above] ();
+        
+        % State 2-cycles
+        \node[state, right=of q_1] (q_2) {$Q_2$};
+        \path[->] 
+            (q_1) edge[bend left] node {} (q_2)
+            (q_2) edge[bend left] node {} (q_1);
+        
+        % Divider
+        \draw (current bounding box.north east) -- (current bounding box.south east);
+        
+        % State n-cycles
+        \node[state, right=of q_2] (q_n) {$Q_n$};
+        \node[state, below=of q_n] (q_1') {$Q_1$};
+        \node[state, below=of q_1'] (q_2') {$Q_2$};
+        
+        \path[->] 
+            (q_n) edge[bend left] node {} (q_1')
+            (q_1') edge[bend left] node {} (q_2')
+            (q_2') edge[bend left] node {} (q_n);
+        
+        \node[right=of q_n, xshift=1cm] {$n-2$ times};
+    \end{tikzpicture}
+    
+    \caption{$Q_i$ are elements of the state space. On the left, 1-cycles (which is an equilibrium) and a 2-cycle are frequently observed and behave deterministically. On the right, an $n$-cycle with $n > 2$ is never observed deterministically and stochastically will exist with probability 0.}
+\end{figure}
+
+\end{document}

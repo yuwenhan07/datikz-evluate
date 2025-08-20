@@ -1,0 +1,44 @@
+Certainly! Below is a TikZ LaTeX code to illustrate the scenario you described:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{amsmath}
+
+\tikzset{
+    myellipse/.style={draw, ellipse, minimum width=4cm, minimum height=2cm},
+    mydashedline/.style={dashed},
+    myarrow/.style={->, >=stealth', thick},
+    mylabel/.style={above right, font=\small},
+}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+
+% Unit Sphere S
+\node (S) at (0,0) [circle, radius=2cm, draw] {};
+
+% Ellipse h(S)
+\node (hS) at (0,-2) [myellipse, rotate around={-30:(0,-2)}];
+\draw[mydashedline] (-2,-2) -- (2,-2);
+\node at (0,-2.5) [mylabel] {$h(\mathbf{S})$};
+
+% Angle epsilon_2
+\draw[dotted] (0,-2) -- node[midway, above, sloped] {$\varepsilon_2$} (1,-2);
+
+% Ellipse g(S)
+\node (gS) at (3,-2) [myellipse, rotate around={-60:(3,-2)}];
+\draw[mydashedline] (1,-2) -- (5,-2);
+\node at (3,-2.5) [mylabel] {$g(\mathbf{S})$};
+
+% Angle epsilon_3
+\draw[dotted] (3,-2) -- node[midway, above, sloped] {$\varepsilon_3$} (4,-2);
+
+% Plain Ellipse gh(S)
+\node (ghS) at (6,-2) [myellipse, rotate around={-90:(6,-2)}];
+\draw[mydashedline] (4,-2) -- (8,-2);
+\node at (6,-2.5) [mylabel] {$gh(\mathbf{S})$};
+
+% Arrows and labels
+\draw[myarrow] (S.east) -- (hS.west);
+\node at (1.5,-1.5) [mylabel] {$\varepsilon_

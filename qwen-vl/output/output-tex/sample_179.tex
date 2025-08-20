@@ -1,0 +1,43 @@
+The Workflow of the WENDY (Wedge-Driven Network Inference) method involves several key steps to infer gene regulatory networks (GRNs) from single-cell gene expression data across two time points. Here's a detailed breakdown of the workflow:
+
+### 1. **Data Preparation**
+   - **Input**: Single-cell gene expression data at two time points.
+   - **Output**: Covariance matrices for each time point.
+
+### 2. **Calculate Covariance Matrices**
+   - For each time point \( t \), compute the covariance matrix \( \Sigma_t \). The covariance matrix captures the pairwise relationships between genes in terms of their variability and correlation.
+   - Mathematically, if \( X_t \) is the gene expression matrix for time point \( t \) with dimensions \( n \times m \) (where \( n \) is the number of cells and \( m \) is the number of genes), the covariance matrix \( \Sigma_t \) is given by:
+     \[
+     \Sigma_t = \frac{1}{n-1} X_t^T X_t
+     \]
+   - This step is crucial as it quantifies how genes vary together within each time point.
+
+### 3. **Derive the Equation of Covariance Matrices**
+   - **Assumption**: The WENDY method assumes that the covariance matrices \( \Sigma_1 \) and \( \Sigma_2 \) are related through a linear transformation due to the underlying regulatory network.
+   - **Modeling**: The relationship between the covariance matrices can be modeled using a linear transformation:
+     \[
+     \Sigma_2 = A \Sigma_1 A^T + B
+     \]
+     where \( A \) is a matrix representing the regulatory network, and \( B \) is a diagonal matrix capturing noise or other non-regulatory influences.
+   - **Optimization Problem**: The goal is to find the matrix \( A \) that best fits the observed covariance matrices \( \Sigma_1 \) and \( \Sigma_2 \).
+
+### 4. **Transform into an Optimization Problem**
+   - **Objective Function**: Define an objective function that measures the discrepancy between the observed covariance matrices and the predicted ones based on the assumed model.
+   - **Regularization**: To avoid overfitting, regularization terms can be added to the objective function.
+   - **Formulation**: The optimization problem can be formulated as:
+     \[
+     \min_{A, B} \| \Sigma_2 - A \Sigma_1 A^T - B \|_F^2 + \lambda \| A \|_F^2
+     \]
+     where \( \| \cdot \|_F \) denotes the Frobenius norm, and \( \lambda \) is a regularization parameter.
+
+### 5. **Solve the Optimization Problem Numerically**
+   - **Algorithm**: Use numerical optimization techniques such as gradient descent, Newton's method, or other convex optimization algorithms to solve the above minimization problem.
+   - **Implementation**: Implement the optimization algorithm to find the optimal matrix \( A \) and the diagonal matrix \( B \).
+   - **Post-processing**: After obtaining the optimal \( A \), interpret the matrix \( A \) to infer the regulatory network structure. Non-zero entries in \( A \) indicate regulatory interactions between genes.
+
+### 6. **Interpretation and Validation**
+   - **Network Inference**: The inferred matrix \( A \) represents the regulatory network, where non-zero entries indicate regulatory interactions.
+   - **Validation**: Validate the inferred network using additional biological knowledge, experimental data, or other computational methods.
+
+### Summary
+The WENDY method provides a systematic approach to infer gene regulatory networks from single-cell gene expression data across two time points. By leveraging the covariance matrices and optimizing a suitable objective function, it allows for the identification of regulatory interactions without requiring prior knowledge of cell correspondences.

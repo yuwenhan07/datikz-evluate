@@ -1,0 +1,150 @@
+\documentclass{article}
+\usepackage{forest}
+\usepackage{array}
+
+\begin{document}
+
+\section*{Nice Tree Decomposition of the PAF of Example~\ref{ex:paf} and Corresponding Tables (Partial) for the Computation of \(P^{\mathit{ext}}_{com}(\{a, c, e\})\)}
+
+
+\subsection*{Tree Decomposition}
+
+\begin{forest}
+  for tree={
+    grow'=0,
+    l sep=1em,
+    s sep=1em,
+    parent anchor=south,
+    child anchor=north,
+    align=center,
+    fit=band,
+    draw,
+    minimum width=2em,
+    minimum height=2em,
+    font=\scriptsize,
+    edge={solid, thick},
+    edge path={
+      \noexpand\path [\forestoption{edge}] (!u.parent anchor) -- +(0,-8pt) -| (.child anchor)\forestoption{edge label};
+    },
+  }
+  [{$\tau_{13}$}
+    [{$F:((\{c,d\},\{cd,dc\}),L:(\{\{c\}\},\{d\}),\emptyset),lw:(\{\{d\}\},\emptyset),p:0.72$}
+      [15,phantom]
+      [14,phantom]
+      [13,phantom]
+      [12,phantom]
+      [5,phantom]
+      [4,phantom]
+      [3,phantom]
+      [2,phantom]
+      [1,phantom]
+      [0,phantom]
+    ]
+    [{$\tau_{12}$}
+      [1,phantom]
+      [{$F:(\{a,c,d\},\{ad,cd,da,dc\}),$}
+        [15,phantom]
+        [14,phantom]
+        [13,phantom]
+        [12,phantom]
+        [5,phantom]
+        [4,phantom]
+        [3,phantom]
+        [2,phantom]
+        [1,phantom]
+        [0,phantom]
+      ]
+      [{$L:(\{a,c\},\{d\},\emptyset),lw:(\{\{d\}\},\emptyset),p:0.504$}]
+      [{$\ldots$}]
+    ]
+    [{$\tau_5$}
+      [1,phantom]
+      [{$F:(\{a,c,d\},\{ad,da,cd,dc\}),$}
+        [15,phantom]
+        [14,phantom]
+        [13,phantom]
+        [12,phantom]
+        [5,phantom]
+        [4,phantom]
+        [3,phantom]
+        [2,phantom]
+        [1,phantom]
+        [0,phantom]
+      ]
+      [{$L:(\{a,c\},\{d\},\emptyset),lw:(\{\{d\}\},\emptyset),p:0.72$}]
+    ]
+    [{$\tau_{11}$}
+      [1,phantom]
+      [{$F:(\{a,c,d\},\{ad,cd,da,dc\}),$}
+        [15,phantom]
+        [14,phantom]
+        [13,phantom]
+        [12,phantom]
+        [5,phantom]
+        [4,phantom]
+        [3,phantom]
+        [2,phantom]
+        [1,phantom]
+        [0,phantom]
+      ]
+      [{$L:(\{a,c\},\{d\},\emptyset),lw:(\{\{d\}\},\emptyset),p:0.504$}]
+      [{$\ldots$}]
+    ]
+    [{$\tau_1$}
+      [1,phantom]
+      [{$F:(\{a\},\emptyset),L:(\{a\},\emptyset,\emptyset),lw:(\emptyset,\emptyset),p:0.8$}]
+    ]
+  ]
+\end{forest}
+
+\subsection*{Corresponding Tables}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c c}
+\hline
+15 & $\emptyset$ \\
+\hline
+14 & $\{d\}$ \\
+\hline
+13 & $\{c,\,d\}$ \\
+\hline
+12 & $\{a,\,c,\,d\}$ \\
+\hline
+5 & $\{a,\,c,\,d\}$ \\
+\hline
+4 & $\{a,\,c\}$ \\
+\hline
+3 & $\{a,\,b,\,c\}$ \\
+\hline
+2 & $\{a,\,b\}$ \\
+\hline
+1 & $\{a\}$ \\
+\hline
+0 & $\emptyset$ \\
+\hline
+\end{tabular}
+\caption{Table for the computation of \(P^{\mathit{ext}}_{com}(\{a, c, e\})\)}
+\label{tab:table1}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c c}
+\hline
+10 & $\{a,\,c,\,d\}$ \\
+\hline
+9 & $\{d\}$ \\
+\hline
+8 & $\{d,\,e\}$ \\
+\hline
+7 & $\{d\}$ \\
+\hline
+6 & $\emptyset$ \\
+\hline
+\end{tabular}
+\caption{Table for the computation of \(P^{\mathit{ext}}_{com}(\{a, c, e\})\)}
+\label{tab:table2}
+\end{table}
+
+\end{document}

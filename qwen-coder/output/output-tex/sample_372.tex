@@ -1,0 +1,43 @@
+To represent the induced noncausal dependence in a conditional graph given \( S = s \) based on a directed acyclic graph (DAG) \( DM \), we need to highlight the causes of the variable \( S \) being conditioned on and the relevant causal links. This involves identifying the collider fan and how it changes when conditioning.
+
+Let's assume that \( S \) has two direct parents, \( A \) and \( B \), and there are additional variables \( C \) and \( D \) that are descendants of both \( A \) and \( B \). When we condition on \( S = s \), the collider fan around \( S \) can be represented as follows:
+
+1. **Original DAG**: 
+   ```
+   A -- C -- E
+   |         |
+   v         v
+   B -- D -- F
+       |
+       v
+       S
+   ```
+
+2. **Conditional Graph given \( S = s \)**:
+   - Mark the causes of \( S \): \( A \) and \( B \).
+   - Highlight the relevant causal links: \( A \to C \), \( A \to D \), \( B \to C \), and \( B \to D \).
+
+3. **Collider Fan**:
+   - The collider fan around \( S \) consists of the paths \( A \to C \to D \) and \( B \to C \to D \).
+
+Here is the TikZ LaTeX code to draw this:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!30},
+    line/.style = {draw, thick, ->, >=stealth},
+    pin style/.style = {pin edge={thick,->}}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+\node [block] (A) {A};
+\node [block, below left of=A] (C) {C};
+\node [block, below right of=A] (D) {D};
+\node [block, below left of=B] (E) {E};
+\node [block, below right of=B] (F) {F};
+\node [block,

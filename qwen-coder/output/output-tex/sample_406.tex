@@ -1,0 +1,43 @@
+To generate the Hasse diagram for the poset \((2^{\{1,2,3,4\}}, \subseteq)\), we can use TikZ in LaTeX. Below is the complete TikZ code to create this Hasse diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[level distance=1.5cm,
+  level 1/.style={sibling distance=3cm},
+  level 2/.style={sibling distance=2cm},
+  level 3/.style={sibling distance=1.5cm},
+  node distance=0.5cm,
+  every node/.style={circle, draw, inner sep=1pt}]
+  
+  % Nodes at level 0 (maximal elements)
+  \node (violet1) [violet] {};
+  \node (violet2) [violet] {};
+  \node (violet3) [violet] {};
+  
+  % Nodes at level 1
+  \node (blue1) [blue, above left of=violet1] {};
+  \node (blue2) [blue, below left of=violet1] {};
+  \node (blue3) [blue, above right of=violet2] {};
+  \node (blue4) [blue, below right of=violet2] {};
+  
+  % Nodes at level 2
+  \node (green1) [green, above left of=blue1] {};
+  \node (green2) [green, below left of=blue1] {};
+  \node (green3) [green, above right of=blue2] {};
+  \node (green4) [green, below right of=blue2];
+  
+  % Nodes at level 3
+  \node (orange1) [orange, above left of=green1] {};
+  \node (orange2) [orange, below left of=green1] {};
+  \node (orange3) [orange, above right of=green2] {};
+  \node (orange4) [orange, below right of=green2];
+  
+  % Edges
+  \draw[->] (orange1) -- (green1);
+  \draw[->] (orange2) -- (green1);
+  \draw[->] (orange3) -- (green2);
+  \draw[->] (orange4

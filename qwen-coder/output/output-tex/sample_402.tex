@@ -1,0 +1,47 @@
+Certainly! Below is a TikZ LaTeX code to visualize the described upper-bounding construction with \( k = 10 \), \( l = 3 \), and \( \delta = 0.5 \).
+
+```latex
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{graphs,graphdrawing,quotes}
+\usegdlibrary{layered}
+
+\begin{document}
+
+\tikzset{
+    node distance=1cm,
+    vertex/.style={circle,draw,inner sep=2pt},
+    edge/.style={->,thick},
+    rededge/.style={red,thick},
+    blueedge/.style={blue,thick},
+}
+
+\begin{tikzpicture}[layered graph layout]
+    % Initial blue edges
+    \node[vertex] (v1) at (0,0) {};
+    \node[vertex] (v2) at (2,0) {};
+    \node[vertex] (v3) at (4,0) {};
+    \node[vertex] (v4) at (6,0) {};
+    \node[vertex] (v5) at (8,0) {};
+    \node[vertex] (v6) at (10,0) {};
+    \node[vertex] (v7) at (0,-2) {};
+    \node[vertex] (v8) at (2,-2) {};
+    \node[vertex] (v9) at (4,-2) {};
+    \node[vertex] (v10) at (6,-2) {};
+    \node[vertex] (v11) at (8,-2) {};
+    \node[vertex] (v12) at (10,-2) {};
+
+    \path[blueedge] 
+        (v1) -- (v2)
+        (v2) -- (v3)
+        (v3) -- (v4)
+        (v4) -- (v5)
+        (v5) -- (v6)
+        (v7) -- (v8)
+        (v8) -- (v9)
+        (v9) -- (v10)
+        (v10) -- (v11)
+        (v11) -- (v12);
+
+    % Step 1: Replace blue edges with red edges
+    \path[rededge, thick, bend right=45]
+        (v1) edge[b

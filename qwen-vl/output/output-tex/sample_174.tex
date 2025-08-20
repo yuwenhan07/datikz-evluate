@@ -1,0 +1,38 @@
+The iterated blowup of a \( K_4 \) (complete graph on 4 vertices) is a process where we repeatedly add new vertices and edges to the original graph in a specific way. Let's break down the process step by step.
+
+### Step 1: Understanding the Initial Graph
+A \( K_4 \) is a complete graph with 4 vertices, meaning every pair of vertices is connected by an edge. So, \( K_4 \) has 6 edges.
+
+### Step 2: Iterated Blowup Process
+The iterated blowup process involves adding new vertices and edges to the original graph. Specifically, for each vertex in the original graph, we replace it with a new vertex and connect this new vertex to all other vertices in the original graph. This process is repeated recursively.
+
+### Step 3: First Iteration
+For the first iteration:
+- We take the 4 vertices of \( K_4 \).
+- For each of these 4 vertices, we add a new vertex.
+- Each of these new vertices is connected to all 3 remaining vertices in the original graph.
+
+This results in a new graph with:
+- 4 original vertices + 4 new vertices = 8 vertices.
+- Each of the 4 original vertices is now connected to the 4 new vertices, so there are \( 4 \times 4 = 16 \) edges added.
+
+### Step 4: Second Iteration
+For the second iteration:
+- We now have 8 vertices from the previous step.
+- For each of these 8 vertices, we add a new vertex.
+- Each of these new vertices is connected to all 7 remaining vertices in the original graph.
+
+This results in a new graph with:
+- 8 original vertices + 8 new vertices = 16 vertices.
+- Each of the 8 original vertices is now connected to the 8 new vertices, so there are \( 8 \times 8 = 64 \) edges added.
+
+### Step 5: General Pattern
+In general, after \( n \)-th iteration:
+- The number of vertices becomes \( 4^n \).
+- The number of edges added in the \( n \)-th iteration is \( 4^{n-1} \times 4^n = 4^{2n-1} \).
+
+### Step 6: Thick Edges
+The "thick" edges in the context you provided likely refer to the edges that are present in the original \( K_4 \). In the iterated blowup, these edges remain unchanged and are simply part of the structure of the graph at each stage.
+
+### Final Answer
+The iterated blowup of a \( K_4 \) results in a graph with \( 4^n \) vertices and \( 4^{2n-1} \) edges added in the \( n \)-th iteration. The thick edges are the original edges of the \( K_4 \), which remain as part of the graph throughout the process.

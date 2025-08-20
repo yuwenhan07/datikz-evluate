@@ -1,0 +1,35 @@
+To create a TikZ LaTeX diagram that illustrates the properties of the flux function \( f \) described, we can focus on visualizing its behavior around the origin. Given that \( f \) is strictly convex but not uniformly convex, has all derivatives vanishing at the origin, and is \( C^\infty(\mathbb{R}) \), but not analytic, we can sketch a graph that captures these characteristics.
+
+Here's a possible TikZ code to generate such a diagram:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Axes
+    \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
+    \draw[->] (0,-1.5) -- (0,1.5) node[above] {$f(x)$};
+
+    % Function plot
+    \draw[domain=-1.4:1.4, smooth, thick, blue] plot (\x, {0.5*\x*\x + 0.05*\x*\x*\x*\x});
+    
+    % Points and annotations
+    \fill (0,0) circle[radius=2pt];
+    \node at (0,-0.2) [below] {$0$};
+    \node at (0,0.3) [right] {$f(0)=0$};
+    
+    \fill (0.7,0.29) circle[radius=2pt];
+    \node at (0.8,0.25) [right] {$f(0.7)\approx 0.29$};
+    
+    \fill (-0.7,-0.29) circle[radius=2pt];
+    \node at (-0.8,-0.25) [left] {$f(-0.7)\approx -0.29$};
+    
+    % Labels
+    \node at (-1.5,1.2) [left] {Strictly Convex};
+    \node at (1.5,1.2) [right] {Not Uniformly Convex};
+    \node at (0,-1.2) [below] {All Derivatives Vanish at Origin};
+    \node at (0,1.2) [above

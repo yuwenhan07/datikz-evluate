@@ -1,0 +1,26 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{trees}
+
+\begin{document}
+
+\tikzstyle{every node}=[circle, draw, fill=white, minimum size=6pt]
+\tikzstyle{edge}=[->,thick]
+
+\begin{tikzpicture}[level distance=40mm,
+  level 1/.style={sibling distance=80mm},
+  level 2/.style={sibling distance=40mm}]
+  % Define the nodes
+  \node (root) [label=above:$v$] {1}
+    child {node (left) {2}}
+    child {node (right) {3}};
+  
+  % Draw edges with labels
+  \draw[edge] (root) -- node[below left] {$w_{rv}$} (left);
+  \draw[edge] (root) -- node[below right] {$w_{rv'}$} (right);
+  \draw[edge] (left) -- node[below left] {$w_{lv}$} (left.south west);
+  \draw[edge] (left) -- node[below right] {$w_{lv'}$} (left.south east);
+  \draw[edge] (right) -- node[below left] {$w_{rv''}$} (right.south west);
+  \draw[edge] (right) -- node[below right] {$w_{rv'''}$} (right.south east);
+\end{tikzpicture}
+
+\end{document}

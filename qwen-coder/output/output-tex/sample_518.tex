@@ -1,0 +1,44 @@
+To visualize the incorrect prediction during high upward price movement for Community Health Systems (CYH), we can create a TikZ diagram that shows both the expected labels and the predicted labels over time. Below is the TikZ code that generates this diagram:
+
+```latex
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define colors
+    \colorlet{expected}{blue!50!black}
+    \colorlet{predicted}{red!50!black}
+    
+    % Draw timeline
+    \draw[->] (0,0) -- (12,0) node[right] {Time};
+    \foreach \x in {1,2,...,12} {
+        \draw (\x,0) -- ++(0,-0.1);
+        \node at (\x,-0.3) {\x};
+    }
+    
+    % Draw expected labels
+    \filldraw[expected] (1,-1) rectangle (4,-0.6);
+    \node at (2.5,-0.8) {INC\_18};
+    
+    \filldraw[expected] (5,-1) rectangle (8,-0.6);
+    \node at (6.5,-0.8) {INC\_57};
+    
+    \filldraw[expected] (9,-1) rectangle (12,-0.6);
+    \node at (10.5,-0.8) {INC\_90};
+    
+    % Draw predicted labels
+    \filldraw[predicted] (1,-2) rectangle (4,-1.6);
+    \node at (2.5,-1.8) {INC\_8};
+    
+    \filldraw[predicted] (5,-2) rectangle (8,-1.6);
+    \node at (6.5,-1.8) {INC\_8};
+    
+    \filldraw[predicted] (9,-2) rectangle (12,-1.6);
+    \node at (10.5,-1.8) {INC\_8};
+    
+    % Add title and labels
+    \node[above left] at (0,2) {Incorrect Prediction During High Upward Price Movement};
+    \node[below left] at (0,-

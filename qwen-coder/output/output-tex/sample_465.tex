@@ -1,0 +1,43 @@
+To create a TikZ LaTeX diagram that illustrates a subcubic graph where the \(\frac{n}{2}\)-upper bound for the locating total-dominating number (LTD-number) of a twin-free graph on \(n\) vertices is not true, we need to follow these steps:
+
+1. **Understand the Concepts**:
+   - A **twin-free graph** is a graph with no pair of adjacent vertices having the same neighbors.
+   - A **total-dominating set** (TDS) is a subset of vertices such that every vertex in the graph is either in the set or adjacent to at least one vertex in the set.
+   - An **locating total-dominating set** (LTD-set) is a TDS where each vertex outside the set has a unique pattern of adjacency to the vertices in the set.
+
+2. **Construct the Graph**:
+   - We need a graph that is subcubic (each vertex has degree at most 3).
+   - The graph should be twin-free.
+   - The graph should have fewer than \(\frac{n}{2}\) vertices in its LTD-set.
+
+3. **Draw the Graph**:
+   - Use TikZ to draw the vertices and edges of the graph.
+   - Shade the vertices that form the LTD-set.
+
+Here is the TikZ LaTeX code to achieve this:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Define nodes
+        \node[circle,draw] (v1) at (0,0) {};
+        \node[circle,draw] (v2) at (2,0) {};
+        \node[circle,draw] (v3) at (4,0) {};
+        \node[circle,draw] (v4) at (1,-2) {};
+        \node[circle,draw] (v5) at (3,-2) {};
+
+        % Draw edges
+        \draw (v1) -- (v2);
+        \draw (v2) -- (v3);
+        \draw (v1) -- (v4);
+        \draw (v2) -- (v4);
+        \draw (v2) -- (v5);
+        \draw (v3) -- (v5);
+
+        % Shaded vertices (L

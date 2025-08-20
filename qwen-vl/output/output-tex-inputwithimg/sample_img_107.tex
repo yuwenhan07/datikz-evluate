@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, quotes, graphs, graphdrawing}
+\usegdlibrary{layered}
+
+\begin{document}
+
+\begin{tikzpicture}[>=Stealth,
+    node distance = 1cm and 1cm,
+    place/.style = {circle, draw, minimum size=6mm},
+    transition/.style = {rectangle, draw, minimum size=6mm},
+    every edge quotes/.append style={font=\footnotesize, inner sep=2pt},
+    every label/.append style={font=\footnotesize, inner sep=2pt},
+    every pin/.append style={font=\footnotesize, inner sep=2pt},
+    every edge/.append style={thick, -Stealth}
+]
+
+% Place nodes
+\node[place] (Glucagon) {Glucagon};
+\node[transition, below=of Glucagon] (GluCAMP) {};
+\node[place, below=of GluCAMP] (cAMP) {cAMP};
+\node[transition, below=of cAMP] (GluPKA) {};
+\node[place, below=of GluPKA] (PKA) {PKA};
+\node[transition, below=of PKA] (Glua6PFKx1) {};
+\node[place, below=of Glua6PFKx1] (a6PFKx1) {a6PFKx1};
+\node[transition, below=of a6PFKx1] (Gluu6PFKx1) {};
+\node[place, below=of Gluu6PFKx1] (u6PFKx1) {u6PFKx1};
+\node[transition, below=of u6PFKx1] (GluPyruvate) {};
+\node[place, below=of GluPyruvate] (Pyruvate) {Pyruvate};
+\node[transition, below=of Pyruvate] (GluF26P2) {};
+\node[place, below=of GluF26P2] (F26P2) {F26P2};
+\node[transition, below=of F26P2] (GluPho) {};
+\node[place, below=of GluPho] (Pho) {Pho};
+\node[transition, below=of Pho] (GluMF26P2) {};
+\node[place, below=of GluMF26P2] (MF26P2) {MF26P2};
+\node[transition, below=of MF26P2] (GluKin) {};
+\node[place, below=of GluKin] (Kin) {Kin};
+\node[transition, right=of Kin] (GluPP) {};
+\node[place, right=of GluPP] (PP) {PP};
+\node[transition, right=of PP] (GluGK) {};
+\node[place, right=of GluGK] (GK) {GK};
+\node[transition, right=of GK] (GluInsulin) {};
+\node[place, right=of GluInsulin] (Insulin) {Insulin};
+
+% Draw edges
+\draw[->] (Glucagon) to [""] (GluCAMP);
+\draw[->] (GluCAMP) to [""] (cAMP);
+\draw[->] (cAMP) to [""] (GluPKA);
+\draw[->] (GluPKA) to [""] (PKA);
+\draw[->] (PKA) to [""] (Glua6PFKx1);
+\draw[->] (Glua6PFKx1) to [""] (a6PFKx1);
+\draw[->] (a6PFKx1) to [""] (Gluu6PFKx1);
+\draw[->] (Gluu6PFKx1) to [""] (u6PFKx1);
+\draw[->] (u6PFKx1) to [""] (GluPyruvate);
+\draw[->] (GluPyruvate) to [""] (Pyruvate);
+\draw[->] (Pyruvate) to [""] (GluF26P2);
+\draw[->] (GluF26P2) to [""] (F26P2);
+\draw[->] (F26P2) to [""] (GluPho);
+\draw[->] (GluPho) to [""] (Pho);
+\draw[->] (Pho) to [""] (GluMF26P2);
+\draw[->] (GluMF26P2) to [""] (MF26P2);
+\draw[->] (MF26P2) to [""] (GluKin);
+\draw[->] (GluKin) to [""] (GluPP);
+\draw[->] (GluPP) to [""] (PP);
+\draw[->] (PP) to [""] (GluGK);
+\draw[->] (GluGK) to [""] (GK);
+\draw[->] (GluGK) to [""] (GluInsulin);
+\draw[->] (GluInsulin) to [""] (Insulin);
+
+% Add labels
+\node[above=of Glucagon, red] {Glucagon};
+\node[above=of cAMP, red] {cAMP};
+\node[above=of PKA, red] {PKA};
+\node[above=of a6PFKx1, red] {a6PFKx1};
+\node[above=of u6PFKx1, red] {u6PFKx1};
+\node[above=of Pyruvate, red] {Pyruvate};
+\node[above=of F26P2, red] {F26P2};
+\node[above=of Pho, red] {Pho};
+\node[above=of MF26P2, red] {MF26P2};
+\node[above=of Kin, red] {Kin};
+\node[above=of PP, red] {PP};
+\node[above=of GK, red] {GK};
+\node[above=of Insulin, red] {Insulin};
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphdrawing,arrows.meta,positioning,shapes.geometric}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \node[draw,rounded rectangle] (Extend) {Extend};
+    \node[draw,rounded rectangle,below left=of Extend] (K_conj_imply_factor) {K\_conj\_imply\_factor};
+    \node[draw,rounded rectangle,below right=of Extend] (topoS4_S4) {topoS4\_S4};
+    \node[draw,rounded rectangle,below right=of K_conj_imply_factor] (mainS4) {mainS4};
+    \node[draw,rounded rectangle,below right=of topoS4_S4] (soundnessAx2) {soundness\_Ax\_2};
+    \node[draw,rounded rectangle,below right=of soundnessAx2] (AxS4_2) {AxS4\_2};
+    \node[draw,rounded rectangle,below right=of AxS4_2] (soundnessAxS4_2) {soundness\_AxS4\_2};
+    \node[draw,rounded rectangle,below right=of soundnessAxS4_2] (validS42) {valid\textsubscript{S42}};
+    \node[draw,rounded rectangle,below right=of validS42] (completenessS42) {completeness\textsubscript{S42}};
+    \node[draw,rounded rectangle,below right=of completenessS42] (MainS42) {Main\textsubscript{S42}};
+    \node[draw,rounded rectangle,above right=of Extend] (maximal_extension) {maximal\_extension};
+    \node[draw,rounded rectangle,above right=of maximal_extension] (valid) {valid};
+    \node[draw,rounded rectangle,above right=of valid] (Ax_2) {Ax\_2};
+    \node[draw,rounded rectangle,above right=of Ax_2] (Ax_2_weakly_directed) {Ax\_2\_weakly\_directed};
+    \node[draw,rounded rectangle,above right=of Ax_2_weakly_directed] (mcs_2_weakly_directed) {mcs\_2\_weakly\_directed};
+    \node[draw,rounded rectangle,above right=of mcs_2_weakly_directed] (implies_completeness_K_2) {imply\_completeness\_K\_2};
+    \node[draw,rounded rectangle,above right=of implies_completeness_K_2] (implies_completeness_S4_4) {imply\_completeness\_S4\_4};
+
+    \draw[->] (Extend) -- (maximal_extension);
+    \draw[->] (maximal_extension) -- (valid);
+    \draw[->] (valid) -- (Ax_2);
+    \draw[->] (Ax_2) -- (Ax_2_weakly_directed);
+    \draw[->] (Ax_2_weakly_directed) -- (mcs_2_weakly_directed);
+    \draw[->] (mcs_2_weakly_directed) -- (implies_completeness_K_2);
+    \draw[->] (implies_completeness_K_2) -- (implies_completeness_S4_4);
+
+    \draw[->] (Extend) -- (K_conj_imply_factor);
+    \draw[->] (Extend) -- (topoS4_S4);
+    \draw[->] (topoS4_S4) -- (mainS4);
+    \draw[->] (mainS4) -- (soundnessAx2);
+    \draw[->] (soundnessAx2) -- (AxS4_2);
+    \draw[->] (AxS4_2) -- (soundnessAxS4_2);
+    \draw[->] (soundnessAxS4_2) -- (validS42);
+    \draw[->] (validS42) -- (completenessS42);
+    \draw[->] (completenessS42) -- (MainS42);
+
+    \draw[->] (K_conj_imply_factor) -- (soundnessAx2);
+    \draw[->] (topoS4_S4) -- (soundnessAx2);
+    \draw[->] (topoS4_S4) -- (AxS4_2);
+    \draw[->] (mainS4) -- (soundnessAx2);
+    \draw[->] (mainS4) -- (AxS4_2);
+    \draw[->] (soundnessAx2) -- (validS42);
+    \draw[->] (AxS4_2) -- (validS42);
+    \draw[->] (soundnessAxS4_2) -- (validS42);
+    \draw[->] (validS42) -- (completenessS42);
+    \draw[->] (completenessS42) -- (MainS42);
+
+    \draw[dashed,red] (Extend) -- (K_conj_imply_factor);
+    \draw[dashed,red] (Extend) -- (topoS4_S4);
+    \draw[dashed,red] (topoS4_S4) -- (mainS4);
+    \draw[dashed,red] (mainS4) -- (soundnessAx2);
+    \draw[dashed,red] (soundnessAx2) -- (AxS4_2);
+    \draw[dashed,red] (AxS4_2) -- (soundnessAxS4_2);
+    \draw[dashed,red] (soundnessAxS4_2) -- (validS42);
+    \draw[dashed,red] (validS42) -- (completenessS42);
+    \draw[dashed,red] (completenessS42) -- (MainS42);
+
+    \draw[dashed,gray] (valid) -- (Ax_2);
+    \draw[dashed,gray] (Ax_2) -- (Ax_2_weakly_directed);
+    \draw[dashed,gray] (Ax_2_weakly_directed) -- (mcs_2_weakly_directed);
+    \draw[dashed,gray] (mcs_2_weakly_directed) -- (implies_completeness_K_2);
+    \draw[dashed,gray] (implies_completeness_K_2) -- (implies_completeness_S4_4);
+
+    \node[above=0.5cm of Extend] {Utility Section};
+    \node[above=0.5cm of Ax_2] {Ax\_2 Section};
+    \node[above=0.5cm of topoS4_S4] {Topological S4 Axioms Section};
+    \node[above=0.5cm of soundnessAx2] {System S4.2 Section};
+    \node[above=0.5cm of valid] {Epistemic Logic.thy};
+\end{tikzpicture}
+
+\end{document}

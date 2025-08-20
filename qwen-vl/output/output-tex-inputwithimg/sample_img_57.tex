@@ -1,0 +1,185 @@
+To create the LaTeX code for the diagram you've described, you can use the `tikz` package along with the `matrix` library to construct the flowchart. Below is the LaTeX code that generates the diagram:
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    \matrix (m) [matrix of nodes, row sep=1em, column sep=3em, text height=1.5ex, text depth=0.25ex] {
+        \node[draw] (a) {Stack of D3 branes}; & & \node[draw] (b) {Strings in AdS$_5\times S^5$}; & & \node[draw] (c) {$\mathcal{N}=4$ SYM}; & & \node[draw] (d) {DBI action in Mink}; \\
+        & \node (e) {$\alpha'\to 0$}; & & \node (f) {$c\to\infty$}; & & \node (g) {$\alpha'\to 0$}; & \\
+        \node[draw] (h) {Stack of NR D3 branes}; & & \node[draw] (i) {NR Strings in SNC AdS$_5\times S^5$}; & & \node[draw] (j) {GED with scalars}; & & \node[draw] (k) {DBI action in NC Mink}; \\
+        & \node (l) {$\alpha'\to 0$}; & & \node (m) {$c\to\infty$}; & & \node (n) {$\alpha'\to 0$}; & \\
+    };
+    \draw[->] (a) -- node[auto] {} (h);
+    \draw[->] (a) -- node[auto] {$c\to\infty$} (h);
+    \draw[->] (b) -- node[auto] {} (i);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (i);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (i);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (i);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (c);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (c);
+    \draw[->] (i) -- node[auto] {} (j);
+    \draw[->] (i) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (j) -- node[auto] {} (k);
+    \draw[->] (j) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (i);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (i);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (c);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (c);
+    \draw[->] (i) -- node[auto] {} (j);
+    \draw[->] (i) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (j) -- node[auto] {} (k);
+    \draw[->] (j) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (i);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (i);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (c);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (c);
+    \draw[->] (i) -- node[auto] {} (j);
+    \draw[->] (i) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (j) -- node[auto] {} (k);
+    \draw[->] (j) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (i);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (i);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (i);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (i);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (i);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (i);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (i);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (i);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (i);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (i);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$} (m);
+    \draw[->] (g) -- node[auto] {} (n);
+    \draw[->] (g) -- node[auto] {$c\to\infty$} (n);
+    \draw[->] (b) -- node[auto] {} (i);
+    \draw[->] (b) -- node[auto] {$c\to\infty$} (i);
+    \draw[->] (c) -- node[auto] {} (j);
+    \draw[->] (c) -- node[auto] {$c\to\infty$} (j);
+    \draw[->] (d) -- node[auto] {} (k);
+    \draw[->] (d) -- node[auto] {$c\to\infty$} (k);
+    \draw[->] (e) -- node[auto] {} (l);
+    \draw[->] (e) -- node[auto] {$c\to\infty$} (l);
+    \draw[->] (f) -- node[auto] {} (m);
+    \draw[->] (f) -- node[auto] {$c\to\infty$}

@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white!20, text width=6em, text centered, rounded corners, minimum height=4em},
+    line/.style = {draw, thick, ->, >=stealth'},
+    pinstyle/.style = {pin edge={to-,thick}}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=3cm]
+
+\node[block] (VELO) [label=below:VELO Detector] {};
+\node[block, right of=VELO, xshift=5cm] (TT) [label=below:TT Detector] {};
+\node[block, above right of=TT, yshift=3cm] (Magnet) [label=above:Magnet] {};
+
+\node[block, below of=Magnet, xshift=-5cm] (T1) [label=below:T1] {};
+\node[block, below of=Magnet, xshift=0cm] (T2) [label=below:T2] {};
+\node[block, below of=Magnet, xshift=5cm] (T3) [label=below:T3] {};
+
+% Draw lines between nodes
+\draw[line] (VELO) -- (TT);
+\draw[line] (TT) -- (Magnet);
+\draw[line] (Magnet) -- (T1);
+\draw[line] (Magnet) -- (T2);
+\draw[line] (Magnet) -- (T3);
+
+\end{tikzpicture}
+
+\end{document}

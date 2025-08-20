@@ -1,0 +1,21 @@
+The figure you described is a graphical representation used to compare the running times of algorithms for the Feedback Vertex Set (FVS) problem with respect to different approximation ratios. Here's a detailed explanation:
+
+1. **Axes Explanation**:
+   - The \( x \)-axis represents the approximation ratio \(\beta\). This ratio indicates how close the solution found by the algorithm is to the optimal solution.
+   - The \( y \)-axis represents the base of the exponent in the running time, which is denoted as \( c \).
+
+2. **Points on the Graph**:
+   - Each point \((\beta, c)\) on the graph signifies an algorithm that provides a \(\beta\)-approximation for the FVS problem and runs in time \( c^k \cdot n^{\Oh(1)} \), where \( k \) is some constant.
+   - The value of \( c \) determines the base of the exponential term in the running time, indicating the efficiency of the algorithm.
+
+3. **Interpretation**:
+   - If a point \((\beta, c)\) is higher on the \( y \)-axis, it means the algorithm has a higher base \( c \) in its running time, implying that the algorithm might be less efficient but potentially provides a better approximation ratio \(\beta\).
+   - Conversely, if a point is lower on the \( y \)-axis, it suggests a more efficient algorithm with a smaller base \( c \), even though it might provide a worse approximation ratio \(\beta\).
+
+4. **Example**:
+   - Suppose we have two points: \((1.5, 2)\) and \((2, 1.5)\).
+     - The first point \((1.5, 2)\) indicates an algorithm that provides a 1.5-approximation and runs in time \( 2^k \cdot n^{\Oh(1)} \).
+     - The second point \((2, 1.5)\) indicates an algorithm that provides a 2-approximation and runs in time \( 1.5^k \cdot n^{\Oh(1)} \).
+   - In this case, the second algorithm is more efficient (smaller base \( c = 1.5 \)) but provides a worse approximation ratio (larger \(\beta = 2\)).
+
+In summary, the graph helps visualize the trade-off between the approximation ratio and the efficiency of the algorithm in terms of the running time. It allows researchers and practitioners to choose an algorithm based on their specific needs regarding the balance between the quality of the solution and the computational resources required.

@@ -1,0 +1,213 @@
+To create the LaTeX code for the given image, you can use the `tikz` package to draw the graph. Below is the LaTeX code that generates the image:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Nodes
+    \node (0) at (-6,0) {$+0$};
+    \node (1) at (-5,-0.5) {$-11$};
+    \node (2) at (-4,-0.5) {$+11$};
+    \node (3) at (-3,-0.5) {$-9$};
+    \node (4) at (-2,-0.5) {$+9$};
+    \node (5) at (-1,-0.5) {$-7$};
+    \node (6) at (0,-0.5) {$+7$};
+    \node (7) at (1,-0.5) {$-5$};
+    \node (8) at (2,-0.5) {$+5$};
+    \node (9) at (3,-0.5) {$-3$};
+    \node (10) at (4,-0.5) {$+3$};
+    \node (11) at (5,-0.5) {$-2$};
+    \node (12) at (6,-0.5) {$+2$};
+    \node (13) at (7,-0.5) {$-1$};
+
+    % Directed edges with labels
+    \draw[->] (0) -- node[above] {$\alpha$} (1);
+    \draw[->] (1) -- node[above] {$\alpha$} (2);
+    \draw[->] (2) -- node[above] {$\alpha$} (3);
+    \draw[->] (3) -- node[above] {$\alpha$} (4);
+    \draw[->] (4) -- node[above] {$\alpha$} (5);
+    \draw[->] (5) -- node[above] {$\alpha$} (6);
+    \draw[->] (6) -- node[above] {$\alpha$} (7);
+    \draw[->] (7) -- node[above] {$\alpha$} (8);
+    \draw[->] (8) -- node[above] {$\alpha$} (9);
+    \draw[->] (9) -- node[above] {$\alpha$} (10);
+    \draw[->] (10) -- node[above] {$\alpha$} (11);
+    \draw[->] (11) -- node[above] {$\alpha$} (12);
+    \draw[->] (12) -- node[above] {$\alpha$} (13);
+
+    % Dashed lines for the cycle
+    \draw[dashed] (0) to[bend left=45] (12);
+    \draw[dashed] (1) to[bend left=45] (13);
+    \draw[dashed] (2) to[bend left=45] (14);
+    \draw[dashed] (3) to[bend left=45] (15);
+    \draw[dashed] (4) to[bend left=45] (16);
+    \draw[dashed] (5) to[bend left=45] (17);
+    \draw[dashed] (6) to[bend left=45] (18);
+    \draw[dashed] (7) to[bend left=45] (19);
+    \draw[dashed] (8) to[bend left=45] (20);
+    \draw[dashed] (9) to[bend left=45] (21);
+    \draw[dashed] (10) to[bend left=45] (22);
+    \draw[dashed] (11) to[bend left=45] (23);
+    \draw[dashed] (12) to[bend left=45] (24);
+
+    % Additional nodes and edges for the insertion
+    \node (14) at (-6,-2) {$+0$};
+    \node (15) at (-5,-2.5) {$-1$};
+    \node (16) at (-4,-2.5) {$+4$};
+    \node (17) at (-3,-2.5) {$-8$};
+    \node (18) at (-2,-2.5) {$+8$};
+    \node (19) at (-1,-2.5) {$-11$};
+    \node (20) at (0,-2.5) {$+11$};
+    \node (21) at (1,-2.5) {$-9$};
+    \node (22) at (2,-2.5) {$+9$};
+    \node (23) at (3,-2.5) {$-7$};
+    \node (24) at (4,-2.5) {$+7$};
+    \node (25) at (5,-2.5) {$-5$};
+    \node (26) at (6,-2.5) {$+5$};
+    \node (27) at (7,-2.5) {$-3$};
+    \node (28) at (8,-2.5) {$+3$};
+
+    \draw[->] (14) -- node[above] {$\alpha$} (15);
+    \draw[->] (15) -- node[above] {$\alpha$} (16);
+    \draw[->] (16) -- node[above] {$\alpha$} (17);
+    \draw[->] (17) -- node[above] {$\alpha$} (18);
+    \draw[->] (18) -- node[above] {$\alpha$} (19);
+    \draw[->] (19) -- node[above] {$\alpha$} (20);
+    \draw[->] (20) -- node[above] {$\alpha$} (21);
+    \draw[->] (21) -- node[above] {$\alpha$} (22);
+    \draw[->] (22) -- node[above] {$\alpha$} (23);
+    \draw[->] (23) -- node[above] {$\alpha$} (24);
+    \draw[->] (24) -- node[above] {$\alpha$} (25);
+    \draw[->] (25) -- node[above] {$\alpha$} (26);
+    \draw[->] (26) -- node[above] {$\alpha$} (27);
+    \draw[->] (27) -- node[above] {$\alpha$} (28);
+
+    % Dashed lines for the insertion
+    \draw[dashed] (14) to[bend left=45] (28);
+    \draw[dashed] (15) to[bend left=45] (29);
+    \draw[dashed] (16) to[bend left=45] (30);
+    \draw[dashed] (17) to[bend left=45] (31);
+    \draw[dashed] (18) to[bend left=45] (32);
+    \draw[dashed] (19) to[bend left=45] (33);
+    \draw[dashed] (20) to[bend left=45] (34);
+    \draw[dashed] (21) to[bend left=45] (35);
+    \draw[dashed] (22) to[bend left=45] (36);
+    \draw[dashed] (23) to[bend left=45] (37);
+    \draw[dashed] (24) to[bend left=45] (38);
+    \draw[dashed] (25) to[bend left=45] (39);
+    \draw[dashed] (26) to[bend left=45] (40);
+    \draw[dashed] (27) to[bend left=45] (41);
+    \draw[dashed] (28) to[bend left=45] (42);
+
+    % Additional nodes and edges for the cycle
+    \node (29) at (-6,-4) {$+0$};
+    \node (30) at (-5,-4.5) {$-1$};
+    \node (31) at (-4,-4.5) {$+4$};
+    \node (32) at (-3,-4.5) {$-8$};
+    \node (33) at (-2,-4.5) {$+8$};
+    \node (34) at (-1,-4.5) {$-11$};
+    \node (35) at (0,-4.5) {$+11$};
+    \node (36) at (1,-4.5) {$-9$};
+    \node (37) at (2,-4.5) {$+9$};
+    \node (38) at (3,-4.5) {$-7$};
+    \node (39) at (4,-4.5) {$+7$};
+    \node (40) at (5,-4.5) {$-5$};
+    \node (41) at (6,-4.5) {$+5$};
+    \node (42) at (7,-4.5) {$-3$};
+    \node (43) at (8,-4.5) {$+3$};
+
+    \draw[->] (29) -- node[above] {$\alpha$} (30);
+    \draw[->] (30) -- node[above] {$\alpha$} (31);
+    \draw[->] (31) -- node[above] {$\alpha$} (32);
+    \draw[->] (32) -- node[above] {$\alpha$} (33);
+    \draw[->] (33) -- node[above] {$\alpha$} (34);
+    \draw[->] (34) -- node[above] {$\alpha$} (35);
+    \draw[->] (35) -- node[above] {$\alpha$} (36);
+    \draw[->] (36) -- node[above] {$\alpha$} (37);
+    \draw[->] (37) -- node[above] {$\alpha$} (38);
+    \draw[->] (38) -- node[above] {$\alpha$} (39);
+    \draw[->] (39) -- node[above] {$\alpha$} (40);
+    \draw[->] (40) -- node[above] {$\alpha$} (41);
+    \draw[->] (41) -- node[above] {$\alpha$} (42);
+
+    % Additional nodes and edges for the cycle
+    \node (44) at (-6,-6) {$+0$};
+    \node (45) at (-5,-6.5) {$-1$};
+    \node (46) at (-4,-6.5) {$+4$};
+    \node (47) at (-3,-6.5) {$-8$};
+    \node (48) at (-2,-6.5) {$+8$};
+    \node (49) at (-1,-6.5) {$-11$};
+    \node (50) at (0,-6.5) {$+11$};
+    \node (51) at (1,-6.5) {$-9$};
+    \node (52) at (2,-6.5) {$+9$};
+    \node (53) at (3,-6.5) {$-7$};
+    \node (54) at (4,-6.5) {$+7$};
+    \node (55) at (5,-6.5) {$-5$};
+    \node (56) at (6,-6.5) {$+5$};
+    \node (57) at (7,-6.5) {$-3$};
+    \node (58) at (8,-6.5) {$+3$};
+
+    \draw[->] (44) -- node[above] {$\alpha$} (45);
+    \draw[->] (45) -- node[above] {$\alpha$} (46);
+    \draw[->] (46) -- node[above] {$\alpha$} (47);
+    \draw[->] (47) -- node[above] {$\alpha$} (48);
+    \draw[->] (48) -- node[above] {$\alpha$} (49);
+    \draw[->] (49) -- node[above] {$\alpha$} (50);
+    \draw[->] (50) -- node[above] {$\alpha$} (51);
+    \draw[->] (51) -- node[above] {$\alpha$} (52);
+    \draw[->] (52) -- node[above] {$\alpha$} (53);
+    \draw[->] (53) -- node[above] {$\alpha$} (54);
+    \draw[->] (54) -- node[above] {$\alpha$} (55);
+    \draw[->] (55) -- node[above] {$\alpha$} (56);
+    \draw[->] (56) -- node[above] {$\alpha$} (57);
+    \draw[->] (57) -- node[above] {$\alpha$} (58);
+
+    % Additional nodes and edges for the cycle
+    \node (59) at (-6,-8) {$+0$};
+    \node (60) at (-5,-8.5) {$-1$};
+    \node (61) at (-4,-8.5) {$+4$};
+    \node (62) at (-3,-8.5) {$-8$};
+    \node (63) at (-2,-8.5) {$+8$};
+    \node (64) at (-1,-8.5) {$-11$};
+    \node (65) at (0,-8.5) {$+11$};
+    \node (66) at (1,-8.5) {$-9$};
+    \node (67) at (2,-8.5) {$+9$};
+    \node (68) at (3,-8.5) {$-7$};
+    \node (69) at (4,-8.5) {$+7$};
+    \node (70) at (5,-8.5) {$-5$};
+    \node (71) at (6,-8.5) {$+5$};
+    \node (72) at (7,-8.5) {$-3$};
+    \node (73) at (8,-8.5) {$+3$};
+
+    \draw[->] (59) -- node[above] {$\alpha$} (60);
+    \draw[->] (60) -- node[above] {$\alpha$} (61);
+    \draw[->] (61) -- node[above] {$\alpha$} (62);
+    \draw[->] (62) -- node[above] {$\alpha$} (63);
+    \draw[->] (63) -- node[above] {$\alpha$} (64);
+    \draw[->] (64) -- node[above] {$\alpha$} (65);
+    \draw[->] (65) -- node[above] {$\alpha$} (66);
+    \draw[->] (66) -- node[above] {$\alpha$} (67);
+    \draw[->] (67) -- node[above] {$\alpha$} (68);
+    \draw[->] (68) -- node[above] {$\alpha$} (69);
+    \draw[->] (69) -- node[above] {$\alpha$} (70);
+    \draw[->] (70) -- node[above] {$\alpha$} (71);
+    \draw[->] (71) -- node[above] {$\alpha$} (72);
+    \draw[->] (72) -- node[above] {$\alpha$} (73);
+
+    % Additional nodes and edges for the cycle
+    \node (74) at (-6,-10) {$+0$};
+    \node (75) at (-5,-10.5) {$-1$};
+    \node (76) at (-4,-10.5) {$+4$};
+    \node (77) at (-3,-10.5) {$-8$};
+    \node (78) at (-2,-10.5) {$+8$};
+    \node (79) at (-1,-10.5) {$-11$};
+    \node (80) at (0,-10.5) {$+11$};
+    \node (81) at (1,-10.5) {$-9$};
+    \node (82) at (2,-10.5) {$+9$};
+    \node (83) at (3,-10.5) {$-7$};
+    \node (84) at (4,-10.5) {$+7$};
+    \node (85) at (5,-10.5)

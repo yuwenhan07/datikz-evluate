@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+
+% Define styles for nodes and edges
+\tikzset{
+    node/.style={circle, draw, fill=blue!20, minimum size=6mm},
+    edge/.style={->, thick}
+}
+
+% Draw nodes
+\node[node] (node0star) at (0,0) {$0^*$};
+\node[node] (nodeBullet) at (3,0) {$\bullet$};
+
+% Draw edges
+\draw[edge] (node0star) -- (nodeBullet);
+
+% Label edges
+\node[above=2pt,midway,right] at ($(node0star)!0.5!(nodeBullet)$) {\( M^{\rm I}(\bullet) \)};
+\node[below=2pt,midway,left] at ($(node0star)!0.5!(nodeBullet)$) {possible \( t \)};
+
+\end{tikzpicture}
+\end{document}

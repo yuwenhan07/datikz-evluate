@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Define coordinates for the vertices of the hexagon
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (1,0);
+        \coordinate (C) at (1.5,0.866);
+        \coordinate (D) at (1,2);
+        \coordinate (E) at (0,2);
+        \coordinate (F) at (-0.5,0.866);
+        
+        % Draw the hexagon
+        \draw[thick] (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- cycle;
+        
+        % Draw the dashed lines for -K
+        \draw[dashed] (A) -- (F);
+        \draw[dashed] (B) -- (E);
+        \draw[dashed] (C) -- (D);
+        
+        % Draw the orange line for \underline{M}_0(K,-K)
+        \draw[orange, thick] (A) -- (C);
+        \draw[orange, thick] (B) -- (D);
+        \draw[orange, thick] (C) -- (E);
+        \draw[orange, thick] (D) -- (F);
+        \draw[orange, thick] (E) -- (A);
+        \draw[orange, thick] (F) -- (B);
+        
+        % Draw the blue line for \overline{M}_1(K,-K)
+        \draw[blue, thick] (A) -- (D);
+        \draw[blue, thick] (B) -- (E);
+        \draw[blue, thick] (C) -- (F);
+        \draw[blue, thick] (D) -- (A);
+        \draw[blue, thick] (E) -- (B);
+        \draw[blue, thick] (F) -- (C);
+        
+        % Draw the red line for \overline{M}_3(K,-K)
+        \draw[red, thick] (A) -- (E);
+        \draw[red, thick] (B) -- (F);
+        \draw[red, thick] (C) -- (A);
+        \draw[red, thick] (D) -- (B);
+        \draw[red, thick] (E) -- (C);
+        \draw[red, thick] (F) -- (D);
+        
+        % Draw the dash-dotted line for \overline{M}_\infty(K,-K)
+        \draw[dashdotted, thick] (A) -- (D);
+        \draw[dashdotted, thick] (B) -- (E);
+        \draw[dashdotted, thick] (C) -- (F);
+        \draw[dashdotted, thick] (D) -- (A);
+        \draw[dashdotted, thick] (E) -- (B);
+        \draw[dashdotted, thick] (F) -- (C);
+        
+        % Draw the circle for K and -K
+        \draw[thick] (0,0) circle (1.5);
+        \draw[dashed] (0,0) circle (1.5);
+        
+        % Mark the origin
+        \filldraw (0,0) circle (1pt) node[anchor=north] {$0$};
+        
+        % Add labels for the lines
+        \node at (0.75,1.2) {\textcolor{orange}{$\underline{M}_0(K,-K)$}};
+        \node at (0.75,1.8) {\textcolor{blue}{$\overline{M}_1(K,-K)$}};
+        \node at (0.75,2.4) {\textcolor{red}{$\overline{M}_3(K,-K)$}};
+        \node at (0.75,3) {\textcolor{black}{\textbf{K}}};
+        \node at (0.75,3.6) {\textcolor{black}{\textbf{-K}}};
+        \node at (0.75,4.2) {\textcolor{black}{\textbf{\underline{M}_0(K,-K)}}};
+        \node at (0.75,4.8) {\textcolor{black}{\textbf{\overline{M}_1(K,-K)}}};
+        \node at (0.75,5.4) {\textcolor{black}{\textbf{\overline{M}_3(K,-K)}}};
+        \node at (0.75,6) {\textcolor{black}{\textbf{\overline{M}_\infty(K,-K)}}};
+    \end{tikzpicture}
+    \caption{An example for Lemma~\ref{common boundary points lemma}: $K$ (black), $-K$ (dashed), $\underline{M}_{0}(K,-K)$ (orange), $\overline{M}_{1}(K,-K)$ (blue), $\overline{M}_{3}(K,-K)$ (red), $\overline{M}_{\infty}(K,-K)$ (dashdotted). The common boundary points of $K$ and $-K$ are not boundary points of $\underline{M}_{0}(K,-K)$. Furthermore, the vertices of $\overline{M}_{1}(K,-K)$ are smooth boundary points of $\overline{M}_{\infty}(K,-K)$. By Lemma~\ref{common boundary points lemma}~(ii), $\overline{M}_{p}(K,-K)$ for $p > 1$ is supported at each of these points by exactly one respective line that also supports $K$ and $-K$. However, this does not mean that these points must belong to $K$ or $-K$.}
+    \label{fig:common_boundary_points_lemma}
+\end{figure}
+
+\end{document}

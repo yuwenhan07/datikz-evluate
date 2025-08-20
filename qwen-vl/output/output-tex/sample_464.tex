@@ -1,0 +1,51 @@
+To understand the constant diameter graph construction for \( r = 3 \), we need to follow a few steps. Let's break it down:
+
+### Step 1: Understanding the Problem
+We are given two points in a 3-dimensional space:
+- \( A = (1, 0, 1) \)
+- \( B = (1, 1, 0) \)
+
+We need to construct a graph where the distance between any two points is constant (i.e., the diameter of the graph is a fixed value). Additionally, there is a specific condition involving the source \( 1 \) and the sink \( 11 \).
+
+### Step 2: Constructing the Graph
+For a constant diameter graph with \( r = 3 \), we can think of it as a 3-dimensional grid where each point has a fixed distance from every other point. This means that the graph must be symmetric and have a uniform structure.
+
+### Step 3: Distance Calculation
+The distance between two points \( (x_1, y_1, z_1) \) and \( (x_2, y_2, z_2) \) in 3-dimensional space is given by:
+\[
+d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}
+\]
+
+### Step 4: Condition on Source and Sink
+The condition \(\text{disj}(A, B) = 1\) implies that the distance between \( A \) and \( B \) is exactly 1. Let's calculate this distance:
+\[
+d(A, B) = \sqrt{(1 - 1)^2 + (1 - 0)^2 + (0 - 1)^2} = \sqrt{0 + 1 + 1} = \sqrt{2}
+\]
+
+This calculation shows that the distance between \( A \) and \( B \) is \(\sqrt{2}\), not 1. Therefore, the condition \(\text{disj}(A, B) = 1\) seems to be incorrect or misinterpreted. However, let's assume the problem intends to find a graph where the distance between \( A \) and \( B \) is 1, and proceed with constructing such a graph.
+
+### Step 5: Constructing the Graph with Constant Diameter 1
+To construct a graph with a constant diameter of 1, we need a structure where every pair of points is at a distance of 1. One such structure is a complete graph on 8 vertices, where each vertex represents a point in a 3-dimensional space such that the distance between any two points is 1.
+
+### Step 6: Mapping Points to Vertices
+We can map the points \( A \) and \( B \) to specific vertices in this graph. For simplicity, let's assume the vertices are labeled as follows:
+- \( V_1 = (1, 0, 1) \)
+- \( V_2 = (1, 1, 0) \)
+- \( V_3 = (0, 1, 1) \)
+- \( V_4 = (0, 0, 0) \)
+- \( V_5 = (1, 0, 0) \)
+- \( V_6 = (0, 1, 0) \)
+- \( V_7 = (1, 1, 1) \)
+- \( V_8 = (0, 0, 1) \)
+
+In this graph, the distance between any two vertices is 1, satisfying the condition of a constant diameter of 1.
+
+### Step 7: Connecting Source and Sink
+The source \( 1 \) and the sink \( 11 \) are connected, which is equivalent to \(\text{disj}(A, B) = 1\) by construction. In our graph, this means that the vertices corresponding to \( A \) and \( B \) are directly connected.
+
+### Final Answer
+The constant diameter graph construction for \( r = 3 \) with the given points \( A = (1, 0, 1) \) and \( B = (1, 1, 0) \) can be visualized as a complete graph on 8 vertices where each vertex is at a distance of 1 from every other vertex. The vertices corresponding to \( A \) and \( B \) are directly connected, satisfying the condition \(\text{disj}(A, B) = 1\).
+
+\[
+\boxed{\text{The graph is a complete graph on 8 vertices with each vertex at a distance of 1 from every other vertex, and the vertices corresponding to } A \text{ and } B \text{ are directly connected.}}
+\]

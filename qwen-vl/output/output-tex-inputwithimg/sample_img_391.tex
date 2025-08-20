@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix, arrows.meta}
+
+\begin{document}
+
+\textbf{Schematic illustration of the changes in a scientist's ``research portfolio'' over time.} Each color represents a different research area. Resources entail any intellectual or methodological assets that a scientist uses to address scientific problems from each research area. ``Conversion'' repurposes knowledge to new goals. Displacement is the replacement of certain research interests with little or no transfer of prior knowledge. Layering is the introduction of new research interests via the addition of new knowledge.
+
+\begin{tikzpicture}[>=Stealth]
+    \matrix (m) [matrix of nodes, column sep=0.5cm, row sep=0.2cm] {
+        \cellcolor{green!30} Resource 8 & & & & & & & & \\
+        \cellcolor{green!30} Resource 7 & & & & & & & & \\
+        \cellcolor{red!40} Resource 6 & & & & & & & & \\
+        \cellcolor{red!40} Resource 5 & & & & & & & & \\
+        \cellcolor{red!40} Resource 4 & & & & & & & & \\
+        \cellcolor{blue!40} Resource 3 & & & & & & & & \\
+        \cellcolor{blue!40} Resource 2 & & & & & & & & \\
+        \cellcolor{blue!40} Resource 1 & & & & & & & & \\
+    };
+    \matrix (n) [matrix of nodes, right=of m-1-1, anchor=west, column sep=0.5cm, row sep=0.2cm] {
+        \cellcolor{yellow!30} Resource Z & & & & & & & & \\
+        \cellcolor{yellow!30} Resource Y & & & & & & & & \\
+        \cellcolor{red!40} Resource X & & & & & & & & \\
+        \cellcolor{red!40} Resource 5 & & & & & & & & \\
+        \cellcolor{red!40} Resource 4 & & & & & & & & \\
+        \cellcolor{red!40} Resource 3 & & & & & & & & \\
+        \cellcolor{red!40} Resource 2 & & & & & & & & \\
+        \cellcolor{red!40} Resource 1 & & & & & & & & \\
+    };
+
+    % Draw the arrows
+    \draw[->, dashed] (m-1-1.north east) -- ++(0.5,0) node[right] {Layering};
+    \draw[->, dashed] (m-1-1.south east) -- ++(0.5,0) node[right] {Displacement};
+    \draw[->, dashed] (m-1-1.south west) -- ++(-0.5,0) node[left] {Conversion};
+
+    % Draw the braces
+    \draw[thick, -Stealth] (m-1-1.north east) -- ++(0.5,0) |- (m-1-1.south east);
+    \draw[thick, -Stealth] (m-1-1.south west) -- ++(-0.5,0) |- (m-1-1.south east);
+\end{tikzpicture}
+
+\end{document}

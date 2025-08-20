@@ -1,0 +1,184 @@
+To generate LaTeX code for the provided image and caption, you can use the `tikz` package along with the `matrix` environment to create the diagram. Below is an example of how you might achieve this:
+
+```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=0.5cm]
+        % Define nodes for the matrix
+        \matrix (m) [matrix of nodes, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4) {$\text{my}$}; \\
+        };
+        
+        \matrix (m2) [matrix of nodes, right=of m, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1') {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2') {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3') {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4') {$\text{my}$}; \\
+        };
+        
+        \matrix (m3) [matrix of nodes, right=of m2, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'') {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'') {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'') {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'') {$\text{my}$}; \\
+        };
+        
+        \matrix (m4) [matrix of nodes, right=of m3, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1''') {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2''') {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3''') {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4''') {$\text{my}$}; \\
+        };
+        
+        \matrix (m5) [matrix of nodes, right=of m4, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m6) [matrix of nodes, right=of m5, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m7) [matrix of nodes, right=of m6, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m8) [matrix of nodes, right=of m7, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m9) [matrix of nodes, right=of m8, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m10) [matrix of nodes, right=of m9, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1''''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2''''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3''''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4''''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m11) [matrix of nodes, right=of m10, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m12) [matrix of nodes, right=of m11, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1''''''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2''''''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3''''''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4''''''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m13) [matrix of nodes, right=of m12, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m14) [matrix of nodes, right=of m13, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''') {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''''') {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''''') {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''''') {$\text{my}$}; \\
+        };
+        
+        \matrix (m15) [matrix of nodes, right=of m14, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m16) [matrix of nodes, right=of m15, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1''''''''''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2''''''''''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3''''''''''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4''''''''''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m17) [matrix of nodes, right=of m16, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m18) [matrix of nodes, right=of m17, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''''''') {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''''''''') {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''''''''') {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''''''''') {$\text{my}$}; \\
+        };
+        
+        \matrix (m19) [matrix of nodes, right=of m18, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m20) [matrix of nodes, right=of m19, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''''''''') {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''''''''''') {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''''''''''') {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''''''''''') {$\text{my}$}; \\
+        };
+        
+        \matrix (m21) [matrix of nodes, right=of m20, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''''''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''''''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''''''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m22) [matrix of nodes, right=of m21, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''''''''''') {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''''''''''''') {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''''''''''''') {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''''''''''''') {$\text{my}$}; \\
+        };
+        
+        \matrix (m23) [matrix of nodes, right=of m22, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''''''''''' ) {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''''''''''''' ) {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''''''''''''' ) {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''''''''''''' ) {$\text{my}$}; \\
+        };
+        
+        \matrix (m24) [matrix of nodes, right=of m23, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''''''''''''') {$\text{boyfriend}$}; \\
+            \node[draw, fill=black!80] (y2'''''''''''''''''''''''') {$\text{is}$}; \\
+            \node[draw, fill=black!80] (y3'''''''''''''''''''''''') {$\text{Karma}$}; \\
+            \node[draw, fill=black!80] (y4'''''''''''''''''''''''') {$\text{my}$}; \\
+        };
+        
+        \matrix (m25) [matrix of nodes, right=of m24, column sep=0.2cm, row sep=0.2cm] {
+            \node[draw, fill=black!80] (y1'''''''''''''''''''''''' ) {$\

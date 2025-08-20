@@ -1,0 +1,288 @@
+To create the LaTeX code for the given image, you can use the `tikz` package in LaTeX. Below is the code that generates the diagram:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    % Define coordinates for the vertices
+    \coordinate (A1) at (0,0);
+    \coordinate[right=of A1] (Q1);
+    \coordinate[right=of Q1] (Q2);
+    \coordinate[right=of Q2] (Q3);
+    \coordinate[right=of Q3] (Q4);
+    \coordinate[right=of Q4] (Q5);
+    \coordinate[right=of Q5] (Q6);
+    \coordinate[right=of Q6] (Q7);
+    \coordinate[right=of Q7] (Q8);
+    
+    \coordinate[below=of A1] (W);
+    \coordinate[below=of Q1] (B1);
+    \coordinate[below=of Q2] (B2);
+    \coordinate[below=of Q3] (B3);
+    \coordinate[below=of Q4] (B4);
+    \coordinate[below=of Q5] (B5);
+    \coordinate[below=of Q6] (B6);
+    \coordinate[below=of Q7] (B7);
+    \coordinate[below=of Q8] (B8);
+    
+    \coordinate[below=of B1] (r1);
+    \coordinate[right=of r1] (r2);
+    \coordinate[below=of B2] (r3);
+    \coordinate[right=of r3] (r4);
+    \coordinate[below=of B3] (r5);
+    \coordinate[right=of r5] (r6);
+    \coordinate[below=of B4] (r7);
+    \coordinate[right=of r7] (r8);
+    \coordinate[below=of B5] (r9);
+    \coordinate[right=of r9] (r10);
+    \coordinate[below=of B6] (r11);
+    \coordinate[right=of r11] (r12);
+    \coordinate[below=of B7] (r13);
+    \coordinate[right=of r13] (r14);
+    \coordinate[below=of B8] (r15);
+    \coordinate[right=of r15] (r16);
+    
+    % Draw the paths
+    \draw[dashed] (A1) -- (Q1);
+    \draw[dashed] (Q1) -- (Q2);
+    \draw[dashed] (Q2) -- (Q3);
+    \draw[dashed] (Q3) -- (Q4);
+    \draw[dashed] (Q4) -- (Q5);
+    \draw[dashed] (Q5) -- (Q6);
+    \draw[dashed] (Q6) -- (Q7);
+    \draw[dashed] (Q7) -- (Q8);
+    
+    \draw[dotted] (A1) -- (Q1);
+    \draw[dotted] (Q1) -- (Q2);
+    \draw[dotted] (Q2) -- (Q3);
+    \draw[dotted] (Q3) -- (Q4);
+    \draw[dotted] (Q4) -- (Q5);
+    \draw[dotted] (Q5) -- (Q6);
+    \draw[dotted] (Q6) -- (Q7);
+    \draw[dotted] (Q7) -- (Q8);
+    
+    \draw[dashed] (Q1) -- (B1);
+    \draw[dashed] (Q2) -- (B2);
+    \draw[dashed] (Q3) -- (B3);
+    \draw[dashed] (Q4) -- (B4);
+    \draw[dashed] (Q5) -- (B5);
+    \draw[dashed] (Q6) -- (B6);
+    \draw[dashed] (Q7) -- (B7);
+    \draw[dashed] (Q8) -- (B8);
+    
+    \draw[dotted] (Q1) -- (B1);
+    \draw[dotted] (Q2) -- (B2);
+    \draw[dotted] (Q3) -- (B3);
+    \draw[dotted] (Q4) -- (B4);
+    \draw[dotted] (Q5) -- (B5);
+    \draw[dotted] (Q6) -- (B6);
+    \draw[dotted] (Q7) -- (B7);
+    \draw[dotted] (Q8) -- (B8);
+    
+    \draw[dashed] (B1) -- (r1);
+    \draw[dashed] (B2) -- (r3);
+    \draw[dashed] (B3) -- (r5);
+    \draw[dashed] (B4) -- (r7);
+    \draw[dashed] (B5) -- (r9);
+    \draw[dashed] (B6) -- (r11);
+    \draw[dashed] (B7) -- (r13);
+    \draw[dashed] (B8) -- (r15);
+    
+    \draw[dotted] (B1) -- (r1);
+    \draw[dotted] (B2) -- (r3);
+    \draw[dotted] (B3) -- (r5);
+    \draw[dotted] (B4) -- (r7);
+    \draw[dotted] (B5) -- (r9);
+    \draw[dotted] (B6) -- (r11);
+    \draw[dotted] (B7) -- (r13);
+    \draw[dotted] (B8) -- (r15);
+    
+    % Labels
+    \node[above=of A1] {$A_1$};
+    \node[above=of Q1] {$Q_1$};
+    \node[above=of Q2] {$Q_2$};
+    \node[above=of Q3] {$Q_3$};
+    \node[above=of Q4] {$Q_4$};
+    \node[above=of Q5] {$Q_5$};
+    \node[above=of Q6] {$Q_6$};
+    \node[above=of Q7] {$Q_7$};
+    \node[above=of Q8] {$Q_8$};
+    
+    \node[above=of W] {$W$};
+    \node[above=of B1] {$B_1$};
+    \node[above=of B2] {$B_2$};
+    \node[above=of B3] {$B_3$};
+    \node[above=of B4] {$B_4$};
+    \node[above=of B5] {$B_5$};
+    \node[above=of B6] {$B_6$};
+    
+    \node[above=of r1] {$r_1$};
+    \node[above=of r2] {$r_{a_2}$};
+    \node[above=of r3] {$r_{b_1}$};
+    \node[above=of r4] {$r_{a_3}$};
+    \node[above=of r5] {$r_{a_4}$};
+    \node[above=of r6] {$r_{b_2}$};
+    \node[above=of r7] {$r_{a_5}$};
+    \node[above=of r8] {$r_{b_3}$};
+    \node[above=of r9] {$r_{b_4}$};
+    \node[above=of r10] {$r_{m_1}$};
+    \node[above=of r11] {$r_{a_6}$};
+    \node[above=of r12] {$r_{m_2}$};
+    \node[above=of r13] {$r_{b_5}$};
+    \node[above=of r14] {$r_{a_7}$};
+    \node[above=of r15] {$r_{m_3}$};
+    \node[above=of r16] {$r_{b_6}$};
+    
+    % Dashed lines connecting the paths
+    \draw[dashed] (Q1) -- (r1);
+    \draw[dashed] (Q2) -- (r3);
+    \draw[dashed] (Q3) -- (r5);
+    \draw[dashed] (Q4) -- (r7);
+    \draw[dashed] (Q5) -- (r9);
+    \draw[dashed] (Q6) -- (r11);
+    \draw[dashed] (Q7) -- (r13);
+    \draw[dashed] (Q8) -- (r15);
+    
+    \draw[dotted] (Q1) -- (r1);
+    \draw[dotted] (Q2) -- (r3);
+    \draw[dotted] (Q3) -- (r5);
+    \draw[dotted] (Q4) -- (r7);
+    \draw[dotted] (Q5) -- (r9);
+    \draw[dotted] (Q6) -- (r11);
+    \draw[dotted] (Q7) -- (r13);
+    \draw[dotted] (Q8) -- (r15);
+    
+    % Thick dashed lines
+    \draw[line width=1.5pt, dashed] (Q1) -- (r1);
+    \draw[line width=1.5pt, dashed] (Q2) -- (r3);
+    \draw[line width=1.5pt, dashed] (Q3) -- (r5);
+    \draw[line width=1.5pt, dashed] (Q4) -- (r7);
+    \draw[line width=1.5pt, dashed] (Q5) -- (r9);
+    \draw[line width=1.5pt, dashed] (Q6) -- (r11);
+    \draw[line width=1.5pt, dashed] (Q7) -- (r13);
+    \draw[line width=1.5pt, dashed] (Q8) -- (r15);
+    
+    \draw[dotted] (Q1) -- (r1);
+    \draw[dotted] (Q2) -- (r3);
+    \draw[dotted] (Q3) -- (r5);
+    \draw[dotted] (Q4) -- (r7);
+    \draw[dotted] (Q5) -- (r9);
+    \draw[dotted] (Q6) -- (r11);
+    \draw[dotted] (Q7) -- (r13);
+    \draw[dotted] (Q8) -- (r15);
+    
+    % Labels for the thick dashed lines
+    \node[above=of Q1] {$Q_1$};
+    \node[above=of Q2] {$Q_2$};
+    \node[above=of Q3] {$Q_3$};
+    \node[above=of Q4] {$Q_4$};
+    \node[above=of Q5] {$Q_5$};
+    \node[above=of Q6] {$Q_6$};
+    \node[above=of Q7] {$Q_7$};
+    \node[above=of Q8] {$Q_8$};
+    
+    \node[above=of W] {$W$};
+    \node[above=of B1] {$B_1$};
+    \node[above=of B2] {$B_2$};
+    \node[above=of B3] {$B_3$};
+    \node[above=of B4] {$B_4$};
+    \node[above=of B5] {$B_5$};
+    \node[above=of B6] {$B_6$};
+    
+    \node[above=of r1] {$r_1$};
+    \node[above=of r2] {$r_{a_2}$};
+    \node[above=of r3] {$r_{b_1}$};
+    \node[above=of r4] {$r_{a_3}$};
+    \node[above=of r5] {$r_{a_4}$};
+    \node[above=of r6] {$r_{b_2}$};
+    \node[above=of r7] {$r_{a_5}$};
+    \node[above=of r8] {$r_{b_3}$};
+    \node[above=of r9] {$r_{b_4}$};
+    \node[above=of r10] {$r_{m_1}$};
+    \node[above=of r11] {$r_{a_6}$};
+    \node[above=of r12] {$r_{m_2}$};
+    \node[above=of r13] {$r_{b_5}$};
+    \node[above=of r14] {$r_{a_7}$};
+    \node[above=of r15] {$r_{m_3}$};
+    \node[above=of r16] {$r_{b_6}$};
+    
+    % Dashed lines connecting the paths
+    \draw[dashed] (Q1) -- (r1);
+    \draw[dashed] (Q2) -- (r3);
+    \draw[dashed] (Q3) -- (r5);
+    \draw[dashed] (Q4) -- (r7);
+    \draw[dashed] (Q5) -- (r9);
+    \draw[dashed] (Q6) -- (r11);
+    \draw[dashed] (Q7) -- (r13);
+    \draw[dashed] (Q8) -- (r15);
+    
+    \draw[dotted] (Q1) -- (r1);
+    \draw[dotted] (Q2) -- (r3);
+    \draw[dotted] (Q3) -- (r5);
+    \draw[dotted] (Q4) -- (r7);
+    \draw[dotted] (Q5) -- (r9);
+    \draw[dotted] (Q6) -- (r11);
+    \draw[dotted] (Q7) -- (r13);
+    \draw[dotted] (Q8) -- (r15);
+    
+    % Thick dashed lines
+    \draw[line width=1.5pt, dashed] (Q1) -- (r1);
+    \draw[line width=1.5pt, dashed] (Q2) -- (r3);
+    \draw[line width=1.5pt, dashed] (Q3) -- (r5);
+    \draw[line width=1.5pt, dashed] (Q4) -- (r7);
+    \draw[line width=1.5pt, dashed] (Q5) -- (r9);
+    \draw[line width=1.5pt, dashed] (Q6) -- (r11);
+    \draw[line width=1.5pt, dashed] (Q7) -- (r13);
+    \draw[line width=1.5pt, dashed] (Q8) -- (r15);
+    
+    \draw[dotted] (Q1) -- (r1);
+    \draw[dotted] (Q2) -- (r3);
+    \draw[dotted] (Q3) -- (r5);
+    \draw[dotted] (Q4) -- (r7);
+    \draw[dotted] (Q5) -- (r9);
+    \draw[dotted] (Q6) -- (r11);
+    \draw[dotted] (Q7) -- (r13);
+    \draw[dotted] (Q8) -- (r15);
+    
+    % Labels for the thick dashed lines
+    \node[above=of Q1] {$Q_1$};
+    \node[above=of Q2] {$Q_2$};
+    \node[above=of Q3] {$Q_3$};
+    \node[above=of Q4] {$Q_4$};
+    \node[above=of Q5] {$Q_5$};
+    \node[above=of Q6] {$Q_6$};
+    \node[above=of Q7] {$Q_7$};
+    \node[above=of Q8] {$Q_8$};
+    
+    \node[above=of W] {$W$};
+    \node[above=of B1] {$B_1$};
+    \node[above=of B2] {$B_2$};
+    \node[above=of B3] {$B_3$};
+    \node[above=of B4] {$B_4$};
+    \node[above=of B5] {$B_5$};
+    \node[above=of B6] {$B_6$};
+    
+    \node[above=of r1] {$r_1$};
+    \node[above=of r2] {$r_{a_2}$};
+    \node[above=of r3] {$r_{b_1}$};
+    \node[above=of r4] {$r_{a_3}$};
+    \node[above=of r5] {$r_{a_4}$};
+    \node[above=of r6] {$r_{b_2}$};
+    \node[above=of r7] {$r_{a_5}$};
+    \node[above=of r8] {$r_{b_3}$};
+    \node[above=of r9] {$r_{b_4}$};
+    \node[above=of r10] {$r_{m_1}$};
+    \node[above=of r11] {$r_{a_6}$};
+    \node[above=of r12] {$r_{m_2}$};
+    \node[above=of r13] {$r_{b_5}$};
+    \node[above=of r14] {$r_{a_7}$};
+    \node[above=of r15] {$r_{m_3}$};
+    \node[above=of r16] {$r_{b_6}$};
+    
+    % Dashed lines connecting the paths
+    \draw[dashed] (Q1) -- (r1);
+    \draw[dashed] (

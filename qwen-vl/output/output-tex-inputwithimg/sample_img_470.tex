@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the left hyperbolic quadrilateral
+        \draw (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+        \draw[thick] (0,0) -- (0,2);
+        \draw[thick] (2,0) -- (2,2);
+        
+        % Draw the right hyperbolic quadrilateral
+        \draw (3,0) -- (5,0) -- (5,2) -- (3,2) -- cycle;
+        \draw[thick] (3,0) -- (3,2);
+        \draw[thick] (5,0) -- (5,2);
+        
+        % Draw the red arrows
+        \draw[red, ultra thick, ->] (2,1) -- (4,1);
+        
+        % Label the vertices
+        \node at (0.5, 0.5) {$Q''$};
+        \node at (2.5, 0.5) {$Q'$};
+        \node at (3.5, 0.5) {$P'$};
+        \node at (1.5, 2.5) {$S'$};
+        \node at (2.5, 2.5) {$R'$};
+        \node at (0.5, 2.5) {$S''$};
+        \node at (1.5, 0.5) {$P''$};
+        \node at (2.5, 0.5) {$R''$};
+        
+        % Draw the conical singularities
+        \draw[dotted, thick] (6,1) circle (0.5);
+        \draw[thick] (6,1) -- (7,1);
+        \draw[thick] (6,1) -- (6.5, 1.5);
+        \draw[thick] (6,1) -- (6.5, 0.5);
+        
+        % Label the conical singularities
+        \node at (6.5, 1.5) {$R$};
+        \node at (6.5, 0.5) {$S$};
+        
+        % Draw the arrow indicating the identification
+        \draw[->, thick] (5.5, 1) -- (7.5, 1);
+        
+        % Draw the hyperbolic disk
+        \draw (8,0) circle (1);
+        \node at (9, -0.5) {$B_L$};
+        \node at (10, 0) {$B_R$};
+        
+        % Label the points on the hyperbolic disk
+        \fill (8,0) circle (0.05);
+        \fill (9,0) circle (0.05);
+        \fill (10,0) circle (0.05);
+        
+        % Add labels for the angles
+        \node at (1.5, 2.25) {$\beta$};
+        \node at (2.5, 2.25) {$\alpha$};
+        \node at (3.5, 2.25) {$\alpha$};
+        \node at (4.5, 2.25) {$\beta$};
+    \end{tikzpicture}
+    \caption{The gravitational region of the wormhole geometry can be cut into $8n+1$ number of pieces. In which $8n$ pieces have the geometry of a hyperbolic disk with a cut connecting two conical singularities, one at point $R$ and another at point $S$. The conical singularity at $R$ has opening angle $2\alpha$ and the conical singularity at $S$ has opening angle $2\beta$. This geometry can be obtained by identifying the edges $P'R'$ and $P''R''$ and edges $Q'S'$ and $Q''S''$ of a pair of hyperbolic quadrilaterals. The angle at the vertices $R'$ and $R''$ are $\alpha$ and the angle at the vertices $S'$ and $S''$ are $\beta$.}
+    \label{fig:wormhole_geometry}
+\end{figure}
+
+\end{document}

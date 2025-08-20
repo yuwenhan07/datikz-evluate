@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the vertical line representing the stellar surface
+    \draw[thick] (-0.5,0) -- (0.5,0);
+    
+    % Draw the spring K
+    \draw[thick,spring] (0,0) -- (1,0);
+    \node at (0.5,-0.5) {$R$};
+    
+    % Draw the spring k
+    \draw[thick,spring] (2,0) -- (3,0);
+    \node at (2.5,-0.5) {$k$};
+    
+    % Draw the mass M
+    \fill[blue!20] (1,0) rectangle (2,1);
+    \node at (1.5,0.5) {$M$};
+    
+    % Draw the mass m
+    \fill[blue!20] (3,0) rectangle (3.5,0.5);
+    \node at (3.25,0.25) {$m$};
+    
+    % Draw the arrow indicating velocity and gravity
+    \draw[-{Latex[length=3mm]}] (4,0.5) -- (4.5,0.5);
+    \node at (4.75,0.5) {$v$, $g$};
+    
+    % Draw the dotted lines
+    \draw[dotted] (2,0) -- (2,2);
+    \draw[dotted] (3,0) -- (3,2);
+    
+    % Draw the labels for the displacements
+    \draw[<->] (2.5,0) -- node[below] {$x_1$} (3,0);
+    \draw[<->] (2.5,-0.5) -- node[below] {$x_2$} (3,-0.5);
+    \draw[<->] (2.5,-1) -- node[below] {$L$} (3.5,-1);
+    
+    % Define the spring style
+    \tikzset{
+        spring/.style={thick,decorate,decoration={zigzag,segment length=2mm, amplitude=0.5mm}}
+    }
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white!20, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style = {draw, thick, -Stealth},
+    box/.style = {rectangle, draw=black, fill=gray!30, text width=8em, text centered, rounded corners, minimum height=6em}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1.5cm]
+
+    % Nodes representing different degrees
+    \node (degree-0) [block] {Degree 0};
+    \node (degree-1) [block, below=of degree-0] {Degree 1};
+    \node (degree-2) [block, below=of degree-1] {Degree 2};
+    \node (degree-3) [block, below=of degree-2] {Degree 3};
+
+    % Arrows indicating addition of U or D edges
+    \draw [line, green] (degree-0) -- node[above] {$U$} (degree-1);
+    \draw [line, blue] (degree-1) -- node[below] {$D$} (degree-2);
+
+    % Nodes for the proof boxes
+    \node (proof-green) [box, right=of degree-1, xshift=3cm] {Green Box\\Proof of Lemma \ref{lemma:deg active}};
+    \node (proof-blue) [box, below=of proof-green] {Blue Box\\Proof of Lemma \ref{lemma:deg active}};
+    \node (proof-purple) [box, right=of proof-blue, xshift=3cm] {Purple Box\\Proof of Lemma \ref{lemma:deg active}};
+
+\end{tikzpicture}
+
+\end{document}

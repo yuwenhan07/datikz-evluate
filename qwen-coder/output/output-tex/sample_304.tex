@@ -1,0 +1,25 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white!20, text width=6em, text centered, rounded corners, minimum height=3em},
+    line/.style = {draw, thick, -Stealth, >=Stealth'}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+
+\node (A) [block] {Spin Contents};
+\node (B) [block, below of=A] {Quantum Dimensions};
+\node (C) [block, right of=B, xshift=4cm] {Renormalization Group Flow};
+
+% Arrows between nodes
+\draw [line] (A) -- node[anchor=east] {Classified by} (B);
+\draw [line] (B) -- node[anchor=south] {Constraints} (C);
+
+% Dotted arrows for half-integer k flow
+\draw [dashed, line] (A) -- node[anchor=north] {Dotted Arrows} ++(2,0) |- (C);
+\draw [dashed, line] (B) -- node[anchor=west] {} ++(-2,0) |- (C);
+
+\end{tikzpicture}
+\end{document}

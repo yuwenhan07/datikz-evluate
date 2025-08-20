@@ -1,0 +1,40 @@
+To solve the problem, we need to understand the conditions given and analyze the structure of the graph \( G \).
+
+1. **Understanding the Conditions:**
+   - \( u \) and \( v \) do not have a common neighbor.
+   - \( G \) has a triangle.
+
+2. **Maximal Case Analysis:**
+   - We need to find the largest possible graph \( G \) that satisfies these conditions and is 3-colorable.
+   - Since \( u \) and \( v \) do not have a common neighbor, they must be connected by an edge in some other way or be part of a larger structure that avoids having a common neighbor.
+
+3. **Graph Structure:**
+   - Consider a graph with vertices \( u, v, x, y, z \).
+   - Let \( u \) and \( v \) be connected by an edge, i.e., \( uv \in E(G) \).
+   - Let \( x, y, z \) form a triangle, i.e., \( xy, yz, zx \in E(G) \).
+   - Ensure that \( u \) and \( v \) do not share any neighbors among \( x, y, z \). This means \( ux, uy, uz, vx, vy, vz \notin E(G) \).
+
+4. **Verification of 3-Colorability:**
+   - We need to check if this graph can be 3-colored.
+   - Assign colors as follows:
+     - Color \( u \) with color 1.
+     - Color \( v \) with color 2.
+     - Color \( x \) with color 3.
+     - Color \( y \) with color 1.
+     - Color \( z \) with color 2.
+   - Check the edges:
+     - \( uv \) is colored 1 and 2, which is valid.
+     - \( xy \) is colored 3 and 1, which is valid.
+     - \( yz \) is colored 1 and 2, which is valid.
+     - \( zx \) is colored 2 and 3, which is valid.
+   - All edges satisfy the 3-coloring condition.
+
+5. **Conclusion:**
+   - The graph described above is a maximal case where \( u \) and \( v \) do not have a common neighbor and \( G \) has a triangle.
+   - This graph is 3-colorable.
+
+Thus, the maximal case up to isomorphism where \( u \) and \( v \) do not have a common neighbor and \( G \) has a triangle is a graph with 6 vertices and 7 edges, which is 3-colorable. The answer is:
+
+\[
+\boxed{6}
+\]

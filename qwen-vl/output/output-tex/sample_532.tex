@@ -1,0 +1,25 @@
+To address the problem, we need to understand the concepts of the maximal support and the Newton polytope in the context of polynomial functions.
+
+### 1. Maximal Support
+
+The maximal support of a polynomial \( f(x_1, x_2, \ldots, x_n) \) is the set of all monomials that appear with non-zero coefficients in the polynomial. For the dehomogenized polynomial \( f_2(x_1, x_3) = F(x_1, 1, x_3) \), the maximal support is simply the set of all monomials in \( F \) where the second variable (corresponding to \( x_2 \)) is replaced by 1.
+
+### 2. Newton Polytope
+
+The Newton polytope of a polynomial \( F(x_1, x_2, \ldots, x_n) \) is the convex hull of the exponents of its monomials. For the dehomogenized polynomial \( f_2(x_1, x_3) = F(x_1, 1, x_3) \), the Newton polytope is the projection of the Newton polytope of \( F \) onto the plane defined by \( x_2 = 1 \).
+
+Let's assume \( F \) is a sextic polynomial, meaning it has terms up to degree 6 in total. The maximal support of \( f_2 \) will be the set of all monomials in \( F \) where the second variable is replaced by 1. The Newton polytope of \( f_2 \) will be the projection of the Newton polytope of \( F \) onto the plane \( x_2 = 1 \).
+
+### Example
+
+Suppose \( F(x_1, x_2, x_3) = x_1^3 x_2^2 + x_1^2 x_3^2 + x_1 x_2 x_3 + x_3^3 \). Then the dehomogenized polynomial \( f_2(x_1, x_3) = F(x_1, 1, x_3) = x_1^3 + x_1^2 x_3^2 + x_1 x_3 + x_3^3 \).
+
+- **Maximal Support**: The maximal support of \( f_2 \) is the set of all monomials in \( f_2 \), which are \( x_1^3, x_1^2 x_3^2, x_1 x_3, x_3^3 \).
+- **Newton Polytope**: The Newton polytope of \( f_2 \) is the convex hull of the points \((3,0)\), \((2,2)\), \((1,1)\), and \((0,3)\) in the plane \( x_2 = 1 \).
+
+Thus, the maximal support of \( f_2 \) is \(\{x_1^3, x_1^2 x_3^2, x_1 x_3, x_3^3\}\) and the Newton polytope of \( f_2 \) is the convex hull of the points \((3,0)\), \((2,2)\), \((1,1)\), and \((0,3)\).
+
+The final answer is:
+\[
+\boxed{\text{Maximal support: } \{x_1^3, x_1^2 x_3^2, x_1 x_3, x_3^3\}, \text{ Newton polytope: } \text{convex hull of } \{(3,0), (2,2), (1,1), (0,3)\}}
+\]

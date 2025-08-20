@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the central point
+    \fill (0,0) circle (0.05);
+    
+    % Draw the horizontal dashed line
+    \draw[dashed] (-2,0) -- (2,0);
+    
+    % Draw the vertical dashed line
+    \draw[dashed] (0,-2) -- (0,2);
+    
+    % Draw the diagonal lines
+    \draw[->,dotted] (-2,-2) -- (2,2);
+    \draw[->,dotted] (-2,2) -- (2,-2);
+    
+    % Draw the squares and circles
+    \draw[fill=white] (-1.5,1.5) rectangle (-0.5,0.5);
+    \draw[fill=black] (-1.5,0.5) rectangle (-0.5,-0.5);
+    \draw[fill=white] (-1.5,-0.5) rectangle (-0.5,-1.5);
+    \draw[fill=black] (-0.5,-1.5) rectangle (0.5,-0.5);
+    
+    \draw[fill=white] (1.5,1.5) rectangle (0.5,0.5);
+    \draw[fill=black] (1.5,0.5) rectangle (0.5,-0.5);
+    \draw[fill=white] (1.5,-0.5) rectangle (0.5,-1.5);
+    \draw[fill=black] (0.5,-1.5) rectangle (1.5,-0.5);
+    
+    \draw[fill=white] (-1.5,-1.5) circle (0.5);
+    \draw[fill=black] (-1.5,-1.5) circle (0.5);
+    
+    \draw[fill=white] (1.5,1.5) circle (0.5);
+    \draw[fill=black] (1.5,1.5) circle (0.5);
+    
+    \draw[fill=white] (-1.5,1.5) circle (0.5);
+    \draw[fill=black] (-1.5,1.5) circle (0.5);
+    
+    \draw[fill=white] (1.5,-1.5) circle (0.5);
+    \draw[fill=black] (1.5,-1.5) circle (0.5);
+    
+    \draw[fill=white] (-1.5,-1.5) rectangle (-0.5,-2.5);
+    \draw[fill=black] (-1.5,-2.5) rectangle (-0.5,-3.5);
+    \draw[fill=white] (-0.5,-3.5) rectangle (0.5,-2.5);
+    \draw[fill=black] (0.5,-2.5) rectangle (1.5,-1.5);
+    
+    \draw[fill=white] (1.5,1.5) rectangle (0.5,2.5);
+    \draw[fill=black] (1.5,2.5) rectangle (0.5,3.5);
+    \draw[fill=white] (0.5,3.5) rectangle (-0.5,2.5);
+    \draw[fill=black] (-0.5,2.5) rectangle (-1.5,1.5);
+    
+    \draw[fill=white] (-1.5,1.5) rectangle (-0.5,2.5);
+    \draw[fill=black] (-1.5,2.5) rectangle (-0.5,3.5);
+    \draw[fill=white] (-0.5,3.5) rectangle (0.5,2.5);
+    \draw[fill=black] (0.5,2.5) rectangle (1.5,1.5);
+    
+    \draw[fill=white] (1.5,-1.5) rectangle (0.5,-2.5);
+    \draw[fill=black] (1.5,-2.5) rectangle (0.5,-3.5);
+    \draw[fill=white] (0.5,-3.5) rectangle (-0.5,-2.5);
+    \draw[fill=black] (-0.5,-2.5) rectangle (-1.5,-1.5);
+    
+    \node at (0,0) {$\bullet$};
+    
+    \node at (2.5,0) {The critical eigenspace $V$ at the bifurcation point $(s^*,0)$ in Example~\ref{exa:lambda13}, where $s^*=10\pi^2$. The diagonal lines are intersections of two fixed point subspaces with $V$ and lead to EBL bifurcations. The horizontal dashed line is the intersection of $W_d$ with $V$ and leads to a BLIS bifurcation. The vertical dashed line leads to another similar BLIS bifurcation. The three line types correspond to the three group orbits of bifurcating solutions.};
+\end{tikzpicture}
+
+\end{document}

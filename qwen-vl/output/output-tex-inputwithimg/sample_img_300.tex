@@ -1,0 +1,27 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=3cm, auto]
+    % Define nodes
+    \node[draw,circle] (0) {0};
+    \node[draw,circle] (1) [right of=0] {1};
+    \node[draw,circle] (2) [right of=1] {2};
+    \node[draw,circle] (3) [right of=2] {3};
+
+    % Draw edges with labels
+    \path[->,thick]
+        (0) edge node {$r_1 D_j^{01}$} (1)
+        (1) edge node {$r_2 D_j^{12}$} (2)
+        (2) edge node {$0$} (3)
+        (0) edge[bend left=45,dotted] node[above] {$r_2 D_j^{02}$} (3)
+        (1) edge[bend left=45,dotted] node[above] {$r_1 D_j^{02}$} (3)
+        (2) edge[bend left=45,dotted] node[above] {$r_2 D_j^{12}$} (3)
+        (0) edge[bend right=45,dotted] node[below] {$0$} (3)
+        (1) edge[bend right=45,dotted] node[below] {$0$} (3)
+        (2) edge[bend right=45,dotted] node[below] {$0$} (3);
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,36 @@
+To create a TikZ LaTeX diagram representing the frame classes as rectangles with their respective buffers and transitions, you can use the following code:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+% Define styles
+\tikzset{
+    rectangle/.style={draw, rectangle, minimum width=3cm, minimum height=1cm},
+    buffer/.style={fill=gray!50, draw=black},
+    arrow/.style={->, >=stealth', shorten >=1pt},
+    color/green/.style={green},
+    color/blue/.style={blue},
+    color/orange/.style={orange},
+    color/red/.style={red},
+    color/black/.style={black}
+}
+
+% Nodes
+\node (0) [rectangle, label={[yshift=-1.5em]below:$0$}] {};
+\node (1) [rectangle, right of=0, label={[yshift=-1.5em]below:$1$}] {};
+\node (2) [rectangle, below of=1, label={[yshift=-1.5em]below:$2$}] {};
+\node (3) [rectangle, left of=2, label={[yshift=-1.5em]below:$3$}] {};
+\node (4) [rectangle, above of=3, fill=none, draw=none, label={[yshift=-1.5em]above:$4$}] {};
+
+% Buffers
+\node (buffer0) [buffer, below left of=0, xshift=-0.5cm, yshift=-0.5cm] {};
+\node (buffer1) [buffer, below right of=0, xshift=0.5cm, yshift=-0.5cm] {};
+\node (buffer2) [buffer, below left of=1, xshift=-0.5cm, yshift=-0.5cm] {};
+\node (buffer3) [buffer, below right of=1, xshift=0.5cm, yshift=-0.5cm] {};
+\node (buffer4) [buffer, below left of=2, xshift=-0.5cm, yshift=-0.5cm] {};
+\node (buffer5) [buffer, below right of=2, xshift=0.5cm, yshift=-0.5

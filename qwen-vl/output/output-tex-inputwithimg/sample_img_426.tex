@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphdrawing, quotes, shapes.geometric, arrows.meta}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+    \node[draw, fill=blue!20, rectangle, rounded corners] (pdf) {PDF};
+    \node[draw, fill=blue!20, rectangle, rounded corners, below of=pdf] (pymupdf) {PyMuPDF};
+    \node[draw, fill=blue!20, rectangle, rounded corners, below of=pymupdf] (chroma) {Chroma};
+    \node[draw, fill=blue!20, rectangle, rounded corners, below of=chroma] (vector_db) {Vector Database};
+    \node[draw, fill=blue!20, rectangle, rounded corners, right of=vector_db, xshift=3cm] (user_question) {User Question};
+    \node[draw, fill=blue!20, rectangle, rounded corners, right of=user_question, xshift=3cm] (data_processing) {Data Processing};
+    \node[draw, fill=blue!20, rectangle, rounded corners, below of=data_processing] (fine_tuned_llm) {Fine-tuned LLM};
+    \node[draw, fill=blue!20, rectangle, rounded corners, below of=fine_tuned_llm] (query_answer_2) {Query: Answer 2};
+    \node[draw, fill=blue!20, rectangle, rounded corners, left of=query_answer_2, xshift=-3cm] (combine_answers) {Combine Answers};
+    \node[draw, fill=blue!20, rectangle, rounded corners, left of=combine_answers, xshift=-3cm] (query_answer_1) {Query: Answer 1};
+    \node[draw, fill=blue!20, rectangle, rounded corners, below of=combine_answers] (foundational_llm) {Foundational LLM};
+    \node[draw, fill=blue!20, rectangle, rounded corners, below of=foundational_llm] (final_answer) {Final Answer};
+
+    \draw[-Latex] (pdf) -- (pymupdf);
+    \draw[-Latex] (pymupdf) -- (chroma);
+    \draw[-Latex] (chroma) -- (vector_db);
+    \draw[-Latex] (user_question) -- (combine_answers);
+    \draw[-Latex] (data_processing) -- (fine_tuned_llm);
+    \draw[-Latex] (fine_tuned_llm) -- (query_answer_2);
+    \draw[-Latex] (query_answer_1) -- (combine_answers);
+    \draw[-Latex] (combine_answers) -- (foundational_llm);
+    \draw[-Latex] (foundational_llm) -- (final_answer);
+
+    \draw[-Latex] (pdf) |- (fine_tuned_llm);
+    \draw[-Latex] (pdf) |- (vector_db);
+\end{tikzpicture}
+
+\textbf{Executive Diagram for Fine-tuning Enhanced RAG}. The fine-tune enhanced RAG algorithm integrates vector database queries with fine-tuned LLM insights to generate contextually rich and accurate responses.
+
+\end{document}

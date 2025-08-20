@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm, auto]
+        % Define styles for different types of nodes
+        \tikzstyle{word} = [rectangle, draw, fill=white!20, 
+                            text width=5em, text centered, minimum height=4em]
+        \tikzstyle{basis} = [circle, draw, fill=white!20, 
+                             text width=5em, text centered, minimum height=4em]
+        \tikzstyle{image} = [circle, draw, fill=white!20, 
+                             text width=5em, text centered, minimum height=4em]
+
+        % Draw the graph Γ_{2k}
+        \matrix (m) [matrix of nodes, row sep=3em, column sep=3em] {
+            \node[basis] (x1) {$x_1$}; & & & \\
+            \node[basis] (x2) {$x_2$}; & & & \\
+            \vdots & & & \\
+            \node[basis] (x2k-1) {$x_{2k-1}$}; & & & \\
+            \node[basis] (x2k) {$x_{2k}$}; & & & \\
+        };
+        \foreach \i in {1, 2, ..., k}{
+            \draw[dashed, cyan] (x1) -- node[above] {$w_{\i}$} (m-4-\i);
+            \draw[dashed, cyan] (x2) -- node[above] {$w_{\i}$} (m-4-\i);
+            \draw[dashed, cyan] (x2k-1) -- node[above] {$w_{\i}$} (m-4-\i);
+            \draw[dashed, cyan] (x2k) -- node[above] {$w_{\i}$} (m-4-\i);
+        }
+
+        % Draw the graph Γ_{4k}
+        \matrix (n) [matrix of nodes, row sep=3em, column sep=3em, right=of m] {
+            \node[image] (v1) {$v_1$}; & & & \\
+            \node[image] (v2) {$v_2$}; & & & \\
+            \vdots & & & \\
+            \node[image] (vk-1) {$v_{k-1}$}; & & & \\
+            \node[image] (vk) {$v_k$}; & & & \\
+        };
+        \foreach \i in {1, 2, ..., k}{
+            \draw[dashed, cyan] (v1) -- node[above] {$y_{\i}$} (n-4-\i);
+            \draw[dashed, cyan] (v2) -- node[above] {$y_{\i}$} (n-4-\i);
+            \draw[dashed, cyan] (vk-1) -- node[above] {$y_{\i}$} (n-4-\i);
+            \draw[dashed, cyan] (vk) -- node[above] {$y_{\i}$} (n-4-\i);
+        }
+
+        % Draw the set word map A
+        \node[below=1cm of m, cyan] (set_word_map) {\textbf{The set word map $A$}};
+        \draw[->, cyan, thick] (set_word_map) -- (n);
+
+        % Labels for the sets
+        \node[above=1cm of m, text width=6em, align=center] (set_B) {\textbf{The set $B$}};
+        \node[above=1cm of n, text width=6em, align=center] (set_D) {\textbf{The set $D$}};
+        \node[above=1cm of m-4-1, text width=6em, align=center] (set_E) {\textbf{The set $E$}};
+        \node[above=1cm of n-4-1, text width=6em, align=center] (set_F) {\textbf{The set $F$}};
+
+        % Labels for the graphs
+        \node[below=1cm of m, cyan] (graph_Gamma_2k) {\textbf{The graph $\Gamma_{2k}$}};
+        \node[below=1cm of n, cyan] (graph_Gamma_4k) {\textbf{The graph $\Gamma_{4k}$}};
+
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

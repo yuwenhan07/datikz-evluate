@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes
+    \node (Z) [rectangle, draw, fill=blue!30] {Latent True Features};
+    \node (X) [rectangle, draw, fill=green!30, below left of=Z] {Feature Vectors};
+    \node (Y) [rectangle, draw, fill=red!30, right of=Z] {True Outcomes};
+    \node (G) [circle, draw, fill=orange!30, above right of=Z] {Group Membership};
+    \node (X_missing) [rectangle, draw, fill=gray!30, below left of=X, yshift=-1.5cm] {Missing Feature Vectors};
+    \node (xi) [ellipse, draw, fill=purple!30, below of=G, xshift=-1.5cm] {Missingness Indicators};
+
+    % Edges
+    \draw[->] (Z) -- node[anchor=south] {$f_1$} (X);
+    \draw[->] (Z) -- node[anchor=north] {$f_2$} (Y);
+    \draw[->] (G) -- node[anchor=east] {$g$} (xi);
+    \draw[->] (G) -- node[anchor=north] {$g'$} (Z);
+    \draw[->] (xi) -- node[anchor=north] {$\xi$} (X_missing);
+    \draw[->] (X_missing) -- node[anchor=north] {$\tilde{X}$} (X);
+
+    % Labels
+    \node[below=of X_missing] {$\tilde{X} = X - X_{\text{missing}}$};
+    \node[above=of xi] {$\xi \text{ (unobserved)}$};
+    \node[right=of Y] {$Y = f_3(Z)$};
+    \node[left=of G] {$G \text{ (used for evaluation)}$};
+
+\end{tikzpicture}
+
+\end{document}

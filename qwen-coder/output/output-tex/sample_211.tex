@@ -1,0 +1,32 @@
+Certainly! Below is a TikZ LaTeX code that generates a figure showing the real and imaginary parts, as well as the absolute value of the wave function \( u(x,t) \) at three different times: \( t = 0 \), \( t = T/2 \), and \( t = T \). The potential \( V(x) \) is split into its linear part \( V^0(x) \) and an exponential part \( V^\mathrm{e}(x,t) \).
+
+```latex
+\documentclass[border=5mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define the domain and step size
+    \def\xmin{-5}
+    \def\xmax{5}
+    \def\ymin{-2}
+    \def\ymax{2}
+    \def\step{0.1}
+
+    % Define the functions
+    \newcommand{\Vzero}{0.5*x^2} % Linear potential V^0(x)
+    \newcommand{\Ve}{-exp(-0.5*(x+2)^2)} % Exponential potential V^e(x,t)
+
+    % Define the wave function u(x,t)
+    \newcommand{\uinit}{sin(pi*x)}
+    \newcommand{\umid}{sin(pi*x)*cos(pi*t)}
+    \newcommand{\ufinal}{sin(pi*x)*exp(-pi^2*t)}
+
+    % Plot the real and imaginary parts, and absolute value of u(x,t)
+    \draw[domain=\xmin:\xmax, smooth, thick] plot (\x, {(\Vzero+\Ve)(\x,0)/100}) node[below left] {$Re(V(x))$};
+    \draw[domain=\xmin:\xmax, smooth, thick] plot (\x, {imag((\uinit+\Ve)(\x,0))/100}) node[below left] {$Im(u(x,0))$};
+    \draw[domain=\xmin:\xmax, smooth, thick] plot (\x, {abs((\uinit+\Ve)(\x,0))/100}) node[below left] {$|u(x,0)|$};
+
+    \draw[domain=\xmin:\xmax, smooth, thick] plot (\x, {(\Vzero+\Ve)(\x,T

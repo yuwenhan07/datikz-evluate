@@ -1,0 +1,68 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define the radius of the circle
+    \def\radius{3.5}
+    
+    % Draw the circle
+    \draw (0,0) circle (\radius);
+    
+    % Draw the electrodes
+    \foreach \angle [count=\i] in {0, 30,...,330} {
+        \node[circle, fill=blue!50, inner sep=2pt] at (\angle:\radius) (e\i) {};
+        \node at (\angle:\radius+0.5) {\i};
+    }
+    
+    % Draw the central electrode
+    \node[circle, fill=red!50, inner sep=2pt] at (0,0) (e1) {};
+    
+    % Draw the injection patterns
+    \draw[ultra thick, -Stealth, color=black] (e1) -- (e2);
+    \draw[ultra thick, -Stealth, color=green] (e1) -- (e31);
+    \draw[ultra thick, -Stealth, color=magenta] (e1) -- (e9);
+    \draw[ultra thick, -Stealth, color=purple] (e1) -- (e17);
+    \draw[ultra thick, -Stealth, color=orange] (e1) -- (e25);
+    
+    % Draw the dashed lines
+    \draw[dashed, color=black] (e1) -- (e16);
+    \draw[dotted, color=black] (e1) -- (e26);
+    \draw[dashdotted, color=black] (e1) -- (e30);
+    
+    % Legend
+    \begin{scope}[shift={(5,-2)}]
+        \draw[ultra thick, color=black] (0,0) -- (1,0);
+        \node at (0.5,0.2) {adjacent};
+        
+        \draw[ultra thick, color=green] (0,0) -- (1,0);
+        \node at (0.5,0.2) {all against 1};
+        
+        \draw[ultra thick, color=magenta] (0,0) -- (1,0);
+        \node at (0.5,0.2) {all against 9};
+        
+        \draw[ultra thick, color=purple] (0,0) -- (1,0);
+        \node at (0.5,0.2) {all against 17};
+        
+        \draw[ultra thick, color=orange] (0,0) -- (1,0);
+        \node at (0.5,0.2) {all against 25};
+        
+        \draw[dashed, color=black] (0,0) -- (1,0);
+        \node at (0.5,0.2) {excluded in level 2};
+        
+        \draw[dotted, color=black] (0,0) -- (1,0);
+        \node at (0.5,0.2) {excluded in level 4};
+        
+        \draw[dashdotted, color=black] (0,0) -- (1,0);
+        \node at (0.5,0.2) {excluded in level 6};
+        
+        \node at (2.5,0.5) {always included};
+        \node at (2.5,-0.5) {excluded in level 2};
+        \node at (2.5,-1.5) {excluded in level 4};
+        \node at (2.5,-2.5) {excluded in level 6};
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}

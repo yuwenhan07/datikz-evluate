@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm, auto]
+        \matrix (m) [matrix of nodes, column sep=3em, row sep=3em] {
+            \node[draw] (teacher) {Teacher \\ pattern $\xi^*$}; & & \node[draw] (examples) {Examples $\sigma$}; & & \node[draw] (student) {Student \\ pattern $\xi$}; \\
+            & & & & \\
+            \node[draw] (data_teacher) {Data $x$ \\ with known \\ labels $y$}; & & \node[draw] (weights) {Weights $w$}; & & \node[draw] (data_student) {Data $x$ \\ with predicted \\ labels $y'$}; \\
+        };
+        
+        \path[->]
+            (teacher) edge node {$H(\sigma|\xi^*)$} (examples)
+            (examples) edge node {$H(\xi^b|\sigma)$} (student)
+            (teacher) edge[dashed] (data_teacher)
+            (student) edge[dashed] (data_student)
+            (data_teacher) edge[bend left=45] node[below] {Backward \\ propagation} (weights)
+            (weights) edge[bend left=45] node[below] {Forward \\ propagation} (data_student);
+    \end{tikzpicture}
+    \caption{The first row of this diagram sketches how a $p$-body Hopfield network in the teacher-student setting can reconstruct an incomplete pattern $\xi^b$ to match the teacher pattern $\xi^*$ by relying on the examples $\sigma$ obtained from $\xi^*$. The second row summarizes how a dense neural network trained by Krotov can recover the labels $y'$ of the data $x$ given the weights $w$ learned from $x$ \cite{krotov2016dense}. Both models tackle similar tasks using an approach where $\sigma$ and $\xi^b$ respectively play the same roles as $w$ and $(x, y')$.}
+    \label{fig:teacher_student}
+\end{figure}
+
+\end{document}

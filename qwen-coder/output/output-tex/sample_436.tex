@@ -1,0 +1,47 @@
+To illustrate this concept using TikZ LaTeX, we can create two graphs \( G'_1 \) and \( G'_2 \) with the specified properties, and then show that their complements \( G_1 \) and \( G_2 \) become isomorphic after removing the respective edges.
+
+Here's the TikZ LaTeX code to generate the diagrams:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define styles for nodes and edges
+\tikzstyle{node} = [circle, draw, fill=blue!20, inner sep=5pt]
+\tikzstyle{edge} = [-stealth, thick]
+
+% Create graph G'_1
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Nodes
+        \node[node] (u1) at (0,0) {\( u_1 \)};
+        \node[node] (v1) at (2,0) {\( v_1 \)};
+        \node[node] (u2) at (0,-2) {\( u_2 \)};
+        \node[node] (v2) at (2,-2) {\( v_2 \)};
+        
+        % Edges
+        \draw[edge] (u1) -- (v1);
+        \draw[edge] (u2) -- (v2);
+        \draw[edge] (u1) -- (u2);
+        \draw[edge] (v1) -- (v2);
+        
+        % Highlight added edge
+        \draw[dashed, red] (u1) -- (v2);
+        
+        % Labels
+        \node[above left] at (u1.west) {\( G'_1 \)};
+    \end{tikzpicture}
+\end{figure}
+
+% Create graph G'_2
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Nodes
+        \node[node] (w1) at (0,0) {\( w_1 \)};
+        \node[node] (x1) at (2,0) {\( x_1 \)};
+        \node[node] (w2) at (0,-2) {\( w_2 \)};
+        \node[node] (x2) at (2

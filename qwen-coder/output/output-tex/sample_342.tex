@@ -1,0 +1,47 @@
+Certainly! Below is a TikZ LaTeX code that visualizes the deformation gradients \( F_+ \) and \( F_- \) for oscillating solutions:
+
+```latex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+    % Define coordinates for the identity matrix
+    \coordinate (I1) at (0,0);
+    \coordinate (I2) at (1,0);
+    \coordinate (I3) at (0,1);
+    \coordinate (I4) at (1,1);
+
+    % Draw the identity matrix
+    \draw[thick] (I1) rectangle (I2);
+    \draw[thick] (I3) rectangle (I4);
+
+    % Label the identity matrix
+    \node at (0.5,-0.1) {Identity Matrix};
+    \node at (-0.1,0.5) {Identity Matrix};
+
+    % Define coordinates for F+
+    \coordinate (Fp1) at (3,0);
+    \coordinate (Fp2) at (4,0);
+    \coordinate (Fp3) at (3,1);
+    \coordinate (Fp4) at (4,1);
+
+    % Draw F+
+    \draw[thick, ->, >=Stealth] (Fp1) -- (Fp2);
+    \draw[thick, ->, >=Stealth] (Fp3) -- (Fp4);
+    \draw[thick, ->, >=Stealth] (Fp1) -- (Fp3);
+    \draw[thick, ->, >=Stealth] (Fp2) -- (Fp4);
+
+    % Label F+
+    \node at (3.5,-0.1) {$F_+$};
+    \node at (3,-0.6) {$F_0 + a \otimes \nu$};
+
+    % Define coordinates for F-
+    \coordinate (Fn1) at (6,0);
+    \coordinate (Fn2) at (7,0);
+    \coordinate (Fn3) at (6,1);
+    \coordinate (Fn4) at (7,1);
+
+    % Draw F-
+    \draw[thick, ->, >=Stealth] (Fn

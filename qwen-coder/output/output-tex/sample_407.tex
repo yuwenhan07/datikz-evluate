@@ -1,0 +1,44 @@
+Certainly! Below is a TikZ LaTeX code that illustrates the quasi-interpolation operator \( Q \). The code includes nodes representing triangles, points, and lines to represent the relationships described.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    triangle/.style={regular polygon, regular polygon sides=3, draw},
+    point/.style={circle, fill, inner sep=2pt},
+    line/.style={->, thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Define points
+\node (A) at (0, 0) [point] {};
+\node (B) at (2, 0) [point] {};
+\node (C) at (1, 1.732) [point] {};
+
+% Define triangles
+\node (T1) at (1, 0) [triangle, label=above:$\tau_\xi$] {};
+\node (T2) at (1, 1.5) [triangle, label=right:$\tau_\eta$] {};
+
+% Draw lines
+\draw[thick] (A) -- (B);
+\draw[thick] (B) -- (C);
+\draw[thick] (C) -- (A);
+
+% Connect triangles
+\draw[line] (T1) -- (T2);
+
+% Add labels
+\node at (0.5, -0.5) {$\xi$};
+\node at (1.5, -0.5) {$\tau_\xi$};
+\node at (1.5, 1.9) {$\eta$};
+\node at (1.5, 1.4) {$\tau_\eta$};
+
+% Add text for c_xi(f)
+\node at (0.8, -1.5) {\( c_\xi(f) = \gamma_\xi(F_{d,\tau_\xi} f) \)};
+\node at (1.2, -1.5) {(\( F_{d,\tau_\xi} f \) is the averaged Taylor polynomial of degree \( d \))};
+
+% Add text for c_eta(f)
+\node at (1.2, 2.0) {\( c_\eta(f) = \sum_{\xi \in \mathcal

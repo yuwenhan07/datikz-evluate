@@ -1,0 +1,15 @@
+This description appears to be related to the analysis of single-cell RNA sequencing data using the ONT (Oxford Nanopore Technologies) platform. Specifically, it discusses the calculation of mean normalized R10 signal values for a given relative position within a 10-mer sequence. Here's a breakdown of the key points:
+
+1. **Mean Normalized R10 Signal Value**: This refers to the average signal intensity from the ONT reads, normalized to account for variations in read length and other technical factors. The "R10" likely stands for the 10th base in the read.
+
+2. **Conditioned on Individual Nucleotide Base**: The signal value is calculated based on the specific nucleotide base at a particular relative position. For example, if you're looking at the signal at relative position -5, you would calculate the average signal value for all reads where the base at position -5 is A, T, C, or G.
+
+3. **Relative Position**: The relative position is measured from the aligned base in the reference sequence. For instance, a relative position of -5 means five bases to the left of the aligned base.
+
+4. **10-Mer Sequence**: The 10-mer sequence extends the 9-mer used in the ONT Remora toolkit by including an additional base at the leftmost position (-7). This extension helps in handling the step-back mechanism, which is a technique used to improve the accuracy of base calling and alignment.
+
+5. **Lighter Area**: The lighter area in the figure represents the sequence of bases that form the 10-mers used in this analysis. These 10-mers are crucial for capturing the context around the aligned base and improving the accuracy of the signal interpretation.
+
+6. **Step-Back Mechanism**: The step-back mechanism is a technique used to refine the base calling process. By extending the 9-mer to a 10-mer, the analysis can better account for the surrounding sequence context, leading to more accurate base calls.
+
+In summary, this method provides a detailed view of how the signal intensity varies across different nucleotides at various positions within a 10-mer sequence, which is essential for improving the accuracy of single-cell RNA sequencing data analysis using the ONT platform.

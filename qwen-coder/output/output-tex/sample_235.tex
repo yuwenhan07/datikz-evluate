@@ -1,0 +1,39 @@
+To create a TikZ diagram representing the Penrose diagram of the CPT-conjugated of the TCC-violating expanding solution, we need to depict the different phases and transitions clearly. Below is a LaTeX code snippet using TikZ that should help you visualize this scenario:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{arrows.meta,backgrounds,calc,fit,matrix,patterns,positioning,shapes.geometric}
+
+\tikzset{
+    myarrow/.style={->,thick},
+    phasebox/.style={draw=black, fill=gray!20, rounded corners},
+    eventmarker/.style={circle,fill=red,inner sep=2pt}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    % Define coordinates for key points
+    \coordinate (pastvacuum) at (-4,0);
+    \coordinate (phaseII_start) at (-2,-1);
+    \coordinate (phaseI_start) at (0,0);
+    \coordinate (phaseI_end) at (2,1);
+    \coordinate (phaseII_end) at (4,-1);
+    \coordinate (futurevacuum) at (6,0);
+
+    % Draw the Penrose diagram
+    \draw[myarrow] (pastvacuum) -- node[below] {Past Vacuum} (phaseII_start);
+    \draw[myarrow] (phaseII_start) -- node[above] {Phase II} (phaseI_start);
+    \draw[myarrow] (phaseI_start) -- node[above] {Phase I} (phaseI_end);
+    \draw[myarrow] (phaseI_end) -- node[above] {Phase II} (phaseII_end);
+    \draw[myarrow] (phaseII_end) -- node[below] {Future Vacuum} (futurevacuum);
+
+    % Add event markers
+    \node[eventmarker] at (phaseI_start) {};
+    \node[eventmarker] at (phaseI_end) {};
+
+    % Add labels
+    \node[below right] at (phaseI_start) {Particle Production};
+    \node[above right] at (phaseI_end) {Trans-Planckian Energy};
+
+    % Highlight the particle production and energy violation regions
+    \fill[blue!30] ($(phaseI_start)!0.5!(phaseI_end

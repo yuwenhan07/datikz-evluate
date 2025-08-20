@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphdrawing,quotes}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={circle,draw,fill=black,inner sep=1pt}]
+    % Define nodes
+    \node (r) at (0,3) [label=above:$r$] {};
+    \node (a) at (-2,0) {};
+    \node (b) at (0,0) {};
+    \node (c) at (2,0) {};
+    \node (d) at (-1,-2) {};
+    \node (e) at (1,-2) {};
+    \node (f) at (-3,-4) {};
+    \node (g) at (-1,-4) {};
+    \node (h) at (1,-4) {};
+    \node (i) at (3,-4) {};
+
+    % Draw edges
+    \draw[ultra thick,red] (r) edge[bend left=45,"2 - 1"] (a)
+                           (r) edge[bend right=45,"2 - 1"] (c);
+    \draw[ultra thick,orange] (a) edge[bend left=45,"3 - 1"] (b)
+                             (b) edge[bend left=45,"2 - 1"] (c);
+    \draw[ultra thick,yellow] (b) edge[bend left=45,"2 - 1"] (c)
+                            (c) edge[bend left=45,"2 - 1"] (d)
+                            (c) edge[bend left=45,"2 - 1"] (e);
+    \draw[ultra thick,violet] (d) edge[bend left=45,"1 - 1"] (e)
+                            (e) edge[bend left=45,"1 - 1"] (f)
+                            (e) edge[bend left=45,"1 - 1"] (g)
+                            (e) edge[bend left=45,"1 - 1"] (h)
+                            (e) edge[bend left=45,"1 - 1"] (i);
+
+    % Draw edges with different colors
+    \draw[ultra thick,green] (f) edge[bend left=45,"2 - 1"] (g)
+                            (g) edge[bend left=45,"2 - 1"] (h)
+                            (h) edge[bend left=45,"2 - 1"] (i);
+    \draw[ultra thick,blue] (d) edge[bend left=45,"1 - 1"] (g)
+                            (g) edge[bend left=45,"1 - 1"] (h)
+                            (h) edge[bend left=45,"1 - 1"] (i);
+
+    % Draw the spanning arborescence
+    \draw[gray,thick] (r) edge[bend left=45,"2 - 1"] (a)
+                      (r) edge[bend right=45,"2 - 1"] (c)
+                      (a) edge[bend left=45,"3 - 1"] (b)
+                      (b) edge[bend left=45,"2 - 1"] (c)
+                      (c) edge[bend left=45,"2 - 1"] (d)
+                      (c) edge[bend left=45,"2 - 1"] (e)
+                      (d) edge[bend left=45,"1 - 1"] (g)
+                      (e) edge[bend left=45,"1 - 1"] (h)
+                      (e) edge[bend left=45,"1 - 1"] (i)
+                      (f) edge[bend left=45,"2 - 1"] (g)
+                      (g) edge[bend left=45,"2 - 1"] (h)
+                      (h) edge[bend left=45,"2 - 1"] (i);
+
+\end{tikzpicture}
+
+\end{document}

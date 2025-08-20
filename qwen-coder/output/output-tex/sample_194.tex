@@ -1,0 +1,24 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    % Partition {I^0_1}
+    \node (I0_1) [circle, draw] {$I^0_1$};
+
+    % Partition {I^1_1, I^1_2, I^1_3, I^1_4}
+    \node (I1_1) [rectangle, draw, minimum width=2cm] at (3,0) {$I^1_1$};
+    \node (I1_2) [rectangle, draw, minimum width=2cm] at (5,0) {$I^1_2$};
+    \node (I1_3) [rectangle, draw, minimum width=2cm] at (7,0) {$I^1_3$};
+    \node (I1_4) [rectangle, draw, minimum width=2cm] at (9,0) {$I^1_4$};
+
+    % Partition {I^2_1, I^2_2, I^2_3, I^2_4, I^2_5, I^2_6, I^2_7, I^2_8, I^2_9}
+    \foreach \i in {1,...,9} {
+        \node (I2_\i) [rectangle, draw, minimum width=2cm, yshift=-2*\i*0.5cm] at (11,0) {$I^2_\i$};
+    }
+
+\end{tikzpicture}
+
+\end{document}

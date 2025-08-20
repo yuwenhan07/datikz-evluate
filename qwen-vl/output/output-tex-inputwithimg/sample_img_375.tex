@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm, auto]
+        % Define styles
+        \tikzset{
+            factor/.style={draw, rectangle, minimum size=0.5cm},
+            variable/.style={draw, circle, minimum size=0.5cm},
+            arrow/.style={->, >=stealth'}
+        }
+
+        % Draw the nodes
+        \node[factor] (f1) {$f_1$};
+        \node[factor, right=of f1] (f2) {$f_2$};
+        \node[factor, right=of f2] (fm) {$f_m$};
+        \node[variable, left=of f1] (x1) {$x_1$};
+        \node[variable, right=of f1] (x2) {$x_2$};
+        \node[variable, right=of x2] (x3) {$x_3$};
+        \node[variable, right=of x3] (xi) {$x_i$};
+        \node[variable, right=of xi] (xj) {$x_j$};
+        \node[variable, right=of xj] (xn) {$x_n$};
+
+        % Draw the edges
+        \draw[arrow] (f1) -- (x1);
+        \draw[arrow] (f1) -- (x2);
+        \draw[arrow] (f2) -- (x2);
+        \draw[arrow] (f2) -- (x3);
+        \draw[arrow] (fm) -- (xj);
+        \draw[arrow] (fm) -- (xn);
+
+        % Draw the ellipses
+        \node at (f1 -| xi) {$\dots$};
+        \node at (f2 -| xi) {$\dots$};
+        \node at (fm -| xi) {$\dots$};
+        \node at (f1 -| xj) {$\dots$};
+        \node at (f2 -| xj) {$\dots$};
+        \node at (fm -| xj) {$\dots$};
+
+        % Draw the labels
+        \node[left=of f1] (label1) {$\mathbf{m}_{\mathbf{f}_1}$};
+        \node[right=of fm] (label2) {$\mathbf{n}_{\mathbf{x}_n \rightarrow \mathbf{f}_m}$};
+
+        % Connect the labels to the nodes
+        \draw[arrow] (label1) -- (x1);
+        \draw[arrow] (label1) -- (x2);
+        \draw[arrow] (label2) -- (xj);
+        \draw[arrow] (label2) -- (xn);
+    \end{tikzpicture}
+    \caption{Random variables (circles) represent each of the $N$ patients tested. Each factor node (squares) represents a test/measurement $\mu$. The degree of the factors nodes is $K$ and of the variable nodes is $L$.}
+    \label{fig:factor_graph}
+\end{figure}
+
+\end{document}

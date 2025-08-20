@@ -1,0 +1,32 @@
+Certainly! Below is a TikZ LaTeX code that visually represents the gluing formula for the heat kernel as described:
+
+```latex
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing}
+
+\tikzset{
+    myarrow/.style={->,thick},
+    mywavy/.style={decorate,decoration={snake,amplitude=2pt}}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+    % Nodes
+    \node (K) at (0,0) {$K(x,y|t)$};
+    \node (K1) at (-3,-2) {$K^{(1)}(x,y|t)$};
+    \node (K2) at (3,-2) {$\frac{1}{\sqrt{4 \pi t}}K^\gamma(u,v|t)$};
+    \node (K3) at (6,0) {$K'(u,v|t)$};
+    
+    % Edges
+    \draw[myarrow] (K1.west) -- node[left]{$\partial^n_u$} (K.west);
+    \draw[mywavy] (K.west |- K2.south) .. controls (-3,-4) and (3,-4) .. (K2.east |- K2.south);
+    \draw[mywavy] (K.west |- K2.south) -- node[below]{$\frac{1}{\sqrt{4 \pi t}}K^\gamma(u,v|t)$} (K2.east |- K2.south);
+    \draw[green, thick, dashdotdotted] (K.west |- K3.south) -- node[below]{$K'(u,v|t)$} (K3.west |- K3.south);
+    
+    % Grey vertices
+    \filldraw[gray!30] (-2,-1.5) circle (2pt) node[above right]{$\gamma$};
+    \filldraw[gray!30] (2,-1.5) circle (2pt) node[above left]{$\gamma$};
+    
+    % Labels
+    \node[above left] at (K1.west) {Fat Straight Line};
+    \node[above right] at (K2.east) {

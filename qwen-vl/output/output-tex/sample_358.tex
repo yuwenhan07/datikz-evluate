@@ -1,0 +1,28 @@
+To compare the Point Spread Function (PSF) for the two setups described, we need to understand how the PSF is influenced by the spatial arrangement of the sensors in each case.
+
+### Setup 1: Single Sparse Array (\(\mathcal{S}^{(\text{s})}\))
+- **Array Size**: \(3 \times 3\)
+- **Number of Sensors**: \(9\)
+- **Sensor Spacing**: \(d^{(\text{s})} = 2\lambda\)
+
+In this setup, the sensors are arranged in a \(3 \times 3\) grid with a spacing of \(2\lambda\) between them. The PSF for a single sensor array can be modeled as a sinc function, which is the Fourier transform of a rectangular pulse. For a \(3 \times 3\) array with a spacing of \(2\lambda\), the PSF will have a sinc-like shape but will be more complex due to the multiple sensors contributing to the response.
+
+### Setup 2: Joint Setup of Fixed Communications Array (\(\mathcal{S}^{(\text{c})}\)) and Varying Sensing Array
+- **Communications Array**: \(\mathcal{S}^{(\text{c})} = 11 \times 11\)
+- **Number of Sensors in Communications Array**: \(121\)
+- **Sensor Spacing**: \(d^{(\text{c})} = \lambda/2\)
+- **Varying Sensing Array**: Not specified in terms of size or spacing
+
+The communications array has a much larger number of sensors (\(121\)) with a smaller spacing (\(\lambda/2\)), which means it provides a finer resolution compared to the sparse array. However, the sensing array's configuration is not specified, so we'll assume it is a smaller array with some specific spacing that varies.
+
+### Comparison of PSFs
+1. **Resolution**: The communications array with a spacing of \(\lambda/2\) will provide a higher spatial resolution than the sparse array with a spacing of \(2\lambda\). This means that the PSF of the communications array will be narrower and sharper, indicating better localization of sources.
+   
+2. **Complexity**: The sparse array with a \(3 \times 3\) grid will have a more complex PSF due to the multiple sensors contributing to the response, while the communications array will have a simpler PSF because it is a single large array with uniform spacing.
+
+3. **Varying Sensing Array**: If the sensing array is a smaller array with varying spacing, its PSF will depend on the specific configuration. If it is a small array with a uniform spacing, it will have a similar PSF to the sparse array but with fewer sensors. If it is a small array with varying spacings, the PSF will be more complex and may not be as well-behaved as a uniform array.
+
+### Conclusion
+The PSF of the joint setup with the fixed communications array will generally be better in terms of resolution and simplicity compared to the sparse array. However, the exact PSF of the joint setup depends on the configuration of the sensing array. If the sensing array is a small uniform array, it will have a PSF similar to the sparse array but with fewer sensors. If the sensing array is a small array with varying spacings, the PSF will be more complex.
+
+In summary, the joint setup with the fixed communications array will likely have a better PSF in terms of resolution and simplicity, but the exact PSF will depend on the configuration of the sensing array.

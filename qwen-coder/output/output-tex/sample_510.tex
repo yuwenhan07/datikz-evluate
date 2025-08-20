@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[node distance=1cm]
+
+% Define nodes
+\node (v0) at (0,0) [circle, draw] {};
+\node (v1) at (1,0) [circle, draw] {};
+\node (v2) at (2,0) [circle, draw] {};
+\node (vm1) at (m-1,0) [circle, draw] {};
+\node (vm) at (m,0) [circle, draw] {};
+\node (v2m1) at (2*m-1,0) [circle, draw] {};
+
+% Draw edges
+\draw (v0) -- (v1);
+\foreach \i in {1,...,m-2} {
+    \draw (vm-\i) -- (vm-\i+1);
+}
+\draw (vm) -- (vm1);
+\draw (vm1) -- (v2m1);
+
+\end{tikzpicture}
+\end{document}

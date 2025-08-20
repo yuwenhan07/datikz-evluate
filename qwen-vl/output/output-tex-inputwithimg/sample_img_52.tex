@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{quantikz}
+
+\begin{document}
+
+\textcolor{red}{\textbf{Generation}} \hspace{2cm} \textcolor{blue}{\textbf{Verification}}
+
+\begin{tikzpicture}[scale=1.5]
+    % Quantum Circuit for Generation
+    \begin{scope}[local bounding box=generation]
+        \node[scale=1] at (-0.5, 0) {\textcolor{red}{$\ket{\psi_{in}}$}};
+        \node[scale=1] at (0, 0) {$\Lambda_U$};
+        \node[scale=1] at (1.5, 0) {$m_i$};
+        \node[scale=1] at (1.5, -1) {$U\ket{m_i}$};
+        \draw[thick] (-0.5, 0) -- (0, 0);
+        \draw[thick] (0, 0) -- (1.5, 0);
+        \draw[thick] (0, 0) -- (0, -1);
+        \draw[thick] (1.5, 0) -- (1.5, -1);
+        \draw[thick] (0, -1) -- (1.5, -1);
+    \end{scope}
+    
+    % Quantum Circuit for Verification
+    \begin{scope}[local bounding box=verification, xshift=3cm]
+        \node[scale=1] at (-0.5, 0) {$m'_i$};
+        \node[scale=1] at (0, 0) {$\Lambda_U$};
+        \node[scale=1] at (1.5, 0) {$U\ket{m'_i}$};
+        \draw[thick] (-0.5, 0) -- (0, 0);
+        \draw[thick] (0, 0) -- (1.5, 0);
+        \draw[thick] (0, 0) -- (0, -1);
+        \draw[thick] (1.5, 0) -- (1.5, -1);
+        \draw[thick] (0, -1) -- (1.5, -1);
+    \end{scope}
+    
+    % Background colors
+    \fill[pink!20] (generation.south west) rectangle (generation.north east);
+    \fill[blue!20] (verification.south west) rectangle (verification.north east);
+    
+    % Lines connecting the circuits
+    \draw[thick] (1.5, 0) -- (2.5, 0);
+    \draw[thick] (1.5, -1) -- (2.5, -1);
+\end{tikzpicture}
+
+\textcolor{red}{\textbf{Generation}} and \textcolor{blue}{\textbf{Verification}} methods for CRPs. Verification is successful if $q_i = q'_i$ and it is otherwise failed.
+
+\end{document}

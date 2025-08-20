@@ -1,0 +1,34 @@
+Certainly! Below is an example of how you might create a TikZ diagram to represent the different levels of the data challenge as described:
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{booktabs}
+
+% Define colors for clarity
+\definecolor{filtering}{RGB}{158, 202, 225} % Light blue
+\definecolor{reverb}{RGB}{255, 165, 0}      % Orange
+\definecolor{combined}{RGB}{245, 222, 179}  % Beige
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    % Nodes for each level type
+    \node (filtering) [rectangle, draw=black, fill=filtering, rounded corners, text centered] {Filtering};
+    \node (reverb) [rectangle, draw=black, fill=reverb, rounded corners, text centered, below=of filtering] {Reverb};
+    \node (combined) [rectangle, draw=black, fill=combined, rounded corners, text centered, below=of reverb] {Combined};
+
+    % Sub-nodes for each category
+    \foreach \i in {1,...,7} {
+        \node (filtering-\i) [circle, draw=black, fill=filtering!50, text centered, right=of filtering.south west, yshift=-(\i-1)*1.5cm] {\i};
+    }
+    \foreach \i in {1,...,3} {
+        \node (reverb-\i) [circle, draw=black, fill=reverb!50, text centered, right=of reverb.south west, yshift=-(\i-1)*1.5cm] {\i};
+    }
+    \foreach \i in {1,...,2} {
+        \node (combined-\i) [circle, draw=black, fill=combined!50, text centered, right=of combined.south west, yshift=-(\i-1)*1.5cm] {\i};
+    }
+
+    % Connect nodes
+    \draw[->, thick] (filtering) -- node[midway, above] {Levels} ++(3,0);
+    \draw[->, thick] (reverb) -- node[mid

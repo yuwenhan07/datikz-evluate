@@ -1,0 +1,28 @@
+To create a TikZ diagram that explains the thresholds in a single execution of the biased-majority-voting subroutine, we can use the following LaTeX code. This code will generate a visual representation of the different outcomes (colored differently) that occur during the counting of candidate values in the specified lines.
+
+```latex
+\documentclass[tikz,border=2mm]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzset{
+    block/.style = {rectangle, draw=black, fill=white!30, text width=5em, text centered, rounded corners, minimum height=4em},
+    line/.style = {draw=black, thick, ->, >=stealth'},
+    decision/.style = {diamond, draw=black, fill=white!30, text width=4em, text badly centered, node distance=3cm, inner sep=0pt},
+    cloud/.style = {cloud, draw=black, fill=white!30, text width=5em, text centered, aspect=2},
+    connector/.style={thick,->,>=stealth', shorten >=1pt},
+    startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30},
+    process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+    decision/.style={diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30},
+    arrow/.style={thick,->,>={Stealth[length=6mm]},shorten >=1pt}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+
+\node (start) [startstop] {Start};
+\node (input) [process, below of=start] {Input bits};
+\node (group_bits_aggr) [block, below of=input, yshift=-1cm] {Group bits and aggregate};
+\node (sum_ones_zeros) [block, below of=group_bits_aggr, yshift=-1cm] {Sum ones and zeros};
+\node (threshold_check) [decision, below of=sum_ones_zeros, yshift=-2cm] {Threshold check};
+\node (output) [process, below of

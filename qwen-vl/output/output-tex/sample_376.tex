@@ -1,0 +1,59 @@
+To provide an example of the construction in Theorem~\ref{thm:const}, let's consider a simple case where we have a tournament (a directed graph where every pair of distinct vertices is connected by exactly one directed edge) and its corresponding coloring.
+
+### Example:
+
+1. **Tournament Construction**:
+   Let's start with a small tournament on 4 vertices, labeled \( V = \{A, B, C, D\} \). We can define the tournament as follows:
+   - \( A \rightarrow B \)
+   - \( A \rightarrow C \)
+   - \( A \rightarrow D \)
+   - \( B \rightarrow C \)
+   - \( B \rightarrow D \)
+   - \( C \rightarrow D \)
+
+   This tournament can be visualized as a directed graph where each vertex points to all other vertices except itself. Here is the adjacency matrix representation of this tournament:
+   \[
+   \begin{pmatrix}
+   0 & 1 & 1 & 1 \\
+   0 & 0 & 1 & 1 \\
+   0 & 0 & 0 & 1 \\
+   0 & 0 & 0 & 0 \\
+   \end{pmatrix}
+   \]
+
+2. **Coloring Construction**:
+   According to Theorem~\ref{thm:const}, we need to assign colors to the vertices such that no two adjacent vertices (i.e., vertices with a directed edge between them) have the same color. Let's assign colors to the vertices as follows:
+   - Color \( A \) with color 1.
+   - Color \( B \) with color 2.
+   - Color \( C \) with color 3.
+   - Color \( D \) with color 4.
+
+   This gives us the following coloring:
+   \[
+   \begin{aligned}
+   A & : 1 \\
+   B & : 2 \\
+   C & : 3 \\
+   D & : 4 \\
+   \end{aligned}
+   \]
+
+   We can verify that this coloring satisfies the condition that no two adjacent vertices have the same color:
+   - \( A \rightarrow B \): \( 1 \neq 2 \)
+   - \( A \rightarrow C \): \( 1 \neq 3 \)
+   - \( A \rightarrow D \): \( 1 \neq 4 \)
+   - \( B \rightarrow C \): \( 2 \neq 3 \)
+   - \( B \rightarrow D \): \( 2 \neq 4 \)
+   - \( C \rightarrow D \): \( 3 \neq 4 \)
+
+Thus, the tournament on the left leads to the coloring of \( V \) on the right, which is:
+\[
+\boxed{
+\begin{aligned}
+A & : 1 \\
+B & : 2 \\
+C & : 3 \\
+D & : 4 \\
+\end{aligned}
+}
+\]

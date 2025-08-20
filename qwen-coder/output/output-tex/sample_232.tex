@@ -1,0 +1,35 @@
+Certainly! Below is a TikZ LaTeX code snippet that represents the described scenario. This code includes a simple representation of a cluster graph and the two types of regularizations applied.
+
+```latex
+\documentclass[tikz,border=10pt]{standalone}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+
+\tikzstyle{nodeStyle} = [draw, circle, minimum size=10pt]
+\tikzstyle{clusterStyle} = [draw, rectangle, rounded corners, minimum width=2cm, minimum height=1cm]
+
+\begin{document}
+
+\begin{tikzpicture}[auto, node distance=2cm]
+
+    % Nodes
+    \node[nodeStyle] (x1) at (0,0) {$x_1$};
+    \node[nodeStyle] (x2) at (-2,-2) {$x_2$};
+    \node[nodeStyle] (x3) at (2,-2) {$x_3$};
+    \node[nodeStyle] (x4) at (0,-4) {$x_4$};
+    \node[nodeStyle] (x5) at (-2,-6) {$x_5$};
+    \node[nodeStyle] (x6) at (2,-6) {$x_6$};
+    \node[nodeStyle] (x7) at (0,-8) {$x_7$};
+    \node[nodeStyle] (x8) at (-2,-10) {$x_8$};
+    \node[nodeStyle] (x9) at (2,-10) {$x_9$};
+    \node[nodeStyle] (x10) at (0,-12) {$x_{10}$};
+
+    % Edges
+    \draw[-Stealth] (x1) -- (x2);
+    \draw[-Stealth] (x1) -- (x3);
+    \draw[-Stealth] (x2) -- (x4);
+    \draw[-Stealth] (x3) -- (x4);
+    \draw[-Stealth] (x4) -- (x5);
+    \draw[-Stealth] (x4) -- (x6);
+    \draw[-Stealth] (x5) -- (x7);
+    \draw[-Stealth] (x6) -- (x7);
+    \draw[-Stealth] (x7

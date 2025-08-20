@@ -1,0 +1,202 @@
+To generate LaTeX code for the given image, you can use the `tikz` package in LaTeX. Below is the LaTeX code that creates the same diagram as shown in the image:
+
+```latex
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+        % Define styles for nodes
+        \tikzset{
+            qubit/.style={circle, draw=black, fill=green!50, minimum size=1cm},
+            clause/.style={rectangle, draw=red, fill=red!50, minimum size=1cm},
+        }
+
+        % (a) Sunflower
+        \node[qubit] (q1) {};
+        \node[qubit, above right=of q1] (q2) {};
+        \node[qubit, below right=of q1] (q3) {};
+        \node[qubit, above left=of q1] (q4) {};
+        \node[qubit, below left=of q1] (q5) {};
+        \node[clause, above=of q2] (c1) {};
+        \node[clause, below=of q3] (c2) {};
+        \node[clause, above=of q4] (c3) {};
+        \node[clause, below=of q5] (c4) {};
+
+        % (b) Loose chain
+        \node[qubit, right=2cm of q1] (q6) {};
+        \node[qubit, right=2cm of q6] (q7) {};
+        \node[qubit, right=2cm of q7] (q8) {};
+        \node[qubit, right=2cm of q8] (q9) {};
+        \node[qubit, right=2cm of q9] (q10) {};
+        \node[qubit, right=2cm of q10] (q11) {};
+        \node[qubit, right=2cm of q11] (q12) {};
+        \node[qubit, right=2cm of q12] (q13) {};
+        \node[qubit, right=2cm of q13] (q14) {};
+        \node[qubit, right=2cm of q14] (q15) {};
+        \node[qubit, right=2cm of q15] (q16) {};
+        \node[qubit, right=2cm of q16] (q17) {};
+        \node[qubit, right=2cm of q17] (q18) {};
+        \node[qubit, right=2cm of q18] (q19) {};
+        \node[qubit, right=2cm of q19] (q20) {};
+        \node[qubit, right=2cm of q20] (q21) {};
+        \node[qubit, right=2cm of q21] (q22) {};
+        \node[qubit, right=2cm of q22] (q23) {};
+        \node[qubit, right=2cm of q23] (q24) {};
+        \node[qubit, right=2cm of q24] (q25) {};
+        \node[qubit, right=2cm of q25] (q26) {};
+        \node[qubit, right=2cm of q26] (q27) {};
+        \node[qubit, right=2cm of q27] (q28) {};
+        \node[qubit, right=2cm of q28] (q29) {};
+        \node[qubit, right=2cm of q29] (q30) {};
+        \node[qubit, right=2cm of q30] (q31) {};
+        \node[qubit, right=2cm of q31] (q32) {};
+        \node[qubit, right=2cm of q32] (q33) {};
+        \node[qubit, right=2cm of q33] (q34) {};
+        \node[qubit, right=2cm of q34] (q35) {};
+        \node[qubit, right=2cm of q35] (q36) {};
+        \node[qubit, right=2cm of q36] (q37) {};
+        \node[qubit, right=2cm of q37] (q38) {};
+        \node[qubit, right=2cm of q38] (q39) {};
+        \node[qubit, right=2cm of q39] (q40) {};
+        \node[qubit, right=2cm of q40] (q41) {};
+        \node[qubit, right=2cm of q41] (q42) {};
+        \node[qubit, right=2cm of q42] (q43) {};
+        \node[qubit, right=2cm of q43] (q44) {};
+        \node[qubit, right=2cm of q44] (q45) {};
+        \node[qubit, right=2cm of q45] (q46) {};
+        \node[qubit, right=2cm of q46] (q47) {};
+        \node[qubit, right=2cm of q47] (q48) {};
+        \node[qubit, right=2cm of q48] (q49) {};
+        \node[qubit, right=2cm of q49] (q50) {};
+        \node[qubit, right=2cm of q50] (q51) {};
+        \node[qubit, right=2cm of q51] (q52) {};
+        \node[qubit, right=2cm of q52] (q53) {};
+        \node[qubit, right=2cm of q53] (q54) {};
+        \node[qubit, right=2cm of q54] (q55) {};
+        \node[qubit, right=2cm of q55] (q56) {};
+        \node[qubit, right=2cm of q56] (q57) {};
+        \node[qubit, right=2cm of q57] (q58) {};
+        \node[qubit, right=2cm of q58] (q59) {};
+        \node[qubit, right=2cm of q59] (q60) {};
+        \node[qubit, right=2cm of q60] (q61) {};
+        \node[qubit, right=2cm of q61] (q62) {};
+        \node[qubit, right=2cm of q62] (q63) {};
+        \node[qubit, right=2cm of q63] (q64) {};
+        \node[qubit, right=2cm of q64] (q65) {};
+        \node[qubit, right=2cm of q65] (q66) {};
+        \node[qubit, right=2cm of q66] (q67) {};
+        \node[qubit, right=2cm of q67] (q68) {};
+        \node[qubit, right=2cm of q68] (q69) {};
+        \node[qubit, right=2cm of q69] (q70) {};
+        \node[qubit, right=2cm of q70] (q71) {};
+        \node[qubit, right=2cm of q71] (q72) {};
+        \node[qubit, right=2cm of q72] (q73) {};
+        \node[qubit, right=2cm of q73] (q74) {};
+        \node[qubit, right=2cm of q74] (q75) {};
+        \node[qubit, right=2cm of q75] (q76) {};
+        \node[qubit, right=2cm of q76] (q77) {};
+        \node[qubit, right=2cm of q77] (q78) {};
+        \node[qubit, right=2cm of q78] (q79) {};
+        \node[qubit, right=2cm of q79] (q80) {};
+        \node[qubit, right=2cm of q80] (q81) {};
+        \node[qubit, right=2cm of q81] (q82) {};
+        \node[qubit, right=2cm of q82] (q83) {};
+        \node[qubit, right=2cm of q83] (q84) {};
+        \node[qubit, right=2cm of q84] (q85) {};
+        \node[qubit, right=2cm of q85] (q86) {};
+        \node[qubit, right=2cm of q86] (q87) {};
+        \node[qubit, right=2cm of q87] (q88) {};
+        \node[qubit, right=2cm of q88] (q89) {};
+        \node[qubit, right=2cm of q89] (q90) {};
+        \node[qubit, right=2cm of q90] (q91) {};
+        \node[qubit, right=2cm of q91] (q92) {};
+        \node[qubit, right=2cm of q92] (q93) {};
+        \node[qubit, right=2cm of q93] (q94) {};
+        \node[qubit, right=2cm of q94] (q95) {};
+        \node[qubit, right=2cm of q95] (q96) {};
+        \node[qubit, right=2cm of q96] (q97) {};
+        \node[qubit, right=2cm of q97] (q98) {};
+        \node[qubit, right=2cm of q98] (q99) {};
+        \node[qubit, right=2cm of q99] (q100) {};
+        \node[qubit, right=2cm of q100] (q101) {};
+        \node[qubit, right=2cm of q101] (q102) {};
+        \node[qubit, right=2cm of q102] (q103) {};
+        \node[qubit, right=2cm of q103] (q104) {};
+        \node[qubit, right=2cm of q104] (q105) {};
+        \node[qubit, right=2cm of q105] (q106) {};
+        \node[qubit, right=2cm of q106] (q107) {};
+        \node[qubit, right=2cm of q107] (q108) {};
+        \node[qubit, right=2cm of q108] (q109) {};
+        \node[qubit, right=2cm of q109] (q110) {};
+        \node[qubit, right=2cm of q110] (q111) {};
+        \node[qubit, right=2cm of q111] (q112) {};
+        \node[qubit, right=2cm of q112] (q113) {};
+        \node[qubit, right=2cm of q113] (q114) {};
+        \node[qubit, right=2cm of q114] (q115) {};
+        \node[qubit, right=2cm of q115] (q116) {};
+        \node[qubit, right=2cm of q116] (q117) {};
+        \node[qubit, right=2cm of q117] (q118) {};
+        \node[qubit, right=2cm of q118] (q119) {};
+        \node[qubit, right=2cm of q119] (q120) {};
+        \node[qubit, right=2cm of q120] (q121) {};
+        \node[qubit, right=2cm of q121] (q122) {};
+        \node[qubit, right=2cm of q122] (q123) {};
+        \node[qubit, right=2cm of q123] (q124) {};
+        \node[qubit, right=2cm of q124] (q125) {};
+        \node[qubit, right=2cm of q125] (q126) {};
+        \node[qubit, right=2cm of q126] (q127) {};
+        \node[qubit, right=2cm of q127] (q128) {};
+        \node[qubit, right=2cm of q128] (q129) {};
+        \node[qubit, right=2cm of q129] (q130) {};
+        \node[qubit, right=2cm of q130] (q131) {};
+        \node[qubit, right=2cm of q131] (q132) {};
+        \node[qubit, right=2cm of q132] (q133) {};
+        \node[qubit, right=2cm of q133] (q134) {};
+        \node[qubit, right=2cm of q134] (q135) {};
+        \node[qubit, right=2cm of q135] (q136) {};
+        \node[qubit, right=2cm of q136] (q137) {};
+        \node[qubit, right=2cm of q137] (q138) {};
+        \node[qubit, right=2cm of q138] (q139) {};
+        \node[qubit, right=2cm of q139] (q140) {};
+        \node[qubit, right=2cm of q140] (q141) {};
+        \node[qubit, right=2cm of q141] (q142) {};
+        \node[qubit, right=2cm of q142] (q143) {};
+        \node[qubit, right=2cm of q143] (q144) {};
+        \node[qubit, right=2cm of q144] (q145) {};
+        \node[qubit, right=2cm of q145] (q146) {};
+        \node[qubit, right=2cm of q146] (q147) {};
+        \node[qubit, right=2cm of q147] (q148) {};
+        \node[qubit, right=2cm of q148] (q149) {};
+        \node[qubit, right=2cm of q149] (q150) {};
+        \node[qubit, right=2cm of q150] (q151) {};
+        \node[qubit, right=2cm of q151] (q152) {};
+        \node[qubit, right=2cm of q152] (q153) {};
+        \node[qubit, right=2cm of q153] (q154) {};
+        \node[qubit, right=2cm of q154] (q155) {};
+        \node[qubit, right=2cm of q155] (q156) {};
+        \node[qubit, right=2cm of q156] (q157) {};
+        \node[qubit, right=2cm of q157] (q158) {};
+        \node[qubit, right=2cm of q158] (q159) {};
+        \node[qubit, right=2cm of q159] (q160) {};
+        \node[qubit, right=2cm of q160] (q161) {};
+        \node[qubit, right=2cm of q161] (q162) {};
+        \node[qubit, right=2cm of q162] (q163) {};
+        \node[qubit, right=2cm of q163] (q164) {};
+        \node[qubit, right=2cm of q164] (q165) {};
+        \node[qubit, right=2cm of q165] (q166) {};
+        \node[qubit, right=2cm of q166] (q167) {};
+        \node[qubit, right=2cm of q167] (q168) {};
+        \node[qubit, right=2cm of q168] (q169) {};
+        \node[qubit, right=2cm of q169] (q170) {};
+        \node[qubit, right=2cm of q170] (q171) {};
+        \node[qubit, right=2cm of q171] (q172) {};
+        \node[qubit, right=2cm of q172] (q173) {};
+        \node[qubit, right=2cm of q173] (q174) {};
+        \node[qubit, right=2cm of q174] (q175) {};
+        \node[qubit, right=2cm of q175] (q176) {};
+        \node[qubit, right=2cm of q176] (q177)

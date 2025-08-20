@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Draw the boundary W as a dotted line
+\draw[dotted] (0,0) rectangle (4,3);
+
+% Draw the path R as a dashed line at the bottom
+\draw[dashed] (1,-0.5) -- (3,-0.5);
+
+% Draw the thick dashed lines for constructing S-T paths
+\draw[thick,dashed] (0.5,2) -- (1.5,2);
+\draw[thick,dashed] (2.5,2) -- (3.5,2);
+
+% Draw the paths Q_i as dashed lines
+\draw[dashed] (0.5,1) -- (1.5,1);
+\draw[dashed] (2.5,1) -- (3.5,1);
+
+% Label the paths
+\node at (2,-0.7) {R};
+\node at (2,2.2) {$Q_1$};
+\node at (2,1.2) {$Q_2$};
+
+\end{tikzpicture}
+\end{document}

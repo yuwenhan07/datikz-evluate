@@ -1,0 +1,43 @@
+To create a TikZ diagram that visually represents a spanning tree matching decoder for a $[[85,1,7]]$ surface code with three $\M{Z}$ channel errors and two alternative minimum spanning trees (MSTs), you can use the following LaTeX code:
+
+```latex
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{shapes.geometric, positioning, arrows.meta}
+
+\tikzset{
+    node distance=2cm,
+    block/.style={rectangle, draw, fill=white!20, text width=6em, text centered, rounded corners, minimum height=4em},
+    line/.style={draw, -Stealth, thick}
+}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Lattice nodes
+    \foreach \x in {0,...,8} {
+        \foreach \y in {0,...,8} {
+            \node[fill=blue!20] (\x,\y) at (\x,\y) {};
+        }
+    }
+
+    % Error nodes (red)
+    \node[fill=red!50] (e1) at (3,3) {};
+    \node[fill=red!50] (e2) at (5,5) {};
+    \node[fill=red!50] (e3) at (7,7) {};
+
+    % Ancilla nodes (green)
+    \node[fill=green!50] (a1) at (1,9) {};
+    \node[fill=green!50] (a2) at (9,1) {};
+
+    % MST edges
+    \draw[line] (e1) -- (a1);
+    \draw[line] (e2) -- (a2);
+    \draw[line] (e3) -- (a1);
+
+    % Alternative MST edges
+    \draw[dashed, line] (e1) -- (a2);
+    \draw[dashed, line] (e2) -- (a1);
+    \draw[dashed, line] (e3) -- (a2);
+
+    % Decoder output
+    \node[block] (decoder) [right=of e3, xshift=3cm] {Decoder};
+    \node[block] (error) [right=of decoder, xshift=3cm] {$\mathcal{E}$

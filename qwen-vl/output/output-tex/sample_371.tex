@@ -1,0 +1,47 @@
+To construct the digraph \( D' \) from the digraph \( D \) with \( k = 2 \), we need to follow a specific procedure that involves creating a new digraph by adding certain arcs based on the original digraph's structure. Let's assume \( D \) is a directed graph (digraph) with vertices \( V(D) \) and arcs \( A(D) \).
+
+### Step-by-Step Construction of \( D' \)
+
+1. **Identify the Hamiltonian Cycle**: Assume \( D \) has a Hamiltonian cycle colored in blue. This means there is a cycle that visits each vertex exactly once and returns to the starting vertex.
+
+2. **Add Arcs to Form \( D' \)**:
+   - For each arc \( (u, v) \) in \( D \), if \( u \) and \( v \) are consecutive vertices in the Hamiltonian cycle, add a new arc \( (v, u) \) to \( D' \). This new arc will be colored in red.
+   - If \( u \) and \( v \) are not consecutive but still part of the same cycle, no new arc needs to be added.
+
+3. **Form \( D' \)**: The resulting digraph \( D' \) will have the same set of vertices as \( D \) but with additional arcs connecting pairs of vertices that were not directly connected in \( D \).
+
+### Example
+
+Let's consider a simple example where \( D \) is a directed cycle on 4 vertices, say \( D = (A \to B \to C \to D \to A) \).
+
+1. **Hamiltonian Cycle**: The cycle is already given as \( A \to B \to C \to D \to A \).
+2. **Add Arcs**:
+   - For the arc \( (A, B) \), since \( A \) and \( B \) are consecutive, add \( (B, A) \) to \( D' \).
+   - For the arc \( (B, C) \), since \( B \) and \( C \) are consecutive, add \( (C, B) \) to \( D' \).
+   - For the arc \( (C, D) \), since \( C \) and \( D \) are consecutive, add \( (D, C) \) to \( D' \).
+   - For the arc \( (D, A) \), since \( D \) and \( A \) are consecutive, add \( (A, D) \) to \( D' \).
+
+Thus, the digraph \( D' \) will be:
+\[ D' = (A \to B \to C \to D \to A) \cup (B \to A) \cup (C \to B) \cup (D \to C) \cup (A \to D) \]
+
+### Decomposition into \( (\infty, 2) \)-Decomposition
+
+Now, we need to decompose \( D' \) into an \( (\infty, 2) \)-decomposition, which consists of two sets of arcs \( F_\infty \) and \( F_2 \).
+
+1. **Arc Set \( F_\infty \)**: These are the arcs that form a spanning tree of \( D' \). In our example, we can choose:
+   \[ F_\infty = \{ A \to B, B \to C, C \to D, D \to A \} \]
+   This forms a spanning tree because it includes all vertices and no cycles.
+
+2. **Arc Set \( F_2 \)**: These are the remaining arcs that do not form a spanning tree. In our example, these are:
+   \[ F_2 = \{ B \to A, C \to B, D \to C, A \to D \} \]
+
+### Final Answer
+
+The digraph \( D' \) is:
+\[ D' = (A \to B \to C \to D \to A) \cup (B \to A) \cup (C \to B) \cup (D \to C) \cup (A \to D) \]
+
+The decomposition \( (F_\infty, F_2) \) is:
+\[ F_\infty = \{ A \to B, B \to C, C \to D, D \to A \} \]
+\[ F_2 = \{ B \to A, C \to B, D \to C, A \to D \} \]
+
+In this decomposition, the dashed red arcs are in \( F_2 \) and the solid green arcs are in \( F_\infty \).

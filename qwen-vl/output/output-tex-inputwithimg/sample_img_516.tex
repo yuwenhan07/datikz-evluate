@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Dataset Size},
+            ylabel={Accuracy},
+            xmin=0, xmax=450,
+            ymin=0.5, ymax=0.8,
+            xtick={12000, 25000, 50000, 100000, 200000, 400000},
+            ytick={0.5, 0.6, 0.7, 0.8},
+            legend pos=north east,
+            ymajorgrids=true,
+            grid style=dashed,
+        ]
+        
+        % Combined
+        \addplot[
+            color=orange,
+            mark=square,
+            error bars/.cd,
+            y dir=both,
+            y explicit,
+            error bar style={line width=1pt, draw=black},
+        ]
+        coordinates {
+            (12000, 0.6) +-(0.03, 0.03)
+            (25000, 0.68) +-(0.02, 0.02)
+            (50000, 0.69) +-(0.02, 0.02)
+            (100000, 0.71) +-(0.01, 0.01)
+            (200000, 0.64) +-(0.01, 0.01)
+            (400000, 0.64) +-(0.01, 0.01)
+        };
+        \addlegendentry{Combined}
+        
+        % Image-to-Image
+        \addplot[
+            color=red,
+            mark=triangle,
+            error bars/.cd,
+            y dir=both,
+            y explicit,
+            error bar style={line width=1pt, draw=black},
+        ]
+        coordinates {
+            (12000, 0.55) +-(0.02, 0.02)
+            (25000, 0.6) +-(0.02, 0.02)
+            (50000, 0.61) +-(0.02, 0.02)
+            (100000, 0.62) +-(0.02, 0.02)
+            (200000, 0.62) +-(0.02, 0.02)
+            (400000, 0.62) +-(0.02, 0.02)
+        };
+        \addlegendentry{Image-to-Image}
+        
+        % Text-to-Image
+        \addplot[
+            color=blue,
+            mark=o,
+            error bars/.cd,
+            y dir=both,
+            y explicit,
+            error bar style={line width=1pt, draw=black},
+        ]
+        coordinates {
+            (12000, 0.55) +-(0.02, 0.02)
+            (25000, 0.6) +-(0.02, 0.02)
+            (50000, 0.6) +-(0.02, 0.02)
+            (100000, 0.61) +-(0.02, 0.02)
+            (200000, 0.62) +-(0.02, 0.02)
+            (400000, 0.62) +-(0.02, 0.02)
+        };
+        \addlegendentry{Text-to-Image}
+        
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Training Results for ResNet-18 trained on the different dataset sizes. Model performance and dataset size correlate. The experiments were performed five times per dataset size and Stable Diffusion mode. The graph shows a confidence interval of one standard deviation.}
+\end{figure}
+
+\end{document}

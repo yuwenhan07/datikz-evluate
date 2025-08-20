@@ -1,0 +1,24 @@
+\documentclass[tikz,border=5mm]{standalone}
+\usetikzlibrary{graphs,graphdrawing,shapes.geometric}
+
+\begin{document}
+\begin{tikzpicture}[node distance=2cm]
+    % Nodes representing locations
+    \node (loc1) [circle,draw] {1};
+    \node (loc2) [circle,draw,right of=loc1] {2};
+
+    % Edges representing paths
+    \path[->, thick] (loc1) edge node[above] {1} (loc2);
+    \path[->, thick] (loc2) edge node[below] {1} (loc1);
+
+    % Labels for time periods
+    \node (time1) [left of=loc1, yshift=-0.5cm] {Time 1};
+    \node (time2) [right of=loc2, yshift=-0.5cm] {Time 2};
+
+    % Legend
+    \node [below left] at (-3,-3) {\textbf{Legend:}};
+    \node [circle,draw,fill=black,scale=0.4] at (-2,-3) {};
+    \node [below left] at (-1.5,-3) {Provider Install};
+    \node [below right] at (0,-3) {Solid Arcs};
+\end{tikzpicture}
+\end{document}
