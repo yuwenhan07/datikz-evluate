@@ -1,0 +1,58 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{positioning,fit,backgrounds,matrix,arrows.meta}
+
+\begin{document}
+    \begin{tikzpicture}[
+        node distance = 5mm and 5mm,
+         arr/.style = {draw,-Stealth},
+       box/.style = {draw, rounded corners, fill=#1!20, 
+                     minimum width=15mm, minimum height=8mm, 
+                     font=\sffamily\scriptsize\sffamily},
+       every matrix/.style = {row sep=3mm, column sep=0mm},
+   every label/.append style = {inner xsep=0pt}
+            ]
+\matrix (m) [matrix of nodes,
+             nodes={box, anchor=center, text depth=.4ex, draw opacity=0.6,
+                    inner xsep=2pt}]
+{
+|[label={[shift={(0,2.4mm)}]above:Add \& Norm}|]|\\
+    Add \\ \node[box=red!20] {Norm}; \\ Add \\
+    Feed \\ Forward Up \\
+    Feed \\ Forward Down \\
+    \node[box=blue!20] {Norm}; \\
+    \node[box=red!20] {Adapter} ; \\
+    Add \& Norm \\  
+    Feed \\ Forward \\
+    Add \& Norm \\
+    Multi-Head \\ Attention \\
+};
+%
+\coordinate[below=of m.south east -| m.north east] (out);
+%
+\begin{scope}[on background layer]
+\node[draw, rounded corners, dashed,
+      fit=(m.Add.south west)(m.Add.south east),
+      inner sep=9mm](aux){};
+\end{scope}
+%
+\draw[arr] (m.Add) edge[out=-90,in=90] ++(0,-7mm)
+            (m.Norm)  edge[arr]   (m.Add) 
+            (m.Feed)  edge[arr]   (m.Norm) 
+            (m.Norm)  edge[arr]   (m.Feed) 
+            (m.Norm)  edge[arr]   (m.Adapter) 
+            (m.Add)   edge[arr]   (m.Adapter) 
+            (m.Adapter) edge[arr] (m.Add & Norm)
+            (m.Adapter) edge[arr] (m.Feed Forward)
+            (m.Feed Forward) edge[arr] (m.Add & Norm)
+            (m.Feed Forward) edge[arr] (m.Feed Forward Down)
+            (m.Feed Forward Down) edge[arr] (m.Norm)
+            (m.Norm)   edge[arr]   (m.Feed Forward Down)
+            (m.Feed Forward Down) edge[arr] (m.Add & Norm)
+            (m.Add & Norm) edge[arr] (m.Feed Forward)
+            (m.Feed Forward) edge[arr] (m.Add & Norm)
+            (m.Add & Norm) edge[arr] (m.Add & Norm)
+            (m.Add & Norm) edge[arr] (m.Multi-Head Attention)
+            (m.Multi-Head Attention) edge[arr] (m.Add & Norm)
+            (m.Multi-Head Attention) edge[arr] (out);
+\end{tikzpicture}
+\end{document}

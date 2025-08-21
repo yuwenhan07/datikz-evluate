@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Define coordinates for vertices
+    \def\n{8}
+    \pgfmathtruncatemacro{\half}{\n/2}
+    \foreach \i in {1,...,\half} {
+        \pgfmathsetmacro{\angle}{360/\n * (\i - 1)}
+        \coordinate (v\i) at ({cos(\angle)},{sin(\angle)});
+        \coordinate (w\i) at ({cos(360 + \angle)},{sin(360 + \angle)});
+    }
+    
+    % Draw edges for P
+    \foreach \i in {1,...,\half} {
+        \draw[blue] (v\i) -- (v{int(mod(\i+1, \half)+1)});
+        \draw[blue] (w\i) -- (w{int(mod(\i+1, \half)+1)});
+        \draw[blue] (v\i) -- (w{int(mod(\i+1, \half)+1)});
+    }
+    % Label vertices for P
+    \foreach \i in {1,...,\half} {
+        \node at (v\i) [circle,fill,inner sep=1.5pt,label={above:$\i$}] {};
+        \node at (w\i) [circle,fill,inner sep=1.5pt,label={below:$\i$}] {};
+    }
+    
+    % Draw edges for P/e
+    \foreach \i in {1,...,\half} {
+        \draw[black] (v\i) -- (w{int(mod(\i+1, \half)+1)});
+    }
+    % Label vertices for P/e
+    \foreach \i in {1,...,\half} {
+        \node at (v\i) [circle,fill,inner sep=1.5pt,label={above:$\i$}] {};
+    }
+    % Draw edge from P/e to P/e
+    \draw[<->,thick] (5.5,-1) -- (6.5,-1);
+    \node at (6,-1) [below] {$e$};
+    
+    % Draw labels for P and P/e
+    \node at (4.5,-1.5) [below] {$P \setminus e$};
+    \node at (9,-1.5) [below] {$P / e$};
+\end{tikzpicture}
+
+\end{document}

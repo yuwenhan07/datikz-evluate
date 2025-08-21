@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+\begin{document}
+
+$G$ is a tree graph with root node $r$. $M_1$ and $M_2$ are MECs (both obey \cref{item-1-of-thm:nes-and-suf-cond-for-tree-graph-to-be-an-MEC,item-2-of-thm:nes-and-suf-cond-for-tree-graph-to-be-an-MEC} of \cref{thm:nes-and-suf-cond-for-tree-graph-to-be-an-MEC}) with skeleton $G$. $M_1$ belongs to $\setofMECs{G, r, 1}$ as there is an edge $a\rightarrow r$ incoming towards $r$. $M_2$ belongs to $\setofMECs{G, r, 0}$ as none of the edges adjacent to $r$ in $M_2$ is incoming towards $r$. $M_2$ also belongs to $\setofMECs{G, r, 0, 1}$ as it belongs to $\setofMECs{G, r, 0}$ and one edge adjacent to $r$ in $M_2$ is undirected.
+
+\[
+\begin{tikzpicture}[level distance=1.5cm,
+  level 1/.style={sibling distance=3cm},
+  level 2/.style={sibling distance=1.5cm}]
+  % Draw G
+  \node at (0,0) {$r$}
+    child {node {$a$}
+      child {node {$c$}}
+      child {node {$d$}}
+    }
+    child {node {$b$}};
+  \node at (-4,-2) {$G$};
+  
+  % Draw MEC M_1
+  \node at (2,0) {$r$}
+    child {node {$a$}
+      child {node {$c$}}
+      child {node {$d$} edge from parent[draw=none] edge from parent[->]}
+    }
+    child {node {$b$} edge from parent[draw=none] edge from parent[->]};
+  \node at (0,-2) {MEC $M_1$};
+  
+  % Draw MEC M_2
+  \node at (6,0) {$r$}
+    child {node {$a$}
+      child {node {$c$} edge from parent[draw=none] edge from parent[->]}
+      child {node {$d$} edge from parent[draw=none] edge from parent[->]}
+    }
+    child {node {$b$} edge from parent[draw=none] edge from parent[->]};
+  \node at (4,-2) {MEC $M_2$};
+\end{tikzpicture}
+\]
+
+\end{document}

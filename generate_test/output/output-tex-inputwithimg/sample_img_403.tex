@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    >={Stealth[round, length=2mm, width=3mm]},
+    block/.style={
+        draw,
+        thick,
+        text width=#1,
+        minimum height=0.75cm,
+        align=center
+    },
+    block/.default=4cm
+]
+
+% Define the dimensions of the blocks
+\def\environmentwidth{6cm}
+\def\agentwidth{4cm}
+
+% Draw the environment block
+\node[block=\environmentwidth] (env) at (-2,0) {Environment};
+
+% Define the position of the agent block relative to the environment
+\def\agentpositionx{-2}
+\def\agentpositiony{2}
+
+% Draw the agent block
+\node[block=\agentwidth, right=of env] (agent) at (\agentpositionx,\agentpositiony) {Agent};
+
+% Connect the agent to the environment with a line
+\draw[->] (agent.east) -- ++(1,0) |- (env);
+
+% Draw the reward and state labels inside the environment block
+\node[above] at (env.north west) {$S_t$};
+\node[below] at (env.south east) {$S_{t+1}$};
+\node[left] at (env.west) {\small Reward\\$R_t$\\$R_{t+1}$};
+\node[right] at (env.east) {\small Action\\$A_t$};
+
+% Draw the dotted line representing the transition between steps t and t+1
+\draw[dotted, thick] (env.south) -- (env.north);
+\draw[dotted, thick] (env.south west) -- (env.south east);
+
+\end{tikzpicture}
+
+\caption*{Basic agent-environment relationship in a Markov decision process. The agent chooses an action \( A_t \) and the environment returns a new state \( S_{t+1} \) and a reward \( R_{t+1} \). The dotted line represents the transition from step \( t \) to step \( t+1 \) \cite{suttonbarto}.}
+
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.8]
+
+% Ground Set Partitions
+\node at (-4,-2) {$T_1$};
+\draw[thick,red] (-3.5,-1.5) rectangle (0.5,-1);
+
+\node at (7,-2) {$T_k-1$};
+\draw[thick,red] (6.5,-1.5) rectangle (9.5,-1);
+
+\node at (-4,-7) {$B_1$};
+\draw[thick,red] (-3.5,-6.5) rectangle (-1,-6);
+
+\node at (7,-7) {$B_{k-1}$};
+\draw[thick,red] (6.5,-6.5) rectangle (9.5,-6);
+
+
+\node at (-2,-4.5) {$B_i$};
+\draw[thick,red] (-3,-4.5) rectangle (-1,-3.5);
+
+\node at (8,-4.5) {$\left.\right\}\raisebox{-0.75ex}{$k-2-m$}$};
+
+\node at (4.5,-5.5) {$H_y^i$};
+\node at (4.5,-6.5) {$\left.\right\}\raisebox{-0.75ex}{$m$}$};
+
+
+% Intersection
+\node at (-1,-3.5) {$\bigcup \limits_{i=1}^{k-2} T_i$};
+\node at (3,-3.5) {$\bigcup \limits_{i=1}^{k-2} B_i$};
+\node at (7,-3.5) {$\bigcup \limits_{i=1}^{k-2} B_i$};
+
+\node at (-1,-4.5) {$\dots$};
+\node at (3,-4.5) {$\dots$};
+\node at (7,-4.5) {$\dots$};
+
+\node at (4.5,-6.5) {$y$};
+
+% Labels
+\node at (-2,-9) {$M$};
+\node at (3,-9) {$T_1$};
+
+\end{tikzpicture}
+\caption{Construction of intersecting families whose union is bigger than the union of stars. Red boxes correspond to the parts of the ground set. Their sizes are indicated on the right. Green ellipses are the 2-element sets that define $\mathcal{T}_i$. Blue vertex $y$ and a set $H_y^i$ define $\mathcal{HM}_y^i$.}
+\label{fig:intersecting_families}
+\end{figure}
+
+\end{document}

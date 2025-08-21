@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\section*{Example Construction from Theorem~\ref{thm:const}}
+
+The following diagram illustrates an example of the construction described in Theorem~\ref{thm:const}. It shows a tournament on the left and the corresponding vertex coloring on the right.
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,fill=#1!50,draw,font=\sffamily\Large\bfseries}]
+  \node[main node=yellow] (1) {$1$};
+  \node[main node=blue] (2) [below right of=1] {$2$};
+  \node[main node=red] (3) [below left of=2] {$3$};
+  \node[main node=black] (4) [above right of=1] {$4$};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (2)
+        edge node [] {} (3)
+    (2) edge node [] {} (4)
+        edge node [] {} (1)
+    (3) edge node [] {} (4)
+        edge node [] {} (1)
+    (4) edge node [] {} (3)
+        edge node [] {} (2);
+\end{tikzpicture}
+
+\quad
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,fill=#1!50,draw,font=\sffamily\Large\bfseries}]
+  \node[main node=yellow] (1) at (0,0) {$1 \to 2$};
+  \node[main node=blue] (2) at (0,2) {$2 \to 1$};
+  \node[main node=green] (3) at (2,0) {$3 \to 1$};
+  \node[main node=red] (4) at (2,2) {$4 \to 2$};
+  \node[main node=yellow] (5) at (-2,-2) {$4 \to 3$};
+  \node[main node=blue] (6) at (2,-2) {$1 \to 3$};
+  \node[main node=blue] (7) at (-2,2) {$1 \to 4$};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [] {} (2)
+        edge node [] {} (6)
+    (2) edge node [] {} (1)
+        edge node [] {} (5)
+    (3) edge node [] {} (2)
+        edge node [] {} (7)
+    (4) edge node [] {} (3)
+        edge node [] {} (6)
+    (5) edge node [] {} (3)
+        edge node [] {} (4)
+    (6) edge node [] {} (5)
+        edge node [] {} (7)
+    (7) edge node [] {} (6)
+        edge node [] {} (1);
+\end{tikzpicture}
+
+\end{document}

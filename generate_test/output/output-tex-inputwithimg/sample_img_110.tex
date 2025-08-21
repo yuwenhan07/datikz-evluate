@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Plot the horizontal lines
+    \draw[blue, thick, densely dashed] (0,0) -- (10,0);
+    \draw[blue, thick, densely dashed] (0,2) -- (10,2);
+    \draw[blue, thick, densely dashed] (0,4) -- (10,4);
+
+    % Plot the vertical line segments
+    \draw[blue, thick, densely dashed, ->] (-1,0) -- (0,0);
+    \draw[blue, thick, densely dashed, ->] (-1,2) -- (0,2);
+    \draw[blue, thick, densely dashed, ->] (-1,4) -- (0,4);
+
+    % Draw the stickiness circles
+    \filldraw[black] (-1,0) circle [radius=0.1];
+    \filldraw[black] (-1,2) circle [radius=0.1];
+    \filldraw[black] (-1,4) circle [radius=0.1];
+\end{tikzpicture}
+
+\footnotesize{Sticky snapping out Brownian motion is a Feller process on $\ka$ copies of $[0,\infty]$ (here $\ka =3$), which on the $i$th copy behaves like a one-dimensional sticky Brownian motion with stickiness coefficient $\frac{a_i}{b_i}$. After spending enough time at $(0,i)$ the process jumps to one of the points $(0,j), j\not =i$ to continue its motion on the corresponding copy of $[0,\infty]$, and so on. Times between jumps are governed by parameters $c_i$.}
+
+\end{document}

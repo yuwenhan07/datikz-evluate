@@ -9,7 +9,6 @@ import torch
 from typing import List, Optional, Tuple
 from automatikz.infer import TikzDocument  # 导入TikzDocument类
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "8"
 
 # 1. 加载模型和处理器（显式指定设备）
 try:

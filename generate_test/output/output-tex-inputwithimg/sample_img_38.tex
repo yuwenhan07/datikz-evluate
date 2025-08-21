@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphdrawing}
+\usegdlibrary{trees}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={ellipse, draw}]
+    \node (type) {Type};
+    \node (size) [below left=of type] {Size};
+    \node (weight) [below right=of type] {Weight};
+    \node (texture) [below right=of weight] {Texture};
+    \node (rigidity) [below right=of texture] {Rigidity};
+    
+    \node (gripper) [below left=of type] {Gripper};
+    \node (target) [below right=of gripper] {Target};
+    
+    \node (success) [right=of target] {Success};
+
+    \node (robot) [below left=of gripper] {Robot};
+    \node (goal) [below right=of target] {Goal};
+
+    \path[->]
+        (type) edge (size)
+              edge (weight)
+              edge (texture)
+              edge (rigidity)
+        (size) edge (gripper)
+        (weight) edge (gripper)
+        (texture) edge (gripper)
+        (rigidity) edge (gripper)
+        (gripper) edge (target)
+        (robot) edge (gripper)
+        (goal) edge (target)
+        (target) edge (success);
+\end{tikzpicture}
+
+\end{document}

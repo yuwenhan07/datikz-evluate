@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    \node at (-2, 0) [circle,fill=red,inner sep=1pt,label={right:$i$}] (x) {};
+    \node at (-1, 0) [circle,fill=red,inner sep=1pt,label={right:$j$}] (y) {};
+    \node at (0, 0) [circle,fill=red,inner sep=1pt,label={right:$k$}] (z) {};
+
+    \draw[thick, red] (x) -- ++(-45:1cm) node[left] {$x$};
+    \draw[thick, red] (y) -- ++(-45:1cm) node[right] {$y$};
+    \draw[thick, red] (z) -- ++(90:1cm) node[above] {$z$};
+
+    \draw[thick] (x) -- ++(45:1cm) node[midway, above] {$L$};
+    \draw[thick] (y) -- ++(45:1cm) node[midway, above] {$L$};
+    \draw[thick] (z) -- ++(45:1cm) node[midway, left] {$L$};
+
+    \node at (0, -1.5) {\small $=$};
+
+    \node at (3, 0) [circle,fill=red,inner sep=1pt,label={right:$l$}] (zl) {};
+    \node at (2, 0) [circle,fill=red,inner sep=1pt,label={left:$x$}] (xl) {};
+    \node at (4, 0) [circle,fill=red,inner sep=1pt,label={right:$y$}] (yl) {};
+    \node at (0, 0) [circle,fill=red,inner sep=1pt,label={right:$z$}] (zl) {};
+
+    \draw[thick, red] (zl) -- ++(90:1cm) node[above] {$z$};
+    \draw[thick, red] (xl) -- ++(-45:1cm);
+    \draw[thick, red] (yl) -- ++(-45:1cm);
+
+    \node at (2, -1.5) {\small $\sum_l m_{(x,i), (y,j), l}^{(z,k)}$};
+\end{tikzpicture}
+
+\end{document}

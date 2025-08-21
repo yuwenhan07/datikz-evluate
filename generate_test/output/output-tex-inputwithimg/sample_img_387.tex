@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\begin{document}
+
+\section*{Overview of Forecasting Model Search (FMS)}
+
+We present an overview of our method, Forecasting Model Search (FMS), which builds upon DyHPO's multifidelity method from Algorithm~\ref{alg:dyhpo}. Novel components of FMS are highlighted in blue and further detailed in Algorithm~\ref{alg:fms}. We include DyHPO's features from the hyperparameter configuration, budget, and learning curve \cite{wistuba2023supervising}. Notably, we also featurize the model's checkpointed weights $\mathbf{W}$ using a permutation-invariant graph metanetwork (PIGMN) as described in Section~\ref{pigms}, and input it into a deep kernel Gaussian process (GP) (Equation~\ref{deepkernelgp}/\ref{eq:weight_kernel}). This provides the hyperparameter optimization (HPO) with an often pre-existing rich source of information that implicitly includes the architecture, dataset, loss, and optimization process.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{path_to_your_image.png}
+    \caption{An overview of our method, Forecasting Model Search (FMS). Novel components are highlighted in blue.}
+    \label{fig:overview_fms}
+\end{figure}
+
+FMS demonstrates improvements in predicting hyperparameter performance across different compute budgets (see Table~\ref{ktau-values}), higher quality of the final selected configuration across compute budgets (see Figure~\ref{fig:regret_over_time}), and a potential to generalize beyond what was seen in training (see Figure~\ref{fig:fms-transfer}). Specific design choices for the surrogate model are detailed in Appendix Section~\ref{meta-hyperparams}.
+
+\end{document}

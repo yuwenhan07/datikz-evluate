@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning, matrix}
+
+\begin{document}
+
+\section*{Online NDWT Pyramidal Algorithm Illustration}
+\textit{T = 1 \hspace{10em} T = 2}
+
+\begin{tikzpicture}[node distance=3cm]
+    % Define styles
+    \tikzset{
+        box/.style={draw, fill=white, minimum width=1cm, minimum height=1cm},
+        dottedbox/.style={draw, dashed, fill=white, minimum width=1cm, minimum height=1cm},
+        doublearrow/.style={->, very thick},
+        singlearrow/.style={->, thick}
+    }
+
+    % Define nodes
+    \matrix[matrix of nodes, row sep=1cm, column sep=1cm] {
+        & [dottedbox] {$c_{2,0}$} & & [box] {$c_{2,1}$} & \\
+        & & & [box] {$d_{4,1}$} & \\
+        && & [box] {$c_{4,1}$} & \\
+        & [dottedbox] {$c_{0,0}$} & & [box] {$d_{6,1}$} & \\
+        & & & [box] {$v_{0,1}$} & \\
+    };
+
+    \matrix[matrix of nodes, row sep=1cm, column sep=1cm, right=of \the\numexpr\textwidth/2-5cm] {
+        & [box] {$c_{2,1}$} & & [box] {$c_{2,2}$} & \\
+        & & & [box] {$d_{4,2}$} & \\
+        && & [box] {$c_{4,2}$} & \\
+        & [box] {$v_{0,0}$} & & [box] {$d_{6,2}$} & \\
+        & & & [box] {$v_{0,2}$} & \\
+    };
+
+    % Draw connections with different arrow styles
+    \draw[singlearrow] (c2_0) -- (c2_1);
+    \draw[singlearrow] (c2_1) -- (d4_1);
+    \draw[dashed] (c2_0) -- (d6_1);
+    \draw[dashed] (c2_0) -- (v0_1);
+
+    \draw[singlearrow] (c2_1) -- (d4_1);
+    \draw[dashed] (c2_1) -- (d6_1);
+    \draw[dashed] (c2_1) -- (v0_1);
+    \draw[singlearrow] (c2_1) -- (c4_1);
+    \draw[singlearrow] (d4_1) -- (d6_1);
+    \draw[dotted] (d4_1) -- (v0_1);
+
+    \draw[singlearrow] (c4_1) -- (d6_1);
+    \draw[singlearrow] (c4_1) -- (v0_1);
+    \draw[singlearrow] (c4_1) -- (c6_1);
+    \draw[dashed] (d6_1) -- (v0_1);
+    \draw[dashed] (d6_1) -- (v0_2);
+
+    \draw[singlearrow] (v0_1) -- (c4_1);
+    \draw[dashed] (v0_1) -- (d6_1);
+    \draw[dashed] (v0_1) -- (v0_2);
+    \draw[singlearrow] (v0_2) -- (c6_1);
+    \draw[dashed] (v0_2) -- (d6_1);
+    \draw[dotted] (v0_2) -- (v0_1);
+
+\end{tikzpicture}
+
+\smallskip
+
+\textit{Illustration of online NDWT pyramidal algorithm for $J=3$, $W=2$. Input time series given by top row of coefficients. Coefficients with dotted borders obtained by constant-end extension. Dashed arrows denote filtering operations with $\mathcal{G}$, solid arrows denote filtering operations with $\mathcal{H}$.}
+
+\end{document}

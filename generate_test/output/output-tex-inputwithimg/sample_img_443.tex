@@ -1,0 +1,36 @@
+\documentclass[border=5pt]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+    \begin{tikzpicture}[scale=0.7]
+        % Define colors for different types of vertices
+        \definecolor{red_vertex}{RGB}{255,0,0}
+        \definecolor{orange_vertex}{RGB}{255,165,0}
+        \definecolor{blue_vertex}{RGB}{0,0,255}
+        
+        % Draw the tree
+        \draw[thick] (-1,0) -- (0,-2);
+        \draw[thick] (0,-2) -- (-1,-4);
+        \draw[thick] (0,-2) -- (1,-4);
+        \draw[thick] (0,-2) -- (0,-6);
+        
+        \node[circle,fill=red_vertex,inner sep=2pt,label=-90:red] at (-1,-4) {};
+        \node[circle,fill=red_vertex,inner sep=2pt,label=-90:red] at (1,-4) {};
+        \node[circle,fill=red_vertex,inner sep=2pt,label=-90:red] at (-1,-6) {};
+        \node[circle,fill=red_vertex,inner sep=2pt,label=-90:red] at (1,-6) {};
+        
+        \node[circle,fill=orange_vertex,inner sep=2pt,label=-90:orange] at (0,-2) {};
+        
+        \node[circle,fill=blue_vertex,inner sep=2pt,label=-90:blue] at (-1,0) {};
+        \node[circle,fill=blue_vertex,inner sep=2pt,label=-90:blue] at (0,-2) {};
+        
+        % Draw arrows for branching
+        \draw[->,thick] (-1,-4) -- ++(0,-1);
+        \draw[->,thick] (1,-4) -- ++(0,-1);
+        \draw[->,thick] (0,-2) -- ++(0,-1);
+        
+        % Draw the text for the description
+        \node at (-2,-8) {$\text{\textsf{\textasciicircum{} Description:}}$};
+        \node at (-2,-9) {$T$ is a tree component where $D\setminus F$ are red vertices, $F$ are orange vertices, and branching vertices are blue ones. Therefore, $\mathsf{br}_\psi(T) = 4 = 1 + |D\setminus F|$.};
+    \end{tikzpicture}
+\end{document}

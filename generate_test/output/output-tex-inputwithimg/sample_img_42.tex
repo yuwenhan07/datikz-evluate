@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphdrawing, decorations.pathreplacing, arrows.meta, positioning}
+\usegdlibrary{layered,trees}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    node distance = 12mm,
+    every edge/.append style = {draw=black!50},
+    every edge quotes/.style = {font=\footnotesize\sf, anchor=center},
+    >=Stealth
+]
+
+% Define nodes
+\node (sex)               at (-7,8)   {sex};
+\node (age)               at (-6,8)   {age};
+\node (migrant)           at (-7,6)   {migrant};
+\node (income)            at (-7,4)   {income};
+\node (ISCOED)            at (-7,2)   {ISCED};
+
+\node (mother's age)      at (-3,8)   {mother's\\ age};
+\node (weeks pregnant)    at (-3,7)   {weeks\\ pregnant};
+\node (birth weight)      at (-3,6)   {birth\\ weight};
+\node (household diet)    at (-3,5)   {household\\ diet};
+\node (formula milk)      at (-3,4)   {formula\\ milk};
+\node (breastfeeding)     at (-3,3)   {breastfeeding};
+
+\node (well-being 1)      at (3,8)    {well-being};
+\node (healthy eating 1)  at (3,7)    {healthy\\ eating};
+\node (insulin resistance 1) at (3,6)  {insulin\\ resistance};
+\node (BMI)               at (3,5)    {BMI};
+\node (physical activity 1) at (3,4)  {physical\\ activity};
+\node (sleep 1)           at (3,3)    {sleep};
+
+\node (well-being 2)      at (9,8)    {well-being};
+\node (healthy eating 2)  at (9,7)    {healthy\\ eating};
+\node (insulin resistance 2) at (9,6)  {insulin\\ resistance};
+\node (BMI)               at (9,5)    {BMI};
+\node (physical activity 2) at (9,4)  {physical\\ activity};
+\node (sleep 2)           at (9,3)    {sleep};
+
+\node (school)            at (6,8)    {school};
+\node (media)             at (6,7)    {media};
+\node (puberty)           at (6,6)    {puberty};
+\node (BMI)               at (6,5)    {BMI};
+
+\node (context)           at (-7,0)   {context};
+\node (early life 1)      at (-1.5,0) {early life 1};
+\node (early life 2)      at (0.5,0)  {early life 2};
+\node (early life 3)      at (2.5,0)  {early life 3};
+\node (baseline)          at (5,0)    {baseline};
+\node (wave 1)            at (7,0)    {wave 1};
+\node (wave 2)            at (9,0)    {wave 2};
+
+% Draw edges
+\graph [layered layout,
+    level sep=3cm,
+    sibling sep=1cm]
+{
+    sex -> age -> mother's age -> weeks pregnant -> birth weight -> breastfeeding -> formula milk -> household diet -> well-being 1 -> healthy eating 1 -> insulin resistance 1 -> BMI -> physical activity 1 -> sleep 1 -> well-being 2 -> healthy eating 2 -> insulin resistance 2 -> BMI -> physical activity 2 -> sleep 2 -> puberty -> media -> school;
+    context -> early life 1 -> early life 2 -> early life 3 -> baseline -> wave 1 -> wave 2;
+    // Add dotted edges here if needed
+};
+
+\end{tikzpicture}
+
+\end{document}

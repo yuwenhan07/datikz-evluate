@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+
+        % Draw the horizontal line
+        \draw[thick] (-3,0) -- (4.5,0);
+
+        % Labels for points
+        \node at (-3,-0.2) {$c(k)$};
+        \node at (2.5,-0.2) {$c((\gamma_k+\beta)s)$};
+        \node at (3.6,-0.2) {$c((\gamma_k+\beta+t\alpha)s)$};
+
+        % Draw circles
+        \draw[red, thick, fill=white] (-2,0) circle (0.5cm);
+        \draw[red, thick, fill=white] (2.5,0) circle (0.5cm);
+        \draw[red, thick, fill=white] (3.5,0) circle (0.5cm);
+
+        % Points within circles
+        \filldraw[black] (-2+0.5*cos(30),0+0.5*sin(30)) circle (0.05cm) node[anchor=south] {$\hat{q}_k$};
+        \filldraw[black] (2.5+0.5*cos(90),0+0.5*sin(90)) circle (0.05cm) node[anchor=east] {$\hat{q}_{l_0}$};
+        \filldraw[black] (3.5+0.5*cos(60),0+0.5*sin(60)) circle (0.05cm) node[anchor=north west] {$\hat{q}_2$};
+
+        \filldraw[black] (2.5,0) circle (0.05cm) node[anchor=south] {$\hat{q}_1$};
+
+        % Draw the lines connecting the points
+        \draw[thick] (-2+0.5*cos(30),0+0.5*sin(30)) -- (2.5+0.5*cos(90),0+0.5*sin(90));
+        \draw[thick] (2.5+0.5*cos(90),0+0.5*sin(90)) -- (3.5+0.5*cos(60),0+0.5*sin(60));
+
+    \end{tikzpicture}
+    \caption{Picture in Case 1. The disks $B(\hat{q}_k)$'s cover the segment connecting $c((\gamma_k+\beta)s)$ and $c((\gamma_k+\beta+t\alpha)s)$. There is a smallest $l_0$ such that $d(q_k,\hat q_{l_0})\geq (\beta-t\alpha)s.$}
+    \label{fig:case1}
+\end{figure}
+
+\end{document}

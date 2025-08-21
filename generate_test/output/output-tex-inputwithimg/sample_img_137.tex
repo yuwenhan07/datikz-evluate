@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=2cm, auto]
+  \coordinate (A) at (0,0);
+  \coordinate[right=of A] (B);
+
+  % True value of mu
+  \draw[->, line width=1pt] (A) node[left] {$\hat{\mu}_{A}$} -- ++(3,0) node[right] {$\bar{\mu}_{A}$};
+  \draw[->, dashed, line width=1pt] (B) node[left] {$\hat{\mu}_{B}$} -- ++(3,0) node[right] {$\bar{\mu}_{B}$};
+
+  % Optimistic value of mu
+  \coordinate[above=of A] (A') at (0,1);
+  \coordinate[right=of A'] (B');
+  \draw[->, line width=1pt] (A') node[left] {$\hat{\mu}'_{A}$} -- ++(3,0) node[right] {$\bar{\mu}'_{A}$};
+
+  % True value of mu with asterisk
+  \coordinate[above=of A'] (A'*') at (0,2);
+  \coordinate[right=of A'*'] (B'*');
+  \draw[->, dashed, line width=1pt] (A'*') node[left] {$\hat{\mu}^{*}$} -- ++(3,0) node[right] {$\bar{\mu}^{*}$};
+
+  % Optimistic value of mu'
+  \coordinate[above=of B] (B') at (4,0);
+  \coordinate[right=of B'] (B''');
+  \draw[->, line width=1pt] (B') node[left] {$\hat{\mu}'_{B}$} -- ++(3,0) node[right] {$\bar{\mu}'_{B}$};
+
+  % Optimistic value of mu with asterisk
+  \coordinate[above=of B'] (B'*') at (4,1);
+  \coordinate[right=of B'*'] (B'''');
+  \draw[->, dashed, line width=1pt] (B'*') node[left] {$\hat{\mu}^{*'}$} -- ++(3,0) node[right] {$\bar{\mu}^{*'}$};
+
+  % Optimal value of mu
+  \coordinate[below=of B] (B*) at (4,-1);
+  \coordinate[right=of B*] (B''*);
+  \draw[->, line width=1pt] (B*) node[left] {$\hat{\mu}_{B}$} -- ++(3,0) node[right] {$\bar{\mu}_{B}$};
+
+  % Optimistic value of mu with asterisk
+  \coordinate[below=of B*] (B***) at (4,-2);
+  \coordinate[right=of B***] (B****);
+  \draw[->, dashed, line width=1pt] (B***) node[left] {$\hat{\mu}^{***}$} -- ++(3,0) node[right] {$\bar{\mu}^{***}$};
+\end{tikzpicture}
+\caption{Visualizing the optimistic $\bar{\mu} = \bar{\theta}_{0}$. $\mu^{*}$ represents the true $\theta_{0}^{*}$. Suppose A and B have different estimates of $\theta_{0}$, where $\mu^{*}$ lies between $[\hat{\mu}, \bar{\mu}]$ with probability $1 - \delta$. The orange lines for $[\hat{\mu}_{A}', \bar{\mu}_{A}']$ and $[\hat{\mu}_{B}', \bar{\mu}_{B}']$ denote the worst case scenario for $\Delta_{\mu} = \bar{\mu}_{B}' - \hat{\mu}_{A}'$ due to misspecification.}
+\end{figure}
+
+\end{document}

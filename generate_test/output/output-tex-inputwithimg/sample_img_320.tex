@@ -1,0 +1,73 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[scale=1]
+        % Define coordinates for the path
+        \coordinate (A) at (-2,0);
+        \coordinate (B) at (0,-2);
+        \coordinate (C) at (2,0);
+        \coordinate (D) at (0,2);
+        \coordinate (E) at (-1.5,1.5);
+        
+        % Draw the path
+        \draw[blue, very thick, smooth, tension=.7] plot [smooth]
+            coordinates {(A) (E) (B) (D) (C) (A)};
+        
+        % Draw the dashed curve for the inverse image
+        \draw[dashed, very thin] plot [smooth]
+            coordinates {(A) (E) (B) (D) (C) (A)};
+        
+        % Draw the arrows
+        \draw[-{>[length=1mm]}, very thick] (A) -- ++(-30:2cm);
+        \draw[-{>[length=1mm]}, very thick] (D) -- ++(150:2cm);
+        \draw[-{>[length=1mm]}, very thick] (E) -- ++(30:2cm);
+        \draw[-{>[length=1mm]}, very thick] (B) -- ++(-150:2cm);
+        
+        % Draw the label for the inverse image of path
+        \node at (current bounding box.south west) [anchor=north east] {Inverse image of path};
+        
+        %----------------------- Second figure -----------------------
+        \begin{scope}[xshift=6cm]
+        
+        % Define coordinates for the path
+        \coordinate (A1) at (-2+3,0+3);
+        \coordinate (B1) at (0+3,-2+3);
+        \coordinate (C1) at (2+3,0+3);
+        \coordinate (D1) at (0+3,2+3);
+        \coordinate (E1) at (-1.5+3,1.5+3);
+        
+        % Draw the blue path
+        \draw[blue, very thick, smooth, tension=.7] plot [smooth]
+            coordinates {(A1) (E1) (B1) (D1) (C1) (A1)};
+            
+        % Draw the other two paths
+        \draw[blue, very thick, dashed, smooth, tension=.7] plot [smooth]
+            coordinates {(A1) (E1) (B1) (D1) (C1) (A1)};
+            
+        \draw[blue, very thick, dashed, smooth, tension=.7] plot [smooth]
+            coordinates {(A1+1.5, B1+1.5) (A1+1.5, C1+1.5) (A1+1.5, D1+1.5) (A1+1.5, E1+1.5) (A1+1.5, A1+1.5)};
+        
+        % Draw the arrows
+        \draw[-{>[length=1mm]}, very thick] (A1) -- ++(-30:2cm);
+        \draw[-{>[length=1mm]}, very thick] (D1) -- ++(150:2cm);
+        \draw[-{>[length=1mm]}, very thick] (E1) -- ++(30:2cm);
+        \draw[-{>[length=1mm]}, very thick] (B1) -- ++(-150:2cm);
+        
+        % Draw the labels
+        \node at (current bounding box.south west) [anchor=north east] {Path associated to one Stokes arrow};
+        
+        \end{scope}
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

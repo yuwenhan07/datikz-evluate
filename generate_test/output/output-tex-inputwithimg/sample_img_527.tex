@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5,
+    vertex/.style={circle, fill, inner sep=2pt, outer sep=0pt},
+    every node/.append style={font=\footnotesize}
+  ]
+  % Define nodes
+  \node[vertex] (u) at (0,0) {$u : d_H(u)=k$};
+  
+  % Vertices v_i with their respective distances and labels
+  \foreach \i/\label in {1/\alpha_1, 2/\alpha_2, s/\alpha_s} {
+    \node[vertex, right=3cm of u] (v\i) {};
+    \draw[->, ultra thick, blue] (u) -- (v\i) node[midway, above left, sloped] {\label};
+  }
+  
+  \node[vertex, right=3cm of v1] (v1) {$v_1 : \;d_H(v_1)=\ell_1$};
+  \node[vertex, right=3cm of v2] (v2) {$v_2 : \;d_H(v_2)=\ell_2$};
+  \node[vertex, below right=1cm and -1.5cm of v2] (vs) {$v_s : \;\;d_H(v_s)=\ell_s$};
+  
+  % Dotted line for the middle vertices
+  \draw[dotted] (v2) -- (vs);
+  
+  % Labels
+  \foreach \i in {1,2,s} {
+    \node[below=0.5cm of v\i] {$\vdots$};
+  }
+\end{tikzpicture}
+\end{document}

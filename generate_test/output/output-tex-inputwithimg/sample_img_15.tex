@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    \node[circle,draw,fill,label={below:$u_2$}] (u2) {};
+    \node[circle,draw,fill,node distance=2cm,below right=of u2,label={above:$v_2$}] (v2) {};
+    \node[circle,draw,fill,node distance=2cm,right=of v2,label={right:$u_1$}] (u1) {};
+    \node[circle,draw,fill,node distance=2cm,above right=of u2,label={above:$v_3$}] (v3) {};
+    \node[circle,draw,fill,node distance=2cm,below right=of v3,label={below:$u_3$}] (u3) {};
+
+    \node[circle,draw,fill,label={above:$x_3$},node distance=2cm,below=of v2] (x3) {};
+
+    \foreach \X in {1,2,3}{
+        \node[circle,draw,fill,label={above:$x_\X$},node distance=2cm,below=of x3-\X] (x\X) {};
+    }
+
+    \node[circle,draw,fill,label={above:$x_1$},node distance=2cm,above right=of x2-1] (x1) {};
+
+    \foreach \X [count=\Y] in {u1,v1,x1}
+        \draw (\Y) -- (x3) -- (\X);
+
+    \foreach \X [count=\Y] in {u2,v2,x2}
+        \draw (\Y) -- (x3);
+
+    \draw (u1) -- (u2);
+
+    \node at (u3.north west) {$R_3$};
+    \node at (u2.south west) {$R_2$};
+    \node at (u1.south east) {$R_1$};
+\end{tikzpicture}
+
+$x_3 \in X_3$ is the middle vertex of some $P_5(u_1,u_2)$.
+
+\end{document}

@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines=left,
+            xlabel={$\sqrt{6\alpha_W \Lambda_d^2}$},
+            ylabel={$\Lambda_d$},
+            xmin=0, xmax=1,
+            ymin=0, ymax=1,
+            xtick=\empty,
+            ytick={0.5, 0.8, 1},
+            yticklabels={$\sqrt{6\alpha_W \Lambda_d^2}$, $\sqrt{2\alpha_W \Lambda_d^2}$, $\Lambda_d$},
+            ticklabel style={font=\footnotesize},
+            legend pos=north east,
+            legend cell align=left,
+            legend style={font=\footnotesize},
+        ]
+        \addplot[red, thick, dashed] coordinates {(0, 1) (1, 1)};
+        \addlegendentry{$B$}
+        \addplot[green, dashed, thick] coordinates {(0, 0.8) (1, 0.8)};
+        \addlegendentry{$\pi$}
+        \addplot[blue, dashed, thick] coordinates {(0, 0.5) (1, 0.5)};
+        \addlegendentry{$\chi$}
+        \end{axis}
+        
+        \node at (4, 0.9) {\includegraphics[width=0.2\textwidth]{arrow.png}};
+        
+        \begin{axis}[
+            axis lines=left,
+            xlabel={$\sqrt{m \Lambda_d}$},
+            ylabel={$\Lambda_d$},
+            xmin=0, xmax=1,
+            ymin=0, ymax=1,
+            xtick=\empty,
+            ytick={0.5, 0.8, 1},
+            yticklabels={$\sqrt{m \Lambda_d}$, $\sqrt{2\alpha_W \Lambda_d^2}$, $\Lambda_d$},
+            ticklabel style={font=\footnotesize},
+            legend pos=north east,
+            legend cell align=left,
+            legend style={font=\footnotesize},
+        ]
+        \addplot[red, thick, dashed] coordinates {(0, 1) (1, 1)};
+        \addlegendentry{$B$}
+        \addplot[green, dashed, thick] coordinates {(0, 0.8) (1, 0.8)};
+        \addlegendentry{$\pi$}
+        \addplot[blue, dashed, thick] coordinates {(0, 0.5) (1, 0.5)};
+        \addlegendentry{$\chi$}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Mass spectrum of the dark pions and the dark baryons. The mass spectrum in the limit of $m=0$ is shown in the left panel. Nonzero dark quark mass causes mass degeneracy of $\chi$ and $\pi$ as shown in the right panel.}
+    \label{fig:mass_spectra}
+\end{figure}
+
+\end{document}

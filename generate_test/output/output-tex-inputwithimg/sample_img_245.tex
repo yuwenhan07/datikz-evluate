@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        % Nodes representing the elements of the permutation
+        \foreach \x/\y [count=\n] in {0/{\textcolor{black}{+0}}, 1/{1}, 2/11, 3/9, 4/7, 5/5, 6/3, 7/2, 8/{\textcolor{black}{-1}}}
+            \node (\n) at (0,-\n*0.5) {$\y$};
+        
+        % Dashed lines connecting the nodes
+        \draw[dashed] (1) -- node[above,scale=0.8] {$\iota^{11}$} (2);
+        \draw[dashed] (2) -- node[above,scale=0.8] {$\iota^9$} (3);
+        \draw[dashed] (3) -- node[above,scale=0.8] {$\iota^7$} (4);
+        \draw[dashed] (4) -- node[above,scale=0.8] {$\iota^5$} (5);
+        \draw[dashed] (5) -- node[above,scale=0.8] {$\iota^3$} (6);
+        \draw[dashed] (6) -- node[above,scale=0.8] {$\iota^2$} (7);
+        \draw[dashed] (7) -- node[above,scale=0.8] {$\iota^{-1}$} (8);
+        
+        % Solid lines connecting the nodes
+        \draw[->] (1) -- node[above,scale=0.8] {$\iota^{10}$} (2);
+        \draw[->] (2) -- node[above,scale=0.8] {$\iota^8$} (3);
+        \draw[->] (3) -- node[above,scale=0.8] {$\iota^6$} (4);
+        \draw[->] (4) -- node[above,scale=0.8] {$\iota^4$} (5);
+        \draw[->] (5) -- node[above,scale=0.8] {$\iota^+3$} (6);
+        \draw[->] (6) -- node[above,scale=0.8] {$\iota^-$} (7);
+        \draw[->] (7) -- node[above,scale=0.8] {$\iota^{+2}$} (8);
+        
+        % Additional dashed lines for the cycle insertion
+        \draw[dashed] (-1) -- node[above,scale=0.8] {$\iota^+$} (0);
+        \draw[dashed] (0) -- node[above,scale=0.8] {$\iota^4$} (1);
+        \draw[dashed] (1) -- node[above,scale=0.8] {$\iota^8$} (-1);
+        
+        % Additional solid line for the cycle insertion
+        \draw[<->] (-1) -- node[above,scale=0.8] {$(1~4~8)$} (0);
+    \end{tikzpicture}
+    \caption{Exemplo de uma inserção que remove o rótulo de arestas de destino de diferentes {\it runs} de um mesmo ciclo. Neste exemplo, temos $A = (0~\alpha~11~9~7~5~3~\alpha~2~13)$ e $\iota^n$ com $n = 12$. A operação aplicada em $A$ é a inserção $\phi(0, (1~4~8))$.}
+    \label{fig:insertion}
+\end{figure}
+
+\end{document}

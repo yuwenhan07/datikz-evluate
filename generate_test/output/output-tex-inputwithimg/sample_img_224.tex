@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta}
+
+\definecolor{arr2flatcolour}{RGB}{136,0,204} % Purple
+\definecolor{arr2minncolour}{RGB}{255,127,0} % Orange
+\definecolor{minnesotacolour}{RGB}{0,191,255} % Cyan
+\definecolor{rhscolour}{RGB}{255,0,0} % Red
+
+\begin{document}
+
+\begin{tikzpicture}
+  \begin{axis}[
+      xlabel={Year},
+      ylabel={$R^2$},
+      ymin=0,
+      ymax=1.0,
+      xmin=2000,
+      xmax=2025,
+      ytick={0.00,0.25,0.50,0.75,1.00},
+      width=\textwidth,
+      height=8cm,
+      legend style={
+        cells={anchor=east},
+        at={(0.97,0.03)},
+        anchor=south east,
+        draw=none,
+        legend columns=-1
+      }
+    ]
+    \addplot[very thick, arr2flatcolour] table[row sep=crcr]{%
+        2001   0.97\\
+        2002   0.98\\
+        2003   0.96\\
+        ...    ...\\
+        2024   0.99\\
+    }; \label{plot_arr2flat}
+
+    \addplot[very thick, arr2minncolour] table[row sep=crcr]{%
+        2001   0.95\\
+        2002   0.94\\
+        2003   0.95\\
+        ...    ...\\
+        2024   0.97\\
+    }; \label{plot_arr2minn}
+
+    \addplot[very thick, minnesotacolour] table[row sep=crcr]{%
+        2001   0.20\\
+        2002   0.22\\
+        2003   0.21\\
+        ...    ...\\
+        2024   0.23\\
+    }; \label{plot_minnesota}
+
+    \addplot[very thick, rhscolour] table[row sep=crcr]{%
+        2001   0.05\\
+        2002   0.06\\
+        2003   0.04\\
+        ...    ...\\
+        2024   0.03\\
+    }; \label{plot_rhs}
+
+    \legend{
+      \ref{plot_arr2flat} ARR2 prior with flat concentration,
+      \ref{plot_arr2minn} ARR2 prior with Minnesota concentration,
+      \ref{plot_minnesota} Minnesota-type prior,
+      \ref{plot_rhs} regularised horseshoe prior
+    }
+
+  \end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+    title={Comparison of self-supervised/unsupervised VOS methods},
+    xlabel={memory (GB)},
+    ylabel={$\mathcal{J}\&\mathcal{F}$},
+    xmin=0, xmax=25,
+    ymin=50, ymax=80,
+    xtick={0, 5, 10, 15, 20, 25},
+    ytick={50, 60, 70, 80},
+    legend pos=south east,
+    grid=major,
+    markersize=3pt
+]
+
+% Data points
+\addplot[mark=circle, draw=black, fill=white] coordinates {(17, 72)};
+\addplot[mark=o, draw=black, fill=white] coordinates {(10, 65)};
+\addplot[mark=square*, draw=blue, fill=blue] coordinates {(9, 65)};
+\addplot[mark=triangle*, draw=red, fill=red] coordinates {(1, 50)};
+\addplot[mark=diamond*, draw=red, fill=red] coordinates {(22, 74)};
+\addplot[mark=square, draw=red, fill=white] coordinates {(1, 50)};
+
+% Legend entries
+\legend{MAST [?], CorrFlow [?], LIIR [?], UnifiedMask [?], Ours}
+
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

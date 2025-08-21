@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    % Left side representation
+    \begin{tikzpicture}[scale=1.5, every node/.style={transform shape}]
+        % Circles
+        \draw[red] (0,0) circle [radius=2];
+        \draw[black] (0,0) circle [radius=3];
+        \draw[blue] (0,0) circle [radius=4];
+        
+        % Arrows
+        \foreach \ang in {0, 45,...,360} {
+            \draw[->, thick, cyan] (\ang:3.75) -- (\ang:4);
+        }
+        
+        \foreach \ang in {0, 45,...,315} {
+            \draw[->, thick, red] (\ang:2.75) -- (\ang:3);
+        }
+        
+        % Labels
+        \node at (45:4.2) {$T_M$};
+        \node at (135:4.2) {$T_m$};
+        \node at (225:3.2) {$T_p$};
+        
+        % Right side representation
+        \begin{scope}[xshift=5cm]
+            % Nodes
+            \node[circle, draw, minimum size=1cm] (X1) at (0,0) {$X_1$};
+            \node[circle, draw, minimum size=1cm] (X2) at (-1.5,1.5) {$X_2$};
+            \node[circle, draw, minimum size=1cm] (X3) at (-1.5,-1.5) {$X_3$};
+            \node[circle, draw, minimum size=1cm] (X4) at (1,0) {$X_4$};
+            
+            % Dashed lines
+            \draw[dashed, gray] (0,0) -- (-1.5,1.5);
+            \draw[dashed, gray] (0,0) -- (-1.5,-1.5);
+            \draw[dashed, gray] (0,0) -- (1,0) -- (1.5,0);
+            
+            % Arrows
+            \draw[->, thick, cyan] (X2) -- (X1);
+            \draw[->, thick, red] (X3) -- (X1);
+            \draw[->, thick, black] (X4) -- (X1);
+            
+            % Labels
+            \node at (1.25,0) {$T_p$};
+            \node at (0,1.5) {$T_M$};
+            \node at (0,-1.5) {$T_m$};
+        \end{scope}
+        
+        % Legend
+        \draw[->, thick, cyan, dashed] (current bounding box.south east) ++(0.5cm, -0.5cm) -- ++(-1cm, 0) node[left] {Synergistic influence};
+        \draw[->, thick, red, dashed] (current bounding box.south east) ++(0.5cm, -1cm) -- ++(-1cm, 0) node[left] {Redundant influence};
+    \end{tikzpicture}
+    
+    \caption{
+        \textit{Left}: Representation of the pairwise Transfer Entropy $T_{p}$ and of the values obtained maximizing and minimizing $T_{\alpha}$, called $T_{M}$ and $T_{m}$ respectively. Redundant influences are depicted by red arrows, and synergistic influences by cyan arrows.
+        
+        \textit{Right}: Pairwise, synergistic, and redundant conditioning paths are represented on a simple model with four nodes, with simulated couplings indicated by the dashed gray arrows.
+    }
+    \label{fig:transfer_entropy_representation}
+\end{figure}
+
+\end{document}

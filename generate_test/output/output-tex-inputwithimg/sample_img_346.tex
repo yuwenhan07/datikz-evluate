@@ -1,0 +1,65 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.pathreplacing}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto]
+  % Define styles for nodes
+  \tikzset{
+    state/.style={
+      circle,
+      minimum size=1.5em,
+      draw,
+      thick,
+      fill=white!20
+    },
+    obs/.style={
+      rectangle,
+      minimum size=1.5em,
+      draw,
+      thick,
+      fill=white!20
+    },
+    buffer/.style={
+      rounded corners=3mm,
+      dashed
+    }
+  }
+
+  % Nodes for latent variables
+  \node[state] (X0) {$\mathbf{X}_0$};
+  \node[state] (X1) [right of=X0] {$\mathbf{X}_t$};
+  \node[state] (Xi) [right of=X1] {$\mathbf{X}_{t-1}$};
+  \node[state] (Xt) [right of=Xi] {$\mathbf{X}_{t}$};
+  \node[state] (Xp1) [right of=Xt] {$\mathbf{X}_{t+1}$};
+  \node[state] (XR) [right of=Xp1] {$\mathbf{X}_{T}$};
+  
+  % Nodes for observations
+  \node[obs] (Y0) [below of=X0] {$\mathbf{y}_0$};
+  \node[obs] (Y1) [below of=X1] {$\mathbf{y}_{t-2}$};
+  \node[obs] (Yi) [below of=Xi] {$\mathbf{y}_{t-1}$};
+  \node[obs] (Yt) [below of=Xt] {$\mathbf{y}_t$};
+  \node[obs] (Yp1) [below of=Xp1] {$\mathbf{y}_{t+1}$};
+  \node[obs] (YT) [below of=XR] {$\mathbf{y}_T$};
+
+  % Solid box around the subsequence
+  \draw[buffer] ($(Xi.north west)+(0.5em,-0.5em)$) rectangle ($(XR.south east)+(-0.5em,0.5em)$);
+  \node[above=0.5em of Xi.north east] {$\mathcal{S}$};
+
+  % Dotted box around the buffer region
+  \draw[dashed] ($(XR.north)+(0.5em,0.5em)$) rectangle ($(XR.south)+(0.5em,-0.5em)$);
+  \node[right=0.5em of Xt.east] {$\mathcal{S}^*$};
+
+  % Arrows between nodes
+  \path[->,thick]
+    (X0) edge node {} (Y0)
+    (X1) edge node {} (Y1)
+    (Xi) edge node {} (Yi)
+    (Xt) edge node {} (Yt)
+    (Xp1) edge node {} (Yp1)
+    (Xt) edge node {} (XT)
+    (XR) edge node {} (YT);
+\end{tikzpicture}
+
+\end{document}

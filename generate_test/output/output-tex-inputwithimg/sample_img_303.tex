@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        
+        % Coordinates for the vertices
+        \coordinate (A) at (0,4);
+        \coordinate (B) at (6,4);
+        \coordinate (C) at (6,0);
+        \coordinate (D) at (0,0);
+        
+        % Drawing the rectangle
+        \draw[dashed] (A) -- (B) -- (C) -- (D) -- cycle;
+        
+        % Shading the region
+        \fill[gray!30] (A) -- (1,4) node[above left] {$n_4$} -- (1,2) node[below left] {$n_1$} -- (3,2) node[below right] {$n_2$} -- (3,4) node[above right] {$n_3$} -- cycle;
+        
+        % Labels and arrows
+        \foreach \corner/\label in {A/4,B/1,C/2,D/1} {
+            \node at ($(\corner) + (-0.5,0)$) {\label};
+        }
+        \draw[->,thick] (1,4.5) -- (1,4) node[midway,left] {$n_4$};
+        \draw[->,thick] (1,0) -- (1,2) node[midway,left] {$n_1$};
+        \draw[->,thick] (3,4) -- (3,2) node[midway,right] {$n_2$};
+        \draw[->,thick] (3,4.5) -- (3,4) node[midway,right] {$n_3$};
+        
+        % Labeling
+        \node at ($(A)!0.5!(B)$) [midway,yshift=0.8cm] {$a)$};
+        
+        % Second diagram
+        \begin{scope}[xshift=7cm]
+            \coordinate (A') at (0,4);
+            \coordinate (B') at (6,4);
+            \coordinate (C') at (6,0);
+            \coordinate (D') at (0,0);
+            
+            \draw[dashed] (A') -- (B') -- (C') -- (D') -- cycle;
+            
+            \fill[white] (B') -- ++(0,-4) -- ++(4,0) -- ++(0,4) -- cycle; % White out the shaded area
+            
+            % Labels and arrows
+            \foreach \corner/\label in {(A')/{z-y},{B'}/{y},{C'}/{y-x},{D'}/{w-z}} {
+                \node at ($(\corner) + (-0.5,0)$) {\label};
+            }
+            \draw[->,thick] (B') -- (B') ++(0,-0.5) node[midway,below] {$z-y$};
+            \draw[->,thick] (B') -- (B') ++(0.5,0) node[midway,above] {$y$};
+            \draw[->,thick] (B') -- (B') ++(1.5,0) node[midway,above] {$y-x$};
+            \draw[->,thick] (B') -- (B') ++(0,-2.5) node[midway,below] {$w-z$};
+            
+            % Labeling
+            \node at ($(A')!0.5!(B')$) [midway,yshift=-0.8cm] {$b)$};
+        \end{scope}
+        
+    \end{tikzpicture}
+    
+    \caption{a) Labeling of the corners and half-spaces with their outward normals. b) Pictorial description of the face-corner correspondence: At the faces we mark the Chern numbers ${\rm Ch}_{{{\mathcal F}_\lambda},v\times n_{\lambda+1}}$ of some class in $K_i({\mathcal F})$ and at the corners the Chern numbers $(-1)^q {\rm Ch}_{{{\mathcal C}_\lambda},v}$ of its image under $\partial^{{\mathcal F}{\mathcal C}}$.}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18} % Use the latest version for better functionality
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=10cm,
+        height=8cm,
+        xlabel={Input (capital per worker)},
+        ylabel={Output per worker},
+        axis lines=center,
+        xtick=\empty,
+        ytick=\empty,
+        xmin=0,
+        xmax=10,
+        ymin=0,
+        ymax=5,
+        enlargelimits=false,
+        no markers,
+        domain=0:9,
+        samples=100,
+        every axis plot/.append style={
+            thick,
+            smooth,
+            black
+        }
+    ]
+    
+    \addplot [name path=A] {2.5*sqrt(x)} node[above right] {$y = G(N')f(k)$};
+    \addplot [name path=B] {2*sqrt(x)} node[above right] {$y = G(N)f(k)$};
+    
+    \fill [name intersections={of=A and B,by={P}}]
+        (P) circle (1pt);
+    
+    % Annotations
+    \node at (axis cs:0.5,4.5) [anchor=south] {\footnotesize Output};
+    \node at (axis cs:0.5,4.3) [anchor=north] {\footnotesize per worker};
+    
+    \node at (axis cs:8.7,4.5) [rotate=-30, anchor=south west, inner sep=0, outer sep=0] {\footnotesize External economies of agglomeration as experienced by a firm through a shift in the production function due to an increase in the size of a city ($N$ to $N'$)};
+    
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

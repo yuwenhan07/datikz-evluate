@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=0.5cm]
+    % Define colors for the nodes
+    \definecolor{agentColor}{RGB}{230,230,140}
+    \definecolor{envColor}{RGB}{230,230,140}
+    
+    % Nodes for the left side of the diagram
+    \node[draw,ellipse,fill=agentColor] (A1) {$A1$};
+    \node[draw,ellipse,fill=agentColor,right=of A1] (A2) {$A2$};
+    
+    \node[dotted,above=0.7cm of A1] {};
+    \node[dotted,above=0.7cm of A2] {};
+    
+    \node[below=0.7cm of A1, draw,ellipse,fill=agentColor] (A1b) {$A1$};
+    \node[below=0.7cm of A2, draw,ellipse,fill=agentColor] (A2b) {$A2$};
+    
+    \node[below=0.7cm of A1b, draw,ellipse,fill=agentColor] (A1c) {$A1$};
+    \node[below=0.7cm of A2b, draw,ellipse,fill=agentColor] (A2c) {$A2$};
+    
+    % Arrows for the left side
+    \draw[->] (A1) -- (A1b);
+    \draw[->] (A2) -- (A2b);
+    
+    \draw[->] (A1) -- (A1c);
+    \draw[->] (A2) -- (A2c);
+    
+    % Nodes for the right side of the diagram
+    \node[right=5cm of A1,draw,ellipse,fill=agentColor] (A1r) {$A1$};
+    \node[right=of A1r,draw,ellipse,fill=agentColor] (A2r) {$A2$};
+    
+    \node[dotted,above=0.7cm of A1r] {};
+    \node[dotted,above=0.7cm of A2r] {};
+    
+    \node[below=0.7cm of A1r, draw,ellipse,fill=agentColor] (A1rb) {$A1$};
+    \node[below=0.7cm of A2r, draw,ellipse,fill=agentColor] (A2rb) {$A2$};
+    
+    \node[below=0.7cm of A1rb, draw,ellipse,fill=agentColor] (A1rc) {$A1$};
+    \node[below=0.7cm of A2rb, draw,ellipse,fill=agentColor] (A2rc) {$A2$};
+    
+    % Arrows for the right side
+    \draw[->] (A1r) -- (A1rb);
+    \draw[->] (A2r) -- (A2rb);
+    
+    \draw[->] (A1r) -- (A1rc);
+    \draw[->] (A2r) -- (A2rc);
+
+    % Labels for the left side
+    \node[below=1.5cm of A1] {\textbf{Left Side}};
+    
+    % Labels for the right side
+    \node[below=1.5cm of A1r] {\textbf{Right Side}};
+
+    % Dotted lines for the left side
+    \draw[dotted,gray,thick] (-3,-1) -- (-3,2);
+    \draw[dotted,gray,thick] (-6,-1) -- (-6,2);
+    \draw[dotted,gray,thick] (-9,-1) -- (-9,2);
+    
+    % Dotted lines for the right side
+    \draw[dotted,gray,thick] (3,-1) -- (3,2);
+    \draw[dotted,gray,thick] (6,-1) -- (6,2);
+    \draw[dotted,gray,thick] (9,-1) -- (9,2);
+\end{tikzpicture}
+
+\end{document}

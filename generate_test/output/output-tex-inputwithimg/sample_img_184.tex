@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the horizontal line
+    \draw[red, thick] (-3,0) -- (3,0);
+    
+    % Define the center of the sphere
+    \coordinate (O) at (0,0);
+    
+    % Draw the dashed circle (cut-off sphere)
+    \draw[dashed, thick, black] (O) circle (1);
+    
+    % Draw the axes
+    \draw[thick, blue] (-1,0) arc (180:360:1);
+    \draw[thick, blue] (-1,0) arc (180:0:1);
+    \draw[thick, dashed, blue] (-1,0) arc (180:90:1);
+    \draw[thick, dashed, blue] (-1,0) arc (180:-90:1);
+    
+    % Mark the point x_0
+    \filldraw[black] (0,0) circle (1pt) node[below] {$x_0$};
+    
+    % Label the axes
+    \draw[blue] (-1,0) arc (180:0:1) node[midway, right] {};
+    \draw[blue] (-1,0) arc (180:360:1) node[midway, above] {};
+    \draw[dashed, blue] (-1,0) arc (180:90:1) node[midway, right] {};
+    \draw[dashed, blue] (-1,0) arc (180:-90:1) node[midway, below] {};
+    
+    % Describe the cut-off sphere
+    \node at (1,-1.5) {\small Cut-off sphere at \( x = x_0 \). For RT surfaces anchored at \( x_0 \), the part inside the cutoff sphere is excluded, which has the same length \( |\phi(x_0)| \)} ;
+\end{tikzpicture}
+
+\end{document}

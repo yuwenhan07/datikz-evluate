@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[node distance=0.5cm and 2cm]
+    % Define the matrix with nodes
+    \matrix (m) [matrix of nodes, row sep=3mm, column sep=3mm] {
+      |[label=below:$v_1$]| & |[label=below:$v_2$]| & |[label=below:$v_3$]| & |[label=below:$v_4$]| & |[label=below:$v_5$]| & |[label=below:$v_6$]| & |[label=below:$v_7$]| & |[label=below:$v_8$]| & |[label=below:$v_9$]| & |[label=below:$v_{10}$]| & |[label=below:$v_{11}$]| & |[label=below:$v_{12}$]| \\
+      |[label=below:$v_{11}$]| & |[label=below:$v_{12}$]| & |[label=below:$v_{13}$]| & |[label=below:$v_{14}$]| & |[label=below:$v_{15}$]| & |[label=below:$v_{16}$]| & |[label=below:$v_{17}$]| \\
+    };
+
+    % Draw the edges between rows
+    \draw[thick,dashed] (m-1-1) -- (m-1-7);
+    \draw[thick,dashed] (m-1-8) -- (m-1-14);
+    \draw[thick,dashed] (m-2-1) -- (m-2-7);
+    \draw[thick,dashed] (m-2-8) -- (m-2-14);
+
+    % Define labels for the vertical dashed lines
+    \node at (m-1-1.south west) {$\vdots$};
+    \node at (m-1-8.south west) {$\vdots$};
+
+    % Label the vertices
+    \foreach \x in {1,...,14}{
+        \ifnum\x>6
+            \node[anchor=east] at (m-1-\x.east) {$v_\x$};
+        \else
+            \node[anchor=east] at (m-1-\x.east) {$v_\x$};
+        \fi
+    }
+    \node[anchor=west] at (m-2-7.west) {$\vdots$};
+
+    % Description of P_n and C_n
+    \node[right=2cm of m-1-14] {$P_{12} : r = 0$};
+    \node[right=2cm of m-1-14] {$P_{13} : r = 1$};
+    \node[right=2cm of m-1-14] {$P_{14} : r = 2$};
+    \node[right=2cm of m-1-14] {$P_{15} : r = 3$};
+    \node[right=2cm of m-1-14] {$P_{16} : r = 4$};
+    \node[right=2cm of m-1-14] {$P_{17} : r = 5$};
+
+    % Define the black vertices as an FTD-code
+    \foreach \x in {2, 4, 6, 8, 10, 12}{\filldraw (m-1-\x) circle (2pt);};
+  \end{tikzpicture}
+\end{figure}
+
+\end{document}

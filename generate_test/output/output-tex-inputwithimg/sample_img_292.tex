@@ -1,0 +1,60 @@
+\documentclass[10pt, conference]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        node distance = 20mm,
+        >=Stealth',
+        every pin edge/.style = {->},
+        block/.style={rectangle, draw=black, fill=orange!60, text width=3cm, align=center, minimum height=1cm, font=\small},
+        circ/.style={circle, draw=black, fill=white, text width=8mm, align=center, inner sep=0pt, minimum height=8mm},
+        dot/.style={circle, fill=black, inner sep=0pt, minimum size=2mm}
+    ]
+
+        \node[circ] (x) {$\mathbf{x}$};
+        \foreach \i/\j in {1/-0.75,2/-1.5,...,9/-7.5}{
+            \node[dot,pin={[pin distance=6mm]\j:$\mathbf{x}_i^b$}] at ($(x)+(-1*\i*1.5,-1*\j)$) {};
+        }
+        \draw[->] (x) |- ++(1,0.5) node[pos=.35,below right,scale=0.8]{$-\mathbf{.}$};
+        \draw[->] (x) |- ++(1,-0.5) node[pos=.35,below left,scale=0.8]{$-\mathbf{.}$};
+
+        \foreach \i [count=\ni from 1] in {1,...,9}{
+            \draw[->] ($ (x)!0.7!(\ni) $) -- ++(1,0) node[midway,above]{$r_{\ni}$};
+        }
+
+        \node[block, right=of x] (KNNG_1) {$-b_1\text{KNN}_G(r_1;\Theta)$};
+        \node[circ, below=of KNNG_1] (prod1) {$\times$};
+        \node[block, below=of prod1] (mul1) {$-b_n\text{KNN}_G(r_n;\Theta)$};
+        \node[circ, below=of mul1] (prod2) {$\times$};
+        \node[circ, right=of prod2] (sum) {$\sum$};
+        \node[right=of sum] (output) {$u(\mathbf{x})$};
+
+        \node[block, right=of x |- KNNG_1] (MLP_1) {$\text{MLP}_{g}(\mathbf{x}_{1}^{b};\theta_{g})$};
+        \node[block, below=of MLP_1] (MLP_2) {$\text{MLP}_{g}(\mathbf{x}_{n}^{b};\theta_{g})$};
+
+        \foreach \i in {1,...,9}{
+            \draw[->] (x) -- (KNNG_1);
+            \draw[->] (x |- KNNG_1) -- (MLP_1);
+            \draw[->] (x |- MLP_1) -- (MLP_2);
+            \draw[->] (KNNG_1 |- \i) -- (prod1);
+            \draw[->] (mul1 |- \i) -- (prod2);
+            \draw[->] (MLP_1 |- \i) -- (prod2);
+            \draw[->] (MLP_2 |- \i) -- (prod2);
+        }
+
+        \draw[->] (prod1) -- (prod2);
+        \draw[->] (prod2) -- (sum);
+        \draw[->] (sum) -- (output);
+
+    \end{tikzpicture}
+    \caption{Network architecture of the BIN-G. Using the distance $r_i$ between $\mathbf{x}$ and $\mathbf{x}_i^b$ enforcing the symmetry of the Green's function. The block highlighted in orange evaluates a domain-independent Green's function learned using a KNN.}
+    \label{fig:BING}
+\end{figure}
+
+\end{document}

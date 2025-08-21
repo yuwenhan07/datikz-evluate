@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[auto]
+        \tikzstyle{block} = [rectangle, fill=black!10, minimum width=4cm, minimum height=2cm,text centered, draw=black]
+        \tikzstyle{line} = [draw, -latex']
+        
+        % Elastoplasticity block
+        \node [block] (elasto-plastic) {Elastoplasticty};
+
+        % Elastic response block
+        \node [block, below left = 1cm and 2cm of elasto-plastic] (elastic) {Elastic response};
+        \draw [line] (elasto-plastic) -- (elastic);
+        
+        % Plastic contributions block
+        \node [block, below right = 1cm and 2cm of elasto-plastic] (plastic) {Plastic \\ contributions};
+        \draw [line] (elasto-plastic) -- (plastic);
+        
+        % Data-Driven and Phen. Model blocks
+        \node [block, below left = 1cm and 1cm of elastic] (data-driven) {Data-Driven};
+        \node [block, right = 1mm of data-driven] (phen_model) {Phen. Model};
+        
+        \node [block, below left = 1cm and 1cm of plastic] (yield_func) {Yield / Potential \\ function};
+        \node [block, below right = 1cm and 1cm of plastic] (hardening) {Hardening \\ components};
+        \node [block, below right = 1cm and 1cm of hardening] (flow_dir) {Flow direction};
+        
+        \node [block, below left = 1cm and 1cm of yield_func] (dd_yield) {Data-Driven};
+        \node [block, right = 1mm of dd_yield] (pm_yield) {Phen. Model};
+        
+        \node [block, below left = 1cm and 1cm of hardening] (dd_hard) {Data-Driven};
+        \node [block, right = 1mm of dd_hard] (pm_hard) {Phen. Model};
+        
+        \node [block, below left = 1cm and 1cm of flow_dir] (dd_flow) {Data-Driven};
+        \node [block, right = 1mm of dd_flow] (pm_flow) {Phen. Model};
+        
+        \draw [line] (elastic) |- (data-driven);
+        \draw [line] (elastic) |- (phen_model);
+        
+        \draw [line] (plastic) |- (yield_func);
+        \draw [line] (plastic) |- (hardening);
+        \draw [line] (plastic) |- (flow_dir);
+        
+        \draw [line] (yield_func) |- (dd_yield);
+        \draw [line] (yield_func) |- (pm_yield);
+        
+        \draw [line] (hardening) |- (dd_hard);
+        \draw [line] (hardening) |- (pm_hard);
+        
+        \draw [line] (flow_dir) |- (dd_flow);
+        \draw [line] (flow_dir) |- (pm_flow);
+    \end{tikzpicture}
+\end{center}
+
+\textbf{Modular elastoplastic material modeling.} The initial yielding can be fully Data-Driven (DD) or can separately include the equivalent stress measure and the yield stress. Hardening components can, for example, include the deformation resistance or some form of hardening moduli. See \cite{vlassis2022component} and \cite{fuhg2023modular}.
+
+\end{document}

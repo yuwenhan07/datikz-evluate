@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+        % Draw the horizontal lines for the intervals
+        \draw[thick] (0,0) -- (9,0);
+        \draw[thick] (9,-1) -- (9,4);
+        \draw[thick] (0,-5) -- (9,-5);
+        \draw[thick] (-1,-6) -- (9,-6);
+
+        % Draw the labels for the intervals
+        \node at (1,-6) {$I_1$};
+        \node at (4,-6) {$I_J$};
+        \node at (9,-6) {$I_{L-1}$};
+        \node at (1,-5) {$I_{J+1}$};
+        \node at (5,-5) {$I_{L+J-2}$};
+        \node at (7.5,-5) {$I_{L+J-1}$};
+        \node at (4,-4) {$I_L$};
+        \node at (4,-2) {$I_{L-2}$};
+        \node at (4,-1) {$I_2$};
+
+        % Draw the expired intervals in red
+        \draw[red, thick] (0,0) -- (-1,-6);
+        \draw[red, thick] (4,-6) -- (9,-6);
+
+        % Draw the dashed intervals that represent zero elements
+        \draw[dashed, thick] (-1,-6) -- (-1,4);
+        \draw[dashed, thick] (4,-6) -- (4,4);
+
+        % Draw the dotted vertical line corresponding to the special interval
+        \draw[dotted, thick] (3,-6) -- (3,4);
+
+    \end{tikzpicture}
+    \caption{Illustration of the intervals created by Alice and Bob in the proof of Theorem~\ref{thm:lb-unit-length} for an instance of $\textsf{Index}_{L-2}$ with $X[J] = 1$. The dashed intervals on the upper part correspond to the zero elements of the bitvector $X$. The red intervals $I_1$, $I_2$ correspond to expired intervals. $I_J$ is the only non-expired interval disjoint with the special interval $I_{L-1}$. Since $X[J] = 1$, the optimal solution is of size $2$. If $X[J]$ was equal to $0$, the interval $I_J$ would not be disjoint with $I_{L-1}$, and thus, an optimal solution would be of size $1$.}
+    \label{fig:lb-unit-length-proof}
+\end{figure}
+
+\end{document}

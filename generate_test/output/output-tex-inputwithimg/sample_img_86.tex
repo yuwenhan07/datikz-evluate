@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    % Axes
+    \draw[->] (0,0) -- (6,0) node[right] {$u_i$};
+    \draw[->] (0,0) -- (0,4) node[above] {$u'_i$};
+
+    % Grid lines
+    \foreach \x in {0,...,5} {
+        \draw[dashed] (\x,0) -- (\x,4);
+    }
+    \foreach \y in {0,...,3} {
+        \draw[dashed] (0,\y) -- (5,\y);
+    }
+
+    % Lines
+    \draw[red] (0,0) -- (2,2);  % Red line for u'_i = u_i when u_i < delta_M
+    \draw[blue] (2,2) -- (4,4); % Blue line for u'_i = delta'_M + p_i(1) when u_i >= delta_M + p_i(1)
+    \draw[magenta] (4,4) -- (5,5); % Magenta line for u'_i = u_i when u_i > delta'_M + p_i(1)
+
+    % Points
+    \fill (0,0) circle (1.5pt);
+    \fill (2,2) circle (1.5pt);
+    \fill (4,4) circle (1.5pt);
+    \fill (5,5) circle (1.5pt);
+
+    % Labels
+    \node at (0,-0.3) [below] {$0$};
+    \node at (2,-0.3) [below] {$\delta_M$};
+    \node at (4,-0.3) [below] {$\delta_M + \mathbf{p}_i(1)$};
+    \node at (5,-0.3) [below right] {$1$};
+    \node at (-0.3,0) [left] {$\mathbf{w}^b_i = 0$};
+    \node at (-0.3,2) [left] {$\mathbf{w}^b_i = 1$};
+    \node at (-0.3,4) [left] {$\mathbf{w}^b_i = 0$};
+
+    \node at (0,3.75) [above] {$\delta'_M + \mathbf{p}_i(1)$};
+    \node at (4,3.75) [above] {$\delta'_M$};
+    \node at (5,3.75) [above] {$1$};
+    \node at (5,5) [above] {$u_i = u'_i$};
+    \node at (0,1) [left] {$\delta'_M$};
+
+    % Annotations
+    \node[below] at (1,0.8) {\underbrace{}}; \node[below] at (3,0.8) {\underbrace{}}; \node[below] at (4,0.8) {\underbrace{}}; \node[below] at (5,0.8) {\underbrace{}}; \node at (2,0.8) {\hspace{-0.8em}$\delta_M$}; \node at (3.5,0.8) {\hspace{-0.85em}$\delta_M + \mathbf{p}_i(1)$};
+
+\end{tikzpicture}
+
+\end{document}

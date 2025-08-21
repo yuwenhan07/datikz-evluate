@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm, auto, thick,
+    dot/.style={circle,fill,inner sep=0pt,minimum size=4pt,label=#1},
+    dot1/.style={circle,draw=black,inner sep=0pt,minimum size=4pt,label=#1}
+]
+
+% Nodes
+\node[dot={below:$u$\footnotesize $\text{(reach } d_T(u,v)\text{)}}] (u) {};
+\node[dot1,below right=of u] (v) {};
+\node[dot1,below left=of v] (w) {};
+\node[dot1,below left=of w] (x) {};
+\node[dot1,below right=of v] (y) {};
+\node[dot1,below right=of y] (z) {};
+\node[dot1,below right=of z] (a) {};
+\node[dot1,below left=of z] (b) {};
+\node[dot1,below left=of b] (c) {};
+\node[dot1,below right=of c] (d) {};
+\node[dot1,below right=of d] (e) {};
+\node[dot1,below left=of e] (f) {};
+\node[dot1,below left=of f] (g) {};
+\node[dot1,below right=of g] (h) {};
+\node[dot1,below left=of h] (i) {};
+\node[dot1,below right=of i] (j) {};
+
+% Edges
+\draw[-] (u) -- node[dot={above:$v$\footnotesize $\text{(reach } d_T(u,v)\text{)}}] {} (v);
+\draw[-] (v) -- node[dot={above:$w$}] {} (w);
+\draw[-] (w) -- node[dot={above:$v$}] {} (x);
+\draw[-] (x) to node[dot={above:$u$}, sloped] {} (y);
+\draw[-] (y) -- node[dot={above:$v$}] {} (z);
+\draw[-] (z) -- node[dot={above:$u$}] {} (a);
+\draw[-] (a) -- node[dot={above:$w$}] {} (b);
+\draw[-] (b) -- node[dot={above:$v$}] {} (c);
+\draw[-] (c) to node[dot={above:$u$}, sloped] {} (d);
+\draw[-] (d) -- node[dot={above:$v$}] {} (e);
+\draw[-] (e) -- node[dot={above:$u$}] {} (f);
+\draw[-] (f) -- node[dot={above:$w$}] {} (g);
+\draw[-] (g) to node[dot={above:$v$}, sloped] {} (h);
+\draw[-] (h) -- node[dot={above:$u$}] {} (i);
+\draw[-] (i) -- node[dot={above:$v$}] {} (j);
+
+% Annotations
+\draw[dotted, line width = 0.8pt] (u.north west) -- (j.north east);
+\draw[dotted, line width = 0.8pt] (u.south west) -- (j.south east);
+
+\end{tikzpicture}
+
+\caption{Resolvability conditions in \( T^3 \) depending on \( d_T(u,v) \) (all possible positions of \( x \) that resolves \( u,v \) are depicted by red vertices)}
+
+\end{document}

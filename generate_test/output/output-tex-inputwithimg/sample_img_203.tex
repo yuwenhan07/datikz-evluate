@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=left,
+        xmin=0, xmax=2,
+        ymin=0, ymax=2,
+        xlabel=$\beta$,
+        ylabel=$v(\beta)$,
+        ylabel shift=-5pt,
+        xtick={0,0.7071,1.414,2},
+        xticklabels={$0$, $\frac{\sqrt{2}}{2}$, $\frac{\sqrt{2}}{\sqrt{3}}$, $\sqrt{2}$},
+        ytick={0,1.414},
+        yticklabels={$\sqrt{2}$, $\sqrt{2}$},
+        legend style={at={(1.05,0.5)},anchor=west}
+    ]
+    
+    \addplot[blue,domain=0:1.414,samples=100] {2*x};
+    \addlegendentry{$v(\beta) = 2\beta$}
+    
+    \addplot[red,domain=0:1.414,samples=100] {1/x + 0.5*x};
+    \addlegendentry{$v(\beta) = 1/\beta + \beta/2$}
+    
+    \draw[dashed,thick] (axis cs:0.7071,0) -- (axis cs:0.7071,1.414);
+    \draw[dashed,thick] (axis cs:1.414,0) -- (axis cs:1.414,1.414);
+    \draw[dashed,thick] (axis cs:0.7071,0) -- (axis cs:0.7071,1.414);
+    \node [below left] at (axis cs:0.7071,1.414) {\small$\frac{\sqrt{2}}{2}$};
+    \node [below right] at (axis cs:1.414,1.414) {\small$\frac{\sqrt{2}}{\sqrt{3}}$};
+    
+    \end{axis}
+    
+\end{tikzpicture}
+
+\caption*{Graph of the function \( v \) such that particles that contribute to \( \Expec{\nu_{\beta, t}([a, 1])} \) are ``near'' \( v(\beta)a t \) at time \( at \).}
+
+\end{document}

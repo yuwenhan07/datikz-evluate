@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+\begin{document}
+
+\begin{figure}[htbp]
+    \centering
+    \subfigure[Random Sparsity]{
+        \includegraphics[width=0.45\textwidth]{random_sparsity.png}
+    }
+    \subfigure[Block Random Sparsity]{
+        \includegraphics[width=0.45\textwidth]{block_random_sparsity.png}
+    }
+    \vspace{1em}
+    \subfigure[Random Column Sparsity]{
+        \includegraphics[width=0.45\textwidth]{random_column_sparsity.png}
+    }
+    \subfigure[Block Random Column Sparsity]{
+        \includegraphics[width=0.45\textwidth]{block_random_column_sparsity.png}
+    }
+    \caption{Types of sparsity. In random sparsity, any bit may be non-zero. Block-random sparsity assumes aligned, contiguous regions of each row are sparse or not sparse. The degree of block-random sparsity may be lower than the fraction of sparsity when 0s are not fully aligned. We also show random column and random block column sparsity. Block column patterns arise in Deja Vu \cite{liu2023deja}.}
+    \label{fig:sparsity_types}
+\end{figure}
+
+\end{document}

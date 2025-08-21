@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning, decorations.pathreplacing}
+
+\begin{document}
+
+\noindent
+Left: The case \( S \nsubseteq N[x] \cup N[y] \) and \( |Z| \geq 5 \) in the proof of the second statement in Claim~\ref{clm2}.
+
+\noindent
+Right: The proof of Claim~\ref{clm3}, where we suppose, to the contrary, that there exists \( x_i \) such that \( |N(x_i) \cap Y| \geq 5 \).
+
+\begin{center}
+    \begin{tikzpicture}[node distance=1cm, every node/.style={draw, circle, inner sep=2pt, minimum size=6pt}]
+        % Nodes for the left graph
+        \node (x) at (0,0) {$x$};
+        \node (y) at (2,0) {$y$};
+        \node (w) at (1,2) {$w$};
+        \node (z1) at (1,1) {$z_1$};
+        \node (z5) at (1,-1) {$z_5$};
+
+        % Nodes for the right graph
+        \node[right = 4cm of x] (x') {$x$};
+        \node[right = 2cm of y] (y') {$y$};
+        \node[right = 1cm of x', above] (y1') {$y'_1$};
+        \node[right = 1cm of y', below] (y5') {$y'_5$};
+        
+        % Connections for the left graph
+        \draw (x) -- (y);
+        \draw (x) -- (z1);
+        \draw (x) -- (z5);
+        \draw (y) -- (z1);
+        \draw (y) -- (z5);
+        \draw[dotted] (z1) -- (w);
+        \draw[dotted] (z5) -- (w);
+        
+        % Connections for the right graph
+        \draw (x') -- (y1');
+        \draw (x') -- (y5');
+        \foreach \i in {1,...,5} {
+            \draw (y1') -- (y\i'); 
+        }
+        \foreach \i in {1,...,5} {
+            \draw (y5') -- (y\i'); 
+        }
+        \foreach \i in {1,...,5} {
+            \foreach \j in {1,...,5} {
+                \draw (y\i') -- (y\j'); 
+            }
+        }
+        \draw[dotted] (y') -- (y1');
+        \draw[dotted] (y') -- (y5');
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

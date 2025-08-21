@@ -1,0 +1,56 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\begin{document}
+
+% Define the main figure
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        >=Latex,
+        dot/.style = {circle, fill, inner sep=0.5mm},
+        label/.style = {font=\small, text height=1.5ex, text depth=0.25ex},
+        perturbation/.style={->, very thick, dashed, shorten <=2pt},
+        label distance=3mm
+    ]
+        % Draw the data points
+        \path 
+            (-1,-1) node[dot, label=above left:$C$, color=red] {}
+            (1,-1) node[dot, label=below right:$B$, color=red] {}
+            (2,0)  node[dot, label=left:$H$, color=red] {}
+            (4,1)  node[dot, label=right:$G$, color=red] {}
+            (3,2)  node[dot, label=above left:$F$, color=red] {}
+            (6,3)  node[dot, label=above right:$D$, color=blue] {}
+            (8,2)  node[dot, label=above left:$A$, color=blue] {}
+            (7,1)  node[dot, label=right:$E$, color=blue] {}
+            (5,0)  node[dot, label=below left:$\theta_0$, color=red] {}
+            (6,1)  node[dot, label=below right:$\hat{\theta}$] {};
+
+        % Draw the perturbations
+        \draw[perturbation] (5,0) -- (F);
+        \draw[perturbation] (5,0) -- (B);
+        \draw[perturbation] (5,0) -- (H);
+        \draw[perturbation] (5,0) -- (G);
+
+        % Draw the dashed lines and labels
+        \draw[dashed] (-2,-1) -- (9,3);
+        \draw[dashed] (-1,-1) -- (9,3);
+
+        % Draw the arrows indicating the adversarial attack
+        \draw[<->,thick] (-2,-1) circle (0.8) node[anchor=north] {\footnotesize Adversarial trade-off};
+        \draw[<->,thick] (6,1) -- (5.5,2.5) node[above right] {\footnotesize Generalisation error};
+        \draw[<->,thick] (6,1) -- (5.5,0.5) node[below right] {\footnotesize Boundary error};
+
+        % Add the annotations for the points
+        \node[label,below right=of F] {\footnotesize Points F and E are correctly classified after the perturbation.};
+        \node[label,below right=of C] {\footnotesize The perturbations on B and A cancel each other on average.};
+        \node[label,below right=of H] {\footnotesize Points H and G contribute to the boundary error.};
+        \node[label,below right=of D] {\footnotesize Only points H and G contribute to the boundary error.};
+    \end{tikzpicture}
+    \caption{Adversarial trade-off in our model occurs due to improved robustness of a worse estimate $\hat{\boldsymbol{\theta}}$. The colour marks the true label of the data points. The arrows indicate the adversarial attack perturbation. There are four cases to be distinguished. Points F and E are correctly classified after the perturbation. The points C and D contribute to generalisation error. The perturbations on B and A cancel each other on average. Only points H and G contribute to the boundary error. A worse angle decreases the number of points contributing to boundary error at the cost of these points contributing to generalisation error.}
+    \label{fig:adversarial_tradeoff}
+\end{figure}
+
+\end{document}

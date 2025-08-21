@@ -1,0 +1,7 @@
+{
+  "prompt": "Computing $F_{j+1}|m_j$ from $e^{G_{j+1}\\tau_j}$ and $e^{(G_{j+1}-G_j)\\tau_j}$",
+  "final_latex_code": "\\documentclass{article}\n\\usepackage{tikz}\n\\usetikzlibrary{matrix}\n\n\\begin{document}\n\n\\begin{tikzpicture}[node distance=2cm]\n    \\matrix (m) [matrix of nodes, nodes={draw, minimum width=3em, minimum height=2em, anchor=center, text width=3em, align=center}]\n    {\n        & F_{j+1} | m_j \\\\\n        e^{G_{j+1} \\tau_j} & e^{(G_{j+1} - G_j) \\tau_j} \\\\\n    };\n    \n    \\draw[dotted] (m-1-1.north west) -- (m-1-2.north east);\n    \\draw (m-1-1.south west) -- (m-1-2.south east);\n    \\draw[dotted] (m-2-1.north east) -- (m-2-2.south west);\n    \n    \\node at (current bounding box.north west) [above left, xshift=1cm, yshift=-0.5cm] {Computing $F_{j+1}|m_j$ from $e^{G_{j+1}\\tau_j}$ and $e^{(G_{j+1}-G_j)\\tau_j}$};\n\\end{tikzpicture}\n\n\\end{document}",
+  "compiled_successfully": true,
+  "ground_truth": "\\documentclass{article}\n\\usepackage[utf8]{inputenc}\n\\usepackage{amsmath, mathtools}\n\\usepackage{tikz}\n\\usetikzlibrary{quantikz2}\n\n\\begin{document}\n\n\\begin{tikzpicture}\n    \\draw (0,0) -- (7,0) -- (7,-2) -- (2,-2) -- (0,0);\n\n    \\draw [dotted](-0.22,0.1) -- (7.1,0.1) -- (7.1,-7.25) -- (-0.2,0.1);\n\n    \\draw [dotted](2.1,-2.1) -- (7,-2.1) -- (7, -7) -- (2.1,-2.1) ;\n\n\n    \\node[draw] at (4,-1) {$F_{j+1}|m_j$};\n\n    \\node[draw] at (5.5,-3.5) {$e^{(G_{j+1}-G_j)\\tau_j}$};\n    \\node[draw] at (2,-4) {$e^{G_{j+1}\\tau_j}$};\n\n\\end{tikzpicture}\n\n\\end{document}",
+  "attempts": 1
+}

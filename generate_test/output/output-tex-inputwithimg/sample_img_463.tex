@@ -1,0 +1,59 @@
+\documentclass[border=5pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc,intersections}
+
+\begin{document}
+    
+    \begin{tikzpicture}
+        
+        % Majorana boxes and their labels
+        \draw[purple!60,fill=purple!10] (0,0) rectangle node[scale=0.7,rotate=90,anchor=south,row sep=0.7cm] {Majorana \\ box 1} ++ (0.5,-1);
+        \draw[purple!60,fill=purple!10] (3,0) rectangle node[scale=0.7,rotate=90,anchor=south,row sep=0.7cm] {Majorana \\ box 2} ++ (0.5,-1);
+        \draw[purple!60,fill=purple!10] (1.5,-1.2) rectangle node[scale=0.7,rotate=90,anchor=south,row sep=0.7cm] {Majorana \\ box 3} ++ (1,-1);
+
+        % Majorana operators
+        \foreach \i/\x in {1/0, 2/3, 3/1.5}{
+            \foreach \j in {1,...,4}{
+                \draw[blue!80,fill=blue!20] (\x,-\j) circle[radius=0.05];
+                \node at ($(\x,-\j)+(0,0.1)$) {\footnotesize$\gamma_{\j\x}$};
+            }
+        }
+
+        % Tunneling couplings between Majorana boxes
+        \draw[red,thick,dotted] (0.2,-1.5) -- (1.5,-1.5) node[midway,scale=0.5,fill=white,rounded corners=2pt] {$t_{13}$};
+        \draw[red,thick,dotted] (2.8,-0.5) -- (3.8,-0.5) node[midway,scale=0.5,fill=white,rounded corners=2pt] {$t_{23}$};
+
+        % Quantum Dots and tunneling couplings
+        \fill[red,fill opacity=0.8] (+4,-1.5) circle[radius=0.05];
+        \node at (4,-1.5) [above] {QD 2};
+        
+        \fill[blue,fill opacity=0.8] (-1,2.5) circle[radius=0.05];
+        \node at (-1,2.5) [above] {QD 1};
+        
+        \draw[blue,thick,dotted] (-1.2,2.5) -- (4,-1.5) node[pos=0.2,above,scale=0.5,fill=white,rounded corners=2pt] {$t_{12}$};
+
+        % Labels for tunneling couplings between QD and Majorana boxes
+        \node at (+2.5,-0.5) [right] {\footnotesize$t_{12}$};  % T12
+        
+        \node at (+3.5,-1.5) [below] {\footnotesize$t_{23}$};  % T23
+
+        \node at (+2.5,-1.7) [below] {\footnotesize$t_{13}$};  % T13
+
+        % Arrows for Majorana operators
+        \foreach \i/\x in {1/0, 2/3, 3/1.5}{
+            \foreach \j in {1,...,4}{
+                \path[name path=i] (\x,-\j) -- +(-15:0.1);
+                \path[name intersections={of=i-0 and i-1,by={a}}];
+                \draw[->,thick,-triangle 90] (\x,-\j) -- (a);
+            }
+        }
+
+        % Quantum dot and AC driving field
+        \draw[thick] (-4,0) circle (0.5);
+        \node at (-4.3,0) {AC};
+
+        % Environment
+        \draw[black] (-5,-5) rectangle (5,5);
+        
+    \end{tikzpicture}
+\end{document}

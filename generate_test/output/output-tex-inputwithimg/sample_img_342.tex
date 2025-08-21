@@ -1,0 +1,47 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+  % Draw the coordinate axes
+  \draw[->] (-2.5,0) -- (4,0) node[right] {$x_1$};
+  \draw[->] (0,-3) -- (0,3) node[above] {$x_2$};
+
+  % Draw the deformation gradient lines
+  \draw[dotted] (-2,-2-2*\theta) -- (4,4);
+  \draw[dotted] (-2-2*\theta,-2-2*\theta) -- (4+2*\theta,4+2*\theta);
+  \draw[dotted] (-2-1*\theta,-2-1*\theta) -- (4+1*\theta,4+1*\theta);
+  \draw[dotted] (-2,0) -- (4,4);
+  \draw[dotted] (-2+1*\theta,0) -- (4-1*\theta,4-1*\theta);
+  \draw[dotted] (-2+2*\theta,0) -- (4-2*\theta,4-2*\theta);
+
+  % Mark points on the x-axis
+  \filldraw[black] (-2,0) circle (1pt) node[left] {$-2$};
+  \filldraw[black] (-1,0) circle (1pt) node[left] {$-1$};
+  \filldraw[black] (0,0) circle (1pt) node[below] {$0$};
+  \filldraw[black] (1,0) circle (1pt) node[below] {$1$};
+  \filldraw[black] (2,0) circle (1pt) node[below] {$2$};
+  \filldraw[black] (3,0) circle (1pt) node[below] {$3$};
+
+  % Label the deformation gradient ranges
+  \node at (-1.25,3.5) {$tF_{-}$};
+  \node at (-0.25,3.5) {$tF_{+}$};
+  \node at (1.75,3.5) {$tF_{-}$};
+  \node at (2.75,3.5) {$tF_{+}$};
+  \node at (3.75,3.5) {$tF_{-}$};
+
+  % Label the conditions on the normal vector
+  \node at (1.5,3.5) {$x \cdot \nu = -1$};
+  \node at (2.5,3.5) {$x \cdot \nu = 0$};
+  \node at (3.5,3.5) {$x \cdot \nu = 1$};
+  \draw[->,>=stealth',thick] (1.5,0.5) -- (1.5,1.5);
+
+  % Label the deformation gradient expressions
+  \node at (-1.25,-0.5) {$tF_{-} = F_0 + a \otimes \nu$};
+  \node at (-0.25,+0.5) {$tF_{+} = F_0 + b \otimes \nu$};
+
+\end{tikzpicture}
+
+\end{document}

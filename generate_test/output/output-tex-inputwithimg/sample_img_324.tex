@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm,
+        mblock/.style={draw, minimum width=30mm, minimum height=15mm},
+        bblock/.style={draw, fill=black, text=white, minimum width=15mm, minimum height=15mm},
+        ]
+        % Nodes
+        \node[mblock] (y1) {$\boldsymbol{y}_1$ $\sim$ $p_{\theta}(\cdot)$};
+        \node[bblock, below of = y1] (b1) {boyfriend \\ is \\ Karma \\ my};
+        \node[mblock, right of = y1, xshift=-4cm] (y2) {$\boldsymbol{y}_2$ $\sim$ $p_{\theta}(\cdot \mid \boldsymbol{y}_1)$};
+        \node[bblock, below of = y2] (b2) {boyfriend \\ is \\ Karma \\ my};
+        \node[mblock, right of = y2, xshift=-4cm] (y3) {$\boldsymbol{y}_3$ $\sim$ $p_{\theta}(\cdot \mid \boldsymbol{y}_{2})$};
+        \node[bblock, below of = y3] (b3) {boyfriend \\ is \\ Karma \\ my};
+        \node[mblock, right of = y3, xshift=-4cm] (y4) {$\boldsymbol{y}_4$ $\sim$ $p_{\theta}(\cdot \mid \boldsymbol{y}_{3})$};
+        \node[bblock, below of = y4] (b4) {boyfriend \\ is \\ Karma \\ my};
+        \node[mblock, right of = y4, xshift=-4cm] (y5) {$\boldsymbol{y}_k$ $\sim$ $p_{\theta}(\cdot \mid \boldsymbol{y}_{k-1})$};
+        
+        \node[mbox, right of = y5, xshift=6cm] (mbox) {};
+        
+        \node[right of = y5] (mbox2) {$\boldsymbol{y}$ $\in$ $\mathcal{Y}$};
+        
+        % Drawing arrows
+        \draw[->, >=stealth'] (y1) -- (b1);
+        \draw[->, >=stealth'] (y2) -- (b2);
+        \draw[->, >=stealth'] (y3) -- (b3);
+        \draw[->, >=stealth'] (y4) -- (b4);
+        \draw[->, >=stealth'] (y5) -- node[below] {$\boldsymbol{y}_k$} (mbox.north east);
+        
+        \draw[->, >=stealth'] (b1) -- (y2);
+        \draw[->, >=stealth'] (b2) -- (y3);
+        \draw[->, >=stealth'] (b3) -- (y4);
+        \draw[->, >=stealth'] (b4) -- (mbox.west);
+        
+        \draw[->, >=stealth'] (mbox2) -- node[below] {} (mbox.south east);
+    \end{tikzpicture}
+    
+    \caption{Sampling algorithms choose the next token at each time step $s_i$ by sampling from the conditional distribution $p_\theta(\cdot \mid \boldsymbol{y}_{:i-1})$ and appending it to the context.}
+\end{figure}
+
+\end{document}

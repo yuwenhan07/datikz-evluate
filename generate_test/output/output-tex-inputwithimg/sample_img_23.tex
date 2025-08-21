@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    \tikzstyle{vertex} = [draw, shape=circle, fill=white!50, minimum size=10mm]
+
+    % Define nodes
+    \node[vertex] (v1) {};
+    \node[vertex右边=1cm of v1] (v2) {};
+    \node[vertex右边=1cm of v2] (vdots) {$\ldots$};
+    \node[vertex右边=1cm of vdots] (vcminus1) {};
+    \node[vertex右边=1cm of vcminus1] (vc) {};
+
+    % Add labels above the vertices
+    \node[above=0.5ex of v1] {$V_1$};
+    \node[above=0.5ex of v2] {$V_2$};
+    \node[above=0.5ex of vcminus1] {$V_{c-1}$};
+    \node[above=0.5ex of vc] {$V_c$};
+
+    % Draw arrows between the vertices
+    \draw[->] (v1) -- (v2);
+    \draw[->] (v2) -- (vdots);
+    \draw[->] (vdots) -- (vcminus1);
+    \draw[->] (vcminus1) -- (vc);
+
+    % Draw an arrow back to the first vertex
+    \draw[->, thick, bend right=45] (vc) to (v1);
+
+    % Add dots in each vertex
+    \foreach \i in {1,2,3,4,5}
+        \fill (v1.\i) circle (1pt);
+    \foreach \i in {1,2,3,4}
+        \fill (v2.\i) circle (1pt);
+    \foreach \i in {1,2,3}
+        \fill (vcminus1.\i) circle (1pt);
+    \fill[white!50] (vc.6) circle (1pt);
+\end{tikzpicture}
+
+\end{document}

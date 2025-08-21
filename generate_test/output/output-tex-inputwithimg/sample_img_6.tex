@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Draw the vertices for K_9
+    \foreach \i in {0,...,8} {
+        \draw[fill=black] ({\i/9*360}:1.5cm) circle (2pt);
+    }
+    % Draw the vertices for K_6
+    \foreach \i in {0,...,5} {
+        \draw[fill=white] (-\i*1.5cm, 0) circle (2pt);
+    }
+    
+    % Label the vertices for K_9
+    \foreach \i/\j in {0/1, 1/2, ..., 8/9} {
+        \node at ({\i/9*360}:1.5cm) {$x_\j$};
+    }
+    
+    % Label the vertices for K_6
+    \foreach \i/\j in {0/1, 1/2, ..., 5/6} {
+        \node at (-\i*1.5cm, 0) {$\j$};
+    }
+    
+    % Draw the edges for K_9
+    \foreach \i in {0,...,8} {
+        \foreach \j in {\i+1,...,8} {
+            \draw ({\i/9*360}:1.5cm) -- ({\j/9*360}:1.5cm);
+        }
+    }
+    
+    % Draw the edges between K_9 and K_6
+    \foreach \i in {0,...,5} {
+        \draw[-] (-\i*3cm, 1.5cm) -- ({(\i+1)/6*360}:1.5cm);
+        \draw[-] (-\i*3cm, -1.5cm) -- ({(\i+1)/6*360}:1.5cm);
+    }
+    
+    % Draw the vertical lines
+    \draw[thick] (-7.5cm, 0) -- (-7.5cm, 4.5cm);
+    \draw[thick] (-3.5cm, 0) -- (-3.5cm, -2.5cm);
+    
+    % Label the rows for K_9
+    \foreach \i in {1, 2, ..., 6} {
+        \node at ({-(\i-1)/6*360}:-2.5cm) {$1K_9$};
+    }
+    % Label the rows for K_6
+    \node at (-3.5cm, -2.5cm) {$1$};
+    \node at (-2cm, -2.5cm) {$2$};
+    \node at (-0.5cm, -2.5cm) {$3$};
+    \node at (1.5cm, -2.5cm) {$4$};
+    \node at (4cm, -2.5cm) {$5$};
+    \node at (6.5cm, -2.5cm) {$6$};
+    
+    % Draw the horizontal line
+    \draw[thick] (-7.5cm, -2.5cm) -- (6.5cm, -2.5cm);
+\end{tikzpicture}
+
+\end{document}

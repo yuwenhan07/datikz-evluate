@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar=2*\pgflinewidth,
+            bar width=8pt,
+            ymajorgrids = true,
+            ylabel={Improvement Over Control (\%)},
+            symbolic x coords={Blend (13.6B), GPT3.5 (175B), Vicuna+ (13B), ChatLLaMA (6B)},
+            xtick=data,
+            xlabel={Model},
+            nodes near coords,
+            point meta=explicit symbolic,
+            legend style={
+                at={(0.5,-0.2)},
+                anchor=north,
+                legend columns=-1
+            }
+        ]
+        \addplot [fill=white,hatch/angle=45,hatch/distance=3pt] coordinates {
+            (Blend (13.6B), 10) [Engagement]
+            (GPT3.5 (175B), 80) [Engagement]
+            (Vicuna+ (13B), 20) [Engagement]
+            (ChatLLaMA (6B), 15) [Engagement]
+        };
+        \addlegendentry{Engagement}
+        \addplot [fill=white] coordinates {
+            (Blend (13.6B), 65) []
+            (GPT3.5 (175B), 15) []
+            (Vicuna+ (13B), 3) []
+            (ChatLLaMA (6B), 2) []
+        };
+        \addlegendentry{Retention}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Model performance comparisons, setting the baseline as Pygmalion 6B. Each model is assigned to 5,000 unique new users. Graphs report the day 30 retention and engagement improvement with respect to the baseline.}
+    \label{fig:model_performance}
+\end{figure}
+
+\end{document}

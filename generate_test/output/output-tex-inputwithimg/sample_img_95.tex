@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \captionsetup{justification=centering}
+    \subcaptionbox{a.) CIFAR10 \label{fig:cifar10}}{\includegraphics[width=0.45\textwidth]{cifar10.png}}
+    \subcaptionbox{b.) CIFAR100 \label{fig:cifar100}}{\includegraphics[width=0.45\textwidth]{cifar100.png}}
+    \caption{Illustrates the Average Confidence Score (ACS) for unlabeled data across tasks. The ACS is calculated by taking the average of the maximum probability confidence scores from all the unlabeled data, at the end of training. The observed decaying trend suggests that using a fixed high threshold in SS-CIL may not be suitable for effective utilization of unlabeled data in feature learning. Due to the fixed threshold, the amount of unlabeled data utilized for training is significantly reduced as tasks progress.}
+\end{figure}
+
+% Assuming the images are stored in the figures directory
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.45\textwidth]{cifar10.png}
+    \caption{CIFAR10 data set.}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.45\textwidth]{cifar100.png}
+    \caption{CIFAR100 data set.}
+\end{figure}
+
+\end{document}

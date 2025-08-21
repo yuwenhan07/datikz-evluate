@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\textbf{The Newsvendor Pricing Game.} In this Stackelberg game, there is a logistics network between a supplier (leader) and a retailer (follower), where utility functions are not necessarily supermodular. The supplier issues a wholesale price \( a \), and the retailer issues a purchase quantity \( b_a \) and a retail price \( p_a \) in response.
+
+\begin{center}
+\begin{tikzpicture}[node distance=1cm]
+    % Supplier (Leader)
+    \node[draw,circle] (leader) {};
+    \node[below=0.5cm of leader] (supplier_utility) {$\mathcal{G}_A(a)=ab_a$};
+    
+    % Arrow with label "a"
+    \draw[->,thick,>=stealth] ([shift={(5mm,2mm)}]leader.east) -- node[above] {$a$} ([shift={(-5mm,-2mm)}]follower.west);
+    
+    % Retailer (Follower)
+    \node[right=2cm of leader, draw,circle] (follower) {};
+    \node[below=0.5cm of follower] (follower_utility) {$\mathcal{G}_B(p_a,b_a)=p_a\min\{d(p_a),b_a\}$};
+    
+    % Arrow with label "b_a"
+    \draw[<-,thick,>=stealth] ([shift={(5mm,2mm)}]follower.east) -- node[above] {$b_a$} ([shift={(-5mm,-2mm)}]leader.west);
+    
+    % Market
+    \node[right=2cm of follower, draw, rectangle, minimum width=3cm, minimum height=1cm] (market) {};
+    \foreach \x/\y in {0/0.5, 0/-0.5, 1/0.5, 1/-0.5}
+       \node[circle,fill,inner sep=2pt] at (\x+2,\y+1) {};
+    
+    % Arrows connecting the market to the follower
+    \draw[->,thick,>=stealth] ([shift={(5mm,1mm)}]follower.east) -- node[above] {$p_a$} ([shift={(-5mm,-1mm)}]market.west);
+    \draw[<-,thick,>=stealth] ([shift={(5mm,1mm)}]market.east) -- node[above] {$d(p_a)$} ([shift={(-5mm,-1mm)}]follower.west);
+\end{tikzpicture}
+\end{center}
+
+\end{document}

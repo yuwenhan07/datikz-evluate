@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={\(\mathcal{LP}(1)\) Ranking Source},
+        ylabel={Win rate},
+        xmin = 350,
+        xmax = 7000,
+        ymin = 51,
+        ymax = 54,
+        xtick={350, 1300, 2700, 6700},
+        xticklabels={350M, 1.3B, 2.7B, 6.7B},
+        ytick={51, 52, 52.5, 53, 53.5},
+        legend pos=north west,
+        legend cell align={left},
+        grid = major,
+        xlabel near ticks,
+        ylabel near ticks,
+        tick label style={/pgf/number format/fixed},
+        x tick label style={font=\scriptsize},
+        y tick label style={font=\scriptsize},
+        every axis plot/.append style={
+            mark size=2pt,
+            line width=1pt
+        },
+        % Styles for each curve
+        table/.style={only marks,mark size=2pt},
+    ]
+        % Data for different percentages
+        \addplot[teal,table,mark=square*,name path=A] coordinates {
+            (350, 51.1)
+            (1300, 51.6)
+            (2700, 51.2)
+            (6700, 50.9)
+        };
+        
+        \addplot[orange,table,mark=square*,name path=B] coordinates {
+            (350, 52.0)
+            (1300, 52.2)
+            (2700, 53.1)
+            (6700, 51.4)
+        };
+        
+        \addplot[violet,table,mark=diamond*,name path=C] coordinates {
+            (350, 51.8)
+            (1300, 53.0)
+            (2700, 54.0)
+            (6700, 52.2)
+        };
+
+        % Legend for different percentages
+        \legend{
+            {10\% Low},
+            {25\% Low},
+            {33\% Low}
+        }
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

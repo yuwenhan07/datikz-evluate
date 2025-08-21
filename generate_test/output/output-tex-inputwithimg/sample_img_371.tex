@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, shapes, graphs, graphdrawing}
+\usegdlibrary{circular}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=Stealth',shorten >=1pt,auto,node distance=3cm,
+  thick,main node/.style={circle,fill,draw,font=\sffamily\Large\bfseries}]
+  
+%Nodes
+\node[main node] (x) at (-2,0) {$x$};
+\node[main node] (y) at (0,0) {$y$};
+\node[main node] (v) at (2,0) {$v$};
+\node[main node] (u) at (-2,-2) {$u$};
+\node[main node] (w) at (-4,-2) {$u_2$};
+\node[main node] (u') at (-2,-3) {$u_{+}$};
+\node[main node] (v') at (2,-2) {$v_2$};
+\node[main node] (v') at (2,-2) {$v_-$};
+\node[main node] (w') at (0,-3) {$y_-$};
+\node[main node] (w') at (0,-2) {$y_2'$};
+\node[main node] (w') at (-2,-4) {$u'_2$};
+\node[main node] (w') at (-4,-4) {$y_{+}$};
+\node[main node] (w') at (-4,-3) {$u_+$};
+
+%Edges
+\path[every node/.style={font=\sffamily\small}]
+  (x) edge[bend left = 60, blue, line width = 1.5pt] (y)
+  (y) edge[bend left = 80, blue, line width = 1.5pt] (x)
+  (x) edge[bend left = 50, black, line width = 1.5pt] (v)
+  (v) edge[bend left = 50, black, line width = 1.5pt] (x)
+  (x) edge[bend right = 70, black, line width = 1.5pt] (u)
+  (u) edge[bend right = 70, black, line width = 1.5pt] (x)
+  (u) edge[bend right = 40, black, line width = 1.5pt] (v)
+  (v) edge[bend right = 40, black, line width = 1.5pt] (u)
+  (w') edge[bend right = 90, red, dashed, line width = 1.5pt] (x)
+  (w') edge[bend right = 90, red, dashed, line width = 1.5pt] (u')
+  (x) edge[bend right = 90, green, line width = 1.5pt] (w')
+  (w') edge[bend right = 90, green, line width = 1.5pt] (u')
+  (w') edge[bend right = 90, green, line width = 1.5pt] (w)
+  (w) edge[bend right = 90, green, line width = 1.5pt] (w')
+  (x') edge[bend right = 90, green, line width = 1.5pt] (v')
+  (v') edge[bend right = 90, green, line width = 1.5pt] (x')
+  (w') edge[bend right = 90, red, dashed, line width = 1.5pt] (v')
+  (v') edge[bend right = 90, red, dashed, line width = 1.5pt] (w');
+  
+\node at (6,0) {$D$};
+\node at (6,-6) {$D'$};
+\end{tikzpicture}
+
+\end{document}

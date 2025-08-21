@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=4cm, auto]
+
+        \node [circle, fill=black!20] (v1) {$v_1$};
+        \node [circle, fill=black!20, right=of v1] (v2) {$v_2$};
+        \node [circle, fill=black!20, below right=0.5cm and 2cm of v1] (v3) {$v_3$};
+
+        \path [->]
+            (v1) edge[bend left] node [above] {$+$} (v3)
+            (v2) edge[bend left] node [above] {$-$} (v3)
+            (v1) edge[dashed, bend right] node [left] {,}'{+}'$\otimes${}'{+}' = '{+}'
+            (v2) edge[dashed, bend right] node [right] {,}'{+}'$\otimes${}'{-}' = '{-}'
+            (v3) edge[in=-90,out=90,looseness=10,distance=2cm] node [below] {,}'{+}'$\oplus${}'{-}' = '?'
+            ;
+
+    \end{tikzpicture}
+    \caption{An example for propagating the sign of $v_1$ to $v_3$. During the propagation, all other parents of $v_3$ (here only $v_2$) are also taken into account. Both $v_1$ and $v_2$ are assigned the sign '$+$' and therefore $v_3$ receives the two messages $\text{'$+$'} \otimes \text{'$+$'} = \text{'$+$'}$ and $\text{'$+$'} \otimes \text{'$-$'} = \text{'$-$'}$, which are then combined using the sign addition operator to obtain $\text{'$+$'} \oplus \text{'$-$'} = \text{'$?$'}$ as a new sign for $v_3$.}
+    \label{fig:propagation_example}
+\end{figure}
+
+\end{document}

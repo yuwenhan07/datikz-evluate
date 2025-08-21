@@ -1,0 +1,66 @@
+\documentclass{standalone}
+\usepackage{circuitikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.2]
+    % Define coordinates for the control qubit
+    \coordinate (A) at (0, 0);
+    \coordinate (B) at (0, -1);
+    \coordinate (C) at (0, -2);
+
+    % Control qubit labels
+    \node[anchor=east] at (A) {$q_0$};
+    \node[anchor=east] at (B) {$q_1$};
+    \node[anchor=east] at (C) {$q_2$};
+
+    % Define qubit positions
+    \coordinate (q0) at (2, 0);
+    \coordinate (q1a) at (4, -1);
+    \coordinate (q1b) at (6, -1);
+    \coordinate (q1c) at (8, -1);
+    \coordinate (q2a) at (5, -2);
+    \coordinate (q2b) at (7, -2);
+    \coordinate (q2c) at (9, -2);
+
+    % Qubits labels
+    \node[draw, minimum width=0.8cm, minimum height=0.8cm] at (q0) {$R_y \\
+    \lambda_1$};
+    \node[draw, minimum width=0.8cm, minimum height=0.8cm] at (q1a) {$R_y \\
+    \lambda_2$};
+    \node[draw, minimum width=0.8cm, minimum height=0.8cm] at (q1b) {$R_y \\
+    \lambda_3$};
+    \node[draw, minimum width=0.8cm, minimum height=0.8cm] at (q1c) {$R_y \\
+    \lambda_4$};
+    \node[draw, minimum width=0.8cm, minimum height=0.8cm] at (q2a) {$R_y \\
+    \lambda_5$};
+    \node[draw, minimum width=0.8cm, minimum height=0.8cm] at (q2b) {$R_y \\
+    \lambda_6$};
+    \node[draw, minimum width=0.8cm, minimum height=0.8cm] at (q2c) {$R_y \\
+    \lambda_7$};
+
+    % Control qubit connections
+    \draw[-] (A) -- (q0);
+    \draw[-] (B) -- (q1a);
+    \draw[-] (C) -- (q2a);
+
+    % CNOT gate connections
+    \draw (q0) -- coordinate[pos=0.5] (aux1) (q1a);
+    \draw (q1a) to[cnot] (q1b);
+    \draw (q1b) -- (q1c);
+    \draw (q1a) -- coordinate[pos=0.5] (aux2) (q2a);
+    \draw (q2a) -- coordinate[pos=0.5] (aux3) (q2b);
+    \draw (q2b) -- (q2c);
+    \draw (q1b) -- coordinate[pos=0.5] (aux4) (q2b);
+    \draw (q2b) -- coordinate[pos=0.5] (aux5) (q2c);
+
+    % Gates at intersections
+    \draw (aux1) node {$+$};
+    \draw (aux2) node {$+$};
+    \draw (aux3) node {$+$};
+    \draw (aux4) node {$+$};
+    \draw (aux5) node {$+$};
+
+\end{tikzpicture}
+
+\end{document}

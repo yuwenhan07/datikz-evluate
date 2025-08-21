@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\textbf{PD-L1 Model}, relating some key factors for tumor progression
+
+Shaded nodes compose the features \( X \). Tumor Growth (thick circle on the right) is the endpoint \( y \).
+
+\begin{tikzpicture}[->,>=stealth',auto,node distance=3cm,
+  thick,main node/.style={circle,fill=gray!20,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {Mutation\\Burden};
+  \node[main node] (2) [below left=of 1] {Immune\\Phenotype};
+  \node[main node] (3) [below right=of 2] {BL \\ PD-L1};
+  \node[main node] (4) [above right=of 3] {PD-L1\\change};
+  \node[main node] (5) [right=of 4] {Tumor\\Growth};
+  \node[main node] (6) [left=of 2] {TGF-\(\beta\)};
+  \node[main node] (7) [above=of 6] {BL \\ CD8+};
+  \node[main node] (8) [below=of 6] {};
+  \node[main node] (9) [above right=of 3] {};
+  \node[main node] (10) [above right=of 2] {};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge[bend left] node {} (5)
+    (2) edge[bend left] node {} (5)
+    (3) edge[bend left] node {} (5)
+    (3) edge node {} (4)
+    (4) edge node {} (5)
+    (4) edge node {} (8)
+    (6) edge node {} (5)
+    (6) edge node {} (7)
+    (6) edge node {} (8)
+    (7) edge node {} (8)
+    (8) edge node {} (9)
+    (8) edge node {} (10)
+    (9) edge node {} (5)
+    (10) edge node {} (5);
+\end{tikzpicture}
+
+\end{document}

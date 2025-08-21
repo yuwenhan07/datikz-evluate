@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{calc, matrix, arrows.meta}
+
+\begin{document}
+
+\section*{\(\sigma_0\): Cycle Notation}
+
+\[
+\sigma_0 = (\ s_1 \ s_2 \ s_3 \ |\ s_4 \ ) \ ( s_5 \ )
+\]
+
+\section*{\(\sigma_1\): Arrows Representation}
+
+\begin{tikzpicture}[scale=1.2]
+    % Define nodes for states
+    \node[draw=none] at (-2,0) {\(s_1\)};
+    \node[draw=none, fill=black!20] at (-1,0) {\(s_2\)};
+    \node[draw=none, fill=black!20] at (-0.5,0) {\(s_3\)};
+    \node[draw=none] at (0,0) {\(s_4\)};
+    \node[draw=none] at (1,0) {\(s_5\)};
+    \node[draw=none] at (2,0) {\(s_6\)};
+    \node[draw=none] at (2.5,0) {\(s_7\)};
+    \node[draw=none] at (3,0) {\(s_8\)};
+    \node[draw=none, fill=black!20] at (3.5,0) {\(s_9\)};
+    \node[draw=none] at (4,0) {\(s_{10}\)};
+    \node[draw=none] at (5,0) {\(s_{11}\)};
+    \node[draw=none] at (5.5,0) {\(s_{12}\)};
+    
+    % Draw solid arrow from s2 to s8
+    \draw[-Stealth] (s2) edge[bend right=15] node [above=2pt] {} (s8);
+    
+    % Draw dashed arrows for other transitions
+    \draw[dashed, -Stealth] (s1) edge[bend left=15] node [below=2pt] {} (s2);
+    \draw[dashed, -Stealth] (s3) edge[bend left=15] node [below=2pt] {} (s4);
+    \draw[dashed, -Stealth] (s6) edge[bend left=15] node [below=2pt] {} (s7);
+    \draw[dashed, -Stealth] (s8) edge[bend left=15] node [below=2pt] {} (s9);
+    
+    % Draw arrow from s9 to s10
+    \draw[-Stealth] (s9) edge[bend right=15] node [above=2pt] {} (s10);
+    
+    % Draw arrow from s10 to s11
+    \draw[-Stealth] (s10) edge[bend right=15] node [above=2pt] {} (s11);
+    
+    % Draw arrow from s11 to s12
+    \draw[-Stealth] (s11) edge[bend left=15] node [below=2pt] {} (s12);
+    
+    % Draw arrow from s12 back to s1
+    \draw[-Stealth] (s12) edge[bend left=15] node [below=2pt] {} (s1);
+\end{tikzpicture}
+
+\end{document}

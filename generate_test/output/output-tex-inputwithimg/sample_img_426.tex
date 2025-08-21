@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows.meta, positioning}
+
+\begin{document}
+
+% Define block styles
+\tikzset{
+  block/.style = {rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!20},
+  line/.style = {draw, -latex'},
+}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=15mm]
+        % Place nodes
+        \node [block] (PDF) {PDF};
+        \node [block, below of=PDF, node distance=15mm] (PyMuPDF) {PyMuPDF};
+        \node [block, below of=PyMuPDF, node distance=15mm] (Chroma) {Chroma};
+        \node [block, left of=Chroma, node distance=40mm] (VectorDB) {Vector\\ Database};
+        \node [block, right of=Chroma, node distance=45mm] (UserQ) {User Question};
+        \node [block, right of=UserQ, node distance=65mm] (FP) {Data\\ Processing};
+        \node [block, right of=FP, node distance=35mm] (FineTunedLLM) {Fine-tuned\\ LLM};
+        \node [block, below of=VectorDB, node distance=15mm] (QA1) {Query:\\ Answer 1};
+        \node [block, below of=UserQ, node distance=15mm] (QA2) {Query:\\ Answer 2};
+        \node [block, below of=QA1, node distance=15mm] (CombineAnswers) {Combine\\ Answers};
+        \node [block, below of=CombineAnswers, node distance=15mm] (LLM) {Foundational\\ LLM};
+        \node [block, below of=LLM, node distance=15mm] (FinalAnswer) {Final Answer};
+
+        % Draw edges
+        \path [line] (PDF) -- (PyMuPDF);
+        \path [line] (PyMuPDF) -- (Chroma);
+        \path [line] (Chroma) -- (VectorDB);
+        \path [line] (Chroma) -- (UserQ);
+        \path [line] (UserQ) -- (FP);
+        \path [line] (FP) -- (FineTunedLLM);
+        \path [line] (FineTunedLLM) -- (QA2);
+        \path [line] (UserQ) -- (CombineAnswers);
+        \path [line] (QA1) -- (CombineAnswers);
+        \path [line] (QA2) -- (CombineAnswers);
+        \path [line] (CombineAnswers) -- (LLM);
+        \path [line] (LLM) -- (FinalAnswer);
+    \end{tikzpicture}
+    \caption{Flowchart for Fine-tuning Enhanced RAG Algorithm}
+    \label{fig:flowchart_fine_tuning_rag}
+\end{figure}
+
+\textbf{Executive Diagram for Fine-tuning Enhanced RAG}: This diagram illustrates the process of integrating vector database queries with fine-tuned Language Models (LLMs) to enhance the response generation capabilities in a Retrieval-Augmented Generation (RAG) framework. By combining the strengths of vector databases and fine-tuned language models, the system leverages both contextualized data from the vector database and expert knowledge from the fine-tuned LLMs to produce highly relevant and accurate responses.
+
+\end{document}

@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{equation}
+    \Gamma_{\mathrm{d}} = \Gamma_1 \oplus \Gamma_{\mathrm{Wick}} \oplus \Gamma_2
+\end{equation}
+
+The figure illustrates the example trajectories of the $\nu$-integral poles in Eq.~(\ref{sec:theory:eq:gW_box}) arising from the (i) nuclear propagators in $T_3$, (ii) photon propagator, and (iii) electron propagator, with sets labeled by ${\mathcal N}$, $\gamma$, and $e$, respectively.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Draw the complex plane
+    \draw[->, ultra thick] (-4,0) -- (4,0) node[right] {$\Gamma_{\mathrm{real}}$};
+    \draw[->, thick] (0,-4) -- (0,4) node[above] {\small $\mathcal{I}m\ \nu$};
+    
+    % Draw the trajectories
+    \draw[-{Implies[reversed,scale=1.5]}] (-3,0) -- (-2,0);
+    \draw[-{Implies[reversed,scale=1.5]}] (-2,0) -- (-2,1);
+    \draw[blue!70!black, thick, ->-{Implies[scale=1.5]}] (-2,1) to [out=-90,in=-180] (-1,0)
+                                      to [out=0,in=-90] (2,3);
+    \draw[blue!70!black, thick, ->-{Implies[scale=1.5]}] (2,3) to [out=90,in=-135] (0,2)
+                                      to [out=45,in=90] (3,0);
+    \draw[orange!70!black, thick, ->-{Implies[scale=1.5]}] (3,0) to [out=-90,in=0] (2,-1)
+                                      to [out=180,in=-90] (-2,0);
+    \draw[orange!70!black, thick, ->-{Implies[scale=1.5]}] (-2,0) to [out=90,in=135] (-3,1)
+                                      to [out=-45,in=90] (0,0);
+    
+    % Label the trajectories
+    \node at (-3, 0.5) {${\mathsf P}_{\mathcal{N}}^{(+)}$};
+    \node at (-2, 1.5) {${\mathsf P}_{e}^{(+)}$};
+    \node at (-2, 2.5) {${\mathsf P}_{\gamma}^{(+)}$};
+    \node at (2, 3.5) {$\Gamma_{1}$};
+    \node at (2, -3.5) {$\Gamma_{2}$};
+    \node at (3, 0.5) {$\cdots$};
+    \node at (3, -0.5) {$\cdot$};
+    \node at (3.5, -0.5) {$\cdot$};
+    \node at (4.5, -0.5) {$\cdot$};
+    \node at (1, -0.5) {$\cdot$};
+    \node at (0, -1.5) {$\cdots$};
+    \node at (-1, -1.5) {$\cdot$};
+    \node at (-1.5, -0.5) {$\cdot$};
+    \node at (-3.5, -0.5) {$\cdot$};
+    \node at (-4, 0) {$\Gamma_{\mathrm{Wick}}$};
+    \node at (4, 0) {$\Gamma_{\mathrm{real}}$};
+\end{tikzpicture}
+\end{center}
+
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+
+        % Draw the O5^+ and O5^- branes
+        \draw[thick] (-2,0) -- (-1,0);
+        \draw[thick] (1,0) -- (2,0);
+        \draw[thick] (-1,0) -- (-1,1);
+        \draw[thick] (-1,1) -- (1,1);
+        \draw[thick] (1,1) -- (1,0);
+        \draw[dashed, thick] (-2,-1) -- (-1,-1);
+        \draw[dashed, thick] (1,-1) -- (2,-1);
+        \draw[dashed, thick] (-1,-1) -- (-1,0);
+        \draw[dashed, thick] (-1,0) -- (-1,1);
+        \draw[dashed, thick] (-1,1) -- (1,1);
+        \draw[dashed, thick] (1,1) -- (1,0);
+        \draw[dashed, thick] (1,0) -- (2,0);
+
+        % Label the branes
+        \node at (-2.5,0) {$\mathrm{O5}^{+}$};
+        \node at (2.5,0) {$\mathrm{O5}^{+}$};
+        \node at (0,0) {$\mathrm{O5}^{-}$};
+
+        % Draw the toric nodes
+        \foreach \i in {-1,0,...,4} {
+            \filldraw[black] (90-72*\i+180:1) circle (2pt);
+            \filldraw[white] (90-72*\i+180:1) circle (2.5pt);
+        }
+
+        % Connect the nodes
+        \draw (90:1) -- ++(-60:0.5) -- ++(-120:0.5) -- ++(-60:0.5) -- cycle;
+        \draw (90:1) -- ++(60:0.5) -- ++(120:0.5) -- ++(60:0.5) -- cycle;
+
+    \end{tikzpicture}
+    \caption{The brane construction of $SO(8)$ gauge group with toric nodes indicated by the brane construction. Notice that O$5^+$ branes are replaced by 3 nodes instead of 1. See \cite{Hayashi:2023boy} for details.}
+    \label{fig:so8_brane}
+\end{figure}
+
+\end{document}

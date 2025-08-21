@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{intersections}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Draw the large circles
+    \draw[name path=circle1] (0,0) circle (1);
+    \draw[name path=circle2] (-2,-2) circle (1);
+
+    % Draw the smaller red dotted circle U_{n,i_0}
+    \draw[dashed,red,name path=red_circle] (-1, -0.5) circle (0.5);
+
+    % Find the intersection points
+    \path [name intersections={of=red_circle and circle1, by={int1, int2}}];
+    \path [name intersections={of=red_circle and circle2, by={int3, int4}}];
+
+    % Draw the filled region J_{i_0}
+    \fill[red!20,intersection segments={of=red_circle and circle1,sequence={A0--B0}}];
+
+    % Mark the centers
+    \filldraw (int1) circle (1pt) node[left] {$e_1$};
+    \filldraw (int3) circle (1pt) node[right] {$e_2$};
+    \filldraw (0, 0) circle (1pt) node[below] {$i_0$};
+
+    % Labels
+    \node at (0.5, -1) {$T$};
+    \node at (-1.7, -1.5) {$T$};
+    \node at (-0.8, 1) {$J_{i_0}$};
+    \node at (1.3, 0.2) {$B_{e_2}(a_n)$};
+    \node at (-0.6, -0.7) {$U_{n,i_0}$};
+\end{tikzpicture}
+
+\end{document}

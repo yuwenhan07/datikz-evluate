@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8, transform shape, font=\scriptsize]
+
+        % Draw the timeline
+        \draw[thick,-Triangle] (0,0) -- (14,0);
+
+        % Labels for time steps
+        \foreach \x/\label in {1/1, 4/1+S_j, 11/1+S_j+S_{j'}}
+        {
+            \draw (\x,0) -- ++(0,-2mm) node[below] {$\label$};
+        }
+
+        % Labels for available jobs
+        \node at (0.5, -1) {\textbf{Available Jobs}};
+        \node at (0.5, -2) {$[n]$};
+
+        % Labels for jobs run
+        \node at (0.5, -3) {\textbf{Job Run}};
+        \node at (0.5, -4) {$j$};
+        \node at (0.5, -6) {$j'$};
+
+        % Labels for rewards up to time t
+        \node at (0.5, -5) {\textbf{Reward up to time $t$}};
+        \node at (0.5, -7) {$v_j$};
+        \node at (0.5, -9) {$v_j + v_{j'}$};
+
+        % Additional values
+        \node at (8.5, -1) {\dots};
+        \node at (12.5, -2) {$R_{[t+2,S_{j''}]}$};
+        \node at (12.5, -3) {$j''$};
+        \node at (12.5, -5) {$v_j + v_{j'} + v_{j''}$};
+
+    \end{tikzpicture}
+    \caption{Sample execution according to our model. We select job $j$ at time $t=1$, which gives a value $v_j$ and causes the system to be busy for $S_j$ time units. Once the system is free, we select job $j'$ from the set of available jobs and obtain an additional value $v_{j'}$, and so on.}
+    \label{fig:sample_execution}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, shapes.multipart}
+
+\tikzset{
+    circ/.style={circle, draw, minimum size=10mm},
+    box/.style={rectangle split, rectangle split parts=2, draw, text width=9mm, minimum height=6mm, align=center},
+    plus/.style={draw, minimum size=8mm},
+    tree/.style={level distance=15mm, sibling distance=30mm},
+    root/.style={circ},
+    step/.style={plus},
+    q/.style={box},
+    R/.style={root},
+    r/.style={R,text depth=+1ex},
+    q'.style={box,fill=white,minimum width=14mm,minimum height=12mm},
+    R'.style={R'},
+    step'.style={q'$},
+    line/.style={draw,-latex}
+}
+
+\begin{document}
+
+\begin{center}
+\begin{tikzpicture}[tree]
+    \node[r] {$\mathcal{R}_0$}
+        child{node[r] {$\mathcal{R}_1$}
+            child{node[q] {$q_{1}$}
+                child{node[R'] {$\mathbf{R}_{0}$}
+                    child{node[step]{}
+                        child{node[step']{$+$} }
+                        child{node[step']{$+$} }
+                        child{node[step']{}}
+                        child{node[step']{}}
+                        child{node[q'] {
+                            edge from parent[draw=none]
+                            node[left,near start] {$q^{(0)}_{4i}$}
+                            node[right,near end] {$q^{(1)}_{4i}$}
+                        } }
+                        child{node[q'] {
+                            edge from parent[draw=none]
+                            node[left,near start] {$q^{(0)}_{4i+1}$}
+                            node[right,near end] {$q^{(1)}_{4i+1}$}
+                        } }
+                        child{node[q'] {
+                            edge from parent[draw=none]
+                            node[left,near start] {$q^{(0)}_{4i+2}$}
+                            node[right,near end] {$q^{(1)}_{4i+2}$}
+                        } }
+                        child{node[q'] {
+                            edge from parent[draw=none]
+                            node[left,near start] {$q^{(0)}_{4i+3}$}
+                            node[right,near end] {$q^{(1)}_{4i+3}$}
+                        } }
+                    }
+                    child{node[R'] {$\mathbf{R}_{1}'$}
+                        child{node[R'] {$\mathbf{R}_{0}'$}}
+                    }
+                    child{node[R'] {$\mathbf{R}_{2}'$}}
+                }
+            }
+            child{node[plus] {}
+                child{node[plus] {}}
+                child{node[plus] {}}
+            }
+        };
+\end{tikzpicture}
+\captionof{figure}{A high-level scheme for sequential readout of word size $b=2$, an extension to the scheme in \cref{fig: unconditional_optimal_layout}.}
+\end{center}
+
+\end{document}

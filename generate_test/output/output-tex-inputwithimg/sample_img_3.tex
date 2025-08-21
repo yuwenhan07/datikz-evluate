@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[level distance=1.5cm,
+        level 1/.style={sibling distance=3.5cm},
+        level 2/.style={sibling distance=2cm},
+        level 3/.style={sibling distance=1.5cm},
+        level 4/.style={sibling distance=1cm}]
+        \node {$q_0$}
+            child { node {$c$} 
+                child { node {$c$} 
+                    child { node {$d$} 
+                        child { node {$c/d$}
+                            child { node {$c$} }
+                            child [missing] {} }
+                        child { node {$c$} } }
+                    child [missing] {}
+                    child { node {$c$}} }
+            }
+            child { node {$q_1$} 
+                child { node {$c$} }
+                child [missing] {}
+                child { node {$a$} 
+                    child { node {$q_k = q$} }
+                    child [missing] {}
+                    child { node {$a$} 
+                        child { node {$q_{k+p} = q$} }
+                        child [missing] {}
+                        child { node {$a$} 
+                            child { node {$q_{k+2p} = q$} }
+                            child [missing] {}
+                            child { node {$a$} 
+                                child { node {$q_{k+3p}$} }
+                                child [missing] {}
+                                child { node {$c$} } }
+                        } }
+                } };
+    \end{tikzpicture}
+    \caption{Illustration for the proof of Proposition~\ref{twoexamples}. All inner nodes of the tree are labeled with $a$. All leaves not shown in the illustration are labeled with $c$.}
+    \label{fig:tree-diagram}
+\end{figure}
+
+\end{document}

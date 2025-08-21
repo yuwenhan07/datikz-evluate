@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{tkz-graph}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    \GraphInit[vstyle=Normal]
+    \SetVertexNoLabel
+    \tikzset{VertexStyle/.style = {shape=circle,draw}}
+    % Left graph
+    \foreach \i in {0,1,...,9}{
+        \node (v\i) at ({360/10 * \i}:2) {};
+    }
+    \foreach \i in {0,1,...,8} {
+        \Edge(v\i)(v\i+1)
+    }
+    \Edge(v8)(v0)
+    \Edge*(v4)(v5) \Edge*(v1)(v8) \Edge*(v7)(v9) \Edge*(v0)(v6)
+
+    % Right graph
+    \GraphInit[vstyle=Normal]
+    \SetVertexNoLabel
+    \tikzset{VertexStyle/.style = {shape=circle,draw}}
+    \foreach \i in {0,1,...,5}{
+        \node (w\i) at ({360/6 * \i}:2) {};
+    }
+    \foreach \i in {0,1,...,5}{
+        \Edge(w\i)(w\i+1)
+    }
+    \Edge(w5)(w0)
+    \Edge[wstyle={solid},lw=1pt](w0)(w3)
+    \Edge[wstyle={solid},lw=1pt](w1)(w4)
+    \Edge[wstyle={solid},lw=1pt](w2)(w5)
+    \Edge[wstyle={solid},lw=1pt](w3)(w5)
+
+\end{tikzpicture}
+
+\end{document}

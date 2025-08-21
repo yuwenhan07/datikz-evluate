@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\textbf{single-cell gene expression data} \hspace{2cm} \textbf{optimization problem}
+
+\begin{tikzpicture}
+    \node [draw, align=center] at (-3.5,0.7) {
+        Genes $1,\ldots,n$ \\
+        \includegraphics[width=0.2\textwidth]{example-image-a} \\
+        Cell 1 \\ 
+        $\vdots$ \\
+        Cell $m$ \\ 
+        \includegraphics[width=0.2\textwidth]{example-image-b} \\
+        Time 0 \\ 
+    };
+    \node [draw, align=center] at (3.5,0.7) {Genes $1,\ldots,n$ \\  \includegraphics[width=0.2\textwidth]{example-image-c} \\};
+    \node [align=center, anchor=center] at (3.5,-2) {Time $t$};
+
+    \node [align=center, anchor=center] at (-3.5,-4) {covariance matrices of genes};
+    \node [align=center, anchor=center] at (3.5,-4) {$K(t)$};
+
+    \node [align=center, anchor=center] at (-3.5,-6.5) {covariance matrices of genes};
+    \node [draw, align=center] at (-3.5,-8.5) {\includegraphics[width=0.2\textwidth]{example-image-d}};
+    \node [align=center, anchor=center, align=left] at (-3.5,-9.5) {$K(0)$};
+
+    \node [align=center, anchor=center] at (3.5,-8.5) {\includegraphics[width=0.2\textwidth]{example-image-e}}; 
+
+    \node [align=center, anchor=center, align=right] at (3.5,-9.5) {$K(t)$};
+
+    \draw [->, very thick] (-3.5,-2) -- node[anchor=south] {} (-3.5,-4);
+    \draw [->, very thick] (3.5,-4) -- node[anchor=north] {} (3.5,-6.5);
+
+    \node [align=center, anchor=center] at (0.5,-11) {solve $A$, the GRN};
+
+    \draw [->, very thick, >=stealth] (3.5,-6.5) -- node[anchor=north] {} (3.5,-9.5);
+    \node [align=center, anchor=center] at (0.5,-8.5) {$K(t)=(I+tA^{\top})K(0)(I+tA)+D$};
+
+    \node [align=center, anchor=center] at (5.25,0.7) {\begin{aligned}
+        &\arg\min_A \frac{1}{2}\sum_{i\neq j}\{|K(t)\\
+        &-(I+tA^{\top})K(0)(I+tA)_{ij}^2+\lambda A_{ij}^2|\}.
+    \end{aligned}}
+\end{tikzpicture}
+
+\textbf{gene expression model}
+
+Workflow of the WENDY method. Given single-cell level gene expression data at two time points, where the joint distribution (cell correspondence) between two time points is unknown, first calculate the covariance matrix of gene expression for each time point. Then use the mathematical gene expression model to derive the equation of covariance matrices. Last, transform this into an optimization problem and solve the GRN numerically.
+
+\end{document}

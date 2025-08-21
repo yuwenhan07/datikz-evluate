@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \matrix (m) [matrix of nodes,
+            row sep=1em,
+            column sep=1em,
+            nodes={draw, minimum size=1cm, anchor=center}
+        ]
+        {
+            & \node (n1) {};\node (n2) {};\node (n3) {}; \\
+            \node (n4) {};\node (n5) {};\node (n6) {}; \\
+            \node (n7) {};\node (n8) {};\node (n9) {}; \\
+            \node (n10) {};\node (n11) {}; \\
+            \node (n12) {};\node (n13) {}; \\
+            \node (n14) {};\node (n15) {}; \\
+        };
+
+        \path (m-1-1) edge (m-1-3)
+              (m-1-2) edge (m-1-3)
+              (m-2-1) edge (m-2-3)
+              (m-2-2) edge (m-2-3)
+              (m-2-1) edge (m-2-3)
+              (m-3-1) edge (m-3-3)
+              (m-3-2) edge (m-3-3)
+              (m-3-1) edge (m-3-3)
+              (m-4-1) edge (m-4-3)
+              (m-4-2) edge (m-4-3)
+              (m-4-1) edge (m-4-3)
+              (m-5-1) edge (m-5-3)
+              (m-5-2) edge (m-5-3)
+              (m-5-1) edge (m-5-3)
+              (m-6-1) edge (m-6-3)
+              (m-6-2) edge (m-6-3)
+              (m-6-1) edge (m-6-3);
+
+% Draw large boxes
+        \draw[thick] (m-1-1.north west) rectangle (m-3-3.south east);
+        \draw[thick] (m-4-1.north west) rectangle (m-6-3.south east);
+        \draw[thick] (m-10-1.north west) rectangle (m-12-3.south east);
+        
+        % Annotations
+        \node at (m-4-2.north) {\small{\textbf{Daily Routing and Scheduling Problems}}};
+        \node at (m-1-2.north) {\small{\textbf{Combined Multi-Day Solutions}}};
+        \node at (m-10-2.north) {\small{\textbf{Combined Multi-Day Plans}}};
+    \end{tikzpicture}
+    \caption{Two-fold Decomposition of Problem Structure}
+    \label{fig:2fold_decomposition}
+\end{figure}
+
+\textmd{The small boxes represent daily routing and scheduling problems for each caregiver. The daily solutions for each caregiver are combined to create multi-day solutions, represented by the large boxes. The corresponding combination process ensures that the required number of treatments is met, and the minimum number of days between two visits is satisfied. The multi-day plans for each caregiver are further combined to ensure strict continuity of care and minimize overall cost.}
+
+\end{document}

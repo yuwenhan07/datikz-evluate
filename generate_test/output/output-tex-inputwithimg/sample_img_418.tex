@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles, quotes}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+    % Define coordinates
+    \coordinate (O) at (0, 0);
+    \coordinate (Z) at (0, -4);
+    \coordinate (Zs) at (0, 2);
+    \coordinate (Zv) at (-1, 0);
+
+    % Draw the circles
+    \draw[red, dashed] (O) circle [radius=1];
+    \draw[black, dashed] (Zv) circle [radius=1];
+
+    % Draw lines and arrows
+    \draw[->, blue] (O) -- node[left] {$z$} (Z);
+    \draw[->, blue] (Z) -- node[right] {$z_0$} (O);
+    \draw[->, blue] (Zs) -- node[right] {$z_s$} (O);
+    \draw[->, blue] (Zv) -- (Z);
+
+    % Draw angles
+    \pic[draw, "$\ell_1$", angle eccentricity=1.5, angle radius=1cm] {angle = Zs--O--Z};
+    \pic[draw, "$\ell_2$", angle eccentricity=1.5, angle radius=1cm] {angle = Zv--O--Z};
+
+    % Labels for distances and angles
+    \node[above] at (Zv) {$z_v$};
+    \node[below] at (O) {$z$};
+    \node[above] at (Zs) {$z_s$};
+    \node[above left] at (O) {$R$};
+    \node[below left] at (Zv) {$R$};
+    \node[below right] at (O) {$\ell_v$};
+    \node[above left] at (O) {$\theta_{\rm max}$};
+    \node[below left] at (O) {$\theta_v$};
+\end{tikzpicture}
+
+\end{document}

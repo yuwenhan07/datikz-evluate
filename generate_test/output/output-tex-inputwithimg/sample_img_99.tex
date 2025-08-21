@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{equation*}
+    \mathcal{Z}(\mathbf{q}) = 
+    \begin{tikzpicture}[scale=0.8]
+        % Grid lines
+        \draw[dotted] (-2,-2) grid (9,9);
+        
+        % Labeling the vertical axis
+        \node at (-2.5, 0) {$M$};
+        \node at (-2.5, 4) {$\sigma(1)$};
+        \node at (-2.5, 8) {$\sigma(N)$};
+        \node at (9.5, -2.5) {$x_1$};
+        \node at (9.5, 4.5) {$y_2$};
+        \node at (9.5, 8.5) {$y_{M+N}$};
+
+        % Arrows representing q values
+        \draw[blue, ultra thick, arrowin=65] (2, 7) -- (4, 7) -- (6, 4);
+        \draw[green, ultra thick, arrowin=50] (4, 7) -- (6, 5) -- (8, 5);
+        \draw[red, ultra thick, arrowin=140] (0, 3) -- (2, 3) -- (4, 5);
+        \draw[blue, ultra thick, arrowin=85] (4, 5) -- (6, 5) -- (8, 3);
+        \draw[blue, ultra thick, arrowin=185] (2, 3) -- (4, 3) -- (6, 1);
+        \draw[green, ultra thick, arrowin=130] (4, 3) -- (6, 1) -- (8, 1);
+        \draw[green, ultra thick, arrowin=175] (0, 1) -- (2, 1) -- (4, 3);
+        
+        % Labels for q values
+        \node at (8, 5) {$q_{N+1}$};
+        \node at (8, 3) {$q_N$};
+        \node at (8, 1) {$q_{N-1}$};
+        
+    \end{tikzpicture}
+\end{equation*}
+
+\textit{Shown above is the vertex model from \autoref{fg3} after using the Yang-Baxter equation to move the cross to the right of $\mathbb{Z}_{< 0} \times \llbracket 1, M + N \rrbracket$.}
+
+\end{document}

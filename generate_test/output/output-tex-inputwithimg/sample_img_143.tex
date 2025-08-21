@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-2,0) -- (8,0) node[right] {$t$};
+    \draw[->] (0,-0.3) -- (0,0.3);
+
+    % Marking times
+    \foreach \x/\y in {0/0, 3/B_1, 4/B_2, 6/B_3, 7/B_4} {
+        \draw (\x, -0.1) node[below] {\y};
+    }
+
+    % Plotting the switch points
+    \foreach \x in {0, 3, 4, 6} {
+        \draw[very thick, blue] (\x, -0.1) -- ++(90:0.5);
+        \draw[blue] (\x+0.5, 0) node[red, below] {Switch};
+    }
+
+    % Labels for initial time
+    \draw (0, -0.5) node[below] {$t=0$};
+\end{tikzpicture}
+\end{document}

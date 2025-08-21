@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5, every node/.style={draw, circle, fill=black, inner sep=0pt, minimum size=4pt}]
+
+% Left side of the diagram
+\node (x_left) at (0, 0) {};
+\node (y_left) at (0, 2) {};
+\draw[thick] (x_left) -- (y_left) node[midway, above] {$t$};
+\node at (1.5, 1) {$M_1$};
+\node at (2.5, 1) {$M_2$};
+\node at (2, -0.5) {$\gamma$};
+\node at (-0.5, 1) {$x$};
+\node at (0.5, 3) {$y$};
+
+% Middle part of the diagram
+\draw[ultra thick] (3, 0) -- (3, 2) node[midway, right] {};
+
+% Right part of the diagram
+\node (x_right) at (6, 0) {};
+\node (y_right) at (6, 2) {};
+\draw[thick] (x_right) -- (y_right) node[midway, above] {$t$};
+
+% Interface
+\node (gamma) at (5.5, 0) {};
+\node (gamma') at (5.5, 2) {};
+\draw[ultra thick] (gamma) -- (gamma') node[midway, right] {$\gamma$};
+
+% Summation term
+\node (sum_term) at (7, 1) {$+ \sum_{k \geq 0}$};
+\node (x_sum) at (8.5, 0) {};
+\node (y_sum) at (8.5, 2) {};
+\draw[thick] (x_sum) -- (y_sum);
+
+% Series of terms
+\foreach \i/\color in {0/green, 1/red, 2/red, 3/blue, 4/grey}{
+    \node (u_{\i}) at (\i + 10, 2) {};
+    \node (v_{\i}) at (\i + 10, 0) {};
+    \draw[wavy, \color] (u_{\i}) -- (v_{\i});
+    \draw[dotted] (gamma') to [out=180,in=90] ++(-0.5, -0.5) to [out=-90,in=180] (gamma) to [out=0,in=-90] ++(0.5, -0.5);
+    \node at (\i + 10, 2.5) {$u_{2k+\i}$};
+    \node at (\i + 10, 0.5) {$u_{2k}$};
+}
+
+\end{tikzpicture}
+
+\end{document}

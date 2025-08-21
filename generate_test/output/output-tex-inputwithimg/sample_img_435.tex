@@ -1,0 +1,33 @@
+\documentclass[tikz,border=3mm]{standalone}
+\usetikzlibrary{arrows.meta,
+                matrix}
+
+\begin{document}
+    \begin{tikzpicture}
+\matrix (m) [matrix of math nodes,
+             nodes={circle, draw, minimum size=20mm},
+             column sep=-\pgflinewidth/2,
+             row sep=\pgflinewidth,
+             ]
+{
+| (a) |  $ \hat{\sigma}_{0,0} $    &   &   &     \\
+        &  $ \hat{\sigma}_{1,0} $    &   &     \\
+        &   &  $ \hat{\sigma}_{0,1} $    &     \\
+        &   &   &  $ \hat{\sigma}_{1,1} $    \\
+};
+\draw[->] (a) edge[bend left=45,thick,red] node[above,sloped] {$ 0|\frac{1-\chi_-}{2}$} (m-1-2)
+          (a) edge[bend right=45,thick,red] node[below,sloped] {$ 0|\frac{1-\chi_+}{2}$} (m-2-3)
+          (a) edge[bend left=45,thick,blue] node[above,sloped] {$ 0|\frac{1-\chi_+}{2}$} (m-3-4)
+          (a) edge[bend right=45,thick,blue] node[below,sloped] {$ 0|\frac{1+\chi_-}{2}$} (m-4-1)
+          (m-1-2) edge[bend left=45,thick,green] node[above,sloped] {$ 1|\frac{\chi_-}{2}$} (m-2-3)
+          (m-1-2) edge[bend right=45,thick,green] node[below,sloped] {$ 1|\frac{\chi_+}{2}$} (m-4-1)
+          (m-3-4) edge[bend left=45,thick,green] node[above,sloped] {$ 1|\frac{\chi_+}{2}$} (m-1-2)
+          (m-3-4) edge[bend right=45,thick,green] node[below,sloped] {$ 1|\frac{\chi_-}{2}$} (m-2-3)
+          (m-4-1) edge[bend left=45,thick,green] node[above,sloped] {$ 1|\frac{1-\chi_+}{2}$} (m-3-4)
+          (m-4-1) edge[bend right=45,thick,green] node[below,sloped] {$ 1|\frac{1-\chi_-}{2}$} (m-1-2);
+
+\path[->]
+    (m-1-2) edge[loop above] node {$ 0|\frac{1-\chi_-}{2}$}
+    (m-3-4) edge[loop below] node {$ 1|\frac{1-\chi_-}{2}$};
+    \end{tikzpicture}
+\end{document}

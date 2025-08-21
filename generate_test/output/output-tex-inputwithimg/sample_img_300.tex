@@ -1,0 +1,45 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5, auto, node distance=60]
+    % Define colors
+    \definecolor{lightgray}{RGB}{247,247,247}
+    
+    \node[circle, draw, fill=white] (0) at (0,0) {0};
+    \node[circle, draw, fill=white] (1) at (3,0) {1};
+    \node[circle, draw, fill=white] (2) at (6,0) {2};
+    \node[circle, draw, fill=white] (3) at (9,0) {3};
+    
+    % Draw solid edges
+    \draw[very thick] (0) -- (1);
+    \draw[very thick] (1) -- (2);
+    \draw[very thick] (2) -- (3);
+    
+    % Draw dashed edges
+    \draw[dashed, very thick] (0) to[bend left=30] node[midway, above] {$r_1 D_j^{01}$} (1);
+    \draw[dashed, very thick] (1) to[bend left=30] node[midway, below] {$r_2 D_j^{12}$} (2);
+    \draw[dashed, very thick] (2) to[bend left=30] node[midway, above] {$r_1 D_j^{21}$} (3);
+    \draw[dashed, very thick] (0) to[bend right=30] node[midway, below] {$r_2 D_j^{02}$} (3);
+    
+    % Add labels for dashed edges
+    \node[fill=white, inner sep=1pt] at (9.5, -1.5) {$0$};
+    \node[fill=white, inner sep=1pt] at (9.5, 1.5) {$0$};
+    \node[fill=white, inner sep=1pt] at (4.5, -1.5) {$0$};
+    
+    % Set background color for the entire picture
+    \begin{scope}[on background layer]
+        \fill [lightgray] (-1,-2) rectangle (10,2);
+    \end{scope}
+    
+    % Set the overall scale of the picture
+    \begin{scope}[scale=0.8]
+        % Adjust nodes positions if needed
+        \node at (0,1) {};
+        \node at (3,1) {};
+        \node at (6,1) {};
+        \node at (9,1) {};
+    \end{scope}
+\end{tikzpicture}
+\end{document}

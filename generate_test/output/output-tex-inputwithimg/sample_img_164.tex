@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    % Vertices
+    \foreach \x in {0,...,6}
+        \node[circle,fill,inner sep=2pt] (a\x) at (\x,0) {};
+    \foreach \y in {0,...,7}
+        \node[circle,fill,inner sep=2pt] (b\y) at (0,\y+1) {};
+    \foreach \z in {1,...,4}
+        \node[circle,fill,inner sep=2pt] (c\z) at (3,\z+1) {};
+    \foreach \w in {0,...,3}
+        \node[circle,fill,inner sep=2pt] (d\w) at (6,\w+1) {};
+    
+    % Edges
+    \draw (a0) -- (a1) -- (a2) -- (a3) -- (a4) -- (a5) -- (a6);
+    \foreach \x in {1,...,6}
+        \draw (a\x) -- (b{\x-1});
+    \draw (a6) -- (b7);
+    \draw (b0) -- (c1);
+    \draw (c1) -- (b1) -- (c2);
+    \draw (c2) -- (b2) -- (c3);
+    \draw (c3) -- (b3);
+    \draw (c2) -- (d1);
+    \draw (c3) -- (d2);
+    \draw (c4) -- (d3);
+    \draw (c4) -- (d4);
+    
+    % Annotations
+    \node[above] at (b0|-a1) {$P_{12}$};
+    \node[left] at (b0|-a1) {$/x_{12}$};
+    \node[right] at (c1) {$x_{1}$};
+    \node[right] at (c2) {$x_{2}$};
+    \node[right] at (c3) {$x_{3}$};
+    \node[right] at (d1) {$x_{4}$};
+    \node[right] at (d2) {$x_{5}$};
+    \node[right] at (d3) {$x_{6}$};
+    \node[right] at (d4) {$x_{7}$};
+    \node[left] at (b0|-c1) {$x_{8}$};
+    \node[left] at (b1|-c2) {$x_{9}$};
+    \node[left] at (b2|-c3) {$x_{10}$};
+    \node[left] at (b3|-a6) {$x_{11}$};
+    
+    % Labels for P_2
+    \node[above] at (c3) {$P_{2}$};
+\end{tikzpicture}
+\captionof{figure}{The graph $C'_{12}$, where $Aut(C'_{12})=\mathbb{Z}_{3}$.}
+\end{document}

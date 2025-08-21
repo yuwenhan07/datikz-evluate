@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.75]
+    \draw[thick,->] (-0.2,0) -- (18,0);
+    \foreach \x/\y in {1/t_1, 2/t_2, 3/t_3, 4/t_4, 5/t_5, 6/t_6, 7/t_7, 8/t_8} {
+        \node at (\x,-0.5) {\small $\y$};
+        \draw[dashed] (0,\x-0.5) -- (18,\x-0.5);
+    }
+    
+    \matrix [matrix of nodes, row sep=2mm, column 1/.style={anchor=base west}, column 2/.style={anchor=west, minimum width=1cm}]
+    {
+        vehicle 1 & \draw[fill=white, draw=black, thick] (0,0) rectangle (2,1); \\
+        vehicle 2 & \draw[fill=gray!30, draw=black, thick] (0,0) rectangle (2,0.5); \draw[fill=gray!70, draw=black, thick] (2.5,0) rectangle (4,0.5); \draw[fill=black, draw=black, thick] (4.5,0) rectangle (6,0.5); \\
+        vehicle 3 & \draw[fill=black, draw=black, thick] (0,0) rectangle (2,0.5); \draw[fill=gray!70, draw=black, thick] (2.5,0) rectangle (6,0.5); \draw[fill=gray!30, draw=black, thick] (6.5,0) rectangle (8,1); \\
+        vehicle 4 & \draw[fill=black, draw=black, thick] (0,0) rectangle (2,0.5); \draw[fill=white, draw=black, thick] (2.5,0) rectangle (4,0.5); \draw[fill=gray!70, draw=black, thick] (4.5,0) rectangle (6,0.5); \draw[fill=gray!30, draw=black, thick] (6.5,0) rectangle (8,1); \\
+    };
+    
+    \matrix [matrix of nodes, anchor=south, right=0.5cm of matrix-1-1-2.north east, inner sep=0pt]
+    {
+        port 1 & \\
+        port 2 & \\
+        port 2 & \\
+        port 1 & \\
+    };
+    
+    \matrix [matrix of nodes, anchor=north, left=0.5cm of matrix-1-1-2.north east, inner sep=0pt]
+    {
+        & \\
+        & \\
+        & \\
+        & \\
+    };
+    
+    \matrix [matrix of nodes, anchor=south, right=0.5cm of matrix-1-1-2.south east, inner sep=0pt]
+    {
+        & \\
+        & \\
+        & \\
+        & \\
+    };
+\end{tikzpicture}
+
+\end{document}

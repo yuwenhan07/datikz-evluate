@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,
+                decorations.pathmorphing,  % for decoration
+                decorations.markings,      % for markings
+                matrix}
+
+\begin{document}
+    \begin{tikzpicture}[
+           > = Stealth,
+  wave/.style = {decorate, 
+                 decoration={zigzag,
+                             pre length=0.3cm, post length=0.3cm, segment length=6}},
+every label/.append style = {font=\small, inner sep=2pt},
+dot/.style = {circle, inner sep=1pt, fill=black, node contents={}}  
+                        ]
+\draw   ([yshift=7mm]0,0) coordinate(a)
+        -- ++ (9,0) coordinate(b);
+\draw[wave]  (a) node [left] {$\hbar\omega_p$} node[left] {}
+             -- node[label=above:$\alpha(t)$,pos=0.4] {}
+             node[pos=0.8] (x) {}
+             (b);
+%
+\draw[wave]
+    (a-|x)
+    -- node [above] {$\hbar\omega$} ++ (5,0)
+    node [right] {}  -- (b-|x) node [label=below:$\Gamma$] {};
+%
+\draw[wave]
+    (b-|x)
+    -- node [below] {$\hbar\omega$} ++ (-5,0)
+    node [left] {} -- (a-|x) node [label=below:$\gamma$] {};
+%
+\node[dot,below left] at (a) {};  % photon source
+\node[dot,below right] at (b) {};  % photon detector
+%
+\coordinate [label=below left:$T_b$] at (a|-dot);
+\end{tikzpicture}
+\end{document}

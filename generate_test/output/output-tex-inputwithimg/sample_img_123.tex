@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+        % Define coordinates for the vertices of the two graphs
+        \foreach \i in {1,...,8} {
+            \node[circle, fill=yellow!80, draw] (A\i) at ({45*(\i-1)}:2) {};
+            \node[circle, fill=red!80, draw] (B\i) at ({45*(\i-1)+90}:2) {};
+        }
+        % Draw edges within the circle graph
+        \draw[gray, dashed] (A1) -- (A2) -- (A3) -- (A4) -- (A5) -- (A6) -- (A7) -- (A8) -- cycle;
+        \foreach \i in {1,...,7} {
+            \draw[gray, thick] (A\i) -- (A\the\numexpr\i+1) -- (A\the\numexpr\i+2);
+        }
+        \draw[gray, thick] (A8) -- (A1) -- (A2);
+        
+        % Draw the arrow indicating the isomorphism
+        \draw[-{Stealth[length=3mm]}] (A6) to[bend left=20] node[midway, above] {$\cong$} (B7);
+        
+        % Draw the second graph with a line connecting the vertices
+        \foreach \i in {1,...,8} {
+            \node[circle, fill=red!80, draw] (C\i) at ({45*(\i-1)+90}:4) {};
+        }
+        \foreach \i in {1,...,7} {
+            \draw[gray, thick] (C\i) -- (C\the\numexpr\i+1);
+        }
+        \draw[gray, thick] (C8) -- (C1) -- (C2);
+        
+        % Draw the arrow indicating the isomorphism continuation
+        \draw[-{Stealth[length=3mm]}] (B8) to[bend right=20] (C1);
+        
+        % Labels
+        \node[below right] at (C8) {$\mathbb{Z}$};
+        
+        % Dotted rectangle for the first graph
+        \draw[dotted, rounded corners] (-1,-0.5) rectangle (3,2);
+    \end{tikzpicture}
+    \caption{Illustration of the proof of Proposition \ref{pro: LWconv}: Any ball of radius $r < \lfloor n/2 \rfloor$ in graph-distance (indicated by the dotted rectangle) around any vertex in $G_{k,n}$ is isomorphic to the respective ball around $0$ in $G_{k,\infty}$. On the other hand, for given $r \geq 1$ we can choose $n \geq \lceil 2r \rceil$ so that each ball of radius $r$ in $G_{k,n}$ is isomorphic to the respective ball around $0$ in $G_{k,\infty}$.}
+    \label{fig: Prop LWconv}
+\end{figure}
+
+\end{document}

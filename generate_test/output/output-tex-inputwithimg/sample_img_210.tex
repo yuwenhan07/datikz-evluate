@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+Let's consider the partition \(\sum_{k=1}^R (\beta_k + m_{k-1} + 1)(R - k + 1) - R\).
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.5]
+        % Draw the rectangle
+        \draw (0,0) rectangle (8,8);
+        
+        % Label the top right corner
+        \node at (4,7) {$R$};
+        
+        % Draw the horizontal line
+        \draw (0,7) -- (8,7);
+        
+        % Label the middle of the horizontal line
+        \node at (4,6) {$R-1$};
+        
+        % Label the left side
+        \node at (-2,6) {$\beta_2 + m_1 + 1$};
+        \node at (-2,3) {$\beta_R + m_{R-1} + 1$};
+        
+        % Draw the vertical lines from the bottom
+        \draw (0,2) -- (0,1);
+        \draw (0,0) -- (0,1);
+        
+        % Label the bottom lines
+        \node at (-0.5,1) {1};
+        \node at (-0.5,0) {1};
+        
+        % Draw dots
+        \filldraw[black] (0,2) circle (2pt);
+        \filldraw[black] (0,3) circle (2pt);
+        \filldraw[black] (0,4) circle (2pt);
+    \end{tikzpicture}
+\end{center}
+
+\end{document}

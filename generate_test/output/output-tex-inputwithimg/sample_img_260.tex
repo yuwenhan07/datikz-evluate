@@ -1,0 +1,54 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm,
+        height=8cm,
+        xlabel={Frequency(GHz)},
+        ylabel={$S_{11}$ (dB)},
+        xmin=325, xmax=500,
+        ymin=-50, ymax=0,
+        legend style={at={(0.97,0.97)}, anchor=north east},
+        ytick={-50,-25,0},
+        yticklabels={-50,$-25$,0},
+        grid=both,
+        minor tick num=4,
+        legend entries={Measurement, Simulation},
+        legend cell align={left},
+        label style={font=\small},
+        tick label style={font=\small},
+        title style={font=\scriptsize},
+        title={Return loss. Comparison of measured and simulated $S_{11}$ versus frequency of an aligned diagonal horn antenna. Measurement results of the WM570 open-ended waveguide probe are shown in the black line.},
+        ]
+        % Plot measurement data
+        \addplot[red, thick, mark=x] coordinates {
+            % Add your data points here
+            (325, -26)    % Example data point
+            (330, -26.5)
+            ...
+            (495, -24.5)
+        };
+        
+        % Plot simulation data
+        \addplot[black, thick, mark=x] coordinates {
+            % Add your data points here
+            (325, -27)    % Example data point
+            (330, -27.5)
+            ...
+            (495, -25.5)
+        };
+        
+        % Annotations
+        \node[above=2ex, anchor=west, font=\footnotesize] at (axis cs:360,-27) {Open-ended wg. probe};
+        \draw[-latex, gray] (axis cs:360,-27.5) -- (axis cs:355,-26);
+        
+        \node[above=2ex, anchor=west, font=\footnotesize] at (axis cs:390,-35) {Diagonal horn};
+        \draw[-latex, gray] (axis cs:390,-35.5) -- (axis cs:385,-34);
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{graphs, graphs.standard, quotes, arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[node distance = 2cm]
+    % Define nodes as circles
+    \node[circle,draw,fill=red!80] (yesterday) {yesterday.1.1};
+    \node[circle,draw,fill=red!80] (newyork) [right of=yesterday] {new york.0};
+    \node[circle,draw,fill=red!80] (c1) [below right of=newyork] {$c1$};
+    \node[circle,draw,fill=red!80] (he) [right of=c1] {he.1.1};
+    \node[circle,draw,fill=red!80] (car) [right of=c1] {car.1.1};
+    \node[circle,draw,fill=red!80] (ferrari) [below right of=car] {ferrari.1.1};
+    \node[circle,draw,fill=red!80] (c3) [below left of=he] {$c3$};
+    \node[circle,draw,fill=red!80] (fast) [left of=c3] {fast.1.1};
+    \node[circle,draw,fill=red!80] (red) [below of=c3] {red.1.1};
+
+    % Draw edges with labels using quotes
+    \path[->] (yesterday) edge ["TEMP"] (c1);
+    \path[->] (yesterday) edge ["SUBS"] (c3);
+    \path[->] (newyork) edge ["LOC"] (c1);
+    \path[->] (c1) edge ["AGT"] (he);
+    \path[->] (c1) edge ["OBJ"] (car);
+    \path[->] (c1) edge ["PROP"] (ferrari);
+    \path[->] (c3) edge ["MODP*"] (red);
+    \path[->] (c3) edge ["PROP"] (fast);
+
+    % Note the example for a random walk at the bottom
+    \node[text width=6cm,align=center,below=5cm of c3] {
+        \textbf{Example for a random walk} (yesterday.1.1 \textsc{temp}$^{-1}$ \textsc{obj} \textsc{prop} \textsc{modp*} red.1.1)
+    };
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,87 @@
+\documentclass[border=5pt]{standalone}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{groupplot}[group style={group size=2 by 1, vertical sep=3cm}, width=0.48\textwidth, height=0.48\textwidth]
+        \nextgroupplot[
+            xlabel=Load scaling,
+            ylabel=Failure size error (\%),
+            xmin=0.9, xmax=2.1,
+            ymin=-2, ymax=25,
+            xtick distance=0.2,
+            ytick distance=5,
+            legend cell align=left,
+            legend style={at={(axis description cs:0.6,1)},anchor=north west},
+            scatter/classes={
+                a={mark=x, red},
+                b={mark=square*, blue}
+            },
+            scatter src=explicit symbolic]
+            \addplot [
+                only marks, 
+                scatter, 
+                scatter plot style={
+                    visualization depends on={\thisrow{model} \as \model},
+                    /tikz/mark={\ifnumequal{\model}{1}{a}{b}},
+                }
+            ]
+            table [meta=model] {
+                x    y    model
+                1.2  5     1
+                1.5  10    1
+                2    2      1
+                1.3  15    1
+                1.1  20    1
+                1.4  5     2
+                1.7  5     2
+                1.2  10    2
+                1.6  5     2
+                1.8  5     2
+            };
+            \legend{GNN (bin average), Influence models}
+            
+        \nextgroupplot[
+            xlabel=Load scaling,
+            ylabel=Failure size error (\%),
+            xmin=0.9, xmax=2.1,
+            ymin=0, ymax=3.5,
+            xtick distance=0.2,
+            ytick distance=0.5,
+            legend cell align=left,
+            legend style={at={(axis description cs:0.6,1)},anchor=north west},
+            scatter/classes={
+                a={mark=x, red},
+                b={mark=square*, blue}
+            },
+            scatter src=explicit symbolic]
+            \addplot [
+                only marks, 
+                scatter, 
+                scatter plot style={
+                    visualization depends on={\thisrow{model} \as \model},
+                    /tikz/mark={\ifnumequal{\model}{1}{a}{b}},
+                }
+            ]
+            table [meta=model] {
+                x    y    model
+                1.2  1     1
+                1.5  2     1
+                2    1.5   1
+                1.3  3     1
+                1.1  3.5   1
+                1.4  1     2
+                1.7  1     2
+                1.2  1.5   2
+                1.6  1     2
+                1.8  1     2
+            };
+            \legend{GNN (bin average), Influence models}
+    \end{groupplot}
+    
+\end{tikzpicture}
+
+\end{document}

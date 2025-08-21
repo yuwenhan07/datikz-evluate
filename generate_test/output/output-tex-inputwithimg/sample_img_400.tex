@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        
+        % Draw the vertices
+        \node[circle,draw,inner sep=1pt] (a) at (0,0) {$v$};
+        \node[circle,draw,inner sep=1pt] (b) at (-1,-1) {};
+        \node[circle,draw,inner sep=1pt] (c) at (1,-1) {};
+        \node[circle,draw,inner sep=1pt] (d) at (1,1) {};
+        \node[circle,draw,inner sep=1pt] (e) at (-1,1) {};
+        
+        % Draw the edges for H^min
+        \draw[dotted] (a) -- (b);
+        \draw[dotted] (a) -- (c);
+        \draw[dotted] (a) -- (d);
+        \draw[dotted] (a) -- (e);
+        
+        % Draw the edges for H^max
+        \draw[thick] (b) -- (c);
+        \draw[thick] (c) -- (d);
+        \draw[thick] (d) -- (e);
+        \draw[thick] (e) -- (b);
+        
+        % Draw the arrows
+        \draw[->, thick] (a) -- ++(1.5,1.5);
+        \draw[->, thick] (a) -- ++(-1.5,-1.5);
+        \draw[->, thick] (b) -- ++(-1.5,0);
+        \draw[->, thick] (c) -- ++(1.5,0);
+        \draw[->, thick] (d) -- ++(0,1.5);
+        \draw[->, thick] (e) -- ++(0,-1.5);
+        
+        % Label the vertex v
+        \node at (a) [below right] {$v$};
+        
+    \end{tikzpicture}
+    \caption{Result from Example~\ref{ex:facefan2} with \(H_{-v}^{max}\) (solid line) and \(H_{-v}^{min}\) (dashed).}
+    \label{fig:example_facefan2}
+\end{figure}
+
+\end{document}

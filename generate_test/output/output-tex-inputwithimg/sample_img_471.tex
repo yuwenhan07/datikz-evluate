@@ -1,0 +1,20 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{path.png} % Replace 'path.png' with your actual image file name
+    \caption{An illustration of the preconditioning in~\Cref{algo:preconditioning}. The point \( x_0 \) is an approximation of \( x(t_0) \). The blue line represents the predictor step, and the blue dotted line represents the corrector step to get an approximation \( x_1 \) of \( x(t_1) \). The line segment \( s(t) \) connecting \( x_0 \) and \( x_1 \) is represented by the red line. The tilted interval box is centered at \( s(t) \) at each \( t \in [t_0, t_1] \) with the same radius.}
+    \label{fig:path}
+\end{figure}
+
+\section{Description of Algorithm~\ref{algo:preconditioning}}
+
+Here we describe the algorithm for preconditioning as shown in Figure~\ref{fig:path}. The algorithm aims to refine an initial approximation \( x_0 \) towards the true value \( x(t_0) \) through a series of steps. The predictor step, denoted by the blue solid line, estimates the next position \( x(t_1) \) using numerical methods. The corrector step, indicated by the blue dotted line, then refines this estimate to obtain a more accurate approximation \( x_1 \).
+
+The path \( s(t) \), which is the red line segment between \( x_0 \) and \( x_1 \), represents the trajectory used for the subsequent calculations. The interval box, shown as a tilted rectangle whose center moves along \( s(t) \), ensures that the radius remains constant throughout the process. This setup allows for a systematic refinement of the estimate over time.
+
+\end{document}

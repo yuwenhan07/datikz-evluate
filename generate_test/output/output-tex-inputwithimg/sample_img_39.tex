@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[level distance=1.5cm,
+  level 1/.style={sibling distance=3.5cm},
+  level 2/.style={sibling distance=1.75cm},
+  level 3/.style={sibling distance=0.875cm},
+  every node/.style = {scale=0.8, inner sep=1pt}]
+
+\node [diamond] {}
+    child {node [circle,fill] {} edge from parent node [left] {$S$}}
+    child {node [circle,fill] {} edge from parent node [right] {$C$}}
+    child {node [diamond] {}
+        child {node [circle,fill] {} edge from parent node [left] {$S$}}
+        child {node [circle,fill] {} edge from parent node [right] {$C$}}
+        child {node [diamond] {}
+            child {node [circle,fill] {} edge from parent node [left] {$S$}}
+            child {node [circle,fill] {} edge from parent node [right] {$C$}}
+            child {node [diamond] {}
+                child {node [circle,fill] {} edge from parent node [left] {$S$}}
+                child {node [circle,fill] {} edge from parent node [right] {$C$}}
+                child {node [diamond] {}
+                    child {node [circle,fill] {} edge from parent node [left] {$S$}}
+                    child {node [circle,fill] {} edge from parent node [right] {$C$}}
+                }
+            }
+        }
+        child {node [circle,fill] {} edge from parent node [right] {$C$}}
+    }
+    child {node [circle,fill] {} edge from parent node [right] {$C$}};
+\end{tikzpicture}
+
+\begin{tabular}{c c}
+[2]&[-2]\\
+[0]&[2]\\
+[-1]&[4]\\
+[-3]&[-1]\\
+[0]&[-4]\\
+[-2]&[0]\\
+[2]&[-1]\\
+[0]&[2]
+\end{tabular}
+
+\end{document}

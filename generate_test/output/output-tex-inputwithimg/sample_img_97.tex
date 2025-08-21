@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[scale=1.5]
+        % Nodes at the bottom level
+        \node at (0,0) (a0) {$1$};
+        \node at (1,-1) (a1) {$a$};
+        \node at (2,-1) (b1) {$b$};
+        
+        % Nodes at the second level
+        \node at (0.5,-2) (a21) {$ab$};
+        \node at (1.5,-2) (a22) {$aa$};
+        \node at (2.5,-2) (b22) {$bb$};
+        
+        % Nodes at the third level
+        \node at (-1,-3) (a31) {$abb$};
+        \node at (0,-3) (a32) {$aab$};
+        \node at (1,-3) (a33) {$aaa$};
+        \node at (2,-3) (b33) {$bbb$};
+        
+        % Connect edges properly
+        \draw (a0) -- (a1);
+        \draw (a0) -- (b1);
+        \draw (a1) -- (a21);
+        \draw (a1) -- (a22);
+        \draw (a21) -- (a31);
+        \draw (a21) -- (a32);
+        \draw (a22) -- (a32);
+        \draw (a22) -- (a33);
+        \draw (a31) -- (a41);
+        \draw (a31) -- (a42);
+        \draw (a32) -- (a42);
+        \draw (a32) -- (a43);
+        \draw (a33) -- (a43);
+        \draw (a33) -- (a44);
+        
+        \end{tikzpicture}
+\end{center}
+
+The monoid \( M = \langle a, b \mid ba = aa \rangle \) from the case \( r=2 \) of \cref{thm:rank_two}, an upho lattice with core \( M_2 \).
+
+\end{document}

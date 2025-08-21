@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel=$\alpha$,
+            ylabel={$q_\alpha[X^*_k]$},
+            xmin=0.0, xmax=1.2,
+            ymin=-3.5, ymax=3.5,
+            legend pos=outer north east,
+            legend cell align={left},
+            ymajorgrids=true,
+            grid style=dashed,
+            title=Quantiles of the estimator of $q_{\alpha}[X^{*}_k]$,
+            legend entries={Sample Size\\ 250, Sample Size\\ 500, Sample Size\\ 1,000, Sample Size\\ 2,000, Sample Size\\ 4,000},
+            legend to name=mylegend,
+            legend style={draw=none, fill=none, column sep=0.1cm},
+            ]
+            % Add your data here in the form of coordinates
+            \addplot[blue,dashed,mark=+,error bars/.cd,y dir=both,y explicit] coordinates {(0.0, -2.8) (0.1, -2.77) ...};
+            \addplot[blue] coordinates {(0.0, -2.8) (0.1, -2.77) ...};
+            % Continue adding other plots as needed
+            
+            \addplot[red, mark=none, thick] coordinates {(0.0, -2.8) (0.1, -2.77) ...};
+        \end{axis}
+    \end{tikzpicture}
+    \ref{mylegend} % Reference the legend
+\end{figure}
+
+\caption{Quantiles of the estimator of \( q_{\alpha}[X^{*}_k] \). The red line shows the true distribution of \( X^{*}_k \), while the blue lines represent the mean and the 5th and 95th percentiles of the simulated distribution of the estimator for different sample sizes.}
+\label{fig:quantiles}
+\end{document}

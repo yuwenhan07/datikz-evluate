@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{loglogaxis}[
+                xlabel=Time (t),
+                ylabel=Changes,
+                xmin=0, xmax=1,
+                ymin=1e-8, ymax=1e-7,
+                xtick={0,0.2,0.4,0.6,0.8,1},
+                ytick={1e-8,1e-7},
+                legend pos=south west,
+                grid=major,
+                log basis x=10,
+                log basis y=10,
+                ]
+                \addplot[color=red, thick] table [x index=0, y index=1] {data_example1.txt};
+                \addplot[color=blue, thick] table [x index=0, y index=1] {data_example2.txt};
+                \legend{L2 energy (N=100), L2 energy (N=1000)}
+            \end{loglogaxis}
+        \end{tikzpicture}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{loglogaxis}[
+                xlabel=Time (t),
+                ylabel=$\ell_2$ error,
+                xmin=0.001, xmax=10,
+                ymin=1e-10, ymax=1e0,
+                xtick={0.001,0.01,0.1,1,10},
+                ytick={1e-10,1e-8,1e-6,1e-4,1e-2,1e0},
+                legend pos=south west,
+                grid=major,
+                log basis x=10,
+                log basis y=10,
+                ]
+                \addplot[color=black, dashed, thick] table [x index=0, y index=1] {data_example3.txt};
+                \addplot[color=green, thick] table [x index=0, y index=1] {data_example4.txt};
+                \addplot[color=cyan, thick] table [x index=0, y index=1] {data_example5.txt};
+                \legend{Hamiltonian energy (N=1000), MHK Example ??, MHK Example ?}
+            \end{loglogaxis}
+        \end{tikzpicture}
+    \end{subfigure}
+    \caption{
+        Left: change of observables over time for Example \ref{ex: matrix, nonlinear, time-independent}.
+        Right: convergence of the $\ell_2$ error of $u$ at $t = 1$ computed by different methods for Examples \ref{ex: matrix, nonlinear, time-dependent}, \ref{ex: matrix, nonlinear, time-independent}.
+    }
+    \label{fig:example_convergence}
+\end{figure}
+
+\end{document}

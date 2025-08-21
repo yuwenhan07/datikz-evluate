@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Coordinates of vertices
+    \coordinate (A) at (-1,-1);
+    \coordinate (B) at (1,0);
+    \coordinate (C) at (0,1);
+    \coordinate (D) at (0,0);
+
+    % Drawing the edges of the polytope
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+    \draw[thick] (A) -- (C) -- (D) -- cycle;
+
+    % Drawing the dashed lines to represent the plane
+    \draw[dashed] (A) -- (B);
+    \draw[dashed] (A) -- (C);
+    \draw[dashed] (B) -- (D);
+    \draw[dashed] (C) -- (D);
+
+    % Labels for the coordinates
+    \node at (A) [left] {$v_1$};
+    \node at (B) [below left] {$v_2$};
+    \node at (C) [above right] {};
+    \node at (D) [right] {};
+
+    % Axes
+    \draw[->] (D) -- (4,0) node[right] {$u_1$};
+    \draw[->] (D) -- (0,2) node[above] {$h$};
+
+    % Grid lines
+    \draw[dashed] (A) -- (C) -- (1,1) node[above] {};
+    \draw[dashed] (A) -- (B) -- (1,-1) node[below] {};
+    \draw[dashed] (C) -- (D) -- (-1,1) node[left] {};
+    \draw[dashed] (B) -- (D) -- (-1,-1) node[left] {};
+
+    % Labels for the axes
+    \node at (3,0) [right] {$u_1$};
+    \node at (0,1.5) [above] {$h$};
+\end{tikzpicture}
+
+\end{document}

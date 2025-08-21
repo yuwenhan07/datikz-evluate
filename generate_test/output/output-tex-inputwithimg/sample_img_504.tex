@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Axis
+    \draw[->] (-0.5,0) -- (6,0);
+    \draw[->] (0,-0.5) -- (0,2);
+
+    % Labels
+    \node at (0, 2.25) {Graph($c+\d{T^+[u_c]}$)};
+    \node at (4, 0.75) {$\Omega_c$};
+    \node at (4.8, 0.75) {$\Omega_c$};
+    \node[below] at (3.5, -0.3) {$x_-(y)$};
+    \node[below] at (4.9, -0.3) {$x_+(y)$};
+    \node[below] at (5.5, -0.3) {$y$};
+
+    % Dotted lines
+    \draw[dashed] (3.5, 0) -- (3.5, -0.5);
+    \draw[dashed] (4.9, 0) -- (4.9, -0.5);
+    \draw[dashed] (5.5, 0) -- (5.5, -0.5);
+
+    % Curves
+    \draw[ultra thick, black] plot [smooth,tension=1] coordinates {(0,0) (0.5,1) (2.2,0.5) (2.5,1.5) (3,0.5) (3.5,2)};
+    \draw[ultra thick, purple] plot [smooth,tension=1] coordinates {(3.5,2) (3.7,1.5) (4.1,0.5) (4.5,1) (5.2,0.5) (5.5,0)};
+    \draw[ultra thick, orange] plot [smooth,tension=1] coordinates {(4.5,1) (4.7,0.5) (5.1,1) (5.4,0.5) (5.8,1) (6,0.5)};
+    \draw[ultra thick, green] plot [smooth,tension=1] coordinates {(5.8,1) (5.9,0.5) (6,0) (6.1,0.5) (6.2,0.2) (6.3,0)};
+    \draw[ultra thick, cyan] plot [smooth,tension=1] coordinates {(6.2,0.5) (6.3,0.2) (6.4,0) (6.5,0.2) (6.6,0) (6.7,0.2) (6.8,0) (6.9,0.2) (7,0)};
+
+    % Annotations
+    \node[above] at (3.5, -0.7) {$(\Sigma_+)^{-2}(y)$};
+\end{tikzpicture}
+
+\end{document}

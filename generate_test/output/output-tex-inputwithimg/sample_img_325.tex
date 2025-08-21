@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, matrix}
+
+\begin{document}
+
+\textbf{\ensuremath{\tau_{13}}} \quad
+
+\begin{tikzpicture}[baseline=(root.base), level distance=2cm,
+level 1/.style={sibling distance=4cm},
+level 2/.style={sibling distance=2cm},
+level 3/.style={sibling distance=1cm},
+every node/.style={draw, circle, inner sep=0.5mm}]
+    \node (root) {F : $((c,d),\{cd,dc\}),L:((c),
+    \{d\},\emptyset)$, $lw:(\{d\},
+    \emptyset)$, $p$:0.72}
+    child {node {15}\quad $\emptyset$}
+    child {node {14}\quad $\{d\}$}
+    child {node {13}{c, d}}
+    child {node {12}{a, c, d}};
+\end{tikzpicture}
+
+\textbf{\ensuremath{\tau_{12}}} \quad
+\begin{tabular}{l l l}
+    \multicolumn{3}{l}{{\emph{1}} F : $((a,c,d),\{ad,cd,da,dc\})$,} \\
+    & $L:((a,c),\{d\},
+    \emptyset)$, $lw:(\{d\},\emptyset)$, $p$:0.504\\
+    & \dots\\
+    \multicolumn{3}{l}{{\emph{2}} \dots}\\
+\end{tabular}
+
+\textbf{\ensuremath{\tau_{5}}} \quad
+\begin{tikzpicture}[baseline=(root.base), level distance=2cm,
+level 1/.style={sibling distance=4cm},
+level 2/.style={sibling distance=2cm},
+level 3/.style={sibling distance=1cm},
+every node/.style={draw, circle, inner sep=0.5mm}]
+    \node (root) {F : $((a,c,d),\{ad,da,cd,dc\})$,}
+    child {node {5}{a, c, d}{\emph{1}} {a, c, d}}
+    child {node {4}{a, c}}
+    child {node {10}{a, d}`;
+\end{tikzpicture}
+
+\textbf{\ensuremath{\tau_{11}}} \quad
+\begin{tabular}{l l l}
+    \multicolumn{3}{l}{{\emph{1}} F : $((a,c,d),\{ad,cd,da,dc\})$,} \\
+    & $L:((a,c),\{d\},
+    \emptyset)$, $lw:(\{d\},\emptyset)$, $p$:0.504\\
+    & \dots\\
+\end{tabular}
+
+\textbf{\ensuremath{\tau_1}} \quad
+\begin{tabular}{l l l}
+    \multicolumn{3}{l}{{\emph{1}} F : $((a),\emptyset)$, $L:((a),
+    \emptyset,\emptyset)$, $lw:(\emptyset,\emptyset)$, $p$:0.8} \\
+\end{tabular}
+
+\end{document}

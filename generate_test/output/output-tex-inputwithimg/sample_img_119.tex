@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.75, transform shape]
+        \draw [dashed][ultra thick] (-1,-4) -- (-1,8);
+        \draw [dashed][ultra thick] (9,-4) -- (9,8);
+
+        \foreach \y/\state in {0/in-use, 1/in-use, 2/free, 3/in-use, 100/in-use, 101/free, 103/in-use, 1000/in-use, 1001/free, 1002/in-use, 1002/in-use}
+        {
+            \draw (-0.5,\y) -- ++(10,0);
+            \filldraw[black] (0,\y) circle (2pt);
+            \node at (0.5,\y+0.25) {\small Chunk \y: \state};
+            \node at (5,\y+0.25) {\small header has P = 1};
+        }
+
+        \node at (5,5+0.25) {\small ...in-use...};
+        \node at (5,3+0.25) {\small ...in-use...};
+        \node at (5,9+0.25) {\small ...in-use...};
+
+        \foreach \y/\state in {6/in-use, 7/in-use, 8/free, 9/in-use}
+        {
+            \draw (-0.5,\y) -- ++(10,0);
+            \filldraw[black] (0,\y) circle (2pt);
+            \node at (0.5,\y+0.25) {\small Chunk \y: \state};
+            \node at (5,\y+0.25) {\small header has P = 1};
+        }
+    \end{tikzpicture}
+    \caption{Heap dump showing a mix of free and in-use chunks. Note: each chunk immediately after a free chunk has a P flag set to 0. Each rectangle represents a chunk.}
+    \label{fig:heap_dump}
+\end{figure}
+
+\end{document}

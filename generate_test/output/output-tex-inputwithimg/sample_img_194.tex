@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={font=\footnotesize}]
+    % Draw the horizontal line with labels
+    \draw (0,0) -- (10,0) node[right] {1};
+    \draw (0,{-0.05}) -- (10,{-0.05});
+    
+    % Draw the first partition interval
+    \fill (0,0) circle (0.5mm);
+    \node at (0,-0.15) {$0$};
+    
+    % Draw the second and third partitions intervals
+    \foreach \x in {1,...,4} {
+        \pgfmathsetmacro{\xpos}{(\x-1)/4*10}
+        \fill (\xpos,0) circle (0.5mm);
+        \node at (\xpos,-0.15) {$I^1_{\x}$};
+    }
+    
+    \draw (1,0) -- (4,0);
+    \draw (6,0) -- (9,0);
+    
+    % Draw the fourth partition interval
+    \foreach \x in {1,...,9} {
+        \pgfmathsetmacro{\xpos}{(1/4*\x - 1/2)*10}
+        \fill (\xpos,0) circle (0.5mm);
+        \node at (\xpos,-0.15) {$I^2_{\x}$};
+    }
+    
+    \draw (0,{-0.05}-0.5ex) -- (10,{-0.05}-0.5ex);
+    
+    % Label the top interval
+    \node at (5,0.4) {$I^0_1$};
+\end{tikzpicture}
+
+\end{document}

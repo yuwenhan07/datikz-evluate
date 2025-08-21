@@ -1,0 +1,39 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\newcommand{\MIV}{MIV}
+\newcommand{\Z}{Z}
+\newcommand{\Mone}{M_1}
+\newcommand{\Mtwo}{M_2}
+\newcommand{\Y}{Y}
+
+\begin{document}
+
+Assumption \ref{cond:irre1} rules out the blue dashed path. Assumption \ref{cond:irre2} rules out both of the red dot-dashed paths. All black solid paths are permissible under Assumptions \ref{cond:irre1} and \ref{cond:irre2}.
+
+\[
+    \begin{tikzpicture}[->,>=stealth',draw=black!50, node distance={30mm},
+    font=\normalsize, auto,
+    ]
+    \node (X) {$X^{\MIV}$};
+    \node (Mone) [below right of=X] {$\Mone$};
+    \node (Mtwo) [below left of=Mone, xshift=-40pt] {$\Mtwo$};
+    \node (Y) [below right of=Mone] {$\Y$};
+    \node (Z) [below left of=X, yshift=-50pt] {$\Z$};
+
+    \path[every node/.style={font=\sffamily\small}]
+    (X) edge[bend right=80] node {} (Y)
+    (X) edge[dashed, ultra thick, red] node {} (Mone)
+    (X) edge[dash pattern={on 0.84pt off 2.51pt}, color=blue, thick] node {} (Mtwo)
+    (Mone) edge[out=-60,in=40, looseness=1.75] node {} (Y)
+    (Mtwo) edge[out=90,in=-90] node {} (Y)
+    (Mone) edge[out=-90,in=90, looseness=0.5] node {} (Y)
+    (Mtwo) edge[out=0,in=180] node {} (Y)
+    (Z) edge node {} (Mone)
+    (Z) edge node {} (Mtwo);
+    \end{tikzpicture}
+\]
+
+\end{document}

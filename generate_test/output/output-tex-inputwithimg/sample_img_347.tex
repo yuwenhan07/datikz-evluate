@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm, semithick]
+        \tikzstyle{every state}=[fill=green!0,text=black]
+
+        \node[initial,state]            (A)                     {$\mathcal{S}_0$};
+        \node[state]                     (B) [right of=A] {$\ldots$};
+        \node[state]                     (C) [right of=B] {$\mathcal{S}_i$};
+        \node[state]                     (D) [right of=C] {$\ldots$};
+        \node[state]                     (E) [right of=D] {$\mathcal{S}_k$};
+        \node[state]                     (F) [below right of=C, yshift=-15mm] {$\mathcal{S}_{i+1}'$};
+        \node[state, accepting]          (G) [right of=F] {$S'$};
+
+        \path (A) edge                node [] {$d_i \ \ (\leq a)$} (C);
+        \path (A) edge                node [] {} (B);
+        \path (B) edge                node [] {} (C);
+        \path (C) edge                node [] {} (D);
+        \path (D) edge                node [] {} (E);
+        \path (F) edge                node [] {} (G);
+        \path (C) edge                node [] {$r$} (F);
+        \path (C) edge                node [] {$\leq a - d_i + b$} (G);
+
+        \node at (-4, 0.5) {$\tau \ :$};
+        \node at (-4, -3.5) {$\tau' \ :$};
+    \end{tikzpicture}
+\end{center}
+
+Description: An $(n,a,b)$-resilient trace $\tau$ and an $(n-1,a-d_i,b)$-resilient reaction trace $\tau'$. The \textcolor{blue}{blue} arrows correspond to system rule applications, while the \textcolor{red}{red} arrow represents an update rule application. Configurations in \textcolor{teal}{green} are goal configurations.
+
+\end{document}

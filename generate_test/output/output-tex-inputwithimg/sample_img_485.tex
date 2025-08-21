@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8, transform shape]
+        % Head
+        \draw[fill=white!70!gray] (-5,-2) rectangle (5,2);
+        \draw[fill=orange!50!brown] (0,0) ellipse (4cm and 2cm);
+        \draw[fill=gray!50!white] (-3,0) -- (3,0) -- (3,0.5) -- (-3,0.5) -- cycle;
+        \draw[red, thick, dashed] (-4,0) -- (4,0);
+        \draw[blue, thick, dashed] (-4,-1) -- (4,-1);
+        
+        % X-ray tube
+        \draw[fill=gray!80!black] (-5,-10) rectangle (5,-6);
+        \draw[fill=gray!50!white] (0,-8) ellipse (3cm and 1.5cm);
+        \draw[fill=gray!50!white] (-3,-8) -- (3,-8) -- (3,-10) -- (-3,-10) -- cycle;
+        
+        % X-ray beam
+        \draw[red, thick, dashed] (-4,0) -- (-4,10);
+        \draw[red, thick, dashed] (4,0) -- (4,10);
+        
+        % X-ray beam intersection
+        \filldraw[fill=green!50!black, draw=black, thick, opacity=0.5] (0,0) circle (0.1);
+        
+        % X-ray film
+        \node at (-6,2) {\includegraphics[width=4cm]{example-image}};
+        
+        % Labels
+        \node[below left=2cm and 1cm of -4,0] {X-ray tube};
+        \node[right=2cm of -4,0] {X-ray beam};
+        \node[left=2cm of -4,0] {X-ray beam};
+        \node[above=1cm of 0,0] {Head};
+        \node[below=1cm of 0,0] {X-ray beam intersection};
+    \end{tikzpicture}
+    \caption{Top view of a head with X-ray structures and positions.}
+    \label{fig:xray_head}
+\end{figure}
+
+\end{document}

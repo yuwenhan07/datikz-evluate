@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1cm]
+
+        % Left part
+        \node[circle, draw, fill=red] (u) at (0,0) {$u$};
+        \node[circle, draw, fill=blue, right=of u] (v) {$v$};
+        \draw [-] (u) -- node [midway, above] {$e$} (v);
+
+        \node[below=of u] (g_label) {$G=(\{u,v\},\{e\})$};
+
+        % Right part
+        \node[circle, draw, fill=yellow, right=6cm of v] (c) {$c$};
+        
+        \foreach \x in {1,2,3,4}{
+            \pgfmathtruncatemacro\y{\x+5}
+            \node[circle, draw, fill=blue, below=2cm of c] (\y) {$u_{\x}$};
+            \node[circle, draw, fill=red, below=2cm of u] (\x) {$u'_{\x}$};
+        }
+        
+        \foreach \x in {1,2,3,4}{
+            \pgfmathtruncatemacro\y{\x+5}
+            \node[circle, draw, fill=blue, above=2cm of c] (\y) {$v_{\x}$};
+            \node[circle, draw, fill=red, above=2cm of v] (\x) {$v'_{\x}$};
+        }
+
+        \foreach \x in {1,2,3,4}{
+            \pgfmathtruncatemacro\y{\x+5}
+            \draw [-] (\x) -- (\y);
+            \draw [-] (\x + 5) -- (\y - 5);
+            \draw [-] (\x + 5) -- (c);
+            \draw [-] (\x) -- (c);
+        }
+        
+        \node[right=2cm of g_label, align=center] {$D_2(G)$};
+
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

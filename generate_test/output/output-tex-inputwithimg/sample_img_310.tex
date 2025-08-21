@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Nodes representing vertices i and j with their associated Y-variables
+        \node[circle, draw=blue] (i) at (0, 0) {};
+        \node[circle, draw=blue] (j) at (3, 0) {};
+        \node[red] at (0, 0.5) {$w_i + c_i$};
+        \node[red] at (3, 1.5) {$w_i + a_i$};
+        \node[blue] at (1.5, -0.5) {$2u_i + e_i$};
+        
+        % Arrows representing interactions between vertices i and j
+        \draw[-{Latex[length=5mm]}] (i) -- node[left] {${\mathrm e}^{d_i-u_i-w_i}$} (j);
+        \draw[-{Latex[length=5mm]}] (j) -- node[right] {${\mathrm e}^{-u_i-w_i+b_i}$} (i);
+        \draw[-{Latex[length=5mm]}, dashed] (i) -- node[above] {${\mathrm e}^{\phantom{-}w_i+a_i}$} (j);
+        \draw[-{Latex[length=5mm]}, dashed] (j) -- node[below] {${\mathrm e}^{c_i+w_i}$} (i);
+        \draw[dashed, very thick] (i -- ++(-45:0.75cm)) arc (-45:45:0.75cm);
+        \draw[dashed, very thick] (j -- ++(45:0.75cm)) arc (45:-45:0.75cm);
+        
+        % Labels for the edges
+        \node[blue] at (1.6, 0) {${\mathrm e}^{2u_i + e_i}$};
+        \node[blue] at (1.6, -1) {${\mathrm e}^{c_i + w_i}$};
+        \node[blue] at (-1, -0.1) {${\mathrm e}^{d_i - u_i - w_i}$};
+        \node[blue] at (4, -0.1) {${\mathrm e}^{-u_i - w_i + b_i}$};
+    \end{tikzpicture}
+    
+    \caption{Graphical rule to parametrize the $Y$-variables in terms of $q$-Weyl algebra generators in the vicinity of the crossing $i$ (center) of the wiring diagram (black). A $Y$-variable situated at a vertex (blue circle) of the symmetric butterfly quiver acquires factors ${\mathrm e}^{a_i + w_i}$, ${\mathrm e}^{b_i - u_i - w_i}$, ${\mathrm e}^{c_i + w_i}$, ${\mathrm e}^{d_i - u_i - w_i}$ from the neighboring crossing $i$ of the wiring diagram if the vertex is located at the north, east, south, west of $i$, respectively. A $Y$-variable on the vertex $i$ is ${\mathrm e}^{e_i + 2u_i}$. The ordering of these factors from different $i$'s (if any) is inconsequential due to the commutativity of the associated canonical variables.}
+\end{figure}
+
+\end{document}

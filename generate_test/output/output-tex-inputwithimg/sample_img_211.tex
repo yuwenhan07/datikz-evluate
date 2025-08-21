@@ -1,0 +1,67 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.18}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel=$x$,
+        ylabel=$\left(V^{0}(x)+V^{\mathrm{e}}(x,t)\right)/100$, % Adjusted label to include the scaling factor
+        title={$t=0$},
+        domain=-4:4,
+        xmin=-5,xmax=5,
+        ymin=-0.5,ymax=1.5,
+        no markers,
+        legend style={at={(0.5,-0.3)},legend columns=3,font=\footnotesize}
+    ]
+        \addplot [blue] {cos(x)};
+        \addlegendentry{$\left(V^{0}(x)+V^{\mathrm{e}}(x,t)\right)/100$}
+        
+        \addplot [orange] {sin(x)};
+        \addlegendentry{$\operatorname{Im}(u(x,t))$}
+        
+        \addplot [green] {-0.5*abs(sin(x))};
+        \addlegendentry{$\operatorname{Re}(u(x,t))$}
+    \end{axis}
+    
+    \begin{axis}[
+        xlabel=$x$,
+        ylabel=$\left(V^{0}(x)+V^{\mathrm{e}}(x,t)\right)/100$, % Adjusted label to include the scaling factor
+        title={$t=T/2$},
+        domain=-4:4,
+        xmin=-5,xmax=5,
+        ymin=-0.5,ymax=1.5,
+        no markers,
+        forget plot % Prevents the previous axis from showing the same plots again
+    ]
+        \addplot [blue] {cos(x)};
+        \addlegendentry{$\left(V^{0}(x)+V^{\mathrm{e}}(x,t)\right)/100$}
+        
+        \addplot [orange] {sin(x)};
+        \addlegendentry{$\operatorname{Im}(u(x,t))$}
+        
+        \addplot [green] {-0.5*abs(sin(x))};
+        \addlegendentry{$\operatorname{Re}(u(x,t))$}
+    \end{axis}
+    
+    \begin{axis}[
+        xlabel=$x$,
+        ylabel=$\left(V^{0}(x)+V^{\mathrm{e}}(x,t)\right)/100$, % Adjusted label to include the scaling factor
+        title={$t=T$},
+        domain=-4:4,
+        xmin=-5,xmax=5,
+        ymin=-0.5,ymax=1.5,
+        no markers,
+        forget plot % Prevents the previous axis from showing the same plots again
+    ]
+        \addplot [blue] {cos(x)};
+        \addlegendentry{$\left(V^{0}(x)+V^{\mathrm{e}}(x,t)\right)/100$}
+        
+        \addplot [orange] {sin(x)};
+        \addlegendentry{$\operatorname{Im}(u(x,t))$}
+        
+        \addplot [green] {-0.5*abs(sin(x))};
+        \addlegendentry{$\operatorname{Re}(u(x,t))$}
+    \end{axis}
+\end{tikzpicture}
+\end{document}

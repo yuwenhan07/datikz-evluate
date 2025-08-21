@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \matrix (m2) [matrix of math nodes,
+                  nodes={draw, minimum width=1cm, minimum height=1cm},
+                  column sep=-\pgflinewidth,
+                  row sep=-\pgflinewidth] {
+        b_1 & b_2 \\
+        b_3 & b_4 \\
+    };
+    
+    \node[below left] at (m2.south west) {$B_2 = \text{Hex}(b_1b_2b_3b_4)$};
+    
+    \matrix (m4) [matrix of math nodes,
+                  nodes={draw, minimum width=1cm, minimum height=1cm},
+                  column sep=-\pgflinewidth,
+                  row sep=-\pgflinewidth,
+                  right=of m2] {
+        B_1^1 & B_2^2 \\
+        B_2^3 & B_2^4 \\
+    };
+    
+    \node[below] at (m4.south) {$B_4 = B_1^1B_2^2B_2^3B_2^4$};
+    
+    \matrix (m8) [matrix of math nodes,
+                  nodes={draw, minimum width=1cm, minimum height=1cm},
+                  column sep=-\pgflinewidth,
+                  row sep=-\pgflinewidth,
+                  right=of m4] {
+        B_1^1 & B_2^4 \\
+        B_4^3 & B_4^4 \\
+    };
+    
+    \node[below] at (m8.south) {$B_8 = B_1^1B_1^2B_4^3B_4^4$};
+\end{tikzpicture}
+\caption{Raster scan order of bits or blocks $B_n^i$.}
+\label{fig:raster_scan_order}
+\end{figure}
+
+The bits (\(b_i\)) or blocks \(B_n^i\) are read in a raster scan order, where \(n\) indicates the patch size and \(i\) indicates the bit or the block.
+\end{document}

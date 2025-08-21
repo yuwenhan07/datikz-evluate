@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        % Define coordinates
+        \coordinate (O) at (0, 0);
+        
+        % Elliptical region C_i
+        \draw[dotted] (-3, -3) rectangle (3, 3);
+        \node at (-1.5, 1.5) {$C_i$};
+        
+        % Elliptical region C_{i+1}
+        \draw[dotted] (-3.5, 2.5) rectangle (3.5, 4.5);
+        \node at (-1.75, 3.75) {$C_{i+1}$};
+        
+        % Axes and labels
+        \draw[->] (-4, 0) -- (4, 0) node[right] {$\rho^*$};
+        \draw[->] (0, -4) -- (0, 4) node[above] {$\theta$};
+        
+        % Points and labels
+        \fill (0, 0) circle (1.5pt) node[below left] {$b_i$};
+        \fill (0, 1) circle (1.5pt) node[below left] {$b_{i+1}$};
+        \fill (1.5, 1.5) circle (1.5pt) node[right] {$\hat{p}_{i+1}$};
+        \fill (-1.5, 1) circle (1.5pt) node[left] {$\hat{p}_i$};
+        
+        % Label for \Xi_i
+        \node at (0, 0.5) {$\Xi_i$};
+        
+        % Curved edges representing G_i and G_{i+1}
+        \draw [domain=-1.5:1.5, samples=100, smooth] plot (\x, {1 / (\x + 1)});
+        \draw [domain=-1.5:1.5, samples=100, smooth] plot (\x, {2 / (\x + 1)});
+        
+        % Label for \Gamma_i and \Gamma_{i+1}
+        \node at (2.5, 1.75) {$\hat{\Gamma}_{i+1}$};
+        \node at (2.5, 0.75) {$\hat{\Gamma}_i$};
+        
+        % Labels for E_{i,1}, E_{i,2}, E_{i-1,2}
+        \node at (0.5, 0.5) {$\hat{E}_{i,1}$};
+        \node at (0.75, 0) {$\hat{E}_{i,2}$};
+        \node at (0.5, -1) {$\hat{E}_{i-1,2}$};
+        
+        % Lines indicating G_{i-1}, G_i, and G_{i+1}
+        \draw [dashed] (-4, 0) -- (-4, 4);
+        \draw [dashed] (4, 0) -- (4, 4);
+        \node at (-4.5, 0) {$\rho^*$};
+        \node at (4.5, 0) {$\rho^*$};
+        
+    \end{tikzpicture}
+    \caption{Geometrical visualization of the construction in the proof of Theorem \ref{thm:elliptic_decomposition} for the case where $b_i$ is repelling and $b_{i+1}$ is attracting.}
+    \label{fig:elliptic_decomposition_case}
+\end{figure}
+
+\end{document}

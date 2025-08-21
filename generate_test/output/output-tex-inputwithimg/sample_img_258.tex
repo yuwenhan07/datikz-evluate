@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, graphicx, paralist, verbatim, enumitem, mathtools, bbm, mathrsfs, geometry, enumitem, multirow, booktabs, xparse, amsfonts, amssymb, amsmath, amscd, color, soul}
+\usepackage{tikz-cd}
+\usetikzlibrary{calc, intersections}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+    \draw[gray!50, thin] (0,0) grid (7,7);
+    \draw[->] (-0.2,0) -- (6.5,0);
+    \draw[->] (0,-0.2) -- (0,6.5);
+    % Plot points and draw lines
+    \foreach \x in {0,...,6} {
+        \foreach \y in {0,...,\x} {
+            \fill[red] (\x+0.5*\y,\x-0.5*\y) circle (3pt);
+        }
+    }
+    \draw[blue, thick, dashed, dotted] (0,6) -- (6,0);
+    \draw[blue, thick, dashed, dotted] (0,3) -- (3,0);
+    \foreach \x in {0,...,6} {
+        \node[below] at (\x,0) {\x};
+    }
+    \foreach \y in {0,...,6} {
+        \node[left] at (0,\y) {\y};
+    }
+    
+    \node at (2.5, 1.5) [shape=triangle, fill=blue, scale=0.5, rotate=-90] {};
+    
+    \node at (2.5, 1.5) {$\frac{1}{2}$};
+    
+    \node at (3, 2.5) {$\Delta$};
+    
+    \node at (2,0) [shape=triangle, fill=blue, scale=0.5, rotate=-90] {};
+    
+    \node at (2,-0.5) {$1$};
+    
+    \node at (0,0) [shape=triangle, fill=blue, scale=0.5, rotate=-90] {};
+    
+    \node at (0,-1) {$0$};
+    
+    \node at (1.5, 0.5) [shape=diamond, fill=blue, scale=0.5] {};
+    
+    \node at (1.5, 0) {$\frac{1}{2}$};
+    
+    \node at (3,3.5) [shape=diamond, fill=blue, scale=0.5] {};
+    
+    \node at (3,3) {$\frac{1}{2}$};
+    
+    %% Description
+    \node[anchor=north west, align=center] at (7,7)
+    {\begin{tabular}{p{8cm}}
+        The (maximal) support and the Newton polytope of a degree $6$ polynomial having a zero of multiplicity $4$ at $(0,0)$.
+    \end{tabular}};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,21 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+    \node[state] (q_0) {$0$};
+    \node[state] (q_1) [right of=q_0] {$1$};
+
+    \path[->]
+        (q_0) edge [loop above] node {$\begin{matrix} 0 \\ 1 \\ 0 \end{matrix}$} ()
+              edge                node {$\begin{matrix} 1 \\ 0 \\ 1 \end{matrix}$} (q_1)
+              edge [bend right]   node {$\begin{matrix} 0 \\ 1 \\ 1 \end{matrix}$} ()
+        (q_1) edge [loop above] node {$\begin{matrix} 1 \\ 0 \\ 1 \end{matrix}$} ()
+              edge                node {$\begin{matrix} 0 \\ 1 \\ 0 \end{matrix}$} (q_0)
+              edge [bend left]    node {$\begin{matrix} 1 \\ 0 \\ 0 \end{matrix}$} ();
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+Applying algorithms~\ref{alg:R1} and \ref{alg:R2} on the cluster graph from Fig.~4(d), for a univariate BM model with mean~0 and variance rate~1, edge lengths of 1 in the original network and inheritance probabilities of 0.5. Cluster/sepset precision matrices have rows labelled by variables to show the nodes in scope. Precision matrices show entries before regularization (black) and after one pass through the outermost loop of the algorithm (coloured adjustments).
+
+Left: regularization \ref{alg:R1} starting with variable $x_8$. Right: regularization \ref{alg:R2} starting with cluster $\{8, 10\}$, assuming that it is the first cluster scheduled to be processed. For \ref{alg:R2}, we differentiate the effects of lines 3-8 (blue) and lines 9-12 (red). For example, the resulting precision matrix for sepset $\{x_{10}\}$ is $[3\tilde{\epsilon}]$ after summing these effects, where $\tilde{\epsilon}=\epsilon+o(\epsilon)$.
+
+\begin{center}
+\begin{tabular}{c c c}
+$x_8 \left[\begin{array}{ccc}
+1 & -1/2 & -1/2 \\
+-1/2 & 1/4+\epsilon & 1/4 \\
+1/2 & 1/4 & 1/4
+\end{array}\right]$ &
+$x_{8} \left[\begin{array}{ccc}
+1 & -1/2 & -1/2 \\
+-1/2 & 1/4+3\tilde{\epsilon}-\epsilon & 1/4 \\
+1/2 & 1/4 & 1/4
+\end{array}\right]$ \\
+$x_8 [0+\epsilon]$ &
+$x_8 [0+\epsilon+3\tilde{\epsilon}-\epsilon]$ \\
+$x_8 [1+\epsilon]$ &
+$x_{10}[0+\epsilon+3\tilde{\epsilon}-\epsilon]$ \\
+$x_8[-1]$ &
+$x_{10}[-1]$ \\
+$x_8 [0+\epsilon]$ &
+$x_{10}[-1]$ \\
+$x_8 [1-\epsilon]$ &
+$x_{8} \left[\begin{array}{cc}
+1 & -1 \\
+-1 & 1+3\tilde{\epsilon}-\epsilon
+\end{array}\right]$
+\end{tabular}
+\end{center}
+
+\end{document}

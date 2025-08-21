@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+
+% Define colors for the vertices
+\definecolor{red}{RGB}{255,0,0}
+\definecolor{green}{RGB}{0,255,0}
+\definecolor{blue}{RGB}{0,0,255}
+\definecolor{black}{RGB}{0,0,0}
+
+% Draw the initial graph
+\draw[thick, black] (0,0) -- (2,0) -- (2,2) -- (0,2) -- (0,0);
+\draw[thick, blue] (0,0) -- (2,2);
+\draw[thick, red] (0,2) -- (2,0);
+
+% Draw the iterated blowup
+\node at (4,1) {$\longrightarrow$};
+
+\draw[fill=white] (6,1) circle (1);
+\draw[fill=white] (8,1) circle (1);
+\draw[fill=white] (7,-1) circle (1);
+\draw[fill=white] (7,3) circle (1);
+
+\foreach \x in {6, 8} {
+    \node at (\x+0.5, 1) {\includegraphics[scale=0.3]{path_graph}};
+    \node at (\x-0.5, 1) {\includegraphics[scale=0.3]{path_graph}};
+}
+\foreach \x in {7} {
+    \node at (\x+0.5, -0.5) {\includegraphics[scale=0.3]{path_graph}};
+    \node at (\x+0.5, 2.5) {\includegraphics[scale=0.3]{path_graph}};
+}
+
+% Color the edges
+\draw[fill=red] (7,-1) -- (7,1); % Red edge
+\draw[fill=blue] (7,1) -- (7,3); % Blue edge
+\draw[fill=green] (6,1) -- (8,1); % Green edge
+
+% Draw the thick edges
+\draw[line width=2pt, red] (0,0) -- (2,0);
+\draw[line width=2pt, green] (0,2) -- (2,2);
+\draw[line width=2pt, blue] (0,0) -- (0,2);
+
+\end{tikzpicture}
+
+\caption{Iterated blowup of a $K_4$. The ``thick'' edges indicate that all possible edges between the sets of vertices are given the specified color.}
+\label{fig:iterated_blowup_k4}
+
+\end{document}

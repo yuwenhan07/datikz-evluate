@@ -1,0 +1,40 @@
+\documentclass[border=5pt]{standalone}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{arrows.meta,angles,quotes}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Axes
+    \draw[-Straight Barb] (-1.5, 0) -- (3.5, 0) node[right] {$k$};
+    \draw[-Straight Barb] (0,-1.5) -- (0,3.5) node[above] {$k_z$};
+
+    % Ewald sphere and plane wave
+    \draw[thick, blue] plot[domain=-45:45, variable=\t] ({cos(\t)*1.8},{sin(\t)*1.8});
+    \draw[dashed, thick] (0,0) -- (2,2);
+    
+    % Labels
+    \filldraw[black] (1,0) circle (1.2pt) node[below] {$(0,0)$};
+    \filldraw[black] (0,1) circle (1.2pt) node[left] {$(0,k_z)$};
+    \filldraw[black] (2,2) circle (1.2pt) node[right] {$(k,0)$};
+    \filldraw[red] (1.8,1.8) circle (1.2pt) node[right] {$(k,k_z)$};
+    
+    % Arrows for theta and reciprocal wavelength
+    \draw[<->] (0.9, 0.9) -- node[midway, right] {$\frac{1}{\lambda}$} (2, 2);
+    \draw[<->] (0.1, 1.9) -- node[midway, right] {$\frac{1}{\lambda}$} (1, 3);
+    \draw[<->] (0.7, 1.3) -- node[midway, above left] {$\frac{\theta}{2}$} (1, 2);
+    \draw[<->] (0.3, 1.7) -- node[midway, above] {$\theta$} (1, 2);
+
+    % Paraboloid approximation
+    \draw[thick, dashed] (1, 0)--(1,2);
+    \draw[thick, black] plot[domain=-30:30, variable=\t] ({cos(\t)*1.8},{sin(\t)*0.9});
+    \filldraw[black] (1, 0) circle (1.2pt) node[below] {$(0,0)$};
+    \filldraw[black] (1, 2) circle (1.2pt) node[right] {$(k,0)$};
+    \filldraw[red] (1.8, 1.8) circle (1.2pt) node[right] {$(k,k_z)$};
+    
+    % Annotations
+    \node at (2.5, 0.5) {(Geometrical equivalence of the Ewald sphere curvature (blue) and the first Born approximation of the multislice formalism (black). The black curve represents the complex-valued exitwave, $\psi_\mathrm{exit}$, that is mapped onto a paraboloid in Fourier space (Eq. \eqref{eq:equiv}). At a small angle, $\theta\approx\lambda k$, the surface of the paraboloid approaches that of the Ewald sphere since $k_z = \tan\frac{\theta}{2} \approx \frac{k\theta}{2} = \frac{\lambda k^2}{2}$. For example, for a \SI{200}{\keV} electron beam ($\lambda\approx$\SI{0.025}{\angstrom}) and $k=\SI{1}{\Angstrom^{-1}}$, the angle is $\theta\approx$\SI{0.025}{\radian}.)};
+\end{tikzpicture}
+
+\end{document}

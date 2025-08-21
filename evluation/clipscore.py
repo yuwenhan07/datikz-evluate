@@ -8,17 +8,17 @@ import torch
 torch.cuda.empty_cache()
 
 # 加载数据集
-ds = load_dataset("nllg/datikz", split="test")
+ds = load_dataset("nllg/datikz-v3", split="test")
 
 # 创建 CLIPScore 实例
 clip_score_metric = CLIPScore()
 
 # 读取数据集中的所有参考文本
-text_references = [ds[i]["caption"] for i in range(560)]
+text_references = [ds[i]["caption"] for i in range(len(ds))]
 
 # 定义图像路径
-groundtruth_image_paths = ["../../groundtruth/groundtruth-pdf&png/sample_{}.png".format(i) for i in range(560)]
-generated_image_paths = ["../tikz_output/output-pdf&png/sample_{}.png".format(i) for i in range(560)]
+groundtruth_image_paths = ["../save_eval/datikz_test_data/images/test_{}.png".format(i) for i in range(len(ds))]
+generated_image_paths = ["../generate_test/save/png/sample_img_{}.png".format(i) for i in range(len(ds))]
 
 # 读取图像并确保文件存在
 def load_images(image_paths, references):

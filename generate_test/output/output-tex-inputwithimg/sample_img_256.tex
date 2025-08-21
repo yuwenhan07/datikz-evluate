@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm]
+    \matrix (m) [matrix of nodes, nodes={draw, minimum width=3em, minimum height=2em, anchor=center, text width=3em, align=center}]
+    {
+        & F_{j+1} | m_j \\
+        e^{G_{j+1} \tau_j} & e^{(G_{j+1} - G_j) \tau_j} \\
+    };
+    
+    \draw[dotted] (m-1-1.north west) -- (m-1-2.north east);
+    \draw (m-1-1.south west) -- (m-1-2.south east);
+    \draw[dotted] (m-2-1.north east) -- (m-2-2.south west);
+    
+    \node at (current bounding box.north west) [above left, xshift=1cm, yshift=-0.5cm] {Computing $F_{j+1}|m_j$ from $e^{G_{j+1}\tau_j}$ and $e^{(G_{j+1}-G_j)\tau_j}$};
+\end{tikzpicture}
+
+\end{document}

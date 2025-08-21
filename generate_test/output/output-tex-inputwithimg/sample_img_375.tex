@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=10mm]
+    % Define nodes for the random variables (patients)
+    \node[obs] (x1) {$x_1$};
+    \node[obs, right=of x1] (x2) {$x_2$};
+    \node[obs, right=of x2] (x3) {$x_3$};
+    \node[obs, right=of x3] (xi) {$x_i$};
+    \node[obs, right=of xi] (xj) {$x_j$};
+    \node[obs, right=of xj] (xn) {$x_n$};
+
+    % Define nodes for the factor nodes (tests/measurements)
+    \node[latent, above=of x1, yshift=-5mm] (f1) {$f_1$};
+    \node[latent, right=of f1] (f2) {$f_2$};
+    \node[latent, right=of f2] (dots) {$\cdots$};
+    \node[latent, right=of dots] (fmu) {$f_{\mu}$};
+    \node[latent, right=of fmu] (dots2) {$\cdots$};
+    \node[latent, right=of dots2] (fn) {$f_{n}$};
+
+    % Connect the random variables to their corresponding factor nodes
+    \edge {x1} {f1};
+    \edge {x2} {f1};
+    \edge {x2} {f2};
+    \edge {x3} {f2};
+    \edge {xi} {fmu};
+    \edge {xi} {fmu};
+    \edge {xj} {fn};
+    \edge {xj} {fn};
+
+    % Connect the factor nodes to the network
+    \edge {f1} {dots};
+    \edge {f2} {dots};
+    \edge {fmu} {dots2};
+    \edge {fn} {dots2};
+
+    % Label the arrows
+    \node[left=of f1, yshift=-5mm] (mf1) {$\mathbf{m}_{\mathbf{f}_1}$};
+    \node[above=of mf1] {x_1};
+    \node[right=of fn, yshift=-5mm] (nf) {$\mathbf{n}_{\mathbf{x}_n \rightarrow \mathbf{f}_m}$};
+    \node[above=of nf] {x_n};
+
+    % Draw lines between the label and the arrow
+    \draw (mf1) -- (x1);
+    \draw (nf) -- (xn);
+
+    % Add descriptions
+    \node[below=of f1] {Random variables (circles) represent each of the $N$ patients tested.};
+    \node[below=of f2] {Each factor node (squares) represents a test/measurement $\mu$.};
+    \node[below=of fm1] {The degree of the factor nodes is $K$ and of the variable nodes is $L$.};
+\end{tikzpicture}
+
+\end{document}

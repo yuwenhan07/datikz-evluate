@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Define styles for nodes and edges
+        \tikzstyle{vertex}=[circle, fill, inner sep=2pt]
+        \tikzstyle{red} = [circle, fill=red, scale=0.8]
+        \tikzstyle{blue} = [circle, fill=blue, scale=0.8]
+        \tikzstyle{green} = [circle, fill=green, scale=0.8]
+
+        % Draw the main tree structure
+        \node[vertex] (root) at (0,0) {};
+        \foreach \x/\col in {-3/red, -2/blue, -1/blue, 0/blue, 1/blue, 2/blue, 3/blue} {
+            \draw[->, dashed] (root) -- (\x,-3);
+            \node[vertex] (level1-\x) at (\x,-3) {};
+        }
+        \node[vertex] (level2-1) at (-4,-6) {};
+        \node[vertex] (level2-2) at (-2,-6) {};
+        \node[vertex] (level2-3) at (0,-6) {};
+        \node[vertex] (level2-4) at (2,-6) {};
+        \node[vertex] (level2-5) at (4,-6) {};
+
+        \foreach \x/\col in {-2/red, -1/red, 0/red, 1/red, 2/red, 3/red} {
+            \draw[->, dashed] (level1-0) -- (\x,-9);
+            \node[vertex] (level3-\x) at (\x,-9) {};
+        }
+
+        % Draw the smaller trees
+        \foreach \x/\col/\text in {%
+            -4/green/1,
+            -2/green/{n+1 \\ n+2},
+            0/green/{2n+1 \\ 2n+2},
+            2/green/{mn-n+1 \\ mn-n+2},
+        } {
+            \path (\x,-6) ++(0,-3) node[vertex] (temp) {};
+            \draw[->, dashed] (level2-\x) -- (temp);
+            \node[vertex] (level4-\x) at (temp |- level2-\x) {};
+            \node[vertex] (level5-\x) at (temp |- level3-\x) {};
+            \node[vertex] (level6-\x) at (temp |- level1-0) {};
+        }
+
+        \foreach \x/\y/\text in {%
+            0/0/\\
+            -2/-3/{2n \\ \vdots \\ 2n},
+            0/-3/{n+1 \\ n+2},
+            2/-3/{2n+1 \\ 2n+2},
+        } {
+            \node[] at (\x,\y) {\text};
+        }
+
+        \foreach \x/\y/\text in {%
+            0/0/\\
+            -4/-3/{1 \\ 2},
+            0/-3/{n+1 \\ n+2},
+            2/-3/{2n+1 \\ 2n+2},
+        } {
+            \node[] at (\x,\y) {\text};
+        }
+    \end{tikzpicture}
+    \caption{A proper $mn$-coloring of $(S_{1,m}\square S_{1,n})_\delta$. The vertices of the same degree in $S_{1,m}\square S_{1,n}$ are indicated by the same color and are pairwise adjacent in $(S_{1,m}\square S_{1,n})_\delta$. Each double line denotes the edges connecting the copies of the same vertex in $S_{1,n}$. Note that the blue and the green will have the same degree when $m=n$.}
+    \label{fig:mn_coloring}
+\end{figure}
+
+\end{document}

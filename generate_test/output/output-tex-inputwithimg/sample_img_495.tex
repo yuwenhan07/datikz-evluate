@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm]
+\node[state] (1) {$1$};
+\node[state] (lambda-2) [right of=1] {$\lambda^{-2}$};
+\node[state] (lambda-3) [right of=lambda-2] {$\lambda^{-3}$};
+\node[state] (lambda-4) [right of=lambda-3] {$\lambda^{-4}$};
+\node[state] (lambda-5) [below right of=lambda-4] {$\lambda^{-5}$};
+\node[state] (lambda-6) [below of=lambda-5] {$\lambda^{-6}$};
+\node[state] (lambda-1) [above left of=lambda-2] {$\lambda^{-1}$};
+\node[state] (lambda-2-2) [above of=lambda-4] {$\lambda^{-2}$};
+\node[state] (lambda-3-3) [above of=lambda-5] {$\lambda^{-3}$};
+\node[state] (lambda-4-4) [below right of=lambda-5] {$\lambda^{-4}$};
+\node[state] (lambda-5-5) [below right of=lambda-3-3] {$\lambda^{-5}$};
+
+\path[->] (1) edge node [left] {$b$} (lambda-2)
+          (1) edge node [above] {$a$} (lambda-1)
+          (lambda-2) edge node [left] {$a$} (lambda-3)
+          (lambda-2) edge node [below] {$b$} (lambda-1)
+          (lambda-3) edge node [above] {$a$} (lambda-4)
+          (lambda-3) edge node [below] {$b$} (lambda-2)
+          (lambda-4) edge node [above] {$a$} (lambda-5)
+          (lambda-4) edge node [below] {$b$} (lambda-3)
+          (lambda-5) edge node [above] {$a$} (lambda-6)
+          (lambda-5) edge node [below] {$b$} (lambda-4)
+          (lambda-6) edge node [above] {$a$} (lambda-5-5)
+          (lambda-6) edge node [below] {$b$} (lambda-5);
+\end{tikzpicture}
+\end{center}
+
+The invariant probability measure on the Fibonacci shift ($\lambda = \text{the golden ratio}$). Circled nodes represent elements from the language $L = \{w \in \{a, b\}^* \mid |w|_a \equiv 0 \mod 2\}$.
+\end{document}

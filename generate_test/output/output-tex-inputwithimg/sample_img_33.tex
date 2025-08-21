@@ -1,0 +1,48 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define colors
+\definecolor{kappa}{RGB}{255,0,0}
+\definecolor{gamma}{RGB}{255,255,0}
+\definecolor{opportunity}{RGB}{255,255,102}
+
+\begin{tikzpicture}[scale=0.8]
+    % Axes
+    \draw [->] (0,0) -- (10,0) node [below] {\textit{stage} $\ell$};
+    \draw [->] (0,0) -- (0,4) node [left] {\textit{index}};
+    
+    % Drawing the graph
+    \filldraw[draw=kappa, fill=white, opacity=0.3] (1,3) rectangle (3.5,4);
+    \draw[dashed, draw=blue!50!cyan] (1,3) -- (3.5,3);
+    
+    % Draw vertical lines and labels
+    \draw[black, line width=1pt] (1.5,3.5) -- (1.5,4);
+    \node at (1.25, 3.25) {$\sigma_{i}^{(\ell)}$};
+    
+    % Draw horizontal lines with labels
+    \draw[kappa, line width=1pt] (1.5,3.5) -- (1.5,2.75);
+    \node at (0.5, 2.75) {$\kappa_{i}^{(\ell)}$};
+    
+    % Opportunity region
+    \filldraw[draw=opportunity, fill=gamma, opacity=0.3] (6,1) rectangle (9,2);
+    
+    % Draw dashed line for opportunity
+    \draw[dashed, draw=red!50!magenta] (6,1) -- (9,1);
+    
+    % Draw horizontal lines for opportunity
+    \draw[magenta, line width=1pt] (6.5,1.25) -- (8.5,1.25);
+    \draw[magenta, line width=1pt] (7,1.5) -- (8,1.5);
+    \draw[magenta, line width=1pt] (7.5,1.75) -- (8.5,1.75);
+    \draw[magenta, line width=1pt] (8,2) -- (8.5,2);
+    
+    % Draw label for opportunity
+    \node at (7.5, 0.5) {\textcolor{orange}{\textit{opportunity for exposure}}};
+    
+    % Draw black line for gamma
+    \draw[black, line width=1pt] (6.5,2) -- (8.5,2);
+    \node at (7.5, 2.25) {$\gamma_{i}^{(\ell)}$};
+\end{tikzpicture}
+
+\end{document}

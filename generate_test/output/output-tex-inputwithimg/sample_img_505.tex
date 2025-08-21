@@ -1,0 +1,35 @@
+\documentclass[border=5pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+    \begin{tikzpicture}[scale=0.9]
+        % Draw dashed grid lines
+        \draw[dotted] (-6,-1) grid (6,8);
+        
+        % Draw the colored paths
+        \draw[red, line width=1mm] (-6,-1) -- (-6,0) -- (-3,0) -- (-3,1) -- (-3,2) -- (-3,3) -- (-3,4) -- (-3,5) -- (-3,6) -- (-3,7) -- (-3,8);
+        \draw[blue, line width=1mm] (-6,-1) -- (-6,-2) -- (-3,-2) -- (-3,-3) -- (-3,-4) -- (-3,-5) -- (-3,-6) -- (-3,-7) -- (-3,-8);
+        
+        % Labels for the sequence $\sigma(N)$, $\sigma(2)$, and $\sigma(1)$
+        \node at (-6.5, 0.5) {$\sigma(N)$};
+        \node at (-6.5, -0.5) {$\sigma(2)$};
+        \node at (-6.5, -1.5) {$\sigma(1)$};
+        
+        % Axis labels
+        \node at (-5.5, -1.5) {$\dots$};
+        \node at (-4.5, -1.5) {$\dots$};
+        
+        % Number labels for the x-axis
+        \node at (-4.5, -0.5) {$-5$};
+        \node at (-3.5, -0.5) {$-4$};
+        \node at (-2.5, -0.5) {$-3$};
+        \node at (-1.5, -0.5) {$-2$};
+        \node at (-0.5, -0.5) {$-1$};
+        \node at (0.5, -0.5) {$-1$};
+        \node at (1.5, -0.5) {$-1$};
+        \node at (2.5, -0.5) {$-1$};
+        \node at (3.5, -0.5) {$-1$};
+        \node at (4.5, -0.5) {$-1$};
+    \end{tikzpicture}
+\end{document}

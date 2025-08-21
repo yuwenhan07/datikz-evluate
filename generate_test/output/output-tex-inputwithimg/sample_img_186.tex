@@ -1,0 +1,59 @@
+\documentclass[border=3mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\begin{document}
+
+\begin{tikzpicture}[line width=0.8pt]
+% Define the radius of the circle
+\def\radio{2.5cm}
+% Define the shift angle for the labels
+\def\ang{60}
+% Define the radius for the inner circle
+\def\radio{2.5cm}
+
+% Draw the outer circle with labels
+\draw[black] (0,0) circle (\radio);
+\foreach \i in {1,...,32}{
+  \node[circle,scale=0.4] at ({\ang*\i}:1.5cm) {\i};
+  \ifnum\i=9\relax
+    \draw[thick,blue,-{Stealth[length=3mm]}] ({\ang*\i}:1.5cm) -- ++({\ang*\i-90}:1cm) node[above right,font=\tiny] {$e_\i$};
+  \else
+    \draw[thick,blue,-{Stealth[length=3mm]}] ({\ang*\i}:1.5cm) -- ++({\ang*\i-90}:1cm) node[above right,font=\tiny] {$e_{\i}$};
+  \fi
+}
+
+% Draw the inner circle with labels
+\draw[gray!50] (0,0) circle (\radio-1);
+
+% Define the injection styles
+\tikzset{
+  adjacent/.style={solid,fill=black},
+  allAgainst1/.style={solid,fill=green},
+  allAgainst9/.style={dashed,fill=purple},
+  allAgainst17/.style={dotted,fill=magenta},
+  allAgainst25/.style={dash dot,domain=0:\radio,variable=\y,fill=orange},
+}
+
+% Draw the injections
+\path foreach \i/\j in {1/adjacent, 1/allAgainst1, 9/allAgainst9, 17/allAgainst17, 25/allAgainst25} {
+  (\ang*\i:\radio) node [circle, scale=0.25, fill] {} 
+  -- (\ang*\i:{\radio-1}) 
+  node [circle, scale=0.25, fill, \j] {}
+};
+
+% Define the legend
+\path (0.5*\radio+1.5, -0.5*\radio) rectangle +(1.5, 1.5);
+\foreach \i/\j in {adjacent/black, allAgainst1/green, allAgainst9/purple, allAgainst17/magenta, allAgainst25/orange} {
+  \fill[\j] (-0.5,0.75-\i*0.25) circle(0.25) node[right, font=\small] {\i};
+}
+
+% Draw the legend text
+\draw (0.5*\radio+2.5, 0.5*\radio) node[right, font=\small] {always included};
+\draw (0.5*\radio+2.5, 0.35*\radio) node[right, font=\small, dashed] {excluded in level 2};
+\draw (0.5*\radio+2.5, 0.20*\radio) node[right, font=\small, densely dotted] {excluded in level 4};
+\draw (0.5*\radio+2.5, 0.05*\radio) node[right, font=\small, dash dot] {excluded in level 6};
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,47 @@
+\documentclass[tikz,border=5mm]{standalone}
+\begin{document}
+
+\begin{tikzpicture}[scale=0.75]
+    \def\n{4}
+    \tikzstyle{vertex}=[circle, draw, fill=white!20, minimum size=6pt,
+                        inner sep=0pt]
+
+    % Define vertices
+    \foreach \i in {0,...,\n}{%
+        \foreach \j [evaluate=\j as \k using {int(\i-\j)}] in {0,...,\i}{%
+            \pgfmathtruncatemacro{\set}{\i-\k}
+            \node[vertex] (\set) at ({30*\k},{30*(\i-\k)}) {$\{ \i , \k \}$};
+        }
+    }
+
+    % Draw edges
+    \foreach \i [count=\j from 1] in {0,...,\n}{
+        \foreach \k [count=\l from 1, evaluate=\l as \m using {int(\j+\k)}] in {0,...,\i}{%
+            \pgfmathtruncatemacro{\set}{\j-\m}
+            \draw (\m) -- (\set);
+        }
+    }
+
+    % Color vertices with different properties
+    \node[vertex, color=orange] (A) at (-1,0) {$\{1,2,3\}$};
+    \node[vertex, color=green] (B) at (1,0) {$\{1,3,4\}$};
+    \node[vertex, color=blue] (C) at (3,0) {$\{2,3,4\}$};
+    \node[vertex, color=violet] (D) at (-2,-3) {$\{1,2\}$};
+    \node[vertex, color=violet] (E) at (-1,-3) {$\{1,3\}$};
+    \node[vertex, color=violet] (F) at (0,-3) {$\{2,3\}$};
+
+    % Draw connections between colored vertices
+    \draw (A) -- (D) -- (E) -- (F) -- (A);
+    \draw (B) -- (E) -- (F) -- (B);
+    \draw (C) -- (F) -- (E) -- (C);
+
+    % Label the topmost vertex
+    \node[vertex, color=blue] (G) at (0,3) {$\{1,2,3,4\}$};
+
+    % Draw connections to G
+    \draw (D) -- (G) (E) -- (G) (F) -- (G);
+    \draw (A) -- (G) (B) -- (G) (C) -- (G);
+
+\end{tikzpicture}
+
+\end{document}

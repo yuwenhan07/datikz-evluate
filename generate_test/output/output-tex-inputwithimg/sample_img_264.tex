@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\begin{document}
+
+% Define the data for the plot
+\def\data{
+    -10/0.5, -9/0.8, -8/0.6, -7/0.4, -6/0.3, -5/0.2, -4/0.1, -3/0, -2/-0.1,
+    -1/-0.2, 0/-0.3, 1/-0.4, 2/-0.5, 3/-0.6, 4/-0.7, 5/-0.8, 6/-0.9,
+    7/-1, 8/-0.9, 9/-0.8, 10/-0.7
+}
+
+% Set up the plot
+\begin{tikzpicture}
+    \begin{axis}[
+        width=0.8\textwidth,
+        height=0.6\textwidth,
+        xmin=-15,
+        xmax=15,
+        ymin=-1,
+        ymax=1,
+        xlabel={Base position relative to alignment},
+        ylabel={Conditional mean},
+        grid=major,
+        minor tick num=4,
+        xtick={-15,-12,...,15},
+        ytick={-1,-0.8,...,1},
+        legend style={at={(0.95,0.95)}, anchor=north east, draw=black, fill=white, font=\footnotesize}
+    ]
+        % Plot the data points with markers
+        \addplot[only marks, mark size=1pt, mark options={solid}, mark repeat=1] table [x index=0, y index=1] {\data};
+        
+        % Fill the area under the line
+        \draw[fill=gray!20] (-10,0.5) -- plot coordinates {(-10,0.5)} -- plot coordinates {(9,-0.8)} -- (9,-0.8);
+        
+        % Add the legend
+        \legend{A, C, G, T};
+    \end{axis}
+\end{tikzpicture}
+
+% Caption for the plot
+\captionof{figure}{Mean (normalized) R10 ONT raw signal value conditioned on individual nucleotide base at a given (relative) position. Over a large set of sequences aligned to their respective raw signals, the value on the y-axis is calculated by computing the average signal value over all signal values where a base at a position relative to the aligned base attains the value indicated by the legend. The lighter area indicates the sequence of bases that forms the \(10\)-mers used in this work. Our \(10\)-mers extend the \(9\)-mers used in ONTs Remora toolkit by the leftmost base at relative position \(-7\), which allows us to more effectively handle the step-back mechanism described later.}
+
+\end{document}

@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = {$x$},
+            ylabel = {$f(x)$},
+            ymin=-0.5, ymax=1.5,
+            xmin=-2, xmax=6,
+            xtick={-1, 1, 3},
+            ytick={0.5},
+            xticklabels={$-\frac{\eta}{2}$, $\frac{\eta}{2}$, $\eta$, },
+            yticklabels={$\frac{1}{2}$},
+            domain=-1.5:3.5,
+            samples=100,
+            clip=false,
+        ]
+            \addplot [red, thick, smooth] expression {1/2 - exp(1)/2*x} 
+                node [pos=0.4, above right] {};
+            \addplot [green, thick, smooth] expression {1/2 - exp(1)/2*x} 
+                node [pos=0.9, below right] {};
+            \addplot [blue, thick, smooth] expression {x - 1.5};
+            \draw[dotted, gray] (-1,0) -- (-1,1);
+            \draw[dotted, gray] (1,0) -- (1,1);
+            \draw[dotted, gray] (-1,0) -- (-1,0.5);
+            \draw[dotted, gray] (0,0) -- (0,0.5);
+            \draw[dotted, gray] (1,0) -- (1,1);
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Example of a smooth convex function $f$ defined on $]-\frac{\eta}{2}, a[$, satisfying $f(r) = \frac{1}{2} - \frac{e}{2}r$ on $]-\frac{\eta}{2}, \frac{\eta}{2}[$ and $f(r) = a - r$ on $]\eta, a[$.}
+    \label{fig:smooth_convex_function}
+\end{figure}
+
+\end{document}

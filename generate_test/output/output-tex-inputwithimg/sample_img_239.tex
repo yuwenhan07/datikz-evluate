@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+        % Define the grid
+        \draw[help lines] (-0.5,-0.5) grid (19.5,19.5);
+        
+        % Draw the shadowed regions
+        \fill[dashed,hatch color=gray!50,hatch distance=3pt,hatch angle=45] (-0.5,-0.5) rectangle (1.5,19.5);
+        \fill[dashed,hatch color=gray!50,hatch distance=3pt,hatch angle=45] (-0.5,-0.5) rectangle (19.5,1.5);
+        
+        % Add the arrows
+        \draw[->,thick] (20.5,0) -- (20.5,20);
+        \draw[->,thick] (0,20.5) -- (20,20.5);
+        
+        % Add the numbers and labels
+        \foreach \x in {0,...,4} {
+            \node at (\x,19.75) {\x};
+            \foreach \y in {0,...,4} {
+                \node at (\y,\x) {\y};
+            }
+        }
+        \node at (5,20.25) {$B_k^*$};
+        \node at (20.25,5) {$B_{k+1}^*$};
+        
+        % Mark the 5's and their positions
+        \node[red] at (4,4) {5};
+        \node[red] at (1,1) {5};
+        
+        % Add the "No 5's!" labels
+        \node at (-2,10) {\textbf{No 5's!}};
+        \node at (10,-2) {\textbf{No 5's!}};
+        
+        % Add the arrows indicating the shadowing
+        \draw[->,thick] (1.5,4) -- (1.5,5);
+        \draw[->,thick] (4,1.5) -- (5,1.5);
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

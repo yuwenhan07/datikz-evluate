@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm, >=stealth]
+        % Nodes
+        \node[state] (S) {$S$};
+        \node[state, right of=S, node distance=5cm] (E) {$E$};
+        \node[state, above of=S, node distance=2cm] (V1) {$V_1$};
+        \node[state, right of=V1, node distance=6.2cm] (V2) {$V_2$};
+        \node[state, right of=V2, node distance=4.5cm] (V3) {$V_3$};
+        \node[state, below of=E, node distance=3cm] (U) {$U$};
+        \node[state, below of=S, node distance=3cm] (R) {$R$};
+        
+        % Edges
+        \draw[->] (S) -- node[below] {$\gamma$} (R);
+        \draw[->] (R) -- node[above] {$\delta$} (U);
+        \draw[->] (U) -- node[right] {$\tau + \lambda$} (E);
+        \draw[->] (E) -- node[above] {$\beta$} (S);
+        \draw[->] (S) -- node[left] {$\alpha_1$} (V1);
+        \draw[->] (V1) -- node[above] {$(Wait~28~days)$} (V2);
+        \draw[->] (V2) -- node[above] {$(Wait~180~days)$} (V3);
+        \draw[->] (V3) -- node[right] {$\alpha_3$} (E);
+        \draw[->] (S) -- node[below left] {$\phi_1$} (V2);
+        \draw[->] (V1) -- node[above] {$\phi_2$} (V3);
+        \draw[->] (V2) -- node[above] {$\phi_3$} (V3);
+    \end{tikzpicture}
+    \caption{The SIRV Compartmental Model for COVID-19 Disease Dynamics}
+    \label{fig:SIRV}
+\end{figure}
+
+Description:
+The SIRV compartmental model for COVID-19 disease dynamics consists of five compartments: Susceptible ($S$), Exposed ($E$), Quarantined ($U$), Recovered ($R$), and Vaccinated ($V$). Three doses of vaccination are assumed, with the second and third vaccinations occurring 28 and 180 days after the first dose. The transmission rate is $\beta$, the recovery rate is $\delta$, the rate of returning to susceptibility after infection is $\gamma$, the vaccination rates are $\alpha_i$ for the $i^{th}$ vaccination, calculated as a proportion of those who received the previous vaccine, and $\phi_i$ represents the rate at which vaccination immunity wears off for the $i^{th}$ vaccination.
+\end{document}

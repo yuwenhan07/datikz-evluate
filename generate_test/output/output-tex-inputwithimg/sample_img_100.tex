@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, graphicx}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{pathetic_path.png} % ReplaceWithPatheticPath.png with your actual image file name
+    \caption{This diagram summarizes the variation of constraints that appear when one starts with the initial geometric constraints $\hat{T}_{ab}{}^{A} = \hat{T}_a{}^{\{AB\}} = \hat{f}_{abcd} = \hat{f}_{Aabc} = 0$. As book-keeping notation, we note the number of derivatives $\partial$, while $[w]$ denotes the weight $w$ under the dilatation symmetry. The analysis of Appendix~\ref{tower_derivation} suggests that the tower of constraints terminates, using Bianchi identities and previous constraints, at Level 6. Note that boosts act vertically, mapping tensors in the bottom row into tensors in the top row.}
+    \label{fig:tower_of_constraints}
+\end{figure}
+
+\section*{Appendix \ref{tower_derivation}: Detailed Analysis of the Tower of Constraints}
+The detailed analysis of the tower of constraints is as follows:
+1. **Level 1**: The initial constraints are given by $\hat{T}_{ab}{}^{A} = \hat{T}_a{}^{\{AB\}} = \hat{f}_{abcd} = \hat{f}_{Aabc} = 0$. These constraints involve up to second derivatives and have weights $[2]$.
+2. **Level 2**: Applying the variational principle to these constraints leads to the appearance of $\dot{\hat{T}}_{ab}{}^{A}$ and $\dot{\hat{T}}_a{}^{\{AB\}}$, which transform to the lower level constraints through the Bianchi identity. The weights of these new constraints are $[\frac{3}{2}]$.
+3. **Level 3**: Further variations lead to $\ddot{\hat{T}}_{ab}{}^{cd}$, which has weight $[1]$.
+4. **Level 4**: Applying the variational principle again yields $\ddot{\hat{T}}_{a}{}^{(AB)}$ and $\ddot{\hat{T}}_a{}^{\{ABC\}}$, which have weights $[\frac{5}{2}]$.
+5. **Level 5**: The next set of variations results in $\partial\ddot{\hat{T}}_{ab\{\alpha}{}^{\{\beta\}}$, which has weight $[-1]$.
+6. **Level 6**: Finally, the last set of variations leads to $\partial^3 \{ABC\}$, which has weight $[-2]$. Using the Bianchi identity and previous constraints, this level can be shown to terminate.
+
+Boosts acting vertically map tensors from the bottom row to the top row, ensuring the consistency of the constraints across different levels.
+
+\end{document}

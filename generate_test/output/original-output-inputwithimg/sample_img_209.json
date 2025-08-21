@@ -1,0 +1,7 @@
+{
+  "prompt": "$f(x) = |e^x + e^{-x} - 3|$ exhibits exponential growth as $\\|x\\| \\rightarrow + \\infty$",
+  "final_latex_code": "\\documentclass{article}\n\\usepackage{pgfplots}\n\n\\begin{document}\n\n\\begin{tikzpicture}\n    \\begin{axis}[\n        axis lines=middle,\n        xlabel=$x$,\n        ylabel=$y$,\n        domain=-1.5:1.5,\n        samples=100,\n        ymin=-0.2,\n        ymax=1.7,\n        xmin=-1.7,\n        xmax=1.7,\n        restrict y to domain=-0.2:1.7,\n        ]\n        \\addplot[blue,thick] {abs(exp(x) + exp(-x) - 3)};\n    \\end{axis}\n\\end{tikzpicture}\n\n$f(x) = |e^x + e^{-x} - 3|$ exhibits exponential growth as $\\|x\\| \\rightarrow + \\infty$.\n\n\\end{document}",
+  "compiled_successfully": true,
+  "ground_truth": "\\documentclass[english,ruled]{article}\n\\usepackage[T1]{fontenc}\n\\usepackage[latin9]{inputenc}\n\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{xcolor}\n\\usepackage{pgfplots}\n\\pgfplotsset{compat=1.15}\n\\usepackage[colorlinks]{hyperref}\n\n\\begin{document}\n\n\t\\begin{tikzpicture}\n    \\begin{axis}[\n            axis on top,\n            legend pos=outer north east,\n            axis lines = center,\n            xlabel = $x$,\n            ylabel = $y$,\n        ]\n        \\addplot[very thick,cyan,samples=500,domain=-1.5:1.5] {abs(e^x + e^(-x) - 3)};\n    \\end{axis}\n\\end{tikzpicture}\n\n\\end{document}",
+  "attempts": 1
+}

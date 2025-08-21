@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows}
+
+\begin{document}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em] {
+        \frac{1}{c}(1,c-l') &       & \frac{1}{c}(1,l') &  & \\
+        \frac{1}{c}(1,l') & \frac{1}{c}(1,l) &       & \frac{1}{c}(1,l') & \frac{ml+n}{c} \\
+        \frac{1}{c}(1,c-l) &       & \frac{1}{c}(1,l) & \frac{1}{c}(1,s) & \frac{ml+n}{c} \\
+        };
+    \path[-stealth]
+    (m-1-1) edge node [left] {$n$} (m-2-1)
+            edge node [above] {$m$} (m-2-2)
+    (m-2-1) edge node [above] {$n$} (m-3-1)
+    (m-2-2) edge node [below] {$n$} (m-3-2)
+    (m-2-2) edge node [right] {$m$} (m-2-3)
+    (m-2-3) edge node [above] {$m$} (m-2-4)
+    (m-2-4) edge node [right] {$\frac{ml+n}{c}$} (m-3-5)
+            edge node [above] {$l'$} (m-2-5)
+    (m-3-1) edge node [above] {$n$} (m-2-1)
+    (m-3-2) edge node [above] {$m$} (m-2-2)
+    (m-3-2) edge node [below] {$n$} (m-3-3)
+    (m-3-3) edge node [below] {$n$} (m-2-3)
+    (m-3-3) edge node [right] {$m$} (m-3-4)
+    (m-3-4) edge node [above] {$\frac{ml+n}{c}$} (m-3-5)
+    (m-3-4) edge node [right] {$l'$} (m-2-4);
+\end{tikzpicture}
+\captionof{figure}{Birational equivalence of $\left( \mathbb{C} P^1 \times\mathbb{C} P^1 \right) /\mathbb{Z}_c$ and a weighted projective plane.}
+\end{center}
+
+\end{document}

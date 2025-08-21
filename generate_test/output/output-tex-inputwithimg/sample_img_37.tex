@@ -1,0 +1,50 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{intersections}
+
+\begin{document}
+
+\begin{tikzpicture}
+  % Define some constants
+  \def\radius{0.5}
+  \def\height{2}
+  
+  % Define the curves using Bezier curves
+  \draw[name path=A] 
+    (-2*\radius,-\radius) .. controls +(-90:\radius) and +(45:\radius) .. 
+    (-1*\radius,\radius) .. controls +(-135:\radius) and +(135:\radius) ..
+    (0,0);
+  \draw[name path=B] 
+    (\radius,-\radius) .. controls +(-90:\radius) and +(135:\radius) .. 
+    (0,0) .. controls +(-45:\radius) and +(45:\radius) ..
+    (2*\radius,\radius);
+  \draw[name path=C] 
+    (-\radius,0) circle [radius=\radius];
+  \draw[name path=D] 
+    (\radius,0) circle [radius=\radius];
+
+  % Draw the intersections
+  \fill [name intersections={of=A and C, by={iA}}] (iA) circle (1pt);
+  \fill [name intersections={of=A and D, by={iB}}] (iB) circle (1pt);
+  \fill [name intersections={of=B and C, by={iC}}] (iC) circle (1pt);
+  \fill [name intersections={of=B and D, by={iD}}] (iD) circle (1pt);
+
+  % Mark the points of intersection
+  \node at (iA) [below] {$(-1,0)$};
+  \node at (iB) [above right] {$(1,0)$};
+  \node at (iC) [below left] {$C^{-}_{\tau}$};
+  \node at (iD) [below right] {$C^{+}_{\tau}$};
+
+  % Draw the lines and labels
+  \draw[red] (-1*\radius,0) -- (2*\radius,0) node[midway, above] {$L_{t}$};
+  \draw[-latex] (-2.5,0) -- (2.5,0) node[right] {$x$};
+  \draw[-latex] (0,-\height-1) -- (0,\height+1) node[above] {$y$};
+  \node at (0,2) {$\partial\Omega$};
+  
+  % Define the curves as sets
+  \node at (-0.5*\radius,0.5*\radius) {$K^{-}_{\tau}$};
+  \node at (0.5*\radius,0.5*\radius) {$K^{+}_{\tau}$};
+\end{tikzpicture}
+
+\end{document}

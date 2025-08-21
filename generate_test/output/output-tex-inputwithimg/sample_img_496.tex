@@ -1,0 +1,53 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance = 1cm]
+    \matrix (grid) [matrix of nodes,
+                    row sep=-\pgflinewidth,
+                    column sep=-\pgflinewidth,
+                    nodes={circle,draw,fill=gray!80, minimum size=5mm}]
+    {
+        & & & & & & & & & \\
+        & & & & & & & & & \\
+        & & & & & & & & & \\
+        & & & & & & & & & \\
+        & & & & & & & & & \\
+        & & & & & & & & & \\
+        & & & & & & & & & \\
+        & & & & & & & & & \\
+        & & & & & & & & & \\
+        & & & & & & & & & \\
+    };
+    \foreach \x in {1,...,10} {
+        \draw (grid-\x-2.north west) -| (grid-\x-9.south east);
+    }
+    \foreach \y in {1,...,10} {
+        \draw (grid-1-\y.west) -- (grid-10-\y.east);
+    }
+
+    % Drawing the blue diamond shape and labels
+    \draw[dashed,blue] (grid-6-5.north west) -- (grid-7-6.north east) -- (grid-8-5.south east) -- (grid-7-4.south west) -- cycle;
+    \node at (grid-6-5) {$w_1$};
+    \node at (grid-7-5) {$w_2$};
+    \node at (grid-7-6) {$w_3$};
+    \node at (grid-6-6) {$w_4$};
+    \node[circle,inner sep=1pt,fill=blue] at (grid-6-5) {};
+    \node[circle,inner sep=1pt,fill=blue] at (grid-7-6) {};
+    \node[circle,inner sep=1pt,fill=blue] at (grid-6-6) {};
+    \node at (grid-7-5) {$b$};
+
+    % Highlighting the qubits
+    \node[draw,circle,fill=gray!80] at (grid-5-4) {};
+    \node[draw,circle,fill=gray!80] at (grid-5-6) {};
+    \node[draw,circle,fill=gray!80] at (grid-6-4) {};
+    \node[draw,circle,fill=gray!80] at (grid-6-6) {};
+    
+    % Description annotations
+    \node at (grid-6-3) {\small This lattice diagram represents a translation-invariant structure for a vertex-type hidden neuron, using simplified notation without the subscript $v$ and $(b_v,w_{v,j})=i*(b,w_j)$.};
+    \node at (grid-6-3) {\small If we flip the four qubits surrounding the central vertex, qubits contributing to the phase difference are circled for clarity.};
+\end{tikzpicture}
+
+\end{document}

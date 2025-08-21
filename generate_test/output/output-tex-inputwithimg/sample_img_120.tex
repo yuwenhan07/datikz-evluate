@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Episode},
+            ylabel={Steps Taken},
+            xmin=0, xmax=24,
+            ymin=0, ymax=30000,
+            xtick={0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24},
+            ytick={0, 5000, 10000, 15000, 20000, 25000, 30000},
+            legend pos=north east,
+            ymajorgrids=true,
+            grid style=dashed,
+        ]
+        \addplot[
+            color=green,
+            fill=green!30,
+            opacity=0.5,
+            forget plot % This hides the bar plot for better legend visibility
+        ] coordinates {
+            (0, 29000) (24, 2900)
+        };
+        \addlegendentry{RBQL range}
+        
+        \addplot[
+            color=green,
+            mark=square,
+            forget plot % This hides the scatter plot for better legend visibility
+        ] coordinates {
+            (0, 10000) (24, 700)
+        };
+        \addlegendentry{RBQL avg.}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Number of steps taken to find the goal in a randomly generated grid world maze of size $50 \times 50$. The light green area shows the range of the RBQL agent's highest and lowest step count, excluding the highest and lowest two, and the green line shows the average performance.}
+    \label{fig:steps_taken_rbql}
+\end{figure}
+
+\end{document}

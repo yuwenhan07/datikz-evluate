@@ -1,0 +1,30 @@
+\documentclass[11pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,calc}
+
+\begin{document}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+        \node [draw] (teacher) {Teacher \\ pattern $\xi^*$};
+        \node [draw, right=\textwidth of teacher] (examples) {Examples $\sigma$};
+        \node [draw, right=\textwidth of examples] (student) {Student \\ pattern $\xi$};
+        \node [draw, below=\textwidth of teacher] (data_teacher) {Data $x$ \\ with known \\ labels $y$};
+        \node [draw, right=\textwidth of data_teacher] (weights) {Weights $w$};
+        \node [draw, right=\textwidth of weights] (data_student) {Data $x$ \\ with predicted \\ labels $y'$};
+
+        \draw [-latex,thick] (teacher) -- node[above] {$H(\sigma|\xi^*)$} (examples);
+        \draw [-latex,thick] (examples) -- node[above] {$H(\xi^b|\sigma)$} (student);
+        \draw [-latex,thick] (data_teacher) -- node[below] {Backward \\ propagation} (weights);
+        \draw [-latex,thick] (weights) -- node[below] {Forward \\ propagation} (data_student);
+
+        \draw [dashed] (teacher) -- (teacher -| data_teacher);
+        \draw [dashed] (student) -- (student -| data_student);
+        \draw [dashed] (examples) -- (examples -| weights);
+
+    \end{tikzpicture}
+    \caption{Comparison between a $p$-body Hopfield network in the teacher-student setting (top) and a dense neural network trained by Krotov (bottom). The top row shows how the network reconstructs an incomplete pattern $\xi^b$ from the teacher pattern $\xi^*$ by utilizing the examples $\sigma$, while the bottom row illustrates a dense neural network recovering the labels $y'$ of the data $x$ using the weights $w$ learned from $x$.}
+    \label{fig:comparison_models}
+\end{figure}
+
+\end{document}

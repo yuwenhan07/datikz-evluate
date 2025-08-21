@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{filecontents}
+
+\begin{filecontents}{data.csv}
+x1,y1,x2,y2,r
+1,2,3,4,0
+1,2,3,4,1
+1,2,3,4,2
+1,2,3,4,3
+1,2,3,4,4
+1,2,3,4,5
+1,2,3,4,6
+\end{filecontents}
+
+\begin{document}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title=$\tilde V_{,2}$,
+            xlabel={$\tilde U_{,1}$},
+            ylabel={$\tilde V_{,2}$},
+            xmin=-10, xmax=10,
+            ymin=-10, ymax=10,
+            axis lines=left]
+            \addplot[only marks, mark=square*, mark size=0.5mm] table[x=x1,y=y1] {data.csv};
+            \addplot[only marks, mark=triangle*, mark size=0.5mm] table[x=x2,y=y2] {data.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Pair plot visualizing the embedding $\hat{X}$ for the \gls{BMC} from \eqref{eqn:pair_plot_BMC_def}. We set $n=300$, $\ell_n/n = (\ln n)^{2.5}\approx 78$, and $r=2$. Note that $\textnormal{rank}(p)=2$.}
+    \label{fig:pair_plot_BMC}
+\end{figure}
+
+\end{document}

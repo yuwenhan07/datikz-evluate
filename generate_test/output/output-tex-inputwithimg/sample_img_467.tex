@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        
+        % Graph of \Sigma_+
+        \draw[black, thick] (-2,-2) rectangle (2,2);
+        \draw[blue, dashed] (0, 0) -- (1.5, 2);
+        \draw[blue, thick] (0, 0) .. controls (1,1) and (1.6,1) .. (2,2);
+        \node at (0, 2) [above] {$\Sigma_+$};
+        
+        % Graph of c + \d T^+[u_c]
+        \draw[black, thick] (4,0) -- (6,0);
+        \draw[black, thick] (4,-2) -- (6,-2);
+        \draw[orange, thick] (4,0) .. controls (4.5,-1) and (5.5,-1) .. (6,0);
+        \draw[blue, thick] (4,0) .. controls (4.8,-1) and (5.2,-1) .. (6,0);
+        \draw[black, thick] (4,0) .. controls (4.8,-1) and (5.2,-1) .. (6,0);
+        \draw (4,-2) -- node[left] {$c + \d T^+[u_c]$} (6,-2);
+        
+        % Graph of c + \nabla^+u_c
+        \draw[black, thick] (8,0) -- (10,0);
+        \draw[black, thick] (8,-2) -- (10,-2);
+        \draw[orange, thick] (8,-2) -- (9,-2) -- (9,0);
+        \draw[blue, thick] (8,0) .. controls (8.5,-1) and (9.5,-1) .. (10,0);
+        \draw[black, thick] (8,0) .. controls (8.5,-1) and (9.5,-1) .. (10,0);
+        \draw (8,-2) -- node[left] {$c + \nabla^+u_c$} (10,-2);
+        
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

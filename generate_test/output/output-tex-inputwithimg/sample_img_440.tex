@@ -1,0 +1,52 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, graphicx}
+
+\begin{document}
+
+A visual representation of the protocol in the case of two iterations is shown below.
+
+\[
+\begin{tikzpicture}[scale=0.8]
+    \draw (0,0) circle (0.5);
+    \node at (0,0) {$\rho_j$};
+    
+    \draw [->, bend left=45] (0,-0.5) to node[above] {${\mathcal E}(\rho_j)$} (4,0);
+    
+    \draw (6,0) rectangle (8,2);
+    \node at (7,1) {$\mathcal S$, '...'};
+
+    \draw [->, bend left=45] (10,1) to node[above] {$C_{-}({\mathcal E}(\rho_j))$} (8,1);
+
+    \draw [->, bend left=45] (-1,-0.5) to node[above] {${\mathcal E}(\rho_j)$} (-3,0);
+    
+    \draw [->, bend left=45] (-5,-0.5) to node[above] {${\mathcal E}(\rho_j)$} (-9,0);
+    
+    \draw [-, dashed] (-4,0) -- (6,0);
+    \node at (-4,0) {$\vdots$};
+    
+    \draw [->, bend left=45] (-11,-0.5) to node[above] {${\mathcal E}(\rho_j)$} (-13,0);
+    
+    \draw [->, bend left=45] (-17,-0.5) to node[above] {${\mathcal E}(\rho_j)$} (-19,0);
+    
+    \draw [-, dashed] (-12,0) -- (4,0);
+    \node at (-12,0) {$\vdots$};
+    
+    \draw [->, bend left=45] (-11,-3) to node[above] {${\mathcal E}(\rho_j)$} (-13,-2);
+    
+    \draw [->, bend left=45] (-17,-3) to node[above] {${\mathcal E}(\rho_j)$} (-19,-2);
+    
+    \draw (11,-2) circle (0.5);
+    \node at (11,-2) {$S$};
+
+    \draw [->, bend left=45] (13.5,-2) to node[above] {${\mathcal C}_{+}(C_{-}({\mathcal E}(\rho_j)))$} (14.5,-1);
+    \draw [->, bend left=45] (8.5,-2.3) to node[right] {'+'} (11,-3);
+    \draw [->, bend left=45] (16.5,-2) to node[below] {{'$-$'} } (17.5,-3);
+    \draw [->, bend left=45] (11,-2.3) to node[below] {$C_{-}(C_{-}({\mathcal E}(\rho_j)))$} (8,-3);
+\end{tikzpicture}
+\]
+
+Description: 
+
+In this figure, noisy copies of the states $\rho_j$ are first combined pairwise with the controlled unitary operation in the quantum switch. The measurements are performed on the ancilla qubits, followed by the recombination of the pairs depending on the outcomes. Specifically, when the measurement outcomes result in a pair of '$-$', it leads to the effective state $C_{-}({\mathcal E}(\rho_j))$. This process is repeated for another iteration, as indicated by the additional pair of operations and measurements.
+
+\end{document}

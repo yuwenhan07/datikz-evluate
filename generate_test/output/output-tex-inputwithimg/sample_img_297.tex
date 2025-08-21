@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\[
+M \left\{
+\begin{array}{c}
+z \rightarrow \\
+z \rightarrow \\
+z \rightarrow \\
+z \rightarrow \\
+\multicolumn{1}{c}{{{\makebox[0pt]{\hskip5pt$\vdots$\hskip5pt}}}\cdots }\\
+\sigma(3) \\ 
+\end{array}
+\right\}
+N
+\left\{
+\begin{array}{c}
+1 \rightarrow \\
+1 \rightarrow \\
+1 \rightarrow \\
+1 \rightarrow \\
+\end{array}
+\right\}
+\]
+
+\begin{tikzpicture}[scale=0.7]
+    % Draw the grid lines
+    \draw[help lines] (0,0) grid (8,5);
+    
+    % Draw vertical dashed line
+    \draw[thick,dashed] (6,0) -- (6,5);
+    
+    % Draw arrows
+    \draw[-stealth,red,thick] (6,4) -- (7,4);
+    \draw[-stealth,orange,thick] (6,3) -- (7,3);
+    \draw[-stealth,blue,thick] (6,2) -- (7,2);
+    
+    % Draw horizontal lines for N
+    \draw[thick,orange] (0,3) -- (6,3);
+    \draw[thick,red] (0,4) -- (6,4);
+    \draw[thick,blue] (0,2) -- (6,2);
+    
+    % Label points
+    \node at (6,-0.5) {$(1,N+2)$};
+    \node at (-0.5,4) {$z\rightarrow$};
+    \node at (-0.5,3) {$z\rightarrow$};
+    \node at (-0.5,2) {$z\rightarrow$};
+    \node at (-0.5,1) {$z\rightarrow$};
+    \node at (-0.5,0) {$z\rightarrow$};
+    \node at (-0.5,5) {$M$};
+    \node at (-0.5,6) {$\left\{$};
+    \node at (-0.5,7) {};
+    \node at (-0.5,8) {{\makebox[0pt]{\hskip5pt$\vdots$\hskip5pt}\cdots}};
+    \node at (-0.5,9) {$\sigma(3)$};
+    \node at (-0.5,10) {$\sigma(2)$};
+    \node at (-0.5,11) {$\sigma(1)$};
+    \node at (-0.5,12) {$\left\{$};
+    \node at (-0.5,13) {$N$};
+    \node at (-0.5,14) {$1\rightarrow$};
+    \node at (-0.5,15) {$1\rightarrow$};
+    \node at (-0.5,16) {$1\rightarrow$};
+    \node at (-0.5,17) {$1\rightarrow$};
+\end{tikzpicture}
+
+\captionof{figure}{The colored $q$-Boson model. The $z\to$ and $1\to$ at the left indicate the spectral parameters of the $\bigL$ weights associated to vertices in the corresponding rows, the expressions above the entry point of the arrows indicate the corresponding arrow's color, and the $\bm\cdots$ indicate that there are infinitely many columns, though, by definition of the boundary conditions, the arrows travel purely horizontally except until finitely many columns from the right.}
+\end{document}

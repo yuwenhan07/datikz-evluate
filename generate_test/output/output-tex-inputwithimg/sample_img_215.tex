@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzpicture}[node distance=2cm, auto]
+        \node[draw, rounded rectangle, fill=black!10] (available) {Available Data};
+        \node[below of=available, node distance=3cm, text width=5cm, align=center] (unlabeled) {Unlabeled Data \\ $\mathcal{X}_U$};
+        \node[left of=unlabeled, node distance=3cm, text width=4cm, align=center] (labeled) {Labeled Data \\ \textcolor{blue}{$\mathcal{X}_L$}};
+        
+        \draw[->] (labeled.west) -- ++(-1, 0) -| (available);
+        \draw[->] (unlabeled.east) -- ++(1, 0) -| (available);
+    \end{tikzpicture}
+\end{center}
+
+\textbf{Weakly Supervised Learning:} From all of the available data, only a small fraction has been labeled, as represented by the blue area. The remaining data --- gray area --- must be used in an unsupervised manner.
+
+\end{document}

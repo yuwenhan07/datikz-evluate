@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        % Draw grid lines
+        \draw[gray!20] (-4,-4) grid (4,4);
+        
+        % Define coordinates for the elements
+        \coordinate (A) at (0, 0); % Top-left corner of k_{p,q}
+        \coordinate (B) at (-2, -2); % Top-left corner of k_{p-1,q}
+        \coordinate (C) at (2, -2); % Top-left corner of k_{p+1,q}
+        \coordinate (D) at (-1, -3); % Top-left corner of k_{p,q-1}
+        \coordinate (E) at (3, -3); % Top-left corner of k_{p,q+1}
+        
+        % Define coordinates for K_i^2 and K_i
+        \coordinate (F) at (0, -2); % Top-left corner of K_i^2
+        \coordinate (G) at (1, -4); % Top-left corner of K_i
+        
+        % Fill regions and draw borders
+        \fill[cyan!50] (A) rectangle ++(2,2) node[midway]{\textcolor{black}{$\mathtt{k}_{p,q}$}};
+        \fill[gray!70] (B) rectangle ++(2,2) node[midway]{\textcolor{black}{$\mathtt{k}_{p-1,q}$}};
+        \fill[gray!50] (C) rectangle ++(2,2) node[midway]{\textcolor{black}{$\mathtt{k}_{p+1,q}$}};
+        \fill[gray!30] (D) rectangle ++(2,2) node[midway]{\textcolor{black}{$\mathtt{k}_{p,q-1}$}};
+        \draw[dashed] (A) rectangle ++(2,2);
+        \draw[dashed] (B) rectangle ++(2,2);
+        \draw[dashed] (E) rectangle ++(2,2);
+        \draw[dashed] ($(-2,-2)+(F)$) rectangle ++(2,2) node[midway]{\textcolor{black}{$K_i^2$}};
+        \draw[dashed] ($(1,-4)+(G)$) rectangle ++(2,2) node[midway]{\textcolor{brown}{$K_i$}};
+        \draw[fill=gray, opacity=0.5] (-4,-4) -- (4,-4) -- (4,4) -- (-4,4) -- cycle;
+        \node at (0,2){$\mathtt{k}_{p,q+1}$};
+        
+        % Mark the point in the top-left corner of K_i^2
+        \filldraw[gray] (F) circle (2pt);
+    \end{tikzpicture}
+    \caption{Illustration for the proof of Lemma \ref{lem:A_i} showing the fine elements and the oversampling coarse element.}
+    \label{fig:proof_illustration}
+\end{figure}
+
+\end{document}

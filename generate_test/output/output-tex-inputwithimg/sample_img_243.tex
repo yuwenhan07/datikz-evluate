@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        \draw[thick] (0,0) circle (1);
+        
+        % Draw horizontal axes
+        \draw[<->, thick] (-1.5,0) -- (1.5,0) node[right] {$m/R_1$};
+        \draw[<->, thick] (0,-1.5) -- (0,1.5) node[above] {$k_m$};
+        
+        % Draw black squares indicating evanescant modes
+        \draw[fill=black, draw=black, thick, postaction={on each segment={code={\arrowreversed[Latex-]{4pt}}}}] (0,0) -- (1,0) -- (1,1) -- (0,1) -- (0,0) -- (-1,0) -- (-1,-1) -- (0,-1) -- (0,0);
+        
+        % Draw red circles for outward-travelling modes
+        \foreach \i in {-3,...,3} {
+            \fill[red] ({cos(\i*90)},{sin(\i*90)}) circle (2pt);
+        }
+        
+        % Draw green circles for inward-travelling modes
+        \foreach \i in {-3,...,3} {
+            \fill[green] ({cos(\i*90-90)},{sin(\i*90-90)}) circle (2pt);
+        }
+        
+        % Label k_0
+        \node at (45:1) {$k_0$};
+        
+        % Add text for mode indexing
+        \node at (-1.7,0) {${-\infty}$};
+        \node at (1.7,0) {${+\infty}$};
+        \node at (0,.8) {${k_0}$};
+        \node at (0,1.2) {${k_m}$};
+        \node at (0,-.8) {${k_0}$};
+        \node at (0,-1.2) {${k_m}$};
+        
+        % Add arrows for azimuthal order
+        \node at (-.5,1.2) {${m}$};
+        \node at (0,1.6) {${/R_{1}}$};
+        \node at (.5,-1.2) {${m}$};
+        \node at (0,-1.6) {${/R_{1}}$};
+    \end{tikzpicture}
+    \caption{Mode indexing. Red circles correspond to modes traveling radially outwards, and green circles to modes traveling radially inwards. Positive and negative values of \( m \) correspond to different azimuthal orders. Black squares indicate evanescent modes of which there is a countably infinite number.}
+    \label{fig:mode_indexing}
+\end{figure}
+
+\end{document}

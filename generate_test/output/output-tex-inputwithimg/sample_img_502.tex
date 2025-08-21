@@ -1,0 +1,46 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel=$x$,
+        ylabel=$y$,
+        ymin=0, ymax=55,
+        xmin=-1,xmax=10,
+        ytick={30,40,49,58},
+        yticklabels={$s_{20}=30.471$,$s_{13}=40.706$,$s_{21}=49.218$,$s_{14}=57.583$},
+        xtick=\empty,
+        grid=none,
+        legend style={at={(0.05,0.05)},anchor=south west}
+    ]
+
+    % Plot the functions
+    \addplot [domain=0:10, color=red, thick] {exp(x)-1};
+    \addlegendentry{$\mu_2(\alpha)$}
+
+    \addplot [domain=0:10, color=green, thick] {exp(x/2)-1};
+    \addlegendentry{$\mu_3(\alpha)$}
+
+    \addplot [domain=0:10, color=blue, thick] {exp(x/3)-1};
+    \addlegendentry{$\mu_0(\alpha)$}
+
+    % Draw horizontal dashed lines at specific values
+    \draw[dashed] (axis cs:-1,30) -- (axis cs:10,30);
+    \draw[dashed] (axis cs:-1,40) -- (axis cs:10,40);
+    \draw[dashed] (axis cs:-1,49) -- (axis cs:10,49);
+    \draw[dashed] (axis cs:-1,58) -- (axis cs:10,58);
+
+    % Label the values
+    \node at (axis cs:-1, 30) [below=0.5cm] {$s_{20}=30.471$};
+    \node at (axis cs:-1, 40) [below=0.5cm] {$s_{13}=40.706$};
+    \node at (axis cs:-1, 49) [below=0.5cm] {$s_{21}=49.218$};
+    \node at (axis cs:-1, 58) [below=0.5cm] {$s_{14}=57.583$};
+
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

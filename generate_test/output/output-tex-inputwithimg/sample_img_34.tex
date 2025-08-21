@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\[
+\begin{tikzcd}[column sep=huge]
+\{\{1,6\}, \{2, 6\}\} \arrow[rd, "{(6,(5,4))}"'] & & \{\{1\}, \{2\}\} \arrow[lld, "{(6,(5,2))}"', "\{1\}"] \\
+& \{\{1,2\}, \{5,6\}\} \arrow[u, "{(6,(5,3))}"] \arrow[lu, "{(6,(5,1))}"', "\{1,2\}"] \arrow[rd, "{(6,(5,0))}"', "\{5,6\}"] \\
+& & \{0\} \arrow[ull, "{(6,(6,1))}'", "\{6\}"]
+\end{tikzcd}
+\]
+
+\[
+\begin{tikzcd}[column sep=large, row sep=small]
+\{\{1,4,5,6\}\} \arrow[rdd, "{(6,(5,4))}"'] & & \{\{1,2,5,6\}\} \arrow[out=90,in=270,draw=none]\arrow[rdd, "{(6,(5,2))}"'] \arrow[rrdd, "{(6,(5,1))}"'] \\
+& & \\
+\{\{1,4,5,6\}, \{1,2,5,6\}\} \arrow[rr, "{(6,(5,3))}"] \arrow[uu, "{(6,(6,2))}"] & & \\
+& & \\
+& & \\
+\{\{1,4,5,6\}, \{1,2,5,6\}, \{2,6\}, \{5,6\}\} \arrow[uuu, "{(6,(6,1))}"']
+\end{tikzcd}
+\]
+
+\textbf{E}($\widehat{\mathcal{P}}_{\mathcal{B}_{2,4}}$) and $\mu_{\mathcal{B}_{2,4}}$
+
+\end{document}

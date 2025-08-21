@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix, arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=10mm, auto]
+        \matrix[matrix of nodes, row sep=-\pgflinewidth, column sep=-\pgflinewidth] (A) {
+            |[draw]| $x_{10}$ & |[draw]| $x_{11}$ & |[draw]| $x_{14}$ & |[draw]| $x_{15}$ \\
+            |[draw]| $x_{8}$  & |[draw]| $x_{9}$  & |[draw]| $x_{12}$& |[draw]| $x_{13}$ \\
+            |[draw]| $x_{2}$  & |[draw]| $x_{3}$  & |[draw]| $x_{6}$ & |[draw]| $x_{7}$ \\ 
+            |[draw]| $x_{0}$  & |[draw]| $x_{1}$  & |[draw]| $x_{4}$ & |[draw]| $x_{5}$ \\ 
+        };
+
+        \draw[->, thick] ([shift={(right:10mm)}]A-1-1.north east) -- ++(right:10mm);
+        
+        \matrix[matrix of nodes, below right=0cm and 8mm of A.south east, draw] (B) {
+            |[draw]| $\bar{x}_2$ & |[draw]| $\bar{x}_3$ \\
+            |[draw]| $\bar{x}_0$ & |[draw]| $\bar{x}_1$ \\
+        };
+
+        \draw[->, thick] ([shift={(right:10mm)}]B-1-1.north east) -- ++(right:10mm);
+        
+        \matrix[matrix of nodes, below right=0cm and 10mm of B.south east, draw] (C) {
+            |[draw]| $\bar{\bar{x}}_0$ \\
+        };
+    \end{tikzpicture}
+    
+    \begin{flushleft}
+        \textbf{(Left:)} Data on the initial refinement level.
+        \textbf{(Middle:)} A coarsening step in which all (four) element families have been coarsened.
+        \textbf{(Right:)} A second coarsening step of the resulting family of elements from the first step.
+    \end{flushleft}
+\end{figure}
+
+\end{document}

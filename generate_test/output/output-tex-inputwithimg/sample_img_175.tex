@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figure.png}
+    \caption{Bounding Boxes with Dimension Priors and Location Prediction, adapted from~\cite{RF.17}. The center coordinates of the box can be calculated with the predicted values $t_{\mathrm{x}}, t_{\mathrm{y}}$ using a sigmoid function and offset by the location of grid cell $c_{\mathrm{x}}, c_{\mathrm{y}}$. The width and height of the final box are adjusted to the previous width $p_{\mathrm{w}}$ and height $p_{\mathrm{h}}$ and scaled by $e^{t_{\mathrm{w}}}$ and $e^{t_{\mathrm{h}}}$.}
+    \label{fig:bounding_boxes}
+\end{figure}
+
+\begin{equation}
+    \begin{aligned}
+        b_{\mathrm{x}} &= \sigma_{\mathrm{t_{\mathrm{x}}}} + c_{\mathrm{x}} \\
+        b_{\mathrm{y}} &= \sigma_{\mathrm{t_{\mathrm{y}}}} + c_{\mathrm{y}} \\
+        b_{\mathrm{w}} &= p_{\mathrm{w}} \cdot e^{t_{\mathrm{w}}} \\
+        b_{\mathrm{h}} &= p_{\mathrm{h}} \cdot e^{t_{\mathrm{h}}}
+    \end{aligned}
+\end{equation}
+
+\end{document}

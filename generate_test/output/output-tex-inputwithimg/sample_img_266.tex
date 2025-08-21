@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\section*{Diagonal Transformation and Encoding}
+
+The image illustrates a diagonal transformation that is part of Pinsky's combinatorial theorem. The choice of the next step being among \(\{(0,1),(1,0),(-1,0),(0,-1)\}\) is equivalent to a diagonal version of the encoding being in the set \(\{(+1,+1),(+1,-1),(-1,-1),(-1,+1)\}\). This equivalence is demonstrated by the pattern of crosses shown.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \matrix (m) [matrix of nodes]{
+            \draw (0,0) -- (1,1); & \draw (0,0) -- (1,1); & \draw (0,0) -- (1,1); & \draw (0,0) -- (1,1); \\
+            \draw (0,1) -- (1,0); & \draw (0,1) -- (1,0); & \draw (0,1) -- (1,0); & \draw (0,1) -- (1,0); \\
+            \draw (0,2) -- (1,3); & \draw (0,2) -- (1,3); & \draw (0,2) -- (1,3); & \draw (0,2) -- (1,3); \\
+            \draw (0,3) -- (1,4); & \draw (0,3) -- (1,4); & \draw (0,3) -- (1,4); & \draw (0,3) -- (1,4); \\
+        };
+        
+        \node at (2.5, 0) {\(x_{1,1}\)};
+        \node at (2.5, 1) {\(x_{1,2}\)};
+        \node at (2.5, 2) {\(x_{1,3}\)};
+        \node at (2.5, 3) {\(x_{1,4}\)};
+        
+        \node at (4.5, 0) {\(x_{2,1}\)};
+        \node at (4.5, 1) {\(x_{2,2}\)};
+        \node at (4.5, 2) {\(x_{2,3}\)};
+        \node at (4.5, 3) {\(x_{2,4}\)};
+        
+        \node at (6.5, 0) {\(x_{3,1}\)};
+        \node at (6.5, 1) {\(x_{3,2}\)};
+        \node at (6.5, 2) {\(x_{3,3}\)};
+        \node at (6.5, 3) {\(x_{3,4}\)};
+        
+        \node at (8.5, 0) {\(x_{4,1}\)};
+        \node at (8.5, 1) {\(x_{4,2}\)};
+        \node at (8.5, 2) {\(x_{4,3}\)};
+        \node at (8.5, 3) {\(x_{4,4}\)};
+    \end{tikzpicture}
+    \caption{A grid with diagonals representing the transitions and encoding in the context of Pinsky's combinatorial theorem.}
+    \label{fig:diagonal_transformation}
+\end{figure}
+
+\end{document}

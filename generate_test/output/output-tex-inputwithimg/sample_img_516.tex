@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=0.8*\textwidth,
+        height=0.5*\textwidth,
+        xlabel={Dataset Size},
+        ylabel={Accuracy},
+        xmin=10000, xmax=400000,
+        ymin=0.5, ymax=0.8,
+        xtick={12000, 25000, 50000, 100000, 200000, 400000},
+        x tick label style={/pgf/number format/1000 sep=K},
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        legend pos=north east,
+        legend cell align={left},
+        legend columns=-1,
+        title style={align=center},
+        title={Training Results for Resnet-18 trained on the different dataset sizes. Model performance and dataset size correlate. The experiments were performed five times per dataset size and Stable Diffusion mode. The graph shows a confidence interval of one standard deviation.},
+        every axis legend/.append style={at={(1,1)},anchor=north east, font=\footnotesize}
+    ]
+    % First, add the datasets
+    \addplot[draw=orange!75, fill=orange!30, line width=1pt] table [x index=0, y index=1, col sep=comma] {
+        Dataset Size, Accuracy
+        12000, 0.615
+        25000, 0.675
+        50000, 0.675
+        100000, 0.700
+        200000, 0.620
+        400000, 0.630
+    };
+    \addlegendentry{Combined}
+
+    \addplot[draw=red!75, fill=red!30, line width=1pt] table [x index=0, y index=2, col sep=comma] {
+        Dataset Size, Accuracy
+        12000, 0.540
+        25000, 0.600
+        50000, 0.620
+        100000, 0.620
+        200000, 0.620
+        400000, 0.620
+    };
+    \addlegendentry{Image-to-Image}
+
+    \addplot[draw=blue!75, fill=blue!30, line width=1pt] table [x index=0, y index=3, col sep=comma] {
+        Dataset Size, Accuracy
+        12000, 0.540
+        25000, 0.600
+        50000, 0.600
+        100000, 0.620
+        200000, 0.620
+        400000, 0.630
+    };
+    \addlegendentry{Text-to-Image}
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

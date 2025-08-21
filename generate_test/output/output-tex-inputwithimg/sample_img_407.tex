@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\begin{document}
+
+\begin{tikzpicture}[node distance=3cm]
+    % Define styles for the nodes
+    \tikzstyle{rect} = [rectangle, draw, text centered, rounded corners, minimum height=2em]
+    \tikzstyle{arrow} = [->, >=stealth]
+
+    % Nodes
+    \node[rect] (f) {$f \in L_1(\mathbb{S}^2)$};
+    \node[rect, right of=f, xshift=3cm, draw=none] (c) {$c_\xi(f), \xi \in \mathcal{M}$ \\
+                                                       \& \\
+                                                       $c_\eta(f), \eta \in \mathcal{D}_{d,\triangle} \setminus \mathcal{M}$};
+    \node[rect, right of=c, xshift=3cm] (s) {$s \in \mathcal{S}$};
+
+    % Arrows
+    \draw[arrow] (f) -- (c);
+    \draw[arrow] (c) -- (s);
+
+    % Label for the arrow from f to c
+    \draw[arrow, bend left=45] (f) to node[above] {${\color{blue}Q}$} (c);
+
+    % Explanation
+    \node[below=0.5cm of f, anchor=center] (f_label) {$f \in L_1(\mathbb{S}^2)$};
+    \node[below=0.5cm of c, anchor=center] (c_label) {$c_\xi(f), \xi \in \mathcal{M}$ \\
+                                                       \& \\
+                                                       $c_\eta(f), \eta \in \mathcal{D}_{d,\triangle} \setminus \mathcal{M}$};
+    \node[below=0.5cm of s, anchor=center] (s_label) {$s \in \mathcal{S}$};
+
+    \node[anchor=west, align=center, below=1.5cm of f] (f_desc) {
+        \begin{tabular}{l}
+            $c_\xi(f) = \gamma_\xi(F_{d,\tau_\xi} f)$ \\
+            $\tau_\xi$ is the triangle containing $\xi$ \\
+            $F_{d,\tau_\xi} f$ is the averaged Taylor polynomial of degree $d$ \\
+            associated with $\tau_\xi$
+        \end{tabular}
+    };
+
+    \node[anchor=west, align=center, below=1.5cm of c] (c_desc) {
+        \begin{tabular}{l}
+            $c_\eta(f)$ is a linear combination of $\{c_\xi(f)\}_{\xi \in \mathcal{M}_\eta}$ \\
+            $\mathcal{M}_\eta \subseteq \text{star}^\curlywedge(\tau_\eta)$ \\
+            $\tau_\eta$ is the triangle containing $\eta$
+        \end{tabular}
+    };
+
+    \node[anchor=west, align=center, below=1.5cm of s] (s_desc) {
+        \begin{tabular}{l}
+            $s$ represents some function or state in $\mathcal{S}$
+        \end{tabular}
+    };
+
+\end{tikzpicture}
+
+\end{document}

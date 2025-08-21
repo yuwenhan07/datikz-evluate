@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Draw the horizontal line
+    \draw[dashed] (-3,0) -- (13,0);
+    
+    % Define coordinates for the graph nodes
+    \foreach \x in {0,...,7} {
+        \node[circle, draw, fill=white, inner sep=2pt] at (\x,0) {};
+    }
+    
+    % Draw vertical lines from nodes to the top row
+    \foreach \x in {0,2,4,6,8} {
+        \node[circle, draw, fill=black, inner sep=2pt] at (\x,1) {};
+    }
+    
+    % Draw vertical lines from nodes to the bottom row
+    \foreach \x in {1,3,5,7} {
+        \node[circle, draw, fill=black, inner sep=2pt] at (\x,-1) {};
+    }
+\end{tikzpicture}
+\end{center}
+
+\textbf{Example of a subcubic graph which shows that the $\frac{n}{2}$-upper bound for the locating total-dominating number of a twin-free graph on $n$ vertices is not true. The shaded vertices constitute a minimum LTD-set.}
+
+\end{document}

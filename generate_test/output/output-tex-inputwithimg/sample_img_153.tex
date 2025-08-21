@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}[every node/.style={draw, minimum size=0.8cm}]
+    \matrix (m) [matrix of nodes, column sep=2.5cm, row sep=0.4cm] {
+        1 & z_{-i_1} + \cdots + z_{-i_k} \\
+        1 & z_{-i_2} + \cdots + z_{-i_k} \\
+        \vdots & \vdots \\
+        1 & z_{-i_k} \\
+    };
+    
+    \matrix (n) [matrix of nodes, anchor=west, column sep=2.5cm, row sep=0.4cm, right=of m-1-2] {
+        k & \\
+        k-1 & \\
+        z_{-i_k} & \\
+        z_{-i_{k-1}} & \\
+        \vdots & \vdots \\
+        1 & \\
+    };
+
+    \draw[->] (m-1-2)--(n-1-1);
+\end{tikzpicture}
+
+The `partition of partial sums' and its conjugate associated to the partition $\sum\limits_{j=1}^kj\cdot z_{-i_j}$ where $i_k>\cdots>i_1$.
+
+\end{document}

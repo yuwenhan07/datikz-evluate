@@ -1,0 +1,60 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,
+                chains,
+                positioning,
+                shapes.geometric}
+
+\begin{document}
+    \begin{tikzpicture}[
+node distance = 2mm and 9mm,
+     C/.style = {ellipse, draw, semithick, minimum height=10mm},
+     R/.style = {rectangle, draw, minimum width=28mm, minimum height=16mm,
+                 align=center, 
+                 on chain=going below },
+   arr/.style = {-Stealth, very thick},
+every label/.append style = {label distance=1ex, inner sep=1pt, font=\small}
+                        ]
+% nodes
+\node[C]         (user)        {User code};
+%
+\node[R]   (parsers) [below=of user]      {Parsers};
+\node[C]   (ast)  [below=of parsers]      {ASTs};
+\node[R]   (ae)   [below=of ast]          {Analysis engine};
+\node[C]   (graph) [below=of ae]          {Analysis graph};
+%
+\node[C]   (usq)  [right=of user -| graph]   {User Codesearch query $\star$};
+%
+\node[R]   (translator) [below right=of usq] {Translator};
+\node[C]   (partial) [right=of translator]  {Partial query};
+\node[R]   (auto)   [below=of partial]      {Autocomplete engine $\star$};
+\node[C]   (query)  [right=of auto] {StarLang query $\star$};
+\node[R]   (slsol)  [below=of auto]  {StarLang solver};
+\node[C]   (queryres) [below=35mm of slsol] {Query result};
+%
+\node[R]   (cstl)  [above right=of query]  {CodeSearch STL $\star$};
+%
+\begin{scope}[every path/.style={arr}]
+%\draw[arr]  (parsers) -- (ast);
+\node at (graph.north east) [right] {$\cdots$};
+\draw[arr]  (ast) -- (ae);       
+\draw[arr]  (ae) -- (graph);
+%
+\draw[arr]  (usq) -| ([xshift=-3mm] translators.east);
+\draw[arr]  (usq) |- (partial);
+\draw[arr]  (translator) -- (partial);
+\draw[arr]  (partial) -| (auto);
+\draw[arr]  (auto) -| (query);
+\draw[arr]  (query) -| (queryres);
+%
+\draw[arr]  (usq) -| (cstl);
+\draw[arr]  (cstl) -| (partial);
+\draw[arr]  (cstl) -| (slsol);
+\end{scope}
+% dashed lines
+\draw[dashed, rounded corners]
+    (queryres.east) |- (query) |- (queryres);
+\draw[dashed, rounded corners]
+    (queryres.east) |- (usq) |- (queryres);
+\end{tikzpicture}
+\end{document}

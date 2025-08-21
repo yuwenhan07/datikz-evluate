@@ -1,0 +1,77 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+\tikzset{
+    value/.style={circle, fill=green!40},
+    variable/.style={circle, fill=red!60},
+    constraint/.style={circle, fill=blue!40},
+    operation/.style={circle, fill=orange!60},
+    model/.style={circle, draw=black, fill=yellow!50},
+    lhs/.style={rectangle, draw=gray!80, rounded corners=5pt, fill=gray!20, anchor=south},
+    rhs/.style={rectangle, draw=gray!80, rounded corners=5pt, fill=gray!20, anchor=west},
+    table/.style={rectangle, draw=gray!80, rounded corners=5pt, fill=gray!20, anchor=west},
+    arrow/.style={->, shorten <=2pt, shorten >=2pt},
+    label/.style={align=center, text width=1cm, inner sep=2pt, font=\small}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm, auto]
+
+% Value-vertices
+\node[value] (v1) at (0, 0) {$1$};
+\node[value] (v2) at (4, 0) {$2$};
+\node[value] (v3) at (8, 0) {$3$};
+
+% Variable-vertices
+\node[variable, label] (x1) at (2, -3) {$x_1$};
+\node[variable, label] (x2) at (6, -3) {$x_2$};
+
+% Operation-vertices
+\node[operation, label] (op1) at (3, -3) {$\times 3$};
+\node[operation, label] (op2) at (7, -3) {$\times 4$};
+
+% Model-vertex
+\node[model, label] (m1) at (4, -4) {$M$};
+
+% Constraint-vertices
+\node[constraint, label] (c1) at (5, -5) {$\leq$};
+\node[constraint, label] (c2) at (5, -6) {$\textsf{ext}$};
+
+% lhs and rhs rectangles
+\node[lhs, label] (lhsh) at (1.5, -2) {\textit{lhs}};
+\node[rhs, label] (rshh) at (6.5, -2) {\textit{rhs}};
+
+% Table vertices
+\node[table, label] (tab1) at (2.5, -6) {$(1,2)$};
+\node[table, label] (tab2) at (5.5, -6) {$(2,3)$};
+
+% Connections
+\draw[arrow] (v1) -- (op1);
+\draw[arrow] (v2) -- (op1);
+\draw[arrow] (op1) -- (x1);
+\draw[arrow] (op2) -- (x2);
+
+\draw[arrow] (v1) -- (op2);
+\draw[arrow] (v3) -- (op2);
+\draw[arrow] (op2) -- (x2);
+
+\draw[arrow] (x1) -- (op1);
+\draw[arrow] (x2) -- (op2);
+
+\draw[arrow] (op1) -- (m1);
+\draw[arrow] (op2) -- (m1);
+
+\draw[arrow] (m1) -- (c1);
+\draw[arrow] (m1) -- (c2);
+
+\draw[arrow] (c1) -- (op1);
+\draw[arrow] (c1) -- (op2);
+
+\draw[arrow] (c2) -- (tab1);
+\draw[arrow] (c2) -- (tab2);
+
+\end{tikzpicture}
+
+\end{document}

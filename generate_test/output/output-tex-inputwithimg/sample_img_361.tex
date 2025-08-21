@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.5]
+    % Draw the grid
+    \draw[gray, thin] (-1,-1) grid (5,5);
+    
+    % Define the coordinates for the lattice points
+    \foreach \i in {0,1,2,3,4,5}
+        \filldraw[red] (\i*\i/2-\i, \i*\i/2) circle (5pt);
+    
+    % Draw the path connecting the lattice points
+    \draw[thick, red, domain=0:5] plot (\x, {\x*\x/2});
+\end{tikzpicture}
+\end{document}

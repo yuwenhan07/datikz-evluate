@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{automata}
+
+\begin{document}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    semithick]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,3},draw=none,text=black]
+
+  \node[state]         (q_0)               {$\varphi$};
+  \node[state]         (q_1) [right of=q_0] {$q_0$};
+  \node[state]         (q_2) [right of=q_1] {$q_1$};
+  \node[state]         (q_3) [right of=q_2] {$\varphi$};
+
+  \path (q_0) edge [loop below] node {$a,b$} (q_0)
+        (q_0) edge [bend left] node {$b$} (q_1)
+        (q_0) edge [bend right] node {$x > 10$} (q_1)
+        (q_1) edge                node {$a$} (q_2)
+        (q_1) edge [bend left]    node {$b$} (q_2)
+        (q_1) edge [bend left]    node {$x \leq 10$} (q_2)
+        (q_2) edge [loop below]   node {$a$} (q_2)
+        (q_2) edge                node {$x \leq 20$} (q_3)
+        (q_2) edge [bend left]    node {$a,b$} (q_3)
+        (q_3) edge [loop below]   node {$a,b$} (q_3);
+\end{tikzpicture}
+\end{document}

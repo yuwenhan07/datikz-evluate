@@ -1,0 +1,62 @@
+\documentclass[10pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+
+\begin{document}
+
+\textbf{Stability test.} Histogram of rotation (l.), and translation (r.) errors computed over \( 1e5 \) noiseless samples.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{groupplot}[
+            group style={
+                group size=1 by 2,
+                horizontal sep=1cm,
+                vertical sep=1cm
+            },
+            width=\linewidth,
+            height=6cm,
+            xlabel={log\(_{10}\) of rotation error},
+            ylabel={Frequency},
+            xmin=-3,
+            xmax=3,
+            ymin=0,
+            ymax=1.5e4,
+            xtick={-3,-2,...,3},
+            ytick={0,5000,10000,15000},
+            xticklabels={\(\mathbf{10^{-18}}\), \(\mathbf{10^{-12}}\), \(\mathbf{10^{-6}}\)},
+            legend entries={{P2L1 our}, {P2L1 3Q3}, {P2L1 Ram.+SVD}, {P2L1 Ram.+LU}, {P1L2 our}, {P1L2 3Q3}},
+            legend style={
+                at={(0.5,1)},
+                anchor=north,
+                /tikz/every even column/.append style={column sep=0.2cm}
+            },
+            every axis plot/.append style={/pgf/number format/fixed},
+            log basis x={10},
+            log origin=infty
+        ]
+        \nextgroupplot[title={Rotation stability}]
+            \addplot [green, thick] table [x index=0,y index=1] {rotation_errors.txt};
+            \addplot [red, thick, dashed] table [x index=0,y index=2] {rotation_errors.txt};
+            \addplot [orange, thick, dotted] table [x index=0,y index=3] {rotation_errors.txt};
+            \addplot [brown, thick, dash dot] table [x index=0,y index=4] {rotation_errors.txt};
+            \addplot [blue, thick, dash dot dot] table [x index=0,y index=5] {rotation_errors.txt};
+
+        \nextgroupplot[title={Translation stability}]
+            \addplot [green, thick] table [x index=0,y index=1] {translation_errors.txt};
+            \addplot [red, thick, dashed] table [x index=0,y index=2] {translation_errors.txt};
+            \addplot [orange, thick, dotted] table [x index=0,y index=3] {translation_errors.txt};
+            \addplot [brown, thick, dash dot] table [x index=0,y index=4] {translation_errors.txt};
+            \addplot [blue, thick, dash dot dot] table [x index=0,y index=5] {translation_errors.txt};
+        \end{groupplot}
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

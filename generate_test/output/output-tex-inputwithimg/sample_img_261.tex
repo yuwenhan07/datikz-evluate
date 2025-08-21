@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Draw the pointer labels
+    \foreach \x/\y in {0/0, 10/10, 20/20, 40/40} {
+        \draw[->] (\x,1) -- (\x,2) node[above] {$0x\x$};
+    }
+    
+    % Draw the rectangle with labels
+    \node[draw, minimum width=3cm, minimum height=1cm] (rect) at (0,0) {};
+    \node at (1.5,-0.5) {\textit{tail}_r};
+    \node at (3,-0.5) {\textit{tail}_l};
+    \node at (4.5,-0.5) {victim};
+    
+    % Draw the alignment line
+    \draw[decorate, decoration={brace, amplitude=10pt}, thick] (-0.5,-0.5) -- (5.5,-0.5) node [black,midway,yshift=-0.7cm] {$64$\texttt{B}};
+    
+    % Draw the padding
+    \foreach \x in {-1, -0.5, -0.25, 0.25, 0.5, 1.5, 2, 2.5, 3.5, 4.25, 4.5, 5.5} {
+        \fill[black!20] (\x,-0.25) rectangle ++(0.1,0.2);
+    }
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,51 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphdrawing,positioning,arrows.meta}
+\usegdlibrary{circular}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.5,transform shape]
+    \tikzset{
+        vertex/.style={circle, draw, fill=black, minimum size=2mm, inner sep=0},
+    }
+
+    \foreach \x in {0,...,9} {
+        \foreach \y in {0,...,4} {
+            \node[vertex, label={below:$\y$}, label={right:$\x$}] (v\x\y) at (\x,\y) {};
+        }
+    }
+
+    % Vertices in V_2 shown in red
+    \node[vertex, color=red, label={above:$0$}] (v00r) at (0,0) {};
+    \node[vertex, color=red, label={above:$1$}] (v10r) at (1,0) {};
+    \node[vertex, color=red, label={above:$8$}] (v80r) at (8,0) {};
+    \node[vertex, color=red, label={above:$8$}] (v84r) at (8,4) {};
+    \node[vertex, color=red, label={above:$0$}] (v04r) at (0,4) {};
+
+    % Vertices in V_3 shown in blue
+    \node[vertex, color=blue, label={above:$3$}] (v30b) at (0,0) {};
+    \node[vertex, color=blue, label={above:$8$}] (v80b) at (8,0) {};
+    \node[vertex, color=blue, label={above:$8$}] (v84b) at (8,4) {};
+    \node[vertex, color=blue, label={above:$3$}] (v34b) at (0,4) {};
+
+    % Vertices in V_4 shown in black
+    \node[vertex] (v00b) at (0,0) {};
+    \node[vertex] (v10b) at (1,0) {};
+    \node[vertex] (v80b) at (8,0) {};
+    \node[vertex] (v84b) at (8,4) {};
+    \node[vertex] (v04b) at (0,4) {};
+
+    % Draw edges between vertices in V_2, V_3, and V_4
+    \draw[dashed] (v00r) -- (v00b);
+    \draw[dashed] (v10r) -- (v10b);
+    \draw[dashed] (v80r) -- (v80b);
+    \draw[dashed] (v84r) -- (v84b);
+    \draw[dashed] (v04r) -- (v04b);
+
+    % Draw edges between vertices in V_2, V_3, and V_4
+    \draw[dashed] (v30b) -- (v30r);
+    \draw[dashed] (v80b) -- (v80r);
+    \draw[dashed] (v84b) -- (v84r);
+    \draw[dashed] (v34b) -- (v34r);
+\end{tikzpicture}
+\end{document}

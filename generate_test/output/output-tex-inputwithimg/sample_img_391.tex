@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\textbf{Schematic illustration of the changes in a scientist's ``research portfolio'' over time.} Each color represents a different research area. Resources entail any intellectual or methodological assets that a scientist uses to address scientific problems from each research area. ``Conversion'' repurposes knowledge to new goals. Displacement is the replacement of certain research interests with little or no transfer of prior knowledge. Layering is the introduction of new research interests via the addition of new knowledge.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[remember picture]
+        \node (tab1) [anchor=west] {
+            \begin{tabular}{|c|}
+                \hline
+                \rowcolor{green!40}
+                Resource 8 \\
+                \hline
+                \rowcolor{green!40}
+                Resource 7 \\
+                \hline
+                \rowcolor{red!40}
+                Resource 6 \\
+                \hline
+                Resource 5 \\
+                \hline
+                \rowcolor{red!40}
+                Resource 4 \\
+                \hline
+                \rowcolor{blue!40}
+                Resource 3 \\
+                \hline
+                \rowcolor{blue!40}
+                Resource 2 \\
+                \hline
+                \rowcolor{blue!40}
+                Resource 1 \\
+                \hline
+            \end{tabular}
+        };
+        \node (tab2) [right=of tab1.east, anchor=west] {
+            \begin{tabular}{|c|}
+                \hline
+                \rowcolor{yellow!40}
+                Resource Z \\
+                \hline
+                \rowcolor{yellow!40}
+                Resource Y \\
+                \hline
+                \rowcolor{red!40}
+                Resource X \\
+                \hline
+                Resource 5 \\
+                \hline
+                \rowcolor{red!40}
+                Resource 4 \\
+                \hline
+                \rowcolor{red!40}
+                Resource 3 \\
+                \hline
+                \rowcolor{red!40}
+                Resource 2 \\
+                \hline
+                \rowcolor{red!40}
+                Resource 1 \\
+                \hline
+            \end{tabular}
+        };
+
+        \draw[->, dashed, very thick] 
+            ([yshift=1ex]tab1.north east) 
+            to[out=90, in=270] node[above, midway] {Layering} 
+            ([yshift=-1ex]tab2.north west);
+        \draw[->, dashed, very thick] 
+            ([yshift=1ex]tab1.south east) 
+            to[out=90, in=270] node[above, pos=0.75, midway] {Displacement} 
+            ([yshift=-1ex]tab2.south west);
+        \draw[->, dashed, very thick] 
+            ([yshift=1ex]tab1.west |- tab2.north) 
+            to[out=90, in=270] node[right, pos=0.75, midway] {Conversion} 
+            ([yshift=-1ex]tab2.west |- tab2.north);
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

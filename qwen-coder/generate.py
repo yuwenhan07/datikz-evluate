@@ -1,5 +1,6 @@
 """
 使用 qwen 运行
+transformer verision is 4.52.4
 """
 # * 用于生成 TikZ LaTeX 代码的脚本，测试对应的模型
 from transformers import AutoModelForCausalLM, AutoTokenizer

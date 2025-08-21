@@ -1,0 +1,43 @@
+\documentclass[10pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+    % Draw the axes
+    \draw[->] (0,0) -- (3,0) node[right] {$Z_{U(1)}$};
+    \draw[->] (0,0) -- (0,3) node[above left] {$Z_{KK}$};
+
+    % Draw the quarter-circle
+    \draw[fill=gray!70] (0,0) -- (90:2cm) arc (90:0:2cm) -- cycle;
+
+    % Draw the vertical line
+    \draw (0,0) -- (0,2.5);
+
+    % Draw the dots along the vertical line
+    \foreach \y in {1,...,8}
+    {
+        \pgfmathsetmacro{\angle}{180*\y/8}
+        \draw[fill=black!90] ({atan(\angle)/180*pi},{1/\y}) circle (0.05);
+    }
+
+    % Label the end of the vertical line
+    \draw[fill=white] (0,2.5) circle (0.05);
+    \node at (0,2.6) {$e^{-\phi_4}$};
+
+    % Mark the points on the quarter-circle
+    \foreach \r in {0.5, 0.75, 1, 1.25, 1.5}
+    {
+        \pgfmathsetmacro{\theta}{acos(1-\r*\r)}
+        \draw[fill=gray!50] ({\theta},{\r}) circle (0.05);
+    }
+    
+    % Label the points on the quarter-circle
+    \node at (1,0) [below] {$1$};
+    \node at (0,1) [left] {$1$};
+\end{tikzpicture}
+
+\textbf{The convex hull (see \cite{Heidenreich:2015nta} for notation) of gonions and a KK tower in circle compactification, here just the vertical dot line, always contains the extremal circle, if we remain in a perturbative region $e^{-\phi_4}=g^{-1} \geq 1$.}
+
+\end{document}

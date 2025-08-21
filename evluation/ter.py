@@ -4,8 +4,8 @@ import re
 from tqdm import tqdm
 
 # 文件夹路径
-groundtruth_dir = "/home/yuwenhan/Tikz/evaluate/qwen-coder/output/groundtruth-tex"
-output_dir = "/home/yuwenhan/Tikz/evaluate/qwen-coder/output/output-tex"
+groundtruth_dir = "../save_eval/datikz_test_data/codes"
+output_dir = "../generate_test/output/output-tex-inputwithimg"
 
 # 创建 TER 实例
 ter_metric = TER()
@@ -35,3 +35,4 @@ for filename in tqdm(groundtruth_files, desc="Processing files"):
 
 # 计算 TER 分数
 ter_score = ter_metric.compute(references=ground, predictions=output)
+print(f"========== ter score is {ter_score} ================")

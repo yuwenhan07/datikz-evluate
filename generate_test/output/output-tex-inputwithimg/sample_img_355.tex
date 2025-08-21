@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+% Define the radius of the ellipse
+\def\radius{3}
+% Define the positions of the points
+\def\pOne{60:\radius} % point p1
+\def\pTwo{90:\radius} % point p2
+\def\pThree{-60:\radius} % point p3
+
+\begin{tikzpicture}[scale=2]
+  % Draw the boundary of the domain Omega
+  \draw (0,0) ellipse (\radius cm and 0.5*\radius cm);
+  
+  % Draw the trajectory paths
+  \draw[->] (\pOne) -- (\pTwo);
+  \draw[->] (\pOne) -- (\pThree);
+  \draw[dashed] (\pTwo) -- ++(\pTwo);
+  \draw[dashed] (\pTwo) -- ++(-\pTwo);
+  \draw[dotted] (\pThree) ++(240:\radius) -- ++(120:\radius);
+  \draw[dotted] (\pThree) ++(60:\radius) -- ++(240:\radius);
+  
+  % Label the points
+  \fill (\pOne) circle (1pt) node[above right] {$p_1$};
+  \fill (\pTwo) circle (1pt) node[above left] {$p_2$};
+  \fill (\pThree) circle (1pt) node[below left] {$p_3$};
+  
+  % Label the boundary segments
+  \path (\pTwo) ++(240:\radius) node[right] {$T_{p_2}{\partial\Omega}$};
+  \path (\pThree) ++(280:{0.7*\radius}) node[above right] {\small$\Omega$};
+\end{tikzpicture}
+
+\end{document}

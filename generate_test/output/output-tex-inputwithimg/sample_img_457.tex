@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
+
+\begin{document}
+
+\section*{Illustration of Case Allocation in Treatment Studies}
+
+The following diagram illustrates the case allocation in a case²-study within the stratum defined by $(x_{ij}, u_{ij})$, where $\theta_{T_{ij}}/\theta_{C_{ij}}$ and $(1 - \theta_{C_{ij}})/(1 - \theta_{T_{ij}})$ are the largest. The left panel depicts the case allocation when all subjects are treated, while the right panel shows the case allocation when no subjects are treated.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=4cm, auto,
+        block/.style={rectangle, draw, minimum height=3em},
+        line/.style={draw, -Latex}]
+
+        % Left Panel - Treated Subjects
+        \node [block] (Z1) {$Z_{ij} = 1$};
+        \node [block, below=of Z1] (h1) {$h_{ij}=1$};
+        \node [block, below=of h1] (h0) {$h_{ij}=0$};
+        \node [block, right=of h1, anchor=west] (NN) {$\{ ij \mid \kappa_{\alpha}(r_{T_{ij}})=1 \}$};
+        \node [block, right=of h0, anchor=west] (NM) {$\{ ij \mid \kappa_{\alpha}(r_{C_{ij}})=1 \}$};
+        
+        % Right Panel - Untreated Subjects
+        \node [block, right=of NN, anchor=west] (Z0) {$Z_{ij} = 0$};
+        \node [block, below=of NN, anchor=west] (MN) {$\{ ij \mid \kappa_{\alpha}(r_{T_{ij}})=1, \kappa_{\alpha}(r_{T_{ij}})=0 \}$};
+        \node [block, below=of NM, anchor=west] (MM) {$\{ ij \mid \kappa_{\alpha}(r_{C_{ij}})=1, \kappa_{\alpha}(r_{C_{ij}})=0 \}$};
+
+        % Lines connecting the panels
+        \draw[line] (h1.east) -- ++(3,0) coordinate[midway] (aux1);
+        \draw[line] (Z1.south west) |- (aux1) node[pos=.75] {$h_{NN}$};
+        \draw[line] (NN.south east) -- (aux1);
+
+        \draw[line] (h0.east) -- ++(-3,0) coordinate[midway] (aux2);
+        \draw[line] (Z0.south west) |- (aux2) node[pos=.75] {$h_{MM}$};
+        \draw[line] (MM.south west) -- (aux2);
+        \draw[line] (MN.south east) -- (aux2);
+
+    \end{tikzpicture}
+    \caption{Case Allocation in Treatment Studies}
+    \label{fig:case_allocation_diagram}
+\end{figure}
+
+The expected values for the case allocation are represented by the labels:
+\begin{equation}
+h_{NN}, h_{MN}, h_{NM}, h_{MM}.
+\end{equation}
+
+\end{document}

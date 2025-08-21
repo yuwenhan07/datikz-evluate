@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\begin{document}
+
+\tikzset{
+    block/.style = {draw, fill=white, rectangle, minimum height=3em,
+                    minimum width=6em},
+    line/.style = {draw, -latex'},
+}
+
+\begin{tikzpicture}[node distance = 2cm, auto]
+    \node [coordinate] (input) {};
+    \node [block, right of=input] (esti) {Local Estimation $\mathcal{T}$};
+    \node [block, right of=esti, node distance=4cm] (nnet) {$G_{\theta}(\cdot)$};
+    \node [coordinate, right of=nnet] (output) {};
+    
+    \draw [line] (input) -- node [near start] {$Y(\mathbf{x})$} (esti);
+    \draw [line] (esti) -- node [near start] {$\tilde{\varphi}(\mathbf{x})$} (nnet);
+    \draw [line] (nnet) -- node [near start] {$\hat{\varphi}(\mathbf{x})$} (output);
+\end{tikzpicture}
+
+Data processing pipeline: we first perform an initial and simple estimation on $Y(\mathbf{x})$, generating the initial estimate $\tilde{\varphi}(\mathbf{x})$; then, we use a neural network to refine it, producing the final estimate $\hat{\varphi}(\mathbf{x})$.
+
+\end{document}

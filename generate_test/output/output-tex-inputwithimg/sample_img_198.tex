@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \matrix (m) [matrix of nodes,row sep=0.3cm,column sep=5mm,minimum width=4em,font=\small] {
+            ID & $\subset$ & GCDD & $\subset$ & BD & $\supseteq$ & EDD & $\supset$ & AD & $\subset$ & PID & $\subset$ & ED & $\subset$ & Fields \\
+        };
+        \draw[thick] (m-1-6.south west) rectangle (m-1-12.south east);
+        \node at (m-1-9.south) {UFD};
+        \draw[->] (m-1-7.west) .. controls +(-0.8,0.8) and +(-0.8,-0.8) .. (m-1-4.east);
+        \draw[->] (m-1-12.east) .. controls +(+0.8,-0.8) and +(+0.8,0.8) .. (m-1-10.west);
+    \end{tikzpicture}
+    \caption{Inclusion relations between different classes of commutative rings, where all inclusions are strict except for the one between Bézout domains (BD) and elementary divisor domains (EDD).}
+    \label{fig:inclusion_relations}
+\end{figure}
+
+\end{document}

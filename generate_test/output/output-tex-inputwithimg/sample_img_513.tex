@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, shapes.geometric}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, auto, thick, >=Stealth,
+    state/.style={shape=rectangle, draw, minimum size=10mm},
+    message/.style={shape=circle, draw, minimum size=8mm}]
+
+    % Message input node
+    \node[message] (input) {$\mathbf{w}$};
+    
+    % LDPC encoder block
+    \node[state, right=of input, label={[xshift=-10pt,yshift=30pt]above left:Message}, label={[xshift=-10pt,yshift=-30pt]below left:LDPC}] (encoder) {};
+    
+    % Codeword node
+    \node[message, right=of encoder, label=above:Codeword] (codeword) {$\mathbf{v}$};
+    
+    % Indexing operation node
+    \node[message, below=of codeword, label=below:Index] (index) {$\mathbf{e}_{\phi(\cdot)}$};
+    
+    % State node
+    \node[message, right=of index, label=above:State] (state) {$\mathbf{s}$};
+    
+    % Compression operation node
+    \node[message, below=of state, label=below:Compress] (compress) {$\mathbf{x}$};
+    
+    % Sensing matrix A
+    \node[minimum height=1cm, minimum width=1cm, right=of state, xshift=0.5cm] (A) {${\mathbf{A}}$};
+    
+    % Signal output node
+    \node[minimum height=1cm, minimum width=1cm, right=of compress, xshift=0.5cm] (signal) {${\mathbf{x}}$};
+    
+    % Connections
+    \draw[->] (input) -- (encoder);
+    \draw[->] (encoder) -- (codeword);
+    \draw[->] (codeword) -- (index);
+    \draw[->] (index) -- (state);
+    \draw[->] (state) -- (compress);
+    \draw[->] (A) -- (signal);
+\end{tikzpicture}
+
+\end{document}

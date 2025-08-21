@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the grid for the first graph
+        \draw[very thin,gray] (-3,-2) grid (3,4);
+        % Connect nodes with corresponding labels
+        \node[circle,fill,inner sep=1pt,label=left:$z_0$] at (-3,0) {};
+        \node[circle,fill,inner sep=1pt,label=left:$z_1$] at (-3,1) {};
+        \node[circle,fill,inner sep=1pt,label=left:$z_2$] at (-3,2) {};
+        \node[circle,fill,inner sep=1pt,label=left:$z_3$] at (-3,3) {};
+        \node[circle,fill,inner sep=1pt,label=left:$z_4$] at (-3,4) {};
+        
+        % Labels for the rows
+        \foreach \y [count=\i from 0] in {0,1,2,3,4}{
+            \node[left] at (-3.3,\y) {$z_{-\i}$};
+        }
+        
+        % Draw the arrow and label
+        \draw[-latex,thick] (0.5,2) -- (3.5,2);
+        \node[right] at (4,2) {$x$};
+        
+        % Second graph
+        \begin{scope}[xshift=6cm]
+            % Draw the grid for the second graph
+            \draw[very thin,gray] (-3,-2) grid (3,4);
+            % Connect nodes with corresponding labels
+            \node[circle,fill,inner sep=1pt,label=left:$z_0$] at (-3,0) {};
+            \node[circle,fill,inner sep=1pt,label=left:$z_1$] at (-3,1) {};
+            \node[circle,fill,inner sep=1pt,label=left:$z_2$] at (-3,2) {};
+            \node[circle,fill,inner sep=1pt,label=left:$z_3$] at (-3,3) {};
+            \node[circle,fill,inner sep=1pt,label=left:$z_4$] at (-3,4) {};
+            
+            % Labels for the rows
+            \foreach \y [count=\i from 0] in {0,1,2,3,4}{
+                \node[left] at (-3.3,\y) {$z_{-\i-4}$};
+            }
+            
+            % Add arrow and label
+            \draw[-latex,thick] (0.5,2) -- (3.5,2);
+            \node[right] at (4,2) {$y$};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Transformation of the domain of the colored S6V model used in the proof of Lemma~\ref{l.S_N symmetry}. The $z_i$ labels at the left side indicate the spectral parameter for the colored S6V weights on the corresponding row.}
+    \label{fig:s6v_transformation}
+\end{figure}
+
+\end{document}

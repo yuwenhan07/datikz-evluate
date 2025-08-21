@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphdrawing}
+\usegdlibrary{lcf}
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[every node/.style={circle, draw=black!50, fill=blue!20, minimum size=1cm}]
+        \node (a) at (0, 2) {$a$};
+        \node (v1) at (-1, 2) {$v_1$};
+        \node (v2) at (+1, 2) {$v_2$};
+        
+        \node (b) at (0, 0) {$b$};
+        \node (d1) at (-1.5, -1) {$d_1$};
+        \node (d2) at (-0.5, -1) {$d_2$};
+        \node (d3) at (-1.5, -2) {$d_3$};
+        \node (c1) at (1.5, -1) {$c_1$};
+        \node (c2) at (0.5, -2) {$c_2$};
+
+        \draw[thick] (a) -- (v1);
+        \draw[thick] (a) -- (v2);
+
+        \draw[thick] (d1) -- (b);
+        \draw[thick] (d2) -- (b);
+        \draw[thick] (d3) -- (b);
+        \draw[thick] (b) -- (c1);
+        \draw[thick] (b) -- (c2);
+
+        % Highlight the edges that form the graph G^{(2)}_f
+        \draw[ultra thick, pink] (a) -- (v1);
+        \draw[ultra thick, pink] (a) -- (v2);
+        \draw[ultra thick, pink] (d1) -- (b);
+        \draw[ultra thick, pink] (d2) -- (b);
+        \draw[ultra thick, pink] (d3) -- (b);
+        \draw[ultra thick, pink] (b) -- (c1);
+        \draw[ultra thick, pink] (b) -- (c2);
+    \end{tikzpicture}
+    
+    \caption{The neighborhood of \(a \times b\) in \(\mathcal{G}\). The graph \(G^{(2)}_f\) is represented by the pink lines.}
+    \label{fig:neighborhood}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,29 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\textbf{Tabular MDP.} The environment starts in state $s_0$ and has horizon $H=1$. Transition probabilities from state $s_0$ are given for the two binary actions $a_0, a_1$ (which send the agent to the other state with complementary probability).
+
+\begin{center}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state] (S0)                      {$s_0$};
+  \node[state] (S1) [above right of=S0] {$s_1$};
+  \node[state] (S2) [below right of=S0] {$s_2$};
+
+  \path (S0) edge node {$(\alpha_0, 0.8)$} (S1)
+        (S0) edge node[swap] {$(\alpha_1, 0.6)$} (S2);
+\end{tikzpicture}
+\begin{tabular}{c c}
+$R=1$ & \\
+$R=0$ &
+\end{tabular}
+\end{center}
+
+\end{document}

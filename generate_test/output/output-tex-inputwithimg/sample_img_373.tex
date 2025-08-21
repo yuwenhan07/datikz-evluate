@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, matrix, positioning, fit}
+
+\begin{document}
+
+\begin{center}
+    \begin{figure}[h]
+        \includegraphics[width=0.95\textwidth]{path_planning.png}
+        \caption{Our ASLAM solution framework: First a global traversability map is built based on graph-based SLAM and 3D perception. Then, based on the rover capabilities, traversability scores are thresholded and the frontiers are detected. Goals are defined for each frontier and ranked on the basis of information gain. Finally, path safety for each goal are evaluated using predicted perception entropies. Depending on the other constraints of the mission, the final path is selected and executed.}
+        \label{fig:path_planning}
+    \end{figure}
+\end{center}
+
+The ASLAM solution framework is shown in Figure \ref{fig:path_planning}. The framework is divided into three main stages: Mapping, Local Traversability, and Planning.
+
+In the **Mapping** stage, images, odometry data, and point cloud data are processed by the Graph-based SLAM algorithm to build a global traversability map. The output includes current pose and poses. These are used as inputs to the Global Traversability module, which evaluates the traversability of the map.
+
+In the **Local Traversability** stage, local traversability is computed from the point cloud data. This stage also involves frontier detection, which identifies the boundaries between traversable and non-traversable areas within the map.
+
+In the **Planning** stage, candidate goals are defined for each frontier. These goals are ranked based on their utility, which is calculated using Level 1 utility ($u_1 = (\Delta E, \rho)$) and Level 2 utility ($u_2 = tr(I_p)$). The best selected path is then determined from the ranked list of goals, taking into account additional mission constraints.
+
+This framework ensures that the rover can navigate safely while exploring new terrain, optimizing both efficiency and safety.
+\end{document}

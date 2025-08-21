@@ -1,0 +1,61 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{circuits.ee.IEC}
+
+\tikzset{
+    circuit ee IEC/.style={},
+    every component/.style={},
+    circuit declare symbol=counter,
+    set counter graphic={
+        shape=generic circle IEC,
+        transform shape,
+        size=1.3333333333333333cm,
+        path picture={%
+            \draw[black]
+                ([xshift=-4pt,yshift=6pt]path picture bounding box.north west)
+                -- ([xshift=4pt,yshift=6pt]path picture bounding box.north east)
+                ([xshift=-4pt,yshift=-6pt]path picture bounding box.south west)
+                -- ([xshift=4pt,yshift=-6pt]path picture bounding box.south east);
+        },
+    }
+}
+
+\begin{document}
+
+\begin{tikzpicture}[circuit ee IEC,american,capacitance=<>]
+
+% Circuits
+\draw
+    (0,0) node[and gate] (A) {}
+    (A.out) -- ++(1,0) node[or gate] (B) {}
+    (B.out) -- ++(1,0) node[and gate] (C) {};
+\draw[]
+    (A.input 1) -- ++(-1,0) node[ground]{};
+\draw[]
+    (A.input 3) -- ++(0,-2) node[ground]{};
+
+\draw[red,ultra thick]
+    (A.input 2) -- ++(0,1) node[above left] {25 cent};
+\draw[blue,ultra thick]
+    (B.input 1) -- ++(0,1) node[above left] {10 cent};
+\draw[orange,ultra thick]
+    (C.input 1) -- ++(0,1) node[above left] {5 cent};
+
+% Labels
+\node at (current bounding box.north west) [above left] {\textbf{Vending Machine}};
+\node at (current bounding box.south west) [below left] {\textbf{Count to 25 cents with coins of 5, 10 and 25 cents}};
+
+\node at (A.input 1) [left] {\textbf{25 cent}};
+\node at (A.input 2) [above left] {\textbf{10 cent}};
+\node at (A.input 3) [right] {\textbf{5 cent}};
+\node at (A.out) [right] {\textbf{50 cent}};
+\node at (B.input 1) [above right] {\textbf{75 cent}};
+\node at (B.input 2) [right] {\textbf{15 cent}};
+\node at (B.out) [right] {\textbf{100 cent}};
+\node at (C.input 1) [below] {\textbf{10 cent}};
+\node at (C.input 2) [right] {\textbf{5 cent}};
+\node at (C.out) [right] {\textbf{25 cent}};
+
+\end{tikzpicture}
+
+\end{document}

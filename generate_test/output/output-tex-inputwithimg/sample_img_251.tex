@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\T}{\mathcal{T}}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the manifold M
+        \draw[thick] (-1,-0.5) .. controls (0.5,2) and (2,3) .. (4,3);
+        \node at (1,2.5) {$\M$};
+        
+        % Draw the tangent space T_t
+        \draw[thick] (1,1.5) -- (5,3);
+        \node at (5.5,3) {$\T_t$};
+        
+        % Draw the trajectory from u_t to u_{t+1}
+        \draw[thick] (1,1.5) .. controls (2,2) and (3,2.5) .. (4,2.5);
+        \fill (1,1.5) circle (1pt) node[below] {$u_t$};
+        \fill (2,2) circle (1pt) node[above] {$\bar{u}_{t+1}$};
+        \fill (4,2.5) circle (1pt) node[below] {$u_{t+1}$};
+        
+        % Draw the line from u_t to u_t - P_t^n g_t
+        \draw[dashed] (4,2.5) -- (6,1.5);
+        \node at (6.5,1.5) {$u_t - P_t^n g_t$};
+        
+        % Draw the line from u_t to u_t - g_t
+        \draw[dashed] (4,2.5) -- (5.5,0);
+        \node at (6,0) {$u_t - g_t$};
+        
+        % Draw the retraction map R_t
+        \node at (9,1) {$R_t$};
+        
+        % Draw the tangent space arrow
+        \draw[->, thick] (5.5,1.5) -- (5.5,2.5);
+        
+        % Add labels for clarity
+        \fill (5.5,2.5) circle (1pt) node[above] {$u_t$};
+        \fill (5.5,1.5) circle (1pt) node[below] {$u_t - g_t$};
+    \end{tikzpicture}
+    \caption{Illustration of the proposed algorithm: based on an iterate \(u_t \in \M\) and the choice of a linear space \(\T_t\), an approximation \(P_t^n g_t \in \T_t\) of the true gradient \(g_t\) is first obtained via a random operator \(P_t^n\). Then an update \(\bar{u}_{t+1} = u_t - s_t P_t^n g_t\) is obtained given a step size \(s_t\). Then, the next iterate \(u_{t+1} \in \M\) is obtained through application of the retraction map \(R_t\).}
+    \label{fig:algorithm_diagram}
+\end{figure}
+
+\end{document}

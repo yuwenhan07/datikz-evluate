@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz-feynman}
+
+\begin{document}
+
+\[
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+    \begin{feynman}
+        \vertex (a);
+        \vertex [right=of a] (b);
+        \vertex [above right=of b] (c);
+        \vertex [below right=of b] (d);
+        \vertex [below left=of d] (e);
+        \vertex [below left=of e] (f);
+        \vertex [above left=of f] (g);
+        
+        \diagram* {
+            (a) [fermion] -- [photon] (b) -- [fermion] (c),
+            (b) -- [gluon] (d),
+            (d) -- [fermion] (e) -- [anti fermion] (f) -- [fermion] (g),
+            (g) [fermion] -- [photon] (a),
+        };
+        
+        \node at (b-|a) {$\Psi$};
+        \node at (d-|a) {$\Psi$};
+        \node at (b-|c) {$\Psi$};
+        \node at ([yshift=-1ex]b-|c) {$\chi$};
+        \node at ([yshift=-1ex]d-|c) {$\chi$};
+        \node at ([xshift=1.5ex,yshift=-0.5ex]b) {$\gamma$, Z, W${}^\pm$};
+        \node at ([xshift=1.5ex,yshift=0.5ex]c) {$\gamma$, Z, W${}^\pm$};
+        \node at (b+1em,1.25em) {${\bf \Psi}$};
+        \node at (d+1em,1.25em) {${\bf S}$};
+    \end{feynman}
+\end{tikzpicture}
+\]
+
+\end{document}

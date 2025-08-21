@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[
+            scale=0.7,
+            every node/.style={draw, circle, minimum size=1cm},
+            level 1/.style={sibling distance=3.5em},
+            level 2/.style={sibling distance=4em},
+            level 3/.style={sibling distance=6em}
+        ]
+        
+        %% Root Node
+        \node {a,b,c,d,e}
+        child {
+            node {a,b,c,d}
+            child {
+                node {a,b}
+                child {
+                    node {a}
+                }
+                child {
+                    node {b}
+                }
+            }
+            child {
+                node {c,d}
+                child {
+                    node {c}
+                }
+                child {
+                    node {d}
+                }
+            }
+        } 
+        child {
+            node {e}
+        };
+        
+        %% Pink arrows
+        \draw[->, ultra thick, pink] (4,0) to [out=90,in=-90] (5,1);
+        \draw[->, ultra thick, pink] (9.5,0.8) to [out=-20,in=-160] (12,-1);
+        
+        %% Additional nodes for explanation
+        \node[pink, draw=red, rounded corners=10pt, fit=(4,0) (5,1)] {};
+        \node[pink, draw=red, rounded corners=10pt, fit=(9.5,0.8) (12,-1)] {};
+        
+        %% Labels for the arrows
+        \node[pink, below right=of 4, inner sep=0pt, font=\tiny] {2};
+        \node[pink, below right=of 9.5, inner sep=0pt, font=\tiny] {1};
+        \node[pink, below left=of 4, inner sep=0pt, font=\tiny] {1};
+        
+        %% Text annotations
+        \node at (10,-3) {$\{a,b,d,e\}$};
+        \node at (14.8,-2.5) {$\{a,b,c,d,e\}$};
+        
+        %% Circle around the entire structure
+        \draw[blue, very thick, rounded corners=10pt] (-5,-5) rectangle (19.5,5);
+    \end{tikzpicture}
+    \caption{Visualization of the $\sqrt{n}$-decomposition of the blue group from Figure~\ref{fig:group-partition}. The processes $a,b,c,d,e$ in the group are logically decomposed into a binary tree. The pink arrows visualize the three-round process of relaying operative counts of the two children of the root to the root itself. First, the counts are relayed to all processes in the group (arrow \#1), then the processes send a confirmation if they received the counts (arrow \#2), finally, all in the group transmit the received counts to the higher layer -- the root in this case (arrow \#3). Some processes can be faulty (process $c$ does not communicate, only $\{a,b,d,e\}$) and their values are not guaranteed to be accumulated accurately.}
+    \label{fig:binary_tree_decomposition}
+\end{figure}
+
+\end{document}

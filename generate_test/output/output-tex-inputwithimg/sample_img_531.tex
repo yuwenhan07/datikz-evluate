@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw horizontal line for the timeline
+        \draw[thick,->] (0,0) -- (13,0) node[right] {};
+        
+        % Draw vertical lines for the EU and NMS borders
+        \draw[thick,dashed] (0,-0.5) -- (0,1.5) node[left] {EU};
+        \draw[thick,dashed] (0,-1.5) -- (0,-0.5) node[left] {NMS};
+        
+        % Draw the arrows for the EU and NMS
+        \draw[thick,blue,-{Stealth}] (0,1.5) -- ++(7.5,0);
+        \draw[thick,red,-{Stealth}] (0,-0.5) -- ++(7.5,0);
+        \draw[thick,red,-{Stealth}] (0,-1.5) -- ++(7.5,0);
+        
+        % Label the year 2000 for the FTA
+        \node at (1.5,-0.5) [anchor=north] {\textcolor{blue}{2000: FTA EU-MX enters into force}};
+        
+        % Label the year 2004 for MFN Tariffs
+        \node at (11.5,-1.5) [anchor=north] {\textcolor{red}{2004}};
+        
+        % Label the change in tariffs
+        \node at (11.5,-1.75) [anchor=north] {$\Delta \tau_{sdip,2004}$};
+        
+        % Add a wavy line for the EU's preferential tariffs
+        \draw[very thick,red,wavy={0.3}{0.1},shorten >=-6pt,shorten <=-6pt] (0,1.5) -- (7.5,1.5);
+        % Add a wavy line for the NMS' MFN tariffs
+        \draw[very thick,red,wavy={0.3}{0.1},shorten >=-6pt,shorten <=-6pt] (0,-0.5) -- (7.5,-0.5);
+    \end{tikzpicture}
+\end{figure}
+
+\textbf{Event Study Design, Constructing the Trade Shock}: \footnotesize{I use the fact that when the NMS joined the EU in 2004, they had immediate preferential access to third-party markets via previously signed EU trade agreements which the NMS did not get to negotiate. The product-level bilateral tariff variation $\Delta \tau_{sdip,2004}$ which was a by-product of the EU accession process is my measure of the market accession shock. In the example above, the EU joined a FTA with Mexico in 2000, but the NMS only joined the EU in 2004, so in 2004 they immediately adhered to these previously negotiated tariff schedules.}
+
+\end{document}

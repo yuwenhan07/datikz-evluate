@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{pgfplots}
+
+% Define colors for the bars
+\definecolor{blueColor}{HTML}{5B9BD5}
+\definecolor{redColor}{HTML}{FF6347}
+\definecolor{brownColor}{HTML}{C0B184}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        bar width=0.2cm,
+        enlarge x limits=false,
+        ymin=0,
+        ymax=3,
+        ylabel={Average calls per instances},
+        xlabel={Formula|Programme|Evaluator},
+        symbolic x coords={Formula, Programme, Evaluator},
+        xtick=data,
+        nodes near coords,
+        every node near coord/.append style={font=\tiny},
+        legend pos=north west,
+        legend cell align=left,
+        legend style={
+            draw=black,
+            fill=white,
+            font=\footnotesize,
+            anchor=south,
+            /tikz/every even column/.append style={column sep=0.5cm}
+        }
+    ]
+    
+    % Add data points
+    \addplot coordinates {(Formula, 1) (Programme, 1) (Evaluator, 1)};
+    \addplot coordinates {(Formula, 1) (Programme, 2) (Evaluator, 2)};
+    \addplot coordinates {(Formula, 1) (Programme, 1.8) (Evaluator, 1.8)};
+
+    % Draw the legend
+    \legend{
+        {NL4OPT, color=blueColor, fill=blueColor},
+        {ComplexOR, color=redColor, fill=redColor},
+        {NLP4LP, color=brownColor, fill=brownColor}
+    }
+
+    % Annotate the chart
+    \node at (current axis.below south west) {\small{OptiMUS only requires one call per agent on the simple problems of NL4OPT. On the more complex datasets, it relies more heavily on the programmer to fix errors identified by the evaluator, but rarely improves by fixing formulation errors.}};
+
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

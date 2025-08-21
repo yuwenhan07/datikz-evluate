@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\section*{Flux Function \( f \) Considered in \S\ref{Ss:nondifferentiabilityset}}
+
+Close to the origin, the flux function \( f \) is strictly convex but not uniformly convex. This flux function is \( C^{\infty}(\mathbb{R}) \), with all derivatives vanishing at the origin, but of course, it is not analytic.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Axes
+        \draw[->, thick] (-3,0) -- (3,0) node[right] {$z$};
+        \draw[->, thick] (0,-0.2) -- (0,3) node[above] {$t$};
+        
+        % Plot the left side of the function
+        \draw[thick, domain=-2.5:-0.5, smooth, variable=\x] plot ({\x}, {2^(1/(4*\x)-1)});
+        \node at (-2.5, 0.7) {\( f(z) = 2^{\frac{1}{|z|^\sigma}-1} \)};
+        
+        % Plot the right side of the function
+        \draw[thick, domain=0.5:2.5, smooth, variable=\x] plot ({\x}, {2^(-1/\x-1)});
+        \node at (2.5, 0.8) {\( f(z) = 2^{-\frac{1}{z}-1} \)};
+        
+        % Origin point
+        \filldraw (0,0) circle (1pt);
+        \node at (0.2, -0.2) {origin};
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

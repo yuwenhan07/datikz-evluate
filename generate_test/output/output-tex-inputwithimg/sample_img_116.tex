@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\begin{document}
+
+% Define colors
+\definecolor{lightblue}{RGB}{191,220,238}
+\definecolor{lightorange}{RGB}{255,228,194}
+
+% Set up TikZ picture environment
+\begin{tikzpicture}[node distance=1cm, auto]
+    % Define node styles
+    \tikzset{
+        block/.style = {rectangle, draw, fill=lightblue!60, 
+            text width=7em, text centered, rounded corners, minimum height=4em},
+        input/.style = {coordinate},
+        output/.style = {coordinate},
+        sum/.style = {draw, circle, node distance=1cm},
+        vec/.style = {trapezoid, trapezoid stretches=true, trapezoid left angle=70, trapezoid right angle=-70,
+            draw, fill=lightorange!60, minimum height=3em},
+        vector/.style = {coordinate},
+        annot/.style = {text width=4em, text centered}
+    }
+
+    % Draw nodes
+    \node [block] (W) {\begin{tabular}{c} Pretrained \\ Weights \\ $W_0 \in \mathbb{R}^{d \times k}$ \end{tabular}};
+    \node [vector, right = 1cm of W] (vecA) {};
+    \node [vector, above right = 1cm and 1cm of vecA] (vecBA) {};
+    \node [vector, below right = 1cm and 1cm of vecA] (vecBB) {};
+    \node [sum, above right = 1cm of vecBA] (sum) {$+$};
+    \node [input, below right = 1cm and 1cm of vecBB] (WvecB) {};
+    \node [annot, left = 1cm of W, anchor=south] (inputW) {$W \rightarrow$};
+    \node [annot, right = 1cm of WvecB, anchor=south] (outputWvecB) {$d$};
+    \node [annot, above = 1cm of sum, anchor=south] (outputWvecB) {$k$};
+    \node [annot, above = 1cm of vecBA, anchor=south] (outputWvecB) {$r$};
+    \node [annot, above = 1cm of vecBB, anchor=south] (outputWvecB) {$d$};
+
+    % Draw arrows
+    \draw [->] (W) -- (vecA);
+    \draw [->] (vecA) -- (vecBA);
+    \draw [->] (vecBA) -- (sum);
+    \draw [->] (sum) -- (vecBB);
+    \draw [->] (vecBB) -- (WvecB);
+
+    % Additional key
+    \node [block, fill=white] at (8, 0) (key) {Key};
+    \node [annot, below of=key, anchor=center] (trainable) {Trainable};
+    \node [annot, below of=trainable, anchor=center] (frozen) {Frozen};
+
+    % Add labels for trainable and frozen
+    \draw [->] (trainable) -- ++(0.5,0) -- ++(0.5,0.5) -- ++(-0.5,0.5) -- (key.center);
+    \draw [->] (frozen) -- ++(-0.5,0) -- ++(-0.5,-0.5) -- ++(0.5,-0.5) -- (key.center);
+
+    % Annotations for matrices
+    \node at (vecA|-outputWvecB) {\small$d$};
+    \node at (vecBA|-outputWvecB) {\small$k$};
+    \node at (vecBB|-outputWvecB) {\small$d$};
+    \node at (vecBA|-outputWvecB) {\small$r$};
+    \node at (sum|-outputWvecB) {\small$k$};
+
+\end{tikzpicture}
+
+\end{document}

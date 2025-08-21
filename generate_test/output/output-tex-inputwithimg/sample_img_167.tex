@@ -1,0 +1,49 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.8]
+    % Define node styles
+    \tikzset{
+        block/.style={draw, rectangle, minimum height=3em, minimum width=6em},
+        line/.style={draw, -latex'},
+        dashedline/.style={draw, densely dashed, -latex'},
+    }
+
+    % Draw the main box
+    \node [block] (client_environment) at (0,0) {};
+    \node [block, below=of client_environment.south west, anchor=north west, node distance=2cm, minimum width=4cm] (client1) {Client agent 1};
+    \node [block, below=of client1.south, node distance=2cm, minimum width=4cm] (client2) {Client agent 2};
+    \node [block, below=of client2.south, node distance=2cm, minimum width=4cm] (clientN) {Client agent N};
+    \node [block, right=3cm of client1] (master_agent) {Master agent};
+    \node [block, right=3cm of client2] (mece_env) {MEC Environment \\ (UDs & Server)};
+
+    % Draw dashed lines for policies
+    \draw[dashedline] (client1.north east) -- ++(0.5,0) node [right] {Policy 1 ($\theta_1$)};
+    \draw[dashedline] (client2.north east) -- ++(0.5,0) node [right] {Policy 2 ($\theta_2$)};
+    \draw[dashedline] (clientN.north east) -- ++(0.5,0) node [right] {Policy N ($\theta_N$)};
+
+    % Draw arrows for client actions
+    \draw[line] (client1.east) -- ++(1,0) node [right] {client-actions$\{x_{n},p_n,f_{n}\}$} |- (mece_env.west);
+    \draw[line] (client2.east) -- ++(1,0) |- (mece_env.west);
+    \draw[line] (clientN.east) -- ++(1,0) |- (mece_env.west);
+
+    % Draw arrows for reward
+    \draw[line] (mece_env.south) -- ++(0,-1) node [below] {reward} -| (master_agent.north east);
+
+    % Draw arrows for master actions
+    \draw[line] (master_agent.east) -- ++(1,0) node [right] {Master-action$\{x_{m,n},p_n,f_{n}\}$} |- (mece_env.west);
+
+    % Draw arrow for TD error
+    \draw[line] ([yshift=-1em]client_environment.south) -- ++(0,-1) node [below] {TD error} |- (master_agent.north east);
+
+    % Add labels for states
+    \node [above] at (client1.north east) {$S_1$};
+    \node [above] at (client2.north east) {$S_2$};
+    \node [above] at (clientN.north east) {$S_N$};
+    \node [above] at (mece_env.north east) {$S$};
+\end{tikzpicture}
+
+\end{document}

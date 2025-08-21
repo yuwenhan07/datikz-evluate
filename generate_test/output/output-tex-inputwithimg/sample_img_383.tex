@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel=$x$,
+        ylabel=$y$,
+        ymin=-10, ymax=10,
+        xmin=-10, xmax=10,
+        domain=-10:10,
+        samples=100,
+        restrict y to domain=-10:10,
+        smooth,
+        every axis plot/.append style={thick},
+        xlabel style={at={(ticklabel* cs:1)}, anchor=north west},
+        ylabel style={at={(ticklabel* cs:1)}, anchor=south west},
+        clip=false
+    ]
+        % Define the function f(x)
+        \def\f(#1){0.5*(#1)^2 - 3*(#1) + 4}
+        
+        % Draw the function f(x)
+        \addplot [blue] {\f(x)} node[right] {$f(x) = 0.5x^2 - 3x + 4$};
+        
+        % Initial guess x_0
+        \fill (axis cs:-1,-9) circle (1pt);
+        \node [above right] at (-1,-9) {$(x_0, f(x_0))$};
+        
+        % Tangent line at x_0
+        \draw[dashed, red] (axis cs:-1,-9) -- (axis cs:-8,-9);
+        
+        % Intersection point with x-axis
+        \fill (axis cs:3,-9) circle (1pt);
+        \node [below] at (3,-9) {$(x_0', 0)$};
+        
+        % Initial guess x_m
+        \fill (axis cs:-6,-9) circle (1pt);
+        \node [above right] at (-6,-9) {$(x_m, f(x_m))$};
+
+        % Tangent line at x_m
+        \draw[dashed, orange] (axis cs:-6,-9) -- (axis cs:-9,-9);
+
+        % Intersection point with x-axis
+        \fill (axis cs:-3,-9) circle (1pt);
+        \node [below] at (-3,-9) {$(x_m', 0)$};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

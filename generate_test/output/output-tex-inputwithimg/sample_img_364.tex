@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+\begin{document}
+
+\begin{center}
+    \begin{tikzcd}[column sep=large]
+        \text{attn0[5]@37} \arrow{dr}\\ 
+        & \text{embed0@37} \arrow{r}{1.1} \arrow[red]{dr}|{\textcolor{white}{-}} \arrow[leftarrow, bend left=40]{dll}{2.1} & \text{tc0[9188]@37} \arrow{r}{1.1} \arrow[dashed, bend right=40]{ddl}{3.1} & \text{tc2[3900]@37}\\
+        \text{attn0[1]@37} \arrow{rrr}{1.1}\arrow{dr}& \\
+        & \text{tc0[16632]@37} \arrow{r}{2.4} & \text{tc1[22184]@37} & \text{tc8[355]@37} \arrow[red]{dl}|{\textcolor{white}{-}}\\
+        \text{attn0[3]@37} \arrow[bend right=40]{urr}{2.1} & & &\\
+        & & \text{tc3[6238]@37} \arrow[red, bend right=40]{uuu}{4.1} \\
+    \end{tikzcd}
+\end{center}
+
+\begin{description}
+    \item[Description:] An example of a computational graph produced using the method in \S\ref{sec:subgraphs} characterizing how our unknown feature is computed on an unseen input. A single path is highlighted in red and annotated with component-by-component attributions.
+\end{description}
+
+\end{document}

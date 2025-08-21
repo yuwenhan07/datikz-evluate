@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.8, every node/.style={draw, circle, inner sep=1pt}]
+        \node (a) {};
+        \node[right=of a] (b) {};
+        \node[below=of b] (c) {};
+        \node[left=of c] (d) {};
+        
+        \draw[thick, blue] (a) -- (b);
+        \draw[thick, red] (b) -- (c);
+        \draw[thick, red] (c) -- (d);
+        \draw[ultra thick, black] (a) -- (d);
+        
+        \fill (a) circle (0.8pt);
+        \fill (b) circle (0.8pt);
+        \fill (c) circle (0.8pt);
+        \fill (d) circle (0.8pt);
+    \end{tikzpicture}
+    \caption{A game of \textup{\textsc{Hackenbush}}\xspace, with literal form $\{ 1-1,-\frac{1}{2} \mathrel\vert \{ 0,1 \mathrel\vert \} \}$, that is not a conflict placement game. This game is not a conflict placement game because the top edge cannot be cut if both bottom edges are cut, but the top edge can be cut if at most one of the bottom edges is cut.}
+\end{figure}
+
+\end{document}

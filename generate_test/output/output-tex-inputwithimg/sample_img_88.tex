@@ -1,0 +1,42 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[xscale=1.5, yscale=1.5]
+
+% Draw horizontal lines
+\foreach \i [evaluate=\i as \prev using int(\i-1)] in {0,...,4}{
+    \draw[thick] (\i,-0.2) -- ++(0,0.5);
+}
+
+% Annotate vertical axis
+\draw[->, thick] (0,-0.7) -- node[left] {$r$} (5,-0.7);
+
+% Annotate horizontal axis
+\draw[->, thick] (-0.5,0) -- node[below] {$\epsilon_{\text{r}}(\lambda)$} (6,0);
+
+% Draw states
+\foreach \i in {0,...,4}{
+    \node at (\i,-1.1) {$\mid\!\! \i}_{\text{\footnotesize 0}}$;
+    \node at (\i,0.9) {$\mid\!\! \i\i^{\dagger}_{\text{\footnotesize \i}}$};
+}
+
+% Annotate supersymmetry
+\draw (0.5,-0.7) -- ++(-15:3cm) node[left] {$SUSY$};
+\draw (2.5,-0.7) -- ++(-15:3cm) node[left] {$SUSY$};
+\draw (4.5,-0.7) -- ++(-15:3cm) node[left] {$SUSY$};
+
+% Draw Hamiltonians
+\foreach \i/\j in {0/1, 2/3, 4/5}{
+    \draw[-{Stealth[scale=1.5]}] (\i*1.5,-1.2) -- ++(\j*1.5,-0.6) node[midway,below] {$H_{\i}$};
+}
+
+% Highlight edge state
+\draw[red] (5,-0.7) -- ++(-15:3cm) node[right] {$H_{4}$};
+
+\end{tikzpicture}
+
+\end{document}

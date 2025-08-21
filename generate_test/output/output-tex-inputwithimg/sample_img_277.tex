@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % Draw the axes
+        \draw[->,thick] (-5,0) -- (5,0) node[right]{$z$};
+        \draw[->,thick] (0,-2) -- (0,2) node[above]{$y$};
+
+        % Draw the x-axis labels
+        \foreach \x/\xtext in {-4/-4a, -3/-3a, -2/-2a, -1/-1a, 1/a, 2/2a, 3/3a, 4/4a} {
+            \draw (\x,0.1) -- ++(0,-0.2) node[below] {$\xtext$};
+        }
+
+        % Draw the y-axis labels
+        \foreach \y/\ytext in {1/\ast, 2/\ast, 3/\ast, 4/\ast, -1/\ast, -2/\ast, -3/\ast, -4/\ast} {
+            \draw (0.1,\y) -- ++(-0.5,0) node[left] {$\ytext$};
+        }
+
+        % Draw the arrows for the electric field lines
+        \draw[very thick, red!80!black, -Triangle] (0,0) -- (0,-2);
+        \draw[very thick, blue!80!black, -Triangle] (0,0) -- (0,2);
+
+        \draw[very thick, red!80!black, -Triangle] (-0.5,0) -- (-0.5,-2);
+        \draw[very thick, red!80!black, -Triangle] (0.5,0) -- (0.5,-2);
+
+        \draw[very thick, blue!80!black, -Triangle] (-0.5,0) -- (-0.5,2);
+        \draw[very thick, blue!80!black, -Triangle] (0.5,0) -- (0.5,2);
+
+        \node at (0,-0.5) [right] {\footnotesize $0$};
+    \end{tikzpicture}
+    \caption{Graphical representation of the Casimir system with image sources placed at $z = \pm 2an$ for integer $n$. The red arrow represents one plate and the blue arrow represents the other plate. The images are spaced by $a$ units along the $z$ axis, causing the boundaries to be doubled, which translates into an extra factor of $2$ on the numerator of the boundary term for the Hadamard function. For the Casimir system to have a value of $D^{(1)} = 0$, this setup must be maintained.}
+    \label{fig:cassystem}
+\end{figure}
+
+\end{document}

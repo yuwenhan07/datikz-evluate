@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\begin{document}
+
+\begin{tikzpicture}[node distance=3cm]
+    % Define nodes
+    \node[circle, draw] (node1) {$v$};
+    \node[circle, draw, below left = 25mm and 40 mm of node1] (node2) {$v$};
+    \node[circle, draw, below right = 25mm and 40 mm of node1] (node3) {$v$};
+    \node[circle, draw, above right = 25mm and 40 mm of node1] (node4) {$v$};
+    \node[circle, draw, below right = 25mm and 40 mm of node4] (node5) {$v$};
+
+    % Draw edges with labels
+    \draw[->,thick,dashed] (node1) to[bend right=70] node[left]{${\tt pk_{n},r_n}$} (node2);
+    \draw[->,thick] (node1) -- node[left]{$H$} (node2);
+    \draw[->,thick] (node3) to[bend left=70] node[right]{$H$} (node2);
+    \draw[->,thick] (node2) -- node[right]{$H$} (node3);
+    \draw[->,thick] (node4) -- node[left]{$H$} (node2);
+    \draw[->,thick] (node5) -- node[right]{$H$} (node4);
+
+    \draw[->,thick,dashed] (node1) to[bend left=70] node[right]{$H$} (node5);
+    \draw[->,thick] (node5) -- node[right]{$H$} (node1);
+
+    % Add labels
+    \draw[->,thick] (node2) -- node[right]{$H$} (node1);
+    \draw[->,thick] (node3) -- node[left]{$H$} (node4);
+    \draw[->,thick] (node4) -- node[right]{$H$} (node5);
+
+    % Additional labels for public keys and randomness
+    \node[above right=2mm and 10mm of node1] (label1) {{\tiny$\mathsf{pk}_{i-1},r_{i-1}$}};
+    \node[above right=3mm and 3mm of node4] (label2) {{\tiny$\mathsf{pk}_{i},r_{i}$}};
+    \node[above left=3mm and 3mm of node2] (label3) {{\tiny$\mathsf{pk}_{n},r_{n}$}};
+    \node[below left=3mm and 3mm of node3] (label4) {{\tiny$\mathsf{pk}_{1},r_{1}$}};
+    \node[below right=3mm and 3mm of node5] (label5) {{\tiny$\mathsf{pk}_{i+1},r_{i+1}$}};
+    
+    % Arrow for public key and secret key
+    \draw[->,thick] (node5) -- ++(3,-1) node[midway,right] {{\tiny$\mathsf{pk}_s,\mathsf{sk},r_s$}};
+\end{tikzpicture}
+
+\captionof{figure}{The Type-T structure of a ring signature as defined by the generic AOS ring signatures schemes \cite{abe2002}. In the figure, $H$ corresponds to a collision-resistant hash function, $v$ is a cryptographic commitment function and the $r_i$s and $\mathsf{pk}_i$s for $1 \leq i \leq n$ are unique randomness inputs and public keys respectively.}
+\label{fig:ring_signature_structure}
+
+\end{document}

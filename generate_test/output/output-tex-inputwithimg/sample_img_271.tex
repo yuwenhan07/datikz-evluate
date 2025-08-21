@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[node distance = 2cm,
+                        dot/.style = {circle, draw=black, fill=white, minimum size=0.5cm, inner sep=2pt}
+                        ]
+        % Left side
+        \node[dot] (s) {$\mathcal{S}$};
+        \draw (s) -- ++(0,-1) node[pos=0.5,below] {$p$}; % Label 'p' below
+        \draw (s) -- ++(0,1) node[pos=0.5,above] {$q$};   % Label 'q' above
+        \draw (s) -- ++(-1,0) node[pos=0.5,left] {$n(n+1)/2$}; % Label 'n(n+1)/2' left
+        
+        % Right side
+        \node[right=of s, dot] (p) {$\mathcal{P}$};
+        \node[dot, above=of p] (n) {$\mathcal{N}$};
+        \node[dot, above=of n] (q) {$\mathcal{Q}$};
+        
+        % Arrows and labels
+        \draw[->] (s) -- node[above] {$d$} (n);
+        \draw[->] (n) -- node[below] {$D$} (p);
+        \draw[->] (n) -- node[above] {$D$} (q);
+        \draw[->] (q) -- node[above] {$q$} ++(1,0);
+        \draw[->] (q) |- (p) node[pos=0.8,right] {$p$};
+        \draw[->] (p) -- node[below] {$p$} ++(1,0);
+        \draw[->] (p) -- ++(0,1) node[pos=0.5,above] {$n(n+1)/2$};
+
+    \end{tikzpicture}
+    \caption{Diagrammatic representation of Eq.~\eqref{eq:TN} showing the decomposition of the full tensor $\mathcal{S}$ (left) into the three tensors $\mathcal{P}$, $\mathcal{N}$, and $\mathcal{Q}$ (right). Legs are labeled with their dimension.}
+    \label{fig:decomposition}
+\end{figure}
+\end{document}

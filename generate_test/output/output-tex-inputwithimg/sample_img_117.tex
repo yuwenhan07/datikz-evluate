@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+
+\begin{document}
+
+\begin{tikzpicture}[decoration={
+    markings,
+    mark=at position 0.9 with {\arrow{>}}
+  }]
+
+  \draw[very thick] (-5,0) -- node [pos=0.6, below] {$\widetilde{T}_i$} (0,0);
+  \draw[very thick] (0,0) to[out=45,in=225] node [pos=0.7, above] {$C^\tau_i$} ++(3,2);
+  \draw[very thick] (3,2) -- node [pos=0.9, above] {$\widetilde{T}_{i+1}$} (5,4);
+
+  % Dotted line for reference
+  \draw[dotted, very thin] (0,0) -- ++(0.2,-0.2) -- ++(1.8,0.2);
+  
+  % Pointers for the arcs
+  \fill (0,0) circle (2pt);
+  \fill (3,2) circle (2pt);
+  
+end{tikzpicture}
+
+\end{document}

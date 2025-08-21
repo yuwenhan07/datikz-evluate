@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+% Left: Common rail pressure system (system for high-pressure fuel injection) with controllable inputs $v_k, n_k$ and measured output $\psi_k$, taken from \cite{zimmer2018safe, tietze2014model}
+% Right: This diagram shows the decline in RMSE in the rail pressure model from Subsection~\ref{subsection_railpressure}. The entropy method (red line) shows a slow decline over the 1000 steps, whereas our approach T-IMSPE (blue line) declines more consistently, faster, and ends in much smaller RMSE values.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={},
+            xlabel={steps},
+            ylabel={RMSE},
+            xmin=0, xmax=1000,
+            ymin=0, ymax=8,
+            xtick={0,250,500,750,1000},
+            ytick={0,2,4,6,8},
+            legend pos=north west,
+            ymajorgrids=true,
+            grid style=dashed,
+            ]
+            
+            \addplot[
+                color=red,
+                mark=none,
+                domain=0:1000,
+                samples=100,
+            ]
+            {random(6,8)};
+            \addlegendentry{entropy};
+            
+            \addplot[
+                color=blue,
+                mark=none,
+                domain=0:1000,
+                samples=100,
+            ]
+            {random(2,4)};
+            \addlegendentry{T-IMSPE (ours)};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Decline in RMSE in the rail pressure model from Subsection~\ref{subsection_railpressure}. The entropy method (red line) shows a slow decline over the 1000 steps, whereas our approach T-IMSPE (blue line) declines more consistently, faster, and ends in much smaller RMSE values.}
+    \label{fig:rmse_railpressure}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,20 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+
+\definecolor{arr2flatcolour}{RGB}{0, 102, 204}
+\definecolor{minnesotacolour}{RGB}{255, 165, 0}
+\definecolor{gaussiancolour}{RGB}{0, 191, 255}
+\definecolor{rhscolour}{RGB}{128, 0, 128}
+
+\begin{document}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{your_image_file.png} % Replace with your actual image file name
+    \caption{Implied prior $R^2$ for an AR model with 12 lags. Top plot shows the prior $R^2$ induced by the \textcolor{arr2flatcolour}{ARR2 prior (blue)} with our suggested hyperparameters for the \textcolor{minnesotacolour}{Minnesota-type prior (yellow)}, \textcolor{gaussiancolour}{independent Gaussian priors (green)}, and the \textcolor{rhscolour}{regularised horseshoe prior (purple)}. Bottom plots show the prior means of the relative contributions to the $R^2$ of the regression coefficients. Different hyperparameter settings for the ARR2 are shown: \textcolor{arr2flatcolour}{flat (blue)}, \textcolor{arr2minncolour}{Minnesota-type (red)}, \textcolor{arr2bumpcolour}{Bump (light blue)}.}
+    \label{fig:ar_model_priors}
+\end{figure}
+
+\end{document}

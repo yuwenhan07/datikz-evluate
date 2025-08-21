@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5]
+  % Define coordinates for the hexagon
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (60:1.5);
+  \coordinate (B) at (-240:1.5);
+  \coordinate (C) at (-120:1.5);
+  \coordinate (D) at (120:1.5);
+  \coordinate (E) at (240:1.5);
+  
+  % Draw the hexagon
+  \draw[dashed] (O) -- (A) -- (B) -- (C) -- (D) -- (E) -- cycle;
+  \draw (A) -- (D) -- (B) -- (E) -- (C) -- (O) node[above left] {$-$};
+  
+  % Label the regions
+  \node at ($(A)!0.5!(O)$) [left] {\small $\frac{1}{2}$};
+  \node at ($(C)!0.5!(O)$) [right] {\small $\frac{1}{2}$};
+  \node at ($(B)!0.5!(O)$) [right] {\small $\frac{T}{2}$};
+  \node at ($(D)!0.5!(O)$) [left] {\small $\frac{T}{2}$};
+  
+  % Draw the diagonal lines
+  \draw[red, ultra thick] (O) -- (60:3);
+  \draw[blue, ultra thick] (O) -- (120:3);
+  
+  % Add labels for regions
+  \node at ($(A)!0.5!(O)$) [below right] {\small $①$};
+  \node at ($(B)!0.5!(O)$) [above right] {\small $②$};
+  \node at ($(C)!0.5!(O)$) [above] {\small $③$};
+  \node at ($(D)!0.5!(O)$) [below] {\small $④$};
+  \node at ($(E)!0.5!(O)$) [below left] {\small $⑤$};
+  \node at ($(O)!0.5!(E)$) [below left] {\small $⑥$};
+  
+  % Draw arrows for $σ$
+  \draw[->, blue, ultra thick] ($(B)!0.5!(O)$) -- ++(120:0.5cm) node[right] {$σ$};
+  
+\end{tikzpicture}
+
+Moduli space \(\mathcal{M}^{\text{II}}_{\tau}\) of minimal type II tilings on \(T_{\tau}\).
+
+\end{document}
